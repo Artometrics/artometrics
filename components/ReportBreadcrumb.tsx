@@ -18,7 +18,7 @@ export function ReportBreadcrumb({ tags }: Props) {
     return (
       <View className="flex-row flex-wrap items-center gap-x-1.5 gap-y-1">
         <Link href="/blog">
-          <Text className="font-sans text-[11px] uppercase tracking-[1.4px] text-accent">
+          <Text className="font-sans text-[13px] font-semibold uppercase tracking-[1.4px] text-accent md:text-sm">
             Reports
           </Text>
         </Link>
@@ -47,16 +47,16 @@ export function ReportBreadcrumb({ tags }: Props) {
       {crumbs.map((crumb, i) => (
         <View key={`${crumb.label}-${i}`} className="flex-row items-center gap-1.5">
           {i > 0 ? (
-            <Text className="font-sans text-[11px] text-subtle">·</Text>
+            <Text className="font-sans text-[13px] text-subtle md:text-sm">·</Text>
           ) : null}
           {crumb.href ? (
             <Link href={crumb.href}>
-              <Text className="font-sans text-[11px] uppercase tracking-[1.4px] text-accent">
+              <Text className="font-sans text-[13px] font-semibold uppercase tracking-[1.4px] text-accent md:text-sm">
                 {crumb.label}
               </Text>
             </Link>
           ) : (
-            <Text className="font-sans text-[11px] uppercase tracking-[1.4px] text-subtle">
+            <Text className="font-sans text-[13px] font-semibold uppercase tracking-[1.4px] text-subtle md:text-sm">
               {crumb.label}
             </Text>
           )}

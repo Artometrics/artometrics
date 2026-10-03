@@ -11,6 +11,7 @@ import { ReportRelatedReads } from "@/components/ReportRelatedReads";
 import { PageSeo } from "@/components/PageSeo";
 import {
   deckLine,
+  splitReportHeadline,
   formatAuthorName,
   formatDate,
   getBlogPost,
@@ -61,6 +62,7 @@ export default function ReportScreen() {
   const minutes = estimateMinutes(post.body);
   const authorLabel = post.author ? formatAuthorName(String(post.author)) : "Kyle McAuliffe";
   const faq = (post as { faq?: { question: string; answer: string }[] }).faq ?? [];
+  const headline = splitReportHeadline(post.title);
 
   const imageAbs = post.heroImage?.startsWith("http")
     ? post.heroImage
@@ -113,48 +115,65 @@ export default function ReportScreen() {
       />
       <SeoJsonLd data={jsonLd} />
 
-      <Wrapper variant="wide" className="gap-6 border-b border-border py-8">
-        <ReportBreadcrumb tags={post.tags} />
-        {hero ? (
-          <View className="-mx-5 px-1.5 md:px-2">
-            <SiteCoverImage
-              source={{ uri: hero }}
-              wrapperClassName="w-full"
-              wrapperStyle={{ aspectRatio: 16 / 10 }}
-              transition={200}
-              accessibilityLabel={post.title}
-            />
+      <Wrapper variant="wide" className="gap-6 border-b border-border pb-8 pt-3 md:pt-4">
+        <View className="flex-row flex-wrap items-center justify-between gap-x-3 gap-y-2">
+          <View className="min-w-0 shrink">
+            <ReportBreadcrumb tags={post.tags} />
           </View>
-        ) : null}
-        {label ? (
-          <Text className="font-sans text-[10px] font-semibold uppercase tracking-[2.5px] text-accent">
-            {label}
-          </Text>
-        ) : null}
-        <Text
-          role="heading"
-          aria-level={1}
-          className="font-serif text-[32px] font-semibold leading-[1.15] tracking-tight text-accent md:text-[38px]"
-        >
-          {post.title}
-        </Text>
-        <Text className="font-serif text-xl leading-snug text-accent md:text-2xl">
-          {deckLine(post.description, 12)}
-        </Text>
-        <Text className="font-sans text-[11px] uppercase tracking-[1.4px] text-fg">
-          {authorLabel}
-          {post.pubDate ? ` · ${formatDate(post.pubDate)}` : ""} · {minutes} min
-        </Text>
-        <ArticleActions
-          slug={post.slug}
-          title={post.title}
-          description={post.description}
-          audioSrc={(post as { audioSrc?: string | null }).audioSrc}
-          placement="header"
-        />
+          <ArticleActions
+            slug={post.slug}
+            title={post.title}
+            description={post.description}
+            audioSrc={(post as { audioSrc?: string | null }).audioSrc}
+            placement="header"
+            variant="inline"
+          />
+        </View>
+        <View className="flex-col gap-6 md:flex-row md:items-center md:gap-8">
+          {hero ? (
+            <View className="min-w-0 w-full shrink-0 md:w-1/2 md:flex-1">
+              <SiteCoverImage
+                source={{ uri: hero }}
+                wrapperClassName="w-full overflow-hidden border border-border"
+                wrapperStyle={{ aspectRatio: 16 / 10 }}
+                transition={200}
+                accessibilityLabel={post.title}
+              />
+            </View>
+          ) : null}
+          <View
+            className={[
+              "min-w-0 justify-center gap-3",
+              hero ? "w-full md:w-1/2 md:flex-1" : "w-full",
+            ].join(" ")}
+          >
+            <Text
+              role="heading"
+              aria-level={1}
+              className="font-serif text-[28px] font-bold leading-[1.12] tracking-tight text-secondary sm:text-[32px] md:text-[36px] lg:text-[42px]"
+            >
+              {headline ? (
+                <Text>
+                  <Text className="text-accent">{headline.slug}</Text>
+                  {`: ${headline.subtitle}`}
+                </Text>
+              ) : (
+                post.title
+              )}
+            </Text>
+            <Text className="font-serif text-lg font-bold leading-snug text-accent md:text-xl md:leading-relaxed">
+              {deckLine(post.description, 12)}
+            </Text>
+            <Text className="font-sans text-[13px] font-bold uppercase tracking-[1.4px] text-fg md:text-sm">
+              <Text className="text-accent">By </Text>
+              {authorLabel}
+              {post.pubDate ? ` · ${formatDate(post.pubDate)}` : ""} · {minutes} min
+            </Text>
+          </View>
+        </View>
       </Wrapper>
 
-      <Wrapper variant="bleed" className="w-full min-w-0 max-w-[1600px] self-stretch gap-8 px-3 py-8 md:px-4">
+      <Wrapper variant="bleed" className="w-full min-w-0 max-w-[1600px] self-stretch gap-3 px-3 py-8 md:px-4">
         <ArticleBody html={post.body} />
         <ReportRelatedReads slug={post.slug} limit={4} />
       </Wrapper>

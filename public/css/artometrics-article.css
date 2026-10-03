@@ -97,7 +97,7 @@
 .artometrics-article-body .art-code-pre{
   background: #F2F0EB;
   border: 1px solid #D5D5D5;
-  border-left: 3px solid var(--art-secondary, #00A3D9);
+  border-left: 3px solid var(--art-secondary, #3367E7);
   border-radius: 0 0 4px 4px;
   padding: 1rem 1.2rem;
   font-family: 'DM Mono', monospace;
@@ -224,8 +224,8 @@
   color: var(--art-white, #fff);
 }
 .artometrics-article-body .art-ref-copy--done {
-  border-color: var(--art-secondary, #00A3D9);
-  color: var(--art-secondary, #00A3D9);
+  border-color: var(--art-secondary, #3367E7);
+  color: var(--art-secondary, #3367E7);
   background: transparent;
 }
 html[data-theme="dark"] .artometrics-article-body .art-citations-toolbar {
@@ -248,7 +248,7 @@ html[data-theme="dark"] .artometrics-article-body .art-citations-toolbar__btn--a
   --art-dark:      #1C1C1E;
   --art-mid:       #6B6B6B;
   --art-highlight: #E60000;
-  --art-secondary: #00A3D9;
+  --art-secondary: #3367E7;
   --art-muted:     #D5D5D5;
   --art-white:     #FFFFFF;
   --art-cream:     #F2F0EB;
@@ -268,7 +268,7 @@ html[data-theme="dark"] .artometrics-article-body{
   --art-dark:      #FAFAFA;
   --art-mid:       #A3A3A3;
   --art-highlight: #E60000;
-  --art-secondary: #66E0FF;
+  --art-secondary: #6B94FF;
   --art-muted:     #A3A3A3;
   --art-white:     #171717;
   --art-cream:     #171717;
@@ -360,7 +360,7 @@ html[data-theme="dark"] .artometrics-article-body{
   font-size: clamp(1.85rem, 3.5vw, 2.75rem);
   line-height: 1.15;
   color: var(--art-highlight);
-  border-top: 3px solid var(--art-secondary, #00a3d9);
+  border-top: 3px solid #3367E7;
   padding-top: 0.85rem;
   margin-top: 2.75rem;
   margin-bottom: 0.3rem;
@@ -373,7 +373,7 @@ html[data-theme="dark"] .artometrics-article-body{
   font-family: 'DM Sans', sans-serif;
   font-weight: 600;
   font-size: 1rem;
-  color: var(--art-secondary, #00a3d9) !important;
+  color: var(--art-secondary, #3367e7) !important;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   margin-top: 0.3rem;
@@ -401,8 +401,9 @@ html[data-theme="dark"] .artometrics-article-body{
 
 .artometrics-article-body strong,
 .artometrics-article-body b{
-  font-weight: 600;
-  color: var(--art-secondary, #00a3d9);
+  font-weight: 700;
+  font-size: 1.12em;
+  color: var(--art-secondary, #3367e7);
 }
 
 /* ── Charts — full width (scoped — do not affect site chrome expo-image) */
@@ -476,7 +477,7 @@ html[data-theme="dark"] .artometrics-article-body{
   text-align: center !important;
   background: var(--art-white, #fff) !important;
   border: 1px solid var(--art-muted, #d5d5d5) !important;
-  border-left: 4px solid var(--art-secondary, #00a3d9) !important;
+  border-left: 4px solid var(--art-secondary, #3367e7) !important;
   padding: 1.1rem 1.35rem !important;
   min-width: 0 !important;
   width: 100% !important;
@@ -494,7 +495,7 @@ html[data-theme="dark"] .artometrics-article-body{
   font-size: clamp(1.35rem, 2.5vw, 1.65rem) !important;
   font-weight: 700 !important;
   line-height: 1.2 !important;
-  color: var(--art-secondary, #00a3d9) !important;
+  color: var(--art-secondary, #3367e7) !important;
   margin-bottom: 0.45rem !important;
 }
 .artometrics-article-body .fact-label {
@@ -808,14 +809,14 @@ pre:has(> code.sourceCode.sql),
   max-width: min(72rem, 100%) !important;
   width: 100% !important;
   margin: 0 auto !important;
-  padding: 0 0 3rem !important;
+  padding: 0 0 0.75rem !important;
   text-align: center !important;
   box-sizing: border-box !important;
 }
 .artometrics-article-body .art-p,
 .artometrics-article-body main.art-article-main p{
   font-family: 'DM Sans', sans-serif !important;
-  font-size: 1.05rem !important;
+  font-size: 1.575rem !important;
   line-height: 1.85 !important;
   color: var(--art-dark) !important;
   text-align: center !important;
@@ -851,26 +852,26 @@ pre:has(> code.sourceCode.sql),
   text-align: left !important;
 }
 .artometrics-article-body main.art-article-main > p.art-p:first-of-type{
-  font-size: 1.14rem !important;
+  font-size: 1.71rem !important;
   line-height: 1.92 !important;
   color: var(--art-dark) !important;
 }
 .artometrics-article-body main.art-article-main > p.art-p:nth-of-type(2){
-  font-size: 1.14rem !important;
+  font-size: 1.71rem !important;
   line-height: 1.92 !important;
   font-weight: 600 !important;
-  color: var(--art-secondary, #00a3d9) !important;
+  color: var(--art-secondary, #3367e7) !important;
 }
 .artometrics-article-body main.art-article-main > p.art-p:first-of-type{
   text-align: left !important;
 }
 .artometrics-article-body main.art-article-main > p.art-p:first-of-type::first-letter{
   font-family: var(--font-wordmark, "Chomsky", Georgia, serif) !important;
-  font-size: 5.25em;
-  line-height: 0.88;
+  font-size: 7.25em;
+  line-height: 0.82;
   float: left;
-  margin: 0.02em 0.22em 0.1em 0;
-  padding: 0.05em 0.14em 0.02em;
+  margin: 0 0.18em 0.06em 0;
+  padding: 0.04em 0.16em 0;
   color: var(--art-highlight, #e60000) !important;
   font-weight: 400;
   border: 3px solid var(--art-highlight, #e60000);
@@ -880,13 +881,29 @@ pre:has(> code.sourceCode.sql),
 html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-p:first-of-type::first-letter{
   background: var(--art-bg, #0a0a0a);
 }
+.artometrics-article-body main.art-article-main > p.art-p:first-of-type:has(strong:first-child)::first-letter{
+  float: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  color: inherit !important;
+}
+.artometrics-article-body main.art-article-main > p.art-p:first-of-type strong{
+  font-size: 1.45em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
 .artometrics-article-body main.art-article-main > blockquote{
   max-width: 100% !important;
   margin: 2.4rem auto 2.4rem 0 !important;
 }
 .artometrics-article-body main.art-article-main blockquote p{
   text-align: left !important;
-  font-size: 1.18rem !important;
+  font-size: 1.77rem !important;
   font-style: italic !important;
   line-height: 1.7 !important;
   margin: 0 !important;
@@ -909,19 +926,22 @@ html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-
   line-height: 1.15 !important;
   max-width: 100% !important;
 }
-.artometrics-article-body main.art-article-main > h2::before{
+.artometrics-article-body main.art-article-main > h2:not(#toc-title)::before{
   content: '' !important;
   display: block !important;
   width: 2.75rem !important;
   height: 3px !important;
-  background: var(--art-secondary, #00a3d9) !important;
+  background-color: #3367E7 !important;
+}
+html[data-theme="dark"] .artometrics-article-body main.art-article-main > h2:not(#toc-title)::before{
+  background-color: #6B94FF !important;
 }
 .artometrics-article-body main.art-article-main > h3,
 .artometrics-article-body main.art-article-main > h3.anchored{
   font-family: 'DM Sans', sans-serif !important;
   font-weight: 600 !important;
   font-size: 1rem !important;
-  color: var(--art-secondary, #00a3d9) !important;
+  color: var(--art-secondary, #3367e7) !important;
   text-transform: uppercase !important;
   letter-spacing: 1.5px !important;
   margin-top: 0.3rem !important;
@@ -1029,14 +1049,14 @@ html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-
   color: #FAFAF8 !important;
   flex-shrink: 0 !important;
 }
-.artometrics-article-body .art-lang-r{ background: var(--art-secondary, #00A3D9) !important; }
+.artometrics-article-body .art-lang-r{ background: var(--art-secondary, #3367E7) !important; }
 .artometrics-article-body .art-lang-sql{ background: #1C1C1E !important; }
 .artometrics-article-body .art-lang-python{ background: #3B7DD8 !important; }
 .artometrics-article-body .art-code-pre{
   background: #1C1C1E !important;
   color: #E8E6E1 !important;
   border: none !important;
-  border-left: 4px solid var(--art-secondary, #00A3D9) !important;
+  border-left: 4px solid var(--art-secondary, #3367E7) !important;
   border-radius: 0 !important;
   margin: 0 !important;
   padding: 1.15rem 1.35rem !important;
@@ -1050,13 +1070,13 @@ html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-
   box-shadow: inset 0 0 0 1px rgba(44, 62, 107, 0.35) !important;
 }
 .artometrics-article-body .art-code-pre.art-code-pre--copied{
-  box-shadow: inset 0 0 0 2px var(--art-secondary, #00A3D9) !important;
+  box-shadow: inset 0 0 0 2px var(--art-secondary, #3367E7) !important;
 }
 .artometrics-article-body .art-copy-btn{
   display: none !important;
 }
 .artometrics-article-body .art-editorial-note{
-  margin: 0 0 2rem !important;
+  margin: 0 0 0.5rem !important;
   padding: 1.5rem 1.65rem !important;
   background: #F2F0EB !important;
   border: 1px solid #D5D5D5 !important;
@@ -1266,7 +1286,7 @@ html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-
   margin: 1.75rem 0 2.25rem !important;
   padding: 1.15rem 1.25rem 1.2rem !important;
   border: 1px solid #D5D5D5 !important;
-  border-left: 4px solid var(--art-secondary, #00A3D9) !important;
+  border-left: 4px solid var(--art-secondary, #3367E7) !important;
   background: #FAFAF8 !important;
   max-width: 42rem !important;
 }
@@ -1277,7 +1297,7 @@ html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-
   font-weight: 700 !important;
   letter-spacing: 0.18em !important;
   text-transform: uppercase !important;
-  color: var(--art-secondary, #00A3D9) !important;
+  color: var(--art-secondary, #3367E7) !important;
 }
 .artometrics-article-body .art-report-summary__text{
   margin: 0 !important;
@@ -1591,9 +1611,9 @@ html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-
   letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
   line-height: 1 !important;
-  border: 1px solid var(--art-secondary, #00a3d9) !important;
+  border: 1px solid var(--art-secondary, #3367e7) !important;
   border-radius: 4px !important;
-  color: var(--art-secondary, #00a3d9) !important;
+  color: var(--art-secondary, #3367e7) !important;
   background: rgba(255, 255, 255, 0.94) !important;
   backdrop-filter: blur(4px) !important;
   cursor: pointer !important;
@@ -1628,14 +1648,14 @@ html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-
 .artometrics-article-body .art-chart-toolbar__btn:hover,
 .artometrics-article-body .art-chart-toolbar__btn:focus-visible{
   color: #ffffff !important;
-  border-color: var(--art-secondary, #00a3d9) !important;
-  background: var(--art-secondary, #00a3d9) !important;
+  border-color: var(--art-secondary, #3367e7) !important;
+  background: var(--art-secondary, #3367e7) !important;
   outline: none !important;
 }
 .artometrics-article-body .art-chart-toolbar__btn--copied{
   color: #ffffff !important;
-  border-color: var(--art-secondary, #00a3d9) !important;
-  background: var(--art-secondary, #00a3d9) !important;
+  border-color: var(--art-secondary, #3367e7) !important;
+  background: var(--art-secondary, #3367e7) !important;
 }
 /* Portaled to document.body — must not require .artometrics-article-body ancestor */
 .art-chart-share-sheet{
@@ -1781,7 +1801,7 @@ html[data-theme="dark"] .artometrics-article-body li {
 }
 html[data-theme="dark"] .artometrics-article-body main.art-article-main > h3:not(.art-back-matter__subhead),
 html[data-theme="dark"] .artometrics-article-body h3:not(.art-back-matter__subhead) {
-  color: var(--art-secondary, #66e0ff) !important;
+  color: var(--art-secondary, #6b94ff) !important;
 }
 html[data-theme="dark"] .artometrics-article-body .subtitle,
 html[data-theme="dark"] .artometrics-article-body .description,

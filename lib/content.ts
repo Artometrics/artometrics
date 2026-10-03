@@ -24,6 +24,16 @@ export function deckLine(description: string, maxWords = 18): string {
   return /[.!?]$/.test(line) ? line : `${line.replace(/[.!?]+$/, "")}.`;
 }
 
+/** Split "SLUG: subtitle" report titles for hero styling (red slug + blue deck). */
+export function splitReportHeadline(title: string): { slug: string; subtitle: string } | null {
+  const idx = title.indexOf(":");
+  if (idx === -1) return null;
+  const slug = title.slice(0, idx).trim();
+  const subtitle = title.slice(idx + 1).trim();
+  if (!slug || !subtitle) return null;
+  return { slug, subtitle };
+}
+
 const CARD_DECK_MIN_WORDS = 5;
 
 /** Short hook for grid/stack cards (~5–8 words). Full `description` stays in SEO. */

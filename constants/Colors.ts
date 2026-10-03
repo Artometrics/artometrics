@@ -44,9 +44,9 @@ export const Colors = {
   paperElevated: "#FFFFFF",
   magazineAccent: "#C0392B",
   magazineAccentSoft: "#F9E8E6",
-  /** Anaglyph / 3D-glasses cyan — pairs with accent red (site + article --art-secondary). */
-  editorialNavy: "#00A3D9",
-  editorialNavyDark: "#66E0FF",
+  /** Editorial blue — wordmark, report titles, links (site + article --art-secondary). */
+  editorialNavy: "#3367E7",
+  editorialNavyDark: "#6B94FF",
 } as const;
 
 export type BrandFonts = {

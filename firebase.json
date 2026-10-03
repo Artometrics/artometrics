@@ -1,0 +1,1423 @@
+{
+  "hosting": {
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/node_modules/**"
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "headers": [
+      {
+        "source": "/sitemap.xml",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=3600"
+          }
+        ]
+      },
+      {
+        "source": "/llms.txt",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=3600"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain; charset=utf-8"
+          }
+        ]
+      },
+      {
+        "source": "/llms-full.txt",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=3600"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain; charset=utf-8"
+          }
+        ]
+      },
+      {
+        "source": "/rss.xml",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=3600"
+          }
+        ]
+      },
+      {
+        "source": "/podcast.xml",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=3600"
+          }
+        ]
+      },
+      {
+        "source": "/robots.txt",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=86400"
+          }
+        ]
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/methodology/",
+        "destination": "/about",
+        "type": 301
+      },
+      {
+        "source": "/methodology",
+        "destination": "/about",
+        "type": 301
+      },
+      {
+        "source": "/culture",
+        "destination": "/topics/culture",
+        "type": 301
+      },
+      {
+        "source": "/culture/**",
+        "destination": "/topics/culture",
+        "type": 301
+      },
+      {
+        "source": "/atlas",
+        "destination": "/topics/culture",
+        "type": 301
+      },
+      {
+        "source": "/atlas/**",
+        "destination": "/topics/culture",
+        "type": 301
+      },
+      {
+        "source": "/history",
+        "destination": "/topics/humanities",
+        "type": 301
+      },
+      {
+        "source": "/history/**",
+        "destination": "/topics/humanities",
+        "type": 301
+      },
+      {
+        "source": "/persona",
+        "destination": "/topics/humanities",
+        "type": 301
+      },
+      {
+        "source": "/persona/**",
+        "destination": "/topics/humanities",
+        "type": 301
+      },
+      {
+        "source": "/power",
+        "destination": "/topics/civics",
+        "type": 301
+      },
+      {
+        "source": "/power/**",
+        "destination": "/topics/civics",
+        "type": 301
+      },
+      {
+        "source": "/desks/culture",
+        "destination": "/topics/culture",
+        "type": 301
+      },
+      {
+        "source": "/desks/atlas",
+        "destination": "/topics/culture",
+        "type": 301
+      },
+      {
+        "source": "/desks/history",
+        "destination": "/topics/humanities",
+        "type": 301
+      },
+      {
+        "source": "/desks/persona",
+        "destination": "/topics/humanities",
+        "type": 301
+      },
+      {
+        "source": "/desks/power",
+        "destination": "/topics/civics",
+        "type": 301
+      },
+      {
+        "source": "/desks/arts",
+        "destination": "/topics/arts",
+        "type": 301
+      },
+      {
+        "source": "/desks/sports",
+        "destination": "/topics/sports",
+        "type": 301
+      },
+      {
+        "source": "/desks/science",
+        "destination": "/topics/science",
+        "type": 301
+      },
+      {
+        "source": "/desks/humanities",
+        "destination": "/topics/humanities",
+        "type": 301
+      },
+      {
+        "source": "/desks/civics",
+        "destination": "/topics/civics",
+        "type": 301
+      },
+      {
+        "source": "/desks/**",
+        "destination": "/topics",
+        "type": 301
+      },
+      {
+        "source": "/topics/movies-tv",
+        "destination": "/topics/arts",
+        "type": 301
+      },
+      {
+        "source": "/topics/music",
+        "destination": "/topics/arts",
+        "type": 301
+      },
+      {
+        "source": "/topics/galleries",
+        "destination": "/topics/arts",
+        "type": 301
+      },
+      {
+        "source": "/topics/books",
+        "destination": "/topics/arts",
+        "type": 301
+      },
+      {
+        "source": "/topics/games",
+        "destination": "/topics/sports",
+        "type": 301
+      },
+      {
+        "source": "/topics/business",
+        "destination": "/topics/civics",
+        "type": 301
+      },
+      {
+        "source": "/topics/tech",
+        "destination": "/topics/science",
+        "type": 301
+      },
+      {
+        "source": "/topics/cities-travel",
+        "destination": "/topics/culture",
+        "type": 301
+      },
+      {
+        "source": "/airline-safety",
+        "destination": "/airlines",
+        "type": 301
+      },
+      {
+        "source": "/airline-safety/**",
+        "destination": "/airlines",
+        "type": 301
+      },
+      {
+        "source": "/alcohol-consumption",
+        "destination": "/alcohol",
+        "type": 301
+      },
+      {
+        "source": "/alcohol-consumption/**",
+        "destination": "/alcohol",
+        "type": 301
+      },
+      {
+        "source": "/all-the-pizza",
+        "destination": "/pizza",
+        "type": 301
+      },
+      {
+        "source": "/all-the-pizza/**",
+        "destination": "/pizza",
+        "type": 301
+      },
+      {
+        "source": "/awards-prestige-economy-oscars-grammys-nobels",
+        "destination": "/oscars",
+        "type": 301
+      },
+      {
+        "source": "/awards-prestige-economy-oscars-grammys-nobels/**",
+        "destination": "/oscars",
+        "type": 301
+      },
+      {
+        "source": "/beyonce-taylor-lyrics",
+        "destination": "/lyrics",
+        "type": 301
+      },
+      {
+        "source": "/beyonce-taylor-lyrics/**",
+        "destination": "/lyrics",
+        "type": 301
+      },
+      {
+        "source": "/beyonce-the-psychonomics-of-control",
+        "destination": "/beyonce",
+        "type": 301
+      },
+      {
+        "source": "/beyonce-the-psychonomics-of-control/**",
+        "destination": "/beyonce",
+        "type": 301
+      },
+      {
+        "source": "/mac-index",
+        "destination": "/mac",
+        "type": 301
+      },
+      {
+        "source": "/mac-index/**",
+        "destination": "/mac",
+        "type": 301
+      },
+      {
+        "source": "/biketown-bikeshare",
+        "destination": "/bikeshare",
+        "type": 301
+      },
+      {
+        "source": "/biketown-bikeshare/**",
+        "destination": "/bikeshare",
+        "type": 301
+      },
+      {
+        "source": "/billboard-hot-100",
+        "destination": "/billboard",
+        "type": 301
+      },
+      {
+        "source": "/billboard-hot-100/**",
+        "destination": "/billboard",
+        "type": 301
+      },
+      {
+        "source": "/rankings-100",
+        "destination": "/rankings",
+        "type": 301
+      },
+      {
+        "source": "/rankings-100/**",
+        "destination": "/rankings",
+        "type": 301
+      },
+      {
+        "source": "/broadway-musicals",
+        "destination": "/broadway",
+        "type": 301
+      },
+      {
+        "source": "/broadway-musicals/**",
+        "destination": "/broadway",
+        "type": 301
+      },
+      {
+        "source": "/caesar-the-psychonomics-of-emperor-julius",
+        "destination": "/caesar",
+        "type": 301
+      },
+      {
+        "source": "/caesar-the-psychonomics-of-emperor-julius/**",
+        "destination": "/caesar",
+        "type": 301
+      },
+      {
+        "source": "/california-vs-texas-state-rivalry",
+        "destination": "/rivalry",
+        "type": 301
+      },
+      {
+        "source": "/california-vs-texas-state-rivalry/**",
+        "destination": "/rivalry",
+        "type": 301
+      },
+      {
+        "source": "/celtics-the-artometrics-of-institutional-winning",
+        "destination": "/celtics",
+        "type": 301
+      },
+      {
+        "source": "/celtics-the-artometrics-of-institutional-winning/**",
+        "destination": "/celtics",
+        "type": 301
+      },
+      {
+        "source": "/ceo-departures",
+        "destination": "/ceos",
+        "type": 301
+      },
+      {
+        "source": "/ceo-departures/**",
+        "destination": "/ceos",
+        "type": 301
+      },
+      {
+        "source": "/christmas-novels",
+        "destination": "/novels",
+        "type": 301
+      },
+      {
+        "source": "/christmas-novels/**",
+        "destination": "/novels",
+        "type": 301
+      },
+      {
+        "source": "/cia-world-factbook",
+        "destination": "/factbook",
+        "type": 301
+      },
+      {
+        "source": "/cia-world-factbook/**",
+        "destination": "/factbook",
+        "type": 301
+      },
+      {
+        "source": "/city-bioeconomics-operating-system",
+        "destination": "/bioeconomics",
+        "type": 301
+      },
+      {
+        "source": "/city-bioeconomics-operating-system/**",
+        "destination": "/bioeconomics",
+        "type": 301
+      },
+      {
+        "source": "/coffee-the-artometrics-of-java",
+        "destination": "/coffee",
+        "type": 301
+      },
+      {
+        "source": "/coffee-the-artometrics-of-java/**",
+        "destination": "/coffee",
+        "type": 301
+      },
+      {
+        "source": "/college-major-income",
+        "destination": "/majors",
+        "type": 301
+      },
+      {
+        "source": "/college-major-income/**",
+        "destination": "/majors",
+        "type": 301
+      },
+      {
+        "source": "/comic-characters",
+        "destination": "/comics",
+        "type": 301
+      },
+      {
+        "source": "/comic-characters/**",
+        "destination": "/comics",
+        "type": 301
+      },
+      {
+        "source": "/cowboys-the-artometrics-of-americas-team",
+        "destination": "/cowboys",
+        "type": 301
+      },
+      {
+        "source": "/cowboys-the-artometrics-of-americas-team/**",
+        "destination": "/cowboys",
+        "type": 301
+      },
+      {
+        "source": "/breweries-usa",
+        "destination": "/breweries",
+        "type": 301
+      },
+      {
+        "source": "/breweries-usa/**",
+        "destination": "/breweries",
+        "type": 301
+      },
+      {
+        "source": "/cultural-exports-geoeconomics",
+        "destination": "/geopolitics",
+        "type": 301
+      },
+      {
+        "source": "/cultural-exports-geoeconomics/**",
+        "destination": "/geopolitics",
+        "type": 301
+      },
+      {
+        "source": "/dodgers-the-artometrics-of-baseballs-modern-machine",
+        "destination": "/dodgers",
+        "type": 301
+      },
+      {
+        "source": "/dodgers-the-artometrics-of-baseballs-modern-machine/**",
+        "destination": "/dodgers",
+        "type": 301
+      },
+      {
+        "source": "/emmy-awards",
+        "destination": "/emmys",
+        "type": 301
+      },
+      {
+        "source": "/emmy-awards/**",
+        "destination": "/emmys",
+        "type": 301
+      },
+      {
+        "source": "/exercise-usa",
+        "destination": "/exercise",
+        "type": 301
+      },
+      {
+        "source": "/exercise-usa/**",
+        "destination": "/exercise",
+        "type": 301
+      },
+      {
+        "source": "/export-superpowers-us-china-germany",
+        "destination": "/exporters",
+        "type": 301
+      },
+      {
+        "source": "/export-superpowers-us-china-germany/**",
+        "destination": "/exporters",
+        "type": 301
+      },
+      {
+        "source": "/calories-calories",
+        "destination": "/calories",
+        "type": 301
+      },
+      {
+        "source": "/calories-calories/**",
+        "destination": "/calories",
+        "type": 301
+      },
+      {
+        "source": "/franchise-poison-star-vs-ip",
+        "destination": "/poison",
+        "type": 301
+      },
+      {
+        "source": "/franchise-poison-star-vs-ip/**",
+        "destination": "/poison",
+        "type": 301
+      },
+      {
+        "source": "/giant-the-artometrics-of-a-sf-dynasty",
+        "destination": "/giants",
+        "type": 301
+      },
+      {
+        "source": "/giant-the-artometrics-of-a-sf-dynasty/**",
+        "destination": "/giants",
+        "type": 301
+      },
+      {
+        "source": "/global-life-expectancy",
+        "destination": "/longevity",
+        "type": 301
+      },
+      {
+        "source": "/global-life-expectancy/**",
+        "destination": "/longevity",
+        "type": 301
+      },
+      {
+        "source": "/global-plastic-waste",
+        "destination": "/plastic",
+        "type": 301
+      },
+      {
+        "source": "/global-plastic-waste/**",
+        "destination": "/plastic",
+        "type": 301
+      },
+      {
+        "source": "/h3-the-artometrics-of-a-youtube-dynasty",
+        "destination": "/youtube",
+        "type": 301
+      },
+      {
+        "source": "/h3-the-artometrics-of-a-youtube-dynasty/**",
+        "destination": "/youtube",
+        "type": 301
+      },
+      {
+        "source": "/horror-movie-profit",
+        "destination": "/margins",
+        "type": 301
+      },
+      {
+        "source": "/horror-movie-profit/**",
+        "destination": "/margins",
+        "type": 301
+      },
+      {
+        "source": "/horror-movies",
+        "destination": "/horror",
+        "type": 301
+      },
+      {
+        "source": "/horror-movies/**",
+        "destination": "/horror",
+        "type": 301
+      },
+      {
+        "source": "/hurricanes-puerto-rico",
+        "destination": "/hurricanes",
+        "type": 301
+      },
+      {
+        "source": "/hurricanes-puerto-rico/**",
+        "destination": "/hurricanes",
+        "type": 301
+      },
+      {
+        "source": "/hydro-wastewater",
+        "destination": "/wastewater",
+        "type": 301
+      },
+      {
+        "source": "/hydro-wastewater/**",
+        "destination": "/wastewater",
+        "type": 301
+      },
+      {
+        "source": "/imdb-blockbuster-grammar",
+        "destination": "/blockbusters",
+        "type": 301
+      },
+      {
+        "source": "/imdb-blockbuster-grammar/**",
+        "destination": "/blockbusters",
+        "type": 301
+      },
+      {
+        "source": "/incarceration-trends",
+        "destination": "/prisons",
+        "type": 301
+      },
+      {
+        "source": "/incarceration-trends/**",
+        "destination": "/prisons",
+        "type": 301
+      },
+      {
+        "source": "/institutional-institutions",
+        "destination": "/institutions",
+        "type": 301
+      },
+      {
+        "source": "/institutional-institutions/**",
+        "destination": "/institutions",
+        "type": 301
+      },
+      {
+        "source": "/lakers-the-artometrics-of-basketball-glamour",
+        "destination": "/lakers",
+        "type": 301
+      },
+      {
+        "source": "/lakers-the-artometrics-of-basketball-glamour/**",
+        "destination": "/lakers",
+        "type": 301
+      },
+      {
+        "source": "/languages-glottolog",
+        "destination": "/languages",
+        "type": 301
+      },
+      {
+        "source": "/languages-glottolog/**",
+        "destination": "/languages",
+        "type": 301
+      },
+      {
+        "source": "/league-money-skill-and-star-systems",
+        "destination": "/leagues",
+        "type": 301
+      },
+      {
+        "source": "/league-money-skill-and-star-systems/**",
+        "destination": "/leagues",
+        "type": 301
+      },
+      {
+        "source": "/lego-database",
+        "destination": "/legos",
+        "type": 301
+      },
+      {
+        "source": "/lego-database/**",
+        "destination": "/legos",
+        "type": 301
+      },
+      {
+        "source": "/lv-molly-tea-trademark-china",
+        "destination": "/trademarks",
+        "type": 301
+      },
+      {
+        "source": "/lv-molly-tea-trademark-china/**",
+        "destination": "/trademarks",
+        "type": 301
+      },
+      {
+        "source": "/medium-articles",
+        "destination": "/medium",
+        "type": 301
+      },
+      {
+        "source": "/medium-articles/**",
+        "destination": "/medium",
+        "type": 301
+      },
+      {
+        "source": "/michael-jackson-psychonomics",
+        "destination": "/jackson",
+        "type": 301
+      },
+      {
+        "source": "/michael-jackson-psychonomics/**",
+        "destination": "/jackson",
+        "type": 301
+      },
+      {
+        "source": "/musicbrainz-pop-fame-mechanics",
+        "destination": "/fame",
+        "type": 301
+      },
+      {
+        "source": "/musicbrainz-pop-fame-mechanics/**",
+        "destination": "/fame",
+        "type": 301
+      },
+      {
+        "source": "/narrative-economics-field-guide",
+        "destination": "/narratives",
+        "type": 301
+      },
+      {
+        "source": "/narrative-economics-field-guide/**",
+        "destination": "/narratives",
+        "type": 301
+      },
+      {
+        "source": "/national-export-identity-atlas",
+        "destination": "/atlas",
+        "type": 301
+      },
+      {
+        "source": "/national-export-identity-atlas/**",
+        "destination": "/atlas",
+        "type": 301
+      },
+      {
+        "source": "/national-park-visits",
+        "destination": "/parks",
+        "type": 301
+      },
+      {
+        "source": "/national-park-visits/**",
+        "destination": "/parks",
+        "type": 301
+      },
+      {
+        "source": "/netflix-engagement",
+        "destination": "/netflix",
+        "type": 301
+      },
+      {
+        "source": "/netflix-engagement/**",
+        "destination": "/netflix",
+        "type": 301
+      },
+      {
+        "source": "/new-york-vs-sf-city-systems",
+        "destination": "/metros",
+        "type": 301
+      },
+      {
+        "source": "/new-york-vs-sf-city-systems/**",
+        "destination": "/metros",
+        "type": 301
+      },
+      {
+        "source": "/nuclear-explosions",
+        "destination": "/nuclear",
+        "type": 301
+      },
+      {
+        "source": "/nuclear-explosions/**",
+        "destination": "/nuclear",
+        "type": 301
+      },
+      {
+        "source": "/nyc-restaurant-inspections",
+        "destination": "/restaurants",
+        "type": 301
+      },
+      {
+        "source": "/nyc-restaurant-inspections/**",
+        "destination": "/restaurants",
+        "type": 301
+      },
+      {
+        "source": "/padres-the-artometrics-of-paying-for-october",
+        "destination": "/padres",
+        "type": 301
+      },
+      {
+        "source": "/padres-the-artometrics-of-paying-for-october/**",
+        "destination": "/padres",
+        "type": 301
+      },
+      {
+        "source": "/padres-world-series-ownership-blueprint",
+        "destination": "/blueprint",
+        "type": 301
+      },
+      {
+        "source": "/padres-world-series-ownership-blueprint/**",
+        "destination": "/blueprint",
+        "type": 301
+      },
+      {
+        "source": "/pantheon-the-artometrics-of-collective-memory",
+        "destination": "/pantheon",
+        "type": 301
+      },
+      {
+        "source": "/pantheon-the-artometrics-of-collective-memory/**",
+        "destination": "/pantheon",
+        "type": 301
+      },
+      {
+        "source": "/patriots-the-artometrics-of-the-system-dynasty",
+        "destination": "/patriots",
+        "type": 301
+      },
+      {
+        "source": "/patriots-the-artometrics-of-the-system-dynasty/**",
+        "destination": "/patriots",
+        "type": 301
+      },
+      {
+        "source": "/pixar-films",
+        "destination": "/pixar",
+        "type": 301
+      },
+      {
+        "source": "/pixar-films/**",
+        "destination": "/pixar",
+        "type": 301
+      },
+      {
+        "source": "/playboy-after-hef",
+        "destination": "/playboy",
+        "type": 301
+      },
+      {
+        "source": "/playboy-after-hef/**",
+        "destination": "/playboy",
+        "type": 301
+      },
+      {
+        "source": "/project-lcsh",
+        "destination": "/lcsh",
+        "type": 301
+      },
+      {
+        "source": "/project-lcsh/**",
+        "destination": "/lcsh",
+        "type": 301
+      },
+      {
+        "source": "/project-lcsh-public-domain-canon-map",
+        "destination": "/lcsh",
+        "type": 301
+      },
+      {
+        "source": "/project-lcsh-public-domain-canon-map/**",
+        "destination": "/lcsh",
+        "type": 301
+      },
+      {
+        "source": "/protection-threshold",
+        "destination": "/protection",
+        "type": 301
+      },
+      {
+        "source": "/protection-threshold/**",
+        "destination": "/protection",
+        "type": 301
+      },
+      {
+        "source": "/radio-stations",
+        "destination": "/radio",
+        "type": 301
+      },
+      {
+        "source": "/radio-stations/**",
+        "destination": "/radio",
+        "type": 301
+      },
+      {
+        "source": "/ramen-ratings",
+        "destination": "/ramen",
+        "type": 301
+      },
+      {
+        "source": "/ramen-ratings/**",
+        "destination": "/ramen",
+        "type": 301
+      },
+      {
+        "source": "/regional-sports-identity-map",
+        "destination": "/fandom",
+        "type": 301
+      },
+      {
+        "source": "/regional-sports-identity-map/**",
+        "destination": "/fandom",
+        "type": 301
+      },
+      {
+        "source": "/albums-albums",
+        "destination": "/albums",
+        "type": 301
+      },
+      {
+        "source": "/albums-albums/**",
+        "destination": "/albums",
+        "type": 301
+      },
+      {
+        "source": "/roman-emperors",
+        "destination": "/emperors",
+        "type": 301
+      },
+      {
+        "source": "/roman-emperors/**",
+        "destination": "/emperors",
+        "type": 301
+      },
+      {
+        "source": "/sf-data-microscope",
+        "destination": "/sf",
+        "type": 301
+      },
+      {
+        "source": "/sf-data-microscope/**",
+        "destination": "/sf",
+        "type": 301
+      },
+      {
+        "source": "/school-diversity",
+        "destination": "/schools",
+        "type": 301
+      },
+      {
+        "source": "/school-diversity/**",
+        "destination": "/schools",
+        "type": 301
+      },
+      {
+        "source": "/simpsons-guest-stars",
+        "destination": "/simpsons",
+        "type": 301
+      },
+      {
+        "source": "/simpsons-guest-stars/**",
+        "destination": "/simpsons",
+        "type": 301
+      },
+      {
+        "source": "/sports-dynasties-best-and-worst-conversion",
+        "destination": "/dynasties",
+        "type": 301
+      },
+      {
+        "source": "/sports-dynasties-best-and-worst-conversion/**",
+        "destination": "/dynasties",
+        "type": 301
+      },
+      {
+        "source": "/streaming-catalog-power",
+        "destination": "/streaming",
+        "type": 301
+      },
+      {
+        "source": "/streaming-catalog-power/**",
+        "destination": "/streaming",
+        "type": 301
+      },
+      {
+        "source": "/superbowl-ads",
+        "destination": "/superbowl",
+        "type": 301
+      },
+      {
+        "source": "/superbowl-ads/**",
+        "destination": "/superbowl",
+        "type": 301
+      },
+      {
+        "source": "/tv-golden-age",
+        "destination": "/television",
+        "type": 301
+      },
+      {
+        "source": "/tv-golden-age/**",
+        "destination": "/television",
+        "type": 301
+      },
+      {
+        "source": "/uk-museums",
+        "destination": "/museums",
+        "type": 301
+      },
+      {
+        "source": "/uk-museums/**",
+        "destination": "/museums",
+        "type": 301
+      },
+      {
+        "source": "/us-phds",
+        "destination": "/phds",
+        "type": 301
+      },
+      {
+        "source": "/us-phds/**",
+        "destination": "/phds",
+        "type": 301
+      },
+      {
+        "source": "/us-tuition",
+        "destination": "/tuition",
+        "type": 301
+      },
+      {
+        "source": "/us-tuition/**",
+        "destination": "/tuition",
+        "type": 301
+      },
+      {
+        "source": "/us-voter-turnout",
+        "destination": "/voters",
+        "type": 301
+      },
+      {
+        "source": "/us-voter-turnout/**",
+        "destination": "/voters",
+        "type": 301
+      },
+      {
+        "source": "/video-games-sliced",
+        "destination": "/slices",
+        "type": 301
+      },
+      {
+        "source": "/video-games-sliced/**",
+        "destination": "/slices",
+        "type": 301
+      },
+      {
+        "source": "/video-games-steam",
+        "destination": "/steam",
+        "type": 301
+      },
+      {
+        "source": "/video-games-steam/**",
+        "destination": "/steam",
+        "type": 301
+      },
+      {
+        "source": "/warrior-the-artometrics-of-a-golden-state-dynasty",
+        "destination": "/warriors",
+        "type": 301
+      },
+      {
+        "source": "/warrior-the-artometrics-of-a-golden-state-dynasty/**",
+        "destination": "/warriors",
+        "type": 301
+      },
+      {
+        "source": "/wealth-income",
+        "destination": "/wealth",
+        "type": 301
+      },
+      {
+        "source": "/wealth-income/**",
+        "destination": "/wealth",
+        "type": 301
+      },
+      {
+        "source": "/web-page-metrics",
+        "destination": "/metrics",
+        "type": 301
+      },
+      {
+        "source": "/web-page-metrics/**",
+        "destination": "/metrics",
+        "type": 301
+      },
+      {
+        "source": "/wine-ratings",
+        "destination": "/wine",
+        "type": 301
+      },
+      {
+        "source": "/wine-ratings/**",
+        "destination": "/wine",
+        "type": 301
+      },
+      {
+        "source": "/world-heritage-sites",
+        "destination": "/heritage",
+        "type": 301
+      },
+      {
+        "source": "/world-heritage-sites/**",
+        "destination": "/heritage",
+        "type": 301
+      },
+      {
+        "source": "/yankees-the-artometrics-of-baseballs-empire",
+        "destination": "/yankees",
+        "type": 301
+      },
+      {
+        "source": "/yankees-the-artometrics-of-baseballs-empire/**",
+        "destination": "/yankees",
+        "type": 301
+      },
+      {
+        "source": "/showcase",
+        "destination": "/gutenberg",
+        "type": 301
+      },
+      {
+        "source": "/gutenberg",
+        "destination": "/lcsh",
+        "type": 301
+      },
+      {
+        "source": "/gutenberg/**",
+        "destination": "/lcsh",
+        "type": 301
+      },
+      {
+        "source": "/gutenberg-canon",
+        "destination": "/gutenberg",
+        "type": 301
+      },
+      {
+        "source": "/gutenberg-canon/**",
+        "destination": "/gutenberg",
+        "type": 301
+      },
+      {
+        "source": "/beyonce-lyrics",
+        "destination": "/lyrics",
+        "type": 301
+      },
+      {
+        "source": "/beyonce-lyrics/**",
+        "destination": "/lyrics",
+        "type": 301
+      },
+      {
+        "source": "/big-mac",
+        "destination": "/mac",
+        "type": 301
+      },
+      {
+        "source": "/big-mac/**",
+        "destination": "/mac",
+        "type": 301
+      },
+      {
+        "source": "/billboard-top",
+        "destination": "/rankings",
+        "type": 301
+      },
+      {
+        "source": "/billboard-top/**",
+        "destination": "/rankings",
+        "type": 301
+      },
+      {
+        "source": "/board-games",
+        "destination": "/games",
+        "type": 301
+      },
+      {
+        "source": "/board-games/**",
+        "destination": "/games",
+        "type": 301
+      },
+      {
+        "source": "/california-texas",
+        "destination": "/rivalry",
+        "type": 301
+      },
+      {
+        "source": "/california-texas/**",
+        "destination": "/rivalry",
+        "type": 301
+      },
+      {
+        "source": "/christmas-books",
+        "destination": "/novels",
+        "type": 301
+      },
+      {
+        "source": "/christmas-books/**",
+        "destination": "/novels",
+        "type": 301
+      },
+      {
+        "source": "/christmas-songs",
+        "destination": "/carols",
+        "type": 301
+      },
+      {
+        "source": "/christmas-songs/**",
+        "destination": "/carols",
+        "type": 301
+      },
+      {
+        "source": "/craft-beer",
+        "destination": "/breweries",
+        "type": 301
+      },
+      {
+        "source": "/craft-beer/**",
+        "destination": "/breweries",
+        "type": 301
+      },
+      {
+        "source": "/dynasty-index",
+        "destination": "/dynasties",
+        "type": 301
+      },
+      {
+        "source": "/dynasty-index/**",
+        "destination": "/dynasties",
+        "type": 301
+      },
+      {
+        "source": "/export-atlas",
+        "destination": "/atlas",
+        "type": 301
+      },
+      {
+        "source": "/export-atlas/**",
+        "destination": "/atlas",
+        "type": 301
+      },
+      {
+        "source": "/export-powers",
+        "destination": "/exporters",
+        "type": 301
+      },
+      {
+        "source": "/export-powers/**",
+        "destination": "/exporters",
+        "type": 301
+      },
+      {
+        "source": "/fast-food",
+        "destination": "/calories",
+        "type": 301
+      },
+      {
+        "source": "/fast-food/**",
+        "destination": "/calories",
+        "type": 301
+      },
+      {
+        "source": "/game-slices",
+        "destination": "/slices",
+        "type": 301
+      },
+      {
+        "source": "/game-slices/**",
+        "destination": "/slices",
+        "type": 301
+      },
+      {
+        "source": "/horror-profit",
+        "destination": "/margins",
+        "type": 301
+      },
+      {
+        "source": "/horror-profit/**",
+        "destination": "/margins",
+        "type": 301
+      },
+      {
+        "source": "/netflix-titles",
+        "destination": "/catalog",
+        "type": 301
+      },
+      {
+        "source": "/netflix-titles/**",
+        "destination": "/catalog",
+        "type": 301
+      },
+      {
+        "source": "/nyc-sf",
+        "destination": "/metros",
+        "type": 301
+      },
+      {
+        "source": "/nyc-sf/**",
+        "destination": "/metros",
+        "type": 301
+      },
+      {
+        "source": "/padres-blueprint",
+        "destination": "/blueprint",
+        "type": 301
+      },
+      {
+        "source": "/padres-blueprint/**",
+        "destination": "/blueprint",
+        "type": 301
+      },
+      {
+        "source": "/pop-music",
+        "destination": "/fame",
+        "type": 301
+      },
+      {
+        "source": "/pop-music/**",
+        "destination": "/fame",
+        "type": 301
+      },
+      {
+        "source": "/rolling-stone",
+        "destination": "/albums",
+        "type": 301
+      },
+      {
+        "source": "/rolling-stone/**",
+        "destination": "/albums",
+        "type": 301
+      },
+      {
+        "source": "/san-francisco",
+        "destination": "/sf",
+        "type": 301
+      },
+      {
+        "source": "/san-francisco/**",
+        "destination": "/sf",
+        "type": 301
+      },
+      {
+        "source": "/sherlock-holmes",
+        "destination": "/sherlock",
+        "type": 301
+      },
+      {
+        "source": "/sherlock-holmes/**",
+        "destination": "/sherlock",
+        "type": 301
+      },
+      {
+        "source": "/soft-power",
+        "destination": "/geopolitics",
+        "type": 301
+      },
+      {
+        "source": "/soft-power/**",
+        "destination": "/geopolitics",
+        "type": 301
+      },
+      {
+        "source": "/star-risk",
+        "destination": "/poison",
+        "type": 301
+      },
+      {
+        "source": "/star-risk/**",
+        "destination": "/poison",
+        "type": 301
+      },
+      {
+        "source": "/super-bowl",
+        "destination": "/superbowl",
+        "type": 301
+      },
+      {
+        "source": "/super-bowl/**",
+        "destination": "/superbowl",
+        "type": 301
+      },
+      {
+        "source": "/un-votes",
+        "destination": "/diplomacy",
+        "type": 301
+      },
+      {
+        "source": "/un-votes/**",
+        "destination": "/diplomacy",
+        "type": 301
+      },
+      {
+        "source": "/web-metrics",
+        "destination": "/metrics",
+        "type": 301
+      },
+      {
+        "source": "/web-metrics/**",
+        "destination": "/metrics",
+        "type": 301
+      },
+      {
+        "source": "/winning-meta",
+        "destination": "/institutions",
+        "type": 301
+      },
+      {
+        "source": "/winning-meta/**",
+        "destination": "/institutions",
+        "type": 301
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

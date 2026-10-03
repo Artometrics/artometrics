@@ -56,7 +56,7 @@ export function SiteHeader() {
       </Wrapper>
 
       <View className="hidden border-t border-border lg:block">
-        <Wrapper className="py-2.5">
+        <Wrapper className="py-1">
           <View className="flex-row flex-wrap items-center justify-center gap-x-4 gap-y-1">
             {SITE_PRIMARY_NAV.map((item) => {
               const active = item.isActive(pathname);
@@ -65,7 +65,7 @@ export function SiteHeader() {
                   <Pressable className="px-0.5">
                     <Text
                       className={[
-                        "font-sans text-[10px] font-semibold uppercase tracking-[2.2px] text-accent",
+                        "font-sans text-[13px] font-semibold uppercase tracking-[2px] text-accent",
                         active ? "underline" : "",
                       ].join(" ")}
                     >

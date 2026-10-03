@@ -28,6 +28,8 @@ type Props = {
   audioSrc?: string | null;
   /** Top: share + save. Header: share + EPUB/transcript/listen. Bottom: download menu. */
   placement?: "top" | "header" | "bottom" | "all";
+  /** Breadcrumb bar: compact chips, right-aligned (flex-row-reverse). */
+  variant?: "default" | "inline";
 };
 
 type DownloadItem = { key: string; label: string; href: string };
@@ -71,6 +73,7 @@ export function ArticleActions({
   description,
   audioSrc,
   placement = "all",
+  variant = "default",
 }: Props) {
   const { user } = useAuth();
   const [saved, setSaved] = useState(false);
@@ -201,10 +204,14 @@ export function ArticleActions({
   }, [pack, audioHref]);
 
   const chipBtn =
-    "bg-accent px-3 py-2 active:opacity-90 hover:opacity-90 md:px-4 md:py-2.5";
+    variant === "inline"
+      ? "bg-accent px-2 py-1.5 active:opacity-90 hover:opacity-90 md:px-2.5 md:py-1.5"
+      : "bg-accent px-3 py-2 active:opacity-90 hover:opacity-90 md:px-4 md:py-2.5";
   const chipBtnLg = "bg-accent px-5 py-3 active:opacity-90 hover:opacity-90";
   const chipBtnText =
-    "font-display text-[11px] uppercase tracking-[1.6px] text-white md:text-[12px] md:tracking-[2px]";
+    variant === "inline"
+      ? "font-display text-[9px] uppercase tracking-[1.4px] text-white md:text-[10px] md:tracking-[1.6px]"
+      : "font-display text-[11px] uppercase tracking-[1.6px] text-white md:text-[12px] md:tracking-[2px]";
   const chipBtnTextLg =
     "font-display text-[13px] uppercase tracking-[2px] text-white";
 
@@ -226,14 +233,21 @@ export function ArticleActions({
   return (
     <View
       className={[
-        "gap-3.5 py-1",
+        variant === "inline" ? "shrink-0" : "gap-3.5 py-1",
         placement === "bottom" ? "mt-1" : "",
       ]
         .filter(Boolean)
         .join(" ")}
     >
       {showHeader ? (
-        <View className="flex-row flex-wrap items-center gap-2 md:gap-3">
+        <View
+          className={[
+            "flex-row flex-wrap items-center",
+            variant === "inline"
+              ? "flex-row-reverse justify-end gap-1.5 md:gap-2"
+              : "gap-2 md:gap-3",
+          ].join(" ")}
+        >
           <Pressable
             onPress={share}
             accessibilityRole="button"

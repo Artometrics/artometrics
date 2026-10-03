@@ -34,7 +34,7 @@
   --color-paper-elevated: #f4f4f4;
   --color-magazine-accent: #c0392b;
   --color-magazine-accent-soft: #ffe5e5;
-  --color-secondary: #00a3d9;
+  --color-secondary: #3367e7;
 
   --font-display: "Anton", Impact, Haettenschweiler, sans-serif;
   --font-sans: "DM Sans", Helvetica Neue, Helvetica, Arial, system-ui, sans-serif;
@@ -56,7 +56,7 @@
       --color-border: #000000;
       --color-accent: #e60000;
       --color-accent-soft: #ffe5e5;
-      --color-secondary: #00a3d9;
+      --color-secondary: #3367e7;
       --color-inverse: #ffffff;
       --color-header: #ffffff;
       --color-overlay: #ffffff;
@@ -77,7 +77,7 @@
       --color-border: #ffffff;
       --color-accent: #e60000;
       --color-accent-soft: #3a0000;
-      --color-secondary: #66e0ff;
+      --color-secondary: #6b94ff;
       --color-overlay: #1a1a1a;
       --color-rule: #ffffff;
       --font-display: "Anton", Impact, Haettenschweiler, sans-serif;

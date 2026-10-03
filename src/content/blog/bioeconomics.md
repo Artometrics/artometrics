@@ -39,9 +39,7 @@ faq:
 ---
 <div id="quarto-content">
 <main class="art-article-main">
-<p class="art-p">1,667 subnational regions in DOSE v2.14 and 1,100+ datasets in DataSF establish a system map for cities: what they export, import, price out, and preserve through infrastructure.</p>
-<p class="art-p">This framework separates economic identity from promotional narrative by defining six diagnostic questions and eight system layers drawn from BEA regional GDP, DOSE global subnational output, World Cities Culture Forum, Census ACS, and local Socrata portals.</p>
-<p class="art-p">The approach treats cities as layered machines — firms, ports, universities, housing, cultural venues, finance, infrastructure, rules, and stories — before any city-to-city comparison.</p>
+<p class="art-p"><strong>1,667</strong> subnational regions in DOSE v2.14 and <strong>1,100+</strong> datasets in DataSF establish a system map for cities—what they export, import, price out, and preserve through infrastructure. This framework separates economic identity from promotional narrative with six diagnostic questions and eight system layers drawn from BEA regional GDP, DOSE global subnational output, World Cities Culture Forum, Census ACS, and local Socrata portals. The approach treats cities as layered machines—firms, ports, universities, housing, cultural venues, finance, infrastructure, rules, and stories—before any city-to-city comparison.</p>
 
 <h2 id="system-layers" class="anchored">System Layers</h2>
 <h3 id="system-layers-look" class="anchored">A city identity is a stack of economic and cultural systems</h3>
