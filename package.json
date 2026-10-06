@@ -17,6 +17,7 @@
     "build": "npm run content:ensure && npm run sync:chart-r-sidecars && npm run cos:aeo && expo export -p web",
     "eas-build-post-install": "npm run content:ensure",
     "sync:episodes": "node scripts/sync-member-episodes.mjs",
+    "audit:articles": "node scripts/audit-articles.mjs",
     "sync:articles": "node scripts/sync-github-articles.mjs",
     "sync:readmitted": "node scripts/sync-readmitted.mjs",
     "sync:article": "node scripts/sync-article.mjs",

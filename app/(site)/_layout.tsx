@@ -13,6 +13,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNavOverlay } from "@/components/SiteNavOverlay";
 import { Analytics } from "@/components/Analytics";
+import { ShoegazeBackground } from "@/components/ShoegazeBackground";
 import { ChromeProvider, useChrome } from "@/lib/chrome";
 import { LocaleProvider } from "@/lib/locale";
 import { ThemeProvider, useTheme } from "@/lib/theme";
@@ -47,12 +48,16 @@ function SiteChrome() {
 
   return (
     <SafeAreaView
-      className={bareChrome ? "flex-1 bg-black" : "flex-1 bg-bg"}
+      className={bareChrome ? "flex-1 bg-black" : "flex-1"}
       edges={["top"]}
-      style={bareChrome ? { backgroundColor: "#000000" } : undefined}
+      style={bareChrome ? { backgroundColor: "#000000" } : { backgroundColor: "transparent" }}
     >
+      <ShoegazeBackground />
       <StatusBar style={bareChrome || mode === "dark" ? "light" : "dark"} />
-      <View className={bareChrome ? "relative flex-1 bg-black" : "relative flex-1 bg-bg"}>
+      <View
+        className={bareChrome ? "relative flex-1 bg-black" : "relative flex-1"}
+        style={bareChrome ? undefined : { backgroundColor: "transparent" }}
+      >
         {bareChrome ? null : <SiteHeader />}
         <ScrollView
           ref={scrollRef}

@@ -8,6 +8,7 @@ import { ArticleBody } from "@/components/ArticleBody";
 import { ArticleActions } from "@/components/ArticleActions";
 import { ReportBreadcrumb } from "@/components/ReportBreadcrumb";
 import { ReportRelatedReads } from "@/components/ReportRelatedReads";
+import { ReportStatGrid } from "@/components/ReportStatGrid";
 import { PageSeo } from "@/components/PageSeo";
 import {
   deckLine,
@@ -172,6 +173,16 @@ export default function ReportScreen() {
           </View>
         </View>
       </Wrapper>
+
+      {post.keyPoints && post.keyPoints.length > 0 ? (
+        <Wrapper variant="wide" className="pt-6 pb-2">
+          <ReportStatGrid
+            keyPoints={post.keyPoints}
+            subject={post.subject}
+            sourceLabel={post.subject ? `${post.subject} Analysis` : undefined}
+          />
+        </Wrapper>
+      ) : null}
 
       <Wrapper variant="bleed" className="w-full min-w-0 max-w-[1600px] self-stretch gap-3 px-3 py-8 md:px-4">
         <ArticleBody html={post.body} />

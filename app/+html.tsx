@@ -56,6 +56,7 @@ export default function Root({ children }: PropsWithChildren) {
         <ScrollViewStyleReset />
         <link rel="stylesheet" href="/css/artometrics-article.css" />
         <link rel="stylesheet" href="/css/site-images.css" />
+        <link rel="stylesheet" href="/css/shoegaze-theme.css" />
         <style
           dangerouslySetInnerHTML={{
             __html: `
@@ -106,7 +107,7 @@ export default function Root({ children }: PropsWithChildren) {
               }
               body {
                 margin: 0;
-                background: #000000;
+                background: #06070B;
                 font-family: "DM Sans", Helvetica Neue, Helvetica, Arial, system-ui, sans-serif;
                 color: #FFFFFF;
               }
@@ -116,7 +117,7 @@ export default function Root({ children }: PropsWithChildren) {
               }
               html[data-theme="light"] body,
               html[data-theme="light"] #root {
-                background: #FFFFFF !important;
+                background: rgba(248, 248, 246, 0.88) !important;
                 color: #000000 !important;
               }
               html[data-theme="dark"] {
@@ -124,7 +125,7 @@ export default function Root({ children }: PropsWithChildren) {
               }
               html[data-theme="dark"] body,
               html[data-theme="dark"] #root {
-                background: #000000 !important;
+                background: rgba(6, 7, 11, 0.85) !important;
                 color: #FFFFFF !important;
               }
               @media (prefers-color-scheme: dark) {
@@ -132,12 +133,12 @@ export default function Root({ children }: PropsWithChildren) {
                 html:not([data-theme]) #root,
                 html[data-theme="dark"] body,
                 html[data-theme="dark"] #root {
-                  background: #000000;
+                  background: rgba(6, 7, 11, 0.85);
                   color: #FFFFFF;
                 }
                 html[data-theme="light"] body,
                 html[data-theme="light"] #root {
-                  background: #FFFFFF !important;
+                  background: rgba(248, 248, 246, 0.88) !important;
                   color: #000000 !important;
                 }
               }

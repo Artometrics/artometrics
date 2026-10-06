@@ -11,8 +11,8 @@ export function TldrBox({
   if (!tldr && !points.length) return null;
 
   return (
-    <View className="gap-3 border-2 border-border bg-black px-4 py-5">
-      <Text className="font-display text-[13px] uppercase tracking-[2px] text-accent">
+    <View className="art-floating-box gap-3 px-5 py-6 my-4">
+      <Text className="font-display text-[14px] uppercase tracking-[2px] text-accent">
         TL;DR
       </Text>
       {tldr ? (
