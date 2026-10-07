@@ -58,6 +58,7 @@
     "cos:ebook": "node scripts/content-os/pack-ebook.mjs",
     "meta:editions": "npx tsx scripts/meta/write-editions-json.mjs",
     "cos:narrate": "node scripts/content-os/narrate-elevenlabs.mjs",
+    "cos:narrate:free": "python3 scripts/content-os/narrate-edge.py",
     "cos:narration-script": "node scripts/content-os/narration-script.mjs",
     "cos:buffer-schedule": "node scripts/content-os/buffer-schedule.mjs",
     "cos:notion-sync": "node scripts/content-os/notion-sync.mjs",

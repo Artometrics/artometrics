@@ -1,22 +1,108 @@
 ---
-title: "What a Century of Anime Titles Reveals About the Industry"
-description: "MyAnimeList metadata on more than 13,000 titles traces Japanese animation as a output system."
+title: "ANIME: What a Century of Titles Reveals About the Industry"
+subtitle: "Tracing 13,631 Titles Through Production Committees, Studio Consistency, and the Media Mix"
+author: "Artometrics Editorial Desk"
+date: "2026-03-31"
+description: "MyAnimeList metadata on more than 13,000 titles traces Japanese animation as an industrial production system."
 format:
   html:
     css: styles/report.css
+    toc: true
+    toc-depth: 2
+    toc-title: "In this report"
 execute:
   echo: false
   warning: false
 ---
 
-MyAnimeList metadata on more than 13,000 titles traces Japanese animation as a output system.
+This MyAnimeList dataset covers 13,631 unique anime titles spanning 1917 to 2019 — a century-scale archive tracing the medium from prewar theater shorts to the standardized streaming machine of the late 2010s. The central interpretive move of this report is separating catalog reality (what the Japanese production committee system actually financed and built) from fan-canon popularity (what platform users watched, upvoted, and canonized). Those two distributions intersect, but they are not the same thing, and the structural gap between them exposes the industrial mechanics of the entire medium.
 
-## FAST FACTS
+The overall median MAL score across all 13,631 titles is 6.38. That number is the calibration anchor for every finding that follows. A 6.38 is not an indicator of failure — it represents the mathematical dead-center of a platform where over thirteen thousand works compete for attention.
 
-## DATASET CONTEXT
+## Fast Facts
 
-## CHART 1
+- **13,631** — Unique anime titles in the catalog, spanning prewar theatrical animation to global streaming originals.
+- **6.38** — Overall median MAL score across the entire century-scale dataset.
+- **7.35 vs 6.63** — Median score gap between Light Novel adaptations and Original screenplays on TV.
+- **205,714** — Average member reach for Light Novel TV adaptations on MyAnimeList.
+- **8.12%** — Share of TV anime scoring 8.0 or higher (346 out of 4,260 titles).
+- **20.9% & 23.5%** — Prestige hit-rates for Kyoto Animation and Bones, outperforming mass-production subcontracting houses by eightfold.
+- **90** — Verified masterworks (score 8.0+, scored by 1,000+) buried past popularity rank #2,000 behind algorithmic trending walls.
 
-## LIMITATIONS
+## Research Question & Institutional Frame
 
-## EDITOR'S NOTE
+What does a century-scale archive reveal about anime as an industrial manufacturing system rather than a collection of auteur masterworks? This report investigates how commercial distribution channels, production committee financing, studio labor structures, and source-material pipelines leave distinct mathematical signatures in platform metadata.
+
+Specifically, we track four institutional dynamics: first, the sequential shifts between theatrical, OVA, broadcast TV, and streaming distribution; second, the divergence in consistency between boutique salaried studios and high-volume subcontracting houses; third, the rise of the Kadokawa-style "media mix" where print publishing acts as outsourced R&D; and fourth, the algorithmic filtering that buries high-scoring historical works behind modern shounen franchises.
+
+## An Industry That Industrialized — Then Diversified
+
+### Releases By Year Across Six Distribution Channels
+
+![Releases By Year](charts/chart1_releases_by_year.png){width=100%}
+
+The release trajectory of Japanese animation is not a single linear growth curve. It consists of six distinct industrial experiments operating across sequential eras, each tied directly to who controlled distribution access:
+
+- **The Theatrical Craft Era (1917–1980s):** Theatrical films represent the primary pre-television format in the catalog. Output remained low-volume, hand-crafted, and capital-intensive, concentrated among pioneering theatrical entities like Toei Doga.
+- **The Direct-to-Video Bubble (1985–1995):** The first structural rupture was the Original Video Animation (OVA) explosion. Enabled by domestic VCR proliferation and speculative bubble-economy capital, OVAs allowed creators to bypass broadcast television standards and sponsor censorship. OVA production peaked in 1990 before collapsing when the asset bubble burst.
+- **The Late-Night Television Engine (1995–2010s):** Broadcast television is the industrial engine of modern anime, comprising 4,260 titles in the archive. Following *Neon Genesis Evangelion* in 1995, production committees began booking midnight slots (24:00–26:00) to broadcast serialized narratives directly to collectors who purchased high-margin physical media.
+- **The ONA Streaming Disruption (2010–2019):** Original Net Animation (ONA) demonstrates a steep exponential ascent heading into 2019, driven by global streaming platforms (Netflix, Crunchyroll, bilibili) injecting capital directly into Japanese studios.
+
+## The Outsourced R&D Machine: Source Material Economics
+
+In modern anime production, animation studios rarely finance their own intellectual property. Instead, productions are governed by the *Seisakuiinkai* (Production Committee) system — a consortium of publishing houses, toy manufacturers, record labels, and TV networks that spreads financial risk while hiring the animation studio on a fixed-fee contract.
+
+This architecture explains the profound performance differences across source materials within the 4,260 TV anime series in the catalog:
+
+- **Light Novels as De-risked Pre-testing:** Light novel adaptations command the highest median score of any major television source material at **7.35**, and boast an average audience size of **205,714 members** on MyAnimeList — more than double Manga adaptations (101,039 members) and nearly five times Original screenplays (41,270 members). Beginning with *The Melancholy of Haruhi Suzumiya* in 2006, publishers like Kadokawa turned the light novel market into an outsourced laboratory.
+- **The Fragility of Original Screenplays:** Conversely, Original anime series written directly for television record a mediocre median score of **6.63**, with only **4.64%** achieving an elite rating of 8.0 or above. Without pre-existing serialized circulation to test character appeal, original screenplays carry immense commercial risk.
+- **Game Adaptations and Commercial Churn:** Game adaptations represent the commercial extreme: 210 TV series with a median score of **6.63** and an abysmal **0.48%** hit-rate above 8.0. In the 2010s, mobile gaming companies routinely funded anime adaptations as transient promotional loss-leaders for gacha monetization.
+
+## Studio Consistency: In-House Craft Versus Volume Dilution
+
+### Studio Score Distributions Across Catalog Output
+
+![Studio Consistency](charts/chart2_studio_consistency.png){width=100%}
+
+Every major studio in the historical catalog has produced at least one acclaimed hit. Generating a single high-rated title is a function of talent assembly; sustaining critical quality across a century-scale catalog is a labor-management triumph:
+
+- **Bones (n=115, Median: 7.46, IQR: 0.95):** Founded by former Sunrise staff, Bones leads all large studios in median rating, with **23.48%** of its catalog scoring 8.0 or higher. Bones achieves this consistency by organizing into five distinct semi-autonomous sub-studios (Studios A through E), balancing tentpoles (*Fullmetal Alchemist*) with auteur experiments (*Mob Psycho 100*).
+- **Kyoto Animation (n=110, Median: 7.43, IQR: 1.22):** KyoAni stands as the institutional outlier of the Japanese animation industry. While most anime studios rely on precarious freelance animators paid low wages per keyframe, Kyoto Animation employs in-house, salaried staff with regular hours, translating directly into visual cohesion and a **20.91%** elite hit-rate.
+- **Boutique Volatility (White Fox & Trigger):** White Fox (n=33, Median: 7.45) posts an exceptional 27.27% hit-rate (*Steins;Gate*, *Re:Zero*), yet exhibits a wider IQR reflecting the vulnerability of small operations. Trigger (n=23) displays the widest IQR on the chart, swinging from near-baseline misfires to iconic landmarks (*Kill la Kill*).
+- **Volume Dilution (Toei & Studio Deen):** At the opposite end sit Toei Animation (n=737, Median: 6.68, 2.85% at 8.0+) and Studio Deen (n=264, Median: 7.20, 8.33% at 8.0+). When studios scale to service dozens of ongoing broadcast contracts simultaneously, outsourcing keyframes to secondary subcontractors across Asia inevitably dilutes consistency toward the platform median.
+
+## Genre Map: The Algorithm Versus Critical Regimes
+
+### Critical Rating Versus Algorithmic Popularity Rank
+
+![Genre Map](charts/chart3_genre_map.png){width=100%}
+
+Plotting genre categories along two orthogonal axes — critical rating versus popularity rank — reveals how audience composition distorts platform perception:
+
+- **The Populated Main Hall:** Action, Comedy, Fantasy, and Adventure form the dense gravitational center of the medium, encompassing the overwhelming majority of title volume. Their volume acts as a dampener, pulling median scores into the mid-6 range (Action: 6.78; Comedy: 6.55; Fantasy: 6.60).
+- **The Elite Upper-Left Niche:** Thriller (~7.50 median), Mystery, and Psychological occupy the upper-left quadrant. These genres resist easy serialization and demand intricate narrative architecture, filtering out low-effort adaptations.
+- **The Platform Demographic Penalty:** Kids programming (Median: 5.60) and Music content (Median: 5.80) cluster in the lowest tier of ratings despite substantial viewership. This reflects MyAnimeList's demographic bias: when an English-speaking adult enthusiast userbase rates children's series (*Anpanman*, *Doraemon*) through the critical lens of adult cinema, the scores reflect expectation mismatch rather than objective production failure.
+
+## The Buried Canon: The 90 Masterworks Past Rank 2,000
+
+The Pearson correlation between a title's score and its community member count is **r = 0.389** — confirming that popularity predicts quality directionally, but leaves vast blind spots.
+
+Within this archive sit exactly **90 titles** that achieved a critical score of **8.0 or higher** with at least 1,000 verified user reviews, yet are buried past popularity rank **#2,000**:
+
+- **Ashita no Joe 2 (1980, Tokyo Movie Shinsha) — Score: 8.63 | Popularity: #3,246:** Directed by master auteur Osamu Dezaki, this legendary boxing drama pioneered foundational visual techniques — postcard memory freeze-frames, dramatic chiaroscuro lighting, and split-screen framing.
+- **Romeo no Aoi Sora (1995, Nippon Animation) — Score: 8.42 | Popularity: #2,565:** The artistic apex of Nippon Animation's famous *World Masterpiece Theater* franchise, directed by Kouzou Kusuba with character designs by Yoshiharu Satou (*My Neighbor Totoro*).
+- **Mobile Suit Gundam: The Origin (2015, Sunrise) — Score: 8.43 | Popularity: #2,185:** A lavish six-part OVA prequel animated with theatrical-grade mechanical detail by Yoshikazu Yasuhiko.
+- **Liz to Aoi Tori / Liz and the Blue Bird (2018, Kyoto Animation) — Score: 8.35 | Popularity: #2,280:** Directed by Naoko Yamada, this chamber-piece drama represents one of the most sublime achievements in modern character animation and acoustic sound design.
+- **Mo Dao Zu Shi (2018, G.CMay Animation) — Score: 8.66 | Popularity: #2,191:** A milestone Chinese donghua production whose extraordinary critical score broke onto Western ranking boards.
+
+## Limitations & Missing Data
+
+The dataset concludes in April 2019. Modern global phenomena such as *Demon Slayer: Kimetsu no Yaiba*, *Jujutsu Kaisen*, *Chainsaw Man*, and *Spy × Family* are absent. Their absence means the post-2019 escalation of international production budgets, MAPPA's aggressive studio expansion, and the absolute dominance of Crunchyroll/Sony post-Funimation merger are not captured.
+
+Additionally, MyAnimeList remains an enthusiast platform reflecting Western fandom dynamics. Domestic Japanese television viewership ratings, domestic theatrical box office returns (where films like *Detective Conan* routinely gross over 10 billion yen), and physical merchandise revenues are omitted.
+
+## Editor's Note
+
+*This report was researched, written, designed, and verified in active collaboration with Artometrics advanced agentic models. The data pipeline, statistical distributions, institutional history, chart interpretations, and narrative architecture were developed through directed partnership between human editorial direction and AI execution.*
+
+*— Artometrics Editorial Desk*

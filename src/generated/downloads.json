@@ -39,7 +39,7 @@
     "html": "/exports/anime.html",
     "pdf": "/exports/anime.pdf",
     "epub": "/exports/anime.epub",
-    "audio": null,
+    "audio": "/audios/anime.mp3",
     "transcript": "/exports/transcripts/anime.txt",
     "github": null
   },

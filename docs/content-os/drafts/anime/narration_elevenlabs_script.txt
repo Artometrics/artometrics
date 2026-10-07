@@ -1,0 +1,48 @@
+ANIME: What a Century of Titles Reveals.
+MyAnimeList metadata on more than 13,000 titles traces Japanese animation as an industrial production system.
+By Kyle McAuliffe. Published by the Artometrics Editorial Desk.
+
+This MyAnimeList dataset covers 13,631 unique anime titles spanning 1917 to 2019 — a century-scale archive tracing the medium from prewar theater shorts to the standardized streaming machine of the late 2010s. The central interpretive move of this report is separating catalog reality — what the Japanese production committee system actually financed and built — from fan-canon popularity — what platform users watched and upvoted. Those two distributions intersect, but they are not the same thing, and the structural gap between them exposes the industrial mechanics of the entire medium.
+
+The overall median score across all 13,631 titles is 6.38. That number is the calibration anchor for every finding. A 6.38 is not an indicator of failure — it represents the mathematical dead-center of a platform where over thirteen thousand works compete for attention. The relevant analytical question is never who broke an 8.0 score once with a seasonal phenomenon. The real question is who maintained output above 6.38 consistently, across volume, while navigating the financial constraints of commercial animation.
+
+What does a century-scale archive reveal about anime as an industrial manufacturing system rather than a collection of auteur masterworks? This report tracks four distinct industrial regimes operating across sequential eras:
+
+First, The Theatrical Craft Era from 1917 through the 1980s: Pre-television output was low-volume, hand-crafted, and capital-intensive, concentrated among theatrical pioneers like Toei Doga.
+
+Second, The Direct-to-Video Bubble from 1985 to 1995: The Original Video Animation explosion, enabled by domestic VCR ownership and bubble-economy capital, allowed creators to bypass broadcast standards and sponsor censorship. Directors sold high-budget, uncensored science fiction directly to consumers at premium price points. Production peaked in 1990 at over 140 releases annually, before collapsing precipitously when the asset bubble burst.
+
+Third, The Late-Night Television Engine from 1995 through the 2010s: Broadcast television is the industrial engine of modern anime, comprising 4,260 titles. Following Neon Genesis Evangelion in 1995, production committees realized that purchasing cheap midnight slots allowed them to broadcast serialized narratives directly to dedicated hobbyists who bought high-margin physical media box sets. Output climbed uninterrupted through the 2000s, standardizing around seasonal production blocks.
+
+And fourth, The Original Net Animation Streaming Transition from 2010 to 2019: The steepest trajectory in modern anime belongs to ONA streaming. Global platforms like Netflix, Crunchyroll, and bilibili injected capital directly into Japanese studios, purchasing worldwide exclusivity and sidestepping domestic television schedules entirely.
+
+In modern anime production, studios rarely finance their own intellectual property. Productions are governed by the production committee system — a consortium of publishing houses, toy manufacturers, record labels, and advertising agencies sharing risk.
+
+This committee architecture explains the profound performance differences across source materials within the 4,260 television series:
+
+Light novel adaptations command the highest median score of any major television source material at 7.35, across 422 titles, and reach an average audience of 205,714 members — more than double manga adaptations and five times original scripts. Beginning with Haruhi Suzumiya in 2006, publishers turned the light novel market into an outsourced research laboratory. Printing a lightweight novel costs negligible capital. If a title builds a devoted readership, the committee greenlights a television adaptation with a guaranteed audience.
+
+Conversely, original anime series written directly for television record a mediocre median score of 6.63 across 1,077 titles, with only 4.6 percent achieving an elite rating of 8.0 or above. Without pre-existing serialized circulation to test audience response, original screenplays carry high commercial risk.
+
+Game adaptations represent the commercial extreme: 210 television series with a median score of 6.63 and an elite hit-rate under half a percent. Only a single game title out of 210 broke 8.0, reflecting mobile gaming companies funding anime adaptations as promotional loss-leaders for gacha monetization.
+
+Every major studio has produced at least one hit. Sustaining critical quality across a century-scale catalog is a labor-management triumph. Comparing studio distributions reveals their median score and interquartile range — the spread between the 25th and 75th percentiles.
+
+Bones, across 115 titles, posts a median of 7.46 and an interquartile range of 0.95, with 23.5 percent of its catalog scoring 8.0 or higher. Bones achieves this by organizing into five semi-autonomous sub-studios, balancing franchise tentpoles like Fullmetal Alchemist with boutique experiments like Mob Psycho 100.
+
+Kyoto Animation, across 110 titles, posts a median of 7.43 and an interquartile range of 1.22. KyoAni stands as the undisputed institutional outlier of the industry. While most studios rely on precarious freelance animators paid piece-rate per sheet, Kyoto Animation famously employs in-house, salaried staff with comprehensive training and regular hours. This labor stability yields visual cohesion, character acting, and a 20.9 percent elite hit-rate across 110 titles.
+
+David Production displays the tightest interquartile range in the entire dataset at just 0.47, across 25 titles with a median of 7.43. The studio focused its pipeline on specific high-fidelity adaptations like JoJo's Bizarre Adventure, eliminating low-scoring misfires.
+
+At the opposite end sit mass-production houses: Toei Animation, with 737 titles, a median of 6.68, and only 2.85 percent breaking 8.0; and Studio Deen, with 264 titles and an 8.3 percent hit rate. When studios service dozens of ongoing broadcast contracts simultaneously, they outsource keyframes to overseas subcontractors. Volume dilutes quality control; catalog consistency collapses toward the platform median.
+
+On modern platforms, recommendation algorithms operate as self-reinforcing popularity flywheels. The correlation between a title's score and its community member count is moderate at 0.389 — confirming that popularity predicts quality directionally, but leaves vast blind spots.
+
+Within this archive sit exactly 90 titles that achieved a critical score of 8.0 or higher with at least 1,000 verified user reviews, yet are buried past popularity rank 2,000. These include: Ashita no Joe 2, produced in 1980 by Tokyo Movie Shinsha with an 8.63 score at rank 3,246; Romeo no Aoi Sora, produced in 1995 by Nippon Animation with an 8.42 score at rank 2,565; Mobile Suit Gundam: The Origin, released in 2015 by Sunrise with an 8.43 score at rank 2,185; Liz and the Blue Bird, produced in 2018 by Kyoto Animation with an 8.35 score at rank 2,280; and Mo Dao Zu Shi, released in 2018 by G.CMay Animation with an 8.66 score at rank 2,191.
+
+Throughout every industrial transition, three economic rules have governed Japanese animation:
+First: institutional labor models determine the quality ceiling. Studios with in-house salaried animators consistently outperform piece-rate subcontracting houses.
+Second: print publishing acts as the industry's essential outsourced research and development engine, giving light novel and manga adaptations an insurmountable risk advantage over original screenplays.
+And third: recommendation algorithms reward recency and mass reach, leaving dozens of genuine century-scale masterworks waiting in obscurity past the edge of the trending charts.
+
+This report was researched, written, designed, and verified by the Artometrics Editorial Desk.
