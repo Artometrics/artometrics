@@ -11,6 +11,7 @@ import { Link } from "expo-router";
 import { Wrapper } from "@/components/Wrapper";
 import { PageSeo } from "@/components/PageSeo";
 import { trackEvent } from "@/lib/analytics/ga";
+import { submitLeadToTwenty } from "@/lib/crm/twenty";
 
 const FORM_NAME = "artometrics-newsletter";
 
@@ -41,6 +42,8 @@ export default function NewsletterScreen() {
         });
         if (!res.ok) throw new Error(`Form error (${res.status})`);
       }
+      // Sync to Twenty CRM under company Artometrics
+      await submitLeadToTwenty({ email: value, source: "newsletter_page" });
       trackEvent("newsletter_submit", { source: "newsletter_page" });
       setStatus("done");
     } catch {
