@@ -35,20 +35,20 @@ function HomeHeroImage({ post }: { post: BlogPost }) {
 function HomeMainStory({ post }: { post: BlogPost }) {
   const label = sectionLabel(post.tags, post.subject);
   return (
-    <View className="gap-3">
+    <View className="gap-4">
       {label ? (
-        <Text className="font-sans text-[10px] font-semibold uppercase tracking-[1.8px] text-accent">
+        <Text className="font-sans text-[11px] font-semibold uppercase tracking-[2.2px] text-accent">
           {label}
         </Text>
       ) : null}
       <Link href={`/${post.slug}`} asChild>
         <Pressable accessibilityRole="link">
-          <Text className="font-serif text-[26px] font-bold leading-[1.12] tracking-tight text-secondary md:text-[32px]">
+          <Text className="font-serif text-[30px] font-semibold leading-[1.1] tracking-tight text-fg md:text-[40px]">
             {post.title}
           </Text>
         </Pressable>
       </Link>
-      <Text className="font-sans text-[14px] leading-[22px] text-secondary">
+      <Text className="font-sans text-[15px] leading-[24px] text-muted">
         {deckLine(post.description, 40)}
       </Text>
       <Link href={`/${post.slug}`} asChild>
@@ -61,9 +61,9 @@ function HomeMainStory({ post }: { post: BlogPost }) {
         </Pressable>
       </Link>
       <Link href={`/${post.slug}`} asChild>
-        <Pressable accessibilityRole="link" className="self-start">
-          <Text className="font-sans text-[12px] font-semibold uppercase tracking-[1.2px] text-secondary">
-            Read the report →
+        <Pressable accessibilityRole="link" className="self-start pt-1">
+          <Text className="font-sans text-[12px] font-semibold uppercase tracking-[1.6px] text-accent">
+            Read investigation ↗
           </Text>
         </Pressable>
       </Link>
@@ -75,9 +75,9 @@ function HomeSecondaryStory({ post }: { post: BlogPost }) {
   const label = sectionLabel(post.tags, post.subject);
   const hero = assetUrl(post.heroImage);
   return (
-    <View className="gap-3 border-t border-border pt-8">
+    <View className="gap-3 border-t border-border pt-8 mt-8">
       {label ? (
-        <Text className="font-sans text-[10px] font-semibold uppercase tracking-[1.8px] text-accent">
+        <Text className="font-sans text-[11px] font-semibold uppercase tracking-[2.2px] text-accent">
           {label}
         </Text>
       ) : null}
@@ -94,8 +94,8 @@ function HomeSecondaryStory({ post }: { post: BlogPost }) {
               accessibilityLabel={post.title}
             />
           ) : null}
-          <View className="min-w-0 flex-1 gap-1">
-            <Text className="font-serif text-[20px] font-bold leading-[1.2] tracking-tight text-secondary md:text-[22px]">
+          <View className="min-w-0 flex-1 gap-1.5">
+            <Text className="font-serif text-[21px] font-semibold leading-[1.2] tracking-tight text-fg md:text-[23px]">
               {post.title}
             </Text>
             <Text className="font-sans text-[13px] leading-[20px] text-muted">

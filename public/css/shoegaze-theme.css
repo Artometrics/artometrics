@@ -18,11 +18,11 @@
 }
 
 .shoegaze-stage--dark {
-  background-color: #06070B;
+  background-color: #111212;
 }
 
 .shoegaze-stage--light {
-  background-color: #F8F8F5;
+  background-color: #F4F1EA;
 }
 
 /* ── Fluid Orbs ────────────────────────────────────────────────────── */
@@ -39,67 +39,67 @@
   mix-blend-mode: multiply;
 }
 
-/* Orb 1: Hot Cherry Red (#E60000) */
+/* Orb 1: Warm Gold (#A8862E) */
 .shoegaze-orb--red {
   width: min(75vw, 680px);
   height: min(75vw, 680px);
   top: -10%;
   left: -8%;
-  background: radial-gradient(circle, rgba(230, 0, 0, 0.42) 0%, rgba(230, 0, 0, 0.18) 45%, rgba(230, 0, 0, 0) 70%);
+  background: radial-gradient(circle, rgba(168, 134, 46, 0.28) 0%, rgba(168, 134, 46, 0.12) 45%, rgba(168, 134, 46, 0) 70%);
   filter: blur(85px);
   animation: shoegaze-drift-red 26s ease-in-out infinite alternate;
 }
 
 .shoegaze-stage--light .shoegaze-orb--red {
-  background: radial-gradient(circle, rgba(230, 0, 0, 0.16) 0%, rgba(230, 0, 0, 0.06) 50%, rgba(230, 0, 0, 0) 75%);
+  background: radial-gradient(circle, rgba(168, 134, 46, 0.14) 0%, rgba(168, 134, 46, 0.05) 50%, rgba(168, 134, 46, 0) 75%);
   filter: blur(75px);
 }
 
-/* Orb 2: Cobalt Electric Blue (#3367E7) */
+/* Orb 2: Pale Champagne Gold (#D8C6A0) */
 .shoegaze-orb--blue {
   width: min(85vw, 780px);
   height: min(85vw, 780px);
   bottom: -15%;
   right: -10%;
-  background: radial-gradient(circle, rgba(51, 103, 231, 0.52) 0%, rgba(51, 103, 231, 0.22) 50%, rgba(51, 103, 231, 0) 72%);
+  background: radial-gradient(circle, rgba(216, 198, 160, 0.32) 0%, rgba(216, 198, 160, 0.14) 50%, rgba(216, 198, 160, 0) 72%);
   filter: blur(95px);
   animation: shoegaze-drift-blue 32s ease-in-out infinite alternate;
 }
 
 .shoegaze-stage--light .shoegaze-orb--blue {
-  background: radial-gradient(circle, rgba(51, 103, 231, 0.18) 0%, rgba(51, 103, 231, 0.07) 50%, rgba(51, 103, 231, 0) 75%);
+  background: radial-gradient(circle, rgba(216, 198, 160, 0.16) 0%, rgba(216, 198, 160, 0.06) 50%, rgba(216, 198, 160, 0) 75%);
   filter: blur(80px);
 }
 
-/* Orb 3: Deep Magenta / Electric Violet Blend */
+/* Orb 3: Deep Bronze / Earth Glow (#7D6222) */
 .shoegaze-orb--indigo {
   width: min(60vw, 550px);
   height: min(60vw, 550px);
   top: 40%;
   left: 25%;
-  background: radial-gradient(circle, rgba(140, 20, 252, 0.35) 0%, rgba(140, 20, 252, 0.12) 50%, rgba(140, 20, 252, 0) 70%);
+  background: radial-gradient(circle, rgba(125, 98, 34, 0.25) 0%, rgba(125, 98, 34, 0.09) 50%, rgba(125, 98, 34, 0) 70%);
   filter: blur(80px);
   animation: shoegaze-drift-indigo 22s ease-in-out infinite alternate;
 }
 
 .shoegaze-stage--light .shoegaze-orb--indigo {
-  background: radial-gradient(circle, rgba(140, 20, 252, 0.12) 0%, rgba(140, 20, 252, 0.04) 50%, rgba(140, 20, 252, 0) 75%);
+  background: radial-gradient(circle, rgba(125, 98, 34, 0.10) 0%, rgba(125, 98, 34, 0.03) 50%, rgba(125, 98, 34, 0) 75%);
   filter: blur(70px);
 }
 
-/* Orb 4: Cyan Glint (3D glasses anaglyph edge) */
+/* Orb 4: Subtle Warm Paper Glow (#EBE8E1) */
 .shoegaze-orb--cyan {
   width: min(50vw, 460px);
   height: min(50vw, 460px);
   bottom: 20%;
   left: -5%;
-  background: radial-gradient(circle, rgba(0, 210, 255, 0.32) 0%, rgba(0, 210, 255, 0.1) 50%, rgba(0, 210, 255, 0) 70%);
+  background: radial-gradient(circle, rgba(214, 211, 204, 0.22) 0%, rgba(214, 211, 204, 0.08) 50%, rgba(214, 211, 204, 0) 70%);
   filter: blur(90px);
   animation: shoegaze-drift-cyan 28s ease-in-out infinite alternate;
 }
 
 .shoegaze-stage--light .shoegaze-orb--cyan {
-  background: radial-gradient(circle, rgba(0, 210, 255, 0.14) 0%, rgba(0, 210, 255, 0.04) 50%, rgba(0, 210, 255, 0) 75%);
+  background: radial-gradient(circle, rgba(214, 211, 204, 0.12) 0%, rgba(214, 211, 204, 0.03) 50%, rgba(214, 211, 204, 0) 75%);
   filter: blur(75px);
 }
 

@@ -8,45 +8,54 @@
 export type BrandStyle = "swiss" | "magazine";
 
 export const Colors = {
-  accent50: "#FFF1F0",
-  accent100: "#FFD9D6",
-  accent200: "#FFB3AD",
-  accent300: "#FF7A70",
-  accent400: "#FF2E2E",
-  accent500: "#E60000",
-  accent600: "#B80000",
-  accent700: "#A31812",
-  accent800: "#7F120E",
-  accent900: "#5C0D0A",
-  accent950: "#3A0806",
+  accent50: "#FBF7EE",
+  accent100: "#F5EEDC",
+  accent200: "#EBDCB9",
+  accent300: "#D8C6A0",
+  accent400: "#AE8B52",
+  accent500: "#7D6222",
+  accent600: "#6B531D",
+  accent700: "#544117",
+  accent800: "#3F3111",
+  accent900: "#2A200B",
+  accent950: "#151005",
 
-  base50: "#FFFFFF",
-  base100: "#F5F5F5",
-  base200: "#E5E5E5",
-  base300: "#D4D4D4",
-  base400: "#A3A3A3",
-  base500: "#737373",
-  base600: "#525252",
-  base700: "#2A2A2A",
-  base800: "#141414",
-  base900: "#0A0A0A",
-  base950: "#000000",
+  base50: "#FCFBF9",
+  base100: "#F4F1EA",
+  base200: "#EBE8E1",
+  base300: "#D6D3CC",
+  base400: "#B3B0AA",
+  base500: "#8A8780",
+  base600: "#68655C",
+  base700: "#59564C",
+  base800: "#2A2722",
+  base900: "#202120",
+  base950: "#111212",
 
-  white: "#FFFFFF",
-  black: "#000000",
-  cream: "#FFFFFF",
-  chartHighlight: "#C0392B",
-  chartDark: "#000000",
-  chartMid: "#525252",
+  white: "#F4F1EA",
+  black: "#1D1A15",
+  cream: "#EBE8E1",
+  chartHighlight: "#7D6222",
+  chartDark: "#1D1A15",
+  chartMid: "#59564C",
 
-  /** Kruger / newspaper — pure paper, hard red */
-  paper: "#FFFFFF",
-  paperElevated: "#FFFFFF",
-  magazineAccent: "#C0392B",
-  magazineAccentSoft: "#F9E8E6",
-  /** Editorial blue — wordmark, report titles, links (site + article --art-secondary). */
-  editorialNavy: "#3367E7",
-  editorialNavyDark: "#6B94FF",
+  /** Bellum Systems newsprint parchment & tactical ink */
+  paper: "#F4F1EA",
+  paperElevated: "#EBE8E1",
+  ink: "#1D1A15",
+  ink2: "#59564C",
+  ink3: "#68655C",
+  gold: "#A8862E",
+  goldDeep: "#7D6222",
+  paleGold: "#D8C6A0",
+  night: "#111212",
+  night2: "#202120",
+  rule: "#D6D3CC",
+  magazineAccent: "#7D6222",
+  magazineAccentSoft: "#F5EEDC",
+  /** Editorial gold — wordmark, titles, active nav links */
+  editorialNavy: "#7D6222",
+  editorialNavyDark: "#AE8B52",
 } as const;
 
 export type BrandFonts = {
@@ -57,28 +66,27 @@ export type BrandFonts = {
   mono: string;
 };
 
-/** Swiss Modern — condensed display + system sans. */
+/** Swiss Modern — Archivo sans + Piazzolla chiseled display. */
 export const SwissFonts: BrandFonts = {
-  display: "Anton",
-  sans: "Helvetica Neue, Helvetica, Arial, system-ui, sans-serif",
-  serif: "Helvetica Neue, Helvetica, Arial, system-ui, sans-serif",
-  wordmark: "Anton",
-  mono: "'Courier New', Courier, monospace",
+  display: "Piazzolla, Georgia, serif",
+  sans: "Archivo, Helvetica Neue, Helvetica, Arial, system-ui, sans-serif",
+  serif: "Piazzolla, Georgia, serif",
+  wordmark: "Piazzolla, Georgia, serif",
+  mono: "DM Mono, 'Courier New', Courier, monospace",
 };
 
 /**
- * Magazine default — Anton display (KSM energy), DM Sans body, DM Mono data.
- * Chomsky is reserved for the Logo / wordmark only.
+ * Magazine default — Piazzolla chiseled serif display, Archivo technical sans, Chomsky masthead.
  */
 export const MagazineFonts: BrandFonts = {
-  display: "Anton",
-  sans: "DM Sans",
-  serif: "DM Sans",
-  wordmark: "Chomsky",
-  mono: "DM Mono",
+  display: "Piazzolla, Georgia, serif",
+  sans: "Archivo, Helvetica Neue, Helvetica, Arial, system-ui, sans-serif",
+  serif: "Piazzolla, Georgia, serif",
+  wordmark: "Chomsky, Georgia, serif",
+  mono: "DM Mono, ui-monospace, monospace",
 };
 
-/** Default static StyleSheets — magazine / DM Sans+Mono. Prefer useTheme().fonts when brand-aware. */
+/** Default static StyleSheets — magazine. Prefer useTheme().fonts when brand-aware. */
 export const Fonts = MagazineFonts;
 
 export type ThemeMode = "light" | "dark";
@@ -93,6 +101,7 @@ export type ThemeColors = {
   border: string;
   accent: string;
   accentSoft: string;
+  secondary: string;
   inverse: string;
   headerBg: string;
   overlayBg: string;
@@ -102,71 +111,71 @@ export type ThemeColors = {
 const SwissThemes: Record<ThemeMode, ThemeColors> = {
   light: {
     mode: "light",
-    bg: Colors.white,
-    bgElevated: Colors.white,
-    text: Colors.black,
-    textMuted: Colors.base600,
-    textSubtle: Colors.base500,
-    border: Colors.black,
-    accent: Colors.accent500,
-    accentSoft: Colors.accent50,
-    inverse: Colors.white,
-    secondary: Colors.editorialNavy,
-    inverse: Colors.white,
-    headerBg: Colors.white,
-    overlayBg: Colors.white,
-    rule: Colors.black,
+    bg: Colors.paper,
+    bgElevated: Colors.paperElevated,
+    text: Colors.ink,
+    textMuted: Colors.ink2,
+    textSubtle: Colors.ink3,
+    border: Colors.rule,
+    accent: Colors.goldDeep,
+    accentSoft: Colors.accent100,
+    secondary: Colors.gold,
+    inverse: Colors.paper,
+    headerBg: Colors.paper,
+    overlayBg: Colors.paperElevated,
+    rule: Colors.rule,
   },
   dark: {
     mode: "dark",
-    bg: Colors.black,
-    bgElevated: Colors.base900,
-    text: Colors.white,
-    textMuted: Colors.base400,
-    textSubtle: Colors.base500,
-    border: Colors.white,
+    bg: Colors.night,
+    bgElevated: Colors.night2,
+    text: Colors.paper,
+    textMuted: Colors.paleGold,
+    textSubtle: Colors.base400,
+    border: Colors.base800,
     accent: Colors.accent400,
-    accentSoft: Colors.accent950,
-    secondary: Colors.editorialNavyDark,
-    headerBg: Colors.black,
-    overlayBg: Colors.black,
-    rule: Colors.white,
+    accentSoft: "#2A2316",
+    secondary: Colors.paleGold,
+    inverse: Colors.night,
+    headerBg: Colors.night,
+    overlayBg: Colors.night2,
+    rule: Colors.base800,
   },
 };
 
-/** Kruger magazine: white/black/red light; inverted dark. */
+/** Bellum magazine: warm paper/ink/gold light; deep night/pale-gold dark. */
 const MagazineThemes: Record<ThemeMode, ThemeColors> = {
   light: {
     mode: "light",
-    bg: Colors.white,
-    bgElevated: Colors.white,
-    text: Colors.black,
-    textMuted: Colors.base600,
-    textSubtle: Colors.base500,
-    border: Colors.black,
-    accent: Colors.accent500,
-    accentSoft: Colors.accent50,
-    inverse: Colors.white,
-    secondary: Colors.editorialNavy,
-    inverse: Colors.white,
-    headerBg: Colors.white,
-    overlayBg: Colors.white,
-    rule: Colors.black,
+    bg: Colors.paper,
+    bgElevated: Colors.paperElevated,
+    text: Colors.ink,
+    textMuted: Colors.ink2,
+    textSubtle: Colors.ink3,
+    border: Colors.rule,
+    accent: Colors.goldDeep,
+    accentSoft: Colors.accent100,
+    secondary: Colors.gold,
+    inverse: Colors.paper,
+    headerBg: Colors.paper,
+    overlayBg: Colors.paperElevated,
+    rule: Colors.rule,
   },
   dark: {
     mode: "dark",
-    bg: Colors.black,
-    bgElevated: Colors.base800,
-    text: Colors.white,
-    textMuted: "#C8C8C8",
-    textSubtle: Colors.base500,
-    border: Colors.white,
-    accent: Colors.accent500,
-    accentSoft: Colors.accent950,
-    secondary: Colors.editorialNavyDark,
-    headerBg: Colors.black,
-    overlayBg: Colors.base800,
-    rule: Colors.white,
+    bg: Colors.night,
+    bgElevated: Colors.night2,
+    text: Colors.paper,
+    textMuted: Colors.paleGold,
+    textSubtle: Colors.base400,
+    border: Colors.base800,
+    accent: Colors.accent400,
+    accentSoft: "#2A2316",
+    secondary: Colors.paleGold,
+    inverse: Colors.night,
+    headerBg: Colors.night,
+    overlayBg: Colors.night2,
+    rule: Colors.base800,
   },
 };
 

@@ -61,6 +61,27 @@ export default function Root({ children }: PropsWithChildren) {
           dangerouslySetInnerHTML={{
             __html: `
               @font-face {
+                font-family: "Piazzolla";
+                src: url("/fonts/Piazzolla.woff2") format("woff2");
+                font-weight: 100 900;
+                font-style: normal;
+                font-display: swap;
+              }
+              @font-face {
+                font-family: "Piazzolla";
+                src: url("/fonts/Piazzolla-Italic.woff2") format("woff2");
+                font-weight: 100 900;
+                font-style: italic;
+                font-display: swap;
+              }
+              @font-face {
+                font-family: "Archivo";
+                src: url("/fonts/Archivo.woff2") format("woff2");
+                font-weight: 100 900;
+                font-style: normal;
+                font-display: swap;
+              }
+              @font-face {
                 font-family: "Chomsky";
                 src: url("/fonts/Chomsky.otf") format("opentype");
                 font-weight: normal;
@@ -105,11 +126,15 @@ export default function Root({ children }: PropsWithChildren) {
               html, body, #root {
                 min-height: 100%;
               }
+              ::selection {
+                background: rgba(168, 134, 46, 0.28);
+                color: inherit;
+              }
               body {
                 margin: 0;
-                background: #06070B;
-                font-family: "DM Sans", Helvetica Neue, Helvetica, Arial, system-ui, sans-serif;
-                color: #FFFFFF;
+                background: #F4F1EA;
+                font-family: "Archivo", Helvetica Neue, Helvetica, Arial, system-ui, sans-serif;
+                color: #1D1A15;
               }
               /* Prefer explicit site theme over OS preference alone */
               html[data-theme="light"] {
@@ -117,29 +142,29 @@ export default function Root({ children }: PropsWithChildren) {
               }
               html[data-theme="light"] body,
               html[data-theme="light"] #root {
-                background: rgba(248, 248, 246, 0.88) !important;
-                color: #000000 !important;
+                background: #F4F1EA !important;
+                color: #1D1A15 !important;
               }
               html[data-theme="dark"] {
                 color-scheme: dark;
               }
               html[data-theme="dark"] body,
               html[data-theme="dark"] #root {
-                background: rgba(6, 7, 11, 0.85) !important;
-                color: #FFFFFF !important;
+                background: #111212 !important;
+                color: #F4F1EA !important;
               }
               @media (prefers-color-scheme: dark) {
                 html:not([data-theme]) body,
                 html:not([data-theme]) #root,
                 html[data-theme="dark"] body,
                 html[data-theme="dark"] #root {
-                  background: rgba(6, 7, 11, 0.85);
-                  color: #FFFFFF;
+                  background: #111212;
+                  color: #F4F1EA;
                 }
                 html[data-theme="light"] body,
                 html[data-theme="light"] #root {
-                  background: rgba(248, 248, 246, 0.88) !important;
-                  color: #000000 !important;
+                  background: #F4F1EA !important;
+                  color: #1D1A15 !important;
                 }
               }
               a { color: inherit; text-decoration: none; }
