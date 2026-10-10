@@ -643,7 +643,7 @@ title_score <- "Light novels set the audience floor. Manga produces more 8.0s."
 sub_score <- "Scored television only (n = 4,240 of 4,260 TV titles). Left axis is a log scale."
 title_studios <- "Bones has the tightest spread among the top-scoring studios"
 sub_studios <- "Studios with at least 100 scored titles, sorted by median. Bars are the middle half of scores. Dashed line: catalog median 6.38."
-title_sequel <- "TV sequels score higher, consistent with only well-received shows getting one"
+title_sequel <- "TV sequels score higher, consistent with mostly well-received shows getting one"
 sub_sequel <- sprintf(
   "Sequels n = %s, median %s. Others n = %s, median %s. The pattern is consistent with selection, not an effect of being a sequel.",
   fmt_int(nrow(sequel_tv)),

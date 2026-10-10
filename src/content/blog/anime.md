@@ -29,7 +29,7 @@ faq:
       Among studios with 100 or more titles, OLM has the tightest spread of scores (IQR 0.70) at a median of 6.64. Bones has the tightest spread among the top-scoring studios (IQR 0.95).
   - question: Are anime sequels better than the originals?
     answer: >-
-      TV sequels have a higher median score (7.02 vs 6.73). Only shows that already did well get a sequel, though, so this is selection, not an effect of being a sequel.
+      TV sequels have a higher median score (7.02 vs 6.73). Mostly shows that already did well get a sequel, though, so this is selection, not an effect of being a sequel.
   - question: Does a high MyAnimeList score mean a show made money?
     answer: >-
       No. MyAnimeList reflects English-language enthusiast ratings in an early-2019 snapshot and contains no revenue, ratings, or box-office data.
@@ -42,7 +42,7 @@ faq:
 <li><a href="#format-waves">Each format wave lines up with a new distribution channel</a></li>
 <li><a href="#source-floor">Source material sets the audience floor</a></li>
 <li><a href="#studio-league">Consistency is a studio trait</a></li>
-<li><a href="#sequel-premium">Sequels score higher, consistent with only well-received shows getting one</a></li>
+<li><a href="#sequel-premium">Sequels score higher, consistent with mostly well-received shows getting one</a></li>
 <li><a href="#buried-canon">Popularity tracks quality, with a short list of exceptions</a></li>
 <li><a href="#limitations">Limitations</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
@@ -119,10 +119,10 @@ Across the 20 largest studios, medians run from 7.46 to 5.40. Bones has the tigh
 <!-- /gen:studio-table -->
 </tbody></table></div>
 
-<h2 id="sequel-premium" class="anchored">Sequels score higher, consistent with only well-received shows getting one</h2>
+<h2 id="sequel-premium" class="anchored">Sequels score higher, consistent with mostly well-received shows getting one</h2>
 <figure class="art-chart">
 <div class="art-chart-live" data-chart="/data/articles/anime/charts/chart_sequel.plotly.json" data-fallback="/images/content/articles/anime/charts/chart_sequel.png" data-source="Data: MyAnimeList via TidyTuesday (Kaggle snapshot, early 2019) — ARTOMETRICS" role="img" aria-label="Overlaid distributions of TV sequel and non-sequel scores, with medians marked."></div>
-<figcaption class="art-chart-caption">TV sequels score higher and draw larger audiences, consistent with only well-received shows getting a second season.</figcaption>
+<figcaption class="art-chart-caption">TV sequels score higher and draw larger audiences, consistent with mostly well-received shows getting a second season.</figcaption>
 </figure>
 <p class="art-p">The 1,084 TV sequels in the archive have a median score of 7.02, and 14.7% of them score 8.0 or higher. The 3,156 TV titles that aren't sequels have a median of 6.73 and a rate of 5.9%. Sequels also draw more members at the median, 11,430 against 8,013.</p>
 <p class="art-p">The pattern is consistent with selection, not an effect of being a sequel. A committee only orders a second season of a show that did well, and the viewers who return for it already liked the first one. It also fits the shortlist count: 30 of the 43 high scorers with at least 1,000 ratings are sequels. For a buyer, a sequel's score says more about the strength of the property than about the sequel itself.</p>
