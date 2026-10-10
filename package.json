@@ -36,6 +36,7 @@
     "sync:chart-r-sidecars": "node scripts/sync-chart-r-sidecars.mjs",
     "render:beyonce-psychonomics": "Rscript scripts/render-beyonce-psychonomics-charts.R",
     "render:readmitted:py": "python3 scripts/render-readmitted-charts.py",
+    "brief:anime": "Rscript articles/anime/scripts/build_brief.R && node scripts/sync-article.mjs --slug anime",
     "setup:r": "Rscript scripts/install-r-deps.R",
     "setup:python": "pip3 install -r requirements.txt",
     "setup:pipeline": "bash scripts/setup-pipeline.sh",

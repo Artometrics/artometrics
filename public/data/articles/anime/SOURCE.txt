@@ -1,0 +1,8 @@
+url: https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-23
+download: https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-23/tidy_anime.csv
+file: tidy_anime.csv
+sha256: 5ea3a14492b5c559c728af0c7ec57b81c919d0efa4d381e54b0f7cde9934a1c2
+snapshot: Kaggle MyAnimeList scrape by Tam Nguyen, early 2019, published by TidyTuesday on 2019-04-23.
+dedup: title-level stats are one row per animeID; studio stats are one row per animeID x studio; genre stats are one row per animeID x genre.
+sequel: related lists a Prequel, Parent story, or Full story.
+quantiles: type 7. Displayed figures use round-half-up on the exact value, not R's round().

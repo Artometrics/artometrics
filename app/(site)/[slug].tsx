@@ -6,6 +6,7 @@ import { assetUrl } from "@/lib/assets";
 import { Wrapper } from "@/components/Wrapper";
 import { ArticleBody } from "@/components/ArticleBody";
 import { ArticleActions } from "@/components/ArticleActions";
+import { ArticleNarrationPlayer } from "@/components/ArticleNarrationPlayer";
 import { ReportBreadcrumb } from "@/components/ReportBreadcrumb";
 import { ReportRelatedReads } from "@/components/ReportRelatedReads";
 import { ReportStatGrid } from "@/components/ReportStatGrid";
@@ -136,10 +137,19 @@ export default function ReportScreen() {
               <SiteCoverImage
                 source={{ uri: hero }}
                 wrapperClassName="w-full overflow-hidden border border-border"
-                wrapperStyle={{ aspectRatio: 16 / 10 }}
+                wrapperStyle={{ aspectRatio: post.slug === "anime" ? 16 / 9 : 16 / 10 }}
                 transition={200}
-                accessibilityLabel={post.title}
+                accessibilityLabel={
+                  post.slug === "anime"
+                    ? "AI-generated illustration of an animator's lightbox and stacks of timing sheets on a darkened studio desk, with a single red pencil."
+                    : post.title
+                }
               />
+              {post.slug === "anime" ? (
+                <Text className="mt-2 font-sans text-[12px] font-bold uppercase tracking-[1.2px] text-fg">
+                  Illustration: Artometrics (AI-generated)
+                </Text>
+              ) : null}
             </View>
           ) : null}
           <View
@@ -165,6 +175,13 @@ export default function ReportScreen() {
             <Text className="font-serif text-lg font-bold leading-snug text-accent md:text-xl md:leading-relaxed">
               {deckLine(post.description, 12)}
             </Text>
+            {(post as { audioSrc?: string | null }).audioSrc ? (
+              <ArticleNarrationPlayer
+                audioSrc={(post as { audioSrc?: string | null }).audioSrc}
+                title={post.title}
+                runtimeSeconds={post.slug === "anime" ? 547 : undefined}
+              />
+            ) : null}
             <Text className="font-sans text-[13px] font-bold uppercase tracking-[1.4px] text-fg md:text-sm">
               <Text className="text-accent">By </Text>
               {authorLabel}

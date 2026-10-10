@@ -1,136 +1,167 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><title>ANIME: The Artometrics of Japanese Animation · Artometrics</title>
-<meta name="description" content="13,631 Titles. A Century Of Data. One Question: What Does The MyAnimeList Archive Actually Tell Us About How Anime Works As An Industry?"/>
-<link rel="stylesheet" href="/css/artometrics-article.css"/>
-</head><body class="artometrics-article-body"><article id="quarto-content">
-<h1>ANIME: The Artometrics of Japanese Animation</h1>
-<p><em>13,631 Titles. A Century Of Data. One Question: What Does The MyAnimeList Archive Actually Tell Us About How Anime Works As An Industry?</em></p>
-<div id="quarto-content">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>ANIME: Source Sets the Audience Floor — Artometrics</title>
+<meta name="description" content="In a century of MyAnimeList data, light-novel TV adaptations draw 32 times the median audience of original series. The data also shows where fan ratings and commercial value part ways." />
+<link rel="stylesheet" href="/css/artometrics-article.css" />
+<style>
+  body { max-width: 720px; margin: 2rem auto; padding: 0 1.25rem; }
+  img, .art-chart-fallback { max-width: 100%; height: auto; }
+</style>
+</head>
+<body class="artometrics-article-body">
+  <h1>ANIME: Source Sets the Audience Floor</h1>
+  <p><em>In a century of MyAnimeList data, light-novel TV adaptations draw 32 times the median audience of original series. The data also shows where fan ratings and commercial value part ways.</em></p>
+  <div id="quarto-content">
 <nav id="TOC" role="doc-toc">
-    <h2 id="toc-title">IN THIS REPORT</h2>
-
-  <ul>
-  <li><a href="#fast-facts" id="toc-fast-facts">FAST FACTS</a></li>
-  <li><a href="#dataset-context" id="toc-dataset-context">DATASET CONTEXT</a></li>
-  <li><a href="#an-industry-that-industrialized-then-diversified" id="toc-an-industry-that-industrialized-then-diversified">AN INDUSTRY THAT INDUSTRIALIZED — THEN DIVERSIFIED</a></li>
-  <li><a href="#bones-and-kyoani-lead-consistency-across-volume-is-the-real-achievement" id="toc-bones-and-kyoani-lead-consistency-across-volume-is-the-real-achievement">BONES AND KYOANI LEAD — CONSISTENCY ACROSS VOLUME IS THE REAL ACHIEVEMENT</a></li>
-  <li><a href="#genre-map-whats-popular-vs-whats-well-rated" id="toc-genre-map-whats-popular-vs-whats-well-rated">GENRE MAP: WHAT’S POPULAR VS WHAT’S WELL-RATED?</a></li>
-  <li><a href="#limitations" id="toc-limitations">LIMITATIONS</a></li>
-  <li><a href="#conclusion" id="toc-conclusion">CONCLUSION</a></li>
-  <li><a href="#references" id="toc-references">REFERENCES</a></li>
-  <li><a href="#editors-note" id="toc-editors-note">EDITOR’S NOTE</a></li>
-  </ul>
+<h2 id="toc-title" class="anchored">IN THIS REPORT</h2>
+<ul>
+<li><a href="#research-question">Research question</a></li>
+<li><a href="#format-waves">Each format wave lines up with a new distribution channel</a></li>
+<li><a href="#source-floor">Source material sets the audience floor</a></li>
+<li><a href="#studio-league">Consistency is a studio trait</a></li>
+<li><a href="#sequel-premium">Sequels score higher, consistent with only well-received shows getting one</a></li>
+<li><a href="#buried-canon">Popularity tracks quality, with a short list of exceptions</a></li>
+<li><a href="#limitations">Limitations</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#data-methods-and-sources">Data, methods &amp; sources</a></li>
+<li><a href="#editors-note">Editor's note</a></li>
+</ul>
 </nav>
 <main class="art-article-main">
-<p>This MyAnimeList dataset covers 13,631 unique anime titles spanning 1917 to 2019 — a century-scale archive tracing the medium from prewar theater shorts to the standardized streaming machine of the 2010s. The key interpretive move here is separating <strong>catalog reality</strong> (what actually got made) from <strong>fan-canon popularity</strong> (what people actually watched and rated). Those two things rhyme, but they are not the same thing, and the gap between them is where the most interesting analysis lives.</p>
-<p>The overall median MAL score is 6.38. That is the calibration point for everything that follows. A 6.38 is not a failure — it is the mathematical center of a platform where over 13,000 titles compete for attention. When comparing studios, formats, and genres throughout this report, the question is never who broke 8.0 once. It is who stayed above 6.38 consistently, across volume. That is a far harder problem, and most studios never solve it.</p>
-<h2 id="fast-facts" class="anchored">FAST FACTS</h2>
-<div class="facts-grid">
-  <div class="fact-box">
-    <span class="fact-number">13,631</span>
-    <span class="fact-label">Unique anime titles in the
-    dataset — from silent-era shorts to modern streaming
-    originals</span>
-  </div>
-  <div class="fact-box">
-    <span class="fact-number">6.38</span>
-    <span class="fact-label">Overall median MAL score —
-    the mathematical baseline every studio and genre is
-    measured against</span>
-  </div>
-  <div class="fact-box">
-    <span class="fact-number">8.12%</span>
-    <span class="fact-label">Share of TV anime scoring 8+
-    on MAL — the highest prestige hit-rate of any format
-    (346 out of 4,260 titles)</span>
-  </div>
-  <div class="fact-box">
-    <span class="fact-number">90</span>
-    <span class="fact-label">High-scoring shows buried past
-    popularity rank 2,000 — the titles the algorithm
-    never surfaced</span>
-  </div>
-  <div class="fact-box">
-    <span class="fact-number">0.389</span>
-    <span class="fact-label">Pearson correlation between
-    score and members — popularity predicts quality
-    directionally, not precisely</span>
-  </div>
-  <div class="fact-box">
-    <span class="fact-number">2006</span>
-    <span class="fact-label">The Haruhi inflection point —
-    when light novels became the anime industry&#39;s primary
-    outsourced R&amp;D pipeline</span>
-  </div>
-</div>
-<h2 id="dataset-context" class="anchored">DATASET CONTEXT</h2>
-<p>The source data is the MyAnimeList TidyTuesday release from April 23, 2019, maintained by the R for Data Science community. It contains scraped records for 13,631 unique anime titles with fields for format type, source material, episode count, content rating, genre tags, studio attribution, MAL score, member count, favorites count, and air date range. The data covers titles from 1917 through early 2019.</p>
-<p>The dataset requires meaningful cleaning before analysis. Air dates arrive as unstructured strings and must be parsed via regex to extract start and end year. Genre, studio, and producer fields are stored as Python-style list strings — bracket-delimited, comma-separated — that must be split and unnested into long-format tables for aggregation. Any title with a rank or popularity of zero is excluded, as these represent incomplete records without enough community engagement to produce reliable metrics.</p>
-<p>Scores on MAL are user-submitted on a 1–10 scale. The platform has a known self-selection bias: its userbase skews adult, male, and English-speaking relative to anime’s actual global audience. This produces systematic underscoring of children’s content and promotional music videos, and potential overrepresentation of properties with strong Western fandom overlap. The dataset also predates the post-2019 streaming era — <em>Demon Slayer</em>, <em>Jujutsu Kaisen</em>, <em>Chainsaw Man</em> are absent — which means any claims about current genre trends require updating.</p>
-<p>Genre tags are not mutually exclusive. A title tagged both “Action” and “Military” contributes to both genre aggregations. Studio medians for boutique operations (n &lt; 30) are statistically fragile — a single poor season can meaningfully shift the result. The popularity rank field runs inversely: rank 1 is the <em>most</em> popular title in the dataset.</p>
+<p class="art-p">Why does one anime reach more than a million fans while another, often just as well made, reaches a few thousand? A MyAnimeList archive of 13,631 titles, running from 1917 theatrical shorts to an early-2019 snapshot, points first to a decision made before any animator is hired: where the story comes from.</p>
+<p class="art-p">On television, light-novel adaptations draw a median of 153,184 platform members. Manga adaptations draw 37,500 and original series 4,738, which puts light novels about 32 times ahead of originals. Quality follows a different pattern. Only 4.6% of originals and 0.5% of game adaptations score 8.0 or higher, compared with 17.0% of manga adaptations. Across all scored titles, a title's score and its audience move closely together, with a rank correlation of 0.74. Every comparison below is measured against the overall median score of 6.38.</p>
+<p class="art-p">This report reads the archive as the record of a production system, not a list of favorites. In that system, a production committee (seisaku iinkai) of publishers, broadcasters, music labels, and merchandisers pools the budget and splits copyright in proportion to each member's investment. The animation studio is typically a contracted manufacturer that doesn't own the IP (Hernández Hernández, 2018, §4.3; Mihara, 2018). The figures here are observed fan behavior on one platform. They show which projects found audiences, not which ones made money.</p>
 
-<h2 id="an-industry-that-industrialized-then-diversified" class="anchored">AN INDUSTRY THAT INDUSTRIALIZED — THEN DIVERSIFIED</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="art-chart">
-  <div class="art-chart-live" data-chart="/data/articles/anime/charts/chart1_releases_by_year.plotly.json" data-fallback="/images/content/articles/anime/charts/chart1_releases_by_year.png" role="img" aria-label="Releases By Year"></div>
-</figure>
-</div>
-</div>
-</div>
-<p>The release history of anime is not a single growth story — it is six separate ones running in parallel. <strong>Movies</strong> were the dominant format from the 1920s through the 1970s, a low-volume craft economy built for theater. The first structural break arrived in the late 1980s, when the <strong>OVA</strong> boom gave creators a direct-to-consumer channel that bypassed TV censors entirely. OVA peaked around 1990, then collapsed as TV economics took over.</p>
-<p><strong>TV</strong> is the modern engine. It industrialized in the late 1990s and has compounded steadily since. <strong>Specials</strong> peaked in the mid-2000s as a franchise extension format, then plateaued. <strong>Music</strong> videos spiked dramatically in the 2010s — largely driven by short promotional content — and then fell just as fast. The most important line on this chart is <strong>ONA</strong>: near-zero before 2010, then a vertical ascent. That is not a genre trend. It is a platform shift. Netflix, Crunchyroll, and YouTube did not just distribute anime — they created a new format category.</p>
-<p>What the faceted view makes clear is that these formats are not competing for the same audience at the same time. They are sequential industrial experiments. Each one dominated its era, then either stabilized into a niche or was superseded by the next model. The industry did not simply grow — it restructured itself around whichever distribution channel controlled access to viewers.</p>
+<h2 id="research-question" class="anchored">RESEARCH QUESTION</h2>
+<p class="art-p">Which decisions made before production (format, source material, studio, and whether to make a sequel) are associated with a title's reach and fan rating, and where does the platform's popularity record miss strong work?</p>
 
-<h2 id="bones-and-kyoani-lead-consistency-across-volume-is-the-real-achievement" class="anchored">BONES AND KYOANI LEAD — CONSISTENCY ACROSS VOLUME IS THE REAL ACHIEVEMENT</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
+<h2 id="format-waves" class="anchored">Each format wave lines up with a new distribution channel</h2>
 <figure class="art-chart">
-  <div class="art-chart-live" data-chart="/data/articles/anime/charts/chart2_studio_consistency.plotly.json" data-fallback="/images/content/articles/anime/charts/chart2_studio_consistency.png" role="img" aria-label="Studio Consistency"></div>
+<img class="art-chart-fallback" src="/images/content/articles/anime/charts/chart_eras.png" alt="" />
+<figcaption class="art-chart-caption">Each wave lines up with a new channel. Direct-to-video output peaked at 115 titles in 1993, and web-first releases grew more than fivefold between 2009 and 2018.</figcaption>
 </figure>
-</div>
-</div>
-</div>
-<p>Every studio on this chart has produced at least one great show. That is not the achievement. The achievement is the <strong>IQR bar</strong> — the horizontal line showing the spread between the 25th and 75th percentile of a studio’s scores. A tight bar at a high median means the studio’s worst output is nearly as good as its best. <strong>Bones (n=115)</strong> leads in median and maintains a tight IQR across a massive catalog. <strong>White Fox (n=33)</strong> has the highest median dot but a wide IQR — the boutique model: fewer swings, but when they miss, they miss. <strong>Kyoto Animation (n=110)</strong> is the most consistent large studio on the chart: 110 titles with a tight IQR anchored well above the 6.38 baseline.</p>
-<p><strong>Trigger (n=23)</strong> has the widest IQR — spanning from near the baseline to above 8.0. High-risk, high-reward. <strong>Studio Deen (n=264)</strong> is the industrial cautionary tale: the largest catalog on the chart and the lowest median. Volume without curation dilutes quality. <strong>A-1 Pictures (n=190)</strong> sits in the middle — a production machine that delivers reliable output at scale, occasionally punctuated by genuine hits.</p>
-<p>The viridis color scale maps TV share. Studios with higher TV share cluster in the middle — TV volume is the primary dilution mechanism. Boutique studios with low TV share show more extreme medians in both directions. The 6.38 dashed line is the dataset median. Every studio above it is beating the field. Most of them are doing it with fewer than 50 titles — which tells you exactly how hard it is to stay above average at scale.</p>
+<p class="art-p">Anime output is not one growth curve. It's a series of format waves, and each wave lines up with a new channel. Theatrical film dominates the early catalog. Original video animation (OVA), sold directly on tape and disc, ran at roughly 100 titles a year from 1990 to 1993 and peaked at 115 in 1993. Television then became the core of the catalog, with 4,260 TV titles in the archive. Original net animation (ONA), made for web distribution first, grew from 40 titles in 2009 to 104 in 2013 and 216 in 2018, for 1,321 in total.</p>
+<p class="art-p">The archive records release format, not financing. Reading these waves as responses to new distribution channels is our editorial frame, not a measured finding, and the data can't show who paid for each wave. The context literature documents one wave directly: starting with Tetsuwan Atom (1963), TV anime was tied to sponsor merchandising (Steinberg, 2012).</p>
 
-<h2 id="genre-map-whats-popular-vs-whats-well-rated" class="anchored">GENRE MAP: WHAT’S POPULAR VS WHAT’S WELL-RATED?</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
+<h2 id="source-floor" class="anchored">Source material sets the audience floor</h2>
 <figure class="art-chart">
-  <div class="art-chart-live" data-chart="/data/articles/anime/charts/chart3_genre_map.plotly.json" data-fallback="/images/content/articles/anime/charts/chart3_genre_map.png" role="img" aria-label="Genre Map"></div>
+<img class="art-chart-fallback" src="/images/content/articles/anime/charts/chart_scorecard.png" alt="" />
+<figcaption class="art-chart-caption">Light-novel adaptations reach the largest audiences, but manga adaptations produce top-rated shows most often (scored TV titles, n = 4,240 of 4,260).</figcaption>
 </figure>
-</div>
-</div>
-</div>
-<p>The genre map plots every major genre against two axes: how popular its titles are (X, log-reversed so most popular is right), and how well-rated they are (Y). Size encodes volume. The <strong>Main Hall</strong> — Action, Comedy, Fantasy, Adventure — sits in the dense center-right cluster. Massive reach, enormous volume, medians diluted to the mid-6s by sheer output. These are the genres that define what most people think anime is.</p>
-<p>The <strong>Curator’s Rooms</strong> are the upper-left quadrant. <strong>Thriller</strong> sits alone at the top: highest median on the chart (~7.5), extremely low popularity rank. The genre barely exists by volume, but almost everything made in it is exceptional. <strong>Mystery</strong> and <strong>Psychological</strong> follow the same pattern — high score, mid-obscurity — which aligns with their SQL Query 2 performance. <strong>Historical</strong> sits far right: highly rated but ignored algorithmically despite strong critical reception. The starkest bottom outlier is <strong>Dementia</strong>: low popularity, low score, tiny volume.</p>
-<p><strong>Kids</strong> and <strong>Music</strong> are the bottom-right anchors — widest audiences, lowest scores. This is the self-selection problem in reverse: the MAL platform’s adult userbase applying adult critical frameworks to children’s media and promotional content. The scores are not wrong given who is rating them. They are simply the wrong instrument for the material. The genre map’s quadrant structure is the clearest single visualization of what the platform is: a tool built by and for a specific audience, measuring everything — including content that was never made for them — against that audience’s preferences.</p>
+<div class="art-table-wrapper"><table class="art-table"><thead><tr><th>Source (TV)</th><th>Titles</th><th>Median score</th><th>Median members</th><th>Share scoring 8.0+</th></tr></thead><tbody>
+<!-- gen:source-table -->
+<tr><td>Light novel</td><td>283</td><td>7.35</td><td>153,184</td><td>13.1%</td></tr>
+<tr><td>Manga</td><td>1,232</td><td>7.29</td><td>37,500</td><td>17.0%</td></tr>
+<tr><td>Novel</td><td>122</td><td>7.13</td><td>10,489</td><td>15.6%</td></tr>
+<tr><td>Original</td><td>1,012</td><td>6.63</td><td>4,738</td><td>4.6%</td></tr>
+<tr><td>Game</td><td>210</td><td>6.63</td><td>14,005</td><td>0.5%</td></tr>
+<!-- /gen:source-table -->
+</tbody></table></div>
+<p class="art-p">The source of a story, its gensaku, is the biggest single dividing line in the TV catalog. Light-novel adaptations have the highest median score (7.35) and by far the largest median audience. They reach about four times as many members as manga adaptations and about 32 times as many as originals. Manga adaptations are close behind on score (7.29), and they produce the highest share of top-rated shows, at 17.0% scoring 8.0 or higher (210 of 1,232).</p>
+<p class="art-p">The mechanism is the media mix. A story is built across print, animation, music, and merchandise at once (Steinberg, 2012). On our reading, a published book also serves as a live test of demand before a committee commits money to animation. This is selection, not proof that adapting a book lowers risk. Committees adapt titles that already have readers, so some of that audience is arriving with the book.</p>
+<p class="art-p">Originals face the opposite problem. Their median score is 6.63, and only 4.6% reach 8.0 or higher. With no print run to test demand first, an original has to prove itself on air. Game adaptations are the weakest group by fan rating. Their median is 6.63, and only 0.5% score 8.0 or higher, which works out to one title in 210 (IDOLiSH7, 2018). For a committee, one practical reading is that a game adaptation is better budgeted as part of the game's marketing than as the start of a stand-alone animated franchise. That reading is an editorial frame, not a result the file measures.</p>
+
+<h2 id="studio-league" class="anchored">Consistency is a studio trait</h2>
+<figure class="art-chart">
+<img class="art-chart-fallback" src="/images/content/articles/anime/charts/chart_studios.png" alt="" />
+<figcaption class="art-chart-caption"><!-- gen:studio-caption -->
+Across the 20 largest studios, medians run from 7.46 to 5.40. Bones has the tightest spread among the top scorers, and OLM is the most consistent overall, at a lower level. DLE (n = 153) mostly makes short-form titles, with a median episode of 3 minutes, so its median score isn't directly comparable to studios making 24-minute episodes.
+<!-- /gen:studio-caption --></figcaption>
+</figure>
+<p class="art-p">In a system where the committee owns the project, the animation studio is usually the prime contractor (motouke), and much of the drawing is subcontracted (shitauke) to other studios and freelancers (Hanzawa, 2004). Inside a studio, production managers (seisaku shinkou) coordinate the work but depend on key creatives, whose drawing skill routinely gives them the upper hand (Morisawa, 2015). That makes a studio's typical output a better guide to what a commission will deliver than its single biggest hit.</p>
+<p class="art-p">Bones has 115 titles, a median of 7.46, an interquartile range (IQR, the spread of the middle half of its scores) of 0.95, and 23.5% of its titles scoring 8.0 or higher, the tightest spread among the top-scoring studios (only 7th-tightest of all 20). Kyoto Animation's 110 titles have a median of 7.43 and an IQR of 1.22. Kyoto Animation employs mostly salaried in-house staff and trains animators through its own school, which is unusual in an industry built on subcontracting (Creamer, 2015; Moore, 2017; Kyoto Animation training school). OLM is the counterexample that makes the point. Its 209 titles have a median of only 6.64, but its IQR of 0.70 is the tightest of any studio with 100 or more titles. It delivers a predictable product at a modest level.</p>
+<p class="art-p">For anyone choosing a prime contractor, the decision metric is a studio's median and spread, not its best-known title. Across the 20 studios with 100 or more scored titles, median scores run from 7.46 (Bones) down to 5.40 (DLE). DLE (n = 153) mostly makes short-form titles, with a median episode of 3 minutes, so its median score isn't directly comparable to studios making 24-minute episodes. Bones and OLM have a 24-minute median episode. The largest studio, Toei (737 titles), sits near the bottom of the table at 6.68. Of those titles, 2.8% score 8.0 or higher (21 of 737).</p>
+<div class="art-table-wrapper"><table class="art-table"><thead><tr><th>Studio</th><th>n</th><th>Median</th><th>Middle 50%</th><th>IQR</th><th>Share 8.0+</th></tr></thead><tbody>
+<!-- gen:studio-table -->
+<tr><td>Bones</td><td>115</td><td>7.46</td><td>6.95–7.90</td><td>0.95</td><td>23.5%</td></tr>
+<tr><td>Kyoto Animation</td><td>110</td><td>7.43</td><td>6.67–7.89</td><td>1.22</td><td>20.9%</td></tr>
+<tr><td>A-1 Pictures</td><td>190</td><td>7.31</td><td>6.70–7.73</td><td>1.03</td><td>14.7%</td></tr>
+<tr><td>Shaft</td><td>125</td><td>7.25</td><td>6.65–7.86</td><td>1.21</td><td>16.8%</td></tr>
+<tr><td>Studio Deen</td><td>264</td><td>7.20</td><td>6.53–7.63</td><td>1.10</td><td>8.3%</td></tr>
+<tr><td>Production I.G</td><td>297</td><td>7.16</td><td>6.46–7.71</td><td>1.25</td><td>13.5%</td></tr>
+<tr><td>Madhouse</td><td>340</td><td>7.03</td><td>6.47–7.61</td><td>1.15</td><td>15.9%</td></tr>
+<tr><td>Gonzo</td><td>123</td><td>7.01</td><td>6.40–7.33</td><td>0.93</td><td>2.4%</td></tr>
+<tr><td>J.C.Staff</td><td>322</td><td>7.01</td><td>6.25–7.42</td><td>1.17</td><td>7.5%</td></tr>
+<tr><td>Sunrise</td><td>457</td><td>7.00</td><td>6.43–7.46</td><td>1.03</td><td>6.8%</td></tr>
+<tr><td>TMS Entertainment</td><td>275</td><td>6.99</td><td>6.28–7.53</td><td>1.26</td><td>10.2%</td></tr>
+<tr><td>Xebec</td><td>146</td><td>6.99</td><td>6.57–7.37</td><td>0.80</td><td>2.1%</td></tr>
+<tr><td>Studio Pierrot</td><td>251</td><td>6.87</td><td>6.27–7.48</td><td>1.21</td><td>6.0%</td></tr>
+<tr><td>AIC</td><td>111</td><td>6.82</td><td>6.30–7.22</td><td>0.93</td><td>0.9%</td></tr>
+<tr><td>Toei Animation</td><td>737</td><td>6.68</td><td>6.16–7.23</td><td>1.07</td><td>2.8%</td></tr>
+<tr><td>Nippon Animation</td><td>206</td><td>6.67</td><td>6.31–7.12</td><td>0.81</td><td>3.4%</td></tr>
+<tr><td>OLM</td><td>209</td><td>6.64</td><td>6.36–7.06</td><td>0.70</td><td>0.5%</td></tr>
+<tr><td>Shin-Ei Animation</td><td>156</td><td>6.63</td><td>6.08–7.25</td><td>1.17</td><td>0.6%</td></tr>
+<tr><td>Tatsunoko Production</td><td>158</td><td>6.53</td><td>6.14–7.01</td><td>0.86</td><td>3.8%</td></tr>
+<tr><td>DLE</td><td>153</td><td>5.40</td><td>4.96–5.94</td><td>0.98</td><td>0.7%</td></tr>
+<!-- /gen:studio-table -->
+</tbody></table></div>
+
+<h2 id="sequel-premium" class="anchored">Sequels score higher, consistent with only well-received shows getting one</h2>
+<figure class="art-chart">
+<img class="art-chart-fallback" src="/images/content/articles/anime/charts/chart_sequel.png" alt="" />
+<figcaption class="art-chart-caption">TV sequels score higher and draw larger audiences, consistent with only well-received shows getting a second season.</figcaption>
+</figure>
+<p class="art-p">The 1,084 TV sequels in the archive have a median score of 7.02, and 14.7% of them score 8.0 or higher. The 3,156 TV titles that aren't sequels have a median of 6.73 and a rate of 5.9%. Sequels also draw more members at the median, 11,430 against 8,013.</p>
+<p class="art-p">The pattern is consistent with selection, not an effect of being a sequel. A committee only orders a second season of a show that did well, and the viewers who return for it already liked the first one. It also fits the shortlist count: 30 of the 43 high scorers with at least 1,000 ratings are sequels. For a buyer, a sequel's score says more about the strength of the property than about the sequel itself.</p>
+
+<h2 id="buried-canon" class="anchored">Popularity tracks quality, with a short list of exceptions</h2>
+<figure class="art-chart">
+<img class="art-chart-fallback" src="/images/content/articles/anime/charts/chart_reach.png" alt="" />
+<figcaption class="art-chart-caption">Across 13,518 scored titles, score and reach rise together (rank correlation 0.74). Only a handful of stand-alone, highly rated titles remain obscure.</figcaption>
+</figure>
+<p class="art-p">Member counts are extremely skewed. A rank (Spearman) correlation gives 0.74, and correlating score with the log of member count gives 0.72. On this platform, well-rated titles are usually well watched.</p>
+<p class="art-p">The exceptions are rare and specific. Of 603 titles scoring 8.0 or higher, 78 sit beyond popularity rank 3,000. Requiring at least 1,000 user ratings cuts that to 43. Of the 43 titles with at least 1,000 ratings, 30 are sequels; only 10 TV series or films that aren't sequels remain.</p>
+<p class="art-p">The Buried Canon is an editorial shortlist, not a measured ranking: score of 8.0 or higher, popularity rank past 3,000, 1,000 or more ratings, TV or film, and no prequel, parent story, or full story on MyAnimeList.</p>
+<div class="art-table-wrapper"><table class="art-table"><thead><tr><th>Title</th><th>Year</th><th>Studio</th><th>Score</th><th>Popularity rank</th><th>Ratings</th></tr></thead><tbody>
+<tr><td>Ginga Nagareboshi Gin</td><td>1986</td><td>Toei Animation</td><td>8.12</td><td>3,292</td><td>7,030</td></tr>
+<tr><td>Hanada Shounen-shi</td><td>2002</td><td>Madhouse</td><td>8.11</td><td>4,157</td><td>2,616</td></tr>
+<tr><td>Kindaichi Shounen no Jikenbo</td><td>1997</td><td>Toei Animation</td><td>8.11</td><td>3,425</td><td>2,876</td></tr>
+<tr><td>Omae Umasou da na (film)</td><td>2010</td><td>Ajia-Do</td><td>8.08</td><td>3,973</td><td>4,076</td></tr>
+<tr><td>Ginga Sengoku Gunyuuden Rai</td><td>1994</td><td>E&amp;G Films</td><td>8.06</td><td>4,316</td><td>2,956</td></tr>
+<tr><td>IDOLiSH7</td><td>2018</td><td>TROYCA</td><td>8.06</td><td>3,037</td><td>4,788</td></tr>
+<tr><td>Hyouge Mono</td><td>2011</td><td>Bee Train</td><td>8.04</td><td>3,194</td><td>2,098</td></tr>
+<tr><td>Igano Kabamaru</td><td>1983</td><td>Group TAC</td><td>8.03</td><td>4,602</td><td>2,816</td></tr>
+<tr><td>Ie Naki Ko Remy</td><td>1996</td><td>Nippon Animation</td><td>8.02</td><td>3,866</td><td>4,793</td></tr>
+<tr><td>Takarajima</td><td>1978</td><td>Madhouse</td><td>8.02</td><td>4,057</td><td>3,442</td></tr>
+</tbody></table></div>
+<p class="art-p">Four of these titles (Kindaichi, Omae Umasou da na, Ie Naki Ko Remy, Takarajima) have other versions on MyAnimeList, but none is a sequel. For a licensor, distributor, or restoration house, this is a short, checkable list of rated-but-unseen catalog. Whether any of it is available to license is outside this dataset.</p>
 
 <h2 id="limitations" class="anchored">LIMITATIONS</h2>
-<p>The dataset ends in April 2019. <em>Demon Slayer</em>, <em>Jujutsu Kaisen</em>, <em>Chainsaw Man</em>, <em>Spy × Family</em> are entirely absent. Their exclusion almost certainly understates ONA growth, understates action/Shounen dominance, and means any claims about current genre trends require updating against the post-2019 streaming landscape. The industry restructured significantly around Netflix and Crunchyroll originals after this cutoff — the format and source material charts would look different with five more years of data.</p>
-<p>MyAnimeList is an enthusiast platform. Its userbase skews adult, male, and English-speaking relative to anime’s actual global audience. Two direct consequences appear in the data: Kids and Music programming are systematically underscored because the rating population is not the target demographic, and shows with strong Western fandom overlap (<em>Fullmetal Alchemist: Brotherhood</em>, <em>Death Note</em>) may be overrepresented in the elite tiers. The platform measures what its users value, which is not the same as what anime’s full global audience values.</p>
-<p>Genre tags are not mutually exclusive, and studio medians for boutique operations (n &lt; 30) are statistically fragile. White Fox’s strong studio ranking rests on 33 titles — a single poor season could meaningfully shift it. Thriller’s top-ranked genre position rests on a small title count. Both results are directionally interesting and statistically fragile, and should be read as signals worth investigating rather than settled conclusions.</p>
-<h2 id="conclusion" class="anchored">CONCLUSION</h2>
-<p>Anime transformed its distribution model three times in a century: from a <strong>theatrical craft economy</strong> built for prewar audiences, to a <strong>home-video OVA market</strong> that bypassed broadcast entirely, to an <strong>industrialized TV machine</strong> running on seasonal 12-episode contracts, and finally into a <strong>diversified platform ecosystem</strong> where ONA and streaming have created a fourth distribution channel that did not exist before 2010. Each transition was driven by access — whoever controlled the path to viewers controlled the format that dominated production.</p>
-<p>Through all of it, two structural facts held. <strong>TV is the primary engine for quality output</strong> — 8.12% hit-rate, the highest of any format, confirmed by both the SQL aggregation and the genre map’s quadrant structure. And <strong>popularity and quality are correlated but not causal</strong> — the feedback loop runs both directions, the algorithm amplifies existing popularity rather than discovering hidden quality, and the score-members correlation of r = 0.389 confirms the relationship is real but far from deterministic.</p>
-<p>Ninety high-scoring titles sit past popularity rank 2,000 — past the point any algorithm will surface them. The catalog is vast. The attention economy is ruthless. If you want the best statistical odds, shop the seasonal TV hits in Mystery, Shounen, or Romance — the three genres with the highest average scores above 500 titles. But if you are willing to walk past the algorithm’s edge, there are 90 titles waiting with scores above 8.0 and audiences small enough that they never quite made the trending list.</p>
-<h2 id="references" class="anchored">REFERENCES</h2>
-<p>MyAnimeList Dataset (2019). TidyTuesday, April 23, 2019. Retrieved from: https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-04-23</p>
-<p>MyAnimeList. (n.d.). <em>About MyAnimeList</em>. Retrieved from https://myanimelist.net/about.php</p>
-<p>Clements, J., &amp; McCarthy, H. (2015). <em>The Anime Encyclopedia: A Century of Japanese Animation</em> (3rd ed.). Stone Bridge Press.</p>
-<p>Condry, I. (2013). <em>The Soul of Anime: Collaborative Creativity and Japan’s Media Success Story</em>. Duke University Press.</p>
-<p>Denison, R. (2015). <em>Anime: A History</em>. BFI/Palgrave Macmillan.</p>
-<p>Steinberg, M. (2012). <em>Anime’s Media Mix: Franchising Toys and Characters in Japan</em>. University of Minnesota Press.</p>
-<h2 id="editors-note" class="anchored">EDITOR’S NOTE</h2><div class="art-editorial-note"><p><em>This report was researched, written, designed, and produced in active collaboration with Claude AI (Anthropic). The data pipeline, statistical analysis, chart design, written analysis, narrative structure, and visual styling were all developed through a directed partnership between human editorial judgment and AI execution. The research questions and brand vision are ours. The execution is a collaboration.</em></p>
-<p><em>— Artometrics Editorial</em></p></div>
+<p class="art-p">Coverage window. The data is a Kaggle snapshot of MyAnimeList taken in early 2019 and published through TidyTuesday on April 23, 2019. Nothing released after that is included, and 2019 itself is only partly covered, which is why the format series ends at 2018.</p>
+<p class="art-p">Platform audience. MyAnimeList is an English-language enthusiast site. Its scores reflect that audience's expectations. Kids titles (median 5.86, n = 2,158) and music titles (median 5.44, n = 1,510) score lowest, which more likely reflects a mismatch between audience and content than weak production. Thriller (7.50, n = 102), Mystery (7.27, n = 605), and Psychological (7.23, n = 279) score highest.</p>
+<p class="art-p">No commercial data. The file has no revenue, broadcast ratings, disc sales, box office, or merchandise figures. A low score doesn't mean a franchise lost money.</p>
+<p class="art-p">Selection, not causation. Source material, studio, and sequel status are all chosen with an eye to expected demand, so none of the gaps above should be read as the effect of that choice alone. The format chart lines each wave up with a channel. It does not show that the channel shaped what got made.</p>
+<p class="art-p">Deduplication. The source file repeats each title once per studio and genre (77,911 rows for 13,631 titles). All title-level figures here use one row per title.</p>
 
-<p class="art-github-wrap">
-  <a class="art-github-btn" href="https://github.com/Artometrics/anime" target="_blank" rel="noopener noreferrer">View source on GitHub</a>
-</p>
+<h2 id="conclusion" class="anchored">CONCLUSION: Choose the source, judge the studio by its median, and read sequel scores as property scores</h2>
+<p class="art-p">The archive doesn't show what makes anime good. It does show where the industry's early decisions leave a mark. Adapting a light novel or manga brings an audience that is already there, while an original has to find one. Studios differ clearly in their typical output, which is the better guide to a commission. Sequel scores mostly reflect the shows that earned them. Beyond those patterns lies a short list of strong titles the platform's audience never found. The next useful question is commercial. Matching these fan signals to revenue data would show whether the platform's audience floor is also a revenue floor.</p>
+
+<section class="art-back-matter">
+<h2 id="data-methods-and-sources" class="anchored">Data, methods &amp; sources</h2>
+<h3 id="data-and-method" class="anchored art-back-matter__subhead">Data and method</h3>
+<p class="art-p">The primary data is the MyAnimeList dataset published by TidyTuesday on April 23, 2019 (tidy_anime.csv), a Kaggle scrape of MyAnimeList by Tam Nguyen taken around February 2019. The file has 77,911 rows because it repeats each title once per studio and genre. We collapsed it to 13,631 unique titles (one row per animeID) dated 1917 to 2019. Studio statistics use one row per title and studio, and genre statistics use one row per title and genre. Scores, member counts, popularity ranks, rating counts, formats, sources, and related-title links are observed data. Medians, shares scoring 8.0 or higher, IQRs, and correlations are derived metrics. Quartiles use R's type-7 quantile. Displayed figures use round-half-up on the exact value, not R's round().</p>
+<p class="art-p">Score comparisons on television use scored TV titles, n = 4,240 of 4,260. Titles with no score are excluded from score statistics (13,518 scored). The rank correlation of score and members is Spearman, n = 13,518. A title is a sequel when its related field lists a Prequel, a Parent story, or a Full story. The 1,000-rating minimum applies only to the shortlist cut, not to the catalog medians. The Buried Canon is an editorial shortlist built with the filters stated above. Known biases: the snapshot stops in early 2019, the raters are an English-language enthusiast audience, and source, studio, and sequel are selected with demand in mind, so the gaps are associations. Reproduce the charts and tables with <code>npm run brief:anime</code> from the repository root. The script checks SHA-256 <code>5ea3a14492b5c559c728af0c7ec57b81c919d0efa4d381e54b0f7cde9934a1c2</code> on the raw file before it computes.</p>
+<h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
+<p class="art-p">Primary data. MyAnimeList via TidyTuesday, 2019-04-23 (Kaggle snapshot by Tam Nguyen, early 2019). <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-23" rel="noopener noreferrer">TidyTuesday 2019-04-23</a>.</p>
+<p class="art-p">Context literature.</p>
+<ul>
+<li>Hernández Hernández, Á. D. (2018). "The Anime Industry, Networks of Participation, and Environments for the Management of Content in Japan." Arts 7(3): 42. Cited for §4.3 (pp. 8–9), the committee mechanism. <a href="https://doi.org/10.3390/arts7030042" rel="noopener noreferrer">doi:10.3390/arts7030042</a>.</li>
+<li>Hanzawa, Seiji (2004). "The Japanese Animation and Home Video Game Industries." Japanese Journal of Human Geography 56(6): 587–602. Cited for subcontracting and freelance labor. <a href="https://doi.org/10.4200/jjhg1948.56.587" rel="noopener noreferrer">doi:10.4200/jjhg1948.56.587</a>.</li>
+<li>Mihara, Ryotaro (2018). "Involution: a perspective for understanding Japanese animation's domestic business in a global context." Japan Forum 32(1): 102–125. Published online 2018. <a href="https://doi.org/10.1080/09555803.2018.1442362" rel="noopener noreferrer">doi:10.1080/09555803.2018.1442362</a>.</li>
+<li>Morisawa, Tomohiro (2015). "Managing the unmanageable: Emotional labour and creative hierarchy in the Japanese animation industry." Ethnography 16(2): 262–284. Cited only for the production-management layer (seisaku shinkou) that depends on key creatives. <a href="https://doi.org/10.1177/1466138114547624" rel="noopener noreferrer">doi:10.1177/1466138114547624</a>.</li>
+<li>Steinberg, M. (2012). Anime's Media Mix: Franchising Toys and Characters in Japan. University of Minnesota Press. Cited for the media mix and for the television wave beginning with Tetsuwan Atom (1963) and sponsor merchandising.</li>
+<li>Creamer, Nick (2015-12-02). "What Makes Kyoto Animation So Special?" Anime News Network. <a href="https://www.animenewsnetwork.com/feature/2015-12-02/what-makes-kyoto-animation-so-special/.95559" rel="noopener noreferrer">animenewsnetwork.com</a>.</li>
+<li>Moore, D. M. (2017-10-20). "A Silent Voice shows why Kyoto Animation is one of the top animation studios." The Verge. <a href="https://www.theverge.com/2017/10/20/16482234/a-silent-voice-kyoto-animation-kyoani" rel="noopener noreferrer">theverge.com</a>.</li>
+<li>Kyoto Animation, training school. <a href="https://www.kyotoanimation.co.jp/school/" rel="noopener noreferrer">kyotoanimation.co.jp/school</a>.</li>
+</ul>
+</section>
+
+<h2 id="editors-note" class="anchored">EDITOR'S NOTE</h2>
+<div class="art-editorial-note"><p><em>This report was produced by the Artometrics editorial desk working with AI research, data, and design agents under human editorial direction. All figures were recomputed from the deduplicated source file and checked against a verified-numbers log before publication. The data and code are available from the site's Download menu.</em></p><p><em>— Artometrics Editorial Desk</em></p></div>
 </main>
 </div>
-</article></body></html>
+
+</body>
+</html>

@@ -91,9 +91,15 @@ if (renderReadmitted && slug === "readmitted") {
 
 ensureDir(PUBLIC_IMG);
 ensureDir(PUBLIC_CHARTS);
-ensureDir(PUBLIC_CSV);
 
-const csvCount = copyGlob(DATA_SRC, PUBLIC_CSV, /\.csv$/i);
+let csvCount = 0;
+if (slug === "anime") {
+  // One public copy lives next to source.zip. The nested data/ folder duplicated it.
+  if (fs.existsSync(PUBLIC_CSV)) fs.rmSync(PUBLIC_CSV, { recursive: true, force: true });
+} else {
+  ensureDir(PUBLIC_CSV);
+  csvCount = copyGlob(DATA_SRC, PUBLIC_CSV, /\.csv$/i);
+}
 copyDirFlat(DATA_SRC, PUBLIC_DATA, /\.(csv|json|txt|qmd)$/i);
 
 const pngImg = copyGlob(CHARTS_SRC, PUBLIC_IMG, /\.png$/i);

@@ -1,0 +1,33 @@
+Display rounding is round-half-up on the exact decimal: sign(x) * floor(abs(x) * 10^d + 0.5 + 1e-9) / 10^d. This is not R's round(). Quantiles are type 7 and are rounded only at display, from the raw quantile.
+The page tables, the sentences that quote those figures, and the chart data are written from this script. The page matches the script output under round-half-up.
+Spearman score vs members = 0.735265 (n = 13518), displayed 0.74.
+Pearson score vs log(members) = 0.716684, displayed 0.72.
+Non-sequel TV median members raw = 8012.5, round-half-up = 8,013.
+Sequel TV median members raw = 11429.5, round-half-up = 11,430.
+DLE: 114 of 148 scored DLE titles with known duration (77.0%) are 5 minutes or shorter. The page keeps the 3-minute median caption.
+Bones IQR rank among the 20 studios is 7 (1 = tightest). OLM remains the tightest overall.
+Shortlist check: 30 of 43 high scorers with at least 1,000 ratings are sequels.
+League table as published (round-half-up):
+# A tibble: 20 × 7
+   studio                   n median q1    q3    iqr   share
+   <chr>                <int> <chr>  <chr> <chr> <chr> <chr>
+ 1 Bones                  115 7.46   6.95  7.90  0.95  23.5%
+ 2 Kyoto Animation        110 7.43   6.67  7.89  1.22  20.9%
+ 3 A-1 Pictures           190 7.31   6.70  7.73  1.03  14.7%
+ 4 Shaft                  125 7.25   6.65  7.86  1.21  16.8%
+ 5 Studio Deen            264 7.20   6.53  7.63  1.10  8.3% 
+ 6 Production I.G         297 7.16   6.46  7.71  1.25  13.5%
+ 7 Madhouse               340 7.03   6.47  7.61  1.15  15.9%
+ 8 Gonzo                  123 7.01   6.40  7.33  0.93  2.4% 
+ 9 J.C.Staff              322 7.01   6.25  7.42  1.17  7.5% 
+10 Sunrise                457 7.00   6.43  7.46  1.03  6.8% 
+11 TMS Entertainment      275 6.99   6.28  7.53  1.26  10.2%
+12 Xebec                  146 6.99   6.57  7.37  0.80  2.1% 
+13 Studio Pierrot         251 6.87   6.27  7.48  1.21  6.0% 
+14 AIC                    111 6.82   6.30  7.22  0.93  0.9% 
+15 Toei Animation         737 6.68   6.16  7.23  1.07  2.8% 
+16 Nippon Animation       206 6.67   6.31  7.12  0.81  3.4% 
+17 OLM                    209 6.64   6.36  7.06  0.70  0.5% 
+18 Shin-Ei Animation      156 6.63   6.08  7.25  1.17  0.6% 
+19 Tatsunoko Production   158 6.53   6.14  7.01  0.86  3.8% 
+20 DLE                    153 5.40   4.96  5.94  0.98  0.7% 

@@ -29,3 +29,5 @@ format:
     lang: en
     css: styles/report.css
     theme: cosmo
+    bibliography: references.bib
+    cite-method: citeproc

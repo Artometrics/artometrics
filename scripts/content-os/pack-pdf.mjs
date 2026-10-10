@@ -36,6 +36,17 @@ function which(bin) {
   return r.status === 0 ? r.stdout.trim() : "";
 }
 
+function chartsToImages(html, toFileUrl) {
+  return html.replace(
+    /<div class="art-chart-live"[^>]*data-fallback="([^"]+)"[^>]*>\s*<\/div>/g,
+    (_match, src) => {
+      const abs = path.join(ROOT, "public", src.replace(/^\//, ""));
+      const url = toFileUrl ? `file://${abs}` : src;
+      return `<img class="art-chart-fallback" src="${url}" alt="" />`;
+    },
+  );
+}
+
 function chapterHtml(s) {
   const mdPath = path.join(ROOT, "src/content/blog", `${s}.md`);
   if (!fs.existsSync(mdPath)) return null;
@@ -59,7 +70,29 @@ if (slug) {
   const { data, content } = matter(raw);
   title = data.title || slug;
   outRel = `${slug}.pdf`;
-  bodyHtml = content;
+  bodyHtml = chartsToImages(content, true);
+  const description = data.description || "";
+  const exportHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>${escapeHtml(title)} — Artometrics</title>
+<meta name="description" content="${escapeHtml(description)}" />
+<link rel="stylesheet" href="/css/artometrics-article.css" />
+<style>
+  body { max-width: 720px; margin: 2rem auto; padding: 0 1.25rem; }
+  img, .art-chart-fallback { max-width: 100%; height: auto; }
+</style>
+</head>
+<body class="artometrics-article-body">
+  <h1>${escapeHtml(title)}</h1>
+  <p><em>${escapeHtml(description)}</em></p>
+  ${chartsToImages(content, false)}
+</body>
+</html>`;
+  fs.mkdirSync(path.join(ROOT, "public/exports"), { recursive: true });
+  fs.writeFileSync(path.join(ROOT, "public/exports", `${slug}.html`), exportHtml, "utf8");
+  console.log(`HTML → public/exports/${slug}.html`);
 } else {
   const editionsPath = path.join(ROOT, "public/data/meta/editions.json");
   if (!fs.existsSync(editionsPath)) {
