@@ -6,6 +6,43 @@
 # per animeID before any title-level count, and writes the five charts plus
 # the derived tables the page publishes.
 
+# Fresh machines do not have a user library yet. Install the packages this
+# script loads so `npm run brief:anime` is one command. Versions are pinned
+# in articles/anime/renv.lock; this path installs current CRAN releases of
+# anything still missing, then continues.
+ensure_brief_packages <- function(pkgs) {
+  user_lib <- Sys.getenv("R_LIBS_USER")
+  if (!nzchar(user_lib)) {
+    minor <- strsplit(R.version$minor, ".", fixed = TRUE)[[1]][[1]]
+    user_lib <- file.path(
+      Sys.getenv("HOME"),
+      "R",
+      paste0(R.version$platform, "-library"),
+      paste0(R.version$major, ".", minor)
+    )
+  }
+  dir.create(user_lib, recursive = TRUE, showWarnings = FALSE)
+  .libPaths(c(user_lib, .libPaths()))
+  missing <- pkgs[!vapply(pkgs, requireNamespace, quietly = TRUE, FUN.VALUE = logical(1))]
+  if (length(missing)) {
+    message("Installing R packages into ", user_lib, ": ", paste(missing, collapse = ", "))
+    install.packages(
+      missing,
+      lib = user_lib,
+      repos = "https://cloud.r-project.org",
+      dependencies = c("Depends", "Imports", "LinkingTo")
+    )
+  }
+  failed <- pkgs[!vapply(pkgs, requireNamespace, quietly = TRUE, FUN.VALUE = logical(1))]
+  if (length(failed)) {
+    stop(
+      "Could not install: ", paste(failed, collapse = ", "),
+      ". From the repo root: Rscript -e 'install.packages(c(\"tidyverse\", \"jsonlite\", \"showtext\", \"sysfonts\"), repos=\"https://cloud.r-project.org\")'"
+    )
+  }
+}
+ensure_brief_packages(c("tidyverse", "jsonlite", "showtext", "sysfonts"))
+
 suppressPackageStartupMessages({
   library(tidyverse)
   library(jsonlite)
@@ -57,14 +94,6 @@ PALE <- "#B5B5B5"
 GRID <- "#E6E6E6"
 BASELINE <- 6.38
 
-user_lib <- Sys.getenv("R_LIBS_USER")
-if (nzchar(user_lib)) {
-  dir.create(user_lib, recursive = TRUE, showWarnings = FALSE)
-  .libPaths(c(user_lib, .libPaths()))
-}
-if (!requireNamespace("showtext", quietly = TRUE) || !requireNamespace("sysfonts", quietly = TRUE)) {
-  stop("showtext and sysfonts are required. Install them so titles use Anton and labels use DM Sans.")
-}
 library(showtext)
 sysfonts::font_add("Anton", file.path(repo_root, "assets/fonts/Anton-Regular.ttf"))
 sysfonts::font_add("DM Sans", file.path(repo_root, "assets/fonts/DMSans.ttf"))
@@ -82,6 +111,22 @@ fmt_fixed <- function(x, d) {
 }
 fmt_int <- function(x) {
   trimws(format(round_half_up(x, 0), big.mark = ",", scientific = FALSE, trim = TRUE))
+}
+# Published summary stats: 4 decimal places, trailing zeros dropped, so a
+# downloader's own half-up lands on the page figures (1.215 -> 1.22, 6.565 -> 6.57).
+fmt_publish <- function(x, d = 4) {
+  rounded <- round_half_up(x, d)
+  s <- sprintf(paste0("%.", d, "f"), rounded)
+  s <- sub("0+$", "", s)
+  s <- sub("\\.$", "", s)
+  ifelse(is.na(rounded), NA_character_, s)
+}
+publish_csv <- function(df, path, cols, digits = 4) {
+  out <- as.data.frame(df)
+  for (col in intersect(cols, names(out))) {
+    out[[col]] <- fmt_publish(out[[col]], digits)
+  }
+  readr::write_csv(out, path)
 }
 
 theme_brief <- function() {
@@ -113,7 +158,7 @@ write_plotly <- function(name, data, layout) {
         paper_bgcolor = "#FFFFFF",
         plot_bgcolor = "#FFFFFF",
         font = list(family = "DM Sans, Helvetica, Arial, sans-serif", color = INK, size = 13),
-        margin = list(t = 92, r = 28, b = 56, l = 72),
+        margin = list(t = 100, r = 28, b = 56, l = 72),
         title = list(x = 0, xanchor = "left", font = list(family = "Anton, Impact, sans-serif", size = 18, color = "#111111"))
       ),
       layout
@@ -131,7 +176,7 @@ write_plotly <- function(name, data, layout) {
     file.path(charts_dir, paste0(name, ".plotly.json")),
     auto_unbox = TRUE,
     null = "null",
-    digits = NA
+    digits = 4
   )
 }
 
@@ -470,9 +515,21 @@ titles_out <- titles %>%
     score, scored_by, popularity, members, is_sequel, studios, genres
   )
 readr::write_csv(titles_out, file.path(article_dir, "data/titles.csv"))
-readr::write_csv(source_tbl, file.path(article_dir, "data/tv_by_source.csv"))
-readr::write_csv(league, file.path(article_dir, "data/studios.csv"))
-readr::write_csv(genre_tbl, file.path(article_dir, "data/genres.csv"))
+publish_csv(
+  source_tbl,
+  file.path(article_dir, "data/tv_by_source.csv"),
+  c("median_score", "q1", "q3", "median_members")
+)
+publish_csv(
+  league,
+  file.path(article_dir, "data/studios.csv"),
+  c("median_score", "q1", "q3", "iqr")
+)
+publish_csv(
+  genre_tbl,
+  file.path(article_dir, "data/genres.csv"),
+  "median_score"
+)
 readr::write_csv(
   shortlist %>% transmute(animeID, name, title_english, type, year, source, score, scored_by, popularity, members),
   file.path(article_dir, "data/shortlist.csv")
@@ -567,7 +624,13 @@ page <- replace_once(
   )
 )
 if (grepl("0.389", page, fixed = TRUE)) stop("Page still contains 0.389")
+if (grepl("most anime", page, ignore.case = TRUE)) stop("Page must not say most anime is committee-financed")
+if (grepl("Steinberg, 2012; Mihara, 2018", page, fixed = TRUE)) stop("Mihara is still cited on the demand-test sentence")
 stopifnot(grepl("30 of the 43 high scorers with at least 1,000 ratings are sequels.", page, fixed = TRUE))
+stopifnot(grepl("(Creamer, 2015; Moore, 2017; Kyoto Animation training school)", page, fixed = TRUE))
+stopifnot(grepl("the tightest spread among the top-scoring studios (only 7th-tightest of all 20).", page, fixed = TRUE))
+stopifnot(grepl("On our reading, a published book also serves as a live test of demand before a committee commits money to animation.", page, fixed = TRUE))
+stopifnot(grepl("Hernández Hernández, 2018, §4.3; Mihara, 2018", page, fixed = TRUE))
 stopifnot(grepl("Each format wave lines up with a new distribution channel", page, fixed = TRUE))
 stopifnot(grepl("round-half-up", page, fixed = TRUE))
 stopifnot(grepl("more than a million fans", page, fixed = TRUE))
@@ -619,10 +682,28 @@ write_plotly(
 
 scorecard <- source_disp
 ln_red <- scorecard$source == "Light novel"
-p1 <- ggplot(scorecard, aes(source, members_d, fill = ln_red)) +
-  geom_col(width = 0.72) +
-  scale_y_log10(labels = scales::comma) +
-  scale_fill_manual(values = c(`TRUE` = RED, `FALSE` = "#4A4A4A"), guide = "none") +
+member_floor <- 1000
+member_colors <- ifelse(ln_red, RED, "#4A4A4A")
+label_colors <- ifelse(ln_red, RED, INK)
+p1 <- ggplot(scorecard, aes(source, members_d)) +
+  geom_segment(
+    aes(xend = source, y = member_floor, yend = members_d, color = ln_red),
+    linewidth = 0.7
+  ) +
+  geom_point(aes(color = ln_red), size = 3.4) +
+  geom_text(
+    aes(label = members_lab, color = ln_red),
+    vjust = -1.15,
+    size = 3.15,
+    family = body_family,
+    fontface = "bold",
+    show.legend = FALSE
+  ) +
+  scale_y_log10(
+    labels = scales::comma,
+    expand = expansion(mult = c(0.04, 0.22))
+  ) +
+  scale_color_manual(values = c(`TRUE` = RED, `FALSE` = "#4A4A4A"), guide = "none") +
   labs(x = NULL, y = "Median members") +
   theme_brief() +
   theme(axis.text.x = element_text(size = 8))
@@ -634,27 +715,30 @@ p2 <- ggplot(scorecard, aes(source, share_d, fill = ln_red)) +
   theme(axis.text.x = element_text(size = 8))
 png(
   file.path(charts_dir, "chart_scorecard.png"),
-  width = 11.2, height = 6.4, units = "in", res = 160, bg = "white"
+  width = 11.2, height = 6.6, units = "in", res = 160, bg = "white"
 )
 grid::grid.newpage()
 grid::pushViewport(grid::viewport(layout = grid::grid.layout(
   3, 2,
-  heights = grid::unit(c(0.9, 4.6, 0.7), "in")
+  heights = grid::unit(c(1.05, 4.7, 0.7), "in")
 )))
+print(p1 + theme(plot.caption = element_blank()), vp = grid::viewport(layout.pos.row = 2, layout.pos.col = 1))
+print(p2 + theme(plot.caption = element_blank()), vp = grid::viewport(layout.pos.row = 2, layout.pos.col = 2))
+# Draw the takeaway after the panels so the white panel backgrounds cannot cover it.
 grid::grid.text(
   title_score,
-  x = 0.02, y = 0.65, just = c("left", "center"),
-  gp = grid::gpar(fontfamily = title_family, fontsize = 15)
+  x = grid::unit(0.18, "in"), y = 0.68, just = c("left", "center"),
+  gp = grid::gpar(fontfamily = title_family, fontsize = 16, col = "black"),
+  vp = grid::viewport(layout.pos.row = 1, layout.pos.col = 1:2)
 )
 grid::grid.text(
   sub_score,
-  x = 0.02, y = 0.15, just = c("left", "center"),
-  gp = grid::gpar(fontfamily = body_family, fontsize = 9, col = "#525252")
+  x = grid::unit(0.18, "in"), y = 0.28, just = c("left", "center"),
+  gp = grid::gpar(fontfamily = body_family, fontsize = 10, col = "#525252"),
+  vp = grid::viewport(layout.pos.row = 1, layout.pos.col = 1:2)
 )
-print(p1 + theme(plot.caption = element_blank()), vp = grid::viewport(layout.pos.row = 2, layout.pos.col = 1))
-print(p2 + theme(plot.caption = element_blank()), vp = grid::viewport(layout.pos.row = 2, layout.pos.col = 2))
 grid::grid.text(
-  caption_src, x = 0.02, just = "left",
+  caption_src, x = grid::unit(0.18, "in"), just = "left",
   gp = grid::gpar(fontfamily = body_family, fontsize = 8, col = "#525252"),
   vp = grid::viewport(layout.pos.row = 3, layout.pos.col = 1:2)
 )
@@ -663,11 +747,29 @@ write_plotly(
   "chart_scorecard",
   list(
     list(
-      type = "bar",
+      type = "scatter",
+      mode = "markers+text",
       name = "Median members",
       x = scorecard$source,
       y = scorecard$members_d,
-      marker = list(color = ifelse(ln_red, RED, "#4A4A4A")),
+      text = scorecard$members_lab,
+      textposition = "top center",
+      textfont = list(
+        family = "DM Sans, Helvetica, Arial, sans-serif",
+        size = 12,
+        color = label_colors
+      ),
+      marker = list(size = 12, color = member_colors),
+      error_y = list(
+        type = "data",
+        symmetric = FALSE,
+        array = rep(0, nrow(scorecard)),
+        arrayminus = scorecard$members_d - member_floor,
+        color = member_colors,
+        thickness = 2,
+        width = 0
+      ),
+      cliponaxis = FALSE,
       hovertemplate = "%{x}<br>%{y:,.0f} members<extra></extra>"
     ),
     list(
@@ -677,16 +779,24 @@ write_plotly(
       y = scorecard$share_d,
       xaxis = "x2",
       yaxis = "y2",
-      marker = list(color = ifelse(ln_red, RED, "#4A4A4A")),
+      marker = list(color = member_colors),
       hovertemplate = "%{x}<br>%{y:.1f}% scoring 8.0 or higher<extra></extra>"
     )
   ),
   list(
     title = chart_title(title_score, sub_score),
     xaxis = list(domain = c(0, 0.45)),
-    yaxis = list(type = "log", title = list(text = "Median members")),
+    yaxis = list(
+      type = "log",
+      title = list(text = "Median members"),
+      range = c(log10(700), log10(max(scorecard$members_d) * 2.8))
+    ),
     xaxis2 = list(domain = c(0.55, 1), anchor = "y2"),
-    yaxis2 = list(anchor = "x2", title = list(text = "Share at or above 8.0 (%)"))
+    yaxis2 = list(
+      type = "linear",
+      anchor = "x2",
+      title = list(text = "Share at or above 8.0 (%)")
+    )
   )
 )
 
@@ -724,15 +834,20 @@ write_plotly(
     mode = "markers",
     x = league_disp$median,
     y = as.character(league_plot$studio_label),
-    customdata = unname(as.matrix(transmute(league_disp, q1, q3, iqr))),
+    customdata = unname(as.matrix(transmute(
+      league_disp,
+      q1 = round_half_up(q1, 2),
+      q3 = round_half_up(q3, 2),
+      iqr = round_half_up(iqr, 2)
+    ))),
     marker = list(
       size = pmax(8, league_disp$n / 40),
       color = ifelse(league_disp$focal, RED, "#4A4A4A")
     ),
     error_x = list(
       type = "data",
-      array = league_disp$q3 - league_disp$median,
-      arrayminus = league_disp$median - league_disp$q1,
+      array = round_half_up(league_disp$q3 - league_disp$median, 2),
+      arrayminus = round_half_up(league_disp$median - league_disp$q1, 2),
       color = ifelse(league_disp$focal, RED, "#4A4A4A"),
       thickness = 1.4
     ),
@@ -743,7 +858,10 @@ write_plotly(
     )
   )),
   list(
-    title = chart_title(title_studios, sub_studios),
+    title = chart_title(
+      title_studios,
+      paste0(sub_studios, " DLE (n = 153) is mostly short-form, so its median isn't like-for-like.")
+    ),
     margin = list(l = 168),
     xaxis = list(title = list(text = "Median score"), tickformat = ".2f"),
     yaxis = list(autorange = "reversed", automargin = TRUE),
@@ -808,7 +926,7 @@ reach_plot <- reach %>%
   mutate(
     on_shortlist = animeID %in% short_ids,
     score_d = round_half_up(score, 2),
-    members_d = round_half_up(members, 2)
+    members_d = round_half_up(members, 0)
   )
 p_reach <- ggplot(reach_plot, aes(members_d, score_d)) +
   geom_point(data = filter(reach_plot, !on_shortlist), color = PALE, alpha = 0.35, size = 0.7) +
@@ -889,6 +1007,22 @@ utils::zip(zip_out, zip_files, flags = "-j")
 extra_zip <- file.path(article_dir, "source.zip")
 if (file.exists(extra_zip)) file.remove(extra_zip)
 
+jsons <- list.files(charts_dir, "\\.plotly\\.json$", full.names = TRUE)
+for (path in jsons) {
+  txt <- paste(readLines(path, warn = FALSE), collapse = "\n")
+  if (grepl("\\.[0-9]*0{6}|\\.[0-9]*9{6}", txt)) stop("Noisy float in ", path)
+  if (!grepl("\"t\":100", txt, fixed = TRUE)) stop("Plotly top margin is not 100 in ", basename(path))
+}
+studios_lines <- readLines(file.path(article_dir, "data/studios.csv"), warn = FALSE)
+genre_lines <- readLines(file.path(article_dir, "data/genres.csv"), warn = FALSE)
+if (!any(grepl("^Kyoto Animation,110,7\\.43,6\\.6725,7\\.8875,.*,1\\.215,", studios_lines))) {
+  stop("Published studios.csv did not clean Kyoto Animation's IQR to 1.215")
+}
+if (!any(grepl("^Historical,[0-9]+,6\\.565$", genre_lines))) {
+  stop("Published genres.csv did not clean Historical median to 6.565")
+}
+reach_bytes <- file.info(file.path(charts_dir, "chart_reach.plotly.json"))$size
+message("chart_reach.plotly.json ", reach_bytes, " bytes")
 message("Wrote charts to ", charts_dir)
 message("Spearman ", fmt_fixed(spearman, 2), " log-Pearson ", fmt_fixed(pearson_log, 2))
 message("Discrepancies: ", file.path(article_dir, "data/discrepancies.txt"))
