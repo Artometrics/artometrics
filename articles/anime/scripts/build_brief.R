@@ -213,7 +213,14 @@ save_plot <- function(plot, name, width, height) {
 old <- list.files(charts_dir, full.names = TRUE)
 if (length(old)) file.remove(old)
 
-raw <- read_csv(raw_csv, show_col_types = FALSE, progress = FALSE)
+# start_date stays a string so partial dates compare the same way the
+# published sequel and Buried Canon counts were checked.
+raw <- read_csv(
+  raw_csv,
+  show_col_types = FALSE,
+  progress = FALSE,
+  col_types = cols(start_date = col_character(), end_date = col_character())
+)
 stopifnot(nrow(raw) == 77911)
 
 raw <- raw %>%
@@ -225,10 +232,7 @@ raw <- raw %>%
     year = as.integer(substr(start_date, 1, 4)),
     studio = if_else(is.na(studio), "", studio),
     genre = if_else(is.na(genre), "", genre),
-    related = if_else(is.na(related), "", related),
-    is_sequel = str_detect(related, "'Prequel'\\s*:") |
-      str_detect(related, "'Parent story'\\s*:") |
-      str_detect(related, "'Full story'\\s*:")
+    related = if_else(is.na(related), "", related)
   )
 
 # Title-level: one row per animeID. Repeated studio/genre rows carry the same score.
@@ -325,24 +329,115 @@ stopifnot(fmt_fixed(genre_tbl$median_score[genre_tbl$genre == "Psychological"], 
 stopifnot(fmt_fixed(genre_tbl$median_score[genre_tbl$genre == "Kids"], 2) == "5.86")
 stopifnot(fmt_fixed(genre_tbl$median_score[genre_tbl$genre == "Music"], 2) == "5.44")
 
+# Sequel rule: follow MAL Prequel links back. Every link must have aired
+# earlier than the title that points to it, and the chain must reach an
+# earlier TV series. Missing start dates do not count as earlier.
+# Related strings are Python dict literals from the Kaggle scrape.
+extract_relation_ids <- function(related, relations) {
+  if (is.na(related) || !nzchar(related)) return(integer())
+  out <- integer()
+  for (relation in relations) {
+    pat <- paste0("'", relation, "'\\s*:\\s*\\[(.*?)\\](?=\\s*[,}])")
+    block <- str_match(related, pat)[, 2]
+    if (is.na(block)) next
+    items <- str_match_all(block, "\\{[^}]*\\}")[[1]]
+    if (!length(items) || nrow(items) == 0) next
+    for (item in items[, 1]) {
+      idm <- str_match(item, "'mal_id'\\s*:\\s*(\\d+)")[, 2]
+      tym <- str_match(item, "'type'\\s*:\\s*'([^']*)'")[, 2]
+      if (!is.na(idm) && !is.na(tym) && identical(tym, "anime")) {
+        out <- c(out, as.integer(idm))
+      }
+    }
+  }
+  out
+}
+
+prequel_ids <- lapply(titles$related, extract_relation_ids, relations = "Prequel")
+names(prequel_ids) <- as.character(titles$animeID)
+link_ids <- lapply(
+  titles$related,
+  extract_relation_ids,
+  relations = c("Prequel", "Parent story", "Full story")
+)
+names(link_ids) <- as.character(titles$animeID)
+start_of <- setNames(if_else(is.na(titles$start_date), "", titles$start_date), as.character(titles$animeID))
+type_of <- setNames(titles$type, as.character(titles$animeID))
+
+reaches_earlier_tv <- function(start_id) {
+  key <- as.character(start_id)
+  start_date <- start_of[[key]]
+  if (is.null(start_date) || !nzchar(start_date)) return(FALSE)
+  stack_id <- start_id
+  stack_date <- start_date
+  seen <- integer()
+  while (length(stack_id)) {
+    n <- length(stack_id)
+    cur <- stack_id[[n]]
+    cur_date <- stack_date[[n]]
+    stack_id <- stack_id[-n]
+    stack_date <- stack_date[-n]
+    if (cur %in% seen) next
+    seen <- c(seen, cur)
+    pids <- prequel_ids[[as.character(cur)]]
+    if (is.null(pids) || !length(pids)) next
+    for (pid in pids) {
+      pdate <- start_of[[as.character(pid)]]
+      if (is.null(pdate) || !nzchar(pdate) || pdate >= cur_date) next
+      ptype <- type_of[[as.character(pid)]]
+      if (!is.null(ptype) && !is.na(ptype) && ptype == "TV" && pdate < start_date) return(TRUE)
+      stack_id <- c(stack_id, pid)
+      stack_date <- c(stack_date, pdate)
+    }
+  }
+  FALSE
+}
+
+has_earlier_link <- function(aid) {
+  start_date <- start_of[[as.character(aid)]]
+  if (is.null(start_date) || !nzchar(start_date)) return(FALSE)
+  ids <- link_ids[[as.character(aid)]]
+  if (is.null(ids) || !length(ids)) return(FALSE)
+  for (pid in ids) {
+    pdate <- start_of[[as.character(pid)]]
+    if (is.null(pdate) || !nzchar(pdate)) next
+    if (pdate < start_date) return(TRUE)
+  }
+  FALSE
+}
+
+titles$is_sequel <- vapply(titles$animeID, reaches_earlier_tv, logical(1))
+# Hand overrides after a review of the 100 most-watched flagged TV titles.
+titles$is_sequel[titles$animeID == 22297] <- FALSE
+titles$is_sequel[titles$animeID == 30484] <- TRUE
+titles$is_sequel[titles$animeID == 13659] <- TRUE
+scored$is_sequel <- titles$is_sequel[match(scored$animeID, titles$animeID)]
+tv_scored$is_sequel <- titles$is_sequel[match(tv_scored$animeID, titles$animeID)]
+
 sequel_tv <- tv_scored %>% filter(is_sequel)
 other_tv <- tv_scored %>% filter(!is_sequel)
-stopifnot(nrow(sequel_tv) == 1084)
-stopifnot(nrow(other_tv) == 3156)
-stopifnot(median(sequel_tv$score) == 7.02)
-stopifnot(median(other_tv$score) == 6.73)
-stopifnot(sum(sequel_tv$score >= 8) == 159)
-stopifnot(sum(other_tv$score >= 8) == 187)
+stopifnot(nrow(sequel_tv) == 867)
+stopifnot(nrow(other_tv) == 3373)
+stopifnot(median(sequel_tv$score) == 6.99)
+stopifnot(median(other_tv$score) == 6.76)
+stopifnot(sum(sequel_tv$score >= 8) == 128)
+stopifnot(sum(other_tv$score >= 8) == 218)
 
 buried_78 <- scored %>% filter(score >= 8, popularity > 3000)
 buried_43 <- buried_78 %>% filter(scored_by >= 1000)
 stopifnot(nrow(buried_78) == 78)
 stopifnot(nrow(buried_43) == 43)
-stopifnot(sum(buried_43$is_sequel) == 30)
+stopifnot(sum(buried_43$is_sequel) == 12)
+stopifnot(sum(buried_43$is_sequel & buried_43$type == "TV") == 5)
+buried_43$earlier_link <- vapply(buried_43$animeID, has_earlier_link, logical(1))
 shortlist <- buried_43 %>%
-  filter(!is_sequel, type %in% c("TV", "Movie")) %>%
+  filter(!earlier_link, type %in% c("TV", "Movie")) %>%
   arrange(desc(score), popularity)
-stopifnot(nrow(shortlist) == 10)
+stopifnot(nrow(shortlist) == 11)
+stopifnot(identical(
+  sort(as.integer(shortlist$animeID)),
+  c(589L, 2004L, 2076L, 2150L, 2618L, 2762L, 2829L, 3907L, 9204L, 9996L, 33899L)
+))
 
 format_years <- titles %>%
   filter(!is.na(year), year <= 2018, type %in% c("TV", "Movie", "OVA", "ONA", "Special", "Music")) %>%
@@ -377,6 +472,20 @@ stopifnot(duration_median("DLE") == 3)
 stopifnot(duration_median("Bones") == 24)
 stopifnot(duration_median("OLM") == 24)
 
+# Same studio rows, excluding type == Special. Display rounds half up
+# (KyoAni IQR 0.985 -> 0.99; Bones median 7.505 -> 7.51).
+studio_core <- studio_rows %>% filter(type != "Special")
+kyo_core <- studio_core %>% filter(studio == "Kyoto Animation")
+bones_core <- studio_core %>% filter(studio == "Bones")
+kyo_iqr <- unname(quantile(kyo_core$score, 0.75, type = 7) - quantile(kyo_core$score, 0.25, type = 7))
+bones_iqr <- unname(quantile(bones_core$score, 0.75, type = 7) - quantile(bones_core$score, 0.25, type = 7))
+stopifnot(nrow(kyo_core) == 67)
+stopifnot(abs(median(kyo_core$score) - 7.62) < 1e-9)
+stopifnot(abs(kyo_iqr - 0.985) < 1e-8)
+stopifnot(nrow(bones_core) == 94)
+stopifnot(abs(median(bones_core$score) - 7.505) < 1e-9)
+stopifnot(abs(bones_iqr - 0.92) < 1e-8)
+
 # Display figures use round-half-up. The page tables and the sentences that
 # quote them are written from this output.
 pick <- function(frame, studio, col) frame[[col]][frame$studio == studio]
@@ -404,11 +513,10 @@ stopifnot(fmt_fixed(pick(league, "Gonzo", "q3"), 2) == "7.33")
 stopifnot(fmt_fixed(pick(league, "Tatsunoko Production", "q3"), 2) == "7.01")
 stopifnot(fmt_fixed(pick(league, "TMS Entertainment", "iqr"), 2) == "1.26")
 stopifnot(fmt_fixed(pick(league, "AIC", "iqr"), 2) == "0.93")
-stopifnot(fmt_int(median(other_tv$members)) == "8,013")
-stopifnot(fmt_int(median(sequel_tv$members)) == "11,430")
 stopifnot(league$iqr_rank[league$studio == "Bones"] == 7)
-stopifnot(sum(buried_43$is_sequel) == 30)
+stopifnot(sum(buried_43$is_sequel) == 12)
 stopifnot(nrow(buried_43) == 43)
+stopifnot(nrow(shortlist) == 11)
 
 million <- titles %>% filter(!is.na(members), members >= 1000000)
 stopifnot(nrow(million) == 13)
@@ -431,6 +539,14 @@ stopifnot(source_disp$members_lab[source_disp$source == "Manga"] == "37,500")
 stopifnot(source_disp$members_lab[source_disp$source == "Original"] == "4,738")
 stopifnot(source_disp$share_lab[source_disp$source == "Manga"] == "17.0%")
 stopifnot(source_disp$share_lab[source_disp$source == "Game"] == "0.5%")
+ln_med_members <- median(tv_scored$members[tv_scored$source == "Light novel"])
+og_med_members <- median(tv_scored$members[tv_scored$source == "Original"])
+stopifnot(fmt_int(ln_med_members) == "153,184")
+stopifnot(fmt_int(og_med_members) == "4,738")
+stopifnot(sum(tv_scored$source == "Original" & tv_scored$members > ln_med_members) == 62)
+stopifnot(sum(tv_scored$source == "Original") == 1012)
+stopifnot(sum(tv_scored$source == "Light novel" & tv_scored$members < og_med_members) == 3)
+stopifnot(sum(tv_scored$source == "Light novel") == 283)
 
 dle_known <- studio_rows %>%
   filter(studio == "DLE") %>%
@@ -450,15 +566,11 @@ notes <- c(
   "The page tables, the sentences that quote those figures, and the chart data are written from this script. The page matches the script output under round-half-up.",
   sprintf("Spearman score vs members = %.6f (n = %d), displayed 0.74.", spearman, nrow(reach)),
   sprintf("Pearson score vs log(members) = %.6f, displayed 0.72.", pearson_log),
+  "Sequel member medians are not published. The comparison changes direction depending on the rule.",
   sprintf(
-    "Non-sequel TV median members raw = %.1f, round-half-up = %s.",
-    median(other_tv$members),
-    fmt_int(median(other_tv$members))
-  ),
-  sprintf(
-    "Sequel TV median members raw = %.1f, round-half-up = %s.",
-    median(sequel_tv$members),
-    fmt_int(median(sequel_tv$members))
+    "TV sequels %d (median %s, %d at 8.0+) vs others %d (median %s, %d at 8.0+).",
+    nrow(sequel_tv), fmt_fixed(median(sequel_tv$score), 2), sum(sequel_tv$score >= 8),
+    nrow(other_tv), fmt_fixed(median(other_tv$score), 2), sum(other_tv$score >= 8)
   ),
   sprintf(
     "DLE: %d of %d scored DLE titles with known duration (%.1f%%) are 5 minutes or shorter. The page keeps the 3-minute median caption.",
@@ -470,7 +582,13 @@ notes <- c(
     "Bones IQR rank among the 20 studios is %d (1 = tightest). OLM remains the tightest overall.",
     league$iqr_rank[league$studio == "Bones"]
   ),
-  sprintf("Shortlist check: %d of %d high scorers with at least 1,000 ratings are sequels.", sum(buried_43$is_sequel), nrow(buried_43)),
+  sprintf(
+    "Buried Canon: %d of %d titles with 1,000 ratings continue an earlier TV series (%d of them TV). Stand-alone TV/film shortlist: %d.",
+    sum(buried_43$is_sequel), nrow(buried_43),
+    sum(buried_43$is_sequel & buried_43$type == "TV"), nrow(shortlist)
+  ),
+  "Leaving specials out: Kyoto Animation n=67, median 7.62, IQR 0.985; Bones n=94, median 7.505, IQR 0.92.",
+  "Original TV series above the light-novel member median: 62 of 1,012. Light-novel TV series below the original member median: 3 of 283.",
   "League table as published (round-half-up):",
   capture.output(print(
     league_disp %>% transmute(
@@ -493,7 +611,7 @@ writeLines(
     paste("sha256:", expected_sha),
     "snapshot: Kaggle MyAnimeList scrape by Tam Nguyen, early 2019, published by TidyTuesday on 2019-04-23.",
     "dedup: title-level stats are one row per animeID; studio stats are one row per animeID x studio; genre stats are one row per animeID x genre.",
-    "sequel: related lists a Prequel, Parent story, or Full story.",
+    "sequel: a scored TV title whose MAL Prequel chain, every link aired earlier, reaches an earlier TV series. Overrides: 22297 is not a sequel; 30484 and 13659 are. Buried Canon stand-alone titles have no earlier Prequel, Parent story, or Full story of any type; related titles with missing start dates do not count.",
     "quantiles: type 7. Displayed figures use round-half-up on the exact value, not R's round()."
   ),
   file.path(article_dir, "data/SOURCE.txt")
@@ -606,15 +724,6 @@ page <- replace_once(
 )
 page <- replace_once(
   page,
-  "Sequels also draw more members at the median, [0-9,]+ against [0-9,]+\\.",
-  sprintf(
-    "Sequels also draw more members at the median, %s against %s.",
-    fmt_int(median(sequel_tv$members)),
-    fmt_int(median(other_tv$members))
-  )
-)
-page <- replace_once(
-  page,
   "Kids titles \\(median [0-9.]+, n = [0-9,]+\\) and music titles \\(median [0-9.]+, n = [0-9,]+\\) score lowest, which more likely reflects a mismatch between audience and content than weak production\\. Thriller \\([0-9.]+, n = [0-9,]+\\), Mystery \\([0-9.]+, n = [0-9,]+\\), and Psychological \\([0-9.]+, n = [0-9,]+\\) score highest\\.",
   sprintf(
     "Kids titles (median %s, n = %s) and music titles (median %s, n = %s) score lowest, which more likely reflects a mismatch between audience and content than weak production. Thriller (%s, n = %s), Mystery (%s, n = %s), and Psychological (%s, n = %s) score highest.",
@@ -626,14 +735,27 @@ page <- replace_once(
 if (grepl("0.389", page, fixed = TRUE)) stop("Page still contains 0.389")
 if (grepl("most anime", page, ignore.case = TRUE)) stop("Page must not say most anime is committee-financed")
 if (grepl("Steinberg, 2012; Mihara, 2018", page, fixed = TRUE)) stop("Mihara is still cited on the demand-test sentence")
-stopifnot(grepl("30 of the 43 high scorers with at least 1,000 ratings are sequels.", page, fixed = TRUE))
+stopifnot(grepl("Of the 4,240 scored TV titles, 867 are sequels.", page, fixed = TRUE))
+stopifnot(grepl("median score of 6.99, against 6.76 for the other 3,373 titles", page, fixed = TRUE))
+stopifnot(grepl("128 of 867", page, fixed = TRUE))
+stopifnot(grepl("218 of 3,373", page, fixed = TRUE))
+stopifnot(grepl("Leaving specials out, Kyoto Animation's median is 7.62 with an IQR of 0.99 (n = 67), against 7.51 and 0.92 for Bones (n = 94).", page, fixed = TRUE))
+stopifnot(grepl("62 of 1,012 original TV series (6.1%)", page, fixed = TRUE))
+stopifnot(grepl("only 3 of 283 light-novel series", page, fixed = TRUE))
+stopifnot(grepl("US availability checked on JustWatch, October 10, 2026.", page, fixed = TRUE))
+stopifnot(grepl("TMS, with Madhouse", page, fixed = TRUE))
+if (grepl("Sequels also draw more members", page, fixed = TRUE)) stop("Page still says sequels draw more members")
+if (grepl("draw larger audiences", page, fixed = TRUE)) stop("Page still says sequels draw larger audiences")
+if (grepl("1,084", page, fixed = TRUE)) stop("Page still has the old sequel count")
+if (grepl("not confirmed", page, ignore.case = TRUE)) stop("Page still has an unconfirmed streaming cell")
 stopifnot(grepl("(Creamer, 2015; Moore, 2017; Kyoto Animation training school)", page, fixed = TRUE))
 stopifnot(grepl("the tightest spread among the top-scoring studios (only 7th-tightest of all 20).", page, fixed = TRUE))
 stopifnot(grepl("On our reading, a published book also serves as a live test of demand before a committee commits money to animation.", page, fixed = TRUE))
 stopifnot(grepl("Hernández Hernández, 2018, §4.3; Mihara, 2018", page, fixed = TRUE))
 stopifnot(grepl("Each format wave lines up with a new distribution channel", page, fixed = TRUE))
 stopifnot(grepl("round-half-up", page, fixed = TRUE))
-stopifnot(grepl("more than a million fans", page, fixed = TRUE))
+stopifnot(grepl("Death Note", page, fixed = TRUE))
+stopifnot(grepl("Hanada Shounen-shi", page, fixed = TRUE))
 writeLines(page, md_path, useBytes = TRUE)
 
 # --- charts ---
@@ -652,7 +774,10 @@ sub_sequel <- sprintf(
   fmt_fixed(median(other_tv$score), 2)
 )
 title_reach <- "Score and reach move together (Spearman 0.74)"
-sub_reach <- "n = 13,518 scored titles. Red points are the 10-title editorial shortlist. Dashed line: catalog median 6.38."
+sub_reach <- sprintf(
+  "n = 13,518 scored titles. Red points are the %d-title editorial shortlist. Dashed line: catalog median 6.38.",
+  nrow(shortlist)
+)
 
 eras <- format_years %>%
   mutate(type = factor(type, levels = c("TV", "Movie", "OVA", "ONA", "Special", "Music"))) %>%

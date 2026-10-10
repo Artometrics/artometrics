@@ -2,11 +2,13 @@ Display rounding is round-half-up on the exact decimal: sign(x) * floor(abs(x) *
 The page tables, the sentences that quote those figures, and the chart data are written from this script. The page matches the script output under round-half-up.
 Spearman score vs members = 0.735265 (n = 13518), displayed 0.74.
 Pearson score vs log(members) = 0.716684, displayed 0.72.
-Non-sequel TV median members raw = 8012.5, round-half-up = 8,013.
-Sequel TV median members raw = 11429.5, round-half-up = 11,430.
+Sequel member medians are not published. The comparison changes direction depending on the rule.
+TV sequels 867 (median 6.99, 128 at 8.0+) vs others 3373 (median 6.76, 218 at 8.0+).
 DLE: 114 of 148 scored DLE titles with known duration (77.0%) are 5 minutes or shorter. The page keeps the 3-minute median caption.
 Bones IQR rank among the 20 studios is 7 (1 = tightest). OLM remains the tightest overall.
-Shortlist check: 30 of 43 high scorers with at least 1,000 ratings are sequels.
+Buried Canon: 12 of 43 titles with 1,000 ratings continue an earlier TV series (5 of them TV). Stand-alone TV/film shortlist: 11.
+Leaving specials out: Kyoto Animation n=67, median 7.62, IQR 0.985; Bones n=94, median 7.505, IQR 0.92.
+Original TV series above the light-novel member median: 62 of 1,012. Light-novel TV series below the original member median: 3 of 283.
 League table as published (round-half-up):
 # A tibble: 20 × 7
    studio                   n median q1    q3    iqr   share
