@@ -12,6 +12,8 @@ const RATES = [0.75, 1, 1.25, 1.5, 2] as const;
 type Props = {
   audioSrc: string | null | undefined;
   title?: string;
+  /** Known file length in seconds, shown before the player reports duration. */
+  runtimeSeconds?: number;
 };
 
 function formatTime(seconds: number) {
@@ -21,7 +23,7 @@ function formatTime(seconds: number) {
   return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
-export function ArticleNarrationPlayer({ audioSrc, title }: Props) {
+export function ArticleNarrationPlayer({ audioSrc, title, runtimeSeconds }: Props) {
   const uri = assetUrl(audioSrc);
   const player = useAudioPlayer(uri);
   const status = useAudioPlayerStatus(player);
@@ -44,7 +46,7 @@ export function ArticleNarrationPlayer({ audioSrc, title }: Props) {
 
   if (!uri) return null;
 
-  const duration = status.duration || 0;
+  const duration = status.duration || runtimeSeconds || 0;
   const current = status.currentTime || 0;
   const progress = duration > 0 ? Math.min(1, current / duration) : 0;
 

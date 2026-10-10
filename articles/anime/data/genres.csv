@@ -1,0 +1,41 @@
+genre,n,median_score
+Action,3187,6.8
+Adventure,2561,6.68
+Cars,111,6
+Comedy,5208,6.61
+Dementia,349,4.73
+Demons,331,6.78
+Drama,2214,6.9
+Ecchi,681,6.69
+Fantasy,2649,6.61
+Game,308,6.52
+Harem,309,6.99
+Historical,964,6.5649999999999995
+Horror,382,6.365
+Josei,86,7.195
+Kids,2158,5.86
+Magic,899,6.8
+Martial Arts,323,6.83
+Mecha,969,6.62
+Military,471,7.02
+Music,1510,5.44
+Mystery,605,7.27
+Parody,563,6.18
+Police,212,7.175
+Psychological,279,7.23
+Romance,1567,7.01
+Samurai,174,6.66
+School,1336,6.96
+Sci-Fi,2215,6.64
+Seinen,732,7.02
+Shoujo,624,6.865
+Shoujo Ai,67,6.96
+Shounen,1770,7.1
+Shounen Ai,77,6.98
+Slice of Life,1578,6.61
+Space,419,6.68
+Sports,617,6.7
+Super Power,550,6.855
+Supernatural,1163,7.04
+Thriller,102,7.494999999999999
+Vampire,124,7.0649999999999995

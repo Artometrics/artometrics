@@ -1,0 +1,16 @@
+Rounding: quantiles are type 7. Display rounding uses R's round(), applied to the raw quantile, not to an already-rounded quartile.
+Spearman score vs members = 0.735265 (n = 13518), displayed 0.74.
+Pearson score vs members = 0.389428, displayed 0.389 in the locked copy.
+Pearson score vs log(members) = 0.716684, displayed 0.72.
+Non-sequel TV median members raw = 8012.5. R round() = 8012. Locked copy displays 8,013.
+Sequel TV median members raw = 11429.5, R round() = 11430 (locked 11,430).
+DLE episode length: median 3.0 minutes on 148 scored titles with a parsed duration, of 153 scored titles. Share at or under 5 minutes = 114/148 = 77.0%. The locked draft's 78% figure does not reproduce; the page uses the verified 3-minute median instead.
+League cells where R round() differs from the analyst display table (page keeps the analyst/locked figures):
+# A tibble: 3 × 13
+  studio                 n_r median_score_r  q1_r  q3_r iqr_r share_r n_analyst
+  <chr>                <int>          <dbl> <dbl> <dbl> <dbl>   <dbl>     <dbl>
+1 Gonzo                  123           7.01  6.39  7.32  0.93     2.4       123
+2 Studio Pierrot         251           6.87  6.26  7.47  1.21     6         251
+3 Tatsunoko Production   158           6.53  6.14  7.01  0.86     3.8       158
+# ℹ 5 more variables: median_score_analyst <dbl>, q1_analyst <dbl>,
+#   q3_analyst <dbl>, iqr_analyst <dbl>, share_analyst <dbl>

@@ -34,8 +34,8 @@
   },
   "anime": {
     "slug": "anime",
-    "dataset": "/data/articles/anime/anime.csv",
-    "quarto": null,
+    "dataset": "/data/articles/anime/titles.csv",
+    "quarto": "/data/articles/anime/source.zip",
     "html": "/exports/anime.html",
     "pdf": "/exports/anime.pdf",
     "epub": "/exports/anime.epub",

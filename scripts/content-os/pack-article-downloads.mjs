@@ -90,6 +90,11 @@ for (const post of blog) {
   };
 }
 
+if (manifest.anime) {
+  manifest.anime.dataset = "/data/articles/anime/titles.csv";
+  manifest.anime.quarto = "/data/articles/anime/source.zip";
+}
+
 if (manifest.readmitted) {
   manifest.readmitted.dataset =
     manifest.readmitted.dataset ||
