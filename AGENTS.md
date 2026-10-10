@@ -159,6 +159,22 @@ Keyword briefs, style rules, draft scaffolds, and AEO live under `docs/content-o
 Style bible: `docs/content-os/STYLE_GUIDE.md`. Overview: `docs/content-os/README.md`.  
 Ops plan: `docs/MEDIA_COMPANY_PLAN.md`. Vision: `docs/MEDIA_EMPIRE_VISION.md`. Hand-off checklist: `docs/NEXT_STEPS.md`. Backend session: `docs/BACKEND_HOOKUP_SESSION.md`.
 
+## Cursor Cloud specific instructions
+
+The Expo web app is the development target for Cloud Agents. `npm ci` is enough to install it. Generated JSON in `src/generated/` is already committed; run `npm run content` after editing markdown under `src/content/`.
+
+On boot, the dev server listens at http://127.0.0.1:8081 (`npx expo start --web --port 8081`, with `EXPO_NO_TELEMETRY=1` and `BROWSER=none`). Leave `CI` unset so Metro keeps file watching. Check readiness with `curl -sf http://127.0.0.1:8081/status`.
+
+Public magazine pages render without membership secrets. Copy `.env.example` to `.env` when testing login, checkout, or Supabase-backed tools.
+
+Useful checks against the running server:
+
+- `npm run test:unit`
+- `PREVIEW_URL=http://127.0.0.1:8081 npm run test:smoke`
+- `npm run build` (static web export to `dist/`)
+
+R, Quarto, pandoc, and the Python media packs are a separate editorial toolchain. Run `npm run setup:pipeline` when a task needs chart rendering or print packs. `npm run doctor` lists what is present.
+
 ## Guardrails for AI / contributors
 
 - Prefer **minimal diffs** and `@/` imports from the project root.
