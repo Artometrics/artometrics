@@ -57,15 +57,31 @@ PALE <- "#B5B5B5"
 GRID <- "#E6E6E6"
 BASELINE <- 6.38
 
-title_family <- "sans"
-body_family <- "sans"
-if (requireNamespace("showtext", quietly = TRUE) && requireNamespace("sysfonts", quietly = TRUE)) {
-  sysfonts::font_add("Anton", file.path(repo_root, "assets/fonts/Anton-Regular.ttf"))
-  sysfonts::font_add("DM Sans", file.path(repo_root, "assets/fonts/DMSans.ttf"))
-  showtext::showtext_auto(enable = TRUE)
-  showtext::showtext_opts(dpi = 160)
-  title_family <- "Anton"
-  body_family <- "DM Sans"
+user_lib <- Sys.getenv("R_LIBS_USER")
+if (nzchar(user_lib)) {
+  dir.create(user_lib, recursive = TRUE, showWarnings = FALSE)
+  .libPaths(c(user_lib, .libPaths()))
+}
+if (!requireNamespace("showtext", quietly = TRUE) || !requireNamespace("sysfonts", quietly = TRUE)) {
+  stop("showtext and sysfonts are required. Install them so titles use Anton and labels use DM Sans.")
+}
+library(showtext)
+sysfonts::font_add("Anton", file.path(repo_root, "assets/fonts/Anton-Regular.ttf"))
+sysfonts::font_add("DM Sans", file.path(repo_root, "assets/fonts/DMSans.ttf"))
+showtext::showtext_auto(enable = TRUE)
+showtext::showtext_opts(dpi = 160)
+title_family <- "Anton"
+body_family <- "DM Sans"
+
+# Round half up on the exact decimal. Never R's round(), which uses banker's rounding.
+round_half_up <- function(x, d) {
+  sign(x) * floor(abs(x) * 10^d + 0.5 + 1e-9) / 10^d
+}
+fmt_fixed <- function(x, d) {
+  trimws(format(round_half_up(x, d), nsmall = d, scientific = FALSE, trim = TRUE))
+}
+fmt_int <- function(x) {
+  trimws(format(round_half_up(x, 0), big.mark = ",", scientific = FALSE, trim = TRUE))
 }
 
 theme_brief <- function() {
@@ -97,7 +113,8 @@ write_plotly <- function(name, data, layout) {
         paper_bgcolor = "#FFFFFF",
         plot_bgcolor = "#FFFFFF",
         font = list(family = "DM Sans, Helvetica, Arial, sans-serif", color = INK, size = 13),
-        margin = list(t = 64, r = 24, b = 48, l = 64)
+        margin = list(t = 92, r = 28, b = 56, l = 72),
+        title = list(x = 0, xanchor = "left", font = list(family = "Anton, Impact, sans-serif", size = 18, color = "#111111"))
       ),
       layout
     ),
@@ -109,7 +126,31 @@ write_plotly <- function(name, data, layout) {
       staticPlot = FALSE
     )
   )
-  write_json(payload, file.path(charts_dir, paste0(name, ".plotly.json")), auto_unbox = TRUE, null = "null")
+  write_json(
+    payload,
+    file.path(charts_dir, paste0(name, ".plotly.json")),
+    auto_unbox = TRUE,
+    null = "null",
+    digits = NA
+  )
+}
+
+chart_title <- function(title, subtitle = NULL) {
+  text <- paste0("<span style=\"font-family:Anton,Impact,sans-serif;\">", title, "</span>")
+  if (!is.null(subtitle) && nzchar(subtitle)) {
+    text <- paste0(
+      text,
+      "<br><span style=\"font-family:'DM Sans',Helvetica,Arial,sans-serif;font-size:12px;color:#525252;\">",
+      subtitle,
+      "</span>"
+    )
+  }
+  list(
+    text = text,
+    x = 0,
+    xanchor = "left",
+    font = list(family = "Anton, Impact, sans-serif", size = 18, color = "#111111")
+  )
 }
 
 save_plot <- function(plot, name, width, height) {
@@ -233,9 +274,11 @@ genre_tbl <- genre_rows %>%
 stopifnot(genre_tbl$n[genre_tbl$genre == "Thriller"] == 102)
 stopifnot(genre_tbl$n[genre_tbl$genre == "Kids"] == 2158)
 stopifnot(genre_tbl$n[genre_tbl$genre == "Music"] == 1510)
-stopifnot(round(genre_tbl$median_score[genre_tbl$genre == "Thriller"], 2) == 7.49)
-stopifnot(round(genre_tbl$median_score[genre_tbl$genre == "Kids"], 2) == 5.86)
-stopifnot(round(genre_tbl$median_score[genre_tbl$genre == "Music"], 2) == 5.44)
+stopifnot(fmt_fixed(genre_tbl$median_score[genre_tbl$genre == "Thriller"], 2) == "7.50")
+stopifnot(fmt_fixed(genre_tbl$median_score[genre_tbl$genre == "Mystery"], 2) == "7.27")
+stopifnot(fmt_fixed(genre_tbl$median_score[genre_tbl$genre == "Psychological"], 2) == "7.23")
+stopifnot(fmt_fixed(genre_tbl$median_score[genre_tbl$genre == "Kids"], 2) == "5.86")
+stopifnot(fmt_fixed(genre_tbl$median_score[genre_tbl$genre == "Music"], 2) == "5.44")
 
 sequel_tv <- tv_scored %>% filter(is_sequel)
 other_tv <- tv_scored %>% filter(!is_sequel)
@@ -289,92 +332,113 @@ stopifnot(duration_median("DLE") == 3)
 stopifnot(duration_median("Bones") == 24)
 stopifnot(duration_median("OLM") == 24)
 
-# Analyst display table, used only to record rounding differences. The page
-# keeps the locked figures. This script does not rewrite them.
-analyst <- tribble(
-  ~studio, ~n, ~median_score, ~q1, ~q3, ~iqr, ~share,
-  "Bones", 115, 7.46, 6.95, 7.90, 0.95, 23.5,
-  "Kyoto Animation", 110, 7.43, 6.67, 7.89, 1.21, 20.9,
-  "A-1 Pictures", 190, 7.30, 6.70, 7.73, 1.03, 14.7,
-  "Shaft", 125, 7.25, 6.65, 7.86, 1.21, 16.8,
-  "Studio Deen", 264, 7.20, 6.53, 7.62, 1.10, 8.3,
-  "Production I.G", 297, 7.16, 6.46, 7.71, 1.25, 13.5,
-  "Madhouse", 340, 7.03, 6.46, 7.61, 1.15, 15.9,
-  "Gonzo", 123, 7.01, 6.40, 7.32, 0.93, 2.4,
-  "J.C.Staff", 322, 7.01, 6.25, 7.42, 1.17, 7.5,
-  "Sunrise", 457, 7.00, 6.43, 7.46, 1.03, 6.8,
-  "TMS Entertainment", 275, 6.99, 6.28, 7.53, 1.25, 10.2,
-  "Xebec", 146, 6.98, 6.57, 7.37, 0.80, 2.1,
-  "Studio Pierrot", 251, 6.87, 6.26, 7.48, 1.21, 6.0,
-  "AIC", 111, 6.82, 6.30, 7.22, 0.92, 0.9,
-  "Toei Animation", 737, 6.68, 6.16, 7.23, 1.07, 2.8,
-  "Nippon Animation", 206, 6.67, 6.31, 7.12, 0.81, 3.4,
-  "OLM", 209, 6.64, 6.36, 7.06, 0.70, 0.5,
-  "Shin-Ei Animation", 156, 6.63, 6.08, 7.25, 1.17, 0.6,
-  "Tatsunoko Production", 158, 6.52, 6.14, 7.00, 0.86, 3.8,
-  "DLE", 153, 5.40, 4.96, 5.94, 0.98, 0.7
-)
+# Display figures use round-half-up. The page tables and the sentences that
+# quote them are written from this output.
+pick <- function(frame, studio, col) frame[[col]][frame$studio == studio]
 
-shown <- league %>%
+league_disp <- league %>%
   transmute(
     studio,
-    n,
-    median_score = round(median_score, 2),
-    q1 = round(q1, 2),
-    q3 = round(q3, 2),
-    iqr = round(iqr, 2),
-    share = round(100 * share_ge_8, 1)
-  )
-cmp <- shown %>% inner_join(analyst, by = "studio", suffix = c("_r", "_analyst"))
-diffs <- cmp %>%
-  filter(
-    n_r != n_analyst |
-      median_score_r != median_score_analyst |
-      q1_r != q1_analyst |
-      q3_r != q3_analyst |
-      iqr_r != iqr_analyst |
-      share_r != share_analyst
+    n = as.integer(n),
+    median = round_half_up(median_score, 2),
+    q1 = round_half_up(q1, 2),
+    q3 = round_half_up(q3, 2),
+    iqr = round_half_up(iqr, 2),
+    share = round_half_up(100 * share_ge_8, 1),
+    focal = studio %in% c("Bones", "Kyoto Animation", "OLM")
   )
 
-notes <- c(
-  "Rounding: quantiles are type 7. Display rounding uses R's round(), applied to the raw quantile, not to an already-rounded quartile.",
-  sprintf("Spearman score vs members = %.6f (n = %d), displayed 0.74.", spearman, nrow(reach)),
-  sprintf("Pearson score vs members = %.6f, displayed 0.389 in the locked copy.", pearson),
-  sprintf("Pearson score vs log(members) = %.6f, displayed 0.72.", pearson_log),
-  sprintf(
-    "Non-sequel TV median members raw = %.1f. R round() = %.0f. Locked copy displays 8,013.",
-    median(other_tv$members),
-    round(median(other_tv$members))
-  ),
-  sprintf(
-    "Sequel TV median members raw = %.1f, R round() = %.0f (locked 11,430).",
-    median(sequel_tv$members),
-    round(median(sequel_tv$members))
+stopifnot(fmt_fixed(pick(league, "Kyoto Animation", "iqr"), 2) == "1.22")
+stopifnot(fmt_fixed(pick(league, "A-1 Pictures", "median_score"), 2) == "7.31")
+stopifnot(fmt_fixed(pick(league, "Xebec", "median_score"), 2) == "6.99")
+stopifnot(fmt_fixed(pick(league, "Tatsunoko Production", "median_score"), 2) == "6.53")
+stopifnot(fmt_fixed(pick(league, "Madhouse", "q1"), 2) == "6.47")
+stopifnot(fmt_fixed(pick(league, "Studio Pierrot", "q1"), 2) == "6.27")
+stopifnot(fmt_fixed(pick(league, "Studio Deen", "q3"), 2) == "7.63")
+stopifnot(fmt_fixed(pick(league, "Gonzo", "q3"), 2) == "7.33")
+stopifnot(fmt_fixed(pick(league, "Tatsunoko Production", "q3"), 2) == "7.01")
+stopifnot(fmt_fixed(pick(league, "TMS Entertainment", "iqr"), 2) == "1.26")
+stopifnot(fmt_fixed(pick(league, "AIC", "iqr"), 2) == "0.93")
+stopifnot(fmt_int(median(other_tv$members)) == "8,013")
+stopifnot(fmt_int(median(sequel_tv$members)) == "11,430")
+stopifnot(league$iqr_rank[league$studio == "Bones"] == 7)
+stopifnot(sum(buried_43$is_sequel) == 30)
+stopifnot(nrow(buried_43) == 43)
+
+million <- titles %>% filter(!is.na(members), members >= 1000000)
+stopifnot(nrow(million) == 13)
+top_title <- titles %>% slice_max(members, n = 1, with_ties = FALSE)
+stopifnot(top_title$members == 1610561)
+stopifnot(any(grepl("Death Note", c(top_title$name, top_title$title_english))))
+
+source_disp <- source_tbl %>%
+  mutate(
+    source = as.character(source),
+    n_lab = fmt_int(n),
+    median_lab = fmt_fixed(median_score, 2),
+    members_lab = fmt_int(median_members),
+    share_lab = paste0(fmt_fixed(100 * share_ge_8, 1), "%"),
+    members_d = round_half_up(median_members, 0),
+    share_d = round_half_up(100 * share_ge_8, 1)
   )
-)
+stopifnot(source_disp$members_lab[source_disp$source == "Light novel"] == "153,184")
+stopifnot(source_disp$members_lab[source_disp$source == "Manga"] == "37,500")
+stopifnot(source_disp$members_lab[source_disp$source == "Original"] == "4,738")
+stopifnot(source_disp$share_lab[source_disp$source == "Manga"] == "17.0%")
+stopifnot(source_disp$share_lab[source_disp$source == "Game"] == "0.5%")
+
 dle_known <- studio_rows %>%
   filter(studio == "DLE") %>%
   mutate(minutes = parse_minutes(duration)) %>%
   filter(!is.na(minutes))
-notes <- c(
-  notes,
-  sprintf(
-    "DLE episode length: median %s minutes on %d scored titles with a parsed duration, of %d scored titles. Share at or under 5 minutes = %d/%d = %.1f%%. The locked draft's 78%% figure does not reproduce; the page uses the verified 3-minute median instead.",
-    format(median(dle_known$minutes), nsmall = 1),
-    nrow(dle_known),
-    league$n[league$studio == "DLE"],
-    sum(dle_known$minutes <= 5),
-    nrow(dle_known),
-    100 * mean(dle_known$minutes <= 5)
-  )
-)
-if (nrow(diffs)) {
-  notes <- c(notes, "League cells where R round() differs from the analyst display table (page keeps the analyst/locked figures):")
-  notes <- c(notes, capture.output(print(diffs, n = 30)))
-} else {
-  notes <- c(notes, "League display table matches R round() on n, median, quartiles, IQR, and share.")
-}
+dle_short <- sum(dle_known$minutes <= 5)
+dle_known_n <- nrow(dle_known)
+stopifnot(dle_short == 114)
+stopifnot(dle_known_n == 148)
+stopifnot(fmt_fixed(100 * dle_short / dle_known_n, 1) == "77.0")
 
+gmed <- function(name) fmt_fixed(genre_tbl$median_score[genre_tbl$genre == name], 2)
+gn <- function(name) fmt_int(genre_tbl$n[genre_tbl$genre == name])
+
+notes <- c(
+  "Display rounding is round-half-up on the exact decimal: sign(x) * floor(abs(x) * 10^d + 0.5 + 1e-9) / 10^d. This is not R's round(). Quantiles are type 7 and are rounded only at display, from the raw quantile.",
+  "The page tables, the sentences that quote those figures, and the chart data are written from this script. The page matches the script output under round-half-up.",
+  sprintf("Spearman score vs members = %.6f (n = %d), displayed 0.74.", spearman, nrow(reach)),
+  sprintf("Pearson score vs log(members) = %.6f, displayed 0.72.", pearson_log),
+  sprintf(
+    "Non-sequel TV median members raw = %.1f, round-half-up = %s.",
+    median(other_tv$members),
+    fmt_int(median(other_tv$members))
+  ),
+  sprintf(
+    "Sequel TV median members raw = %.1f, round-half-up = %s.",
+    median(sequel_tv$members),
+    fmt_int(median(sequel_tv$members))
+  ),
+  sprintf(
+    "DLE: %d of %d scored DLE titles with known duration (%.1f%%) are 5 minutes or shorter. The page keeps the 3-minute median caption.",
+    dle_short,
+    dle_known_n,
+    100 * dle_short / dle_known_n
+  ),
+  sprintf(
+    "Bones IQR rank among the 20 studios is %d (1 = tightest). OLM remains the tightest overall.",
+    league$iqr_rank[league$studio == "Bones"]
+  ),
+  sprintf("Shortlist check: %d of %d high scorers with at least 1,000 ratings are sequels.", sum(buried_43$is_sequel), nrow(buried_43)),
+  "League table as published (round-half-up):",
+  capture.output(print(
+    league_disp %>% transmute(
+      studio, n,
+      median = fmt_fixed(median, 2),
+      q1 = fmt_fixed(q1, 2),
+      q3 = fmt_fixed(q3, 2),
+      iqr = fmt_fixed(iqr, 2),
+      share = paste0(fmt_fixed(share, 1), "%")
+    ),
+    n = 30
+  ))
+)
 writeLines(notes, file.path(article_dir, "data/discrepancies.txt"))
 writeLines(
   c(
@@ -385,7 +449,7 @@ writeLines(
     "snapshot: Kaggle MyAnimeList scrape by Tam Nguyen, early 2019, published by TidyTuesday on 2019-04-23.",
     "dedup: title-level stats are one row per animeID; studio stats are one row per animeID x studio; genre stats are one row per animeID x genre.",
     "sequel: related lists a Prequel, Parent story, or Full story.",
-    "quantiles: type 7. Correlations: Spearman on score and members; Pearson reported only as the raw and log comparisons in the text."
+    "quantiles: type 7. Displayed figures use round-half-up on the exact value, not R's round()."
   ),
   file.path(article_dir, "data/SOURCE.txt")
 )
@@ -415,7 +479,118 @@ readr::write_csv(
 )
 readr::write_csv(format_years, file.path(article_dir, "data/format_years.csv"))
 
+splice_marker <- function(text, name, inner) {
+  start <- paste0("<!-- gen:", name, " -->")
+  end <- paste0("<!-- /gen:", name, " -->")
+  i <- regexpr(start, text, fixed = TRUE)
+  j <- regexpr(end, text, fixed = TRUE)
+  if (i < 1 || j < 1 || j < i) stop("Page is missing generation markers for ", name)
+  paste0(
+    substr(text, 1, i + nchar(start) - 1),
+    "\n", inner, "\n",
+    substr(text, j, nchar(text))
+  )
+}
+replace_once <- function(text, pattern, repl) {
+  hit <- gregexpr(pattern, text, perl = TRUE)[[1]]
+  if (hit[[1]] < 1 || length(hit) != 1) stop("Expected exactly one match for: ", pattern)
+  sub(pattern, repl, text, perl = TRUE)
+}
+
+source_rows <- paste(vapply(seq_len(nrow(source_disp)), function(i) {
+  sprintf(
+    "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>",
+    source_disp$source[[i]],
+    source_disp$n_lab[[i]],
+    source_disp$median_lab[[i]],
+    source_disp$members_lab[[i]],
+    source_disp$share_lab[[i]]
+  )
+}, character(1)), collapse = "\n")
+
+studio_rows_html <- paste(vapply(seq_len(nrow(league_disp)), function(i) {
+  sprintf(
+    "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s\u2013%s</td><td>%s</td><td>%s</td></tr>",
+    league_disp$studio[[i]],
+    fmt_int(league_disp$n[[i]]),
+    fmt_fixed(league_disp$median[[i]], 2),
+    fmt_fixed(league_disp$q1[[i]], 2),
+    fmt_fixed(league_disp$q3[[i]], 2),
+    fmt_fixed(league_disp$iqr[[i]], 2),
+    paste0(fmt_fixed(league_disp$share[[i]], 1), "%")
+  )
+}, character(1)), collapse = "\n")
+
+studio_caption <- sprintf(
+  paste0(
+    "Across the 20 largest studios, medians run from %s to %s. ",
+    "Bones has the tightest spread among the top scorers, and OLM is the most consistent overall, at a lower level. ",
+    "DLE (n = %s) mostly makes short-form titles, with a median episode of 3 minutes, so its median score isn't directly comparable to studios making 24-minute episodes."
+  ),
+  fmt_fixed(pick(league, "Bones", "median_score"), 2),
+  fmt_fixed(pick(league, "DLE", "median_score"), 2),
+  fmt_int(pick(league, "DLE", "n"))
+)
+
+md_path <- file.path(repo_root, "src/content/blog/anime.md")
+page <- paste(readLines(md_path, encoding = "UTF-8", warn = FALSE), collapse = "\n")
+page <- splice_marker(page, "source-table", source_rows)
+page <- splice_marker(page, "studio-table", studio_rows_html)
+page <- splice_marker(page, "studio-caption", studio_caption)
+page <- replace_once(
+  page,
+  "Kyoto Animation's [0-9,]+ titles have a median of [0-9.]+ and an IQR of [0-9.]+\\.",
+  sprintf(
+    "Kyoto Animation's %s titles have a median of %s and an IQR of %s.",
+    fmt_int(pick(league, "Kyoto Animation", "n")),
+    fmt_fixed(pick(league, "Kyoto Animation", "median_score"), 2),
+    fmt_fixed(pick(league, "Kyoto Animation", "iqr"), 2)
+  )
+)
+page <- replace_once(
+  page,
+  "Sequels also draw more members at the median, [0-9,]+ against [0-9,]+\\.",
+  sprintf(
+    "Sequels also draw more members at the median, %s against %s.",
+    fmt_int(median(sequel_tv$members)),
+    fmt_int(median(other_tv$members))
+  )
+)
+page <- replace_once(
+  page,
+  "Kids titles \\(median [0-9.]+, n = [0-9,]+\\) and music titles \\(median [0-9.]+, n = [0-9,]+\\) score lowest, which more likely reflects a mismatch between audience and content than weak production\\. Thriller \\([0-9.]+, n = [0-9,]+\\), Mystery \\([0-9.]+, n = [0-9,]+\\), and Psychological \\([0-9.]+, n = [0-9,]+\\) score highest\\.",
+  sprintf(
+    "Kids titles (median %s, n = %s) and music titles (median %s, n = %s) score lowest, which more likely reflects a mismatch between audience and content than weak production. Thriller (%s, n = %s), Mystery (%s, n = %s), and Psychological (%s, n = %s) score highest.",
+    gmed("Kids"), gn("Kids"), gmed("Music"), gn("Music"),
+    gmed("Thriller"), gn("Thriller"), gmed("Mystery"), gn("Mystery"),
+    gmed("Psychological"), gn("Psychological")
+  )
+)
+if (grepl("0.389", page, fixed = TRUE)) stop("Page still contains 0.389")
+stopifnot(grepl("30 of the 43 high scorers with at least 1,000 ratings are sequels.", page, fixed = TRUE))
+stopifnot(grepl("Each format wave lines up with a new distribution channel", page, fixed = TRUE))
+stopifnot(grepl("round-half-up", page, fixed = TRUE))
+stopifnot(grepl("more than a million fans", page, fixed = TRUE))
+writeLines(page, md_path, useBytes = TRUE)
+
 # --- charts ---
+title_eras <- "Each wave lines up with a new channel"
+sub_eras <- "Titles by first year, through 2018. OVA peaks at 115 in 1993. ONA reaches 216 in 2018. Panels do not share a vertical scale."
+title_score <- "Light novels set the audience floor. Manga produces more 8.0s."
+sub_score <- "Scored television only (n = 4,240 of 4,260 TV titles). Left axis is a log scale."
+title_studios <- "Bones has the tightest spread among the top-scoring studios"
+sub_studios <- "Studios with at least 100 scored titles, sorted by median. Bars are the middle half of scores. Dashed line: catalog median 6.38."
+title_sequel <- "TV sequels score higher, consistent with only well-received shows getting one"
+sub_sequel <- sprintf(
+  "Sequels n = %s, median %s. Others n = %s, median %s. The pattern is consistent with selection, not an effect of being a sequel.",
+  fmt_int(nrow(sequel_tv)),
+  fmt_fixed(median(sequel_tv$score), 2),
+  fmt_int(nrow(other_tv)),
+  fmt_fixed(median(other_tv$score), 2)
+)
+title_reach <- "Score and reach move together (Spearman 0.74)"
+sub_reach <- "n = 13,518 scored titles. Red points are the 10-title editorial shortlist. Dashed line: catalog median 6.38."
+
 eras <- format_years %>%
   mutate(type = factor(type, levels = c("TV", "Movie", "OVA", "ONA", "Special", "Music"))) %>%
   complete(year = 1960:2018, type, fill = list(n = 0)) %>%
@@ -426,12 +601,7 @@ p_eras <- ggplot(eras, aes(year, n)) +
   geom_col(data = filter(eras, type == "OVA", year == 1993), fill = RED, width = 1) +
   geom_col(data = filter(eras, type == "ONA", year == 2018), fill = RED, width = 1) +
   facet_wrap(~type, scales = "free_y", ncol = 3) +
-  labs(
-    title = "Each wave lines up with a new channel",
-    subtitle = "Titles by first year, through 2018. OVA peaks at 115 in 1993. ONA reaches 216 in 2018. Panels do not share a vertical scale.",
-    x = NULL, y = "Titles",
-    caption = caption_src
-  ) +
+  labs(title = title_eras, subtitle = sub_eras, x = NULL, y = "Titles", caption = caption_src) +
   theme_brief()
 save_plot(p_eras, "chart_eras", 11.2, 6.8)
 write_plotly(
@@ -441,20 +611,22 @@ write_plotly(
     x = eras$year,
     y = eras$n,
     marker = list(color = "#4A4A4A"),
+    hovertemplate = "%{x}<br>%{y} titles<extra></extra>",
     transforms = list(list(type = "groupby", groups = eras$type))
   )),
-  list(title = list(text = "Releases by year and format, through 2018"), barmode = "group")
+  list(title = chart_title(title_eras, sub_eras), barmode = "group")
 )
 
-scorecard <- source_tbl %>% mutate(source = as.character(source))
-p1 <- ggplot(scorecard, aes(source, median_members, fill = source == "Light novel")) +
+scorecard <- source_disp
+ln_red <- scorecard$source == "Light novel"
+p1 <- ggplot(scorecard, aes(source, members_d, fill = ln_red)) +
   geom_col(width = 0.72) +
   scale_y_log10(labels = scales::comma) +
   scale_fill_manual(values = c(`TRUE` = RED, `FALSE` = "#4A4A4A"), guide = "none") +
   labs(x = NULL, y = "Median members") +
   theme_brief() +
   theme(axis.text.x = element_text(size = 8))
-p2 <- ggplot(scorecard, aes(source, 100 * share_ge_8, fill = source == "Manga")) +
+p2 <- ggplot(scorecard, aes(source, share_d, fill = ln_red)) +
   geom_col(width = 0.72) +
   scale_fill_manual(values = c(`TRUE` = RED, `FALSE` = "#4A4A4A"), guide = "none") +
   labs(x = NULL, y = "Share scoring 8.0 or higher (%)") +
@@ -470,12 +642,12 @@ grid::pushViewport(grid::viewport(layout = grid::grid.layout(
   heights = grid::unit(c(0.9, 4.6, 0.7), "in")
 )))
 grid::grid.text(
-  "Light novels set the audience floor. Manga produces more 8.0s.",
+  title_score,
   x = 0.02, y = 0.65, just = c("left", "center"),
   gp = grid::gpar(fontfamily = title_family, fontsize = 15)
 )
 grid::grid.text(
-  "Scored television only (n = 4,240 of 4,260 TV titles). Left axis is a log scale.",
+  sub_score,
   x = 0.02, y = 0.15, just = c("left", "center"),
   gp = grid::gpar(fontfamily = body_family, fontsize = 9, col = "#525252")
 )
@@ -490,11 +662,27 @@ dev.off()
 write_plotly(
   "chart_scorecard",
   list(
-    list(type = "bar", name = "Median members", x = scorecard$source, y = scorecard$median_members, marker = list(color = ifelse(scorecard$source == "Light novel", RED, "#4A4A4A"))),
-    list(type = "bar", name = "Share at or above 8.0", x = scorecard$source, y = round(100 * scorecard$share_ge_8, 1), xaxis = "x2", yaxis = "y2", marker = list(color = ifelse(scorecard$source == "Manga", RED, "#4A4A4A")))
+    list(
+      type = "bar",
+      name = "Median members",
+      x = scorecard$source,
+      y = scorecard$members_d,
+      marker = list(color = ifelse(ln_red, RED, "#4A4A4A")),
+      hovertemplate = "%{x}<br>%{y:,.0f} members<extra></extra>"
+    ),
+    list(
+      type = "bar",
+      name = "Share at or above 8.0",
+      x = scorecard$source,
+      y = scorecard$share_d,
+      xaxis = "x2",
+      yaxis = "y2",
+      marker = list(color = ifelse(ln_red, RED, "#4A4A4A")),
+      hovertemplate = "%{x}<br>%{y:.1f}% scoring 8.0 or higher<extra></extra>"
+    )
   ),
   list(
-    title = list(text = "TV source: median members and share at 8.0"),
+    title = chart_title(title_score, sub_score),
     xaxis = list(domain = c(0, 0.45)),
     yaxis = list(type = "log", title = list(text = "Median members")),
     xaxis2 = list(domain = c(0.55, 1), anchor = "y2"),
@@ -502,57 +690,82 @@ write_plotly(
   )
 )
 
-league_plot <- league %>%
+league_plot <- league_disp %>%
   mutate(
-    studio_label = paste0(studio, "   n=", n),
-    studio_label = factor(studio_label, levels = rev(studio_label)),
-    focal = studio %in% c("Bones", "Kyoto Animation", "OLM")
+    studio_label = paste0(studio, "  n=", n),
+    studio_label = factor(studio_label, levels = rev(studio_label))
   )
-p_league <- ggplot(league_plot, aes(median_score, studio_label)) +
+p_league <- ggplot(league_plot, aes(median, studio_label)) +
   geom_errorbarh(aes(xmin = q1, xmax = q3, color = focal), height = 0, linewidth = 0.8) +
   geom_point(aes(size = n, color = focal)) +
   geom_vline(xintercept = BASELINE, linetype = "dashed", color = GRAY, linewidth = 0.4) +
   scale_color_manual(values = c(`TRUE` = RED, `FALSE` = "#4A4A4A"), guide = "none") +
   scale_size_area(max_size = 8, guide = "none") +
   labs(
-    title = "Bones has the tightest spread among the top-scoring studios",
-    subtitle = "Studios with at least 100 scored titles, sorted by median. Bars are the middle half of scores. Dashed line: catalog median 6.38.",
+    title = title_studios,
+    subtitle = sub_studios,
     x = "Median score", y = NULL,
-    caption = paste0(caption_src, " DLE (n = 153) mostly makes short-form titles, with a median episode of 3 minutes, so its median score isn't directly comparable to studios making 24-minute episodes.")
+    caption = paste0(
+      caption_src, "\n",
+      "DLE (n = 153) mostly makes short-form titles, with a median episode of 3 minutes,\n",
+      "so its median score isn't directly comparable to studios making 24-minute episodes."
+    )
   ) +
-  theme_brief()
-save_plot(p_league, "chart_studios", 11.2, 8.4)
+  theme_brief() +
+  theme(
+    plot.caption = element_text(family = body_family, color = "#525252", hjust = 0, size = 8, lineheight = 1.2),
+    plot.margin = margin(12, 18, 28, 12)
+  )
+save_plot(p_league, "chart_studios", 11.2, 9.0)
 write_plotly(
   "chart_studios",
   list(list(
     type = "scatter",
     mode = "markers",
-    x = league$median_score,
-    y = league$studio,
+    x = league_disp$median,
+    y = as.character(league_plot$studio_label),
+    customdata = unname(as.matrix(transmute(league_disp, q1, q3, iqr))),
     marker = list(
-      size = pmax(8, league$n / 40),
-      color = ifelse(league$studio %in% c("Bones", "Kyoto Animation", "OLM"), RED, "#4A4A4A")
+      size = pmax(8, league_disp$n / 40),
+      color = ifelse(league_disp$focal, RED, "#4A4A4A")
     ),
     error_x = list(
       type = "data",
-      array = league$q3 - league$median_score,
-      arrayminus = league$median_score - league$q1,
-      color = "#4A4A4A"
+      array = league_disp$q3 - league_disp$median,
+      arrayminus = league_disp$median - league_disp$q1,
+      color = ifelse(league_disp$focal, RED, "#4A4A4A"),
+      thickness = 1.4
+    ),
+    hovertemplate = paste0(
+      "%{y}<br>Median %{x:.2f}",
+      "<br>Middle half %{customdata[0]:.2f}\u2013%{customdata[1]:.2f}",
+      "<br>IQR %{customdata[2]:.2f}<extra></extra>"
     )
   )),
   list(
-    title = list(text = "Studio median and IQR, n at least 100"),
-    xaxis = list(title = list(text = "Median score")),
-    shapes = list(list(type = "line", x0 = BASELINE, x1 = BASELINE, y0 = 0, y1 = 1, yref = "paper", line = list(dash = "dash", color = GRAY)))
+    title = chart_title(title_studios, sub_studios),
+    margin = list(l = 168),
+    xaxis = list(title = list(text = "Median score"), tickformat = ".2f"),
+    yaxis = list(autorange = "reversed", automargin = TRUE),
+    shapes = list(list(
+      type = "line", x0 = BASELINE, x1 = BASELINE, y0 = 0, y1 = 1, yref = "paper",
+      line = list(dash = "dash", color = GRAY)
+    ))
   )
 )
 
 seq_long <- bind_rows(
-  sequel_tv %>% transmute(score, group = "Sequel"),
-  other_tv %>% transmute(score, group = "Not a sequel")
+  sequel_tv %>% transmute(score = round_half_up(score, 2), group = "Sequel"),
+  other_tv %>% transmute(score = round_half_up(score, 2), group = "Not a sequel")
 ) %>%
   mutate(group = factor(group, levels = c("Not a sequel", "Sequel")))
-meds <- seq_long %>% group_by(group) %>% summarise(median_score = median(score), n = n(), .groups = "drop")
+meds <- tibble(
+  group = factor(c("Not a sequel", "Sequel"), levels = c("Not a sequel", "Sequel")),
+  median_score = c(
+    round_half_up(median(other_tv$score), 2),
+    round_half_up(median(sequel_tv$score), 2)
+  )
+)
 p_seq <- ggplot(seq_long, aes(score, fill = group)) +
   geom_histogram(bins = 28, position = "identity", alpha = 0.85, color = NA) +
   geom_vline(data = meds, aes(xintercept = median_score, color = group), linetype = "dashed", linewidth = 0.5) +
@@ -560,14 +773,8 @@ p_seq <- ggplot(seq_long, aes(score, fill = group)) +
   scale_fill_manual(values = c("Not a sequel" = "#8A8A8A", "Sequel" = RED)) +
   scale_color_manual(values = c("Not a sequel" = "#4A4A4A", "Sequel" = RED), guide = "none") +
   labs(
-    title = "TV sequels score higher because only shows that already did well get one",
-    subtitle = sprintf(
-      "Sequels n = %s, median %.2f. Others n = %s, median %.2f. This is selection, not an effect of making a sequel. Solid gray line: catalog median.",
-      format(nrow(sequel_tv), big.mark = ","),
-      median(sequel_tv$score),
-      format(nrow(other_tv), big.mark = ","),
-      median(other_tv$score)
-    ),
+    title = title_sequel,
+    subtitle = sub_sequel,
     x = "Score", y = "Titles", fill = NULL,
     caption = caption_src
   ) +
@@ -576,40 +783,93 @@ save_plot(p_seq, "chart_sequel", 11.2, 6.2)
 write_plotly(
   "chart_sequel",
   list(
-    list(type = "histogram", name = "Not a sequel", x = other_tv$score, marker = list(color = "#8A8A8A"), opacity = 0.85),
-    list(type = "histogram", name = "Sequel", x = sequel_tv$score, marker = list(color = RED), opacity = 0.75)
+    list(
+      type = "histogram", name = "Not a sequel",
+      x = round_half_up(other_tv$score, 2),
+      marker = list(color = "#8A8A8A"), opacity = 0.85,
+      hovertemplate = "Score %{x:.2f}<br>Titles %{y}<extra></extra>"
+    ),
+    list(
+      type = "histogram", name = "Sequel",
+      x = round_half_up(sequel_tv$score, 2),
+      marker = list(color = RED), opacity = 0.75,
+      hovertemplate = "Score %{x:.2f}<br>Titles %{y}<extra></extra>"
+    )
   ),
-  list(barmode = "overlay", title = list(text = "TV sequel and non-sequel scores"), xaxis = list(title = list(text = "Score")))
+  list(
+    barmode = "overlay",
+    title = chart_title(title_sequel, sub_sequel),
+    xaxis = list(title = list(text = "Score"), tickformat = ".2f")
+  )
 )
 
 short_ids <- shortlist$animeID
-reach_plot <- reach %>% mutate(on_shortlist = animeID %in% short_ids)
-p_reach <- ggplot(reach_plot, aes(members, score)) +
+reach_plot <- reach %>%
+  mutate(
+    on_shortlist = animeID %in% short_ids,
+    score_d = round_half_up(score, 2),
+    members_d = round_half_up(members, 2)
+  )
+p_reach <- ggplot(reach_plot, aes(members_d, score_d)) +
   geom_point(data = filter(reach_plot, !on_shortlist), color = PALE, alpha = 0.35, size = 0.7) +
   geom_point(data = filter(reach_plot, on_shortlist), color = RED, size = 2.2) +
   geom_hline(yintercept = BASELINE, linetype = "dashed", color = INK, linewidth = 0.35) +
   scale_x_log10(labels = scales::comma) +
   labs(
-    title = "Score and reach move together (Spearman 0.74)",
-    subtitle = "n = 13,518 scored titles. Red points are the 10-title editorial shortlist. Dashed line: catalog median 6.38.",
+    title = title_reach,
+    subtitle = sub_reach,
     x = "Members", y = "Score",
     caption = caption_src
   ) +
   theme_brief()
 save_plot(p_reach, "chart_reach", 11.2, 6.6)
+reach_bg <- filter(reach_plot, !on_shortlist)
+reach_hi <- filter(reach_plot, on_shortlist)
 write_plotly(
   "chart_reach",
   list(
-    list(type = "scatter", mode = "markers", name = "Scored titles", x = reach_plot$members[!reach_plot$on_shortlist], y = reach_plot$score[!reach_plot$on_shortlist], marker = list(size = 4, color = PALE, opacity = 0.35)),
-    list(type = "scatter", mode = "markers", name = "Shortlist", x = reach_plot$members[reach_plot$on_shortlist], y = reach_plot$score[reach_plot$on_shortlist], marker = list(size = 8, color = RED))
+    list(
+      type = "scattergl",
+      mode = "markers",
+      name = "Scored titles",
+      x = reach_bg$members_d,
+      y = reach_bg$score_d,
+      marker = list(size = 4, color = PALE, opacity = 0.35),
+      hovertemplate = "Score %{y:.2f}<br>Members %{x:,.0f}<extra></extra>"
+    ),
+    list(
+      type = "scattergl",
+      mode = "markers",
+      name = "Shortlist",
+      x = reach_hi$members_d,
+      y = reach_hi$score_d,
+      marker = list(size = 8, color = RED),
+      hovertemplate = "Score %{y:.2f}<br>Members %{x:,.0f}<extra></extra>"
+    )
   ),
   list(
-    title = list(text = "Score vs members, Spearman 0.74"),
+    title = chart_title(title_reach, sub_reach),
     xaxis = list(type = "log", title = list(text = "Members")),
-    yaxis = list(title = list(text = "Score")),
-    shapes = list(list(type = "line", x0 = 0, x1 = 1, xref = "paper", y0 = BASELINE, y1 = BASELINE, line = list(dash = "dash", color = INK)))
+    yaxis = list(title = list(text = "Score"), tickformat = ".2f"),
+    shapes = list(list(
+      type = "line", x0 = 0, x1 = 1, xref = "paper", y0 = BASELINE, y1 = BASELINE,
+      line = list(dash = "dash", color = INK)
+    ))
   )
 )
+
+oxipng <- Sys.which("oxipng")
+if (!nzchar(oxipng)) {
+  candidate <- path.expand("~/.local/bin/oxipng")
+  if (file.exists(candidate)) oxipng <- candidate
+}
+pngs <- list.files(charts_dir, "\\.png$", full.names = TRUE)
+if (!nzchar(oxipng)) {
+  warning("oxipng not found; chart PNGs were not optimized")
+} else {
+  status <- system2(oxipng, c("-o", "4", "--strip", "safe", pngs))
+  if (!identical(status, 0L)) stop("oxipng failed")
+}
 
 zip_files <- c(
   file.path(article_dir, "scripts/build_brief.R"),
@@ -626,8 +886,9 @@ zip_files <- c(
 zip_out <- file.path(public_dir, "source.zip")
 if (file.exists(zip_out)) file.remove(zip_out)
 utils::zip(zip_out, zip_files, flags = "-j")
-file.copy(zip_out, file.path(article_dir, "source.zip"), overwrite = TRUE)
+extra_zip <- file.path(article_dir, "source.zip")
+if (file.exists(extra_zip)) file.remove(extra_zip)
 
 message("Wrote charts to ", charts_dir)
-message("Spearman ", round(spearman, 3), " Pearson ", round(pearson, 3), " log ", round(pearson_log, 3))
+message("Spearman ", fmt_fixed(spearman, 2), " log-Pearson ", fmt_fixed(pearson_log, 2))
 message("Discrepancies: ", file.path(article_dir, "data/discrepancies.txt"))

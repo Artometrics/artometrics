@@ -21,9 +21,10 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] jsonlite_1.8.8  lubridate_1.9.3 forcats_1.0.0   stringr_1.5.1  
- [5] dplyr_1.1.4     purrr_1.0.2     readr_2.1.5     tidyr_1.3.1    
- [9] tibble_3.2.1    ggplot2_3.4.4   tidyverse_2.0.0
+ [1] showtext_0.9-8  showtextdb_3.0  sysfonts_0.8.9  jsonlite_1.8.8 
+ [5] lubridate_1.9.3 forcats_1.0.0   stringr_1.5.1   dplyr_1.1.4    
+ [9] purrr_1.0.2     readr_2.1.5     tidyr_1.3.1     tibble_3.2.1   
+[13] ggplot2_3.4.4   tidyverse_2.0.0
 
 loaded via a namespace (and not attached):
  [1] bit_4.0.5        gtable_0.3.4     crayon_1.5.2     compiler_4.3.3  
