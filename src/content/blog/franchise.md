@@ -50,7 +50,7 @@ faq:
 <li><a href="#merchandise-pools">Merchandise pools — Japan’s media-mix vs Hollywood’s vertical stack</a></li>
 <li><a href="#top-twenty">Who tops the table — and who is not crowned</a></li>
 <li><a href="#wiki-drift">Wikipedia moved (2019 vs 2026)</a></li>
-<li><a href="#region-origin">Japan, the US, and the four-billion-dollar floor</a></li>
+<li><a href="#region-origin">Japan, the United States, Korea, and China</a></li>
 <li><a href="#original-medium">Original medium sets the extraction layer</a></li>
 <li><a href="#box-office-slice">Box office is a thin slice for most of the top twenty</a></li>
 <li><a href="#revenue-per-year">Revenue per year of existence</a></li>
@@ -89,7 +89,7 @@ faq:
 <p class="art-p"><strong>What it means.</strong> At franchise scale, theatrical is usually marketing infrastructure; repeatable SKUs and licensing desks carry the ledger.</p>
 <p class="art-p"><strong>How we know.</strong> Sum every revenue row in the committed CSV: $1,522.2B total; merchandise, licensing, and retail $852.6B (56.0%); video games 20.0%; box office 8.9% — recomputed in <code>verified_numbers.csv</code> (S001). Method: category sums ÷ total revenue.</p>
 <p class="art-p"><strong>Mechanism.</strong> Japan’s production committees split copyright among publishers, broadcasters, and toy makers, which hard-wires plush, magazines, and cards into budgets (Hernández Hernández, 2018, on committees; Steinberg, 2012, on media-mix). Hollywood historically licensed characters outward, but vertically integrated studios — especially Disney — internalised parks, cruise, and retail as Experiences segment revenue (FY2024 audited total $34.151B, S081).</p>
-<p class="art-p"><strong>Counterexample.</strong> Video-game-origin franchises sum to $334.9B lifetime by <code>original_media</code> tag — larger than film-origin totals ($111.7B). Mario stays a thick games slice on the top-twenty chart because Nintendo couples hardware and mascot IP instead of licensing Mario into every aisle.</p>
+<p class="art-p"><strong>Counterexample.</strong> Video-game-origin franchises sum to $334.9B lifetime by original medium — larger than film-origin totals ($111.7B). Mario still shows a thick games slice in the 2019 file. Nintendo licenses the character selectively — the 2023 film, Super Nintendo World, LEGO Mario — and keeps creative control.</p>
 
 <h2 id="top-twenty" class="anchored">WHO TOPS THE TABLE — AND WHO IS NOT CROWNED</h2>
 <figure class="art-chart">
@@ -116,10 +116,10 @@ faq:
 </figure>
 <p class="art-p"><strong>What it means.</strong> Public franchise tables are editor-maintained surveys — they drift when categories like mobile games or live-service revenue enter the infobox.</p>
 <p class="art-p"><strong>How we know.</strong> 103 hand-mapped crosswalk rows; 82 with non-empty 2026 pairs and both-year revenue for chart 10 (<code>franchise_crosswalk_2019_2026.csv</code>, <code>franchise_revenue_2019_vs_2026.csv</code>; S001, S017). A 2026 index parse lists 140 Wikipedia franchise rows (S017).</p>
-<p class="art-p"><strong>Mechanism.</strong> English Wikipedia aggregates press estimates; editors add streams the 2019 scrape under-weighted (e.g., Candy Crush Saga, Mortal Kombat, Naruto in the delta chart).</p>
+<p class="art-p"><strong>Mechanism.</strong> English Wikipedia aggregates press estimates; editors add streams the 2019 scrape under-weighted. The largest dollar increases among paired rows are Pokémon (+$39.8B, from $90.9B in 2019 to $130.7B in 2026), then Call of Duty and Naruto (about +$14B each). Mortal Kombat rises only about $3.9B, from $1.17B to $5.06B, and it is a fighting-game franchise, not a mobile title.</p>
 <p class="art-p"><strong>Counterexample.</strong> Hello Kitty, Mario, and Gundam show large negative percent changes in the paired file because English Wikipedia revised its sourcing between scrapes — not because Sanrio or Nintendo reported collapsing revenue. Chart 10 colors those rows gray. Other drops may reflect renames, splits, or scope changes (e.g., The Simpsons after Fox consolidation). Quote growth only when the crosswalk documents a pair and the match note flags a true like-for-like total.</p>
 
-<h2 id="region-origin" class="anchored">JAPAN, THE US, AND THE FOUR-BILLION-DOLLAR FLOOR</h2>
+<h2 id="region-origin" class="anchored">JAPAN, THE UNITED STATES, KOREA, AND CHINA</h2>
 <figure class="art-chart">
 <div class="art-chart-live" data-chart="/data/articles/franchise/charts/chart15_region_japan_us_other.plotly.json" data-fallback="/images/content/articles/franchise/charts/chart15_region_japan_us_other.png" data-source="Data: entities_franchises.csv — ARTOMETRICS" role="img" aria-label="Lifetime revenue and merchandise share by region of origin."></div>
 <figcaption class="art-chart-caption art-chart-caption--visible">Japan: 42 franchises, $681.5B (49.1% merch). US: 52, $770.0B (64.3%). Korea: 2, $20.0B. China: 1, $6.0B. Other: 6, $44.8B (S001).</figcaption>
@@ -127,7 +127,7 @@ faq:
 <p class="art-p"><strong>What it means.</strong> The ledger is Anglo-table biased but still shows two different optimisation paths — Japanese media-mix density versus US theatrical-and-parks scale.</p>
 <p class="art-p"><strong>How we know.</strong> Hand-audited <code>region_origin</code> tags in <code>entities_franchises.csv</code> (Japan: Evangelion, Sonic, Monster Strike, Puzzle &amp; Dragons, Fate, Gran Turismo; Korea: CrossFire, Dungeon Fighter Online; China: Westward Journey; US: Peanuts, TMNT), summed in <code>franchise_region_summary.csv</code> (S001).</p>
 <p class="art-p"><strong>Mechanism.</strong> US studios built global theatrical pipelines and theme-park engines; Japanese franchises optimised for domestic retail and long-tail collectibles (Steinberg, 2012; AJA industry reports for macro anime market context — whole-industry, not per-row).</p>
-<p class="art-p"><strong>Counterexample.</strong> Toho’s Godzilla rows are smaller in the English table but culturally load-bearing in Japan — many national icons never clear Wikipedia’s informal ~$4B inclusion floor, so the file under-represents them.</p>
+<p class="art-p"><strong>Counterexample.</strong> There is no four-billion-dollar inclusion floor. Mortal Kombat sits in the 2019 file at $1.17B. National icons can still be missing from the English table, but that is an editorial gap, not a cutoff we can quote.</p>
 
 <h2 id="original-medium" class="anchored">ORIGINAL MEDIUM SETS THE EXTRACTION LAYER</h2>
 <figure class="art-chart">
@@ -222,30 +222,30 @@ faq:
 <p class="art-p"><strong>Counterexample.</strong> 2024’s year chart still included one non-franchise breakout — the bar is not absolute, but the slope is.</p>
 
 <h2 id="fragmented-libraries" class="anchored">SONY, UNIVERSAL, NINTENDO — FRAGMENTED VS MARRIED IP</h2>
-<p class="art-p"><strong>Warner / DC.</strong> DC Entertainment rows sum to ~$44.4B in the file (Batman, Wizarding World, and adjacent labels). <strong>How we know:</strong> <code>owner_totals_derived.csv</code> (S001). <strong>Mechanism:</strong> literary and comic IP with theatrical potential. <strong>Counterexample:</strong> a decade of DC extended-universe false starts — table strength ≠ slate execution.</p>
+<p class="art-p"><strong>Warner / DC.</strong> DC Entertainment’s $44.4B is Batman ($25.04B) plus Superman ($13.15B) plus the DC Extended Universe row ($6.20B). Wizarding World ($28.1B) is a separate Warner row, not DC. <strong>How we know:</strong> summed franchise rows in <code>franchise.csv</code> (S001). <strong>What it means:</strong> a CEO comparing “DC” to Harry Potter is mixing two libraries. <strong>Counterexample:</strong> a decade of extended-universe restarts shows that a large comic total does not run a film slate by itself.</p>
 <p class="art-p"><strong>Sony / Marvel split.</strong> Spider-Man lists Marvel Entertainment (Disney) on merchandise with Sony Pictures on films. <strong>Mechanism:</strong> co-production splits enterprise value across balance sheets. <strong>Counterexample:</strong> Universal’s Fast &amp; Furious and Jurassic rows — blockbuster scale without Disney consolidation.</p>
-<p class="art-p"><strong>Nintendo.</strong> $49.0B on the standalone owner label; Pokémon at $90.9B on property rows. <strong>Mechanism:</strong> hardware and mascot IP married on one Japanese balance sheet — the mirror image of Hollywood’s buy-and-integrate model.</p>
+<p class="art-p"><strong>Nintendo.</strong> The standalone Nintendo owner label is $49.0B in the 2019 file. The Pokémon row is $90.9B in that same file, and $130.7B on the 2026 Wikipedia list. Those Pokémon dollars sit on The Pokémon Company string — Nintendo, Game Freak, and Creatures share the copyright — so they are not added to Nintendo’s $49.0B label. Nintendo licenses Mario selectively (the 2023 film, Super Nintendo World, LEGO Mario) while keeping creative control; it does not refuse every outside product.</p>
 
 <h2 id="failure-modes" class="anchored">WHEN FRANCHISES BREAK</h2>
 <p class="art-p">Ownership without discipline fails. Universal shelved the Dark Universe after <em>The Mummy</em> (2017). Warner’s Wizarding World sequels fell far from <em>Harry Potter</em> peaks. DC’s extended universe spent years in turnaround before the 2023 DC Studios reset. <em>Ghostbusters</em> (2016) showed reboot backlash; mobile-native <em>Angry Birds</em> shows revenue can peak and fade while rows remain in the table. See <code>data/franchise_failures.csv</code> for case links.</p>
 
 <div class="art-callout" id="method-box">
-<p class="art-p"><strong>Data &amp; method box.</strong> Primary ledger: TidyTuesday <code>media_franchises.csv</code> committed as <code>articles/franchise/data/franchise.csv</code> (2019-07-02), SHA-256 <code>6e556287bad580be04e14d346036a8453f7ce975a7b26cf47d2057b873be1090</code> verified by <code>npm run verify:franchise</code> / <code>scripts/franchise_verify_numbers.py</code> → <code>verified_numbers.csv</code> (S001). 103 unique franchises; seven sum below $4B — Wikipedia’s editorial floor is not strictly enforced in every row. Revenue categories are Wikipedia estimates (mid-2019). 2026 Wikipedia index parsed to <code>wikipedia_franchise_revenue_2026.csv</code> (140 rows, S017); 103-row hand crosswalk to 2019 names — no fuzzy matching (<code>franchise_crosswalk_2019_2026.csv</code>). Disney consolidation: <code>owner_consolidation_rules.csv</code>. Theatrical share: Box Office Mojo yearly pages, manual coding. Disney segment chart: FY2024 Form 10-K exhibit (S081). Do not treat franchise rows as studio P&amp;L. Headline merchandise share 56.0% recomputed for R2; an earlier 61% figure reflected rounded copy and a different franchise count in editorial notes.</p>
+<p class="art-p"><strong>Data &amp; method box.</strong> Primary ledger: TidyTuesday media franchises committed as <code>franchise.csv</code> (2019-07-02). Spoken and headline figures are recomputed into <code>verified_numbers.csv</code>, including owner totals, per-year rates, box-office shares, medium and region splits, the DC sum (Batman + Superman + DCEU), deal prices, and Disney’s FY2024 segments. Pokémon’s 2019 total ($90.9B) and 2026 Wikipedia total ($130.7B) are stored as separate rows. Revenue categories are Wikipedia estimates. The 2026 index is a paired audit, not a replacement ledger. Disney consolidation follows <code>owner_consolidation_rules.csv</code>. Theatrical shares use Box Office Mojo yearly pages with manual coding. Do not treat franchise rows as studio profit. There is no $4B cutoff: Mortal Kombat is in the file at $1.17B.</p>
 </div>
 
 <h2 id="decision-tools" class="anchored">DECISION TOOLS FOR EXECUTIVES</h2>
 <ul>
 <li><strong>Ownership lens.</strong> Consolidate subsidiaries before benchmarking Disney vs Nintendo — otherwise you compare an incomplete parent to a consolidated rival (46.4% of revenue sits with the top five owners after Fox rules).</li>
 <li><strong>Margin lens.</strong> Map cash to streams (merchandise, games, parks, subscription). Box office rank alone mis-ranks Hello Kitty against Pokémon; chart 14 is the reminder.</li>
-<li><strong>Capital lens.</strong> Acquisition price is the NPV of licensing you believe remains — compare SEC deal size to franchise-row scale, then to Experiences capacity ($34.2B FY2024), not opening weekend.</li>
+<li><strong>Capital lens.</strong> A deal price is what you pay for the rights you still expect to sell. Set Pixar’s $7.4B, Marvel’s $4.0B, Lucasfilm’s $4.05B, and Fox’s $71.3B next to the franchise rows they anchor, then next to Experiences revenue of $34.2B in FY2024.</li>
 <li><strong>Time lens.</strong> Pair S001 with S017 when quoting growth; chart 10 shows where editors revised lifetime totals.</li>
 </ul>
 
 <h2 id="limitations" class="anchored">LIMITATIONS</h2>
-<p class="art-p">Wikipedia estimates vary by editor and year; the 2019 scrape stops mid-year. Owner fields predate some corporate renames. Merchandise buckets are broad. Box-office franchise coding is manual — edge cases exist. Disney 10-K segments are corporate totals, not per-IP profit. Cross-border franchises are under-counted at the ~$4B floor. 2026 Wikipedia rows are not merged into the 2019 row-sum totals — they are a paired audit, not a single ledger.</p>
+<p class="art-p">Wikipedia estimates vary by editor and year; the 2019 scrape stops mid-year. Owner fields predate some corporate renames. Merchandise buckets are broad. Box-office franchise coding is manual — edge cases exist. Disney 10-K segments are corporate totals, not per-IP profit. The file includes properties well below $4B (Mortal Kombat at $1.17B), so there is no inclusion floor to cite. 2026 Wikipedia rows are not merged into the 2019 row-sum totals — they are a paired audit, not a single ledger. Quote Pokémon as $90.9B only for 2019, and as $130.7B only for the 2026 list.</p>
 
 <h2 id="conclusion" class="anchored">CONCLUSION</h2>
-<p class="art-p">Franchise economics rewards objects you can sell repeatedly — cards, plush, park tickets — more than minutes in a theater. Pokémon leads the mid-2019 ledger because it built that machine early. Disney leads consolidated ownership because it bought libraries and wired them to parks and streaming. Japan’s media-mix history and America’s vertical integrators converge on the same lesson from different angles. The domestic top ten became a sequel chart. The actionable read: measure streams, consolidate owners, pair 2019 with 2026 when you quote growth, and price acquisitions as licensing NPV — or end up with icons you cannot operate.</p>
+<p class="art-p">Franchise economics rewards objects you can sell repeatedly — cards, toys, park tickets — more than minutes in a theater. In the mid-2019 ledger Pokémon leads at $90.9B; on the 2026 Wikipedia list the same name reads $130.7B. Disney leads consolidated ownership because it bought libraries and wired them to parks. Japan’s media-mix history and America’s studio-owned characters meet on the same lesson. The domestic top ten became a sequel chart. For a buyer: name the year, name the owner string, and separate DC from Wizarding World before you compare anyone.</p>
 
 <section class="art-back-matter">
 <h2 id="data-methods-and-sources" class="anchored">Data, methods &amp; sources</h2>

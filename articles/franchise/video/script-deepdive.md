@@ -1,263 +1,285 @@
-# FRANCHISE — deep dive (~11:00, ~1,700 words)
+# FRANCHISE — deep dive (~11:00)
 
-## Opening
+A cardboard Pikachu changes hands in a playground.
 
-Picture two ledgers.
+In another room, Disney writes a cheque for Twenty-First Century Fox: seventy-one point three billion dollars.
 
-On a playground, a child swaps a cardboard Pikachu.
+Both bets say a character can be sold again tomorrow.
 
-In a boardroom, Bob Iger signs a seventy-one point three billion dollar check for Twenty-First Century Fox.
-
-Both trades assume the same asset: a character that can be sold again tomorrow.
-
-This deep dive walks one mid-2019 photograph of that market — the TidyTuesday media-franchise file scraped from Wikipedia on July second, twenty-nineteen.
+This talk stays inside one public photograph, taken in mid-2019, and then checks how Wikipedia’s list reads in 2026.
 
 One hundred and three franchises.
 
-One point five two two trillion dollars in lifetime revenue estimates.
+One point five two two trillion dollars in lifetime estimates.
 
-Not audited studio profit.
+These are not audited profits.
 
-Still the cleanest public way to compare how money attaches to intellectual property.
+They are still the clearest public way to see where the money sits.
 
-Every number below traces to franchise.csv or verified_numbers.csv, sources S001 and S017, unless we explicitly switch to SEC filings.
+## Where the money sits
 
-## The consultant frame
+Merchandise, licensing, and retail are fifty-six percent of that one point five two trillion.
 
-Henry Jenkins described convergence culture: audiences follow characters across formats.
+Video games are twenty percent.
 
-Marc Steinberg’s media-mix scholarship shows the Japanese extreme — television animation as billboard for merchandise, rooted in sponsor models from the nineteen-sixties.
+Box office is eight point nine percent of the whole file.
 
-Hollywood’s parallel is vertical integration: own the character, own the park ticket, own the streaming shelf.
+For a chief executive, eight point nine does not mean your sequel kept nine cents in the dollar.
 
-This report is not fan ranking.
+It means theatre, across these one hundred and three names, is the smaller pool.
 
-It is licensing geometry.
+Japan built that pattern with production committees.
 
-For each pattern we ask three things.
+Publishers, broadcasters, and toy companies share the copyright, so the series is designed to sell cards, figures, and magazines.
 
-What does it mean for a buyer?
+Hollywood’s version is to own the character and attach a park.
 
-How do we know it — source and method?
+Disney’s Experiences segment, in the year to September twenty-twenty-four, is thirty-four point two billion dollars.
 
-What mechanism explains it — economics, technology, who could acquire whom, and cultural history?
+Entertainment is forty-one point two. Sports is seventeen point six.
 
-## Pattern one — merchandise owns the row sum
+Parks and products are large enough to sit beside the film and television line.
 
-Recompute every revenue category in the committed CSV.
+What that means: a green light that cannot reach a shop or a turnstile is leaving most of the file’s money on the table.
 
-Merchandise, licensing, and retail: fifty-six point zero percent.
+## Who leads, and which year
 
-Video games: twenty point zero.
+In the 2019 file, Pokémon is first at ninety point nine billion dollars.
 
-Box office: eight point nine.
+Hello Kitty is eighty billion.
 
-Total lifetime revenue across rows: one point five two two trillion.
+Winnie the Pooh is seventy-four point five.
 
-Method: category sums divided by total revenue, logged in verified_numbers.csv.
+Star Wars is sixty-three.
 
-Mechanism: theatrical releases are high-visibility, low-repeat events.
+The Marvel Cinematic Universe row is thirty-one.
 
-Merchandise and games are inventory you can ship weekly.
+On the 2026 Wikipedia list, Pokémon reads one hundred thirty point seven billion.
 
-Japan’s production-committee system splits copyright among publishers, broadcasters, and toy makers, which hard-wires plush and magazines into the budget.
+That is an increase of thirty-nine point eight billion, the largest dollar rise among the pairs we matched.
 
-Hollywood historically relied on distributors and licensors, but Disney’s Experiences segment — parks, resorts, cruise, merchandise — is the American answer to the same question.
+Call of Duty moves from seventeen billion to thirty-one, about fourteen billion.
 
-Counterexample: properties born as games.
+Naruto moves from eight point nine billion to twenty-two point eight, also about fourteen billion.
 
-Video-game-origin franchises in the file sum to three hundred thirty-four point nine billion dollars in lifetime totals by original-media tag — larger than film-first seeds.
+Mortal Kombat moves from one point one seven billion to five point one, about three point nine billion.
 
-Mario stays Nintendo-blue on the chart because the company couples hardware and mascot IP.
+It is a fighting game, not a mobile title, and it proves there is no four-billion-dollar floor in this file.
 
-## Pattern one-b — revenue per year rewards compounding SKUs
+For a buyer, the so-what is simple.
 
-Divide lifetime totals by years alive as of twenty-nineteen.
+Say “2019” when you mean ninety point nine.
 
-Pokémon clears about three point nine five billion dollars per calendar year of existence.
+Say “2026 list” when you mean one hundred thirty point seven.
 
-The Marvel Cinematic Universe row clears about two point eight billion despite being younger.
+Star Wars plus the Marvel film row already pass Pokémon’s 2019 total before you add Spider-Man or Wizarding World.
 
-Hello Kitty’s eighty billion lifetime total spans decades — legacy mass, not speed.
+The chart is about mix, not a single crown.
 
-Method: chart two, lifetime revenue divided by max of one year and twenty-nineteen minus year_created.
+## Age, and what a year of life is worth
 
-Mechanism: games and cards bill monthly; theatrical bills once per cycle.
+Divide each 2019 total by the years since the property began, stopping the clock at 2019.
 
-Counterexample: young film franchises that spike on opening weekend but lack merchandise depth — pretty on the marquee, thin in the CSV.
+Pokémon comes out near three point nine five billion dollars a year.
 
-## Pattern two — who tops the table, and who is missing
+The Marvel film row comes out near two point eight billion, even though it is younger.
 
-Pokémon leads at ninety point nine billion on screen — ninety point eight six three in the file.
+Hello Kitty’s eighty billion was earned over a much longer life.
 
-Hello Kitty: eighty point zero three.
+What that means: a huge lifetime number can be a slow machine.
 
-Winnie the Pooh: seventy-four point five.
+Ask how often the customer pays, not only how old the mascot is.
 
-Star Wars: sixty-three point zero.
+## Mario, licensed on purpose
 
-Marvel Cinematic Universe row: thirty-one point zero.
+Mario’s 2019 row is thirty-five billion, mostly games.
 
-Method: sum revenue rows per franchise name in franchise.csv.
+Nintendo does not refuse outside products.
 
-Mechanism: Pokémon is a game-first flywheel — anime promotes cards; cards promote games.
+It licensed the 2023 film, Super Nintendo World, and LEGO Mario, and it kept creative control.
 
-Hello Kitty is almost entirely merchandise.
+What that means: selective licensing is a strategy, not a refusal.
 
-Star Wars is the Hollywood template Disney paid four point zero five billion to buy in Lucasfilm — theatrical plus licensing at scale.
+The 2026 Wikipedia figure for Mario, nine point seven four billion, is an editor’s revision of sources, from thirty-five billion.
 
-Counterexample: stacking rows.
+It is not a collapse in Nintendo’s shops.
 
-Pokémon is the largest single named property, but Star Wars plus MCU already exceed it before Spider-Man adjunct rows or Wizarding World.
+Hello Kitty’s list total moves from eighty billion to thirty-three point five, and Gundam from twenty-five point five to five, for the same reason.
 
-The chart teaches composition, not crowning one winner.
+Read those drops as revisions.
 
-## Pattern three — geography and the four-billion-dollar floor
+## Where the stories began
 
-Forty-two Japanese-origin franchises in our entity table contribute six hundred eighty-one point five billion in lifetime totals — including Evangelion, Sonic, Monster Strike, Puzzle and Dragons, Fate, and Gran Turismo after a hand region audit.
+Properties that began as video games sum to three hundred thirty-five billion in the 2019 file.
 
-Fifty-two United States-origin franchises contribute seven hundred seventy billion — including Peanuts and Teenage Mutant Ninja Turtles.
+Manga origins sum to two hundred fifty-four.
 
-Korea contributes twenty billion across CrossFire and Dungeon Fighter Online; China six billion on Westward Journey alone.
+Animated series sum to one hundred twenty-one.
 
-Merchandise share within those buckets: forty-nine point one percent for Japan, sixty-four point three for the US.
+Films begun as films sum to one hundred twelve.
 
-Method: region_origin tags in entities_franchises.csv, summed revenue, chart fifteen.
+What that means: the first format is not the business.
 
-Mechanism: US studios built global theatrical pipelines and theme-park engines.
+Disney Princess is almost entirely merchandise.
 
-Japanese media-mix franchises optimised for domestic retail density and long-tail collectibles.
+Jump’s comics stack magazines, animation, and games on one set of characters.
 
-Counterexample: national icons below Wikipedia’s informal four-billion-dollar inclusion floor — many tokusatsu and anime properties never enter the English table even when culturally load-bearing at home.
+Wizarding World began as novels and still needed Warner Bros. to build cinemas and shops around them.
 
-## Pattern four — Wikipedia moved between twenty-nineteen and twenty-twenty-six
+## Theatre is a thin slice, except when it is not
 
-We hand-mapped one hundred and three twenty-nineteen rows to twenty-twenty-six Wikipedia titles.
+Inside the Marvel Cinematic Universe row, about sixty-eight percent of the 2019 total is box office.
 
-Eighty-two pairs carry revenue in both years.
+Hello Kitty’s theatrical share is effectively zero.
 
-Method: franchise_crosswalk_2019_2026.csv and a delta chart — chart ten.
+Mario’s is a rounding error in that file, even after later licensed films.
 
-Largest upward revisions in that paired set include mobile-native titles such as Candy Crush Saga and Mortal Kombat, plus anime rows like Naruto.
+What that means: ranking brands by weekend gross will put a mascot below a film universe that earns less overall.
 
-Large downward paired moves on Hello Kitty, Mario, and Gundam are gray-barred in chart ten: Wikipedia revised its sources between scrapes — eighty to thirty-three point five billion on Hello Kitty, thirty-five to nine point seven four on Mario, twenty-five point five to five on Gundam — not evidence that those franchises shrank in the real economy.
+Wizarding World still carries a real cinema band, thirty-two percent of its twenty-eight billion, because Warner built a theatrical cycle.
 
-Mechanism: editors add or remove revenue categories — mobile games, live-service totals, merchandise disclosures — that the twenty-nineteen scrape treated differently.
+Fantastic Beasts then showed that a large book brand still needs a slate someone will run.
 
-Counterexample: paired rows that fall for rename or scope reasons — always read the crosswalk match note before calling it a loss.
+## Who owns the rows
 
-Treat the ledger as a survey, not GAAP.
+If you leave the labels as printed, Disney the parent is two hundred fifty-nine billion, and Lucasfilm and Marvel look like rivals.
 
-## Pattern four-b — original medium sets the extraction layer
+They are not.
 
-Summing lifetime revenue by original_media tag, video games lead at three hundred thirty-four point nine billion, manga at two hundred fifty-three point eight, animated series at one hundred twenty-one.
+Fold them in, with Fox, and Disney’s 2019 franchise rows sum to four hundred twenty-six point two billion.
 
-Film-origin totals are one hundred eleven point seven billion — substantial, but not the whole story.
+That is twenty-eight percent of the file.
 
-Method: chart five and revenue_mix_by_original_medium.csv.
+The top five owners hold forty-six point four percent.
 
-Mechanism: a franchise is not defined by its debut channel but by which streams the owner chooses to license.
+What that means: benchmark only after subsidiaries sit on one line, or you will think you are competing with your own divisions.
 
-Shueisha’s Jump comics rows show publishing plus animation plus games stacked on one character bible.
+Nintendo’s own label is forty-nine billion.
 
-Disney Princess is a retail line built atop film assets — ninety-nine point nine percent merchandise in the Pokémon row’s cousin property Disney Princess.
+Pokémon’s ninety point nine is not in that forty-nine.
 
-Counterexample: novel-first Wizarding World — books set the canon, but Warner Bros. had to build theatrical and merchandise desks to capture value.
+The owner string is The Pokémon Company, shared by Nintendo, Game Freak, and Creatures.
 
-## Pattern five — box office is not how the top twenty breathe
+Add the Pokémon row to Nintendo and you will brief a partner’s revenue as if it were wholly yours.
 
-Among the top twenty franchises by lifetime revenue, box office is often a thin slice.
+DC Entertainment is forty-four point four billion.
 
-The Marvel Cinematic Universe row is sixty-seven point seven percent box office in the file — an outlier.
+That is Batman at twenty-five billion, Superman at thirteen point two, and the extended-universe row at six point two.
 
-Hello Kitty, Disney Princess, Mario — near zero theatrical share.
+Wizarding World, at twenty-eight point one billion, is Warner, not DC.
 
-Method: chart fourteen, box-office dollars divided by franchise total for each top-twenty row.
+What that means: “DC plus Harry Potter” is two conversations.
 
-Mechanism: film-first universes amortise development across sequels; character-first mascots skip the cinema tax entirely.
+## What the cheques bought
 
-Counterexample: Wizarding World still carries a double-digit box-office band because Warner Bros. built a theatrical cycle — until Fantastic Beasts fatigue showed that even billion-dollar literary IP needs slate discipline.
+Pixar cost seven point four billion in 2006.
 
-## Pattern six — Disney as ownership literacy
+Marvel cost four billion in 2009.
 
-Unconsolidated owner totals show The Walt Disney Company at two hundred fifty-eight point nine billion, Lucasfilm at sixty-three, Marvel labels separate.
+Lucasfilm cost four point zero five billion in 2012.
 
-Consolidated: four hundred twenty-six point two billion.
+Fox was seventy-one point three billion in enterprise value.
 
-Nintendo’s owner label: forty-nine point zero billion.
+Set those cheques beside one anchor row and the units do not match, which is the point.
 
-Top owner share after Fox consolidation: twenty-eight percent of the file.
+Lucasfilm’s cheque is small next to Star Wars at sixty-three billion in the 2019 file.
 
-Top-five owners: forty-six point four percent.
+Fox’s cheque is large next to The Simpsons at thirteen point five billion in 2019, and four point nine billion on the 2026 list, because the deal bought pipes and libraries, not one cartoon.
 
-Method: owner_consolidation_rules.csv and owner_totals_derived.csv, charts three-a, three-b, twelve.
+What that means: price the rights you still expect to sell, and the parks that can carry them.
 
-Mechanism: modern libraries are assembled by M&A — Pixar seven point four billion, Marvel four billion, Lucasfilm four point zero five billion, Fox seventy-one point three billion enterprise value per merger proxy, sources S009 through S012.
+Experiences at thirty-four point two billion a year is that carrying capacity, in Disney’s own accounts.
 
-Compare check size to a single anchor franchise row — chart thirteen — and you see capitalization of future licensing, not applause for one weekend.
+## Who sits where
 
-Audited FY twenty-twenty-four segment revenue from Disney’s Form ten-K exhibit: Entertainment forty-one point one eight six billion, Sports seventeen point six one nine, Experiences thirty-four point one five one — source S081.
+Forty-two Japan-origin franchises sum to six hundred eighty-one point five billion, with merchandise at forty-nine percent of that bucket.
 
-Experiences is not a side hustle.
+Fifty-two United States-origin franchises sum to seven hundred seventy billion, with merchandise at sixty-four percent.
 
-It is the physical licensing engine for the same characters box office promotes.
+Korea is twenty billion: CrossFire and Dungeon Fighter Online.
 
-## Pattern six-b — Sony, Universal, and fragmented libraries
+China, in this file, is Westward Journey at six billion.
 
-Spider-Man sits in a split-rights cage: Marvel Entertainment on merchandise rows, Sony Pictures on film grosses in the owner string.
+What that means: Japan’s media mix and Hollywood’s parks are both merchandise businesses, built by different owners.
 
-Fast and Furious and Jurassic World show Universal’s blockbuster model without Disney-scale consolidation.
+The English table still misses icons.
 
-Method: read owner fields literally in franchise.csv; do not assume one checkbook.
+That is a coverage gap.
 
-Mechanism: when theatrical rights sit with a rival studio, enterprise value leaks across corporate boundaries — a lesson for any CEO evaluating co-production.
+It is not a rule that everything under four billion was thrown out.
 
-Counterexample: Nintendo — forty-nine billion on the owner label, ninety point nine on Pokémon rows — hardware and IP married on one Japanese balance sheet.
+Mortal Kombat is in the file at one point one seven billion.
 
-## Pattern seven — theatrical seriality as risk management
+## Sequels at the top of the chart
 
-Franchise installments as a share of domestic top-ten films: sixty percent in twenty-ten, seventy in twenty-fifteen, eighty in twenty-nineteen, ninety in twenty-twenty-four.
+Franchise instalments were sixty percent of the domestic top ten in 2010, seventy percent in 2015, eighty percent in 2019, and ninety percent in 2024.
 
-Method: Box Office Mojo yearly pages, manual coding in top10_franchise_share_by_year.csv.
+Nine films out of ten, in that last year.
 
-Mechanism: recognition lowers marketing cost; shared universes amortise development.
+What that means: familiarity is being used as marketing.
 
-Counterexamples: Universal’s Dark Universe after The Mummy, DC extended-universe false starts, Ghostbusters twenty-sixteen backlash, Angry Birds mobile peak-and-fade documented in franchise_failures.csv.
+It is not a guarantee.
 
-Ownership without operating discipline is expensive noise.
+Universal stopped the Dark Universe after The Mummy.
 
-DC Entertainment rows sum to about forty-four point four billion in the file — Batman, Wizarding World, and adjacent labels — yet Warner Bros. spent a decade proving that table strength is not slate execution.
+The extended DC films were restarted.
 
-Toho’s Godzilla rows are smaller in the English Wikipedia table but anchor national merchandise cycles at home — a reminder that our geography tags describe origin, not audience size.
+Ghostbusters in 2016 met a backlash.
 
-## Pattern eight — what we still cannot see
+Angry Birds showed a mobile peak that did not stay at the top of the table.
 
-The file has no per-title profit, no streaming ARPU, no China-only mobile revenue except where editors added it by twenty-twenty-six.
+A large row in a spreadsheet does not operate a slate.
 
-Method: read limitations alongside every chart.
+## What to take into the room
 
-Mechanism: public ledgers lag private dashboards — especially for live-service games and theme-park yield management.
+Say the year before you say Pokémon.
 
-Counterexample: trusting a single Wikipedia row for Simpsons after Fox — thirteen point five billion in twenty-nineteen versus a much lower twenty-twenty-six figure when editors re-scoped the entry.
+Roll subsidiaries before you compare Disney with Nintendo.
 
-Always pair S001 with S017 when you quote growth.
+Keep Pokémon on The Pokémon Company line.
 
-## Close — three decision tools
+Keep Wizarding World off the DC line.
 
-Ownership lens: consolidate subsidiaries before benchmarking Disney versus Nintendo.
+Ask which stream pays you every month.
 
-Margin lens: rank streams for your property — merchandise, games, parks, subscription — because box-office rank mis-ranks Hello Kitty against Pokémon.
+Then decide whether the next film is the product, or the poster for the product.
 
-Capital lens: acquisition price is the net present value of licensing you believe remains.
+One more caution on the 2026 list.
 
-Reproduce charts with npm run brief:franchise.
+Candy Crush and other mobile rows did jump hard, because editors added categories the 2019 scrape barely held.
 
-Read the methods box on the live report.
+Do not put Mortal Kombat in that mobile pile.
 
-Then decide what you are buying when you greenlight a sequel: a movie, or a license to print money.
+Its rise is about three point nine billion dollars, from a 2019 base of one point one seven billion.
 
-The playground trade and the Fox check differ in scale, not in logic.
+If a slide calls that the biggest move, the slide is wrong.
 
-Both bet that attention converts into property rights you can invoice again next quarter — merchandise rows, game micro-transactions, or a park turnstile.
+The biggest move is Pokémon, then Call of Duty, then Naruto.
 
-That is the story the mid-2019 file still tells in twenty-twenty-six.
+And if a slide says Nintendo will not license Mario, it is wrong too.
+
+The company chooses the partners.
+
+The film, the theme-park land, and the brick sets exist because Nintendo said yes, and kept the right to say how the character behaves.
+
+That is the useful contrast with a Hollywood studio that buys a library outright.
+
+Disney paid four billion for Marvel and four point zero five billion for Lucasfilm so that the characters would sit on one balance sheet, then in one park.
+
+Nintendo already had Mario.
+
+It rents the aisle without handing over the pencil.
+
+Pokémon is the awkward third case.
+
+The 2019 row is ninety point nine billion and the 2026 list says one hundred thirty point seven, but the owner line is a partnership.
+
+A chief executive who wants “the Nintendo number” has to decide whether they mean the forty-nine billion on Nintendo’s own label, or the shared Pokémon row.
+
+Those are not the same cheque.
+
+Use the smaller one when you are talking about Nintendo alone.
+
+Use the Pokémon row only when you are talking about the partnership.
+
+And always say the year.

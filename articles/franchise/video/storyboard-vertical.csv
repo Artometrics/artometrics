@@ -1,23 +1,23 @@
 scene_id,narration_words,visual_type,red_box_target,count_up_number,image_credit
-v001,Your sequel had a huge opening weekend.,AI illustration,minimal mechanism scene: Your sequel had a huge opening weekend.,,Artometrics AI prompt — no real people or IP characters
-v002,The franchise ledger says that is nine percent of the money.,AI illustration,minimal mechanism scene: The franchise ledger says that is nine percent of the money.,,Artometrics AI prompt — no real people or IP characters
-v003,One hundred and three Wikipedia-scraped properties.,chart beat,chart10_wiki_2019_vs_2026,,S017
-v004,Mid-2019 TidyTuesday file.,AI illustration,minimal mechanism scene: Mid-2019 TidyTuesday file.,,Artometrics AI prompt — no real people or IP characters
-v005,"Merchandise, licensing, and retail: fifty-six percent of lifetime rows —",chart beat,chart6_revenue_streams,56,Artometrics / franchise dataset (S001)
-v006,"verified sum from franchise.csv, source S001.",AI illustration,"minimal mechanism scene: verified sum from franchise.csv, source S001.",,Artometrics AI prompt — no real people or IP characters
-v007,Pokémon: ninety point nine billion dollars lifetime.,official logo,Pokémon,,The Pokémon Company (fair use logo)
-v008,Still number one on the list —,AI illustration,minimal mechanism scene: Still number one on the list —,,Artometrics AI prompt — no real people or IP characters
-v009,"games and cards, not box office.",AI illustration,"minimal mechanism scene: games and cards, not box office.",,Artometrics AI prompt — no real people or IP characters
-v010,"The Walt Disney Company looks smaller until you merge Marvel, Lucasfilm, and Fox.",official logo,The Walt Disney Company,,https://commons.wikimedia.org/wiki/File:The_Walt_Disney_Company_logo.svg
-v011,Four hundred twenty-six billion in attributed franchise rows.,big number,Disney consolidated franchise rows,426.2,owner_totals_derived.csv (S001)
-v012,Twenty-twenty-four: nine of the domestic top ten films were franchise installments —,AI illustration,minimal mechanism scene: Twenty-twenty-four: nine of the domestic top ten films were franchise installmen,,Artometrics AI prompt — no real people or IP characters
-v013,"Box Office Mojo, manual coding.",chart beat,chart7_top10_franchise_share,,Box Office Mojo yearly charts
-v014,Buy libraries.,AI illustration,minimal mechanism scene: Buy libraries.,,Artometrics AI prompt — no real people or IP characters
-v015,Sell objects.,AI illustration,minimal mechanism scene: Sell objects.,,Artometrics AI prompt — no real people or IP characters
-v016,Count consolidated owners.,AI illustration,minimal mechanism scene: Count consolidated owners.,,Artometrics AI prompt — no real people or IP characters
-v017,"Hello Kitty proves the point: eighty billion in lifetime rows, box office barely registers.",AI illustration,"minimal mechanism scene: Hello Kitty proves the point: eighty billion in lifetime rows, box office barely",,Artometrics AI prompt — no real people or IP characters
-v018,Warner Bros.,AI illustration,minimal mechanism scene: Warner Bros.,,Artometrics AI prompt — no real people or IP characters
-v019,and Universal learned the hard way that icons without slate discipline burn cash.,AI illustration,minimal mechanism scene: and Universal learned the hard way that icons without slate discipline burn cash,,Artometrics AI prompt — no real people or IP characters
-v020,The blockbuster is the advert.,AI illustration,minimal mechanism scene: The blockbuster is the advert.,,Artometrics AI prompt — no real people or IP characters
-v021,Consolidate owners before you compare.,AI illustration,minimal mechanism scene: Consolidate owners before you compare.,,Artometrics AI prompt — no real people or IP characters
-v022,The aisle is the business.,AI illustration,minimal mechanism scene: The aisle is the business.,,Artometrics AI prompt — no real people or IP characters
+v001,Which Pokémon number is on your slide?,official logo,Pokémon,,The Pokémon Company (fair use logo)
+v002,"In the mid-2019 file,",AI illustration,"minimal mechanism scene: In the mid-2019 file,",,Artometrics AI prompt — no real people or IP characters
+v003,"the row is ninety point nine billion dollars,",big number,Pokémon lifetime revenue,90.9,verified_numbers.csv (S001)
+v004,the largest name among one hundred and three franchises.,AI illustration,minimal mechanism scene: the largest name among one hundred and three franchises.,,Artometrics AI prompt — no real people or IP characters
+v005,Merchandise is most of that file.,AI illustration,minimal mechanism scene: Merchandise is most of that file.,,Artometrics AI prompt — no real people or IP characters
+v006,Theatre is not.,AI illustration,minimal mechanism scene: Theatre is not.,,Artometrics AI prompt — no real people or IP characters
+v007,"On the 2026 Wikipedia list,",chart beat,chart10_wiki_2019_vs_2026,,S017
+v008,the same Pokémon name reads,official logo,Pokémon,,The Pokémon Company (fair use logo)
+v009,one hundred thirty point seven billion.,AI illustration,minimal mechanism scene: one hundred thirty point seven billion.,,Artometrics AI prompt — no real people or IP characters
+v010,"That is a jump of thirty-nine point eight billion,",AI illustration,"minimal mechanism scene: That is a jump of thirty-nine point eight billion,",,Artometrics AI prompt — no real people or IP characters
+v011,bigger than the rises for Call of Duty or Naruto.,AI illustration,minimal mechanism scene: bigger than the rises for Call of Duty or Naruto.,,Artometrics AI prompt — no real people or IP characters
+v012,Here is the turn.,AI illustration,minimal mechanism scene: Here is the turn.,,Artometrics AI prompt — no real people or IP characters
+v013,"Those extra billions are a newer public total,",AI illustration,"minimal mechanism scene: Those extra billions are a newer public total,",,Artometrics AI prompt — no real people or IP characters
+v014,not cash you can book to Nintendo alone.,official logo,Nintendo,,https://commons.wikimedia.org/wiki/File:Nintendo.svg
+v015,The Pokémon Company shares the property,official logo,Pokémon,,The Pokémon Company (fair use logo)
+v016,"with Nintendo, Game Freak, and Creatures.",official logo,Nintendo,,https://commons.wikimedia.org/wiki/File:Nintendo.svg
+v017,"Nintendo’s own label in the 2019 file is forty-nine billion,",official logo,Nintendo,,https://commons.wikimedia.org/wiki/File:Nintendo.svg
+v018,and it does not include that Pokémon row.,official logo,Pokémon,,The Pokémon Company (fair use logo)
+v019,"Before you rank anyone against Pokémon,",official logo,Pokémon,,The Pokémon Company (fair use logo)
+v020,"say which year you mean,",AI illustration,"minimal mechanism scene: say which year you mean,",,Artometrics AI prompt — no real people or IP characters
+v021,and whose name is on the owner line.,AI illustration,minimal mechanism scene: and whose name is on the owner line.,,Artometrics AI prompt — no real people or IP characters
+v022,Treat the two figures as different facts.,AI illustration,minimal mechanism scene: Treat the two figures as different facts.,,Artometrics AI prompt — no real people or IP characters

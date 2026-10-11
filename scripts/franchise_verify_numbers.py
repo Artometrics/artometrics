@@ -848,6 +848,106 @@ def main() -> None:
         ("2019 rows with 2026 Wikipedia pair", matched_with_2026, "count", "non-empty franchise_2026_wiki", "data/franchise_crosswalk_2019_2026.csv", "S017"),
         ("2019↔2026 delta chart rows", len(delta_rows), "count", "both years have revenue", "data/franchise_revenue_2019_vs_2026.csv", "S001;S017"),
     ]
+
+    def fr_total(name: str) -> float:
+        return float(totals[name]["total"])
+
+    def years_alive(name: str) -> int:
+        return max(1, 2019 - int(totals[name]["year_created"]))
+
+    def wiki_2026(name: str) -> float:
+        return float(cross_by_fr[name]["revenue_2026_usd_b"])
+
+    batman = fr_total("Batman")
+    superman = fr_total("Superman")
+    dceu = fr_total("DC Extended Universe")
+    dc_sum = batman + superman + dceu
+    poke_2019 = fr_total("Pokémon")
+    poke_2026 = wiki_2026("Pokémon")
+    cod_2019, cod_2026 = fr_total("Call of Duty"), wiki_2026("Call of Duty")
+    nar_2019, nar_2026 = fr_total("Naruto"), wiki_2026("Naruto")
+    mk_2019, mk_2026 = fr_total("Mortal Kombat"), wiki_2026("Mortal Kombat")
+    disney_raw = next(v for k, v in (
+        (e["owner_2019"], float(e["total_revenue_usd_b_2019"]))
+        for e in []
+    ) if False) if False else None
+    # Owner labels from the same consolidation used for owner_totals_derived.csv
+    nintendo_label = 0.0
+    poke_label = 0.0
+    disney_uncon = 0.0
+    for t in totals.values():
+        o = t["owners"]
+        if o == "Nintendo":
+            nintendo_label += t["total"]
+        if "Pokémon Company" in o or "Pokemon Company" in o:
+            poke_label += t["total"]
+        if o == "The Walt Disney Company":
+            disney_uncon += t["total"]
+    disney_con = owner_map["The Walt Disney Company (consolidated)"]
+    medium_totals = {om: sum(cats.values()) for om, cats in medium_mix.items()}
+    mcu_bo = totals["Marvel Cinematic Universe"]["by_cat"].get("Box Office", 0.0)
+    mcu_tot = fr_total("Marvel Cinematic Universe")
+    extra = [
+        ("Pokemon 2019 lifetime (spoken vintage)", round(poke_2019, 3), "USD billions", "sum of Pokémon rows in 2019 file", "data/franchise.csv", "S001"),
+        ("Pokemon 2026 Wikipedia lifetime", poke_2026, "USD billions", "paired Wikipedia row", "data/franchise_revenue_2019_vs_2026.csv", "S017"),
+        ("Pokemon 2019 to 2026 dollar change", round(poke_2026 - poke_2019, 3), "USD billions", "2026 minus 2019 paired totals", "data/franchise_revenue_2019_vs_2026.csv", "S001;S017"),
+        ("Call of Duty 2019 lifetime", round(cod_2019, 3), "USD billions", "sum of rows", "data/franchise.csv", "S001"),
+        ("Call of Duty 2026 Wikipedia lifetime", cod_2026, "USD billions", "paired Wikipedia row", "data/franchise_revenue_2019_vs_2026.csv", "S017"),
+        ("Call of Duty 2019 to 2026 dollar change", round(cod_2026 - cod_2019, 3), "USD billions", "2026 minus 2019", "data/franchise_revenue_2019_vs_2026.csv", "S001;S017"),
+        ("Naruto 2019 lifetime", round(nar_2019, 3), "USD billions", "sum of rows", "data/franchise.csv", "S001"),
+        ("Naruto 2026 Wikipedia lifetime", nar_2026, "USD billions", "paired Wikipedia row", "data/franchise_revenue_2019_vs_2026.csv", "S017"),
+        ("Naruto 2019 to 2026 dollar change", round(nar_2026 - nar_2019, 3), "USD billions", "2026 minus 2019", "data/franchise_revenue_2019_vs_2026.csv", "S001;S017"),
+        ("Mortal Kombat 2019 lifetime", round(mk_2019, 3), "USD billions", "sum of rows; below any supposed $4B floor", "data/franchise.csv", "S001"),
+        ("Mortal Kombat 2026 Wikipedia lifetime", mk_2026, "USD billions", "paired Wikipedia row", "data/franchise_revenue_2019_vs_2026.csv", "S017"),
+        ("Mortal Kombat 2019 to 2026 dollar change", round(mk_2026 - mk_2019, 3), "USD billions", "2026 minus 2019", "data/franchise_revenue_2019_vs_2026.csv", "S001;S017"),
+        ("Star Wars 2019 lifetime", round(fr_total("Star Wars"), 3), "USD billions", "sum of rows", "data/franchise.csv", "S001"),
+        ("MCU 2019 lifetime", round(mcu_tot, 3), "USD billions", "sum of Marvel Cinematic Universe rows", "data/franchise.csv", "S001"),
+        ("Pokemon revenue per year as of 2019", round(poke_2019 / years_alive("Pokémon"), 4), "USD billions per year", "2019 lifetime / (2019 - year_created)", "data/franchise.csv", "S001"),
+        ("MCU revenue per year as of 2019", round(mcu_tot / years_alive("Marvel Cinematic Universe"), 4), "USD billions per year", "2019 lifetime / (2019 - year_created)", "data/franchise.csv", "S001"),
+        ("Disney unconsolidated owner total 2019", round(disney_uncon, 3), "USD billions", "rows whose owner field is exactly The Walt Disney Company", "data/franchise.csv", "S001"),
+        ("Disney consolidated owner total 2019", round(disney_con, 3), "USD billions", "owner_consolidation_rules including Marvel Lucasfilm Fox", "data/owner_totals_derived.csv", "S001"),
+        ("Nintendo standalone owner total 2019", round(nintendo_label, 3), "USD billions", "rows whose owner field is exactly Nintendo; excludes Pokémon Company string", "data/franchise.csv", "S001"),
+        ("Pokemon Company owner-string total 2019", round(poke_label, 3), "USD billions", "rows owned by The Pokémon Company (Nintendo, Game Freak, Creatures); not added to Nintendo label", "data/franchise.csv", "S001"),
+        ("Top-five owner share after Fox consolidation", round(sum(v for _, v in sorted(owner_map.items(), key=lambda x: -x[1])[:5]) / grand_total * 100, 1), "percent", "top 5 consolidated owners / grand total", "data/owner_concentration_scenarios.csv", "S001"),
+        ("Top owner share after Fox consolidation", round(sorted(owner_map.items(), key=lambda x: -x[1])[0][1] / grand_total * 100, 1), "percent", "largest consolidated owner / grand total", "data/owner_concentration_scenarios.csv", "S001"),
+        ("Batman 2019 lifetime", round(batman, 3), "USD billions", "sum of Batman rows", "data/franchise.csv", "S001"),
+        ("Superman 2019 lifetime", round(superman, 3), "USD billions", "sum of Superman rows", "data/franchise.csv", "S001"),
+        ("DCEU 2019 lifetime", round(dceu, 3), "USD billions", "sum of DC Extended Universe rows", "data/franchise.csv", "S001"),
+        ("DC Entertainment owner total 2019", round(dc_sum, 3), "USD billions", "Batman + Superman + DCEU; Wizarding World is a separate Warner row", "data/franchise.csv", "S001"),
+        ("Wizarding World 2019 lifetime", round(fr_total("Wizarding World / Harry Potter"), 3), "USD billions", "sum of Wizarding World rows; not in DC Entertainment total", "data/franchise.csv", "S001"),
+        ("Simpsons 2019 lifetime", round(fr_total("The Simpsons"), 3), "USD billions", "sum of rows", "data/franchise.csv", "S001"),
+        ("Simpsons 2026 Wikipedia lifetime", wiki_2026("The Simpsons"), "USD billions", "paired Wikipedia row", "data/franchise_revenue_2019_vs_2026.csv", "S017"),
+        ("Video-game origin lifetime 2019", round(medium_totals.get("Video game", 0), 3), "USD billions", "sum by original_media", "data/franchise.csv", "S001"),
+        ("Manga origin lifetime 2019", round(medium_totals.get("Manga", 0), 3), "USD billions", "sum by original_media", "data/franchise.csv", "S001"),
+        ("Animated series origin lifetime 2019", round(medium_totals.get("Animated series", 0), 3), "USD billions", "sum by original_media", "data/franchise.csv", "S001"),
+        ("Film origin lifetime 2019", round(medium_totals.get("Film", 0), 3), "USD billions", "sum by original_media", "data/franchise.csv", "S001"),
+        ("Japan region lifetime 2019", round(region_stats["Japan"]["revenue"], 3), "USD billions", "sum of region_origin=Japan", "data/franchise_region_summary.csv", "S001"),
+        ("Japan merchandise share 2019", round(region_stats["Japan"]["merch"] / region_stats["Japan"]["revenue"] * 100, 1), "percent", "merch / region total", "data/franchise_region_summary.csv", "S001"),
+        ("US region lifetime 2019", round(region_stats["US"]["revenue"], 3), "USD billions", "sum of region_origin=US", "data/franchise_region_summary.csv", "S001"),
+        ("US merchandise share 2019", round(region_stats["US"]["merch"] / region_stats["US"]["revenue"] * 100, 1), "percent", "merch / region total", "data/franchise_region_summary.csv", "S001"),
+        ("Korea region lifetime 2019", round(region_stats["Korea"]["revenue"], 3), "USD billions", "CrossFire + Dungeon Fighter Online", "data/franchise_region_summary.csv", "S001"),
+        ("China region lifetime 2019", round(region_stats["China"]["revenue"], 3), "USD billions", "Westward Journey", "data/franchise_region_summary.csv", "S001"),
+        ("MCU box office share of its 2019 row", round(mcu_bo / mcu_tot * 100, 1), "percent", "Box Office category / MCU total", "data/franchise.csv", "S001"),
+        ("Hello Kitty 2026 Wikipedia lifetime", wiki_2026("Hello Kitty"), "USD billions", "paired row; source revision not a real decline", "data/franchise_revenue_2019_vs_2026.csv", "S017"),
+        ("Mario 2019 lifetime", round(fr_total("Mario"), 3), "USD billions", "sum of rows", "data/franchise.csv", "S001"),
+        ("Mario 2026 Wikipedia lifetime", wiki_2026("Mario"), "USD billions", "paired row; source revision not a real decline", "data/franchise_revenue_2019_vs_2026.csv", "S017"),
+        ("Gundam 2019 lifetime", round(fr_total("Gundam"), 3), "USD billions", "sum of rows", "data/franchise.csv", "S001"),
+        ("Gundam 2026 Wikipedia lifetime", wiki_2026("Gundam"), "USD billions", "paired row; source revision not a real decline", "data/franchise_revenue_2019_vs_2026.csv", "S017"),
+        ("Pixar acquisition price", 7.4, "USD billions", "deal table", "data/entities_companies_deals.csv", "S009"),
+        ("Marvel acquisition price", 4.0, "USD billions", "deal table", "data/entities_companies_deals.csv", "S010"),
+        ("Lucasfilm acquisition price", 4.05, "USD billions", "deal table", "data/entities_companies_deals.csv", "S011"),
+        ("Fox enterprise value", 71.3, "USD billions", "deal table", "data/entities_companies_deals.csv", "S012"),
+        ("Disney Entertainment FY2024", 41.186, "USD billions", "segment exhibit", "data/disney_segment_revenue_fy2024.csv", "S081"),
+        ("Disney Sports FY2024", 17.619, "USD billions", "segment exhibit", "data/disney_segment_revenue_fy2024.csv", "S081"),
+        ("Disney Experiences FY2024", 34.151, "USD billions", "segment exhibit", "data/disney_segment_revenue_fy2024.csv", "S081"),
+        ("Domestic top-10 franchise share 2010", 60, "percent", "manual coding of Box Office Mojo yearly chart", "data/top10_franchise_share_by_year.csv", "S005"),
+        ("Domestic top-10 franchise share 2015", 70, "percent", "manual coding of Box Office Mojo yearly chart", "data/top10_franchise_share_by_year.csv", "S005"),
+        ("Domestic top-10 franchise share 2019", 80, "percent", "manual coding of Box Office Mojo yearly chart", "data/top10_franchise_share_by_year.csv", "S005"),
+        ("Domestic top-10 franchise share 2024", 90, "percent", "manual coding of Box Office Mojo yearly chart", "data/top10_franchise_share_by_year.csv", "S005"),
+        ("Toy Story 2019 lifetime", round(fr_total("Toy Story"), 3), "USD billions", "sum of rows", "data/franchise.csv", "S001"),
+    ]
+    verified.extend(extra)
+    _ = disney_raw
     write_csv(
         DATA / "verified_numbers.csv",
         ["figure", "value", "unit", "computed_how", "file", "source_ids", "status"],
