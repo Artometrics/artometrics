@@ -1,8 +1,8 @@
-# H3's Nine-Month Peak Created a Viewership Ceiling the Podcast Never Reached Again
+# YOUTUBE: The Platform's $36B Engine and One Podcast's Borrowed Peak
 
 **Desk:** civics · **Live:** https://artometrics.com/youtube/
 
-'Frenemies tripled H3 Podcast monthly views in 2020–2021. The show has contracted 70% since, running 220+ minutes per episode for a core audience.'
+R2 report: Alphabet/Nielsen/Goldman platform economics plus H3 case study (Frenemies ceiling, duration drift, Reddit fan/critic split). Video scripts in `video/`.
 
 ## Layout
 

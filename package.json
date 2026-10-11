@@ -38,6 +38,8 @@
     "render:readmitted:py": "python3 scripts/render-readmitted-charts.py",
     "brief:anime": "Rscript articles/anime/scripts/build_brief.R && node scripts/sync-article.mjs --slug anime",
     "brief:franchise": "Rscript articles/franchise/scripts/build_brief.R && node scripts/sync-article.mjs --slug franchise",
+    "brief:youtube": "python3 articles/youtube/scripts/build_brief.py && node scripts/sync-article.mjs --slug youtube",
+    "brief:readmitted": "python3 scripts/prepare-readmitted-data.py && python3 scripts/render-readmitted-charts.py && node scripts/sync-article.mjs --slug readmitted",
     "charts:padres": "python3 articles/padres/scripts/build_charts.py && node scripts/publish-qmd-article.mjs --slug padres",
     "setup:r": "Rscript scripts/install-r-deps.R",
     "setup:python": "pip3 install -r requirements.txt",
