@@ -4,7 +4,7 @@ slug: readmitted
 author: kyle-mcauliffe
 pubDate: 2026-04-21T00:00:00.000Z
 description: >-
-  In CMS's latest Hospital Readmissions Reduction Program extract, 48.2% of hospital–condition pairs still exceed the expected readmission ratio after a decade of penalties capped at 3% of Medicare payments. This R2 report maps HRRP history, who pays, safety-net effects, observation and mortality debates, international comparators, and eight charts for hospital executives.
+  In CMS's latest Hospital Readmissions Reduction Program extract, 48.15% of hospital–condition pairs still exceed the expected readmission ratio after a decade of penalties capped at 3% of Medicare payments. This R2 report maps HRRP history, who pays, safety-net effects, observation and mortality debates, international comparators, and eight charts for hospital executives.
 heroImage: /images/content/articles/readmitted/hero.png
 draft: false
 tags:
@@ -12,9 +12,9 @@ tags:
   - medicine
 subject: Hospitals
 tldr: >-
-  CMS's October 2026 HRRP supplemental file (measurement window July 2021–June 2024) shows 48.2% of hospital–condition pairs above an excess readmission ratio of 1.0. Hip/knee replacement averages 1.004 ERR—the highest of six tracks. New Jersey leads at 65.4% of pairs penalized; for-profits carry a larger high-tier share than non-profits. National AMI, heart-failure, and pneumonia readmission rates fell after 2012 then plateaued, while observation stays and mortality outcomes remain contested in peer-reviewed evaluations.
+  CMS's October 2026 HRRP supplemental file (measurement window July 2021–June 2024) shows 48.15% of hospital–condition pairs above an excess readmission ratio of 1.0. Hip/knee replacement averages 1.004 ERR—the highest of six tracks. New Jersey leads at 65.4% of pairs penalized; for-profits carry a larger high-tier share than non-profits. National AMI, heart-failure, and pneumonia readmission rates fell after 2012 then plateaued, while observation stays and mortality outcomes remain contested in peer-reviewed evaluations.
 keyPoints:
-  - '48.2% — hospital–condition pairs with ERR > 1.0 in CMS dataset 9n3s-kdb3 (n = 11,720 pairs)'
+  - '48.15% — hospital–condition pairs with ERR > 1.0 in CMS dataset 9n3s-kdb3 (n = 11,720 pairs)'
   - '3% — maximum Medicare IPPS payment reduction under HRRP since FY2015'
   - '65.4% — New Jersey share of pairs above ERR 1.0 (highest state)'
   - '1.004 — Hip/Knee average ERR, leading all six HRRP conditions in this extract'
@@ -22,7 +22,7 @@ keyPoints:
   - '742 — hospitals mandated into CMS TEAM bundled payments from January 1, 2026'
 faq:
   - question: What share of hospital-condition pairs exceed the CMS readmission benchmark?
-    answer: '48.2% of HRRP-eligible pairs in the October 2026 CMS extract carry an excess readmission ratio above 1.0.'
+    answer: '48.15% of HRRP-eligible pairs in the October 2026 CMS extract carry an excess readmission ratio above 1.0.'
   - question: Which condition has the highest excess readmission ratio?
     answer: Hip/Knee replacement averages 1.00485—the highest of six HRRP conditions and nearly twice the excess of the next closest track.
   - question: Which state has the highest share of penalized hospital-condition pairs?
@@ -53,7 +53,7 @@ faq:
 </nav>
 <main class="art-article-main">
 <p class="art-p">In 2009, Jencks and colleagues reported that nearly one in five Medicare fee-for-service patients returned to the hospital within thirty days. Congress answered with the Hospital Readmissions Reduction Program (HRRP): starting in October 2012, CMS began shaving inpatient prospective payment system (IPPS) dollars when risk-standardized thirty-day readmissions exceeded targets for six conditions. The maximum cut rose from 1% in fiscal year 2013 to 3% in FY2015, and it applies to <em>all</em> Medicare DRG payments—not just the condition that missed (CMS, QualityNet; MedPAC, 2024).</p>
-<p class="art-p">The October 2026 CMS supplemental extract (dataset <code>9n3s-kdb3</code>, measurement window July 1, 2021–June 30, 2024) still flags <strong>48.2%</strong> of hospital–condition pairs above an excess readmission ratio (ERR) of 1.0. ERR divides predicted readmissions by expected readmissions for each hospital’s patient mix. Above 1.0 triggers penalty math; below 1.0 earns no bonus. The national mean ERR is <strong>1.002</strong>. The program clarified the problem faster than it eliminated it.</p>
+<p class="art-p">The October 2026 CMS supplemental extract (dataset <code>9n3s-kdb3</code>, measurement window July 1, 2021–June 30, 2024) still flags <strong>48.15%</strong> of hospital–condition pairs above an excess readmission ratio (ERR) of 1.0. ERR divides predicted readmissions by expected readmissions for each hospital’s patient mix. Above 1.0 triggers penalty math; below 1.0 earns no bonus. The national mean ERR is <strong>1.002</strong>. The program clarified the problem faster than it eliminated it.</p>
 
 <h2 id="research-question" class="anchored">RESEARCH QUESTION</h2>
 <p class="art-p">After fourteen years of HRRP, where do penalties still concentrate in the latest CMS file—by state, condition, ownership, and safety-net proxy—and what should hospital executives infer about transitional care, observation-status gaming, mortality tradeoffs, and CMS’s shift toward episode-based models such as TEAM?</p>
@@ -67,7 +67,8 @@ faq:
 <p class="art-h3" style="margin-top:0;">Method &amp; data box</p>
 <p class="art-p" style="margin-bottom:8px;"><strong>Population:</strong> 11,720 hospital–condition pairs with non-suppressed ERR after CMS’s ≥25-discharge rule (six conditions, ~2,700 hospitals).</p>
 <p class="art-p" style="margin-bottom:8px;"><strong>Primary files:</strong> CMS Provider Data Catalog <code>9n3s-kdb3</code> (HRRP) joined offline to <code>xubh-q36u</code> (ownership and hospital type).</p>
-<p class="art-p" style="margin-bottom:0;"><strong>Reproduce:</strong> <code>npm run brief:readmitted</code> — refreshes <code>articles/readmitted/data/</code>, renders PNG + Plotly JSON, syncs to <code>public/</code>.</p>
+<p class="art-p" style="margin-bottom:8px;"><strong>Reproduce:</strong> <code>npm run brief:readmitted</code> — refreshes <code>articles/readmitted/data/</code>, renders PNG + Plotly JSON, syncs to <code>public/</code>.</p>
+<p class="art-p" style="margin-bottom:0;"><strong>Rounding:</strong> National shares use two decimal places on the exact ratio (48.15%, not 48.2%), matching <code>articles/readmitted/data/SOURCE.txt</code>.</p>
 </div>
 
 <h2 id="hrrp-history" class="anchored">HRRP SINCE 2012: CAP, PEERS, AND WHO PAYS</h2>

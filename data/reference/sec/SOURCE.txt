@@ -1,0 +1,7 @@
+SEC EDGAR XBRL companyfacts extract
+Generated: 2026-10-11T23:17:03.205837+00:00
+User-Agent: Artometrics Data Pipeline team@artometrics.com
+API: https://data.sec.gov/api/xbrl/companyfacts/CIK##########.json
+
+Tables: data/reference/sec/*_revenues.csv
+Segment-level detail may require 10-K note parsing; this file is consolidated revenue tags.

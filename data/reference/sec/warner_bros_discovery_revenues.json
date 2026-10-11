@@ -1,0 +1,164 @@
+[
+  {
+    "tag": "SalesRevenueNet",
+    "fiscal_year": 2009,
+    "value_usd": 76000000,
+    "filed": "2010-02-22",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "SalesRevenueNet",
+    "fiscal_year": 2010,
+    "value_usd": 3382000000,
+    "filed": "2011-02-18",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "SalesRevenueNet",
+    "fiscal_year": 2011,
+    "value_usd": 3458000000,
+    "filed": "2012-02-17",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "SalesRevenueNet",
+    "fiscal_year": 2012,
+    "value_usd": 3706000000,
+    "filed": "2013-02-14",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "SalesRevenueNet",
+    "fiscal_year": 2013,
+    "value_usd": 4168000000,
+    "filed": "2014-02-20",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "SalesRevenueNet",
+    "fiscal_year": 2014,
+    "value_usd": 4487000000,
+    "filed": "2015-02-19",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "SalesRevenueNet",
+    "fiscal_year": 2015,
+    "value_usd": 5535000000,
+    "filed": "2016-02-18",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "SalesRevenueNet",
+    "fiscal_year": 2016,
+    "value_usd": 6265000000,
+    "filed": "2017-02-14",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "SalesRevenueNet",
+    "fiscal_year": 2017,
+    "value_usd": 6394000000,
+    "filed": "2018-02-28",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+    "fiscal_year": 2018,
+    "value_usd": 6497000000,
+    "filed": "2019-03-01",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2018,
+    "value_usd": 6497000000,
+    "filed": "2019-03-01",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+    "fiscal_year": 2019,
+    "value_usd": 6873000000,
+    "filed": "2020-02-27",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+    "fiscal_year": 2020,
+    "value_usd": 10553000000,
+    "filed": "2021-02-22",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+    "fiscal_year": 2021,
+    "value_usd": 11144000000,
+    "filed": "2022-02-24",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+    "fiscal_year": 2022,
+    "value_usd": 10671000000,
+    "filed": "2023-02-24",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+    "fiscal_year": 2023,
+    "value_usd": 12191000000,
+    "filed": "2024-02-23",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+    "fiscal_year": 2024,
+    "value_usd": 33817000000,
+    "filed": "2025-02-27",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+    "fiscal_year": 2025,
+    "value_usd": 41321000000,
+    "filed": "2026-02-27",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  }
+]

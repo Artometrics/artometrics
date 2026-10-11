@@ -1,0 +1,53 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "x": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "y": [
+        14.3030112,
+        19.078212800000003,
+        24.5921774,
+        34.2727648,
+        32.1746351,
+        33.2947907,
+        37.0992496
+      ],
+      "marker": {
+        "color": "#2C3E6B"
+      },
+      "hovertemplate": "%{x}<br>%{y:.2f}<extra></extra>"
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "YouTube ads revenue (2025 USD billions, CPI-U adjusted)"
+    },
+    "yaxis": {
+      "title": "2025 USD billions"
+    },
+    "annotations": [
+      {
+        "text": "BLS CPI-U via FRED CPIAUCSL \u00b7 CPI-U \u2192 2025 USD \u00b7 Artometrics",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0,
+        "y": -0.15,
+        "showarrow": false,
+        "font": {
+          "size": 10
+        }
+      }
+    ]
+  },
+  "config": {
+    "displayModeBar": false
+  }
+}

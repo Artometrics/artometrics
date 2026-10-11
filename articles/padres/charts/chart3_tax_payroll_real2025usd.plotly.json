@@ -1,0 +1,54 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "name": "CBT payroll",
+      "x": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "y": [
+        257.2388,
+        258.669,
+        307.6942,
+        233.8011,
+        270.4,
+        251.8122
+      ]
+    },
+    {
+      "type": "scatter",
+      "mode": "lines+markers",
+      "name": "CBA threshold",
+      "x": [
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "y": [
+        253.0577,
+        246.1976,
+        243.2435,
+        241.0,
+        237.1369
+      ]
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Padres CBT payroll vs threshold (2025 USD millions)"
+    },
+    "yaxis": {
+      "title": "2025 USD millions"
+    }
+  },
+  "config": {
+    "displayModeBar": false
+  }
+}

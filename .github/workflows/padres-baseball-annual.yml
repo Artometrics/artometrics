@@ -1,0 +1,29 @@
+name: Padres Lahman and MLB sync
+
+on:
+  schedule:
+    - cron: "0 12 15 1 *" # Jan 15 annually
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 scripts/sync-padres-baseball.py
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore(data): sync Lahman and MLB Stats API for padres"
+          title: "Padres baseball data sync (automated)"
+          body: |
+            Annual Lahman CSV refresh and MLB Stats API Padres snapshot.
+            Re-run `articles/padres/scripts/build_charts.py` before publishing chart changes.
+          branch: automation/padres-baseball-sync
+          delete-branch: true
