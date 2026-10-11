@@ -1,0 +1,438 @@
+@font-face {
+  font-family: "DM Sans";
+  src: url("fonts/DMSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DM Sans";
+  src: url("fonts/DMSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DM Sans";
+  src: url("fonts/DMSans-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "DM Sans";
+  src: url("fonts/DMSans-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "DM Mono";
+  src: url("fonts/DMMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DM Mono";
+  src: url("fonts/DMMono-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Chomsky";
+  src: url("fonts/Chomsky.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --red: #E60000;
+  --blue: #0047FF;
+  --blue-glow: #4D8DFF;
+  --ink: #141414;
+  --muted: #4A4A4A;
+  --night: #0A0A0A;
+  --rule: #E6E6E6;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #d9d9d9;
+  color: var(--ink);
+  font-family: "DM Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.48;
+  hyphens: auto;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.num, .stat, code, .checksum code, .hero-stat, .hero-detail, .issue-no, .back-url {
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.wordmark {
+  font-family: "Chomsky", "Times New Roman", serif;
+  font-weight: 400;
+  line-height: 0.85;
+  margin: 0;
+}
+
+@page {
+  size: 8.5in 11in;
+  margin: 0.74in 0.62in 0.58in 0.62in;
+  @top-left {
+    content: "ARTOMETRICS";
+    font-family: "DM Sans", sans-serif;
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #E60000;
+  }
+  @top-right {
+    content: string(sectionName, first);
+    font-family: "DM Mono", monospace;
+    font-size: 8pt;
+    color: #0047FF;
+  }
+  @bottom-left {
+    content: element(footerUrl);
+    font-family: "DM Mono", monospace;
+    font-size: 8pt;
+    color: #333;
+  }
+  @bottom-right {
+    content: counter(page);
+    font-family: "DM Mono", monospace;
+    font-size: 9pt;
+    color: #141414;
+  }
+}
+
+@page cover {
+  margin: 0;
+  background: #0A0A0A;
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-left { content: none; }
+  @bottom-right { content: none; }
+}
+
+@page back {
+  margin: 0;
+  background: #0A0A0A;
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-left { content: none; }
+  @bottom-right { content: none; }
+}
+
+@page contents {
+  @top-right { content: "CONTENTS"; }
+}
+
+.running-url {
+  position: running(footerUrl);
+  font-family: "DM Mono", monospace;
+  font-size: 8pt;
+}
+
+h2 {
+  string-set: sectionName content(text);
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+  font-size: 16.5pt;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0.15in 0 0.12in;
+  break-after: avoid;
+  column-span: all;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  height: 0;
+  margin-top: 6px;
+  border-top: 2.4px solid var(--red);
+  box-shadow: 0 -5px 0 var(--blue-glow);
+  width: 1.7in;
+}
+
+h3 {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+  font-size: 12pt;
+  margin: 0.16in 0 0.06in;
+  break-after: avoid;
+}
+
+p { margin: 0 0 0.1in; orphans: 2; widows: 2; }
+a { color: var(--blue); text-decoration: none; }
+em { font-style: italic; }
+strong, b { font-weight: 700; }
+
+.cols {
+  column-count: 2;
+  column-gap: 0.28in;
+  margin: 0 0 0.08in;
+}
+
+.cover {
+  page: cover;
+  break-after: page;
+  height: 11in;
+  padding: 0.62in 0.68in 0.55in;
+  background: var(--night);
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.cover .wordmark { font-size: 58pt; color: white; }
+.rules {
+  height: 0;
+  border-top: 2.5px solid var(--red);
+  box-shadow: 0 4px 0 var(--blue-glow);
+  margin: 12px 0 16px;
+}
+.issue-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0;
+}
+.issue-no {
+  color: var(--blue-glow);
+  letter-spacing: 0.12em;
+  font-size: 11pt;
+}
+.kicker {
+  letter-spacing: 0.08em;
+  font-size: 11pt;
+  text-transform: uppercase;
+}
+.cover-title {
+  margin: auto 0 0.12in;
+  font-size: 34pt;
+  line-height: 1.02;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  max-width: 7in;
+}
+.cover .dek, .contents .dek {
+  font-size: 12.5pt;
+  line-height: 1.4;
+  color: #e4e4e4;
+  max-width: 6.4in;
+  margin: 0 0 0.2in;
+}
+.contents .dek { color: #333; }
+.hero-stat {
+  margin: auto 0 0.06in;
+  font-size: 72pt;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: white;
+  text-shadow: -3px 0 var(--red), 3px 0 var(--blue-glow);
+}
+.hero-label { margin: 0; font-size: 11pt; }
+.hero-detail { margin: 0.04in 0 0.16in; color: var(--blue-glow); font-size: 12pt; }
+.byline { margin: 0; color: #bdbdbd; font-family: "DM Mono", monospace; font-size: 8.5pt; }
+.contents .byline { color: var(--blue); margin-bottom: 0.18in; }
+
+.contents {
+  page: contents;
+  break-after: page;
+}
+.contents-title {
+  font-size: 28pt;
+  font-weight: 700;
+  margin: 0 0 0.1in;
+}
+.contents ol { list-style: none; margin: 0; padding: 0; }
+.contents li { break-inside: avoid; }
+.contents a {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.2in;
+  padding: 0.07in 0;
+  border-bottom: 0.5pt solid var(--rule);
+  color: var(--ink);
+}
+.contents a::after {
+  content: target-counter(attr(href), page);
+  font-family: "DM Mono", monospace;
+  color: var(--blue);
+  font-size: 10pt;
+}
+
+.exec-summary { break-before: page; break-after: page; }
+.exec-summary h2 { font-size: 28pt; }
+.exec-summary > p { font-size: 11.5pt; max-width: 7in; margin-bottom: 0.18in; }
+.card {
+  display: grid;
+  grid-template-columns: 1.4in 1fr;
+  gap: 0.14in;
+  align-items: center;
+  border-left: 3px solid var(--red);
+  border-bottom: 0.4pt solid var(--rule);
+  padding: 0.1in 0.12in;
+  margin: 0 0 0.08in;
+  break-inside: avoid;
+}
+.stat { font-size: 20pt; color: var(--blue); line-height: 1; }
+
+.lede { font-size: 12.25pt; line-height: 1.45; margin: 0 0 0.14in; }
+
+.pullquote {
+  border-left: 3.5px solid var(--red);
+  padding: 0.08in 0.08in 0.08in 0.14in;
+  margin: 0.12in 0;
+  break-inside: avoid;
+}
+.pullquote .stat { font-size: 26pt; color: var(--red); display: block; margin-bottom: 0.04in; }
+.pullquote p { font-style: italic; font-size: 12pt; margin: 0; }
+
+.sidebox {
+  background: #F3F6FF;
+  border-left: 3px solid var(--blue);
+  padding: 0.12in 0.14in;
+  margin: 0.1in 0;
+  break-inside: avoid;
+}
+.kicker {
+  font-family: "DM Mono", monospace;
+  font-size: 8pt;
+  color: var(--red);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 0.06in;
+}
+
+.spread {
+  display: grid;
+  grid-template-columns: 1.42fr 0.82fr;
+  gap: 0.24in;
+  margin: 0.08in 0 0.16in;
+  break-inside: auto;
+}
+.chart-page {
+  break-before: page;
+  break-after: page;
+  text-align: center;
+}
+.chart-page h2 { text-align: left; }
+.chart-page img { width: 5.85in; max-width: 100%; height: auto; }
+.chart-page figcaption, figcaption {
+  font-size: 8.5pt;
+  text-align: left;
+  margin: 0.08in auto 0;
+  max-width: 5.85in;
+}
+.credit {
+  font-size: 7.5pt;
+  font-style: italic;
+  color: var(--muted);
+  text-align: left;
+  max-width: 5.85in;
+  margin: 0.04in auto 0;
+}
+.logo img, .studio-card > img, .person img { width: 1.2in; height: auto; }
+.logo, .person { break-inside: avoid; margin-bottom: 0.08in; }
+.studio-card {
+  background: #F7F7F7;
+  border-left: 2.6px solid var(--red);
+  padding: 0.08in;
+  break-inside: auto;
+}
+.studio-card ul { list-style: none; padding: 0; margin: 0.06in 0; }
+.studio-card li { font-size: 9pt; margin: 0; }
+.title-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.1in;
+  margin: 0.12in 0;
+}
+.title-card {
+  border-top: 2px solid var(--red);
+  background: #fafafa;
+  padding: 0.08in;
+  break-inside: avoid;
+  font-size: 9pt;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 7.4pt;
+  margin: 0.1in 0 0.16in;
+  break-inside: auto;
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 3px 4px;
+  border-bottom: 0.4pt solid #e4e4e4;
+}
+th {
+  background: #111;
+  color: white;
+  font-weight: 700;
+  border-bottom: 2px solid var(--red);
+}
+tr { break-inside: avoid; }
+thead { display: table-header-group; }
+
+.single { break-before: page; }
+.checksum {
+  background: var(--night);
+  color: white;
+  padding: 0.14in 0.16in;
+  margin: 0.12in 0;
+}
+.checksum code { color: var(--blue-glow); font-size: 8.5pt; }
+.versions {
+  background: #f6f6f6;
+  border-left: 2.5px solid var(--blue);
+  padding: 0.1in 0.12in;
+  margin: 0.1in 0;
+}
+.versions pre, .versions code {
+  font-family: "DM Mono", monospace;
+  font-size: 7.5pt;
+  white-space: pre-wrap;
+}
+.editors-note {
+  border-top: 1.6px solid var(--red);
+  padding-top: 0.1in;
+  margin-top: 0.16in;
+  font-style: italic;
+  font-size: 9.5pt;
+}
+.page-break { break-before: page; }
+
+.back-cover {
+  page: back;
+  break-before: page;
+  height: 11in;
+  padding: 0.7in 0.68in;
+  background: var(--night);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.back-cover .wordmark { font-size: 48pt; }
+.back-cover .issue-no { margin: 0 0 0.16in; }
+.back-title {
+  font-size: 22pt;
+  font-weight: 700;
+  margin: 0 0 auto;
+  max-width: 6.5in;
+}
+.back-url { font-size: 16pt; margin: 0.2in 0 0.06in; }
+.back-note { margin: 0; color: #c8c8c8; font-size: 9.5pt; }
+
+ul { padding-left: 1.1em; }
+li { margin: 0 0 0.06in; }

@@ -1,0 +1,9 @@
+.quarto/
+anime.typ
+anime.typst.md
+paged.polyfill.js
+magazine/assets/
+magazine/charts/
+magazine/paged.polyfill.js
+
+/.quarto/
