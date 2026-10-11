@@ -229,7 +229,7 @@ export default function SamplePackScreen() {
         onChangeText={(title) => void persist({ ...pack, title })}
         className="text-[28px] font-bold border-b border-border py-1.5 text-fg"
       />
-      <Text className="font-serif text-base leading-[26px] max-w-[560px] text-muted">
+      <Text className="font-sans text-base leading-[26px] max-w-[560px] text-muted">
         Record → synth → favorite clips → export.
       </Text>
 

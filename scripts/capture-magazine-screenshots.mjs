@@ -18,6 +18,7 @@ fs.mkdirSync(outDir, { recursive: true });
 
 const pages = [
   { name: "home", path: "/" },
+  { name: "blog", path: "/blog" },
   { name: "anime", path: "/anime" },
   { name: "padres", path: "/padres" },
 ];
@@ -33,12 +34,14 @@ for (const vp of viewports) {
   const page = await browser.newPage({ viewport: { width: vp.width, height: vp.height } });
   for (const { name, path: route } of pages) {
     await page.goto(`${base}${route}`, { waitUntil: "networkidle", timeout: 120000 });
-    if (route !== "/") {
-      await page.waitForSelector(".artometrics-article-body, article, [role=heading]", {
+    if (route === "/blog") {
+      await page.waitForSelector("text=Reports", { timeout: 60000 });
+    } else if (route !== "/") {
+      await page.waitForSelector(".artometrics-article-body, [role=heading]", {
         timeout: 60000,
       });
-      await page.waitForTimeout(800);
     }
+    await page.waitForTimeout(800);
     const file = path.join(outDir, `${name}-${vp.label}.png`);
     await page.screenshot({ path: file, fullPage: true });
     console.log("wrote", file);

@@ -94,8 +94,8 @@ export default function TwildaLibraryScreen() {
       <PageSeo title="Twilda" description="Story workspace on Artometrics." path="/tools/twilda" />
       <ToolsSubnav links={NAV} />
       <Text className="text-xs tracking-[1.8px] uppercase font-bold text-accent">Twilda</Text>
-      <Text className="font-serif text-[36px] font-bold text-fg">Library</Text>
-      <Text className="font-serif text-base leading-[26px] max-w-[560px] text-muted">
+      <Text className="font-sans text-[36px] font-bold text-fg">Library</Text>
+      <Text className="font-sans text-base leading-[26px] max-w-[560px] text-muted">
         Plan, write, storyboard, and keep your Codex in one place.
       </Text>
       <PrimaryButton label="New novel" onPress={onCreate} />
@@ -103,7 +103,7 @@ export default function TwildaLibraryScreen() {
       {loading ? (
         <ActivityIndicator className="mt-10" color={colors.accent} />
       ) : novels.length === 0 ? (
-        <Text className="font-serif text-base leading-[26px] max-w-[560px] mt-6 text-muted">
+        <Text className="font-sans text-base leading-[26px] max-w-[560px] mt-6 text-muted">
           No novels yet. Create a blank novel or wait for starters to seed.
         </Text>
       ) : (

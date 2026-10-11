@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import { Link, useLocalSearchParams } from "expo-router";
 import { Wrapper } from "@/components/Wrapper";
-import { BlogCard } from "@/components/BlogCard";
+import { MagazineJournalIndex } from "@/components/MagazineJournalIndex";
 import { PageSeo } from "@/components/PageSeo";
 import {
   DOMAIN_META,
@@ -44,9 +44,11 @@ export default function TopicChannelPage() {
   if (!meta || !mapped) {
     return (
       <Wrapper variant="narrow" className="gap-3 py-10">
-        <Text className="text-fg">Section not found</Text>
+        <Text className="font-sans text-fg">Section not found</Text>
         <Link href="/">
-          <Text className="text-muted">← Front page</Text>
+          <Text className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted">
+            ← Front page
+          </Text>
         </Link>
       </Wrapper>
     );
@@ -55,16 +57,18 @@ export default function TopicChannelPage() {
   const posts = getBlogPosts().filter((p) => primarySection(p.tags) === mapped);
 
   return (
-    <Wrapper variant="standard" className="gap-0 py-8 md:py-10">
+    <Wrapper variant="wide" className="gap-0 py-8 md:py-10">
       <PageSeo title={meta.title} description={meta.description} path={`/topics/${mapped}`} />
       {posts.length === 0 ? (
-        <Text className="font-sans text-[15px] text-muted">More stories coming soon.</Text>
-      ) : (
-        <View className="gap-0 border-t border-border">
-          {posts.map((post) => (
-            <BlogCard key={post.slug} post={post} variant="pick" editorial />
-          ))}
+        <View className="border-t-2 border-fg pt-6">
+          <Text className="font-sans text-[15px] text-muted">More stories coming soon.</Text>
         </View>
+      ) : (
+        <MagazineJournalIndex
+          title={meta.title}
+          description={meta.description}
+          posts={posts}
+        />
       )}
     </Wrapper>
   );

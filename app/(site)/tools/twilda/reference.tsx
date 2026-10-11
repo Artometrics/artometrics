@@ -46,8 +46,8 @@ export default function TwildaReferenceScreen() {
       />
       <ToolsSubnav links={NAV} />
       <Text className="text-xs tracking-[1.8px] uppercase font-bold text-accent">Twilda</Text>
-      <Text className="font-serif text-[36px] font-bold text-fg">Reference</Text>
-      <Text className="font-serif text-base leading-[26px] max-w-[640px] text-muted">
+      <Text className="font-sans text-[36px] font-bold text-fg">Reference</Text>
+      <Text className="font-sans text-base leading-[26px] max-w-[640px] text-muted">
         Gutenberg, WikiArt/Wikimedia, and Wikipedia — pin items to your profile.
       </Text>
 
@@ -88,7 +88,7 @@ export default function TwildaReferenceScreen() {
             <Text className="text-[11px] tracking-[1.2px] uppercase font-bold text-accent">
               {item.source}
             </Text>
-            <Text className="font-serif text-lg text-fg">
+            <Text className="font-sans text-lg text-fg">
               {item.title || item.label}
             </Text>
             <Text className="text-sm leading-5 text-muted" numberOfLines={2}>

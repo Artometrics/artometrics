@@ -7,6 +7,7 @@ import { useChrome } from "@/lib/chrome";
 import { useLocale } from "@/lib/locale";
 import { useTheme } from "@/lib/theme";
 import { SITE_PRIMARY_NAV } from "@/lib/site-nav";
+import { formatHeaderDateline } from "@/lib/headerDateline";
 
 export function SiteHeader() {
   const { setMenuOpen } = useChrome();
@@ -14,8 +15,20 @@ export function SiteHeader() {
   const { colors } = useTheme();
   const pathname = usePathname();
 
+  const dateline = formatHeaderDateline();
+
   return (
     <View className="z-40 border-b border-border bg-header">
+      <View className="border-b border-border bg-bg-elevated">
+        <Wrapper className="py-1.5">
+          <Text
+            className="text-center font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-muted"
+            accessibilityRole="text"
+          >
+            {dateline}
+          </Text>
+        </Wrapper>
+      </View>
       <Wrapper className="py-4">
         <View className="flex-row items-center justify-between">
           <View className="h-10 w-10 items-center justify-center">
@@ -55,7 +68,7 @@ export function SiteHeader() {
         </View>
       </Wrapper>
 
-      <View className="hidden border-t border-border lg:block">
+      <View className="hidden border-t-2 border-fg lg:block">
         <Wrapper className="py-1">
           <View className="flex-row flex-wrap items-center justify-center gap-x-4 gap-y-1">
             {SITE_PRIMARY_NAV.map((item) => {

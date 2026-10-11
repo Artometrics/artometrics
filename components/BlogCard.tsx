@@ -27,7 +27,7 @@ export function BlogCard({
     : "Kyle McAuliffe";
 
   const titleClass =
-    "font-serif text-[19px] font-semibold leading-[1.2] tracking-tight text-fg md:text-[21px]";
+    "font-sans text-[19px] font-semibold leading-[1.2] tracking-tight text-fg md:text-[21px]";
 
   if (variant === "pick") {
     return (
@@ -76,7 +76,7 @@ export function BlogCard({
                 {label}
               </Text>
             ) : null}
-            <Text className="font-serif text-3xl font-semibold leading-[1.08] tracking-tight text-white md:text-4xl">
+            <Text className="font-sans text-3xl font-semibold leading-[1.08] tracking-tight text-white md:text-4xl">
               {post.title}
             </Text>
             <Text className="font-sans text-[12px] uppercase tracking-[1.4px] text-white/70">
@@ -91,7 +91,7 @@ export function BlogCard({
   if (variant === "stack") {
     const borderClass = "border border-border";
     const stackTitle =
-      "font-serif text-[18px] font-semibold leading-[1.25] tracking-tight text-fg";
+      "font-sans text-[18px] font-semibold leading-[1.25] tracking-tight text-fg";
     return (
       <Link href={`/${post.slug}`} asChild>
         <Pressable className={`min-w-[140px] flex-1 gap-0 overflow-hidden ${borderClass} bg-header`}>
@@ -136,7 +136,7 @@ export function BlogCard({
               {label}
             </Text>
           ) : null}
-          <Text className="font-serif text-2xl font-semibold leading-7 tracking-tight text-fg">
+          <Text className="font-sans text-2xl font-semibold leading-7 tracking-tight text-fg">
             {post.title}
           </Text>
           <Text
