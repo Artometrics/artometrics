@@ -1,0 +1,11 @@
+Artometrics Padres baseball data cache
+Generated: 2026-10-11T23:16:29.246763+00:00
+Lahman base: https://raw.githubusercontent.com/chadwickbureau/baseballdatabank/master/core
+MLB Stats API: statsapi.mlb.com (unofficial public API)
+
+SHA256:
+- Teams.csv: 0e7afdd8b837d0edaca770a28817eec6613bd8255979c1be6e3f5827f4b88fd6
+- SeriesPost.csv: 507918cbb9dea12fd353b2a68a36e6ad481f8bcd58e51698cf3889b78d52254a
+- Salaries.csv: a1d596d2f45112b5ea77623f4bfaa400a6ef0d325b52939ad96f4d53676ee845
+- TeamsFranchises.csv: fc58735a8f767f11c27bccbbee38ea850a00e27c0216fb2a60cc4185a99bf398
+- mlb_stats_api_padres.json: 0f872ac72be2ac54c142423678f38245f5847ccf3ca06a52060632173e5b7af8

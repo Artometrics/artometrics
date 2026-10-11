@@ -1,0 +1,155 @@
+[
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2009,
+    "value_usd": 1205340000,
+    "filed": "2010-02-22",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2010,
+    "value_usd": 1364661000,
+    "filed": "2011-02-18",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2011,
+    "value_usd": 1670269000,
+    "filed": "2012-02-10",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2012,
+    "value_usd": 2162625000,
+    "filed": "2013-02-01",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2013,
+    "value_usd": 3204577000,
+    "filed": "2014-02-03",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2014,
+    "value_usd": 3609282000,
+    "filed": "2015-01-29",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2015,
+    "value_usd": 4374562000,
+    "filed": "2016-01-28",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2016,
+    "value_usd": 5504656000,
+    "filed": "2017-01-27",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2017,
+    "value_usd": 6779511000,
+    "filed": "2018-01-29",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2018,
+    "value_usd": 1957736000,
+    "filed": "2019-01-29",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2019,
+    "value_usd": 11692713000,
+    "filed": "2020-01-29",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2020,
+    "value_usd": 15794341000,
+    "filed": "2021-01-28",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2021,
+    "value_usd": 20156447000,
+    "filed": "2022-01-27",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2022,
+    "value_usd": 24996056000,
+    "filed": "2023-01-26",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2023,
+    "value_usd": 29697844000,
+    "filed": "2024-01-26",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2024,
+    "value_usd": 31615550000,
+    "filed": "2025-01-27",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2025,
+    "value_usd": 33723297000,
+    "filed": "2026-01-23",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  }
+]

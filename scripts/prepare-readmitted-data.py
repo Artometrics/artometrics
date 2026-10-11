@@ -26,16 +26,21 @@ CONDITION_MAP = {
 }
 
 
-def cms_download(dataset_id: str, dest: Path) -> None:
+def cms_meta(dataset_id: str) -> dict:
     meta_url = (
         "https://data.cms.gov/provider-data/api/1/metastore/schemas/dataset/items/"
         f"{dataset_id}?show-reference-ids=false"
     )
-    with urllib.request.urlopen(meta_url) as resp:
-        meta = json.load(resp)
+    with urllib.request.urlopen(meta_url, timeout=60) as resp:
+        return json.load(resp)
+
+
+def cms_download(dataset_id: str, dest: Path) -> dict:
+    meta = cms_meta(dataset_id)
     dl = meta["distribution"][0]["data"]["downloadURL"]
     print(f"Downloading {dest.name} from {dataset_id}")
     urllib.request.urlretrieve(dl, dest)
+    return meta
 
 
 def ownership_group(val: str) -> str:
@@ -74,8 +79,9 @@ def write_csv(path: Path, rows: list[dict], fieldnames: list[str]) -> None:
 
 hrrp_path = DATA_DIR / "raw_hrrp.csv"
 hosp_path = DATA_DIR / "raw_hospital_general.csv"
-cms_download("9n3s-kdb3", hrrp_path)
+hrrp_meta = cms_download("9n3s-kdb3", hrrp_path)
 cms_download("xubh-q36u", hosp_path)
+hrrp_modified = hrrp_meta.get("modified") or hrrp_meta.get("date") or ""
 
 hosp_by_id: dict[str, dict[str, str]] = {}
 for row in read_csv_dict(hosp_path):
@@ -317,11 +323,23 @@ write_csv(
     ["report_year", "condition", "national_readmit_rate_pct", "source_note"],
 )
 
+def _sha256(path: Path) -> str:
+    import hashlib
+
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+penalized_display = round(nat_avg_pct, 2)
 (DATA_DIR / "SOURCE.txt").write_text(
     "\n".join(
         [
             "Artometrics READMITTED working data",
             f"Generated: {datetime.now(timezone.utc).isoformat()}",
+            f"CMS HRRP modified: {hrrp_modified}",
             "",
             "Primary CMS files:",
             "- HRRP supplemental: dataset 9n3s-kdb3 (raw_hrrp.csv)",
@@ -329,8 +347,14 @@ write_csv(
             "",
             "Licence: U.S. government public data (CMS Provider Data Catalog).",
             "",
+            "Rounding: headline share uses two decimal places (half-up), e.g. 48.15% — not rounded to 48.2%.",
+            "",
             f"Working pairs after suppression filter: {len(joined)}",
-            f"National penalized share: {round(nat_avg_pct, 2)}%",
+            f"National penalized share: {penalized_display}%",
+            "",
+            "SHA256:",
+            f"- raw_hrrp.csv: {_sha256(hrrp_path)}",
+            f"- raw_hospital_general.csv: {_sha256(hosp_path)}",
         ]
     )
     + "\n",

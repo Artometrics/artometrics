@@ -1,0 +1,45 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "x": [
+        "Disney Experiences",
+        "Disney Entertainment",
+        "ESPN / Disney Sports"
+      ],
+      "y": [
+        35.0537,
+        43.3456,
+        18.4475
+      ],
+      "marker": {
+        "color": "#2C3E6B"
+      },
+      "hovertemplate": "%{x}<br>%{y:.2f}<extra></extra>"
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Disney segment revenue FY2024 (2025 USD billions)"
+    },
+    "yaxis": {
+      "title": "2025 USD billions"
+    },
+    "annotations": [
+      {
+        "text": "BLS CPI-U via FRED CPIAUCSL \u00b7 CPI-U \u2192 2025 USD \u00b7 Artometrics",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0,
+        "y": -0.15,
+        "showarrow": false,
+        "font": {
+          "size": 10
+        }
+      }
+    ]
+  },
+  "config": {
+    "displayModeBar": false
+  }
+}

@@ -1,0 +1,10 @@
+Artometrics CPI-U reference cache
+Primary source: FRED series CPIAUCSL (via fredgraph.csv export)
+Annual values: unweighted mean of monthly index levels per calendar year.
+Deflator: nominal_usd * (cpi_base_year / cpi_value_year).
+Default publication base year: 2025 USD (see scripts/data/build_real_usd_charts.py).
+
+SHA256 (committed artifacts):
+- reference/cpi/cpi_annual.csv: 95e7eb8e4ddd4468ceca9ccec45f9760a1f811af6c683c0fcc983f75c66e8fc2
+- reference/cpi/cpi_monthly.csv: 0c2dfd51543e3cedf6e792ff733d01c7c159f391e0a1dd75d603cacf63cf5243
+Generated: 2026-10-11T23:15:52.734008+00:00
