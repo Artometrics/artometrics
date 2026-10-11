@@ -121,8 +121,22 @@ let totalMerges = 0;
 let totalCharts = 0;
 let filesTouched = 0;
 
+function publishedFromQmd(name) {
+  const slug = name.replace(/\.md$/, "");
+  const dir = path.join(__dirname, "../articles", slug);
+  if (!fs.existsSync(dir)) return false;
+  return fs.readdirSync(dir).some((file) => {
+    if (!file.endsWith(".qmd")) return false;
+    return fs.readFileSync(path.join(dir, file), "utf8").includes("publishBody: true");
+  });
+}
+
 for (const name of fs.readdirSync(blogDir).sort()) {
   if (!name.endsWith(".md")) continue;
+  if (publishedFromQmd(name)) {
+    console.log(`${name}: skipped (published from the .qmd)`);
+    continue;
+  }
   const stats = processFile(path.join(blogDir, name));
   if (!stats) continue;
   totalCharts += stats.charts;
