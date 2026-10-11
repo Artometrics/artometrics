@@ -432,6 +432,17 @@ ENTITY_TO_ASSET: dict[str, str] = {
     "Thomas & Friends": "logo_thomas",
     "Assassin's Creed": "logo_assassins_creed",
     "Marc Steinberg": "logo_uminn_press",
+    "Game Freak": "logo_game_freak",
+    "Creatures Inc.": "logo_creatures",
+    "Nexon": "logo_nexon",
+    "Tencent": "logo_tencent",
+    "Sony": "logo_sony",
+    "LEGO": "logo_lego",
+    "Peanuts": "logo_peanuts",
+    "Toy Story": "logo_toy_story",
+    "One Piece": "logo_one_piece",
+    "Dragon Ball": "logo_dragon_ball",
+    "Fast & Furious": "logo_fast_furious",
 }
 
 # Scene text triggers (longest match first)
@@ -493,6 +504,19 @@ ENTITY_TRIGGERS: list[tuple[str, str]] = sorted(
         ("microsoft", "Microsoft"),
         ("crossfire", "CrossFire"),
         ("james bond", "James Bond"),
+        ("game freak", "Game Freak"),
+        ("creatures inc", "Creatures Inc."),
+        ("creatures", "Creatures Inc."),
+        ("nexon", "Nexon"),
+        ("tencent", "Tencent"),
+        ("sony", "Sony"),
+        ("lego mario", "LEGO"),
+        ("lego", "LEGO"),
+        ("toy story", "Toy Story"),
+        ("peanuts", "Peanuts"),
+        ("one piece", "One Piece"),
+        ("dragon ball", "Dragon Ball"),
+        ("fast & furious", "Fast & Furious"),
     ],
     key=lambda x: -len(x[0]),
 )
@@ -1026,52 +1050,9 @@ def main() -> None:
         shutil.copy2(ASSETS_DIR / "logo_marvel.png", ASSETS_DIR / "logo_mcu.png")
         asset_meta["logo_mcu"]["file"] = "assets/logo_mcu.png"
 
-    all_rows, entity_mentions = collect_entity_mentions()
-    log_rows, scene_asset, scene_ai = assign_scene_assets(asset_meta, all_rows, entity_mentions)
-    log_path = ASSETS_DIR / "asset_log.csv"
-    with log_path.open("w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(
-            f,
-            fieldnames=[
-                "asset_id",
-                "scene_ids",
-                "entity",
-                "type",
-                "file",
-                "source_url",
-                "license",
-                "credit_line",
-                "notes",
-            ],
-        )
-        w.writeheader()
-        w.writerows(log_rows)
+    from remap_storyboard_visuals import main as remap_main
 
-    ai_path = ASSETS_DIR / "ai_prompts.csv"
-    with ai_path.open("w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=["scene_id", "prompt_id", "prompt"])
-        w.writeheader()
-        for sid in sorted(scene_ai.keys()):
-            pid = scene_ai[sid]
-            prompt = next(p for i, p in AI_PROMPTS if i == pid)
-            w.writerow({"scene_id": sid, "prompt_id": pid, "prompt": prompt})
-
-    with (ASSETS_DIR / "ai_prompt_library.csv").open("w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=["prompt_id", "prompt"])
-        w.writeheader()
-        for pid, prompt in AI_PROMPTS:
-            w.writerow({"prompt_id": pid, "prompt": prompt})
-
-    write_storyboards(scene_asset, scene_ai, asset_meta)
-
-    real_files = sum(1 for m in asset_meta.values() if m.get("file"))
-    ai_scenes = len(scene_ai)
-    named_entities = len(entity_mentions)
-    print(
-        f"asset_log: {len(log_rows)} rows, {real_files} files on disk, "
-        f"{len(scene_asset)} scenes with real assets, {ai_scenes} AI prompt scenes, "
-        f"{len(AI_PROMPTS)} unique prompts, {named_entities} named entities"
-    )
+    remap_main()
 
 
 if __name__ == "__main__":
