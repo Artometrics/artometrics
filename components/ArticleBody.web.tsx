@@ -1,6 +1,7 @@
 import { createElement, useEffect, useRef } from "react";
 import { hydrateReferences } from "@/lib/hydrateReferences.web";
 import { initArtChartChrome } from "@/lib/artChartChrome.web";
+import { initArtExhibits } from "@/lib/artExhibit.web";
 
 function showFallback(live: HTMLElement, fallback: string, label: string | null) {
   live.innerHTML = "";
@@ -60,6 +61,7 @@ export function ArticleBody({ html }: { html: string }) {
       );
       if (needs) hydrateCharts(node);
       hydrateReferences(node);
+      initArtExhibits(node);
       initArtChartChrome(node);
     };
     const schedule = () => {

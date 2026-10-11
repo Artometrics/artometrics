@@ -1,8 +1,8 @@
 # Artometrics design system (v1.0)
 
-Barbara Kruger–influenced Swiss/magazine hybrid for [artometrics.com](https://artometrics.com).
+Barbara Kruger–influenced **anaglyph magazine** on a newsprint base for [artometrics.com](https://artometrics.com).
 
-Canonical product reference also lives in Notion: **Artometrics Design System**.
+Canonical product reference also lives in Notion: **Artometrics Design System**. Implementation bible: `docs/design-bible/tokens.md`.
 
 These HTML files are design references — recreate in the Expo codebase (`components/`, `app/(site)/`, Content OS packs). Do not freestyle a second brand.
 
@@ -10,17 +10,19 @@ These HTML files are design references — recreate in the Expo codebase (`compo
 
 | Token | Hex | Use |
 |-------|-----|-----|
-| `--color-black` | `#000000` | Text, rules, dark surfaces |
-| `--color-white` | `#FFFFFF` | Paper / light surfaces |
-| `--color-gray-100` | `#F5F5F5` | Light panels |
-| `--color-gray-200` | `#E5E5E5` | Hairlines |
-| `--color-gray-600` | `#525252` | Muted / meta |
-| `--color-accent` | `#C0392B` | Print / editorial accent |
-| `--color-accent-ui` | `#D9251B` | On-screen links / buttons |
+| `--art-paper` / `--color-white` | `#FFFFFF` | Primary reading surface |
+| `--art-paper-muted` | `#F2F2F2` | Stat bands, inset panels |
+| `--art-ink` / `--color-black` | `#000000` | Text, 2px rules |
+| `--art-ink-muted` | `#525252` | Secondary prose, captions |
+| `--art-rule` | `#E5E5E5` | Hairlines between stories |
+| `--art-red` / `--color-accent` | `#E60000` | Links, active nav, chart callouts |
+| `--art-blue` / `--color-secondary` | `#3367E7` | Data links, secondary series |
 
-**Type:** Display/headers — DM Mono (uppercase, tight). Body — DM Sans. Wordmark only — Chomsky. Data/captions — DM Mono small gray.
+**Type:** Display, headlines, and body — **DM Sans** (bold/italic/underline for emphasis). Wordmark only — **Chomsky**. Data, labels, datelines, axes — **DM Mono**.
 
-**Rules:** 2px solid black section dividers; short red accent rules (60–140px). No border-radius, no soft multi-layer shadows, no gradients, no purple, no cream/terracotta.
+**Rules:** 2px solid black section dividers; short red accent rules. No border-radius on editorial surfaces, no soft multi-layer shadows, no gradients, no cream/gold drift in the magazine default.
+
+Swiss edition (optional brand toggle) may still load Piazzolla + Archivo via `constants/Colors.ts` `SwissFonts`.
 
 ## Reference files
 
@@ -38,8 +40,9 @@ These HTML files are design references — recreate in the Expo codebase (`compo
 
 ## Mapped into product
 
-- Tokens: `constants/Colors.ts`, `global.css`
-- Home (KSM-energy): `components/HomeMagazine.tsx` — full-bleed hero, signal band, magazine stack, editions rail, interviews (see `docs/KSM_ENERGY_STYLE.md`)
-- Editions + VHS shelf: `app/(site)/editions/*`, `components/VhsShelf.tsx`
+- Tokens: `constants/Colors.ts`, `global.css`, `public/css/artometrics-article.css`
+- Home: `components/HomeMagazine.tsx` — asymmetric lead, 2px rules, “This week” row
+- Reports: `app/(site)/[slug].tsx` — display title → full-bleed hero → byline band
+- Chart exhibits: `lib/artExhibit.web.ts`, `components/ArticleBody.web.tsx`
 - IG zine packer: `npm run cos:zine` → `scripts/content-os/pack-ig-zine.mjs`
 - OG default: `public/images/brand/og-default.png`

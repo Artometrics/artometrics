@@ -1,61 +1,58 @@
 /**
- * Artometrics brand tokens — KSM-energy zine (Anton + hot red) on Artometrics identity.
- * Wordmark: Chomsky. Display: Anton. Body: DM Sans. Data: DM Mono.
- * Accent UI #E60000 (KSM punch); print/editorial #C0392B kept as magazineAccent.
- * Canonical refs: docs/design-system/, Notion Brand & design / KSM Brand Kit.
+ * Artometrics brand tokens — anaglyph magazine (red/blue on newsprint B&W).
+ * Wordmark: Chomsky only. Display + body: DM Sans. Data/meta: DM Mono.
+ * Canonical refs: docs/design-bible/tokens.md, docs/design-system/README.md
  */
 
 export type BrandStyle = "swiss" | "magazine";
 
 export const Colors = {
-  accent50: "#FBF7EE",
-  accent100: "#F5EEDC",
-  accent200: "#EBDCB9",
-  accent300: "#D8C6A0",
-  accent400: "#AE8B52",
-  accent500: "#7D6222",
-  accent600: "#6B531D",
-  accent700: "#544117",
-  accent800: "#3F3111",
-  accent900: "#2A200B",
-  accent950: "#151005",
+  accent50: "#FFE8E8",
+  accent100: "#FFD1D1",
+  accent200: "#FFB3B3",
+  accent300: "#FF8080",
+  accent400: "#FF3333",
+  accent500: "#E60000",
+  accent600: "#CC0000",
+  accent700: "#A30000",
+  accent800: "#7A0000",
+  accent900: "#520000",
+  accent950: "#290000",
 
-  base50: "#FCFBF9",
-  base100: "#F4F1EA",
-  base200: "#EBE8E1",
-  base300: "#D6D3CC",
-  base400: "#B3B0AA",
-  base500: "#8A8780",
-  base600: "#68655C",
-  base700: "#59564C",
-  base800: "#2A2722",
-  base900: "#202120",
-  base950: "#111212",
+  base50: "#FFFFFF",
+  base100: "#F7F7F7",
+  base200: "#F2F2F2",
+  base300: "#E5E5E5",
+  base400: "#A3A3A3",
+  base500: "#767676",
+  base600: "#525252",
+  base700: "#404040",
+  base800: "#262626",
+  base900: "#171717",
+  base950: "#000000",
 
-  white: "#F4F1EA",
-  black: "#1D1A15",
-  cream: "#EBE8E1",
-  chartHighlight: "#7D6222",
-  chartDark: "#1D1A15",
-  chartMid: "#59564C",
+  white: "#FFFFFF",
+  black: "#000000",
+  cream: "#F2F2F2",
+  chartHighlight: "#E60000",
+  chartDark: "#000000",
+  chartMid: "#525252",
 
-  /** Bellum Systems newsprint parchment & tactical ink */
-  paper: "#F4F1EA",
-  paperElevated: "#EBE8E1",
-  ink: "#1D1A15",
-  ink2: "#59564C",
-  ink3: "#68655C",
-  gold: "#A8862E",
-  goldDeep: "#7D6222",
-  paleGold: "#D8C6A0",
-  night: "#111212",
-  night2: "#202120",
-  rule: "#D6D3CC",
-  magazineAccent: "#7D6222",
-  magazineAccentSoft: "#F5EEDC",
-  /** Editorial gold — wordmark, titles, active nav links */
-  editorialNavy: "#7D6222",
-  editorialNavyDark: "#AE8B52",
+  paper: "#FFFFFF",
+  paperElevated: "#F2F2F2",
+  ink: "#000000",
+  ink2: "#525252",
+  ink3: "#767676",
+  blue: "#3367E7",
+  blueSoft: "#E8EFFF",
+  redSoft: "#FFE8E8",
+  night: "#000000",
+  night2: "#171717",
+  rule: "#E5E5E5",
+  magazineAccent: "#E60000",
+  magazineAccentSoft: "#FFE8E8",
+  editorialNavy: "#3367E7",
+  editorialNavyDark: "#1E4BB8",
 } as const;
 
 export type BrandFonts = {
@@ -66,22 +63,20 @@ export type BrandFonts = {
   mono: string;
 };
 
-/** Swiss Modern — Archivo sans + Piazzolla chiseled display. */
+/** Swiss Modern — optional alternate edition (Piazzolla + Archivo). */
 export const SwissFonts: BrandFonts = {
   display: "Piazzolla, Georgia, serif",
   sans: "Archivo, Helvetica Neue, Helvetica, Arial, system-ui, sans-serif",
   serif: "Piazzolla, Georgia, serif",
-  wordmark: "Piazzolla, Georgia, serif",
+  wordmark: "Chomsky, Georgia, serif",
   mono: "DM Mono, 'Courier New', Courier, monospace",
 };
 
-/**
- * Magazine default — Piazzolla chiseled serif display, Archivo technical sans, Chomsky masthead.
- */
+/** Magazine default — DM Sans display/body, Chomsky masthead only. */
 export const MagazineFonts: BrandFonts = {
-  display: "Piazzolla, Georgia, serif",
-  sans: "Archivo, Helvetica Neue, Helvetica, Arial, system-ui, sans-serif",
-  serif: "Piazzolla, Georgia, serif",
+  display: "DM Sans, system-ui, sans-serif",
+  sans: "DM Sans, system-ui, sans-serif",
+  serif: "DM Sans, system-ui, sans-serif",
   wordmark: "Chomsky, Georgia, serif",
   mono: "DM Mono, ui-monospace, monospace",
 };
@@ -117,33 +112,32 @@ const SwissThemes: Record<ThemeMode, ThemeColors> = {
     textMuted: Colors.ink2,
     textSubtle: Colors.ink3,
     border: Colors.rule,
-    accent: Colors.goldDeep,
-    accentSoft: Colors.accent100,
-    secondary: Colors.gold,
+    accent: Colors.accent500,
+    accentSoft: Colors.redSoft,
+    secondary: Colors.blue,
     inverse: Colors.paper,
     headerBg: Colors.paper,
     overlayBg: Colors.paperElevated,
-    rule: Colors.rule,
+    rule: Colors.black,
   },
   dark: {
     mode: "dark",
     bg: Colors.night,
     bgElevated: Colors.night2,
-    text: Colors.paper,
-    textMuted: Colors.paleGold,
-    textSubtle: Colors.base400,
+    text: Colors.white,
+    textMuted: Colors.base400,
+    textSubtle: Colors.base500,
     border: Colors.base800,
     accent: Colors.accent400,
-    accentSoft: "#2A2316",
-    secondary: Colors.paleGold,
-    inverse: Colors.night,
+    accentSoft: "#3D1515",
+    secondary: Colors.blue,
+    inverse: Colors.black,
     headerBg: Colors.night,
     overlayBg: Colors.night2,
-    rule: Colors.base800,
+    rule: Colors.white,
   },
 };
 
-/** Bellum magazine: warm paper/ink/gold light; deep night/pale-gold dark. */
 const MagazineThemes: Record<ThemeMode, ThemeColors> = {
   light: {
     mode: "light",
@@ -153,29 +147,29 @@ const MagazineThemes: Record<ThemeMode, ThemeColors> = {
     textMuted: Colors.ink2,
     textSubtle: Colors.ink3,
     border: Colors.rule,
-    accent: Colors.goldDeep,
-    accentSoft: Colors.accent100,
-    secondary: Colors.gold,
+    accent: Colors.accent500,
+    accentSoft: Colors.redSoft,
+    secondary: Colors.blue,
     inverse: Colors.paper,
     headerBg: Colors.paper,
     overlayBg: Colors.paperElevated,
-    rule: Colors.rule,
+    rule: Colors.black,
   },
   dark: {
     mode: "dark",
     bg: Colors.night,
     bgElevated: Colors.night2,
-    text: Colors.paper,
-    textMuted: Colors.paleGold,
-    textSubtle: Colors.base400,
+    text: Colors.white,
+    textMuted: Colors.base400,
+    textSubtle: Colors.base500,
     border: Colors.base800,
     accent: Colors.accent400,
-    accentSoft: "#2A2316",
-    secondary: Colors.paleGold,
-    inverse: Colors.night,
+    accentSoft: "#3D1515",
+    secondary: Colors.blue,
+    inverse: Colors.black,
     headerBg: Colors.night,
     overlayBg: Colors.night2,
-    rule: Colors.base800,
+    rule: Colors.white,
   },
 };
 
@@ -191,7 +185,7 @@ export function resolveBrandFonts(brand: BrandStyle): BrandFonts {
 
 export const BRAND_STYLE_LABELS: Record<BrandStyle, string> = {
   swiss: "Swiss Modern",
-  magazine: "Magazine (Anton / DM Sans)",
+  magazine: "Magazine (DM Sans / anaglyph)",
 };
 
 export const DEFAULT_BRAND_STYLE: BrandStyle = "magazine";
