@@ -1121,7 +1121,7 @@ def padres_ownership_blueprint():
         sections=sections,
         ending_heading="The arithmetic of a first title",
         ending=[
-            "San Diego does not have a 90-win problem. It has reached the postseason four times in six years and will probably do so again inside two. It has a twelve-game problem: the tournament that follows the season, which the Padres have entered five times since 2020 and left without a pennant every time.",
+            "San Diego does not have a 90-win problem. It has reached the postseason four times in six years and will probably do so again inside two. It has a twelve-game problem: the tournament that follows the season, which the Padres have entered four times since 2020 and left without a pennant every time.",
             "Closing that gap is not a payroll exercise, which is fortunate, because payroll is the one lever this club has already pulled to its limit. It is a depth-and-pipeline exercise, and those are the two things a recapitalised franchise can buy quickly — if the owners spend on infrastructure rather than announcements.",
             "The Padres are worth a record price because someone finally believes the last step is available. Those six moves are what has to be true for that belief to pay. The companion report explains why 57 years of evidence makes it such an expensive bet.",
         ],
