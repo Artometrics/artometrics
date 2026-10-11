@@ -12,6 +12,8 @@ COLUMNS = [
     "visual_type",
     "red_box_target",
     "count_up_number",
+    "asset_id",
+    "asset_file",
     "image_credit",
 ]
 
@@ -108,6 +110,8 @@ def write_storyboard(slug: str, narration: str, min_scenes: int) -> int:
                     "visual_type": vis,
                     "red_box_target": red,
                     "count_up_number": count,
+                    "asset_id": "",
+                    "asset_file": "",
                     "image_credit": cred,
                 }
             )
