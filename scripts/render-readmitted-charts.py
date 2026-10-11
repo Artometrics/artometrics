@@ -10,7 +10,7 @@ import plotly.graph_objects as go
 import plotly.io as pio
 
 ROOT = Path(__file__).resolve().parents[1]
-REPO = ROOT / ".cache/article-repos/readmitted"
+ARTICLE_CHARTS = ROOT / "articles/readmitted/charts"
 SITE_DATA = ROOT / "public/data/articles/readmitted/charts"
 SITE_IMG = ROOT / "public/images/content/articles/readmitted/charts"
 
@@ -139,19 +139,22 @@ def base_layout(title: str, subtitle: str = "", takeaway: str = "", **kwargs) ->
     return layout
 
 
-def save_chart(fig: go.Figure, name: str) -> None:
-    for dest in [REPO / "charts", SITE_DATA]:
+def save_chart(fig: go.Figure, name: str, height: int = 700) -> None:
+    for dest in [ARTICLE_CHARTS, SITE_DATA]:
         dest.mkdir(parents=True, exist_ok=True)
         pio.write_json(fig, dest / f"{name}.plotly.json")
 
-    for dest in [REPO / "charts", SITE_IMG]:
+    for dest in [ARTICLE_CHARTS, SITE_IMG]:
         dest.mkdir(parents=True, exist_ok=True)
-        fig.write_image(dest / f"{name}.png", width=1200, height=700, scale=2)
+        fig.write_image(dest / f"{name}.png", width=1200, height=height, scale=2)
         print(f"Wrote {name} assets")
 
 
 def chart1(state_df: pd.DataFrame) -> go.Figure:
-    df = state_df[state_df["above_nat_avg"]].sort_values("pct_penalized")
+    flag = state_df["above_nat_avg"]
+    if flag.dtype == object:
+        flag = flag.astype(str).str.upper().eq("TRUE")
+    df = state_df[flag].sort_values("pct_penalized")
     n = len(df)
     colors = BAR_GRADIENT[:n] if n <= len(BAR_GRADIENT) else BAR_GRADIENT
     if n > len(BAR_GRADIENT):
@@ -232,14 +235,8 @@ def chart1(state_df: pd.DataFrame) -> go.Figure:
     return fig
 
 
-def chart2() -> go.Figure:
-    df = pd.DataFrame(
-        {
-            "condition": ["Hip/Knee", "COPD", "Heart Failure", "AMI", "Pneumonia", "CABG"],
-            "avg_err": [1.00485, 1.00271, 1.00254, 1.00212, 1.00198, 1.00187],
-        }
-    )
-    df = df.sort_values("avg_err")
+def chart2(condition_df: pd.DataFrame) -> go.Figure:
+    df = condition_df.sort_values("avg_err")
 
     fig = go.Figure()
     for _, row in df.iterrows():
@@ -406,17 +403,211 @@ def chart3(own_df: pd.DataFrame) -> go.Figure:
     return fig
 
 
+def chart4(state_df: pd.DataFrame) -> go.Figure:
+    df = state_df.sort_values("avg_err").tail(15)
+    colors = BAR_GRADIENT[: len(df)]
+    if len(df) > len(BAR_GRADIENT):
+        colors = [BAR_GRADIENT[int(i * (len(BAR_GRADIENT) - 1) / max(len(df) - 1, 1))] for i in range(len(df))]
+    colors[-1] = ART_HIGHLIGHT
+
+    fig = go.Figure(
+        go.Bar(
+            x=df["avg_err"],
+            y=df["state"],
+            orientation="h",
+            marker=dict(color=colors, line=dict(width=0)),
+            text=[f"{v:.4f}" for v in df["avg_err"]],
+            textposition="outside",
+            cliponaxis=False,
+            hovertemplate="<b>%{y}</b><br>Avg ERR %{x:.5f}<extra></extra>",
+        )
+    )
+    fig.update_layout(
+        **base_layout(
+            "Average excess readmission ratio by state (top 15)",
+            "Intensity of excess above CMS expected line (ERR = 1.0)",
+            takeaway="Massachusetts runs hotter on intensity even where New Jersey leads on breadth",
+            xaxis=dict(title="Average ERR", gridcolor=ART_MUTED, gridwidth=0.5),
+            yaxis=dict(title="", categoryorder="array", categoryarray=list(df["state"])),
+            shapes=[
+                dict(
+                    type="line",
+                    x0=1,
+                    x1=1,
+                    y0=0,
+                    y1=1,
+                    yref="paper",
+                    line=dict(color=ART_DARK, dash="dot", width=1),
+                )
+            ],
+            height=520,
+        )
+    )
+    return fig
+
+
+def chart5(own_df: pd.DataFrame) -> go.Figure:
+    order = ["Government", "Non-Profit", "For-Profit"]
+    rows = []
+    for og in order:
+        g = own_df[own_df["ownership_group"] == og]
+        total = g["n"].sum()
+        high = g.loc[g["penalty_tier"] == "High", "n"].sum()
+        rows.append({"ownership_group": og, "pct_high": 100 * high / total if total else 0})
+    grouped = pd.DataFrame(rows)
+    bar_colors = ["#1C1C1E", "#6B6B6B", ART_HIGHLIGHT]
+
+    fig = go.Figure(
+        go.Bar(
+            x=grouped["ownership_group"],
+            y=grouped["pct_high"],
+            marker=dict(color=bar_colors),
+            text=[f"{v:.1f}%" for v in grouped["pct_high"]],
+            textposition="outside",
+            cliponaxis=False,
+            hovertemplate="<b>%{x}</b><br>High tier %{y:.1f}%<extra></extra>",
+        )
+    )
+    fig.update_layout(
+        **base_layout(
+            "Share of hospital–condition pairs in High penalty tier by ownership",
+            "High tier = pairs farthest above CMS expected readmissions",
+            takeaway="For-profit hospitals carry the highest share of High-tier penalty pairs",
+            yaxis=dict(title="High-tier share (%)", gridcolor=ART_MUTED, gridwidth=0.5),
+            xaxis=dict(title="Ownership"),
+            height=480,
+        )
+    )
+    return fig
+
+
+def chart6(timeline_df: pd.DataFrame) -> go.Figure:
+    df = timeline_df.dropna(subset=["share_hospitals_penalty_1pct_or_more"])
+    fig = go.Figure()
+    fig.add_trace(
+        go.Bar(
+            x=df["fiscal_year"],
+            y=df["max_penalty_pct"],
+            name="Max penalty cap (%)",
+            marker_color=ART_SECONDARY,
+            opacity=0.35,
+            yaxis="y2",
+            hovertemplate="FY %{x}<br>Cap %{y}%<extra></extra>",
+        )
+    )
+    fig.add_trace(
+        go.Scatter(
+            x=df["fiscal_year"],
+            y=df["share_hospitals_penalty_1pct_or_more"],
+            mode="lines+markers",
+            name="Hospitals penalized ≥1%",
+            line=dict(color=ART_HIGHLIGHT, width=3),
+            marker=dict(size=9),
+            hovertemplate="FY %{x}<br>%{y:.1f}% of hospitals ≥1% penalty<extra></extra>",
+        )
+    )
+    fig.update_layout(
+        **base_layout(
+            "<b>HRRP penalty cap vs. hospitals paying ≥1%</b>",
+            "Cap reached 3% in FY2015; severe penalties ticked up again in FY2026 preliminary data",
+            takeaway="CMS can dock up to 3% of every Medicare payment — but most hospitals pay far less than the cap",
+            xaxis=dict(title="Medicare fiscal year", dtick=1),
+            yaxis=dict(title="Share of hospitals with ≥1% payment reduction (%)", gridcolor=ART_MUTED),
+            yaxis2=dict(title="Maximum penalty cap (%)", overlaying="y", side="right", range=[0, 4], showgrid=False),
+            legend=dict(orientation="h", y=1.12, x=1, xanchor="right"),
+            height=460,
+        )
+    )
+    return fig
+
+
+def chart7(trends_df: pd.DataFrame) -> go.Figure:
+    df = trends_df[trends_df["condition"].isin(["Heart Failure", "Pneumonia", "AMI"])]
+    fig = go.Figure()
+    palette = {"Heart Failure": ART_HIGHLIGHT, "Pneumonia": ART_DARK, "AMI": ART_SECONDARY}
+    for cond, sub in df.groupby("condition"):
+        fig.add_trace(
+            go.Scatter(
+                x=sub["report_year"],
+                y=sub["national_readmit_rate_pct"],
+                mode="lines+markers",
+                name=cond,
+                line=dict(color=palette.get(cond, ART_MID), width=2.5),
+                hovertemplate=cond + "<br>%{y:.1f}% in %{x}<extra></extra>",
+            )
+        )
+    fig.update_layout(
+        **base_layout(
+            "National Medicare readmission rates fell after HRRP — then plateaued",
+            "AMI, heart failure, and pneumonia; 2012–2015 from Zuckerman et al. (NEJM 2016); 2024 from CMS extract",
+            takeaway="Readmissions dropped in the program's first years — the debate is what happened to mortality and observation stays next",
+            xaxis=dict(title="Report year", dtick=1),
+            yaxis=dict(title="National readmission rate (%)", gridcolor=ART_MUTED),
+            legend=dict(orientation="h", y=1.12, x=0),
+            height=480,
+        )
+    )
+    return fig
+
+
+def chart8(proxy_df: pd.DataFrame) -> go.Figure:
+    df = proxy_df.sort_values("pct_penalized")
+    fig = go.Figure(
+        go.Bar(
+            x=df["safety_net_proxy"],
+            y=df["pct_penalized"],
+            marker=dict(color=[ART_DARK, ART_HIGHLIGHT]),
+            text=[f"{v:.1f}%" for v in df["pct_penalized"]],
+            textposition="outside",
+            cliponaxis=False,
+            hovertemplate="<b>%{x}</b><br>%{y:.1f}% penalized<extra></extra>",
+        )
+    )
+    fig.update_layout(
+        **base_layout(
+            "Safety-net name proxy vs. other acute-care hospitals",
+            "Government/non-profit acute hospitals with County/Public/Memorial/Safety in the name (CMS extract)",
+            takeaway="A crude safety-net label barely moves penalty share — peer grouping and dual-eligible mix matter more",
+            yaxis=dict(title="% of pairs with ERR > 1.0", gridcolor=ART_MUTED),
+            xaxis=dict(title=""),
+            height=420,
+        )
+    )
+    return fig
+
+
 def main() -> None:
-    data_dir = REPO / "data"
+    data_dir = ROOT / "articles/readmitted/data"
     if not data_dir.exists():
         data_dir = ROOT / "public/data/articles/readmitted/data"
 
     state_df = pd.read_csv(data_dir / "hrrp_state_summary.csv")
     own_df = pd.read_csv(data_dir / "hrrp_ownership_condition.csv")
+    cond_df = pd.read_csv(data_dir / "hrrp_condition_err.csv")
+    timeline_df = pd.read_csv(data_dir / "hrrp_penalty_timeline.csv")
+    trends_df = pd.read_csv(data_dir / "hrrp_national_readmit_trends.csv")
+    proxy_df = pd.read_csv(data_dir / "hrrp_safety_net_proxy.csv")
 
-    save_chart(chart1(state_df), "chart1_states_penalized")
-    save_chart(chart2(), "chart2_err_by_condition")
-    save_chart(chart3(own_df), "chart3_penalty_by_ownership")
+    global NAT_AVG_PCT
+    NAT_AVG_PCT = round(100 * (cond_df["n"].sum() and state_df["n_penalized"].sum() / state_df["n"].sum()), 2)
+
+    save_chart(chart1(state_df), "chart1_states_penalized", height=900)
+    save_chart(chart2(cond_df), "chart2_err_by_condition", height=520)
+    save_chart(chart3(own_df), "chart3_penalty_by_ownership", height=420)
+    save_chart(chart4(state_df), "chart4_state_avg_err", height=620)
+    save_chart(chart5(own_df), "chart5_high_penalty_by_ownership", height=480)
+    save_chart(chart6(timeline_df), "chart6_penalty_timeline", height=460)
+    save_chart(chart7(trends_df), "chart7_national_readmit_trends", height=480)
+    save_chart(chart8(proxy_df), "chart8_safety_net_proxy", height=420)
+
+    # Sync CSVs to public data folder for downloads
+    pub_csv = ROOT / "public/data/articles/readmitted/data"
+    pub_csv.mkdir(parents=True, exist_ok=True)
+    for path in data_dir.glob("*.csv"):
+        if path.name.startswith("raw_"):
+            continue
+        dest = pub_csv / path.name
+        dest.write_bytes(path.read_bytes())
 
 
 if __name__ == "__main__":

@@ -1,0 +1,101 @@
+[
+  {
+    "id": "s001",
+    "narration_text": "Medicare does not fine readmissions line by line.",
+    "type": "title_card",
+    "on_screen_text": "Medicare does not fine readmissions line by line",
+    "number_to_count_up": null,
+    "red_box_target": null,
+    "chart_id": null,
+    "image_source": null,
+    "ai_prompt": null
+  },
+  {
+    "id": "s002",
+    "narration_text": "It cuts up to three percent of every hospital DRG payment when thirty-day returns beat CMS's risk model.",
+    "type": "big_number",
+    "on_screen_text": "It cuts up to three percent of every hospital DRG payment when thirty-da",
+    "number_to_count_up": null,
+    "red_box_target": null,
+    "chart_id": null,
+    "image_source": null,
+    "ai_prompt": null
+  },
+  {
+    "id": "s003",
+    "narration_text": "Latest CMS file: forty-eight percent of hospital-condition pairs still lose. New Jersey tops the state list.",
+    "type": "ai_illustration",
+    "on_screen_text": "Latest CMS file: forty-eight percent of hospital-condition pairs still l",
+    "number_to_count_up": null,
+    "red_box_target": null,
+    "chart_id": null,
+    "image_source": null,
+    "ai_prompt": "Minimal stick-figure hospital infographic, cream paper, red accent, no identifiable people"
+  },
+  {
+    "id": "s004",
+    "narration_text": "Hip and knee replacements post the highest excess readmission ratio \u2014 elective surgery, highest penalty heat.",
+    "type": "ai_illustration",
+    "on_screen_text": "Hip and knee replacements post the highest excess readmission ratio \u2014 el",
+    "number_to_count_up": null,
+    "red_box_target": null,
+    "chart_id": null,
+    "image_source": null,
+    "ai_prompt": "Minimal stick-figure hospital infographic, cream paper, red accent, no identifiable people"
+  },
+  {
+    "id": "s005",
+    "narration_text": "For-profit systems carry more high-tier exposure than non-profits. Observation stays moved returns off the inpatient scoreboard.",
+    "type": "ai_illustration",
+    "on_screen_text": "For-profit systems carry more high-tier exposure than non-profits",
+    "number_to_count_up": null,
+    "red_box_target": null,
+    "chart_id": null,
+    "image_source": null,
+    "ai_prompt": "Minimal stick-figure hospital infographic, cream paper, red accent, no identifiable people"
+  },
+  {
+    "id": "s006",
+    "narration_text": "JAMA studies argued over mortality trends after HRRP \u2014 boards should watch both curves.",
+    "type": "chart_beat",
+    "on_screen_text": "JAMA studies argued over mortality trends after HRRP \u2014 boards should wat",
+    "number_to_count_up": null,
+    "red_box_target": null,
+    "chart_id": null,
+    "image_source": null,
+    "ai_prompt": null
+  },
+  {
+    "id": "s007",
+    "narration_text": "England and Canada track readmissions without this exact three percent stick.",
+    "type": "big_number",
+    "on_screen_text": "England and Canada track readmissions without this exact three percent s",
+    "number_to_count_up": null,
+    "red_box_target": null,
+    "chart_id": null,
+    "image_source": null,
+    "ai_prompt": null
+  },
+  {
+    "id": "s008",
+    "narration_text": "Seven hundred forty-two hospitals enter TEAM bundled payments in twenty twenty-six. Fix transitions, or CMS will bundle the invoice for you.",
+    "type": "ai_illustration",
+    "on_screen_text": "Seven hundred forty-two hospitals enter TEAM bundled payments in twenty ",
+    "number_to_count_up": null,
+    "red_box_target": null,
+    "chart_id": null,
+    "image_source": null,
+    "ai_prompt": "Minimal stick-figure hospital infographic, cream paper, red accent, no identifiable people"
+  },
+  {
+    "id": "s009",
+    "narration_text": "Artometrics \u2014 READMITTED \u2014 full report online.",
+    "type": "ai_illustration",
+    "on_screen_text": "Artometrics \u2014 READMITTED \u2014 full report online",
+    "number_to_count_up": null,
+    "red_box_target": null,
+    "chart_id": null,
+    "image_source": null,
+    "ai_prompt": "Minimal stick-figure hospital infographic, cream paper, red accent, no identifiable people"
+  }
+]
