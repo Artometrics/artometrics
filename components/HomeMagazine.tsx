@@ -14,6 +14,7 @@ import {
 } from "@/lib/content";
 import {
   formatIssueWeekLabel,
+  getComingInvestigations,
   getThisWeekInvestigations,
 } from "@/lib/contentCalendar";
 
@@ -72,7 +73,7 @@ function HomeMainStory({ post }: { post: BlogPost }) {
         <Link href={`/${post.slug}`} asChild>
           <Pressable accessibilityRole="link">
             <Text
-              className="font-sans text-[clamp(28px,4vw,48px)] font-bold leading-[1.05] tracking-[-0.02em] text-fg"
+              className="home-lead-headline font-sans text-[clamp(1.625rem,2.75vw,2.625rem)] font-bold leading-[1.08] tracking-[-0.02em] text-fg"
             >
               {post.title}
             </Text>
@@ -117,8 +118,33 @@ function HomeSecondaryStory({ post }: { post: BlogPost }) {
 }
 
 function HomeThisWeekRow() {
-  const rows = getThisWeekInvestigations(undefined, 3);
-  if (!rows.length) return null;
+  const thisWeek = getThisWeekInvestigations(undefined, 3);
+  const coming = getComingInvestigations(undefined, 3);
+  if (!thisWeek.length && !coming.length) return null;
+
+  const renderRow = (
+    row: { slug: string; title: string; releaseFriday: string },
+    dateLabel: string,
+  ) => {
+    const post = getBlogPost(row.slug);
+    const title = post?.title ?? row.title;
+    return (
+      <Link key={`${dateLabel}-${row.slug}`} href={`/${row.slug}`} asChild>
+        <Pressable
+          accessibilityRole="link"
+          className="flex-row items-baseline justify-between gap-3 border-b border-border py-2"
+        >
+          <Text className="min-w-0 flex-1 font-sans text-[15px] font-semibold leading-snug text-fg">
+            {title}
+          </Text>
+          <Text className="shrink-0 font-mono text-[10px] uppercase tracking-[0.1em] text-secondary">
+            {dateLabel}
+          </Text>
+        </Pressable>
+      </Link>
+    );
+  };
+
   return (
     <View className="gap-4 border-t-2 border-fg pt-8">
       <View className="gap-1">
@@ -129,28 +155,27 @@ function HomeThisWeekRow() {
           {formatIssueWeekLabel()}
         </Text>
       </View>
-      <View className="gap-3">
-        {rows.map((row) => {
-          const post = getBlogPost(row.slug);
-          const title = post?.title ?? row.title;
-          const release = formatDate(row.releaseFriday);
-          return (
-            <Link key={row.slug} href={`/${row.slug}`} asChild>
-              <Pressable
-                accessibilityRole="link"
-                className="flex-row items-baseline justify-between gap-3 border-b border-border py-2"
-              >
-                <Text className="min-w-0 flex-1 font-sans text-[15px] font-semibold leading-snug text-fg">
-                  {title}
-                </Text>
-                <Text className="shrink-0 font-mono text-[10px] uppercase tracking-[0.1em] text-secondary">
-                  {release}
-                </Text>
-              </Pressable>
-            </Link>
-          );
-        })}
-      </View>
+      {thisWeek.length > 0 ? (
+        <View className="gap-1">
+          {thisWeek.map((row) =>
+            renderRow(row, formatDate(row.releaseFriday)),
+          )}
+        </View>
+      ) : (
+        <Text className="font-sans text-[14px] text-muted">
+          No Friday release in this window — see coming investigations below.
+        </Text>
+      )}
+      {coming.length > 0 ? (
+        <View className="gap-2 border-t border-border pt-4">
+          <Text className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-muted">
+            Coming
+          </Text>
+          {coming.map((row) =>
+            renderRow(row, formatDate(row.releaseFriday)),
+          )}
+        </View>
+      ) : null}
     </View>
   );
 }

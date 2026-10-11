@@ -46,6 +46,15 @@
   --radius-btn: 0px;
 }
 
+@layer utilities {
+  .home-lead-headline {
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: manual;
+    text-wrap: balance;
+  }
+}
+
 @layer theme {
   :root {
     @variant light {
