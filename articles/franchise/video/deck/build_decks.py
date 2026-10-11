@@ -6,6 +6,7 @@ import csv
 import html
 import re
 import sys
+from collections import Counter
 from pathlib import Path
 
 DECK_DIR = Path(__file__).resolve().parent
@@ -186,6 +187,71 @@ def load_assets() -> dict[str, dict]:
         if row.get("entity"):
             out[row["entity"]] = row
     return out
+
+
+def load_visual_map() -> dict[tuple[str, str], dict]:
+    path = VIDEO_DIR / "scene_visual_map.csv"
+    out: dict[tuple[str, str], dict] = {}
+    if not path.exists():
+        return out
+    for row in csv.DictReader(path.open(encoding="utf-8")):
+        out[(row["version"], row["scene_id"])] = row
+    return out
+
+
+def visual_layer(
+    deck_id: str,
+    sid: str,
+    vt: str,
+    visuals: dict[tuple[str, str], dict],
+    assets: dict[str, dict],
+) -> tuple[str, str]:
+    """Return (extra classes, layer markup). Headlines and captions stay untouched."""
+    vis = visuals.get((deck_id, sid))
+    if not vis:
+        return "", ""
+    kind = (vis.get("layer_type") or "").strip()
+    rel = (vis.get("file") or "").strip()
+    if not kind or not rel:
+        return "", ""
+    src = "../" + rel
+    logged = assets.get(vis.get("asset_id") or "") or {}
+    credit = (logged.get("credit_line") or vis.get("credit") or "").strip()
+
+    if kind == "chart_bg_still":
+        return (
+            "has-chartbg",
+            f'<div class="vis vis-chartbg" data-layer="chart_bg_still">'
+            f'<img class="vis-media" src="{esc(src)}" alt=""/></div>',
+        )
+
+    if kind == "ai_scene":
+        return (
+            "has-illust",
+            f'<div class="vis vis-illust" data-layer="ai_scene">'
+            f'<img class="vis-media" src="{esc(src)}" alt=""/>'
+            f'<div class="vis-grade"></div></div>',
+        )
+
+    if kind not in {"photo", "footage"}:
+        return "", ""
+
+    # Type cards have a single claim and room beside it. Other beats keep
+    # the picture full-bleed so the red box, number, and entity row stay put.
+    treat = "frame" if vt == "type card" else "bleed"
+    if kind == "footage":
+        media = (
+            f'<video class="vis-media" muted playsinline preload="auto" '
+            f'disablepictureinpicture src="{esc(src)}"></video>'
+        )
+    else:
+        media = f'<img class="vis-media" src="{esc(src)}" alt=""/>'
+    credit_html = f'<p class="vis-credit dm-mono">{esc(credit)}</p>' if credit else ""
+    return (
+        f"has-{treat} layer-{kind}",
+        f'<div class="vis vis-{treat}" data-layer="{esc(kind)}">'
+        f"{media}<div class=\"vis-grade\"></div>{credit_html}</div>",
+    )
 
 
 def tokenize(text: str) -> list[str]:
@@ -817,11 +883,14 @@ def render_row(
     aspect: str,
     cap: str,
     state: dict,
+    deck_id: str,
+    visuals: dict[tuple[str, str], dict],
 ) -> str:
     sid = row["scene_id"]
     vt = row["visual_type"]
     narr = row["narration_words"]
     section = section_for(narr, vt)
+    extra, layer_html = visual_layer(deck_id, sid, vt, visuals, assets)
     cap = scrub_source_ids(cap)
     notes = esc(narr)
     focus = focus_names(narr, state.get("last_entities") or [])
@@ -844,8 +913,9 @@ def render_row(
         source = scrub_source_ids(source)
         state["prev_chart"] = key
         state["prev_hi"] = hi
-        return f'''<section class="slide slide-chart" id="{sid}" data-scene-id="{sid}" data-visual-type="chart beat" data-highlight="{esc(hi)}">
+        return f'''<section class="slide slide-chart {extra}" id="{sid}" data-scene-id="{sid}" data-visual-type="chart beat" data-highlight="{esc(hi)}">
           <div class="slide-frame">
+            {layer_html}
             <p class="section-label dm-mono">{esc(section)}</p>
             <h2 class="headline dm-sans">{esc(head)}</h2>
             <p class="chart-sub dm-mono">{esc(sub)}</p>
@@ -931,8 +1001,9 @@ def render_row(
             if num
             else ""
         )
-        return f'''<section class="slide slide-bignum" id="{sid}" data-scene-id="{sid}" data-visual-type="big-number card">
+        return f'''<section class="slide slide-bignum {extra}" id="{sid}" data-scene-id="{sid}" data-visual-type="big-number card">
           <div class="slide-frame">
+            {layer_html}
             <p class="section-label dm-mono">{esc(section)}</p>
             <h2 class="headline dm-sans">{esc(head)}</h2>
             <div class="stage"><div class="bignum-layout">
@@ -989,8 +1060,9 @@ def render_row(
             head = cap if any(ch.isdigit() for ch in cap) else "The 2019 Wikipedia-based dataset lists 103 franchises and $1.52tn."
         head = scrub_source_ids(head)
         nclass = f"n{min(len(cards_html), 3)}"
-        return f'''<section class="slide slide-entity" id="{sid}" data-scene-id="{sid}" data-visual-type="{esc(vt)}">
+        return f'''<section class="slide slide-entity {extra}" id="{sid}" data-scene-id="{sid}" data-visual-type="{esc(vt)}">
           <div class="slide-frame">
+            {layer_html}
             <p class="section-label dm-mono">{esc(section)}</p>
             <h2 class="headline dm-sans">{esc(head)}</h2>
             <div class="stage"><div class="entity-row {nclass}">{''.join(cards_html)}</div></div>
@@ -1004,8 +1076,9 @@ def render_row(
         claim = cap
         head = claim if any(ch.isdigit() for ch in claim) else "The 2019 Wikipedia-based dataset lists 103 franchises and $1.52tn."
         head = scrub_source_ids(head)
-        return f'''<section class="slide slide-type" id="{sid}" data-scene-id="{sid}" data-visual-type="type card">
+        return f'''<section class="slide slide-type {extra}" id="{sid}" data-scene-id="{sid}" data-visual-type="type card">
           <div class="slide-frame">
+            {layer_html}
             <p class="section-label dm-mono">THE SOURCE</p>
             <h2 class="headline dm-sans">{esc(head)}</h2>
             <div class="stage" style="align-items:flex-start">
@@ -1024,11 +1097,13 @@ def render_row(
         pid = row.get("asset_id") or "ai25"
         src = f"../assets/ai/{pid}_{suffix}.png"
         head = cap if any(ch.isdigit() for ch in cap) else "103 franchises in the 2019 Wikipedia-based dataset."
-        return f'''<section class="slide slide-atmo" id="{sid}" data-scene-id="{sid}" data-visual-type="atmosphere">
+        pictured = "" if extra else f'<div class="ai-stage"><img class="ai-image" src="{esc(src)}" alt=""/></div>'
+        return f'''<section class="slide slide-atmo {extra}" id="{sid}" data-scene-id="{sid}" data-visual-type="atmosphere">
           <div class="slide-frame">
+            {layer_html}
             <p class="section-label dm-mono">THE SCENE</p>
             <h2 class="headline dm-sans">{esc(scrub_source_ids(head))}</h2>
-            <div class="stage"><div class="ai-stage"><img class="ai-image" src="{esc(src)}" alt=""/></div></div>
+            <div class="stage">{pictured}</div>
             <p class="caption-burn dm-sans">{esc(cap)}</p>
           </div>
           <aside class="speaker-notes">{notes}</aside>
@@ -1043,24 +1118,35 @@ def render_row(
         head_d = cap
     else:
         head_d = "The licence is the business. Merchandise is 56% of the 2019 file."
-    return f'''<section class="slide slide-diagram" id="{sid}" data-scene-id="{sid}" data-visual-type="diagram">
+    stage_inner = "" if extra else svg
+    return f'''<section class="slide slide-diagram {extra}" id="{sid}" data-scene-id="{sid}" data-visual-type="diagram">
       <div class="slide-frame">
+        {layer_html}
         <p class="section-label dm-mono">THE MACHINE</p>
         <h2 class="headline dm-sans">{esc(scrub_source_ids(head_d))}</h2>
-        <div class="stage">{svg}</div>
+        <div class="stage">{stage_inner}</div>
         <p class="caption-burn dm-sans">{esc(cap)}</p>
       </div>
       <aside class="speaker-notes">{notes}</aside>
     </section>'''
 
 
-def build(deck_id: str, assets: dict[str, dict], franchises: dict[str, dict], verified: dict[str, float]) -> tuple[Path, int]:
+def build(
+    deck_id: str,
+    assets: dict[str, dict],
+    franchises: dict[str, dict],
+    verified: dict[str, float],
+    visuals: dict[tuple[str, str], dict],
+) -> tuple[Path, int]:
     fname, aspect, label = DECKS[deck_id]
     rows = list(csv.DictReader((VIDEO_DIR / fname).open(encoding="utf-8")))
     caps = captions_for(rows)
     state: dict = {"prev_chart": "", "prev_hi": "", "last_entities": []}
     slides = [render_bookend(deck_id, "open", label)]
-    slides += [render_row(r, assets, franchises, verified, aspect, cap, state) for r, cap in zip(rows, caps)]
+    slides += [
+        render_row(r, assets, franchises, verified, aspect, cap, state, deck_id, visuals)
+        for r, cap in zip(rows, caps)
+    ]
     slides.append(render_bookend(deck_id, "close", label))
     doc = f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"/>
@@ -1087,6 +1173,10 @@ def audit(deck_id: str) -> list[str]:
         problems.append("co-owner given the Pokémon total")
     if "$143" in text:
         problems.append("Nintendo substring sum still present")
+    if "px_trading_cards_p0" in text or "px_cinema_audience_v2" in text:
+        problems.append("loose fit still on screen")
+    if "playing-cards-king" in text:
+        problems.append("playing-card still still wired")
     return problems
 
 
@@ -1095,10 +1185,18 @@ def main() -> int:
     franchises = load_franchises()
     set_franchise_needles(franchises)
     verified = load_verified()
+    visuals = load_visual_map()
+    counts = Counter(row["layer_type"] for row in visuals.values())
+    by_deck: dict[str, Counter] = {}
+    for (deck_id, _sid), row in visuals.items():
+        by_deck.setdefault(deck_id, Counter())[row["layer_type"]] += 1
+    print(f"visual layers {dict(counts)} across {len(visuals)} scenes")
+    for deck_id, deck_counts in by_deck.items():
+        print(f"  {deck_id}: {dict(deck_counts)}")
     targets = sys.argv[1:] or list(DECKS)
     failed = 0
     for deck_id in targets:
-        path, n = build(deck_id, assets, franchises, verified)
+        path, n = build(deck_id, assets, franchises, verified, visuals)
         problems = audit(deck_id)
         print(f"Wrote {path} ({n} slides)" + (f" AUDIT {problems}" if problems else " audit ok"))
         failed += len(problems)

@@ -112,6 +112,64 @@
     });
   }
 
+  function settleImages(scope) {
+    const imgs = scope ? [...scope.querySelectorAll("img")] : [];
+    return Promise.all(
+      imgs.map(
+        (img) =>
+          new Promise((resolve) => {
+            if (img.complete) {
+              resolve();
+              return;
+            }
+            img.addEventListener("load", () => resolve(), { once: true });
+            img.addEventListener("error", () => resolve(), { once: true });
+            setTimeout(resolve, 4000);
+          })
+      )
+    );
+  }
+
+  function settleFootage(scope) {
+    const videos = scope ? [...scope.querySelectorAll("video")] : [];
+    return Promise.all(
+      videos.map(
+        (video) =>
+          new Promise((resolve) => {
+            let done = false;
+            const finish = () => {
+              if (done) return;
+              done = true;
+              try {
+                video.pause();
+              } catch (e) {
+                /* already stopped */
+              }
+              resolve();
+            };
+            video.muted = true;
+            video.defaultMuted = true;
+            video.volume = 0;
+            const seek = () => {
+              const dur = Number.isFinite(video.duration) ? video.duration : 2;
+              const t = Math.min(1, Math.max(0.2, dur * 0.35));
+              const onSeeked = () => finish();
+              video.addEventListener("seeked", onSeeked, { once: true });
+              try {
+                video.currentTime = t;
+              } catch (e) {
+                finish();
+              }
+            };
+            video.addEventListener("error", finish, { once: true });
+            if (video.readyState >= 1) seek();
+            else video.addEventListener("loadedmetadata", seek, { once: true });
+            setTimeout(finish, 4000);
+          })
+      )
+    );
+  }
+
   function waitChartsReady() {
     return new Promise((resolve) => {
       const iframes = document.querySelectorAll(".slide.is-active .chart-embed, .deck--capture .chart-embed");
@@ -128,7 +186,8 @@
     document.addEventListener("DOMContentLoaded", () => {
       runCountUps();
       bindAiImages();
-      waitChartsReady().then(() => {
+      const scope = capture ? document.querySelector(".slide.is-active") : document;
+      Promise.all([settleImages(scope), settleFootage(scope), waitChartsReady()]).then(() => {
         document.body.setAttribute("data-deck-ready", "1");
         resolve();
       });
