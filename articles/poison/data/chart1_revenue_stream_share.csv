@@ -1,3 +1,3 @@
 stream,share_pct,notes
-"Merchandise, Licensing & Retail",61,"Published franchise-report figure (107 franchises); see README"
-"Box Office + All Other Streams",39,"Complement of merchandise share in published Artometrics copy"
+"Merchandise, Licensing & Retail",56,"Row-sum from franchise.csv (103 franchises); matches Artometrics /franchise R2"
+"Box Office + All Other Streams",44,"Complement of merchandise share in franchise.csv row-sum"

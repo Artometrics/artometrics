@@ -110,4 +110,4 @@ const heroCount = copyHero();
 console.log(
   `\n${slug} sync: ${csvCount} CSV to data/, ${pngImg} PNG to images, ${jsonCount} Plotly JSON, ${pngData} PNG in data/charts, ${heroCount} hero`,
 );
-execSync(`node scripts/publish-qmd-article.mjs --slug ${slug}`, { cwd: ROOT, stdio: "inherit" });
+console.log(`Published body: src/content/blog/${slug}.md (not overwritten by this sync)`);

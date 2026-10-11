@@ -2,9 +2,9 @@
 
 ## Chart 1 — merchandise share
 
-`chart1_revenue_stream_share.csv` uses **61% / 39%**, matching the published Artometrics franchise report and this synthesis article.
+`chart1_revenue_stream_share.csv` uses **56% / 44%**, matching the recomputed row-sum in Artometrics' [franchise](/franchise) R2 report (`articles/franchise/data/franchise.csv`, 103 franchise rows).
 
-Recomputing from `articles/franchise/data/franchise.csv` (sum of all revenue rows, 103 franchises) yields **~56% merchandise / ~44% other** — same TidyTuesday source, different rounding and franchise count (article cites 107 properties ≥ $4B). The render script prints both numbers when you run it.
+Earlier published copy used **61% / 39%** with a count of 107 franchises ≥ $4B; the franchise report documents that gap in its methods box.
 
 ## Charts 2–3
 

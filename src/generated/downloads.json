@@ -364,7 +364,7 @@
   },
   "franchise": {
     "slug": "franchise",
-    "dataset": "/data/articles/franchise/data/media_franchises.csv",
+    "dataset": "/data/articles/franchise/box_office_mojo_yearly_urls.csv",
     "quarto": null,
     "html": "/exports/franchise.html",
     "pdf": null,
@@ -793,14 +793,14 @@
   },
   "poison": {
     "slug": "poison",
-    "dataset": null,
+    "dataset": "/data/articles/poison/data/chart1_revenue_stream_share.csv",
     "quarto": null,
     "html": null,
     "pdf": null,
     "epub": null,
     "audio": null,
     "transcript": "/exports/transcripts/poison.txt",
-    "github": "https://github.com/Artometrics/poison"
+    "github": null
   },
   "pokemon": {
     "slug": "pokemon",

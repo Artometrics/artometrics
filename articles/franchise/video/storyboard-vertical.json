@@ -1,0 +1,11 @@
+{
+  "script": "script-vertical.md",
+  "scenes": [
+    {"id": "v01", "narration_text": "Your blockbuster lost the weekend. Pokémon still won the century.", "type": "title_card", "on_screen_text": "Weekend vs century", "duration_s": 3},
+    {"id": "v02", "narration_text": "merchandise is fifty-six percent", "type": "big_number", "on_screen_text": "56%", "number_to_count_up": 56, "duration_s": 2},
+    {"id": "v03", "narration_text": "Box office? Nine.", "type": "big_number", "on_screen_text": "9%", "number_to_count_up": 9, "duration_s": 2},
+    {"id": "v04", "narration_text": "four hundred twenty-six billion", "type": "chart_beat", "chart_id": "chart3b_disney_consolidated", "number_to_count_up": 426, "duration_s": 3},
+    {"id": "v05", "narration_text": "nine of the domestic top ten", "type": "big_number", "on_screen_text": "9 / 10", "number_to_count_up": 9, "duration_s": 2},
+    {"id": "v06", "narration_text": "That is franchise economics.", "type": "title_card", "on_screen_text": "Buy libraries. Sell objects.", "duration_s": 3}
+  ]
+}

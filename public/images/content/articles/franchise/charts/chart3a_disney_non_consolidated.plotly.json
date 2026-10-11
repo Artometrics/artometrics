@@ -1,0 +1,105 @@
+{
+  "data": [
+    {
+      "x": [258.952, 90.863, 80.026, 63.004, 60.092, 49.021, 44.396, 36.256, 33.217, 31, 29.233, 28.715, 28.108, 25.525],
+      "y": ["The Walt Disney Company", "Nintendo (trademark) The Pokémon Company (Nintendo, Game Freak, Creatures) (copyright)", "Sanrio", "Lucasfilm (The Walt Disney Company)", "Froebel-kan", "Nintendo", "DC Entertainment (AT&T)", "Shueisha (Hitotsubashi Group)", "Shueisha (Hitotsubashi Group) (manga) Bandai Namco (games)", "Walt Disney Studios (The Walt Disney Company) (franchise) Sony (Spider-Man films)", "Toei Company Hasbro", "Nickelodeon (Viacom)", "J. K. Rowling (books) Warner Bros. (AT&T) (films)", "Sunrise (Bandai Namco Holdings)"],
+      "orientation": "h",
+      "marker": {
+        "color": [258.952, 90.863, 80.026, 63.004, 60.092, 49.021, 44.396, 36.256, 33.217, 31, 29.233, 28.715, 28.108, 25.525],
+        "colorscale": [
+          ["0", "#1B4F8A"],
+          ["1", "#C0392B"]
+        ],
+        "showscale": false,
+        "line": {
+          "color": "rgba(31,119,180,1)"
+        }
+      },
+      "type": "bar",
+      "error_y": {
+        "color": "rgba(31,119,180,1)"
+      },
+      "error_x": {
+        "color": "rgba(31,119,180,1)"
+      },
+      "xaxis": "x",
+      "yaxis": "y",
+      "frame": null
+    }
+  ],
+  "layout": {
+    "margin": {
+      "b": 90,
+      "l": 260,
+      "t": 120,
+      "r": 40
+    },
+    "title": {
+      "text": "<b>Ownership leaderboard — subsidiaries listed separately<\/b><br><span style='font-size:12px;color:#6B6B6B'>Owner field as stored in Wikipedia scrape<\/span>",
+      "x": 0,
+      "xanchor": "left"
+    },
+    "paper_bgcolor": "#FFFFFF",
+    "plot_bgcolor": "#FFFFFF",
+    "font": {
+      "family": "DM Sans, Helvetica, sans-serif",
+      "color": "#1C1C1E",
+      "size": 12
+    },
+    "annotations": [
+      {
+        "x": 0,
+        "y": 1.12,
+        "xref": "paper",
+        "yref": "paper",
+        "text": "<b>Marvel and Fox look like rivals until you read the footnotes<\/b>",
+        "showarrow": false,
+        "xanchor": "left",
+        "font": {
+          "size": 11,
+          "color": "#FFFFFF"
+        },
+        "bgcolor": "#C0392B",
+        "borderpad": 6
+      },
+      {
+        "x": 0,
+        "y": -0.2,
+        "xref": "paper",
+        "yref": "paper",
+        "text": "Data: TidyTuesday media franchises (2019-07-02) / Wikipedia estimates — ARTOMETRICS  ·  Artometrics",
+        "showarrow": false,
+        "xanchor": "left",
+        "font": {
+          "size": 9,
+          "color": "#6B6B6B"
+        }
+      }
+    ],
+    "xaxis": {
+      "domain": [0, 1],
+      "automargin": true,
+      "title": "Lifetime $B"
+    },
+    "yaxis": {
+      "domain": [0, 1],
+      "automargin": true,
+      "title": "owners",
+      "type": "category",
+      "categoryorder": "array",
+      "categoryarray": ["Sunrise (Bandai Namco Holdings)", "J. K. Rowling (books) Warner Bros. (AT&T) (films)", "Nickelodeon (Viacom)", "Toei Company Hasbro", "Walt Disney Studios (The Walt Disney Company) (franchise) Sony (Spider-Man films)", "Shueisha (Hitotsubashi Group) (manga) Bandai Namco (games)", "Shueisha (Hitotsubashi Group)", "DC Entertainment (AT&T)", "Nintendo", "Froebel-kan", "Lucasfilm (The Walt Disney Company)", "Sanrio", "Nintendo (trademark) The Pokémon Company (Nintendo, Game Freak, Creatures) (copyright)", "The Walt Disney Company"]
+    },
+    "hovermode": "closest",
+    "showlegend": false
+  },
+  "config": {
+    "displayModeBar": false,
+    "displaylogo": false,
+    "responsive": true,
+    "scrollZoom": false,
+    "doubleClick": false,
+    "staticPlot": false,
+    "editable": false,
+    "showTips": false
+  }
+}
