@@ -1216,8 +1216,21 @@ html[data-theme="dark"] .artometrics-article-body .art-chart:hover {
   height: 0 !important;
   overflow: hidden !important;
 }
-.artometrics-article-body .art-chart-caption--visible{
-  display: none !important;
+.artometrics-article-body .art-chart figcaption.art-chart-caption.art-chart-caption--visible{
+  display: block !important;
+  height: auto !important;
+  overflow: visible !important;
+  margin: 0.85rem 1.25rem 1.1rem !important;
+  padding: 0 !important;
+  border: 0 !important;
+  font-family: "DM Sans", Helvetica, Arial, sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 400 !important;
+  line-height: 1.45 !important;
+  letter-spacing: 0 !important;
+  text-align: left !important;
+  text-transform: none !important;
+  color: #525252 !important;
 }
 .artometrics-article-body .art-chart-live .gtitle,
 .artometrics-article-body .art-chart-live .gtitle text,
@@ -1837,6 +1850,260 @@ html[data-theme="dark"] .artometrics-article-body main.art-article-main pre {
   background: #171717 !important;
   color: #FAFAFA !important;
   border-color: #404040 !important;
+}
+
+/* Round-2 anime profile cards, title cards, and credited logos */
+.artometrics-article-body .art-split{
+  display: block !important;
+  max-width: min(72rem, 100%) !important;
+  margin: 0 auto 2.25rem !important;
+  text-align: left !important;
+}
+.artometrics-article-body .art-split__copy .art-p,
+.artometrics-article-body main.art-article-main .art-split__copy p{
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+@media (min-width: 900px){
+  .artometrics-article-body .art-split{
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 300px !important;
+    gap: 1.75rem !important;
+    align-items: start !important;
+  }
+  .artometrics-article-body .art-split--titles{
+    grid-template-columns: minmax(0, 1fr) 260px !important;
+  }
+}
+.artometrics-article-body .art-studio-card,
+.artometrics-article-body .art-person{
+  background: #fff !important;
+  border: 1px solid #E4E4E4 !important;
+  border-radius: 2px !important;
+  box-shadow: 0 8px 0 #0A0A0A !important;
+  padding: 1rem 1rem 0.9rem !important;
+  text-align: left !important;
+  margin: 0 0 1rem !important;
+}
+.artometrics-article-body .art-studio-card__logo,
+.artometrics-article-body .art-logo img{
+  display: block !important;
+  height: 48px !important;
+  width: auto !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  object-position: left center !important;
+  background: transparent !important;
+  filter: none !important;
+  margin: 0 0 0.35rem !important;
+}
+.artometrics-article-body .art-studio-card__credit,
+.artometrics-article-body .art-logo__credit,
+.artometrics-article-body .art-person__credit,
+.artometrics-article-body main.art-article-main .art-studio-card__credit,
+.artometrics-article-body main.art-article-main .art-logo__credit,
+.artometrics-article-body main.art-article-main .art-person__credit{
+  font-family: "DM Sans", Helvetica, Arial, sans-serif !important;
+  font-size: 0.68rem !important;
+  line-height: 1.35 !important;
+  color: #525252 !important;
+  text-align: left !important;
+  margin: 0 0 0.75rem !important;
+  max-width: 100% !important;
+}
+.artometrics-article-body .art-studio-card__name,
+.artometrics-article-body .art-wordmark,
+.artometrics-article-body main.art-article-main .art-studio-card__name,
+.artometrics-article-body main.art-article-main .art-wordmark{
+  font-family: "Anton", Impact, Haettenschweiler, sans-serif !important;
+  font-size: 1.65rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  line-height: 1.05 !important;
+  color: #111 !important;
+  text-align: left !important;
+  margin: 0 0 0.7rem !important;
+}
+.artometrics-article-body .art-studio-card__facts{
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 0.45rem 0.75rem !important;
+  margin: 0 0 0.85rem !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+.artometrics-article-body .art-studio-card__facts li,
+.artometrics-article-body main.art-article-main .art-studio-card__facts li{
+  text-align: left !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.artometrics-article-body .art-studio-card__facts span,
+.artometrics-article-body main.art-article-main .art-studio-card__facts span{
+  display: block !important;
+  font-family: "DM Sans", Helvetica, Arial, sans-serif !important;
+  font-size: 0.62rem !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: #525252 !important;
+}
+.artometrics-article-body .art-studio-card__facts strong,
+.artometrics-article-body main.art-article-main .art-studio-card__facts strong{
+  display: block !important;
+  font-family: "DM Sans", Helvetica, Arial, sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  color: #1C1C1E !important;
+}
+.artometrics-article-body .art-studio-card__sig,
+.artometrics-article-body .art-studio-card__history,
+.artometrics-article-body main.art-article-main .art-studio-card__sig,
+.artometrics-article-body main.art-article-main .art-studio-card__history{
+  font-family: "DM Sans", Helvetica, Arial, sans-serif !important;
+  font-size: 0.84rem !important;
+  line-height: 1.45 !important;
+  color: #1C1C1E !important;
+  text-align: left !important;
+  margin: 0 0 0.7rem !important;
+}
+.artometrics-article-body .art-league-mini__track{
+  position: relative !important;
+  height: 8px !important;
+  margin: 0.35rem 0 0.4rem !important;
+  background: #E6E6E6 !important;
+  border-radius: 99px !important;
+}
+.artometrics-article-body .art-league-mini__baseline,
+.artometrics-article-body .art-league-mini__dot{
+  position: absolute !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  border-radius: 99px !important;
+}
+.artometrics-article-body .art-league-mini__baseline{
+  width: 2px !important;
+  height: 14px !important;
+  background: #1C1C1E !important;
+}
+.artometrics-article-body .art-league-mini__dot{
+  width: 12px !important;
+  height: 12px !important;
+  background: #E60000 !important;
+  border: 2px solid #fff !important;
+}
+.artometrics-article-body .art-league-mini__label,
+.artometrics-article-body main.art-article-main .art-league-mini__label{
+  font-family: "DM Sans", Helvetica, Arial, sans-serif !important;
+  font-size: 0.68rem !important;
+  color: #525252 !important;
+  text-align: left !important;
+  margin: 0 !important;
+}
+.artometrics-article-body .art-person__photo{
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 240px !important;
+  object-fit: contain !important;
+  object-position: center top !important;
+  margin: 0 0 0.35rem !important;
+  background: #F4F4F4 !important;
+}
+.artometrics-article-body .art-person__name,
+.artometrics-article-body main.art-article-main .art-person__name{
+  font-family: "Anton", Impact, Haettenschweiler, sans-serif !important;
+  font-size: 1.15rem !important;
+  letter-spacing: 0.03em !important;
+  text-transform: uppercase !important;
+  text-align: left !important;
+  color: #111 !important;
+  margin: 0 0 0.25rem !important;
+}
+.artometrics-article-body .art-person__role,
+.artometrics-article-body main.art-article-main .art-person__role{
+  font-family: "DM Sans", Helvetica, Arial, sans-serif !important;
+  font-size: 0.82rem !important;
+  line-height: 1.4 !important;
+  text-align: left !important;
+  color: #1C1C1E !important;
+  margin: 0 0 0.45rem !important;
+}
+.artometrics-article-body .art-title-card{
+  background: #111 !important;
+  color: #fff !important;
+  padding: 0.9rem 0.95rem 0.85rem !important;
+  margin: 0 0 0.65rem !important;
+}
+.artometrics-article-body .art-title-card__name,
+.artometrics-article-body main.art-article-main .art-title-card__name{
+  font-family: "Anton", Impact, Haettenschweiler, sans-serif !important;
+  font-size: 1.15rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.03em !important;
+  line-height: 1.15 !important;
+  text-transform: uppercase !important;
+  color: #fff !important;
+  text-align: left !important;
+  margin: 0 0 0.45rem !important;
+}
+.artometrics-article-body .art-title-card .art-wordmark,
+.artometrics-article-body main.art-article-main .art-title-card .art-wordmark{
+  color: #fff !important;
+  font-size: 0.95rem !important;
+  margin: 0 0 0.4rem !important;
+}
+.artometrics-article-body .art-table-wrapper{
+  overflow-x: auto !important;
+  max-width: 100% !important;
+}
+.artometrics-article-body .art-title-card__link,
+.artometrics-article-body main.art-article-main .art-title-card__link{
+  font-family: "DM Sans", Helvetica, Arial, sans-serif !important;
+  font-size: 0.75rem !important;
+  color: #fff !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+}
+.artometrics-article-body .art-logo-row{
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.85rem 1rem !important;
+  align-items: flex-start !important;
+  margin: 0 0 0.5rem !important;
+}
+.artometrics-article-body .art-logo{
+  flex: 1 1 140px !important;
+  max-width: 220px !important;
+}
+.artometrics-article-body .art-h3,
+.artometrics-article-body main.art-article-main .art-h3{
+  font-family: "Anton", Impact, Haettenschweiler, sans-serif !important;
+  font-size: 1.35rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  text-align: left !important;
+  color: #111 !important;
+  margin: 0 0 0.65rem !important;
+}
+html[data-theme="dark"] .artometrics-article-body .art-studio-card,
+html[data-theme="dark"] .artometrics-article-body .art-person{
+  background: #171717 !important;
+  border-color: #333 !important;
+  box-shadow: 0 8px 0 #000 !important;
+}
+html[data-theme="dark"] .artometrics-article-body .art-studio-card__name,
+html[data-theme="dark"] .artometrics-article-body .art-wordmark,
+html[data-theme="dark"] .artometrics-article-body .art-person__name,
+html[data-theme="dark"] .artometrics-article-body .art-h3,
+html[data-theme="dark"] .artometrics-article-body .art-studio-card__facts strong,
+html[data-theme="dark"] .artometrics-article-body .art-studio-card__sig,
+html[data-theme="dark"] .artometrics-article-body .art-studio-card__history,
+html[data-theme="dark"] .artometrics-article-body .art-person__role{
+  color: #F4F1EA !important;
 }
 
 /* Traditional magazine: hide TOC chrome — articles should read as articles */
