@@ -1,0 +1,38 @@
+Artometrics FRANCHISE report — data provenance
+=============================================
+
+Primary franchise ledger (Charts 1–5, owner rollups)
+----------------------------------------------------
+File: franchise.csv (and raw/media_franchises.csv mirror)
+Origin: TidyTuesday 2019-07-02 — Media Franchise Revenues
+URL: https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-07-02
+Upstream: Wikipedia “List of highest-grossing media franchises” (July 2019 scrape)
+License: Community dataset; Wikipedia text is CC BY-SA 3.0 — revenue figures are editorial estimates, not audited financials.
+SHA-256 (franchise.csv committed in repo): run `sha256sum articles/franchise/data/franchise.csv` before publish.
+
+Disney acquisitions (Chart 8)
+-------------------------------
+File: disney_acquisitions.csv
+Deal prices: SEC Form 8-K / 10-K acquisition notes and Wikipedia “List of mergers and acquisitions by Disney” with primary citations.
+Franchise lifetime totals: summed from franchise.csv for named properties (mid-2019 Wikipedia estimates).
+
+Disney segment revenue (Chart 9)
+--------------------------------
+File: disney_segment_revenue_fy2024.csv
+The Walt Disney Company Form 10-K for fiscal year ended September 28, 2024 (filed November 2024).
+Segment labels: Entertainment, Sports, Experiences (parks & products).
+
+Theatrical franchise share (Chart 7)
+------------------------------------
+File: top10_franchise_share_by_year.csv
+Method: For each calendar year, the domestic top 10 films by calendar gross (Box Office Mojo yearly chart pages).
+Classification: “Franchise installment” = sequel, prequel, spin-off, or shared-universe entry of an existing IP (manual Artometrics coding).
+Source index: data/box_office_mojo_yearly_urls.csv
+
+Studio library comparison (Chart 6 owner bars)
+----------------------------------------------
+Derived in build_brief.R from franchise.csv owner field with Disney consolidation rules documented in data/owner_consolidation_rules.csv
+
+Franchise failure casebook (prose)
+----------------------------------
+File: franchise_failures.csv — editorial case rows with press/10-K citations (not revenue ranks).

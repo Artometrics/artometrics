@@ -1,0 +1,17 @@
+{
+  "script": "script-deepdive.md",
+  "scenes": [
+    {"id": "d01", "narration_text": "A trading card worth lunch money and a two-hundred-million-dollar Marvel sequel sit on the same balance-sheet idea", "type": "ai_illustration", "ai_prompt": "anaglyph red-blue split: trading card on left, film reel on right, stick figures only", "duration_s": 6},
+    {"id": "d02", "narration_text": "one hundred three properties", "type": "big_number", "on_screen_text": "103 IP rows", "number_to_count_up": 103, "duration_s": 5},
+    {"id": "d03", "narration_text": "merchandise is fifty-six point zero percent", "type": "chart_beat", "chart_id": "chart6_revenue_streams", "duration_s": 6},
+    {"id": "d04", "narration_text": "Pokémon leads at ninety point nine billion", "type": "chart_beat", "chart_id": "chart1_top20_revenue", "red_box_target": "Pokémon", "duration_s": 7},
+    {"id": "d05", "narration_text": "Chart two divides lifetime totals by years alive", "type": "chart_beat", "chart_id": "chart2_revenue_per_year", "duration_s": 6},
+    {"id": "d06", "narration_text": "Consolidated, Disney is four hundred twenty-six billion", "type": "chart_beat", "chart_id": "chart3b_disney_consolidated", "duration_s": 7},
+    {"id": "d07", "narration_text": "Chart eight plots acquisition price", "type": "chart_beat", "chart_id": "chart8_disney_acquisitions", "duration_s": 7},
+    {"id": "d08", "narration_text": "Disney’s FY twenty-twenty-four Form ten-K", "type": "chart_beat", "chart_id": "chart9_disney_segments_fy2024", "duration_s": 7},
+    {"id": "d09", "narration_text": "Ninety in twenty-twenty-four", "type": "chart_beat", "chart_id": "chart7_top10_franchise_share", "duration_s": 6},
+    {"id": "d10", "narration_text": "Dark Universe", "type": "quote", "on_screen_text": "Counterexample: shelved universe", "duration_s": 5},
+    {"id": "d11", "narration_text": "Decision tools", "type": "title_card", "on_screen_text": "Own · Margin · Capital", "duration_s": 6},
+    {"id": "d12", "narration_text": "npm run brief:franchise", "type": "title_card", "on_screen_text": "Reproduce the charts", "duration_s": 5}
+  ]
+}

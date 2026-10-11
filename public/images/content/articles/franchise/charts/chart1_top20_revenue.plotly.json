@@ -1,0 +1,280 @@
+{
+  "data": [
+    {
+      "x": [1, 7],
+      "y": ["Star Wars", "Wizarding World / Harry Potter"],
+      "orientation": "h",
+      "type": "bar",
+      "name": "Book sales",
+      "marker": {
+        "color": "rgba(160,160,160,1)",
+        "line": {
+          "color": "rgba(160,160,160,1)"
+        }
+      },
+      "textfont": {
+        "color": "rgba(160,160,160,1)"
+      },
+      "error_y": {
+        "color": "rgba(160,160,160,1)"
+      },
+      "error_x": {
+        "color": "rgba(160,160,160,1)"
+      },
+      "xaxis": "x",
+      "yaxis": "y",
+      "frame": null
+    },
+    {
+      "x": [1, 0.46, 0.457, 9, 0.067, 0.021, 21, 0.218, 9, 0.14, 4, 6, 0.005, 0.817, 2, 0.032, 2],
+      "y": ["Pokémon", "Winnie the Pooh", "Mickey Mouse & Friends", "Star Wars", "Anpanman", "Mario", "Marvel Cinematic Universe", "Super Sentai / Power Rangers", "Wizarding World / Harry Potter", "Gundam", "Batman", "Spider-Man", "Barbie", "Dragon Ball", "Cars", "Fist of the North Star", "Toy Story"],
+      "orientation": "h",
+      "type": "bar",
+      "name": "Box Office",
+      "marker": {
+        "color": "rgba(27,79,138,1)",
+        "line": {
+          "color": "rgba(27,79,138,1)"
+        }
+      },
+      "textfont": {
+        "color": "rgba(27,79,138,1)"
+      },
+      "error_y": {
+        "color": "rgba(27,79,138,1)"
+      },
+      "error_x": {
+        "color": "rgba(27,79,138,1)"
+      },
+      "xaxis": "x",
+      "yaxis": "y",
+      "frame": null
+    },
+    {
+      "x": [1, 0.023, 1, 33, 0.2, 1, 9, 3],
+      "y": ["Pokémon", "Hello Kitty", "Mario", "Shōnen Jump / Jump Comics", "Gundam", "Spider-Man", "Dragon Ball", "Fist of the North Star"],
+      "orientation": "h",
+      "type": "bar",
+      "name": "Comic or Manga",
+      "marker": {
+        "color": "rgba(74,111,165,1)",
+        "line": {
+          "color": "rgba(74,111,165,1)"
+        }
+      },
+      "textfont": {
+        "color": "rgba(74,111,165,1)"
+      },
+      "error_y": {
+        "color": "rgba(74,111,165,1)"
+      },
+      "error_x": {
+        "color": "rgba(74,111,165,1)"
+      },
+      "xaxis": "x",
+      "yaxis": "y",
+      "frame": null
+    },
+    {
+      "x": [0.863, 0.059, 0.28, 9, 0.042, 5, 0.015, 3, 1, 1.15, 1, 1, 0.654, 0.037, 0.54],
+      "y": ["Pokémon", "Winnie the Pooh", "Mickey Mouse & Friends", "Star Wars", "Disney Princess", "Marvel Cinematic Universe", "Super Sentai / Power Rangers", "Wizarding World / Harry Potter", "Batman", "Spider-Man", "Barbie", "Dragon Ball", "Cars", "Fist of the North Star", "Toy Story"],
+      "orientation": "h",
+      "type": "bar",
+      "name": "Home Video/Entertainment",
+      "marker": {
+        "color": "rgba(107,107,107,1)",
+        "line": {
+          "color": "rgba(107,107,107,1)"
+        }
+      },
+      "textfont": {
+        "color": "rgba(107,107,107,1)"
+      },
+      "error_y": {
+        "color": "rgba(107,107,107,1)"
+      },
+      "error_x": {
+        "color": "rgba(107,107,107,1)"
+      },
+      "xaxis": "x",
+      "yaxis": "y",
+      "frame": null
+    },
+    {
+      "x": [61, 80, 74, 69, 40, 60.025, 44, 4, 5, 29, 7.108, 25, 20, 14, 22, 5, 19, 0.026, 17],
+      "y": ["Pokémon", "Hello Kitty", "Winnie the Pooh", "Mickey Mouse & Friends", "Star Wars", "Anpanman", "Disney Princess", "Mario", "Marvel Cinematic Universe", "Super Sentai / Power Rangers", "Wizarding World / Harry Potter", "Gundam", "Batman", "Spider-Man", "Barbie", "Dragon Ball", "Cars", "Fist of the North Star", "Toy Story"],
+      "orientation": "h",
+      "type": "bar",
+      "name": "Merchandise, Licensing & Retail",
+      "marker": {
+        "color": "rgba(192,57,43,1)",
+        "line": {
+          "color": "rgba(192,57,43,1)"
+        }
+      },
+      "textfont": {
+        "color": "rgba(192,57,43,1)"
+      },
+      "error_y": {
+        "color": "rgba(192,57,43,1)"
+      },
+      "error_x": {
+        "color": "rgba(192,57,43,1)"
+      },
+      "xaxis": "x",
+      "yaxis": "y",
+      "frame": null
+    },
+    {
+      "x": [0.003, 0.212, 0.047],
+      "y": ["Hello Kitty", "Spider-Man", "Dragon Ball"],
+      "orientation": "h",
+      "type": "bar",
+      "name": "Music",
+      "marker": {
+        "color": "rgba(181,181,181,1)",
+        "line": {
+          "color": "rgba(181,181,181,1)"
+        }
+      },
+      "textfont": {
+        "color": "rgba(181,181,181,1)"
+      },
+      "error_y": {
+        "color": "rgba(181,181,181,1)"
+      },
+      "error_x": {
+        "color": "rgba(181,181,181,1)"
+      },
+      "xaxis": "x",
+      "yaxis": "y",
+      "frame": null
+    },
+    {
+      "x": [0.004, 1, 0.04, 0.88],
+      "y": ["Star Wars", "Wizarding World / Harry Potter", "Batman", "Spider-Man"],
+      "orientation": "h",
+      "type": "bar",
+      "name": "TV",
+      "marker": {
+        "color": "rgba(138,138,138,1)",
+        "line": {
+          "color": "rgba(138,138,138,1)"
+        }
+      },
+      "textfont": {
+        "color": "rgba(138,138,138,1)"
+      },
+      "error_y": {
+        "color": "rgba(138,138,138,1)"
+      },
+      "error_x": {
+        "color": "rgba(138,138,138,1)"
+      },
+      "xaxis": "x",
+      "yaxis": "y",
+      "frame": null
+    },
+    {
+      "x": [27, 4, 30, 0.217, 1, 0.185, 1.308, 5.961, 17.373],
+      "y": ["Pokémon", "Star Wars", "Mario", "Shōnen Jump / Jump Comics", "Wizarding World / Harry Potter", "Gundam", "Spider-Man", "Dragon Ball", "Fist of the North Star"],
+      "orientation": "h",
+      "type": "bar",
+      "name": "Video Games/Games",
+      "marker": {
+        "color": "rgba(46,95,163,1)",
+        "line": {
+          "color": "rgba(46,95,163,1)"
+        }
+      },
+      "textfont": {
+        "color": "rgba(46,95,163,1)"
+      },
+      "error_y": {
+        "color": "rgba(46,95,163,1)"
+      },
+      "error_x": {
+        "color": "rgba(46,95,163,1)"
+      },
+      "xaxis": "x",
+      "yaxis": "y",
+      "frame": null
+    }
+  ],
+  "layout": {
+    "margin": {
+      "b": 90,
+      "l": 200,
+      "t": 120,
+      "r": 40
+    },
+    "title": {
+      "text": "<b>Top 20 franchises by estimated lifetime revenue<\/b><br><span style='font-size:12px;color:#6B6B6B'>Eight revenue streams (mid-2019 Wikipedia scrape)<\/span>",
+      "x": 0,
+      "xanchor": "left"
+    },
+    "paper_bgcolor": "#FFFFFF",
+    "plot_bgcolor": "#FFFFFF",
+    "font": {
+      "family": "DM Sans, Helvetica, sans-serif",
+      "color": "#1C1C1E",
+      "size": 12
+    },
+    "annotations": [
+      {
+        "x": 0,
+        "y": 1.12,
+        "xref": "paper",
+        "yref": "paper",
+        "text": "<b>Pokémon leads; merchandise is the widest band for most properties<\/b>",
+        "showarrow": false,
+        "xanchor": "left",
+        "font": {
+          "size": 11,
+          "color": "#FFFFFF"
+        },
+        "bgcolor": "#C0392B",
+        "borderpad": 6
+      },
+      {
+        "x": 0,
+        "y": -0.2,
+        "xref": "paper",
+        "yref": "paper",
+        "text": "Data: TidyTuesday media franchises (2019-07-02) / Wikipedia estimates — ARTOMETRICS  ·  Artometrics",
+        "showarrow": false,
+        "xanchor": "left",
+        "font": {
+          "size": 9,
+          "color": "#6B6B6B"
+        }
+      }
+    ],
+    "barmode": "stack",
+    "xaxis": {
+      "domain": [0, 1],
+      "automargin": true,
+      "title": "Lifetime revenue ($B)"
+    },
+    "showlegend": true,
+    "yaxis": {
+      "domain": [0, 1],
+      "automargin": true,
+      "title": "franchise",
+      "type": "category",
+      "categoryorder": "array",
+      "categoryarray": ["Pokémon", "Hello Kitty", "Winnie the Pooh", "Mickey Mouse & Friends", "Star Wars", "Anpanman", "Disney Princess", "Mario", "Shōnen Jump / Jump Comics", "Marvel Cinematic Universe", "Super Sentai / Power Rangers", "Wizarding World / Harry Potter", "Gundam", "Batman", "Spider-Man", "Barbie", "Dragon Ball", "Cars", "Fist of the North Star", "Toy Story"]
+    },
+    "hovermode": "closest"
+  },
+  "config": {
+    "displayModeBar": false,
+    "displaylogo": false,
+    "responsive": true,
+    "scrollZoom": false,
+    "doubleClick": false,
+    "staticPlot": false,
+    "editable": false,
+    "showTips": false
+  }
+}
