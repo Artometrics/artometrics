@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Artometrics — home (magazine after mock)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #fff;
+      --ink: #000;
+      --muted: #525252;
+      --rule: #e5e5e5;
+      --red: #e60000;
+      --blue: #3367e7;
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+    .wrap { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
+    header {
+      border-bottom: 2px solid var(--ink);
+      padding: 1rem 0 0.75rem;
+      text-align: center;
+    }
+    .dateline {
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-top: 1px solid var(--rule);
+      margin-top: 0.75rem;
+    }
+    nav a {
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      text-decoration: none;
+    }
+    nav a:hover { text-decoration: underline; }
+    .lead {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 2.5rem 0;
+      border-bottom: 2px solid var(--ink);
+    }
+    @media (min-width: 900px) {
+      .lead { grid-template-columns: 1.15fr 1fr; align-items: end; }
+    }
+    .kicker {
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.75rem;
+    }
+    h1 {
+      font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    h1 em { color: var(--red); font-style: normal; }
+    .deck {
+      font-size: 1.125rem;
+      color: var(--muted);
+      margin-top: 1rem;
+      max-width: 38ch;
+    }
+    .hero {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #111 0%, #333 100%);
+      border: 2px solid var(--ink);
+      position: relative;
+    }
+    .hero span {
+      position: absolute;
+      bottom: 0.75rem;
+      left: 0.75rem;
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--red);
+      padding: 0.25rem 0.5rem;
+    }
+    .meta {
+      font-family: "DM Mono", monospace;
+      font-size: 12px;
+      margin-top: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .briefs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .briefs h2 {
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      grid-column: 1 / -1;
+      margin-bottom: 0.5rem;
+    }
+    .brief a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      line-height: 1.25;
+    }
+    .brief a:hover { color: var(--red); }
+    .brief p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+    }
+    .note {
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      color: var(--muted);
+      padding: 2rem 0 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <p class="dateline">Sunday, 12 Oct 2026 · Data reports · Issue 42</p>
+    <div class="logo">Artometrics</div>
+    <nav>
+      <a href="#">Arts</a>
+      <a href="#">Sports</a>
+      <a href="#">Science</a>
+      <a href="#">Culture</a>
+      <a href="#">Podcast</a>
+      <a href="#">Studio</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="lead">
+      <div>
+        <p class="kicker">Civics · Education</p>
+        <h1><em>Readmitted:</em> who returns to college, and who does not</h1>
+        <p class="deck">A reproducible count of stop-outs and re-enrollments across 2,400 institutions—mapped to policy levers states can actually pull.</p>
+        <p class="meta">By Kyle McAuliffe · 18 min · Data updated Oct 2026</p>
+      </div>
+      <div>
+        <div class="hero" role="img" aria-label="Chart collage mock"><span>Cover figure</span></div>
+      </div>
+    </section>
+
+    <section class="briefs">
+      <h2>This week’s investigations</h2>
+      <article class="brief">
+        <a href="#">Franchise valuations vs. payroll tax exposure</a>
+        <p>MLB, NBA, NFL — 2026 spots</p>
+      </article>
+      <article class="brief">
+        <a href="#">Anime production minutes per streaming dollar</a>
+        <p>Japan + US licensors</p>
+      </article>
+      <article class="brief">
+        <a href="#">Museum attendance vs. free-admission policy</a>
+        <p>50 US metros</p>
+      </article>
+    </section>
+
+    <p class="note">Static mock — tokens from docs/design-bible/tokens.md. Not production UI.</p>
+  </main>
+</body>
+</html>
