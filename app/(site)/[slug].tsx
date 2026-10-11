@@ -179,7 +179,7 @@ export default function ReportScreen() {
               <ArticleNarrationPlayer
                 audioSrc={(post as { audioSrc?: string | null }).audioSrc}
                 title={post.title}
-                runtimeSeconds={post.slug === "anime" ? 1819 : undefined}
+                runtimeSeconds={post.slug === "anime" ? 1818 : undefined}
                 label={post.slug === "anime" ? "Listen: narrated by AI voice (Kore), 30:18" : undefined}
               />
             ) : null}
