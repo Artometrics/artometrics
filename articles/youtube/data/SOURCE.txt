@@ -1,0 +1,12 @@
+Artometrics — articles/youtube/data/ economics tables
+Compiled 2026-10-11 for R2 upgrade. All figures trace to primary or tier-1 industry filings/press releases.
+
+alphabet_youtube_ads_revenue.csv — Alphabet Form 10-K revenue disaggregation, "YouTube ads" (USD millions).
+nielsen_youtube_tv_screen_share.csv — Nielsen The Gauge / Media Distributor Gauge press releases (% of total U.S. TV usage on TV screens; excludes YouTube TV).
+nielsen_tv_share_july_2025.csv — Same methodology, single month cross-distributor comparison.
+creator_economy_tam_goldman.csv — Goldman Sachs Research creator-economy TAM (Apr 2023); projection labeled.
+goldman_youtube_shorts_ad_share.csv — Goldman Sachs estimates for Shorts ads as % of YouTube ads (Apr 2023).
+platform_revenue_fy2024.csv — FY2024 10-K crosswalk (YouTube ads vs Netflix total revenue; not same cost structure).
+ypp_revenue_share.csv — Google/YouTube published partner revenue-share terms.
+
+H3 case-study tables: h3.csv, data/h3_podchaser_episodes.csv, data/h3_reddit_posts.csv, data/h3_snark_posts.csv — Artometrics pull via YouTube Data API v3, Podchaser, Arctic Shift (see github.com/Artometrics/h3).

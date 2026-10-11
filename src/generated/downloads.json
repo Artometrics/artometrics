@@ -1090,7 +1090,7 @@
   },
   "youtube": {
     "slug": "youtube",
-    "dataset": "/data/articles/youtube/data/h3_master.csv",
+    "dataset": "/data/articles/youtube/alphabet_youtube_ads_revenue.csv",
     "quarto": null,
     "html": null,
     "pdf": null,

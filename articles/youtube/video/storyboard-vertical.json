@@ -1,0 +1,14 @@
+{
+  "script": "script-vertical.md",
+  "target_runtime_seconds": 60,
+  "aspect_ratio": "9:16",
+  "scenes": [
+    {"id": "v01", "narration_text": "YouTube made thirty-six billion dollars in ads last year—while one podcast tripled its views… then lost the co-host.", "type": "big_number", "on_screen_text": "$36.1B", "number_to_count_up": 36.1, "red_box_target": "YouTube ads", "chart_id": "chart4_youtube_ads_revenue", "image_source": null, "ai_prompt": "vertical stick-figure shock reaction, red accent"},
+    {"id": "v02", "narration_text": "Nielsen says YouTube is thirteen point four percent of U.S. TV time—bigger than Netflix on the TV set.", "type": "big_number", "on_screen_text": "13.4%", "number_to_count_up": 13.4, "red_box_target": "TV screen", "chart_id": "chart6_platform_tv_share", "image_source": null, "ai_prompt": null},
+    {"id": "v03", "narration_text": "Google pays creators fifty-five percent on long-form ads.", "type": "chart_beat", "on_screen_text": "55%", "number_to_count_up": 55, "red_box_target": "Creators", "chart_id": "chart10_ypp_split", "image_source": null, "ai_prompt": null},
+    {"id": "v04", "narration_text": "YouTube claims one hundred billion dollars paid out in four years.", "type": "big_number", "on_screen_text": "$100B+", "number_to_count_up": 100, "red_box_target": "Payouts", "chart_id": null, "image_source": {"path": "/images/content/articles/youtube/assets/logo_youtube.svg", "credit": "Wikimedia Commons"}, "ai_prompt": null},
+    {"id": "v05", "narration_text": "H3's Frenemies era tripled views.", "type": "chart_beat", "on_screen_text": "3×", "number_to_count_up": 3, "red_box_target": "Frenemies", "chart_id": "chart1_era_timeline", "image_source": null, "ai_prompt": "vertical podcast waveform, blue anaglyph"},
+    {"id": "v06", "narration_text": "Nine months later, the ceiling was set.", "type": "chart_beat", "on_screen_text": "Ceiling", "number_to_count_up": null, "red_box_target": "Post-2021", "chart_id": "chart1_era_timeline", "image_source": null, "ai_prompt": null},
+    {"id": "v07", "narration_text": "Platform growth does not fix a borrowed audience.", "type": "title_card", "on_screen_text": "Artometrics", "number_to_count_up": null, "red_box_target": null, "chart_id": null, "image_source": null, "ai_prompt": "minimal stick-figure walking off screen, red box caption"}
+  ]
+}
