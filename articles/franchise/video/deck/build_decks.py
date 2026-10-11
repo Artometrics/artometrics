@@ -20,7 +20,7 @@ DECKS = {
 
 LOGO = "../../../../public/images/brand/chomsky-a-white.png"
 
-from render_dark_charts import chart_parts, svg_bars  # noqa: E402
+from render_dark_charts import chart_parts, chart_series  # noqa: E402
 
 UNITS = {
     "zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
@@ -85,10 +85,56 @@ def esc(s: str) -> str:
     return html.escape(s or "", quote=True)
 
 
-def load_facts() -> dict[str, dict]:
-    path = VIDEO_DIR.parents[1] / "data" / "franchise.csv"
-    # articles/franchise/data/franchise.csv
-    path = Path(__file__).resolve().parents[2] / "data" / "franchise.csv"
+DATA_DIR = Path(__file__).resolve().parents[2] / "data"
+
+# Display name -> exact franchise.csv name, when they differ.
+FRANCHISE_ALIAS = {
+    "Wizarding World": "Wizarding World / Harry Potter",
+    "Harry Potter": "Wizarding World / Harry Potter",
+}
+
+# Verified figure belongs to this franchise, not to a co-owner.
+FRANCHISE_VERIFIED = {
+    "Pokémon": "Pokemon lifetime revenue",
+    "Hello Kitty": "Hello Kitty lifetime revenue",
+    "Winnie the Pooh": "Winnie the Pooh lifetime revenue",
+    "Call of Duty": "Call of Duty 2019 lifetime",
+    "Mortal Kombat": "Mortal Kombat 2019 lifetime",
+    "Star Wars": "Star Wars 2019 lifetime",
+    "Marvel Cinematic Universe": "MCU 2019 lifetime",
+    "Naruto": "Naruto 2019 lifetime",
+    "Wizarding World / Harry Potter": "Wizarding World 2019 lifetime",
+    "Toy Story": "Toy Story 2019 lifetime",
+    "Mario": "Mario 2019 lifetime",
+    "Gundam": "Gundam 2019 lifetime",
+    "Batman": "Batman 2019 lifetime",
+    "Superman": "Superman 2019 lifetime",
+    "The Simpsons": "Simpsons 2019 lifetime",
+    "DC Extended Universe": "DCEU 2019 lifetime",
+}
+
+# Company totals that are explicitly theirs. Never a substring sum of franchise rows.
+OWNER_VERIFIED = {
+    "Nintendo": ("Nintendo standalone owner total 2019", "Standalone label, excludes the Pokémon row", False),
+    "The Pokémon Company": ("Pokemon Company owner-string total 2019", "Joint owners: Nintendo, Game Freak, Creatures", False),
+    "DC Entertainment": ("DC Entertainment owner total 2019", "Batman, Superman, and the DCEU row", False),
+}
+
+COOWNERS = {
+    "Game Freak": "Co-owner of The Pokémon Company",
+    "Creatures Inc.": "Co-owner of The Pokémon Company",
+}
+
+DEALS = {
+    "Pixar": ("Pixar acquisition price", "2006", "Acquisition price"),
+    "Marvel Entertainment": ("Marvel acquisition price", "2009", "Acquisition price"),
+    "Lucasfilm": ("Lucasfilm acquisition price", "2012", "Acquisition price"),
+    "21st Century Fox": ("Fox enterprise value", "2019", "Enterprise value"),
+}
+
+
+def load_franchises() -> dict[str, dict]:
+    path = DATA_DIR / "franchise.csv"
     rows: dict[str, dict] = {}
     if not path.exists():
         return rows
@@ -96,7 +142,10 @@ def load_facts() -> dict[str, dict]:
         name = (row.get("franchise") or "").strip()
         if not name:
             continue
-        slot = rows.setdefault(name, {"rev": 0.0, "year": row.get("year_created") or "", "owners": row.get("owners") or "", "media": row.get("original_media") or ""})
+        slot = rows.setdefault(
+            name,
+            {"rev": 0.0, "year": row.get("year_created") or "", "owners": row.get("owners") or "", "media": row.get("original_media") or ""},
+        )
         try:
             slot["rev"] += float(row.get("revenue") or 0)
         except ValueError:
@@ -107,22 +156,24 @@ def load_facts() -> dict[str, dict]:
     return rows
 
 
-def match_fact(name: str, facts: dict[str, dict]) -> dict | None:
-    if name in facts:
-        return facts[name]
-    low = name.lower()
-    for key, val in facts.items():
-        if low in key.lower() or key.lower() in low:
-            return val
-    owned = [v for k, v in facts.items() if low in (v.get("owners") or "").lower()]
-    if not owned:
+def load_verified() -> dict[str, float]:
+    path = DATA_DIR / "verified_numbers.csv"
+    out: dict[str, float] = {}
+    if not path.exists():
+        return out
+    for row in csv.DictReader(path.open(encoding="utf-8")):
+        figure = (row.get("figure") or "").strip()
+        raw = row.get("value") or ""
+        match = re.search(r"-?\d+(?:\.\d+)?", raw)
+        if figure and match:
+            out[figure] = float(match.group(0))
+    return out
+
+
+def verified_money(verified: dict[str, float], key: str) -> float | None:
+    if key not in verified:
         return None
-    return {
-        "rev": sum(v["rev"] for v in owned),
-        "year": "",
-        "owners": name,
-        "media": "Owner",
-    }
+    return verified[key]
 
 
 def load_assets() -> dict[str, dict]:
@@ -149,6 +200,9 @@ def consume_number(words: list[str], i: int) -> tuple[float | None, int]:
         raw = words[i].lower().strip(".,")
         w = raw.replace("twenty-", "twenty ").split()[0] if False else raw
         if w in ("and",) and saw:
+            # "hundred and three" still belongs to the number. "billion, and" does not.
+            if current == 0:
+                break
             i += 1
             continue
         if w == "point" and saw:
@@ -211,9 +265,26 @@ def fmt_num(n: float) -> str:
 
 
 def spoken_to_digits(text: str) -> str:
+    """Digitize spoken numbers and keep commas, apostrophes, and other punctuation."""
     text = re.sub(r"(?<=[A-Za-z])-(?=[A-Za-z])", " ", text)
-    words = tokenize(text)
-    out: list[str] = []
+    for spoken, year in (
+        ("twenty twenty six", "2026"),
+        ("twenty twenty four", "2024"),
+        ("twenty twenty three", "2023"),
+        ("twenty nineteen", "2019"),
+        ("twenty fifteen", "2015"),
+        ("twenty ten", "2010"),
+        ("nineteen ninety six", "1996"),
+    ):
+        text = re.sub(rf"\b{spoken}\b", year, text, flags=re.I)
+    tokens = re.findall(r"\s+|[0-9]+(?:\.[0-9]+)?|[\w'’&]+|[^\s\w]", text, flags=re.UNICODE)
+    words: list[str] = []
+    word_at: list[int] = []
+    for i, tok in enumerate(tokens):
+        if re.match(r"[0-9\w]", tok):
+            words.append(tok)
+            word_at.append(i)
+    replace: dict[int, tuple[int, str]] = {}
     i = 0
     while i < len(words):
         val, j = consume_number(words, i)
@@ -226,14 +297,32 @@ def spoken_to_digits(text: str) -> str:
             elif nxt in ("dollar", "dollars"):
                 piece = "$" + piece
                 j += 1
-            out.append(piece)
+            replace[i] = (j, piece)
             i = j
         else:
-            out.append(words[i])
             i += 1
-    s = " ".join(out)
-    s = s.replace(" ,", ",").replace(" .", ".")
-    return s
+    out: list[str] = []
+    consumed_until = -1
+    word_i = 0
+    for ti, tok in enumerate(tokens):
+        if word_i < len(word_at) and word_at[word_i] == ti:
+            if word_i in replace:
+                j, piece = replace[word_i]
+                out.append(piece)
+                consumed_until = j
+                word_i += 1
+                continue
+            if word_i < consumed_until:
+                word_i += 1
+                continue
+            out.append(tok)
+            word_i += 1
+            continue
+        if 0 <= word_i < consumed_until:
+            continue
+        out.append(tok)
+    s = re.sub(r"\s+", " ", "".join(out)).strip()
+    return s.replace(" ,", ",").replace(" .", ".")
 
 
 def sentence(text: str) -> str:
@@ -246,17 +335,95 @@ def sentence(text: str) -> str:
     return s
 
 
-def caption(text: str) -> str:
-    s = spoken_to_digits(text).strip().rstrip(".")
-    words = s.split()
-    if len(words) > 16:
-        s = " ".join(words[:16])
-    if s:
+def finish_caption(phrase: str) -> str:
+    s = spoken_to_digits(phrase).strip()
+    s = re.sub(r"\s+", " ", s).strip(" ,;")
+    if not s:
+        return ""
+    if s[0].islower():
         s = s[0].upper() + s[1:]
+    if s[-1] not in ".?!":
+        s += "."
     return s
 
 
+def clause_for_scene(sent: str, scene: str) -> str:
+    """Keep a short sentence whole. Cut a long one only at a clause boundary."""
+    if len(sent.split()) <= 24:
+        return sent
+    parts = [p.strip() for p in re.split(r"(?<=,)\s+(?=(?:and|but|because|so|then|or|which|while)\b)|;\s+", sent) if p.strip()]
+    if len(parts) <= 1:
+        return sent
+    scene_words = set(re.findall(r"[\w'’]+", scene.lower()))
+    best_i, best = 0, -1
+    for i, part in enumerate(parts):
+        score = len(scene_words & set(re.findall(r"[\w'’]+", part.lower())))
+        if score > best:
+            best, best_i = score, i
+    phrase = parts[best_i]
+    lead = phrase.split()[0].lower().strip(",").rstrip("'’") if phrase.split() else ""
+    if lead in {"and", "but", "or", "because", "so", "then", "which", "while"} and best_i > 0:
+        phrase = parts[best_i - 1].rstrip(".,") + ", " + phrase
+    return phrase
+
+
+def captions_for(rows: list[dict]) -> list[str]:
+    """Narration phrase for each scene, cut only at a sentence or clause boundary."""
+    pieces = [r["narration_words"].strip() for r in rows]
+    text = " ".join(pieces)
+    spans: list[tuple[int, int]] = []
+    pos = 0
+    for piece in pieces:
+        start = text.find(piece, pos)
+        if start < 0:
+            start = pos
+        spans.append((start, start + len(piece)))
+        pos = start + len(piece)
+    sentences = [(m.start(), m.end(), m.group().strip()) for m in re.finditer(r"[^.?!]+(?:[.?!]|$)", text) if m.group().strip()]
+    caps: list[str] = []
+    for i, (a, b) in enumerate(spans):
+        sent = ""
+        mid = (a + b) // 2
+        for s0, s1, s in sentences:
+            if s0 <= mid < s1 or s0 <= a < s1:
+                sent = s
+                break
+        phrase = clause_for_scene(sent or pieces[i], pieces[i])
+        caps.append(finish_caption(phrase))
+    return caps
+
+
+def scrub_source_ids(text: str) -> str:
+    if not text or not re.search(r"\bS\d{3}\b", text):
+        return text
+    text = re.sub(r"Source\s+S001\s*[—-]\s*TidyTuesday[^.\n]*", "The 2019 Wikipedia-based dataset", text, flags=re.I)
+    text = re.sub(r"\bS001\b", "the 2019 Wikipedia-based dataset", text)
+    text = re.sub(r"\bS017\b", "the 2026 Wikipedia list", text)
+    text = re.sub(r"\bS\d{3}\b", "", text)
+    text = re.sub(r"\s{2,}", " ", text)
+    text = re.sub(r"\s+([,.;:])", r"\1", text)
+    return text.strip(" -—")
+
+
+def public_source(narr: str, raw: str) -> str:
+    n = narr.lower()
+    mentions_2019 = bool(re.search(r"2019|twenty-?nineteen|twenty nineteen", n))
+    mentions_2026 = bool(re.search(r"2026|twenty-?twenty-?six|twenty twenty six", n))
+    if mentions_2019 and mentions_2026:
+        return "The 2019 Wikipedia-based dataset and the 2026 Wikipedia list"
+    if mentions_2026:
+        return "The 2026 Wikipedia list"
+    if any(k in n for k in ("domestic", "top ten", "top-ten", "box office mojo")):
+        return "Box Office Mojo yearly charts"
+    if any(k in n for k in ("twenty-twenty-four", "2024", "experiences", "fy2024")):
+        return "Disney FY2024 report"
+    if re.search(r"sec|cheque|acquisition", n):
+        return "SEC filings and the 2019 Wikipedia-based dataset"
+    return "The 2019 Wikipedia-based dataset"
+
+
 def first_number(text: str) -> str | None:
+    text = re.sub(r"(?<=[A-Za-z])-(?=[A-Za-z])", " ", text)
     words = tokenize(text)
     val, j = consume_number(words, 0)
     # search anywhere
@@ -287,19 +454,210 @@ def section_for(narr: str, visual: str) -> str:
     return "THE FILE"
 
 
+_FRANCHISE_NEEDLES: list[tuple[str, str]] = []
+
+
+def set_franchise_needles(franchises: dict[str, dict]) -> None:
+    global _FRANCHISE_NEEDLES
+    _FRANCHISE_NEEDLES = [(name.lower(), name) for name in franchises]
+
+
 def entities_in(narr: str) -> list[str]:
     low = narr.lower()
-    hits: list[tuple[int, str]] = []
-    for needle, name in ALIASES:
+    pairs = list(ALIASES) + list(_FRANCHISE_NEEDLES)
+    pairs.sort(key=lambda item: len(item[0]), reverse=True)
+    taken: list[tuple[int, int]] = []
+    found: list[tuple[int, str]] = []
+    for needle, name in pairs:
         pos = low.find(needle)
-        if pos >= 0:
-            hits.append((pos, name))
-    hits.sort()
-    found: list[str] = []
-    for _, name in hits:
-        if name not in found:
-            found.append(name)
-    return found[:3]
+        if pos < 0:
+            continue
+        end = pos + len(needle)
+        if any(start <= pos and end <= stop for start, stop in taken):
+            continue
+        # Skip a company alias sitting inside a longer name already claimed.
+        taken.append((pos, end))
+        if name not in [n for _, n in found]:
+            found.append((pos, name))
+    found.sort()
+    names = [name for _, name in found]
+    limit = 4 if {"Game Freak", "Creatures Inc."} <= set(names) else 3
+    return names[:limit]
+
+
+def owner_display(raw: str) -> str:
+    text = raw or ""
+    if "pokémon company" in text.lower() or "pokemon company" in text.lower():
+        return "The Pokémon Company"
+    head = text.split("(")[0].strip(" ,")
+    return (head or text).strip()[:48]
+
+
+def disney_consolidated(narr: str) -> bool:
+    low = narr.lower()
+    return any(k in low for k in ("consolidat", "fold ", "rolled", "subsidiar", "four hundred twenty-six", "426"))
+
+
+def entity_fact(name: str, narr: str, franchises: dict[str, dict], verified: dict[str, float]) -> dict:
+    """A dollar on screen only when verified_numbers assigns it to this name."""
+    blank = {"rev": None, "year": "", "owner": "", "role": "", "kind": "none", "name": name}
+    if name in COOWNERS:
+        return {
+            "rev": None,
+            "year": "",
+            "owner": COOWNERS[name],
+            "role": "Not a separate franchise total",
+            "kind": "coowner",
+            "name": name,
+        }
+    if name == "The Walt Disney Company":
+        key = "Disney consolidated owner total 2019" if disney_consolidated(narr) else "Disney unconsolidated owner total 2019"
+        rev = verified_money(verified, key)
+        consolidated = key.startswith("Disney consolidated")
+        return {
+            "rev": rev,
+            "year": "2019" if rev is not None else "",
+            "owner": "With Marvel, Lucasfilm, Pixar, and Fox" if consolidated else "Unconsolidated label, 2019",
+            "role": "Owner total",
+            "kind": "owner",
+            "name": name,
+            "consolidated": consolidated,
+        }
+    if name in OWNER_VERIFIED:
+        key, owner_line, _flag = OWNER_VERIFIED[name]
+        rev = verified_money(verified, key)
+        return {
+            "rev": rev,
+            "year": "2019" if rev is not None else "",
+            "owner": owner_line,
+            "role": "Owner total",
+            "kind": "owner",
+            "name": name,
+            "consolidated": False,
+        }
+    franchise_name = FRANCHISE_ALIAS.get(name, name)
+    if franchise_name in franchises:
+        row = franchises[franchise_name]
+        verified_key = FRANCHISE_VERIFIED.get(franchise_name)
+        rev = verified_money(verified, verified_key) if verified_key else row["rev"]
+        if rev is None:
+            rev = row["rev"] or None
+        since = str(row.get("year") or "")
+        media = row.get("media") or "Franchise"
+        role = f"{media} · since {since}" if since else media
+        return {
+            "rev": rev,
+            "year": "2019" if rev else "",
+            "owner": f"Owner · {owner_display(row.get('owners') or '')}",
+            "role": role,
+            "kind": "franchise",
+            "name": name,
+        }
+    if name in DEALS:
+        key, year, role = DEALS[name]
+        rev = verified_money(verified, key)
+        return {
+            "rev": rev,
+            "year": year if rev is not None else "",
+            "owner": role,
+            "role": role,
+            "kind": "deal",
+            "name": name,
+        }
+    return blank
+
+
+def fact_headline(cards: list[dict]) -> str:
+    names = {c["name"] for c in cards}
+    shared = bool(names & {"Game Freak", "Creatures Inc."}) or (
+        "Nintendo" in names and bool({"The Pokémon Company", "Pokémon"} & names)
+    )
+    if shared:
+        return "Nintendo's own label is $49.0bn. The $90.9bn Pokémon row belongs to The Pokémon Company."
+    if "The Pokémon Company" in names and "Nintendo" not in names:
+        return "The Pokémon Company is $90.9bn in 2019, owned with Nintendo, Game Freak, and Creatures."
+    bits: list[str] = []
+    for card in cards:
+        rev = card.get("rev")
+        if rev is None:
+            continue
+        fig = money(rev)
+        if card.get("kind") == "deal":
+            bits.append(f"{card['name']} {card['role'].lower()} is {fig}.")
+        elif card.get("kind") == "owner" and card.get("consolidated"):
+            bits.append(f"{card['name']} is {fig} after subsidiaries are rolled in.")
+        elif card.get("kind") == "owner":
+            bits.append(f"{card['name']} is {fig} on its own 2019 label.")
+        else:
+            bits.append(f"{card['name']} is {fig} in the 2019 file.")
+    return " ".join(bits[:2])
+
+
+HIGHLIGHT_HINTS = [
+    ("merchandise", "merchandise"),
+    ("licensing", "merchandise"),
+    ("box office", "box office"),
+    ("video game", "video game"),
+    ("manga", "manga"),
+    ("hollywood", "us"),
+    ("united states", "us"),
+    ("japan", "japan"),
+    ("lucasfilm", "lucasfilm"),
+    ("star wars", "star wars"),
+    ("pixar", "pixar"),
+    ("marvel", "marvel"),
+    ("pokémon", "pokémon"),
+    ("pokemon", "pokémon"),
+    ("naruto", "naruto"),
+    ("call of duty", "call of duty"),
+    ("hello kitty", "hello kitty"),
+    ("winnie", "winnie"),
+    ("candy crush", "candy"),
+    ("mortal kombat", "mortal kombat"),
+    ("united kingdom", "uk"),
+    ("britain", "uk"),
+]
+
+
+def match_label(blob: str, labels: list[str]) -> str:
+    low = blob.lower()
+    if re.search(r"\bfox\b", low):
+        for lab in labels:
+            if "fox" in lab.lower():
+                return lab
+    for needle, hint in HIGHLIGHT_HINTS:
+        if needle in low:
+            cands = [lab for lab in labels if hint in lab.lower()]
+            if cands:
+                cands.sort(key=lambda lab: (hint not in lab.lower().split(",")[0].split("/")[0], len(lab)))
+                return cands[0]
+    for lab in sorted(labels, key=len, reverse=True):
+        token = re.split(r"[/(]", lab)[0].strip().lower()
+        if len(token) > 3 and token in low:
+            return lab
+    return ""
+
+
+def _ranked_labels(labels: list[str], values: list[float]) -> list[str]:
+    order = sorted(range(len(labels)), key=lambda i: abs(values[i]) if values else 0, reverse=True)
+    return [labels[i] for i in order]
+
+
+def pick_highlight(narr: str, labels: list[str], values: list[float], focus: list[str], prev_key: str, key: str, prev_hi: str) -> str:
+    blob = f"{narr} {' '.join(focus)}"
+    hi = match_label(blob, labels)
+    same_chart = bool(key and key == prev_key and labels)
+    if not hi and same_chart:
+        ranked = _ranked_labels(labels, values)
+        if prev_hi in ranked:
+            hi = ranked[(ranked.index(prev_hi) + 1) % len(ranked)]
+        elif ranked:
+            hi = ranked[0]
+    elif hi and same_chart and hi == prev_hi:
+        ranked = _ranked_labels(labels, values)
+        if hi in ranked:
+            hi = ranked[(ranked.index(hi) + 1) % len(ranked)]
+    return hi or ""
 
 
 def chart_key(asset_file: str, asset_id: str) -> str:
@@ -356,10 +714,19 @@ def _royalty() -> str:
 
 
 def _sku_stack() -> str:
-    labels = ["Music", "Book sales", "TV", "Home video", "Comic or manga", "Box office", "Video games", "Merchandise"]
-    values = [1.1, 1.3, 1.5, 3.3, 8.0, 8.9, 20.0, 56.0]
-    svg = svg_bars(labels, values, "merchandise", "%", "box office")
-    return f'<div class="chart-stage">{svg}</div><p class="chart-source dm-mono">Source: S001 · share of lifetime revenue · n=103 · unit %</p>'
+    return f'''<svg class="diagram-svg" viewBox="0 0 1400 640" xmlns="http://www.w3.org/2000/svg">
+      {_box(70, 230, 280, 150, "LICENSOR", "owns the name")}
+      {_box(540, 230, 280, 150, "LICENCE", "royalty on the SKU")}
+      {_box(1010, 80, 300, 130, "TOY AISLE")}
+      {_box(1010, 250, 300, 130, "RETAIL SHELF")}
+      {_box(1010, 420, 300, 130, "PARK GATE")}
+      <line x1="350" y1="305" x2="540" y2="305" stroke="#E60000" stroke-width="3"/>
+      <line x1="820" y1="280" x2="1010" y2="145" stroke="#E60000" stroke-width="3"/>
+      <line x1="820" y1="305" x2="1010" y2="315" stroke="#E60000" stroke-width="3"/>
+      <line x1="820" y1="340" x2="1010" y2="485" stroke="#0047FF" stroke-width="3"/>
+      <circle cx="180" cy="190" r="16" fill="none" stroke="#fff" stroke-width="2"/>
+      <line x1="180" y1="206" x2="180" y2="228" stroke="#fff" stroke-width="2"/>
+    </svg>'''
 
 
 def _flywheel() -> str:
@@ -427,24 +794,57 @@ def render_bookend(deck_id: str, which: str, label: str) -> str:
 
 
 def money(rev: float) -> str:
-    if rev >= 1:
-        return f"${rev:.1f}bn".replace(".0bn", "bn")
-    return f"${rev:.2f}bn"
+    if rev >= 10:
+        return f"${rev:.1f}bn"
+    text = f"{rev:.2f}".rstrip("0").rstrip(".")
+    return f"${text}bn"
 
 
-def render_row(row: dict, assets: dict[str, dict], facts: dict[str, dict], aspect: str) -> str:
+def focus_names(narr: str, last: list[str]) -> list[str]:
+    found = entities_in(narr)
+    if found:
+        return found
+    if re.search(r"\b(the same|that name|that row|this name)\b", narr.lower()):
+        return last
+    return []
+
+
+def render_row(
+    row: dict,
+    assets: dict[str, dict],
+    franchises: dict[str, dict],
+    verified: dict[str, float],
+    aspect: str,
+    cap: str,
+    state: dict,
+) -> str:
     sid = row["scene_id"]
     vt = row["visual_type"]
     narr = row["narration_words"]
     section = section_for(narr, vt)
-    cap = caption(narr)
+    cap = scrub_source_ids(cap)
     notes = esc(narr)
-    head = sentence(narr)
+    focus = focus_names(narr, state.get("last_entities") or [])
+    if entities_in(narr):
+        state["last_entities"] = entities_in(narr)
 
     if vt == "chart beat":
         key = chart_key(row.get("asset_file", ""), row.get("asset_id", ""))
-        head, sub, source, svg = chart_parts(key) if key else ("103 franchises in the 2019 file.", "", "Source: S001", "")
-        return f'''<section class="slide slide-chart" id="{sid}" data-scene-id="{sid}" data-visual-type="chart beat">
+        labels, values, _kind = chart_series(key) if key else ([], [], "bar")
+        hi = pick_highlight(f"{narr} {cap}", labels, values, focus, state.get("prev_chart", ""), key, state.get("prev_hi", ""))
+        head, sub, source, svg = chart_parts(key, hi) if key else (
+            "103 franchises in the 2019 Wikipedia-based dataset.",
+            "",
+            "Source: the 2019 Wikipedia-based dataset",
+            "",
+        )
+        if any(ch.isdigit() for ch in cap) and len(cap) < 180:
+            head = cap
+        head = scrub_source_ids(head)
+        source = scrub_source_ids(source)
+        state["prev_chart"] = key
+        state["prev_hi"] = hi
+        return f'''<section class="slide slide-chart" id="{sid}" data-scene-id="{sid}" data-visual-type="chart beat" data-highlight="{esc(hi)}">
           <div class="slide-frame">
             <p class="section-label dm-mono">{esc(section)}</p>
             <h2 class="headline dm-sans">{esc(head)}</h2>
@@ -456,56 +856,91 @@ def render_row(row: dict, assets: dict[str, dict], facts: dict[str, dict], aspec
           <aside class="speaker-notes">{notes}</aside>
         </section>'''
 
+    state["prev_chart"] = ""
+    state["prev_hi"] = ""
+
     if vt == "big-number card":
         raw = row.get("count_up_number") or narr
-        num = first_number(raw) or first_number(narr) or "—"
+        num = first_number(raw) or first_number(narr) or ""
         low = narr.lower()
-        if "franchise" in low:
-            meaning_short = "franchises in the mid-2019 file"
+        count_103 = num.replace(",", "") == "103" and ("franchise" in low or "hundred and three" in low)
+        if count_103:
+            meaning_short = "franchises in the 2019 Wikipedia-based dataset"
+        elif "franchise" in low:
+            meaning_short = "franchises in the 2019 Wikipedia-based dataset"
         elif "percent" in low:
             meaning_short = "share of the file"
-        elif "billion" in low:
+        elif "billion" in low or "trillion" in low:
             meaning_short = "billion dollars"
         elif "year" in low:
             meaning_short = "years on the clock"
         else:
             meaning_short = "the figure on this beat"
+        if "trillion" in low:
+            meaning_short = "trillion dollars"
         spoken = sentence(narr)
-        head = spoken if any(ch.isdigit() for ch in spoken) else f"{num} {meaning_short}."
-        cap = caption(narr)
+        if any(ch.isdigit() for ch in cap):
+            head = cap
+        elif any(ch.isdigit() for ch in spoken):
+            head = spoken
+        else:
+            head = f"{num} {meaning_short}." if num else cap
+        head = scrub_source_ids(head)
+        narr_num = first_number(narr) or ""
+        if narr_num.endswith(("bn", "tn")) and not str(num).endswith(("bn", "tn")):
+            num = narr_num
         names = entities_in(narr)
         logo = ""
         if names:
             meta = assets.get(names[0]) or {}
             if meta.get("file"):
                 logo = f'<img class="support-logo" src="../{esc(meta["file"])}" alt="{esc(names[0])}"/>'
-        compare_label, compare_val, compare_w = "File total", "$1.52tn", 100
-        this_w = 70
-        if "percent" in low:
-            compare_label, compare_val, compare_w = "Merchandise", "56%", 100
-            try:
-                this_w = max(8, min(100, float(str(num).replace("%", "").replace(",", ""))))
-            except ValueError:
-                this_w = 40
-        elif num.replace(",", "").isdigit():
-            try:
-                this_w = max(8, min(100, int(num.replace(",", "")) / 103 * 100))
-            except ValueError:
-                this_w = 60
+        file_total_slide = count_103 or num in {"1.52tn", "$1.52tn"} or "trillion" in low
+        if count_103:
+            support = (
+                '<p class="file-total dm-mono">$1.52tn'
+                '<span>Lifetime total in the 2019 Wikipedia-based dataset</span></p>'
+            )
+        elif file_total_slide:
+            support = '<p class="context-line dm-sans">Lifetime total in the 2019 Wikipedia-based dataset</p>' + logo
+        elif num:
+            compare_label, compare_val, compare_w = "File total", "$1.52tn", 100
+            this_w = 70
+            if "percent" in low:
+                compare_label, compare_val, compare_w = "Merchandise", "56%", 100
+                try:
+                    this_w = max(8, min(100, float(str(num).replace("%", "").replace(",", ""))))
+                except ValueError:
+                    this_w = 40
+            elif num.replace(",", "").isdigit():
+                try:
+                    this_w = max(8, min(100, int(num.replace(",", "")) / 103 * 100))
+                except ValueError:
+                    this_w = 60
+            support = (
+                f'<div class="mini-row dm-mono"><span>This beat</span><div class="mini-track">'
+                f'<div class="mini-fill red" style="width:{this_w:.0f}%"></div></div><span class="hot">{esc(num)}</span></div>'
+                f'<div class="mini-row dm-mono"><span>{esc(compare_label)}</span><div class="mini-track">'
+                f'<div class="mini-fill blue" style="width:{compare_w}%"></div></div><span style="color:#0047FF">{esc(compare_val)}</span></div>'
+                f"{logo}"
+            )
+        else:
+            support = logo
+        number_html = (
+            f'<div class="red-box-target"><span class="count-up dm-mono" data-count-up="{esc(num)}">{esc(num)}</span></div>'
+            if num
+            else ""
+        )
         return f'''<section class="slide slide-bignum" id="{sid}" data-scene-id="{sid}" data-visual-type="big-number card">
           <div class="slide-frame">
             <p class="section-label dm-mono">{esc(section)}</p>
             <h2 class="headline dm-sans">{esc(head)}</h2>
             <div class="stage"><div class="bignum-layout">
               <div class="bignum-wrap">
-                <div class="red-box-target"><span class="count-up dm-mono" data-count-up="{esc(num)}">{esc(num)}</span></div>
+                {number_html}
                 <p class="context-line dm-sans">{esc(meaning_short)}</p>
               </div>
-              <div class="support">
-                <div class="mini-row dm-mono"><span>This beat</span><div class="mini-track"><div class="mini-fill red" style="width:{this_w:.0f}%"></div></div><span class="hot">{esc(num)}</span></div>
-                <div class="mini-row dm-mono"><span>{esc(compare_label)}</span><div class="mini-track"><div class="mini-fill blue" style="width:{compare_w}%"></div></div><span style="color:#0047FF">{esc(compare_val)}</span></div>
-                {logo}
-              </div>
+              <div class="support">{support}</div>
             </div></div>
             <p class="caption-burn dm-sans">{esc(cap)}</p>
           </div>
@@ -515,58 +950,60 @@ def render_row(row: dict, assets: dict[str, dict], facts: dict[str, dict], aspec
     if vt in {"logo", "poster", "official still", "product shot"}:
         names = entities_in(narr)
         if not names and row.get("red_box_target"):
-            names = [row["red_box_target"].split(".")[0][:48]]
-        cards = []
-        headlines = []
+            target = row["red_box_target"].split(".")[0][:48]
+            if not re.search(r"\bS\d{3}\b|chart\d", target, re.I):
+                names = [target]
+        facts = [entity_fact(name, narr, franchises, verified) for name in names]
         poster = vt in {"poster", "official still"}
-        for name in names or ["Franchise"]:
+        cards_html = []
+        for fact in facts:
+            name = fact["name"]
             meta = assets.get(name) or assets.get(row.get("asset_id", "")) or {}
             src = meta.get("file") or row.get("asset_file") or ""
             rel = f"../{src}" if src else ""
-            credit = meta.get("credit_line") or row.get("image_credit") or ""
-            fact = match_fact(name, facts) or {}
-            rev = fact.get("rev") or 0
-            year = fact.get("year") or ""
-            owner = (fact.get("owners") or name).split("(")[0].strip(" ,")
-            if "pokémon company" in owner.lower() or "pokemon company" in owner.lower():
-                owner = "The Pokémon Company"
-            owner = owner[:42]
-            role = fact.get("media") or ("Still" if poster else "Franchise")
-            fig = money(rev) if rev else (first_number(narr) or "—")
-            if rev:
-                headlines.append(f"{name} is {money(rev)} in the 2019 file" + (f", from {year}." if year else "."))
-            cards.append(
+            credit = scrub_source_ids(meta.get("credit_line") or row.get("image_credit") or "")
+            fig_html = ""
+            if fact.get("rev") is not None:
+                fig_html = (
+                    f'<p class="entity-fig dm-mono"><span class="hot">{esc(money(fact["rev"]))}</span>'
+                    f'<span class="year">{esc(str(fact.get("year") or ""))}</span></p>'
+                )
+            owner = fact.get("owner") or ""
+            role = fact.get("role") or ""
+            if owner and role and owner.lower() == role.lower():
+                role = ""
+            cards_html.append(
                 f'''<figure class="entity-card{' poster' if poster else ''}">
                   <img src="{esc(rel)}" alt="{esc(name)}"/>
                   <div class="fact-block">
                     <p class="entity-name dm-sans">{esc(name)}</p>
-                    <p class="entity-owner dm-sans">Owner · {esc(owner[:80])}</p>
-                    <p class="entity-fig dm-mono"><span class="hot">{esc(fig)}</span><span class="year">{esc(str(year))}</span></p>
-                    <p class="entity-role dm-sans">{esc(role)}</p>
+                    {f'<p class="entity-owner dm-sans">{esc(owner)}</p>' if owner else ''}
+                    {fig_html}
+                    {f'<p class="entity-role dm-sans">{esc(role)}</p>' if role else ''}
                     <p class="entity-credit dm-mono">{esc(credit)}</p>
                   </div>
                 </figure>'''
             )
-        if headlines:
-            head = " ".join(headlines[:2])
-        elif not any(ch.isdigit() for ch in head):
-            head = "103 franchises sit in the 2019 file. This name is one of them."
-        nclass = f"n{min(len(cards), 3)}"
+        head = fact_headline(facts) if facts else ""
+        if not head:
+            head = cap if any(ch.isdigit() for ch in cap) else "The 2019 Wikipedia-based dataset lists 103 franchises and $1.52tn."
+        head = scrub_source_ids(head)
+        nclass = f"n{min(len(cards_html), 3)}"
         return f'''<section class="slide slide-entity" id="{sid}" data-scene-id="{sid}" data-visual-type="{esc(vt)}">
           <div class="slide-frame">
             <p class="section-label dm-mono">{esc(section)}</p>
             <h2 class="headline dm-sans">{esc(head)}</h2>
-            <div class="stage"><div class="entity-row {nclass}">{''.join(cards)}</div></div>
+            <div class="stage"><div class="entity-row {nclass}">{''.join(cards_html)}</div></div>
             <p class="caption-burn dm-sans">{esc(cap)}</p>
           </div>
           <aside class="speaker-notes">{notes}</aside>
         </section>'''
 
     if vt == "type card":
-        source = row.get("image_credit") or row.get("red_box_target") or "Source on file"
-        claim = sentence(narr)
-        head = claim if any(ch.isdigit() for ch in claim) else "S001 lists 103 franchises and $1.52tn. This line cites that file."
-        cap = caption(narr)
+        source = public_source(narr, row.get("image_credit") or "")
+        claim = cap
+        head = claim if any(ch.isdigit() for ch in claim) else "The 2019 Wikipedia-based dataset lists 103 franchises and $1.52tn."
+        head = scrub_source_ids(head)
         return f'''<section class="slide slide-type" id="{sid}" data-scene-id="{sid}" data-visual-type="type card">
           <div class="slide-frame">
             <p class="section-label dm-mono">THE SOURCE</p>
@@ -586,33 +1023,30 @@ def render_row(row: dict, assets: dict[str, dict], facts: dict[str, dict], aspec
         suffix = "9x16" if aspect == "9x16" else "16x9"
         pid = row.get("asset_id") or "ai25"
         src = f"../assets/ai/{pid}_{suffix}.png"
+        head = cap if any(ch.isdigit() for ch in cap) else "103 franchises in the 2019 Wikipedia-based dataset."
         return f'''<section class="slide slide-atmo" id="{sid}" data-scene-id="{sid}" data-visual-type="atmosphere">
           <div class="slide-frame">
             <p class="section-label dm-mono">THE SCENE</p>
-            <h2 class="headline dm-sans">{esc(sentence(narr) if any(ch.isdigit() for ch in sentence(narr)) else "103 franchises in the 2019 file. This beat is the scene around them.")}</h2>
+            <h2 class="headline dm-sans">{esc(scrub_source_ids(head))}</h2>
             <div class="stage"><div class="ai-stage"><img class="ai-image" src="{esc(src)}" alt=""/></div></div>
             <p class="caption-burn dm-sans">{esc(cap)}</p>
           </div>
           <aside class="speaker-notes">{notes}</aside>
         </section>'''
 
-    # Mechanism -> SVG diagram. No prompt ids on screen.
     svg = diagram_svg(narr, row.get("asset_id", ""))
-    head_d = {
-        "royalty": "The licence is the business. The premiere is the advert.",
-    }.get("x", head)
     if "park" in narr.lower() or "experiences" in narr.lower():
         head_d = "Parks and products are the repeat sale. Merchandise is 56% of the file."
     elif "merchandise" in narr.lower() or "licensing" in narr.lower():
-        head_d = "Merchandise is 56% of all franchise revenue. Box office is 8.9%."
-    elif any(ch.isdigit() for ch in head):
-        head_d = head
+        head_d = cap if any(ch.isdigit() for ch in cap) else "Merchandise, licensing, and retail are the repeat sale."
+    elif any(ch.isdigit() for ch in cap):
+        head_d = cap
     else:
         head_d = "The licence is the business. Merchandise is 56% of the 2019 file."
     return f'''<section class="slide slide-diagram" id="{sid}" data-scene-id="{sid}" data-visual-type="diagram">
       <div class="slide-frame">
         <p class="section-label dm-mono">THE MACHINE</p>
-        <h2 class="headline dm-sans">{esc(head_d)}</h2>
+        <h2 class="headline dm-sans">{esc(scrub_source_ids(head_d))}</h2>
         <div class="stage">{svg}</div>
         <p class="caption-burn dm-sans">{esc(cap)}</p>
       </div>
@@ -620,11 +1054,13 @@ def render_row(row: dict, assets: dict[str, dict], facts: dict[str, dict], aspec
     </section>'''
 
 
-def build(deck_id: str, assets: dict[str, dict], facts: dict[str, dict]) -> tuple[Path, int]:
+def build(deck_id: str, assets: dict[str, dict], franchises: dict[str, dict], verified: dict[str, float]) -> tuple[Path, int]:
     fname, aspect, label = DECKS[deck_id]
     rows = list(csv.DictReader((VIDEO_DIR / fname).open(encoding="utf-8")))
+    caps = captions_for(rows)
+    state: dict = {"prev_chart": "", "prev_hi": "", "last_entities": []}
     slides = [render_bookend(deck_id, "open", label)]
-    slides += [render_row(r, assets, facts, aspect) for r in rows]
+    slides += [render_row(r, assets, franchises, verified, aspect, cap, state) for r, cap in zip(rows, caps)]
     slides.append(render_bookend(deck_id, "close", label))
     doc = f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"/>
@@ -640,14 +1076,33 @@ def build(deck_id: str, assets: dict[str, dict], facts: dict[str, dict]) -> tupl
     return dest, len(slides)
 
 
+def audit(deck_id: str) -> list[str]:
+    text = (DECK_DIR / f"deck-{deck_id}.html").read_text(encoding="utf-8")
+    problems = []
+    if re.search(r"\bS\d{3}\b", text):
+        problems.append("source id still on screen")
+    if re.search(r'class="hot">[—\-–]\s*<', text) or 'data-count-up="—"' in text:
+        problems.append("empty figure box")
+    if re.search(r"Game Freak is \$90", text) or re.search(r"Creatures Inc\. is \$90", text):
+        problems.append("co-owner given the Pokémon total")
+    if "$143" in text:
+        problems.append("Nintendo substring sum still present")
+    return problems
+
+
 def main() -> int:
     assets = load_assets()
-    facts = load_facts()
+    franchises = load_franchises()
+    set_franchise_needles(franchises)
+    verified = load_verified()
     targets = sys.argv[1:] or list(DECKS)
+    failed = 0
     for deck_id in targets:
-        path, n = build(deck_id, assets, facts)
-        print(f"Wrote {path} ({n} slides)")
-    return 0
+        path, n = build(deck_id, assets, franchises, verified)
+        problems = audit(deck_id)
+        print(f"Wrote {path} ({n} slides)" + (f" AUDIT {problems}" if problems else " audit ok"))
+        failed += len(problems)
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":

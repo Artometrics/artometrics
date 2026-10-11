@@ -16,43 +16,43 @@ OUT_DIRS = [
 COPY = {
     "chart1_top20_revenue": (
         "A handful of names carry the lifetime table.",
-        "Top 20 franchise rows · n=103 in the mid-2019 file",
-        "Source: S001 · TidyTuesday franchise ledger",
+        "Top 20 franchise rows · n=103 in the 2019 Wikipedia-based dataset",
+        "Source: the 2019 Wikipedia-based dataset",
     ),
     "chart2_revenue_per_year": (
         "Speed is a design choice, not just age.",
         "Lifetime revenue divided by years since first release",
-        "Source: S001 · n=103 franchises",
+        "Source: the 2019 Wikipedia-based dataset · n=103 franchises",
     ),
     "chart3a_disney_non_consolidated": (
         "Before the roll-up, Disney is a shorter stack.",
         "Franchise rows kept on their original owner labels",
-        "Source: S001 · owner labels as published",
+        "Source: the 2019 Wikipedia-based dataset · owner labels as published",
     ),
     "chart3b_disney_consolidated": (
         "Rolling subsidiaries changes who looks largest.",
         "Marvel, Lucasfilm, Pixar and Fox rows under Disney",
-        "Source: S001 · consolidated owner view",
+        "Source: the 2019 Wikipedia-based dataset · consolidated owner view",
     ),
     "chart5_original_media_revenue": (
         "Where a story started is not where the money sits.",
         "Revenue by original medium",
-        "Source: S001 · n=103 franchises",
+        "Source: the 2019 Wikipedia-based dataset · n=103 franchises",
     ),
     "chart6_revenue_streams": (
         "Merchandise is most of the file. Theatre is not.",
         "Share of lifetime revenue by stream · n=103",
-        "Source: S001 · TidyTuesday / mid-2019 Wikipedia scrape",
+        "Source: the 2019 Wikipedia-based dataset",
     ),
     "chart7_top10_franchise_share": (
         "Nine of ten domestic hits were already franchises.",
         "Share of yearly top-ten films coded as franchise titles",
-        "Source: Box Office Mojo yearly charts · S001 coding",
+        "Source: Box Office Mojo yearly charts",
     ),
     "chart8_disney_acquisitions": (
         "The cheque is small next to the lifetime row.",
         "Deal price ($bn) vs franchise-row revenue ($bn)",
-        "Source: SEC filings + S001 franchise rows",
+        "Source: SEC filings and the 2019 Wikipedia-based dataset",
     ),
     "chart9_disney_segments_fy2024": (
         "Parks and products sit beside the films.",
@@ -62,32 +62,32 @@ COPY = {
     "chart10_wiki_2019_vs_2026": (
         "The same names moved between 2019 and 2026.",
         "Percent change, top movers · n=20 matched franchises",
-        "Source: S001 + S017 · methodology, not a cash loss",
+        "Source: the 2019 Wikipedia-based dataset and the 2026 Wikipedia list · methodology, not a cash loss",
     ),
     "chart11_mix_by_original_medium": (
         "Games, manga and film do not share one mix.",
         "Revenue-stream mix by original medium",
-        "Source: S001 · n=103 franchises",
+        "Source: the 2019 Wikipedia-based dataset · n=103 franchises",
     ),
     "chart12_owner_concentration": (
         "Five owners hold nearly half the file.",
         "Share of franchise-row revenue by owner",
-        "Source: S001 · consolidated labels",
+        "Source: the 2019 Wikipedia-based dataset · consolidated labels",
     ),
     "chart13_deal_price_vs_revenue": (
         "Price paid is not the lifetime total.",
         "Acquisition price against the franchise row",
-        "Source: SEC deal prices + S001",
+        "Source: SEC deal prices and the 2019 Wikipedia-based dataset",
     ),
     "chart14_box_office_share_top20": (
         "Theatrical share is a thin slice for most names.",
         "Box office as a share of the franchise row",
-        "Source: S001 · top 20 by lifetime revenue",
+        "Source: the 2019 Wikipedia-based dataset · top 20 by lifetime revenue",
     ),
     "chart15_region_japan_us_other": (
         "Japan and the US split the ledger. The UK is third.",
         "Franchise-row revenue by region of origin · n=103",
-        "Source: S001 · region_origin, hand-audited",
+        "Source: the 2019 Wikipedia-based dataset · region of origin, hand-audited",
     ),
 }
 
@@ -192,7 +192,7 @@ def insight_headline(name: str, labels: list[str], values: list[float]) -> str:
     return f"{a_lab} is {fmt_unit(a_val, unit)}."
 
 
-def svg_bars(labels: list[str], values: list[float], highlight: str, unit: str = "", blue_label: str = "") -> str:
+def svg_bars(labels: list[str], values: list[float], highlight: str, unit: str = "", blue_label: str = "", mark_max: bool = False) -> str:
     if not values:
         return ""
     n = len(labels)
@@ -215,7 +215,7 @@ def svg_bars(labels: list[str], values: list[float], highlight: str, unit: str =
         bw = max(4, abs(val) / vmax * (plot_w - 90))
         is_hi = bool(hi) and (hi in lab.lower() or lab.lower() in hi)
         is_blue = bool(blue) and blue in lab.lower()
-        if not hi and not blue and i == n - 1:
+        if mark_max and not hi and not blue and i == n - 1:
             is_hi = True
         color = "#E60000" if is_hi else "#0047FF" if is_blue else "#6a6a6a"
         shown = fmt_unit(val, unit)
@@ -242,7 +242,7 @@ def svg_bars(labels: list[str], values: list[float], highlight: str, unit: str =
     return "\n".join(parts)
 
 
-def svg_dots(labels: list[str], values: list[float], highlight: str) -> str:
+def svg_dots(labels: list[str], values: list[float], highlight: str, mark_max: bool = False) -> str:
     if not values:
         return ""
     w, h = 1600, 640
@@ -270,7 +270,7 @@ def svg_dots(labels: list[str], values: list[float], highlight: str) -> str:
             f'<text class="stage-data" x="{x:.1f}" y="{h - 28}" text-anchor="middle" fill="#bbb" '
             f'font-family="DM Mono, monospace" font-size="13">{esc(lab[:18])}</text>'
         )
-        if is_hi or (not hi and i == max(range(n), key=lambda k: values[k])):
+        if is_hi or (mark_max and not hi and i == max(range(n), key=lambda k: values[k])):
             parts.append(
                 f'<rect class="stage-highlight" x="{x - 36:.1f}" y="{y - 28:.1f}" width="72" height="40" '
                 f'fill="none" stroke="#E60000" stroke-width="3"/>'
@@ -286,16 +286,37 @@ def load_spec(name: str) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def chart_parts(name: str) -> tuple[str, str, str, str]:
+def chart_series(name: str) -> tuple[list[str], list[float], str]:
     spec = load_spec(name)
     labels, values = merge_traces(spec) if spec else ([], [])
-    headline = insight_headline(name, labels, values)
-    subtitle, source = COPY.get(name, ("The file, drawn.", "Franchise ledger", "Source: S001"))[1:]
-    unit = UNIT.get(name, "")
     kind = (spec.get("data") or [{}])[0].get("type", "bar") if spec else "bar"
+    return labels, values, kind
+
+
+def headline_for_highlight(name: str, labels: list[str], values: list[float], highlight: str) -> str:
+    if name == "chart6_revenue_streams" and (not highlight or "merch" in highlight.lower()):
+        return "Merchandise is 56% of all franchise revenue. Box office is 8.9%."
+    unit = UNIT.get(name, "")
+    hi = highlight.lower().strip()
+    if hi:
+        for lab, val in zip(labels, values):
+            if hi in lab.lower() or lab.lower() in hi:
+                return f"{lab.split(',')[0].split('/')[0].strip()} is {fmt_unit(val, unit)}."
+    return insight_headline(name, labels, values)
+
+
+def chart_parts(name: str, highlight: str | None = None) -> tuple[str, str, str, str]:
+    labels, values, kind = chart_series(name)
+    explicit = highlight is not None
+    hi = highlight or ""
+    if not explicit and name == "chart6_revenue_streams":
+        hi = "merchandise"
+    headline = headline_for_highlight(name, labels, values, hi)
+    subtitle, source = COPY.get(name, ("The file, drawn.", "Franchise ledger", "Source: the 2019 Wikipedia-based dataset"))[1:]
+    unit = UNIT.get(name, "")
     blue = "box office" if name == "chart6_revenue_streams" else ""
-    hi = "merchandise" if name == "chart6_revenue_streams" else ""
-    body = svg_dots(labels, values, "") if kind == "scatter" else svg_bars(labels, values, hi, unit, blue)
+    mark_max = not explicit and not hi
+    body = svg_dots(labels, values, hi, mark_max) if kind == "scatter" else svg_bars(labels, values, hi, unit, blue, mark_max)
     sub = subtitle if not unit else f"{subtitle} · unit {unit}"
     return headline, sub, source, body
 

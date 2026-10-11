@@ -124,6 +124,22 @@ body.deck--review .slide { margin: 28px auto; }
 .mini-fill.red { background: var(--red); }
 .mini-fill.blue { background: var(--blue); }
 .support-logo { margin-top: 16px; height: 88px; background: #f3f3f3; padding: 8px 12px; object-fit: contain; }
+.file-total {
+  margin: 12px 0 0;
+  font-size: 72px;
+  line-height: 0.95;
+  color: var(--blue);
+  letter-spacing: -0.03em;
+}
+.file-total span {
+  display: block;
+  margin-top: 10px;
+  font-size: 22px;
+  letter-spacing: 0;
+  color: var(--muted);
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+}
 .red-box-target {
   box-shadow: inset 0 0 0 3px var(--red);
   padding: 8px 16px 12px;
@@ -172,9 +188,11 @@ body.deck--review .slide { margin: 28px auto; }
 .fact-block { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .entity-name { margin: 0; font-size: 36px; font-weight: 700; }
 .entity-owner, .entity-role { margin: 0; font-size: 22px; color: #ddd; }
-.entity-fig { margin: 4px 0; font-size: 40px; }
-.entity-fig .hot { box-shadow: inset 0 0 0 3px var(--red); padding: 2px 8px; }
-.entity-fig .year { color: var(--blue); margin-left: 12px; }
+.entity-fig { margin: 4px 0; font-size: 40px; white-space: nowrap; }
+.entity-row.n3 .entity-fig { font-size: 28px; }
+.entity-row.n3 .entity-name { font-size: 28px; }
+.entity-fig .hot { box-shadow: inset 0 0 0 3px var(--red); padding: 2px 8px; white-space: nowrap; }
+.entity-fig .year { color: var(--blue); margin-left: 12px; white-space: nowrap; }
 .entity-credit { margin: 8px 0 0; font-size: 14px; color: var(--muted); }
 
 .slide-type .stage { align-items: center; }
