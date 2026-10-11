@@ -1,0 +1,19 @@
+id,name,topics,adds,cost_limits,license,cadence,effort,apify_gap,tou_risk
+jikan-v4,Jikan (MyAnimeList API),"anime,culture","Live MAL catalog, scores, studios, relations; refresh through current season",Free; ~3 req/s; no API key,MAL ToS; non-commercial research typical,Near real-time,M,Bulk historical archive if rate-limited,Medium — MAL prohibits scraping; use official API/Jikan
+anilist-graphql,AniList GraphQL API,anime,Cross-check MAL members/scores; airing status; staff links,Free with rate limits,AniList ToS,Daily,M,,Low if via API
+lahman,Lahman Baseball Database,"padres,yankees,dodgers,baseball","Season-level history, playoffs, attendance (through published release)",Free; CC BY-SA 4.0,CC BY-SA 4.0,Annual release,S,,Low
+mlb-stats-api,MLB Stats API / Baseball Savant,"padres,sports","2026+ seasons, Statcast, roster moves beyond Lahman lag",Free; unofficial endpoints may change,MLB ToS; research use,Daily in season,M,Savant CSV exports if API blocks,Medium — no official public SLA
+spotrac,Spotrac / CBA tables,padres,Luxury-tax payroll snapshots (article cites July 2026 draft),Web; commercial API paid,Site ToS,Seasonal,M,Structured payroll tables if no API,High for scraping — prefer manual CSV archive
+cms-hrrp,CMS Provider Data Catalog (HRRP),readmitted,Authoritative ERR refresh; dataset 9n3s-kdb3,Free; bulk CSV/API,U.S. public domain,Annual + quarterly hospital files,S,,Low
+cms-care-compare,CMS Care Compare / HCRIS,readmitted,"Mortality, safety, financial metrics for cross-check",Free,U.S. public domain,Quarterly/annual,M,,Low
+sec-edgar,SEC EDGAR XBRL,"youtube,franchise,streaming","YouTube ads, Disney segments, Netflix revenue — machine-readable",Free,U.S. government,Per filing,M,,Low
+youtube-data-api,YouTube Data API v3,youtube,Channel/video stats for case studies (H3 already uses),Free quota units/day; paid expansion,Google ToS,Real-time,S,Comment threads if quota tight,Medium — quota + ToS on storage
+nielsen-gauge,Nielsen The Gauge / Distributor Gauge,"youtube,streaming",TV usage share — article uses press PDFs,Press releases free; full data subscription,Nielsen copyright on charts,Monthly,S,PDF table extraction,Medium — redistribute only press figures
+box-office-mojo,Box Office Mojo / The Numbers,"franchise,blockbusters",Domestic yearly top-10; franchise tagging,Web; no official API,Site ToS,Daily,L,Yearly chart pages (franchise already indexes URLs),High for automated scrape
+tmdb,TMDB API,"franchise,film","Collection/franchise IDs, release dates, companies",Free API key,TMDB ToS; attribution required,Daily,M,,Low with attribution
+wikidata,Wikidata Query Service,cross-article,"Studio/company QIDs, inflation metadata, franchise entities",Free,CC0,Continuous,M,,Low
+bls-cpi,BLS CPI API,"cross-article,franchise",Real-dollar box office / franchise revenues,Free API key,U.S. government,Monthly,S,,Low
+fred,FRED (St. Louis Fed),cross-article,"FX, CPI, macro context for global revenues",Free API key,FRED ToS,Varies,S,,Low
+imdb-noncommercial,IMDb non-commercial datasets,"film,television","Title ratings, genres, companies at scale",Free non-commercial,IMDb ToS — no commercial redistribution,Daily dumps,M,,High if used commercially on site
+spotify-api,Spotify Web API,"billboard,albums,music","Audio features, popularity for music reports",Free tier,Spotify ToS,Real-time,M,,Medium
+openalex,OpenAlex,"phds,science","Publication graphs, institutions",Free,CC0 metadata,Weekly,M,,Low
