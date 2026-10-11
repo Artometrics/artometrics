@@ -610,7 +610,18 @@ def dodgers():
 
 
 def padres():
-    """Long-form feature: the record sale and the unconverted franchise behind it."""
+    """The live page is published from the Quarto source.
+
+    Regenerating it here is what split the page from the .qmd: this function
+    wrote a shorter body, and a later paragraph merge then spliced the
+    expansion section into the opener. Charts and copy now come from
+    articles/padres/.
+    """
+    qmd = ROOT / "articles" / "padres" / "padres-the-artometrics-of-paying-for-october.qmd"
+    if qmd.exists() and "publishBody: true" in qmd.read_text(encoding="utf-8"):
+        print("padres: published from the .qmd; skipping the sports-canon rewrite")
+        return
+
     slug = "padres"
 
     decades = ["1970s", "1980s", "1990s", "2000s", "2010s", "2020s"]
@@ -1121,7 +1132,7 @@ def padres_ownership_blueprint():
         sections=sections,
         ending_heading="The arithmetic of a first title",
         ending=[
-            "San Diego does not have a 90-win problem. It has reached the postseason four times in six years and will probably do so again inside two. It has a twelve-game problem: the tournament that follows the season, which the Padres have entered five times since 2020 and left without a pennant every time.",
+            "San Diego does not have a 90-win problem. It has reached the postseason four times in six years and will probably do so again inside two. It has a twelve-game problem: the tournament that follows the season, which the Padres have entered four times since 2020 and left without a pennant every time.",
             "Closing that gap is not a payroll exercise, which is fortunate, because payroll is the one lever this club has already pulled to its limit. It is a depth-and-pipeline exercise, and those are the two things a recapitalised franchise can buy quickly — if the owners spend on infrastructure rather than announcements.",
             "The Padres are worth a record price because someone finally believes the last step is available. Those six moves are what has to be true for that belief to pay. The companion report explains why 57 years of evidence makes it such an expensive bet.",
         ],

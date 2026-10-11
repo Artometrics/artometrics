@@ -1,0 +1,9 @@
+Lahman Baseball Database, version 2025 (stats 1871-2025), released Jan 2 2026 by SABR.
+Source: https://sabr.org/lahman-database/  (CSV share: https://sabr.box.com/s/y1prhc795jk8zvmelfd3jq7tl389y6cd)
+Licence: Creative Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0). Attribute "Lahman Baseball Database, SABR"; derived datasets must carry the same licence.
+Files: Teams.csv, SeriesPost.csv, TeamsFranchises.csv, Salaries.csv (salaries end in 2016).
+Subset saved 2026-10-11 for the Padres report.
+
+Derived tables in this folder are CC BY-SA 3.0. Attribute: Lahman Baseball Database, SABR.
+2026 rows and padres_2026_bref.csv are Baseball-Reference team-page figures, cited on that page, not Lahman.
+cbt_payroll.csv is a Spotrac compilation carried from the July 2026 draft, not a Lahman table.
