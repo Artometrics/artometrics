@@ -1,88 +1,81 @@
 person,role,franchises,source_ids
-A. A. Milne E. H. Shepard,creator,Winnie the Pooh,S001
-Action Studios,creator,Ben 10,S001
-Aki Maita Akihiro Yokoi Bandai,creator,Tamagotchi,S001
-Akira Toriyama,creator,Dragon Ball,S001
-Akiyoshi Hongo Toei Animation Bandai,creator,Digimon,S001
-Allen Adham Frank Pearce Michael Morhaime,creator,Warcraft,S001
-American Greetings,creator,Care Bears; Strawberry Shortcake,S001
+A. A. Milne,creator,Winnie the Pooh,S001
+Akihiro Yokoi,creator,Tamagotchi,S001
+Aki Maita,creator,Tamagotchi,S001
+Akira Toriyama,creator,Dragon Ball; Dragon Quest,S001
+Akiyoshi Hongo,creator,Digimon,S001
+Allen Adham,creator,Warcraft,S001
 Andrew Lloyd Webber,creator,The Phantom of the Opera,S001
 Andy Mooney,creator,Disney Princess,S001
 Bill Finger,creator,Batman,S001
 Bill Prady,creator,The Big Bang Theory,S001
-Blue Sky Studios,creator,Ice Age,S001
 Bob Kane,creator,Batman,S001
 Bonnie Zacherle,creator,My Little Pony,S001
 Bruce Geller,creator,Mission: Impossible,S001
-Bungie,creator,Halo,S001
-Buronson Tetsuo Hara,creator,Fist of the North Star,S001
+Buronson,creator,Fist of the North Star,S001
 Charles M. Schulz,creator,Peanuts,S001
 Chris Buck,creator,Frozen,S001
-Chris Gifford Valerie Walsh Eric Weiner,creator,Dora the Explorer,S001
+Chris Gifford,creator,Dora the Explorer,S001
 Christopher Awdry,creator,Thomas & Friends,S001
 Chuck Lorre,creator,The Big Bang Theory,S001
-DC Entertainment,creator,DC Extended Universe,S001
 David Crane,creator,Friends,S001
 David Jones,creator,Grand Theft Auto,S001
-Disney Company,creator,Pirates of the Caribbean,S001
-DreamWorks Animation,creator,Shrek,S001
+Ed Boon,creator,Mortal Kombat,S001
+E. H. Shepard,creator,Winnie the Pooh,S001
 Eiichiro Oda,creator,One Piece,S001
 Eiji Tsuburaya,creator,Ultraman,S001
+Eric Weiner,creator,Dora the Explorer,S001
+Frank Pearce,creator,Warcraft,S001
 Fujiko F. Fujio,creator,Doraemon,S001
 Gary Scott Thompson,creator,Fast & Furious,S001
 Gene Roddenberry,creator,Star Trek,S001
 George Lucas,creator,Star Wars,S001
-George R.,creator,A Song of Ice and Fire /  Game of Thrones,S001
+George R. R. Martin,creator,A Song of Ice and Fire /  Game of Thrones,S001
 Gosho Aoyama,creator,Detective Conan / Case Closed,S001
-GungHo Online,creator,Puzzle & Dragons,S001
-Hideaki Anno Gainax Tatsunoko Production,creator,Neon Genesis Evangelion,S001
-Hirohiko Araki,creator,JoJo's Bizarre Adventure,S001
-Hironobu Sakaguchi Hiromichi Tanaka Nasir Gebelli,creator,Final Fantasy,S001
+Haim Saban,creator,Super Sentai / Power Rangers,S001
+Hanna Diyab,creator,Aladdin,S001
+Hideaki Anno,creator,Neon Genesis Evangelion,S001
+Hironobu Sakaguchi,creator,Final Fantasy,S001
 Hiroshi Matsumoto,creator,Street Fighter,S001
+Hiromichi Tanaka,creator,Final Fantasy,S001
 Ian Fleming,creator,James Bond,S001
-Infinity Ward,creator,Call of Duty,S001
 Izumi Todo,creator,Pretty Cure / Glitter Force,S001
 J. K. Rowling,creator,Wizarding World / Harry Potter,S001
-J. R.,creator,Middle-earth / Lord of the Rings,S001
+J. R. R. Tolkien,creator,Middle-earth / Lord of the Rings,S001
 Jaakko Iisalo,creator,Angry Birds,S001
-Jack Kirby,creator,Avengers; X-Men,S001
+Jack Kirby,creator,Avengers; Spider-Man; X-Men,S001
 Jennifer Lee,creator,Frozen,S001
 Jerry Siegel,creator,Superman,S001
-Jim Henson Joan Ganz Cooney Lloyd Morrisett,creator,Sesame Street / The Muppets,S001
+Jim Henson,creator,Sesame Street / The Muppets,S001
+Joan Ganz Cooney,creator,Sesame Street / The Muppets,S001
 Joe Shuster,creator,Superman,S001
 John Lasseter,creator,Cars,S001
+John Tobias,creator,Mortal Kombat,S001
+Jade Raymond,creator,Assassin's Creed,S001
 Kazuki Takahashi,creator,Yu-Gi-Oh!,S001
 Kazunori Yamauchi,creator,Gran Turismo,S001
 Keith Chapman,creator,Bob the Builder; PAW Patrol,S001
 Ken Sugimori,creator,Pokémon,S001
 Kevin Eastman,creator,Teenage Mutant Ninja Turtles,S001
-King,creator,Candy Crush Saga,S001
-Kumamoto Prefecture,creator,Kumamon,S001
+Koichi Nakamura,creator,Dragon Quest,S001
 Lauren Faust,creator,My Little Pony,S001
-Level-5,creator,Yo-kai Watch,S001
-Man of,creator,Ben 10,S001
+Lloyd Morrisett,creator,Sesame Street / The Muppets,S001
 Markus Persson,creator,Minecraft,S001
 Marta Kauffman,creator,Friends,S001
-Marvel Studios,creator,Marvel Cinematic Universe,S001
 Masashi Kishimoto,creator,Naruto,S001
 Matt Groening,creator,The Simpsons,S001
 Michael Crichton,creator,Jurassic Park,S001
-Midway Games Chicago Ed Boon John Tobias,creator,Mortal Kombat,S001
+Michael Morhaime,creator,Warcraft,S001
 Mike Dailly,creator,Grand Theft Auto,S001
 Naoko Takeuchi,creator,Sailor Moon,S001
-Neople,creator,Dungeon Fighter Online,S001
-NetEase,creator,Westward Journey,S001
-Nintendo EAD,creator,Wii series,S001
+Nasir Gebelli,creator,Final Fantasy,S001
+Naoto Ohshima,creator,Sonic the Hedgehog,S001
 Nobuhiro Watsuki,creator,Rurouni Kenshin / Samurai X,S001
 Nobuyuki Okude,creator,Transformers,S001
 Osamu Akimoto,creator,KochiKame,S001
-Patrice Désilets Jade Raymond Corey May,creator,Assassin's Creed,S001
+Patrice Désilets,creator,Assassin's Creed,S001
 Peter Laird,creator,Teenage Mutant Ninja Turtles,S001
-Pixar,creator,Toy Story,S001
-Polyphony Digital,creator,Gran Turismo,S001
-R. Martin,creator,A Song of Ice and Fire /  Game of Thrones,S001
-R. Tolkien,creator,Middle-earth / Lord of the Rings,S001
-Riot Games,creator,League of Legends,S001
+Corey May,creator,Assassin's Creed,S001
 Rob Minkoff,creator,The Lion King,S001
 Roger Allers,creator,The Lion King,S001
 Ruth Handler,creator,Barbie,S001
@@ -91,35 +84,31 @@ Sergio Pablos,creator,Despicable Me / Minions,S001
 Shigeru Miyamoto,creator,Mario,S001
 Shinji Mikami,creator,Resident Evil,S001
 Shintaro Tsuji,creator,Hello Kitty,S001
-Shotaro Ishinomori Haim Saban Shuki Levy,creator,Super Sentai / Power Rangers,S001
-Shueisha,creator,Shōnen Jump / Jump Comics,S001
-Smilegate,creator,CrossFire,S001
+Shotaro Ishinomori,creator,Super Sentai / Power Rangers,S001
+Shuki Levy,creator,Super Sentai / Power Rangers,S001
 Stan Lee,creator,Avengers; Spider-Man; X-Men,S001
 Stephen Hillenburg,creator,SpongeBob SquarePants,S001
 Stephenie Meyer,creator,Twilight,S001
 Steve Ditko,creator,Spider-Man,S001
 Suzanne Collins,creator,The Hunger Games,S001
 Takao Aoki,creator,Beyblade,S001
-Takara Hasbro,creator,Transformers,S001
 Takashi Nishiyama,creator,Street Fighter,S001
 Takashi Yanase,creator,Anpanman,S001
 Takehiko Inoue,creator,Slam Dunk,S001
-The Walt,creator,Pirates of the Caribbean,S001
+Tetsuo Hara,creator,Fist of the North Star,S001
 Tite Kubo,creator,Bleach,S001
-Toei Animation,creator,Pretty Cure / Glitter Force,S001
 Tokuro Fujiwara,creator,Resident Evil,S001
 Tomohiro Nishikado,creator,Space Invaders,S001
-Toru Iwatani Namco,creator,Pac-Man,S001
-Type-Moon,creator,Fate,S001
+Toru Iwatani,creator,Pac-Man,S001
 Ub Iwerks,creator,Mickey Mouse & Friends,S001
+Valerie Walsh,creator,Dora the Explorer,S001
 Walt Disney,creator,Mickey Mouse & Friends,S001
-Walt Disney Animation Hanna Diyab,creator,Aladdin,S001
-Warner Bros.,creator,Looney Tunes,S001
 Wilbert Awdry,creator,Thomas & Friends,S001
 William Steig,creator,Shrek,S001
 Yoshihiro Togashi,creator,Hunter × Hunter,S001
 Yoshiki Okamoto,creator,Monster Strike,S001
 Yoshiyuki Tomino,creator,Gundam,S001
-Yuji Horii Koichi Nakamura Akira Toriyama,creator,Dragon Quest,S001
-Yuji Naka Naoto Ohshima Hirokazu Yasuhara,creator,Sonic the Hedgehog,S001
+Yuji Horii,creator,Dragon Quest,S001
+Yuji Naka,creator,Sonic the Hedgehog,S001
 Yuko Shimizu,creator,Hello Kitty,S001
+Hirokazu Yasuhara,creator,Sonic the Hedgehog,S001

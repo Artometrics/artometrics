@@ -4,7 +4,7 @@ slug: franchise
 author: kyle-mcauliffe
 pubDate: 2026-04-08T00:00:00.000Z
 description: >-
-  One hundred three Wikipedia-scraped franchises (mid-2019) sum to $1.52T lifetime revenue. Merchandise is 56% of row totals; Pokémon leads at $90.9B. Consolidated Disney franchise rows reach $426.2B; Japan-origin properties total $632.8B versus $718.9B US-origin.
+  One hundred three Wikipedia-scraped franchises (mid-2019) sum to $1.52T lifetime revenue. Merchandise is 56% of row totals; Pokémon leads at $90.9B. Consolidated Disney franchise rows reach $426.2B. By region_origin (chart 15): Japan 42 franchises ($681.5B), US 52 ($770.0B), Korea 2 ($20.0B).
 heroImage: /images/content/articles/franchise/hero.png
 draft: false
 tags:
@@ -32,13 +32,13 @@ faq:
       $426.2B in summed franchise rows when Marvel Entertainment, Lucasfilm, and 20th Century Fox roll into The Walt Disney Company — versus $49.0B for Nintendo on its standalone owner label (owner_consolidation_rules.csv, S001).
   - question: Did Wikipedia franchise estimates change after 2019?
     answer: >-
-      Yes for many rows. We hand-mapped 103 TidyTuesday franchises to 2026 Wikipedia titles; 82 pairs have revenue in both years (franchise_crosswalk_2019_2026.csv, S017). Chart 10 shows the largest paired deltas — treat both scrapes as editor surveys, not audited P&amp;L.
+      Yes for many rows. We hand-mapped 103 TidyTuesday franchises to 2026 Wikipedia titles; 82 pairs have revenue in both years (franchise_crosswalk_2019_2026.csv, S017). Chart 10 shows the largest paired deltas. Hello Kitty ($80.0B→$33.5B), Mario ($35.0B→$9.74B), and Gundam ($25.5B→$5.0B) are flagged wiki_source_revision rows — Wikipedia revised sources, not proof of real declines.
   - question: Where do the theatrical numbers come from?
     answer: >-
       Franchise-installment shares use Box Office Mojo domestic yearly charts with manual coding (top10_franchise_share_by_year.csv). 2024: nine of ten top domestic films coded as franchise installments (90%).
   - question: How does Japan compare with the United States in this file?
     answer: >-
-      By region_origin tags (entities_franchises.csv), 35 Japan-origin franchises sum to $632.8B lifetime with 52.3% merchandise share; 46 US-origin franchises sum to $718.9B with 63.7% merchandise share (chart 15, S001).
+      By region_origin tags (entities_franchises.csv), Japan-origin franchises sum to $681.5B (49.1% merchandise share); US-origin sum to $770.0B (64.3%); Korea (CrossFire, Dungeon Fighter Online) sums to $20.0B; China (Westward Journey) $6.0B (chart 15, S001).
 ---
 <div id="quarto-content">
 <nav id="TOC" role="doc-toc">
@@ -112,20 +112,20 @@ faq:
 <h2 id="wiki-drift" class="anchored">WIKIPEDIA MOVED (2019 VS 2026)</h2>
 <figure class="art-chart">
 <div class="art-chart-live" data-chart="/data/articles/franchise/charts/chart10_wiki_2019_vs_2026.plotly.json" data-fallback="/images/content/articles/franchise/charts/chart10_wiki_2019_vs_2026.png" data-source="Data: TidyTuesday 2019 + Wikipedia 2026 scrape — ARTOMETRICS" role="img" aria-label="Largest revenue deltas between 2019 and 2026 Wikipedia pairs."></div>
-<figcaption class="art-chart-caption art-chart-caption--visible">Eighty-two franchises with revenue in both years; largest paired upward revisions include mobile and anime rows (hand crosswalk, S001; S017).</figcaption>
+<figcaption class="art-chart-caption art-chart-caption--visible">Eighty-two franchises with revenue in both years. Gray bars flag Wikipedia source revisions — e.g. Hello Kitty $80.0B→$33.5B, Mario $35.0B→$9.74B, Gundam $25.5B→$5.0B — not real franchise declines (S001; S017).</figcaption>
 </figure>
 <p class="art-p"><strong>What it means.</strong> Public franchise tables are editor-maintained surveys — they drift when categories like mobile games or live-service revenue enter the infobox.</p>
 <p class="art-p"><strong>How we know.</strong> 103 hand-mapped crosswalk rows; 82 with non-empty 2026 pairs and both-year revenue for chart 10 (<code>franchise_crosswalk_2019_2026.csv</code>, <code>franchise_revenue_2019_vs_2026.csv</code>; S001, S017). A 2026 index parse lists 140 Wikipedia franchise rows (S017).</p>
 <p class="art-p"><strong>Mechanism.</strong> English Wikipedia aggregates press estimates; editors add streams the 2019 scrape under-weighted (e.g., Candy Crush Saga, Mortal Kombat, Naruto in the delta chart).</p>
-<p class="art-p"><strong>Counterexample.</strong> Rows that fall between years often reflect renames, splits, or scope changes — e.g., The Simpsons after Fox consolidation. Quote growth only when the crosswalk documents a pair.</p>
+<p class="art-p"><strong>Counterexample.</strong> Hello Kitty, Mario, and Gundam show large negative percent changes in the paired file because English Wikipedia revised its sourcing between scrapes — not because Sanrio or Nintendo reported collapsing revenue. Chart 10 colors those rows gray. Other drops may reflect renames, splits, or scope changes (e.g., The Simpsons after Fox consolidation). Quote growth only when the crosswalk documents a pair and the match note flags a true like-for-like total.</p>
 
 <h2 id="region-origin" class="anchored">JAPAN, THE US, AND THE FOUR-BILLION-DOLLAR FLOOR</h2>
 <figure class="art-chart">
 <div class="art-chart-live" data-chart="/data/articles/franchise/charts/chart15_region_japan_us_other.plotly.json" data-fallback="/images/content/articles/franchise/charts/chart15_region_japan_us_other.png" data-source="Data: entities_franchises.csv — ARTOMETRICS" role="img" aria-label="Lifetime revenue and merchandise share by region of origin."></div>
-<figcaption class="art-chart-caption art-chart-caption--visible">Japan-origin: 35 franchises, $632.8B lifetime, 52.3% merchandise share. US-origin: 46 franchises, $718.9B, 63.7% merchandise share (S001).</figcaption>
+<figcaption class="art-chart-caption art-chart-caption--visible">Japan: 42 franchises, $681.5B (49.1% merch). US: 52, $770.0B (64.3%). Korea: 2, $20.0B. China: 1, $6.0B. Other: 6, $44.8B (S001).</figcaption>
 </figure>
 <p class="art-p"><strong>What it means.</strong> The ledger is Anglo-table biased but still shows two different optimisation paths — Japanese media-mix density versus US theatrical-and-parks scale.</p>
-<p class="art-p"><strong>How we know.</strong> <code>region_origin</code> tags in <code>entities_franchises.csv</code>, summed lifetime revenue and merchandise share (<code>franchise_region_summary.csv</code>, S001).</p>
+<p class="art-p"><strong>How we know.</strong> Hand-audited <code>region_origin</code> tags in <code>entities_franchises.csv</code> (Japan: Evangelion, Sonic, Monster Strike, Puzzle &amp; Dragons, Fate, Gran Turismo; Korea: CrossFire, Dungeon Fighter Online; China: Westward Journey; US: Peanuts, TMNT), summed in <code>franchise_region_summary.csv</code> (S001).</p>
 <p class="art-p"><strong>Mechanism.</strong> US studios built global theatrical pipelines and theme-park engines; Japanese franchises optimised for domestic retail and long-tail collectibles (Steinberg, 2012; AJA industry reports for macro anime market context — whole-industry, not per-row).</p>
 <p class="art-p"><strong>Counterexample.</strong> Toho’s Godzilla rows are smaller in the English table but culturally load-bearing in Japan — many national icons never clear Wikipedia’s informal ~$4B inclusion floor, so the file under-represents them.</p>
 

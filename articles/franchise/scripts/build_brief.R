@@ -423,26 +423,37 @@ delta <- read_csv(file.path(data_dir, "franchise_revenue_2019_vs_2026.csv"), sho
   filter(is.finite(pct_change)) %>%
   arrange(desc(pct_change)) %>%
   slice_head(n = 20) %>%
-  mutate(franchise = fct_reorder(franchise, pct_change))
+  mutate(
+    franchise = fct_reorder(franchise, pct_change),
+    bar_kind = case_when(
+      wiki_source_revision == "Y" ~ "Wikipedia source revision (not a real decline)",
+      pct_change >= 0 ~ "Higher 2026 Wikipedia total",
+      TRUE ~ "Lower 2026 Wikipedia total"
+    ),
+    bar_color = case_when(
+      wiki_source_revision == "Y" ~ "#6B6B6B",
+      pct_change >= 0 ~ ART_RED,
+      TRUE ~ ART_BLUE
+    )
+  )
 
-p10 <- ggplot(delta, aes(x = pct_change, y = franchise, fill = if_else(pct_change >= 0, ART_RED, ART_BLUE))) +
+p10 <- ggplot(delta, aes(x = pct_change, y = franchise, fill = bar_color)) +
   geom_col(width = 0.62, show.legend = FALSE) +
   scale_fill_identity() +
   labs(
     title = "Wikipedia lifetime estimates — percent change 2019 file → 2026 list",
-    subtitle = "Hand crosswalk (franchise_crosswalk_2019_2026.csv); not inflation-adjusted",
+    subtitle = "Hand crosswalk; gray bars = editor/source revisions (e.g. Hello Kitty $80.0B→$33.5B, Mario $35.0B→$9.74B, Gundam $25.5B→$5B)",
     x = "% change in reported lifetime $B", y = NULL
   ) +
   theme_white()
-p10 <- finish_art_chart(p10, "Methodology shifts inflate some rows — read footnotes before comparing levels", paste0("Source: S001 + S017 · n=", nrow(delta), " matched"))
+p10 <- finish_art_chart(p10, "Down bars in gray are Wikipedia revising sources — not proof the franchise shrank", paste0("Source: S001 + S017 · n=", nrow(delta), " matched"))
 save_png(p10, "chart10_wiki_2019_vs_2026", 7)
-delta <- delta %>% mutate(bar_color = if_else(pct_change >= 0, ART_RED, ART_BLUE))
 fig10 <- plot_ly(delta, x = ~pct_change, y = ~franchise, type = "bar", orientation = "h",
                  marker = list(color = ~bar_color)) %>%
   plotly_chrome(
     "2019 TidyTuesday row vs 2026 Wikipedia total",
     "Top 20 movers among matched names",
-    "Pokémon’s 2026 list total reflects new licensing disclosures — not just inflation",
+    "Hello Kitty, Mario, and Gundam drops reflect Wikipedia methodology — not real revenue losses",
     "Source: S001 + S017",
     n_line = paste0("n=", nrow(delta), " matched franchises")
   )
@@ -544,16 +555,16 @@ copy_public("chart14_box_office_share_top20")
 
 # ── Chart 15: Japan vs US vs Other ────────────────────────────────────────────
 reg <- read_csv(file.path(data_dir, "franchise_region_summary.csv"), show_col_types = FALSE) %>%
-  mutate(region_origin = factor(region_origin, levels = c("Japan", "US", "China", "Other")))
+  mutate(region_origin = factor(region_origin, levels = c("Japan", "US", "China", "Korea", "Other")))
 p15 <- ggplot(reg, aes(x = region_origin, y = lifetime_revenue_usd_b, fill = region_origin)) +
   geom_col(width = 0.55, show.legend = FALSE) +
-  scale_fill_manual(values = c("Japan" = ART_RED, "US" = ART_BLUE, "China" = "#6B6B6B", "Other" = ART_BLACK)) +
+  scale_fill_manual(values = c("Japan" = ART_RED, "US" = ART_BLUE, "China" = "#6B6B6B", "Korea" = "#4A6FA5", "Other" = ART_BLACK)) +
   labs(title = "Franchise revenue by region_origin", subtitle = "From entities_franchises.region_origin + notes (mid-2019 file)", x = NULL, y = "Lifetime $B") +
   theme_white()
 p15 <- finish_art_chart(p15, "Japan-origin rows punch above their count on merch-heavy mix", FRANCHISE_SOURCE)
 save_png(p15, "chart15_region_japan_us_other", 5)
 fig15 <- plot_ly(reg, labels = ~region_origin, values = ~lifetime_revenue_usd_b, type = "pie",
-                 marker = list(colors = c(ART_RED, ART_BLUE, "#6B6B6B", ART_BLACK))) %>%
+                 marker = list(colors = c(ART_RED, ART_BLUE, "#6B6B6B", "#4A6FA5", ART_BLACK))) %>%
   plotly_chrome("Regional split of franchise-row revenue", "region_origin column", "Cross-market comparison anchor", FRANCHISE_SOURCE, n_line = paste0("n=", sum(reg$franchise_count), " franchises"))
 write_plotly_json(fig15, file.path(charts_dir, "chart15_region_japan_us_other.plotly.json"))
 write_motion_html("chart15_region_japan_us_other", "dark")

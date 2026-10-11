@@ -114,11 +114,13 @@ The chart teaches composition, not crowning one winner.
 
 ## Pattern three — geography and the four-billion-dollar floor
 
-Thirty-five Japanese-origin franchises in our entity table contribute six hundred thirty-two point eight billion in lifetime totals.
+Forty-two Japanese-origin franchises in our entity table contribute six hundred eighty-one point five billion in lifetime totals — including Evangelion, Sonic, Monster Strike, Puzzle and Dragons, Fate, and Gran Turismo after a hand region audit.
 
-Forty-six United States-origin franchises contribute seven hundred eighteen point nine billion.
+Fifty-two United States-origin franchises contribute seven hundred seventy billion — including Peanuts and Teenage Mutant Ninja Turtles.
 
-Merchandise share within those buckets: fifty-two point three percent for Japan, sixty-three point seven for the US.
+Korea contributes twenty billion across CrossFire and Dungeon Fighter Online; China six billion on Westward Journey alone.
+
+Merchandise share within those buckets: forty-nine point one percent for Japan, sixty-four point three for the US.
 
 Method: region_origin tags in entities_franchises.csv, summed revenue, chart fifteen.
 
@@ -138,9 +140,11 @@ Method: franchise_crosswalk_2019_2026.csv and a delta chart — chart ten.
 
 Largest upward revisions in that paired set include mobile-native titles such as Candy Crush Saga and Mortal Kombat, plus anime rows like Naruto.
 
-Mechanism: editors add categories — mobile games, live-service revenue — that the twenty-nineteen scrape under-weighted.
+Large downward paired moves on Hello Kitty, Mario, and Gundam are gray-barred in chart ten: Wikipedia revised its sources between scrapes — eighty to thirty-three point five billion on Hello Kitty, thirty-five to nine point seven four on Mario, twenty-five point five to five on Gundam — not evidence that those franchises shrank in the real economy.
 
-Counterexample: paired rows that fall — often when Wikipedia splits or re-labels a property.
+Mechanism: editors add or remove revenue categories — mobile games, live-service totals, merchandise disclosures — that the twenty-nineteen scrape treated differently.
+
+Counterexample: paired rows that fall for rename or scope reasons — always read the crosswalk match note before calling it a loss.
 
 Treat the ledger as a survey, not GAAP.
 

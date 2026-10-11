@@ -12,8 +12,9 @@ Upstream: Wikipedia “List of highest-grossing media franchises” (July 2019 s
 License: Community dataset; Wikipedia CC BY-SA 3.0 — revenue figures are editorial estimates.
 SHA-256: 6e556287bad580be04e14d346036a8453f7ce975a7b26cf47d2057b873be1090
 
-Wikipedia current list (chart 10, entities 2026 column)
--------------------------------------------------------
+2019 ↔ 2026 name crosswalk (chart 10, owner_now / revenue_2026)
+-----------------------------------------------------------------
+File: franchise_crosswalk_2019_2026.csv — hand-built; one row per 2019 franchise; no fuzzy matching.
 Files: wikipedia_franchise_revenue_2026.csv, franchise_revenue_2019_vs_2026.csv, raw/wikipedia_franchises_2026-10-11.json
 Origin: https://en.wikipedia.org/wiki/List_of_highest-grossing_media_franchises (MediaWiki API, User-Agent ArtometricsResearch/1.0)
 Source id: S017

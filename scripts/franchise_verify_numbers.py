@@ -16,7 +16,7 @@ _SCRIPT_DIR = Path(__file__).resolve().parent
 import sys
 
 sys.path.insert(0, str(_SCRIPT_DIR))
-from franchise_crosswalk_data import CROSSWALK, REGION  # noqa: E402
+from franchise_crosswalk_data import CROSSWALK, REGION, WIKI_SOURCE_REVISION_DROPS  # noqa: E402
 from franchise_wiki_parse import fetch_wikitext, parse_wiki_index  # noqa: E402
 
 REPO = _SCRIPT_DIR.parent
@@ -87,6 +87,13 @@ def infer_region_fields(franchise: str, owners: str, creators: str) -> tuple[str
         "anpanman",
         "pokémon",
         "pokemon",
+        "sega",
+        "mixi",
+        "gungho",
+        "khara",
+        "type-moon",
+        "polyphony",
+        "evangelion",
     )
     if any(k in blob for k in japan_keys):
         return (
@@ -122,12 +129,27 @@ def infer_region_fields(franchise: str, owners: str, creators: str) -> tuple[str
             "US",
             "Rights-owner HQ inferred United States from owner field.",
         )
-    if "tencent" in blob or "china" in blob:
+    korea_keys = ("smilegate", "neople", "nexon", "dungeon fighter", "crossfire")
+    if any(k in blob for k in korea_keys):
+        return (
+            "Korea",
+            "Owner/creator references South Korea-based company.",
+            "Korea",
+            "Korean rights holder inferred from owner field.",
+        )
+    if "netease" in blob or "westward journey" in franchise.lower():
         return (
             "China",
             "Owner references China-based parent.",
             "China",
-            "Tencent or China HQ inferred from owner field.",
+            "NetEase / China HQ inferred from owner field.",
+        )
+    if "tencent" in blob and "china" in blob:
+        return (
+            "China",
+            "Owner references China-based parent.",
+            "China",
+            "Tencent HQ inferred from owner field.",
         )
     return (
         "Other",
@@ -180,35 +202,211 @@ def parse_bom_title(url: str) -> tuple[str, str, str]:
 
 
 def build_budgets_grosses() -> list[dict]:
+    # (franchise, film, year, the_numbers_url, box_office_mojo_url, gross_notes)
     films = [
-        ("Pokémon", "Pokémon: The First Movie", 1998, "https://www.the-numbers.com/movie/Pokemon-The-First-Movie", "https://www.boxofficemojo.com/release/rl531481857/"),
-        ("Star Wars", "Star Wars: The Force Awakens", 2015, "https://www.the-numbers.com/movie/Star-Wars-Episode-VII-The-Force-Awakens", "https://www.boxofficemojo.com/release/rl1630274561/"),
-        ("Marvel Cinematic Universe", "Avengers: Endgame", 2019, "https://www.the-numbers.com/movie/Avengers-Endgame-(2019)", "https://www.boxofficemojo.com/release/rl3320038913/"),
-        ("Wizarding World / Harry Potter", "Harry Potter and the Deathly Hallows Part 2", 2011, "https://www.the-numbers.com/movie/Harry-Potter-and-the-Deathly-Hallows-Part-2", "https://www.boxofficemojo.com/release/rl3859276289/"),
-        ("Batman", "The Dark Knight", 2008, "https://www.the-numbers.com/movie/Dark-Knight-The", "https://www.boxofficemojo.com/release/rl1091076097/"),
-        ("Spider-Man", "Spider-Man: No Way Home", 2021, "https://www.the-numbers.com/movie/Spider-Man-No-Way-Home-(2021)", "https://www.boxofficemojo.com/release/rl4044609025/"),
-        ("James Bond", "Skyfall", 2012, "https://www.the-numbers.com/movie/James-Bond-Skyfall", "https://www.boxofficemojo.com/release/rl2667577345/"),
-        ("Fast & Furious", "Furious 7", 2015, "https://www.the-numbers.com/movie/Fast-and-Furious-7", "https://www.boxofficemojo.com/release/rl2334883841/"),
-        ("Jurassic Park", "Jurassic World", 2015, "https://www.the-numbers.com/movie/Jurassic-World", "https://www.boxofficemojo.com/release/rl2334883841/"),
-        ("Toy Story", "Toy Story 4", 2019, "https://www.the-numbers.com/movie/Toy-Story-4", "https://www.boxofficemojo.com/release/rl3311923713/"),
-        ("Frozen", "Frozen II", 2019, "https://www.the-numbers.com/movie/Frozen-2-(2019)", "https://www.boxofficemojo.com/release/rl3311923713/"),
-        ("Despicable Me / Minions", "Minions", 2015, "https://www.the-numbers.com/movie/Minions", "https://www.boxofficemojo.com/release/rl2583691265/"),
-        ("Shrek", "Shrek 2", 2004, "https://www.the-numbers.com/movie/Shrek-2", "https://www.boxofficemojo.com/release/rl725614593/"),
-        ("Lord of the Rings", "The Return of the King", 2003, "https://www.the-numbers.com/movie/Lord-of-the-Rings-The-Return-of-the-King", "https://www.boxofficemojo.com/release/rl725614593/"),
-        ("Pirates of the Caribbean", "Dead Man's Chest", 2006, "https://www.the-numbers.com/movie/Pirates-of-the-Caribbean-Dead-Mans-Chest", ""),
-        ("Mission: Impossible", "Mission: Impossible - Fallout", 2018, "https://www.the-numbers.com/movie/Mission-Impossible-Fallout-(2018)", ""),
-        ("The Hunger Games", "The Hunger Games: Catching Fire", 2013, "https://www.the-numbers.com/movie/Hunger-Games-Catching-Fire-The", ""),
-        ("Twilight", "Breaking Dawn Part 2", 2012, "https://www.the-numbers.com/movie/Twilight-Saga-Breaking-Dawn-Part-2-The", ""),
-        ("Finding Nemo", "Finding Dory", 2016, "https://www.the-numbers.com/movie/Finding-Dory", ""),
-        ("Cars", "Cars 3", 2017, "https://www.the-numbers.com/movie/Cars-3", ""),
-        ("Transformers", "Dark of the Moon", 2011, "https://www.the-numbers.com/movie/Transformers-Dark-of-the-Moon", ""),
-        ("X-Men", "Days of Future Past", 2014, "https://www.the-numbers.com/movie/X-Men-Days-of-Future-Past", ""),
-        ("Indiana Jones", "Kingdom of the Crystal Skull", 2008, "https://www.the-numbers.com/movie/Indiana-Jones-and-the-Kingdom-of-the-Crystal-Skull", ""),
-        ("Alien", "Alien: Covenant", 2017, "https://www.the-numbers.com/movie/Alien-Covenant", ""),
-        ("The Lion King", "The Lion King (2019)", 2019, "https://www.the-numbers.com/movie/Lion-King-(2019)", ""),
+        (
+            "Pokémon",
+            "Pokémon: The First Movie",
+            1998,
+            "https://www.the-numbers.com/movie/Pokemon-The-First-Movie",
+            "https://www.boxofficemojo.com/release/rl531481857/",
+            "",
+        ),
+        (
+            "Star Wars",
+            "Star Wars: The Force Awakens",
+            2015,
+            "https://www.the-numbers.com/movie/Star-Wars-Ep-VII-The-Force-Awakens",
+            "https://www.boxofficemojo.com/release/rl2691925505/",
+            "",
+        ),
+        (
+            "Marvel Cinematic Universe",
+            "Avengers: Endgame",
+            2019,
+            "https://www.the-numbers.com/movie/Avengers-Endgame-(2019)",
+            "https://www.boxofficemojo.com/release/rl3059975681/",
+            "Worldwide $2.928B from The Numbers (S019), includes Sept 2026 Encore re-release; domestic $858.4M from BOM original release (S018), not the $897.5M cumulative domestic with reissues.",
+        ),
+        (
+            "Wizarding World / Harry Potter",
+            "Harry Potter and the Deathly Hallows Part 2",
+            2011,
+            "https://www.the-numbers.com/movie/Harry-Potter-and-the-Deathly-Hallows-Part-II-(2011)",
+            "https://www.boxofficemojo.com/release/rl1265337857/",
+            "",
+        ),
+        (
+            "Batman",
+            "The Dark Knight",
+            2008,
+            "https://www.the-numbers.com/movie/Dark-Knight-The",
+            "https://www.boxofficemojo.com/release/rl1091076097/",
+            "",
+        ),
+        (
+            "Spider-Man",
+            "Spider-Man: No Way Home",
+            2021,
+            "https://www.the-numbers.com/movie/Spider-Man-No-Way-Home-(2021)",
+            "https://www.boxofficemojo.com/release/rl4044609025/",
+            "",
+        ),
+        (
+            "James Bond",
+            "Skyfall",
+            2012,
+            "https://www.the-numbers.com/movie/Skyfall",
+            "https://www.boxofficemojo.com/release/rl1346799105/",
+            "",
+        ),
+        (
+            "Fast & Furious",
+            "Furious 7",
+            2015,
+            "https://www.the-numbers.com/movie/Furious-7",
+            "https://www.boxofficemojo.com/release/rl1045661185/",
+            "",
+        ),
+        (
+            "Jurassic Park",
+            "Jurassic World",
+            2015,
+            "https://www.the-numbers.com/movie/Jurassic-World",
+            "https://www.boxofficemojo.com/release/rl2371716609/",
+            "",
+        ),
+        (
+            "Toy Story",
+            "Toy Story 4",
+            2019,
+            "https://www.the-numbers.com/movie/Toy-Story-4-(2019)",
+            "https://www.boxofficemojo.com/title/tt1979376/",
+            "",
+        ),
+        (
+            "Frozen",
+            "Frozen II",
+            2019,
+            "https://www.the-numbers.com/movie/Frozen-II-(2019)",
+            "https://www.boxofficemojo.com/title/tt4520988/",
+            "",
+        ),
+        (
+            "Despicable Me / Minions",
+            "Minions",
+            2015,
+            "https://www.the-numbers.com/movie/Minions",
+            "https://www.boxofficemojo.com/release/rl2583691265/",
+            "",
+        ),
+        (
+            "Shrek",
+            "Shrek 2",
+            2004,
+            "https://www.the-numbers.com/movie/Shrek-2",
+            "https://www.boxofficemojo.com/release/rl24217089/",
+            "",
+        ),
+        (
+            "Lord of the Rings",
+            "The Return of the King",
+            2003,
+            "https://www.the-numbers.com/movie/Lord-of-the-Rings-The-Return-of-the-King-The",
+            "https://www.boxofficemojo.com/release/rl2471854337/",
+            "",
+        ),
+        (
+            "Pirates of the Caribbean",
+            "Dead Man's Chest",
+            2006,
+            "https://www.the-numbers.com/movie/Pirates-of-the-Caribbean-Dead-Mans-Chest",
+            "https://www.boxofficemojo.com/title/tt0383574/",
+            "",
+        ),
+        (
+            "Mission: Impossible",
+            "Mission: Impossible - Fallout",
+            2018,
+            "https://www.the-numbers.com/movie/Mission-Impossible-Fallout",
+            "https://www.boxofficemojo.com/title/tt4912380/",
+            "",
+        ),
+        (
+            "The Hunger Games",
+            "The Hunger Games: Catching Fire",
+            2013,
+            "https://www.the-numbers.com/movie/Hunger-Games-Catching-Fire-The-(2013)",
+            "https://www.boxofficemojo.com/release/rl2638775809/",
+            "",
+        ),
+        (
+            "Twilight",
+            "Breaking Dawn Part 2",
+            2012,
+            "https://www.the-numbers.com/movie/Twilight-Saga-Breaking-Dawn-Part-2-The",
+            "https://www.boxofficemojo.com/title/tt1673434/",
+            "",
+        ),
+        (
+            "Finding Nemo",
+            "Finding Dory",
+            2016,
+            "https://www.the-numbers.com/movie/Finding-Dory",
+            "https://www.boxofficemojo.com/title/tt2277860/",
+            "",
+        ),
+        (
+            "Cars",
+            "Cars 3",
+            2017,
+            "https://www.the-numbers.com/movie/Cars-3",
+            "https://www.boxofficemojo.com/title/tt3606752/",
+            "",
+        ),
+        (
+            "Transformers",
+            "Dark of the Moon",
+            2011,
+            "https://www.the-numbers.com/movie/Transformers-Dark-of-the-Moon-(2011)",
+            "https://www.boxofficemojo.com/release/rl537560065/",
+            "",
+        ),
+        (
+            "X-Men",
+            "Days of Future Past",
+            2014,
+            "https://www.the-numbers.com/movie/X-Men-Days-of-Future-Past",
+            "https://www.boxofficemojo.com/title/tt1877832/",
+            "",
+        ),
+        (
+            "Indiana Jones",
+            "Kingdom of the Crystal Skull",
+            2008,
+            "https://www.the-numbers.com/movie/Indiana-Jones-and-the-Kingdom-of-the-Crystal-Skull-(2008)",
+            "https://www.boxofficemojo.com/release/rl17139457/",
+            "",
+        ),
+        (
+            "Alien",
+            "Alien: Covenant",
+            2017,
+            "https://www.the-numbers.com/movie/Alien-Covenant",
+            "https://www.boxofficemojo.com/title/tt2316204/",
+            "",
+        ),
+        (
+            "The Lion King",
+            "The Lion King (2019)",
+            2019,
+            "https://www.the-numbers.com/movie/Lion-King-The-(Live-Action)-(2019)",
+            "https://www.boxofficemojo.com/release/rl3321923073/",
+            "",
+        ),
     ]
     rows = []
-    for franchise, film, year, num_url, bom_url in films:
+    for franchise, film, year, num_url, bom_url, gross_notes in films:
         budget, dom, ww = "", "", ""
         budget_src, dom_src, ww_src = "", "", ""
         try:
@@ -232,6 +430,8 @@ def build_budgets_grosses() -> list[dict]:
                     ww, ww_src = w2, "S018"
             except Exception:
                 pass
+        if franchise == "Marvel Cinematic Universe" and film == "Avengers: Endgame":
+            dom, dom_src = "858373000", "S018"
         rows.append(
             {
                 "franchise": franchise,
@@ -245,6 +445,7 @@ def build_budgets_grosses() -> list[dict]:
                 "worldwide_gross_source": ww_src,
                 "the_numbers_url": num_url,
                 "box_office_mojo_url": bom_url,
+                "gross_notes": gross_notes,
                 "source_ids": ";".join(sorted({s for s in (budget_src, dom_src, ww_src) if s})),
             }
         )
@@ -401,12 +602,14 @@ def main() -> None:
             continue
         b19 = t["total"]
         b26 = float(cw["revenue_2026_usd_b"])
+        revision = fr in WIKI_SOURCE_REVISION_DROPS and b26 < b19
         delta_rows.append(
             {
                 "franchise": fr,
                 "revenue_2019_b": round(b19, 3),
                 "revenue_2026_b": b26,
                 "pct_change": round((b26 - b19) / b19 * 100, 1) if b19 else "",
+                "wiki_source_revision": "Y" if revision else "N",
                 "wiki_franchise_matched": cw["franchise_2026_wiki"],
                 "match_note": cw["match_note"],
                 "source_ids": "S001;S017",
@@ -419,6 +622,7 @@ def main() -> None:
             "revenue_2019_b",
             "revenue_2026_b",
             "pct_change",
+            "wiki_source_revision",
             "wiki_franchise_matched",
             "match_note",
             "source_ids",
@@ -426,26 +630,7 @@ def main() -> None:
         sorted(delta_rows, key=lambda x: -float(x["pct_change"] or 0)),
     )
 
-    people: dict[str, dict] = {}
-    for fr, t in totals.items():
-        for person in split_creators(t["creators"]):
-            key = person.lower()
-            if key not in people:
-                people[key] = {"person": person, "role": "creator", "franchises": []}
-            people[key]["franchises"].append(fr)
-    write_csv(
-        DATA / "entities_people.csv",
-        ["person", "role", "franchises", "source_ids"],
-        [
-            {
-                "person": v["person"],
-                "role": v["role"],
-                "franchises": "; ".join(sorted(set(v["franchises"]))),
-                "source_ids": "S001",
-            }
-            for v in sorted(people.values(), key=lambda x: x["person"])
-        ],
-    )
+    # entities_people.csv is hand-curated (no companies; split creator names by hand).
 
     deals = [
         {
@@ -634,6 +819,7 @@ def main() -> None:
             "worldwide_gross_source",
             "the_numbers_url",
             "box_office_mojo_url",
+            "gross_notes",
             "source_ids",
         ],
         build_budgets_grosses(),

@@ -1,11 +1,11 @@
 {
   "data": [
     {
-      "labels": ["China", "Japan", "Other", "US"],
-      "values": [20, 632.764, 150.549, 718.929],
+      "labels": ["China", "Japan", "Korea", "Other", "US"],
+      "values": [6, 681.494, 20, 44.789, 769.959],
       "marker": {
         "color": "rgba(31,119,180,1)",
-        "colors": ["#E60000", "#0047FF", "#6B6B6B", "#000000"],
+        "colors": ["#E60000", "#0047FF", "#6B6B6B", "#4A6FA5", "#000000"],
         "line": {
           "color": "rgba(255,255,255,1)"
         }

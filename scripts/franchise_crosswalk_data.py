@@ -57,9 +57,15 @@ CROSSWALK: dict[str, tuple[str, str]] = {
         "Grand Theft Auto (GTA)",
         "Exact Wikipedia row title.",
     ),
-    "Gundam": ("Gundam", "Exact Wikipedia row title."),
+    "Gundam": (
+        "Gundam",
+        "2026 Wikipedia total revised down vs 2019 row ($25.5B→$5.0B) — source/methodology change not a real decline.",
+    ),
     "Halo": ("Halo", "Exact Wikipedia row title."),
-    "Hello Kitty": ("Hello Kitty", "Exact Wikipedia row title."),
+    "Hello Kitty": (
+        "Hello Kitty",
+        "2026 Wikipedia total revised down vs 2019 row ($80.0B→$33.5B) — source/methodology change not a real decline.",
+    ),
     "Hunter × Hunter": ("", "Not on Wikipedia franchise table 2026-10-11."),
     "Ice Age": ("Ice Age", "Exact Wikipedia row title."),
     "James Bond": ("James Bond", "Exact Wikipedia row title."),
@@ -69,7 +75,10 @@ CROSSWALK: dict[str, tuple[str, str]] = {
     "Kumamon": ("Kumamon", "Exact Wikipedia row title."),
     "League of Legends": ("", "Not on Wikipedia franchise table 2026-10-11."),
     "Looney Tunes": ("Looney Tunes", "Exact Wikipedia row title."),
-    "Mario": ("Mario", "Wikipedia: Mario (franchise) display title."),
+    "Mario": (
+        "Mario",
+        "2026 Wikipedia total revised down vs 2019 row ($35.0B→$9.74B) — source/methodology change not a real decline.",
+    ),
     "Marvel Cinematic Universe": (
         "Marvel Cinematic Universe (MCU)",
         "Exact Wikipedia row title.",
@@ -160,11 +169,35 @@ REGION: dict[str, tuple[str, str, str, str]] = {
     "Hello Kitty": ("Japan", "Sanrio character.", "Japan", "Sanrio Co., Ltd. (Tokyo)."),
     "Mario": ("Japan", "Nintendo IP.", "Japan", "Nintendo Co., Ltd. (Kyoto)."),
     "One Piece": ("Japan", "Shueisha/Toei manga-anime.", "Japan", "Rights split; publishers primarily Japan-based."),
+    "Neon Genesis Evangelion": ("Japan", "Khara/Gainax anime franchise.", "Japan", "Khara (Tokyo)."),
+    "Sonic the Hedgehog": ("Japan", "Sega video-game mascot.", "Japan", "Sega Sammy Holdings (Tokyo)."),
+    "Monster Strike": ("Japan", "Mixi mobile game.", "Japan", "Mixi (Tokyo)."),
+    "Puzzle & Dragons": ("Japan", "GungHo Online mobile game.", "Japan", "GungHo Online (Tokyo)."),
+    "Fate": ("Japan", "Type-Moon / Aniplex visual-novel franchise.", "Japan", "Type-Moon / Aniplex (Japan)."),
+    "Gran Turismo": ("Japan", "Polyphony Digital / Sony racing sim.", "Japan", "Sony Interactive Entertainment (Japan)."),
+    "CrossFire": ("Korea", "Smilegate FPS (South Korea).", "Korea", "Smilegate (Busan)."),
+    "Dungeon Fighter Online": ("Korea", "Neople/Nexon beat-em-up MMO (South Korea).", "Korea", "Nexon (Seoul)."),
+    "Westward Journey": ("China", "NetEase MMORPG (China).", "China", "NetEase (Hangzhou)."),
+    "Peanuts": ("US", "Charles Schulz comic strip (US).", "US", "Peanuts Worldwide (US)."),
+    "Teenage Mutant Ninja Turtles": ("US", "Eastman/Laird comics (US).", "US", "Nickelodeon / Paramount (US)."),
+    "Grand Theft Auto": ("US", "Rockstar / Take-Two (US).", "US", "Take-Two Interactive (US)."),
+    "Twilight": ("US", "Stephenie Meyer novels (US).", "US", "Lionsgate / Scholastic (US)."),
+    "Care Bears": ("US", "American Greetings card line (US).", "US", "Cloudco Entertainment (US)."),
+    "Strawberry Shortcake": ("US", "American Greetings card line (US).", "US", "WildBrain (US)."),
+    "The Hunger Games": ("US", "Suzanne Collins novels (US).", "US", "Lionsgate / Scholastic (US)."),
+    "PAW Patrol": ("Other", "Keith Chapman series; Spin Master (Canada).", "Canada", "Spin Master (Toronto)."),
+    "Angry Birds": ("Other", "Rovio mobile game (Finland).", "Finland", "Rovio Entertainment (Espoo)."),
+    "James Bond": ("Other", "Ian Fleming novels (UK).", "UK", "MGM / Eon Productions (UK/US)."),
+    "The Phantom of the Opera": ("Other", "Andrew Lloyd Webber musical (UK).", "UK", "Really Useful Group (UK)."),
+    "Bob the Builder": ("Other", "Keith Chapman preschool series (UK).", "UK", "Mattel (US distribution)."),
+    "Assassin's Creed": ("Other", "Ubisoft action-adventure (France/Canada).", "France", "Ubisoft (France)."),
     "League of Legends": (
         "US",
         "Game developed by Riot Games (Los Angeles).",
         "China",
         "Tencent is majority owner; Riot operates as US subsidiary.",
     ),
-    # default filled in script for US/Japan/Other heuristics where not listed
 }
+
+# Wikipedia paired rows where a lower 2026 total reflects editor/source revision, not a real franchise decline.
+WIKI_SOURCE_REVISION_DROPS: frozenset[str] = frozenset({"Hello Kitty", "Mario", "Gundam"})
