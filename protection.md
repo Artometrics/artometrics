@@ -1,0 +1,78 @@
+---
+title: "PROTECTION: When Flops End Hollywood's Silence"
+slug: protection
+author: kyle-mcauliffe
+pubDate: 2026-09-22T00:00:00.000Z
+description: "BBC's Leto exposé asks why not sooner. Six film ROIs and four institutional cases test what forward value has to do with it."
+heroImage: /images/content/articles/protection/hero.jpg
+draft: false
+tags:
+  - arts
+  - film
+subject: Franchises
+tldr: "BBC's July 2026 documentary on Jared Leto reopened the question every belated exposé raises: why not sooner? This report reframes it as an economic question — what was he still worth? Leto's 2020s film slate is mixed to softening (Tron: Ares returned 0.65x its reported budget; Masters of the Universe 0.66x), a pattern this report compares against The Weinstein Company's already-declining finances before its 2017 exposure, Bryan Singer's retained directing credit despite a 2017 firing, and two broadcaster cases — Jimmy Savile and Russell Brand — where the institution was selling trust rather than a bankable slate. The comparison is offered as an editorial framework, not a proven index."
+keyPoints:
+  - "0.65x — Tron: Ares (2025) worldwide gross ÷ reported budget, Leto's most recent lead role"
+  - "0.66x — Masters of the Universe (2026) gross ÷ budget in a supporting role"
+  - "2.02x and 2.04x — Morbius (2022) and House of Gucci (2021), the two 2020s titles that cleared their budgets twice over"
+  - "2017 → 2020 → 2022 — The Weinstein Company's exposé, then Harvey Weinstein's New York conviction, then a second California conviction"
+  - "Dec 2017 → Mar 2019 — Bryan Singer was fired from Bohemian Rhapsody but kept his DGA credit; The Atlantic's report 15 months later is the clearer break point"
+  - "2011 → 2016 — Jimmy Savile died still protected by the BBC; the Dame Janet Smith Review confirmed the abuse five years later"
+faq:
+  - question: "What did the BBC's Jared Leto documentary report?"
+    answer: "In July 2026, BBC News and the documentary Jared Leto: Hollywood's Dark Secret reported criminal sexual conduct allegations from multiple women. Leto denies the allegations. No criminal conviction is reported, and this article uses allegation-and-denial language only."
+  - question: "How did Jared Leto's recent films perform financially?"
+    answer: "Per Box Office Mojo and trade-reported budget figures, Leto's 2020s slate is mixed: House of Gucci (2021) returned 2.04x its budget and Morbius (2022) 2.02x, but Haunted Mansion (2023) returned 0.79x, Tron: Ares (2025) 0.65x, and Masters of the Universe (2026) 0.66x — all below break-even."
+  - question: "Was The Weinstein Company already struggling before Harvey Weinstein's 2017 exposure?"
+    answer: "Yes. MarketWatch reported on October 12, 2017 that The Weinstein Company had struggled financially even before the sexual misconduct allegations became public that same month, based on the studio's declining box-office slate and finances leading into the exposé."
+  - question: "Did Bohemian Rhapsody's success mean Bryan Singer was rehabilitated?"
+    answer: "No. Singer was fired from directing Bohemian Rhapsody in December 2017 but retained his Directors Guild of America credit; the film went on to major commercial and awards success in 2018 and 2019. The Atlantic's March 2019 report on multiple sexual-abuse allegations, which Singer denies, is the point after which his mainstream studio attachments largely stopped. A 2025 Variety report on a small project with Jon Voight is described as a fringe return, not a studio comeback."
+---
+<div id="quarto-content">
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title" class="anchored">IN THIS REPORT</h2>
+  <ul>
+  <li><a href="#research-question" id="toc-research-question">RESEARCH QUESTION</a></li>
+  <li><a href="#leto-slate" id="toc-leto-slate">THE LETO SLATE WAS ALREADY SOFTENING</a></li>
+  <li><a href="#weinstein-cheap" id="toc-weinstein-cheap">WEINSTEIN WAS ALREADY CHEAP</a></li>
+  <li><a href="#hit-not-rehab" id="toc-hit-not-rehab">A HIT IS NOT REHAB</a></li>
+  <li><a href="#firm-sells-trust" id="toc-firm-sells-trust">WHEN THE FIRM SELLS TRUST INSTEAD OF A PRODUCT</a></li>
+  <li><a href="#threshold" id="toc-threshold">TOWARD A PROTECTION THRESHOLD</a></li>
+  <li><a href="#limitations" id="toc-limitations">LIMITATIONS</a></li>
+  <li><a href="#conclusion" id="toc-conclusion">CONCLUSION</a></li>  <li><a href="#data-methods-and-sources" id="toc-data-methods-and-sources">DATA, METHODS &amp; SOURCES</a></li>
+  <li><a href="#editors-note" id="toc-editors-note">EDITOR'S NOTE</a></li>
+  </ul>
+</nav>
+<main class="art-article-main">
+<p class="art-p">BBC News and the July 2026 documentary <em>Jared Leto: Hollywood's Dark Secret</em> reported criminal sexual conduct allegations from multiple women against the actor; Leto denies the allegations. The public question that follows a belated exposé is almost always the same one: why not sooner? Artometrics asks a colder, answerable version of it instead: what was he still worth?</p>
+<figure class="art-chart">
+  <div class="art-chart-live" data-chart="/data/articles/protection/charts/protection-framework.plotly.json" data-fallback="/images/content/articles/protection/charts/protection-framework.png" data-source="Data: Artometrics editorial framework, derived from case facts above — ARTOMETRICS" role="img" aria-label="Editorial framework plotting four cases by institution type and whether forward commercial value had already declined"></div>
+  <figcaption class="art-chart-caption">A proposed framework, not a proven index: where each case sits on institution type and prior commercial decline.</figcaption>
+</figure>
+<figure class="art-chart"> <div class="art-chart-live" data-chart="/data/articles/protection/charts/broadcaster-timeline.plotly.json" data-fallback="/images/content/articles/protection/charts/broadcaster-timeline.png" data-source="Data: BBC / Dame Janet Smith Review; Sunday Times, Channel 4 Dispatches — ARTOMETRICS" role="img" aria-label="Timeline of the Jimmy Savile and Russell Brand cases relative to the BBC and to independent media platforms"></div> <figcaption class="art-chart-caption">Savile's protection outlasted his life; Brand's exposure arrived after he had already left a single institution's payroll.</figcaption> </figure>
+<p class="art-p">This report does not adjudicate the allegations, and it draws no conclusion about their truth. It tests a narrower, economic hypothesis against public box-office data and the record of four earlier cases in which an institution eventually stopped protecting a person it had shielded: Harvey Weinstein, Bryan Singer, Jimmy Savile, and Russell Brand. In each case, allegations against a living or deceased public figure are described using allegation-and-denial language, except where a criminal conviction or an official public inquiry has already settled the record. Both cases sit outside the "declining studio asset" logic that fits Weinstein reasonably well. Savile was never dropped at all — the institution's failure was total and only corrected after death and an official inquiry. Brand's case shows how the model breaks down further once the "institution" is no longer a single employer with a P&amp;L to protect.</p>
+ <h2 id="threshold" class="anchored">TOWARD A PROTECTION THRESHOLD</h2> <p class="art-p"><strong>This section is an editorial framework, not a statistically tested finding.</strong> The chart below places four cases on two proposed axes: whether the person's forward commercial value had already declined before public exposure, and whether the protecting institution is a commercial studio pricing a bankable asset or a broadcaster selling institutional trust. Weinstein sits at "studio, already declining" — the cleanest fit for a threshold story. Savile sits at "broadcaster, not declining" — protection that never broke on its own. Singer sits in between: a studio-adjacent case where a hit film complicated, but ultimately did not reverse, the collapse that followed a second exposé. Leto is plotted as an open question: a 2020s slate that is softening but mixed, inside a studio system, at the moment the BBC's reporting arrived. Reading this map honestly requires holding two things at once. The pattern it shows — protection breaking earlier when there is less left to lose, and holding longer when the product is trust rather than a slate — fits the two cleanest cases well. It fits Singer only partly, and it says nothing yet about Leto beyond describing where his commercial position stood at the moment reporting on the allegations against him arrived.</p>
+<h2 id="limitations" class="anchored">LIMITATIONS</h2>
+<p class="art-p">Allegations are not convictions. Except for Weinstein's 2020 and 2022 convictions and the findings of the BBC-commissioned 2016 Smith Review on Savile, every other claim in this report about Leto, Singer, and Brand is an allegation that the named person denies, and none has produced a criminal conviction as of this report's drafting. This report reaches no conclusion about the truth of any denied allegation.</p>
+<p class="art-p">There is a clear selection bias: this report can only study cases that were eventually exposed, which is not a random sample of institutional protection generally. Flops may precede, follow, or have no relationship at all to when an exposé runs; journalists, sources, and legal processes move on their own timelines that this report does not observe directly. The gross-and-budget ratios in <code>leto-film-book.csv</code> are trade-reported bands from outlets such as Box Office Mojo, Deadline, and SlashFilm rather than audited studio accounting, and are labeled here as derived figures, not confirmed net financials. The "protection threshold" framework itself is an editorial hypothesis map built from four cases; it is not a statistically fitted model and should not be read as one.</p>
+<h2 id="conclusion" class="anchored">CONCLUSION</h2>
+<p class="art-p">The honest version of this report's finding is modest. Jared Leto's 2020s film slate had already softened — three straight titles below break-even on trade-reported figures — by the time the BBC's July 2026 documentary reported allegations against him. That fact alone proves nothing about timing or motive. What the four comparison cases add is a sharper question rather than an answer: institutional protection appears to track forward commercial value more legibly when the institution is a studio pricing a bankable asset (Weinstein) than when it is a broadcaster selling trust (Savile), and a single hit film is not proof that protection has resumed (Singer). Where Leto's case falls on that map is, for now, an open question this report is built to keep asking rather than to close.</p>
+
+<section class="art-back-matter">
+<h2 id="data-methods-and-sources" class="anchored">Data, methods &amp; sources</h2>
+<h3 id="data-and-method" class="anchored art-back-matter__subhead">Data and method</h3>
+<p class="art-p">The film-return figures come from <code>docs/content-os/drafts/protection/leto-film-book.csv</code>, six rows covering Jared Leto film credits from 2021 through 2026: title, release year, role weight (lead, ensemble, or supporting), worldwide gross in millions of US dollars, reported budget in millions of US dollars, and the derived gross-to-budget ratio. Gross figures are drawn from Box Office Mojo; budget figures are trade-reported bands compiled from SlashFilm and Deadline coverage of each title, and are treated throughout as derived estimates rather than audited studio financials. The gross-to-budget ratio is a derived metric calculated as worldwide gross divided by reported budget; it does not account for marketing spend, distribution fees, or backend participation, and is not a substitute for studio profitability accounting.</p>
+<p class="art-p">The institutional comparison cases (Weinstein, Singer, Savile, Brand) are built from named, dated public reporting and official inquiry findings rather than a structured dataset: MarketWatch's October 2017 report on The Weinstein Company's finances, Harvey Weinstein's 2020 and 2022 criminal convictions, The Atlantic's March 2019 report on Bryan Singer, Variety's 2025 report on Singer, the BBC-commissioned 2016 Dame Janet Smith Review on Jimmy Savile, and the September 2023 Sunday Times/Channel 4 Dispatches investigation into Russell Brand. The "protection threshold" chart in the Toward a Protection Threshold section is an editorial index built by Artometrics from the facts above; it is not derived from a quantitative model and its axis positions are qualitative placements, stated as such.</p>
+<h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
+<p>BBC News. <em>Jared Leto criminal sexual conduct allegations</em>, July 2026. <a href="https://www.bbc.com/news/articles/cd7lg2nz2x2o" target="_blank" rel="noopener noreferrer">https://www.bbc.com/news/articles/cd7lg2nz2x2o</a> — Primary reporting on the documentary's claims and Leto's denial; allegation language only.</p>
+<p>BBC Three. <em>Jared Leto: Hollywood's Dark Secret</em>. <a href="https://www.bbc.co.uk/programmes/m002zl1y" target="_blank" rel="noopener noreferrer">https://www.bbc.co.uk/programmes/m002zl1y</a> — Documentary programme page.</p>
+<p>Box Office Mojo. <em>Film gross data</em>. <a href="https://www.boxofficemojo.com/" target="_blank" rel="noopener noreferrer">https://www.boxofficemojo.com/</a> — Observed worldwide gross figures for the Leto 2020s slate.</p>
+<p>MarketWatch. <em>The Weinstein Company struggled financially even before Harvey Weinstein's sexual misconduct allegations</em>, October 12, 2017. <a href="https://www.marketwatch.com/story/the-weinstein-company-struggled-financially-even-before-harvey-weinsteins-sexual-misconduct-allegations-2017-10-12" target="_blank" rel="noopener noreferrer">https://www.marketwatch.com/story/the-weinstein-company-struggled-financially-even-before-harvey-weinsteins-sexual-misconduct-allegations-2017-10-12</a> — Contemporaneous reporting on TWC's pre-exposé financial decline.</p>
+<p>The Atlantic. <em>Bryan Singer's Accusers Speak Out</em>, March 2019. <a href="https://www.theatlantic.com/magazine/archive/2019/03/bryan-singers-accusers-speak-out/580462/" target="_blank" rel="noopener noreferrer">https://www.theatlantic.com/magazine/archive/2019/03/bryan-singers-accusers-speak-out/580462/</a> — Report after which Singer's mainstream studio attachments largely stopped.</p>
+<p>Variety. <em>Bryan Singer secret movie, Jon Voight</em>, 2025. <a href="https://variety.com/2025/film/news/bryan-singer-secret-movie-jon-voight-israel-lebanon-1236499696/" target="_blank" rel="noopener noreferrer">https://variety.com/2025/film/news/bryan-singer-secret-movie-jon-voight-israel-lebanon-1236499696/</a> — Reporting on a fringe project, distinguished from a mainstream studio comeback.</p>
+<p>Related Artometrics reports: <a href="/oscars">The Prestige Economy: Oscars, Grammys, and Nobels</a>.</p>
+<h2 id="editors-note" class="anchored">EDITOR'S NOTE</h2>
+<div class="art-editorial-note"><p><em>This is a reproducible Artometrics report: the underlying film-return data ships as a downloadable CSV via the site's Download menu. Chart PNG exhibits for the figures above are pending the standard Artometrics render pipeline and will be attached alongside the live Plotly views once generated. This report makes no finding about the truth of any denied allegation described above; where a matter is settled public record via criminal conviction or official inquiry, that status is stated explicitly in the text.</em></p>
+</section>
+</main>
+</div>

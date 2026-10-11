@@ -244,6 +244,7 @@ html[data-theme="dark"] .artometrics-article-body .art-citations-toolbar__btn--a
 
 /* ── Color Variables ──────────────────────────────────────── */
 .artometrics-article-body{
+  font-family: 'DM Sans', system-ui, sans-serif;
   --art-bg:        transparent;
   --art-dark:      #000000;
   --art-mid:       #525252;
@@ -355,7 +356,7 @@ html[data-theme="dark"] .artometrics-article-body{
 
 /* ── Section Headings ─────────────────────────────────────── */
 .artometrics-article-body h2{
-  font-family: 'Piazzolla', Georgia, serif;
+  font-family: 'DM Sans', system-ui, sans-serif;
   font-weight: 600;
   font-size: clamp(1.85rem, 3.5vw, 2.75rem);
   line-height: 1.15;
@@ -909,9 +910,9 @@ html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-
   margin: 0 !important;
 }
 .artometrics-article-body main.art-article-main > h2{
-  font-family: 'Anton', Impact, Haettenschweiler, sans-serif !important;
+  font-family: 'DM Sans', system-ui, sans-serif !important;
   font-size: clamp(1.9rem, 3.7vw, 2.75rem) !important;
-  font-weight: 400 !important;
+  font-weight: 700 !important;
   letter-spacing: 1px !important;
   text-transform: uppercase !important;
   text-align: center !important;
@@ -938,7 +939,7 @@ html[data-theme="dark"] .artometrics-article-body main.art-article-main > h2:not
 }
 .artometrics-article-body main.art-article-main > h3,
 .artometrics-article-body main.art-article-main > h3.anchored{
-  font-family: 'DM Sans', sans-serif !important;
+  font-family: 'DM Mono', ui-monospace, monospace !important;
   font-weight: 600 !important;
   font-size: 1rem !important;
   color: var(--art-secondary, #3367e7) !important;
@@ -954,9 +955,11 @@ html[data-theme="dark"] .artometrics-article-body main.art-article-main > h2:not
   text-transform: uppercase !important;
 }
 .artometrics-article-body h2{
-  font-family: 'Anton', Impact, Haettenschweiler, sans-serif !important;
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-weight: 700 !important;
 }
 .artometrics-article-body h2#toc-title{
+  font-family: 'DM Mono', ui-monospace, monospace !important;
   font-size: 0.68rem !important;
   letter-spacing: 0.2em !important;
   border-top: none !important;
@@ -1505,6 +1508,15 @@ html[data-theme="dark"] .artometrics-article-body .art-chart:hover {
   object-position: center;
   border-radius: 2px;
 }
+.artometrics-article-body .art-chart-fallback.art-chart-poster{
+  height: auto;
+  max-height: none;
+  min-height: 12rem;
+}
+.artometrics-article-body .art-chart-live:has(.art-chart-poster):not(.art-chart-live--static){
+  aspect-ratio: auto;
+  min-height: 12rem;
+}
 .artometrics-article-body .art-chart-live--loading .art-chart-fallback{
   opacity: 0.96;
 }
@@ -1916,7 +1928,8 @@ html[data-theme="dark"] .artometrics-article-body main.art-article-main pre {
 .artometrics-article-body .art-wordmark,
 .artometrics-article-body main.art-article-main .art-studio-card__name,
 .artometrics-article-body main.art-article-main .art-wordmark{
-  font-family: "Anton", Impact, Haettenschweiler, sans-serif !important;
+  font-family: "DM Sans", system-ui, sans-serif !important;
+  font-weight: 700 !important;
   font-size: 1.65rem !important;
   font-weight: 400 !important;
   letter-spacing: 0.04em !important;
@@ -2014,7 +2027,8 @@ html[data-theme="dark"] .artometrics-article-body main.art-article-main pre {
 }
 .artometrics-article-body .art-person__name,
 .artometrics-article-body main.art-article-main .art-person__name{
-  font-family: "Anton", Impact, Haettenschweiler, sans-serif !important;
+  font-family: "DM Sans", system-ui, sans-serif !important;
+  font-weight: 700 !important;
   font-size: 1.15rem !important;
   letter-spacing: 0.03em !important;
   text-transform: uppercase !important;
@@ -2039,7 +2053,8 @@ html[data-theme="dark"] .artometrics-article-body main.art-article-main pre {
 }
 .artometrics-article-body .art-title-card__name,
 .artometrics-article-body main.art-article-main .art-title-card__name{
-  font-family: "Anton", Impact, Haettenschweiler, sans-serif !important;
+  font-family: "DM Sans", system-ui, sans-serif !important;
+  font-weight: 700 !important;
   font-size: 1.15rem !important;
   font-weight: 400 !important;
   letter-spacing: 0.03em !important;

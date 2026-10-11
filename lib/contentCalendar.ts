@@ -11,6 +11,10 @@ export type CalendarRow = {
   subdomain: string;
 };
 
+export type IssueWeekItem = CalendarRow & {
+  kind: "this-week" | "coming";
+};
+
 function parseIsoDate(iso: string): Date {
   const [y, m, d] = iso.split("-").map(Number);
   return new Date(Date.UTC(y, m - 1, d));
@@ -30,10 +34,7 @@ export function getContentCalendarRows(): CalendarRow[] {
   return calendarData as CalendarRow[];
 }
 
-/**
- * Up to `limit` investigations for the current issue week (Mon–Sun UTC),
- * preferring Friday releases in that window; fills from nearest upcoming if sparse.
- */
+/** Friday releases with `releaseFriday` in the current Mon–Sun UTC window only. */
 export function getThisWeekInvestigations(
   now = new Date(),
   limit = 3,
@@ -48,31 +49,44 @@ export function getThisWeekInvestigations(
     return release >= weekStart && release < weekEnd;
   });
 
-  const picked: CalendarRow[] = [];
-  const seen = new Set<string>();
-  for (const row of inWeek) {
-    if (seen.has(row.slug)) continue;
-    seen.add(row.slug);
-    picked.push(row);
-    if (picked.length >= limit) return picked;
-  }
+  return inWeek.slice(0, limit);
+}
 
-  const upcoming = rows
-    .filter((row) => parseIsoDate(row.releaseFriday) >= weekStart)
+/** Next scheduled releases after the current issue week (for “Coming”). */
+export function getComingInvestigations(
+  now = new Date(),
+  limit = 3,
+): CalendarRow[] {
+  const rows = getContentCalendarRows();
+  const weekStart = weekStartMondayUtc(now);
+  const weekEnd = new Date(weekStart);
+  weekEnd.setUTCDate(weekEnd.getUTCDate() + 7);
+
+  return rows
+    .filter((row) => parseIsoDate(row.releaseFriday) >= weekEnd)
     .sort(
       (a, b) =>
         parseIsoDate(a.releaseFriday).getTime() -
         parseIsoDate(b.releaseFriday).getTime(),
-    );
+    )
+    .slice(0, limit);
+}
 
-  for (const row of upcoming) {
-    if (seen.has(row.slug)) continue;
-    seen.add(row.slug);
-    picked.push(row);
-    if (picked.length >= limit) break;
-  }
-
-  return picked;
+/** This week + coming rows for the home issue band (no backfill across sections). */
+export function getIssueWeekBand(
+  now = new Date(),
+  thisWeekLimit = 3,
+  comingLimit = 3,
+): IssueWeekItem[] {
+  const thisWeek = getThisWeekInvestigations(now, thisWeekLimit).map((row) => ({
+    ...row,
+    kind: "this-week" as const,
+  }));
+  const coming = getComingInvestigations(now, comingLimit).map((row) => ({
+    ...row,
+    kind: "coming" as const,
+  }));
+  return [...thisWeek, ...coming];
 }
 
 export function formatIssueWeekLabel(now = new Date()): string {

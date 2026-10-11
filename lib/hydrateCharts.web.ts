@@ -55,19 +55,46 @@ export function loadPlotlyFromCdn(): Promise<PlotlyLike | null> {
   });
 }
 
-function showFallback(live: HTMLElement, fallback: string, label: string | null) {
-  live.innerHTML = "";
+function showFallback(
+  live: HTMLElement,
+  fallback: string,
+  label: string | null,
+  options?: { poster?: boolean; replace?: boolean },
+) {
+  const poster = options?.poster ?? false;
+  const replace = options?.replace ?? true;
+  if (replace) live.innerHTML = "";
+  if (live.querySelector(".art-chart-fallback")) return;
+
   const img = document.createElement("img");
   img.src = fallback;
   img.alt = label || live.getAttribute("data-title") || "Chart";
-  img.className = "art-chart-fallback";
+  img.className = poster
+    ? "art-chart-fallback art-chart-poster"
+    : "art-chart-fallback";
   img.loading = "eager";
   img.decoding = "async";
   live.appendChild(img);
   live.style.height = "";
   live.style.minHeight = "";
   live.style.paddingTop = "";
-  live.classList.add("art-chart-live--static", "art-chart-live--ready");
+  if (!poster) {
+    live.classList.add("art-chart-live--static", "art-chart-live--ready");
+    live.classList.remove("art-chart-live--loading");
+  }
+}
+
+/** Eager PNG under lazy Plotly mounts so charts are not empty before scroll. */
+export function primeChartPoster(live: HTMLElement) {
+  if (live.dataset.poster === "1") return;
+  const fallback = live.getAttribute("data-fallback");
+  const chartUrl = live.getAttribute("data-chart");
+  if (!fallback || !chartUrl) return;
+  showFallback(live, fallback, live.getAttribute("aria-label"), {
+    poster: true,
+    replace: false,
+  });
+  live.dataset.poster = "1";
   live.classList.remove("art-chart-live--loading");
 }
 
@@ -263,6 +290,9 @@ export async function hydrateCharts(root: HTMLElement) {
   );
 
   pending.forEach((node) => {
+    if (node.getAttribute("data-chart") && node.getAttribute("data-fallback")) {
+      primeChartPoster(node);
+    }
     if (node.getAttribute("data-chart") && !prefersStaticCharts()) {
       observer.observe(node);
     } else {

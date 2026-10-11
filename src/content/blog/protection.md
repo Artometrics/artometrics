@@ -4,7 +4,7 @@ slug: protection
 author: kyle-mcauliffe
 pubDate: 2026-09-22T00:00:00.000Z
 description: "BBC's Leto exposé asks why not sooner. Six film ROIs and four institutional cases test what forward value has to do with it."
-heroImage: /images/content/articles/protection/hero.png
+heroImage: /images/content/articles/protection/hero.jpg
 draft: false
 tags:
   - arts
