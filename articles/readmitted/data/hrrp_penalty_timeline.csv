@@ -1,0 +1,7 @@
+fiscal_year,max_penalty_pct,share_hospitals_any_penalty_pct,share_hospitals_penalty_1pct_or_more,source_note
+2013,1,,,ACA HRRP first payment year; 1% cap (CMS IPPS FY2013 final rule)
+2014,2,,,Cap rose to 2% (CMS IPPS FY2014 final rule)
+2015,3,,,"Cap rose to 3%, where it remains (CMS IPPS FY2015 final rule)"
+2024,3,,,"CMS estimated 2,356 hospitals with operating DRG payment reductions (BDO summary of FY2024 IPPS final rule)"
+2025,3,78.6,7.0,Advisory Board analysis of CMS preliminary FY2025 HRRP file
+2026,3,79.9,8.1,Advisory Board analysis of CMS preliminary FY2026 HRRP file

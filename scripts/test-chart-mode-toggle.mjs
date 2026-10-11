@@ -10,8 +10,8 @@ try {
 
   const figures = page.locator("figure.art-chart");
   const count = await figures.count();
-  if (count !== 5) {
-    throw new Error(`Expected 5 charts on readmitted, found ${count}`);
+  if (count !== 8) {
+    throw new Error(`Expected 8 charts on readmitted, found ${count}`);
   }
 
   const switchers = await page.locator(".art-chart-mode-switch").count();

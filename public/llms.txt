@@ -131,7 +131,7 @@
 - [WEALTH: Middle Brackets Gained Income Share; Top Tiers Trailed the Median](https://artometrics.com/wealth): Middle income groups claimed 16% more share; top earners held 6.7 points less than the 10.9% median between 1967 and 2019. (civics)
 - [WINE: Austria and Chile, Two Points Apart](https://artometrics.com/wine): Austria leads Chile by 2.00 points; the median sits at 88.0 in a dataset where the top dozen titles all score 100. (culture)
 - [POKEMON: Dragon-types Earn Their Attack Stats—Bug-types Don't Recover](https://artometrics.com/pokemon): Game Freak's type system encodes stat tradeoffs, power creep clusters at the tail, and Cosmoem weighs 999.9 kg at 0.1 meters. (sports)
-- [READMITTED: Half of Hospitals Beat CMS's Benchmark](https://artometrics.com/readmitted): 48.1% of hospital-condition pairs exceed CMS's expected readmission rate; Hip/Knee leads at 1.00485 ERR—nearly twice the excess of the next track. (science)
+- [READMITTED: The 3% Stick Medicare Keeps Swinging](https://artometrics.com/readmitted): In CMS's latest Hospital Readmissions Reduction Program extract, 48.2% of hospital–condition pairs still exceed the expected readmission ratio after a decade of penalties capped at 3% of Medicare payments. This R2 report maps HRRP history, who pays, safety-net effects, observation and mortality debates, international comparators, and eight charts for hospital executives. (science)
 - [CAESAR: Power at 0.95, Then the Ides](https://artometrics.com/caesar): Caesar's LTA profile shows 0.95 Need for Power and 0.31 Distrust — he built an empire on magnanimity and died when three pardoned senators proved the theory wrong. (humanities)
 - [GIANTS: Three Titles in Five Years at Payroll Nine](https://artometrics.com/giants): San Francisco's 2010–2014 dynasty won three titles with a draft-built rotation at mid-tier payroll—then couldn't replicate the model. (sports)
 - [WARRIORS: Seventy-Three Wins Rewrote Basketball Offense](https://artometrics.com/warriors): Golden State won 73 games in 2015–16, launched 15 more threes per game than the league, and changed how every franchise builds offense. (sports)
@@ -150,4 +150,4 @@
 
 ## Generated
 
-Updated: 2026-10-11T10:37:02.972Z
+Updated: 2026-10-11T10:35:01.316Z

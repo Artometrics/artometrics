@@ -1,7 +1,7 @@
-condition,avg_err
-Hip/Knee,1.00485
-COPD,1.00271
-Heart Failure,1.00254
-AMI,1.00212
-Pneumonia,1.00198
-CABG,1.00187
+condition,n,avg_err,pct_penalized,avg_predicted_rate
+Hip/Knee,1447,1.003985,47.89,5.4913
+CABG,878,1.001789,49.89,10.6755
+AMI,1736,1.001755,49.65,13.422
+Pneumonia,2715,1.001486,46.81,15.5974
+Heart Failure,2621,1.001439,48.91,19.3816
+COPD,2323,1.001133,47.22,18.0014
