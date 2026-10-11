@@ -1,0 +1,332 @@
+/* Franchise video storyboard deck — Anime gold-standard house style (HTML port) */
+@font-face {
+  font-family: "Chomsky";
+  src: url("../../../../public/fonts/Chomsky.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap");
+
+:root {
+  --red: #e60000;
+  --blue: #0047ff;
+  --bg: #0a0a0a;
+  --fg: #ffffff;
+  --muted: #a8a8a8;
+  --frame-w: 1920px;
+  --frame-h: 1080px;
+  --red-box: 3px solid var(--red);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #111;
+  color: var(--fg);
+}
+
+.dm-sans {
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+
+.dm-mono {
+  font-family: "DM Mono", ui-monospace, monospace;
+}
+
+.chomsky {
+  font-family: "Chomsky", "DM Sans", serif;
+}
+
+.deck {
+  margin: 0;
+}
+
+/* Single-slide capture mode (Mac mini PNG export) */
+body.deck--capture .slide {
+  display: none;
+  margin: 0;
+}
+
+body.deck--capture .slide.is-active {
+  display: block;
+}
+
+body.deck--capture {
+  width: var(--frame-w);
+  height: var(--frame-h);
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Review mode: stack slides with gap */
+body.deck--review .slide {
+  margin: 24px auto;
+}
+
+.slide {
+  width: var(--frame-w);
+  height: var(--frame-h);
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.aspect-9x16 {
+  --frame-w: 1080px;
+  --frame-h: 1920px;
+}
+
+.slide-frame {
+  width: 100%;
+  height: 100%;
+  padding: 72px 90px 64px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.red-box-target {
+  box-shadow: inset 0 0 0 3px var(--red);
+  padding: 6px 10px;
+  display: inline-block;
+}
+
+.slide-kicker {
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 28px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--red);
+  max-width: 720px;
+}
+
+.entity-on-screen {
+  font-size: 40px;
+  font-weight: 500;
+  margin: 0 0 24px;
+  color: var(--fg);
+}
+
+/* Big-number card */
+.big-number-block {
+  margin: auto 0 16px;
+  align-self: flex-start;
+}
+
+.count-up {
+  font-size: clamp(72px, 10vw, 140px);
+  font-weight: 500;
+  line-height: 1.05;
+  color: var(--fg);
+  letter-spacing: -0.02em;
+}
+
+.context-line {
+  font-size: 32px;
+  font-weight: 500;
+  color: #e0e0e0;
+  max-width: 1200px;
+  margin: 0;
+}
+
+/* Chart beat */
+.chart-stage {
+  flex: 1;
+  min-height: 0;
+  background: #fff;
+  border: 1px solid #333;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.chart-embed {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  transform: none !important;
+}
+
+.chart-beat-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.chart-beat-label {
+  font-size: 24px;
+  color: var(--fg);
+}
+
+/* Asset (logo / poster / still / product) */
+.asset-stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 12px 0;
+}
+
+.asset-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: none;
+  transform: none !important;
+}
+
+.asset-credit {
+  font-size: 16px;
+  color: var(--muted);
+  margin: 0;
+  max-width: 100%;
+}
+
+.slide-poster .asset-image,
+.slide-official-still .asset-image {
+  max-height: 82%;
+}
+
+/* Type card */
+.slide-type-card .slide-frame {
+  justify-content: center;
+}
+
+.type-quote {
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.35;
+  max-width: 1500px;
+  margin: 0 0 48px;
+}
+
+.type-source {
+  font-size: 18px;
+  color: var(--muted);
+  margin: 0;
+  max-width: 1200px;
+}
+
+/* AI placeholder */
+.ai-stage {
+  flex: 1;
+  position: relative;
+  background: #111;
+  border: 1px dashed #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  margin-bottom: 20px;
+}
+
+.ai-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+
+.ai-image.is-loaded {
+  opacity: 1;
+}
+
+.ai-placeholder {
+  text-align: center;
+  color: var(--muted);
+  padding: 24px;
+}
+
+.ai-placeholder .prompt-id {
+  display: block;
+  font-size: 48px;
+  color: var(--blue);
+  margin-bottom: 12px;
+}
+
+.ai-placeholder .prompt-hint {
+  font-size: 16px;
+}
+
+.mechanism-caption {
+  font-size: 26px;
+  margin: 0;
+  max-width: 1400px;
+}
+
+/* Bookend */
+.slide-bookend .slide-frame {
+  align-items: center;
+  justify-content: center;
+}
+
+.bookend-inner {
+  text-align: center;
+}
+
+.bookend-logo {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 24px;
+}
+
+.bookend-wordmark {
+  font-size: 72px;
+  margin: 0 0 12px;
+  color: var(--fg);
+}
+
+.bookend-sub {
+  font-size: 22px;
+  color: var(--muted);
+  margin: 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Speaker notes (hidden on slide; for export / presenter tools) */
+.speaker-notes {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+body.deck--notes .speaker-notes {
+  position: static;
+  width: auto;
+  height: auto;
+  clip: auto;
+  padding: 16px;
+  background: #222;
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* Vertical layout tweaks */
+.aspect-9x16 .count-up {
+  font-size: 96px;
+}
+
+.aspect-9x16 .type-quote {
+  font-size: 36px;
+}
+
+.aspect-9x16 .entity-on-screen {
+  font-size: 32px;
+}
