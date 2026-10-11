@@ -146,8 +146,8 @@ export default function AftercareTarotScreen() {
       />
       <ToolsSubnav links={NAV} />
       <Text className="text-xs tracking-[1.8px] uppercase font-bold text-accent">Aftercare</Text>
-      <Text className="font-serif text-[36px] font-bold text-fg">Tarot</Text>
-      <Text className="font-serif text-base leading-[26px] max-w-[560px] text-muted">
+      <Text className="font-sans text-[36px] font-bold text-fg">Tarot</Text>
+      <Text className="font-sans text-base leading-[26px] max-w-[560px] text-muted">
         Ask softly. Sit with what arrives.
       </Text>
 
@@ -176,10 +176,10 @@ export default function AftercareTarotScreen() {
         onChangeText={setQuestion}
         placeholder="Optional question"
         placeholderTextColorClassName="text-subtle"
-        className="border border-border px-3 py-2.5 font-serif text-base text-fg bg-bg-elevated"
+        className="border border-border px-3 py-2.5 font-sans text-base text-fg bg-bg-elevated"
       />
 
-      {error ? <Text className="font-serif text-[15px] text-accent">{error}</Text> : null}
+      {error ? <Text className="font-sans text-[15px] text-accent">{error}</Text> : null}
 
       <PrimaryButton
         label={pulling ? "Pulling…" : "Pull cards"}
@@ -191,7 +191,7 @@ export default function AftercareTarotScreen() {
         <View className="mt-2 border border-border p-4 gap-2.5">
           <Text className="text-xs tracking-wide uppercase font-bold text-muted">This pull</Text>
           {pull.question ? (
-            <Text className="font-serif text-[17px] leading-[26px] text-fg">"{pull.question}"</Text>
+            <Text className="font-sans text-[17px] leading-[26px] text-fg">"{pull.question}"</Text>
           ) : null}
           <View className="flex-row flex-wrap gap-3">
             {(pull.cards ?? []).map((card, i) => {
@@ -215,7 +215,7 @@ export default function AftercareTarotScreen() {
                       {card.position}
                     </Text>
                   ) : null}
-                  <Text className="font-serif text-[15px] font-bold text-fg">
+                  <Text className="font-sans text-[15px] font-bold text-fg">
                     {card.name}
                     {card.reversed ? " (rev.)" : ""}
                   </Text>
@@ -224,7 +224,7 @@ export default function AftercareTarotScreen() {
             })}
           </View>
           {pull.interpretation ? (
-            <Text className="font-serif text-base leading-[26px] text-muted">{pull.interpretation}</Text>
+            <Text className="font-sans text-base leading-[26px] text-muted">{pull.interpretation}</Text>
           ) : null}
         </View>
       ) : null}
@@ -233,7 +233,7 @@ export default function AftercareTarotScreen() {
       {loading ? (
         <ActivityIndicator color={colors.accent} />
       ) : history.length === 0 ? (
-        <Text className="font-serif text-base leading-[26px] max-w-[560px] text-muted">
+        <Text className="font-sans text-base leading-[26px] max-w-[560px] text-muted">
           No pulls yet. Start with a single card.
         </Text>
       ) : (
@@ -248,7 +248,7 @@ export default function AftercareTarotScreen() {
                 {h.spread_type === "three" ? "Three-card" : "Single"}
                 {h.created_at ? ` · ${new Date(h.created_at).toLocaleDateString()}` : ""}
               </Text>
-              <Text className="font-serif text-[15px] leading-[22px] text-fg" numberOfLines={2}>
+              <Text className="font-sans text-[15px] leading-[22px] text-fg" numberOfLines={2}>
                 {h.question ||
                   (h.cards ?? []).map((c) => c.name).join(", ") ||
                   "Untitled pull"}

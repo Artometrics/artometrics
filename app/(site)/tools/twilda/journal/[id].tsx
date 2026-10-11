@@ -105,7 +105,7 @@ export default function TwildaJournalEntryScreen() {
         }}
         placeholder="Title"
         placeholderTextColorClassName="text-subtle"
-        className="font-serif text-[28px] font-bold border-b border-border py-2 text-fg"
+        className="font-sans text-[28px] font-bold border-b border-border py-2 text-fg"
       />
       <TextInput
         multiline
@@ -116,7 +116,7 @@ export default function TwildaJournalEntryScreen() {
         }}
         placeholder="Write…"
         placeholderTextColorClassName="text-subtle"
-        className="border border-border min-h-[320px] p-3.5 font-serif text-[17px] leading-7 text-fg bg-bg-elevated"
+        className="border border-border min-h-[320px] p-3.5 font-sans text-[17px] leading-7 text-fg bg-bg-elevated"
         style={{ textAlignVertical: "top" }}
       />
       <View className="flex-row flex-wrap gap-3">

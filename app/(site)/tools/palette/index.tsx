@@ -94,9 +94,9 @@ export default function PaletteHomeScreen() {
       />
       <ToolsSubnav links={NAV} />
       <Text className="text-xs tracking-[1.8px] uppercase font-bold text-accent">Studio</Text>
-      <Text className="font-serif text-[36px] font-bold text-fg">Color Kit</Text>
+      <Text className="font-sans text-[36px] font-bold text-fg">Color Kit</Text>
       <ToolsAccent />
-      <Text className="font-serif text-base leading-[26px] max-w-[560px] text-muted">
+      <Text className="font-sans text-base leading-[26px] max-w-[560px] text-muted">
         Analyze a photo for season + palette recommendations, then save looks to your profile.
       </Text>
 
@@ -110,8 +110,8 @@ export default function PaletteHomeScreen() {
         <ActivityIndicator className="mt-7" color={colors.accent} />
       ) : items.length === 0 ? (
         <View className="mt-5 border border-border bg-bg-elevated p-[22px] gap-2">
-          <Text className="text-[22px] font-bold font-serif text-fg">No saved palettes</Text>
-          <Text className="font-serif text-base leading-[26px] max-w-[560px] text-muted">
+          <Text className="text-[22px] font-bold font-sans text-fg">No saved palettes</Text>
+          <Text className="font-sans text-base leading-[26px] max-w-[560px] text-muted">
             Upload a selfie or photo to get your suggested season and swatches.
           </Text>
         </View>
@@ -121,7 +121,7 @@ export default function PaletteHomeScreen() {
             const season = pal.seasonId ? seasonById(pal.seasonId) : null;
             return (
               <View key={pal.id} className="border border-border p-4 gap-2">
-                <Text className="text-xl font-bold font-serif text-fg">{pal.title}</Text>
+                <Text className="text-xl font-bold font-sans text-fg">{pal.title}</Text>
                 {season ? (
                   <Text className="text-[13px] leading-5 text-accent">
                     {season.name} — {season.tagline}

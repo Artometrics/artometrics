@@ -254,8 +254,8 @@ export default function AftercareBirthToolsScreen() {
           { label: "Birth tools" },
         ]}
       />
-      <Text className="font-serif text-[36px] font-bold text-fg">Birth tools</Text>
-      <Text className="font-serif text-base leading-[26px] max-w-[640px] text-muted">
+      <Text className="font-sans text-[36px] font-bold text-fg">Birth tools</Text>
+      <Text className="font-sans text-base leading-[26px] max-w-[640px] text-muted">
         Name numbers, life path, and sun notes — reflective tools, not science, medical, or
         financial advice.
       </Text>
@@ -313,7 +313,7 @@ export default function AftercareBirthToolsScreen() {
               />
 
               {error ? (
-                <Text className="font-serif text-[15px] text-accent">{error}</Text>
+                <Text className="font-sans text-[15px] text-accent">{error}</Text>
               ) : null}
               {savedMsg ? (
                 <Text className="text-sm text-muted">{savedMsg}</Text>
@@ -328,7 +328,7 @@ export default function AftercareBirthToolsScreen() {
             <View className="flex-grow flex-[1] min-w-[280px] gap-3">
               <View className="border border-border p-3.5 gap-1.5 bg-bg-elevated">
                 <Text className="text-xs tracking-wide uppercase font-bold text-muted">Today</Text>
-                <Text className="font-serif text-base text-fg">
+                <Text className="font-sans text-base text-fg">
                   {age != null ? `Age ${age}` : "Add a birth date"}
                   {nextBday
                     ? ` · Next birthday in ${nextBday.daysUntil} day${nextBday.daysUntil === 1 ? "" : "s"}`
@@ -397,7 +397,7 @@ export default function AftercareBirthToolsScreen() {
                       <Text className="text-xs tracking-wide uppercase font-bold text-accent">
                         {card.badge}
                       </Text>
-                      <Text className="font-serif text-lg font-bold flex-1 text-fg">
+                      <Text className="font-sans text-lg font-bold flex-1 text-fg">
                         {"title" in card.reading
                           ? card.reading.title
                           : `${(card.reading as SunReading).sign} · ${(card.reading as SunReading).element} / ${(card.reading as SunReading).modality}`}
@@ -413,7 +413,7 @@ export default function AftercareBirthToolsScreen() {
                             {(card.reading as NumberReading).keywords.join(" · ")}
                           </Text>
                         ) : null}
-                        <Text className="font-serif text-[15px] leading-6 text-fg">
+                        <Text className="font-sans text-[15px] leading-6 text-fg">
                           {card.reading.essay}
                         </Text>
                         <Text className="text-sm italic text-muted">

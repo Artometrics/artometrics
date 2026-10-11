@@ -95,10 +95,10 @@ export default function PaletteAnalyzeScreen() {
         path="/tools/palette/analyze"
       />
       <ToolsSubnav links={NAV} />
-      <Text className="font-serif text-[36px] font-bold text-fg">
+      <Text className="font-sans text-[36px] font-bold text-fg">
         One selfie. Your season.
       </Text>
-      <Text className="font-serif text-base leading-[26px] max-w-[560px] text-muted">
+      <Text className="font-sans text-base leading-[26px] max-w-[560px] text-muted">
         Upload a photo for a suggested season, undertone read, and wearable palette.
       </Text>
 
@@ -114,7 +114,7 @@ export default function PaletteAnalyzeScreen() {
             <Text className="text-[11px] tracking-[2px] font-bold text-subtle">ARTOMETRICS</Text>
           </View>
 
-          <Text className="text-[32px] font-bold font-serif text-fg">
+          <Text className="text-[32px] font-bold font-sans text-fg">
             {result.season.name}
           </Text>
           <Text className="text-[15px] -mt-1 text-muted">
@@ -207,7 +207,7 @@ export default function PaletteAnalyzeScreen() {
               />
             </View>
           ) : (
-            <Text className="font-serif text-base leading-[26px] max-w-[560px] text-muted">
+            <Text className="font-sans text-base leading-[26px] max-w-[560px] text-muted">
               Your colors, left. Colors to avoid, right.
             </Text>
           )}
@@ -237,7 +237,7 @@ export default function PaletteAnalyzeScreen() {
           <PrimaryButton label="Save to profile" onPress={() => void onSave()} />
         </View>
       ) : (
-        <Text className="font-serif text-base leading-[26px] max-w-[560px] text-subtle">
+        <Text className="font-sans text-base leading-[26px] max-w-[560px] text-subtle">
           Tip: natural daylight selfies work best. No filter, face in frame.
         </Text>
       )}

@@ -1,0 +1,86 @@
+# Madison IG release checklist (Kyle, Oct 11 2026). [x] = already posted
+- [ ] Pandora nox MV
+- [ ] Bright eyes Hollywood bowl
+- [ ] Sheryl & Ivy white dress high low skirt fashion week
+- [ ] Kat Mindy Wiess Ring pop
+- [ ] Charissa Thompson Swift wedding
+- [ ] Jackie Hermes show
+- [ ] Kat Isa Briones actor's event
+- [ ] Kat lily collias cape fear premiere
+- [ ] Kat hannah burner press
+- [ ] Matt and ang africa MV
+- [ ] Luna MV
+- [ ] Chris Horan Demi Tour bodysuits
+- [ ] Monica rose isabel marie
+- [ ] Spirit box domestic tour
+- [ ] Spirit box korn tour
+- [x] Vanessa elle Kennedy off campus
+- [ ] Vanessa tim love overboard
+- [x] Jenny Kamie Crawford gloves
+- [ ] Vanessa Jack wright fashion awards
+- [ ] Brit Kara emma coachella
+- [ ] Carol Muna MV
+- [ ] Chris Barbie dilara corset skirt and top
+- [ ] Chris Barbie leather skirt?
+- [ ] Chris rowan rosarte
+- [ ] Chris xtina x redkin
+- [ ] Chris joel kim booster drag race
+- [x] Carol jen Kulture and Blossom miu miu
+- [ ] Jen collin kelly rolland halter gown
+- [ ] Niki Novak oscars
+- [ ] Ivy sheryl vanity fair oscars black velvet
+- [ ] Chris barbie bf suit
+- [ ] Ariel tunnel quarry suit
+- [ ] Afiya bennet elton john
+- [ ] Jen collin emily kelly roland gold dress
+- [ ] Chris demi book press
+- [ ] Kenneth Jenny arrigo elton john lilac
+- [ ] Amirra kinigra deon black women in Hollywood yellow suit
+- [ ] Landon tube tops
+- [ ] Ivy sheryl time mag red cocktail
+- [ ] Amirra jackie cream coat teal suit
+- [ ] Amirra london holmes Naacp awards
+- [ ] Amirra jackie naacp blue beaded dress
+- [ ] Amiraa jackie red and cream cocktail fashion week
+- [ ] Kimberly dawn wedding
+- [ ] Kara brit emma superbowl leopard skirt, grey dress, suede skirt
+- [ ] Ivy lila grammys green top, balmain trench, Valdrin braid gown
+- [ ] Kollin victoria monet jean paul
+- [ ] Kollin victoria monet feather nude gown
+- [ ] Ivy Sheryl gretta constintine black dress
+- [ ] Joy flo pregrammys
+- [ ] Matt grammys
+- [ ] Brandy ashley boy is mine tour
+- [x] Ivy Sheryl golden globes
+- [ ] Michelle wroan golden globes
+- [ ] Ivy sheryl neoprene gown peoples choice
+- [ ] Ivy sheryl Disney gown
+- [ ] Collobo inflatable getty
+- [ ] Angela fjolla cocktail
+- [ ] Ashley tony braxton dancers and tonight show
+- [ ] Ivy sheryl 35th diva foundation
+- [ ] Ashley tony kelly clarkson show
+- [ ] Camilla fashion week boots
+- [ ] Ashley Jessica betts birthday
+- [x] En vogue ashley mesh dresses
+- [ ] Sarah silverman tonight show
+- [ ] Queen herby red spr repairs
+- [x] Ivy Sheryl actor awards ostrich bao
+- [x] Kimberly dawn cmt awards
+- [x] Matt angela roberto cavalli suit
+- [x] Charissa wedding swift kelce
+- [ ] Lala x Maidenform X bustle
+- [ ] Ivy high low skirt
+- [ ] Emma robbers wedding
+- [ ] Adela nicole kidman MV
+- [ ] Luna airplane mv
+- [ ] Cliff cash paragon
+- [ ] Boris alex paragon
+- [ ] Sheryl emmys 26
+- [ ] Isa briones emmys 26
+- [ ] Brittany Ishibashi emmys 26
+- [ ] Adela tutu's assistant jess
+- [ ] Meg and maddie emmys
+- [ ] Charli vmas chris horan
+- [ ] Robyn SF Zara Larson tour kat T
+- [ ] Von dutch buffalo wild wings
