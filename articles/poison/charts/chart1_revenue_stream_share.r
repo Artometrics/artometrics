@@ -93,8 +93,8 @@ p1 <- ggplot(chart1, aes(x = share_pct, y = stream)) +
     expand = expansion(mult = c(0, 0.16))
   ) +
   labs(
-    title = "Merchandise share of revenue across <span style='color:#C0392B;'>107</span> tracked franchises",
-    subtitle = "Share of tracked lifetime revenue by stream (published franchise-report totals)",
+    title = "Merchandise share of revenue across <span style='color:#C0392B;'>103</span> franchise rows",
+    subtitle = "Share of row-sum lifetime revenue by stream (franchise.csv, TidyTuesday 2019-07-02)",
     x = "Share of tracked lifetime revenue (%)",
     y = NULL
   ) +
@@ -120,7 +120,7 @@ fig1 <- plot_ly(
   hovertemplate = "<b>%{y}</b><br>%{x}% of tracked revenue<extra></extra>"
 ) %>%
   plotly_chrome(
-    title = "Merchandise share of revenue across 107 tracked franchises",
+    title = "Merchandise share of revenue across 103 franchise rows",
     subtitle = "Share of tracked lifetime revenue by stream",
     takeaway = "Merchandise and licensing — not box office — carry most franchise revenue",
     source = FRANCHISE_SOURCE,
