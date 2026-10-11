@@ -4,7 +4,7 @@ project:
   type: default
   output-dir: .
   render:
-    - padres.qmd
+    - padres-the-artometrics-of-paying-for-october.qmd
 
 execute:
   echo: false

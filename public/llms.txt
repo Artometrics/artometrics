@@ -40,6 +40,7 @@
 
 ## Reports
 
+- [PADRES: Record Sale, Zero Championships](https://artometrics.com/padres): San Diego solved demand and the tax bill. It has not solved October. Franchise values follow the market and the ballpark anyway. (sports)
 - [INSTITUTIONS: When Dynasties Are Systems](https://artometrics.com/institutions): Yankees, Patriots, Celtics, Cowboys: a synthesis of Artometrics' sports-dynasty reports asks what transfers when winning is a system, not a roster. (sports)
 - [JACKSON: The Cost of Being the Product](https://artometrics.com/jackson): A Psychonomics profile of Michael Jackson — Thriller's 34× RIAA certification, the 2016 Sony/ATV deal, and the disputed allegations on the same ledger. (humanities)
 - [NARRATIVES: The Field Guide Culture Workers Needed](https://artometrics.com/narratives): A working framework for treating economic narratives as contagious, falsifiable objects — built from Shiller and Kuran, not a proprietary dataset. (civics)
@@ -47,7 +48,6 @@
 - [POISON: What Star Risk Costs an IP](https://artometrics.com/poison): Merch built Pokémon's $91B; one actor's six films show the bill. (arts)
 - [PROTECTION: When Flops End Hollywood's Silence](https://artometrics.com/protection): BBC's Leto exposé asks why not sooner. Six film ROIs and four institutional cases test what forward value has to do with it. (arts)
 - [BLUEPRINT: Record Sale, No Championship Formula](https://artometrics.com/blueprint): José E. Feliciano and Kwanza Jones paid a record $3.9bn for a club drawing 42,000 a game, ranked last in farm talent, and carrying $858m owed to five underperforming stars. (sports)
-- [PADRES: Record Sale, Zero Championships](https://artometrics.com/padres): San Diego sold for $3.9bn in May 2026 — a record — despite 57 seasons and zero titles. The price measures demand, not delivery. (sports)
 - [BEYONCE: The Cost of Controlling the House](https://artometrics.com/beyonce): A Psychonomics profile of Beyoncé — Hermann Leadership Trait Analysis, Parkwood as institutionalized self, Lemonade’s canon economics, and an 8,000-line lyric machine. (humanities)
 - [TRADEMARKS: A ¥10.3 Million Win Becomes Cultural Reckoning](https://artometrics.com/trademarks): Louis Vuitton won ¥10.3 million against Molly Tea in Suzhou court on 29 June 2026 for four-petal logo infringement. Chinese social media reframed the first-to-file trademark case as foreign enclosure of Tang-era motifs. (arts)
 - [STREAMING: Netflix Markets 40 Hits Against a 4,800-Title Catalog](https://artometrics.com/streaming): Public streaming inventories reveal 90% of titles generate less than 1% of engagement while platforms market the same 50 properties quarterly. (arts)
@@ -150,4 +150,4 @@
 
 ## Generated
 
-Updated: 2026-10-10T23:56:16.707Z
+Updated: 2026-10-11T09:17:25.121Z
