@@ -6,7 +6,7 @@ pubDate: 2026-03-31T00:00:00.000Z
 description: >-
   In a century of MyAnimeList data, light-novel TV adaptations draw 32 times the median audience of original series. The data also shows where fan ratings and commercial value part ways.
 heroImage: /images/content/articles/anime/hero.webp
-audioSrc: /audios/anime.mp3
+audioSrc: /audios/anime-r2.mp3
 draft: false
 tags:
   - arts

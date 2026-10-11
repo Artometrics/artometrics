@@ -14,6 +14,8 @@ type Props = {
   title?: string;
   /** Known file length in seconds, shown before the player reports duration. */
   runtimeSeconds?: number;
+  /** Optional caption under the controls, e.g. voice credit and runtime. */
+  label?: string;
 };
 
 function formatTime(seconds: number) {
@@ -23,7 +25,7 @@ function formatTime(seconds: number) {
   return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
-export function ArticleNarrationPlayer({ audioSrc, title, runtimeSeconds }: Props) {
+export function ArticleNarrationPlayer({ audioSrc, title, runtimeSeconds, label }: Props) {
   const uri = assetUrl(audioSrc);
   const player = useAudioPlayer(uri);
   const status = useAudioPlayerStatus(player);
@@ -158,6 +160,9 @@ export function ArticleNarrationPlayer({ audioSrc, title, runtimeSeconds }: Prop
           style={{ width: `${progress * 100}%` }}
         />
       </Pressable>
+      {label ? (
+        <Text className="font-mono text-[11px] leading-4 text-white/60">{label}</Text>
+      ) : null}
     </View>
   );
 }
