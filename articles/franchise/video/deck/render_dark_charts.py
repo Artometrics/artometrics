@@ -11,9 +11,6 @@ ROOT = Path(__file__).resolve().parents[4]
 JSON_DIR = ROOT / "public/data/articles/franchise/charts"
 OUT_DIRS = [
     Path(__file__).resolve().parent.parent / "assets" / "charts",
-    ROOT / "articles/franchise/charts",
-    ROOT / "public/data/articles/franchise/charts",
-    ROOT / "public/images/content/articles/franchise/charts",
 ]
 
 COPY = {
