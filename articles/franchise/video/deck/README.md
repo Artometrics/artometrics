@@ -18,18 +18,20 @@ Outputs:
 | `deck-deepdive.html` | |
 | `deck-vertical.html` | 9:16 layout |
 
-## Scene templates (`templates/`)
+## What each slide does
 
-Ported from the Anime v4 explainer patterns (text card, chart beat, asset + credit, type/citation card, AI mechanism frame, Artometrics bookend):
+`build_decks.py` composes one slide per storyboard row, plus Chomsky bookends:
 
-- `slide-bookend.html` — Chomsky wordmark + monogram
-- `slide-big-number.html` — DM Mono count-up + red box on the stat
-- `slide-chart.html` — motion chart iframe + beat label
-- `slide-asset.html` — logo / poster / still / product + entity on screen + credit
-- `slide-type-card.html` — quote + source line
-- `slide-ai.html` — `assets/ai/{prompt_id}_16x9.png` (or `_9x16` vertical) with placeholder fallback
+- Section label in red DM Mono, top left
+- Headline sentence (digits, not spelled-out numbers; no internal ids)
+- **Big number** — DM Mono at ~30% of frame height, 3px `#E60000` box, spoken line as the bottom caption
+- **Chart beat** — dark SVG chart (`render_dark_charts.py`): black ground, DM Sans headline, n subtitle, grey bars, red highlight box, DM Mono labels, source line. Bars reveal after the axes.
+- **Entity** — logo or still on a light plate, name, figure in DM Mono when the line has one, small credit. Two or three names sit side by side when the line compares them.
+- **Type card** — claim in a red box, source in DM Mono
+- **Mechanism** — inline SVG (royalty flow, SKU stack, parks flywheel, roll-up, premiere pipeline). Atmosphere lines keep an image slot under `assets/ai/` and do not print the prompt id.
+- One burned-in caption, bottom center. Full narration stays in speaker notes.
 
-Narration lives in `<aside class="speaker-notes">` on every slide.
+Dark charts are written to `articles/franchise/video/assets/charts/` and the article chart HTML paths.
 
 ## PNG export (Mac mini)
 

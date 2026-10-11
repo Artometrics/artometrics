@@ -1,1 +1,63 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap"/><script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script><style>html,body{margin:0;height:100%;background:#FFFFFF;}</style></head><body><div id="art-chart" style="width:100%;height:100vh;"></div><script>const spec={"data":[{"x":[1.3,8.9,8,3.3,56,1.1,1.5,20],"y":["Book sales","Box Office","Comic or Manga","Home Video/Entertainment","Merchandise, Licensing & Retail","Music","TV","Video Games/Games"],"orientation":"h","marker":{"color":["#0047FF","#0047FF","#0047FF","#0047FF","#E60000","#0047FF","#0047FF","#0047FF"],"line":{"color":"rgba(31,119,180,1)"}},"type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"b":90,"l":240,"t":120,"r":50},"title":{"text":"<b>Revenue stream mix across the franchise ledger<\/b><br><span style='font-size:12px;color:#6B6B6B'>103 franchises in committed CSV<\/span>","x":0,"xanchor":"left"},"paper_bgcolor":"#FFFFFF","plot_bgcolor":"#FFFFFF","font":{"family":"DM Sans, Helvetica, sans-serif","color":"#000000","size":12},"annotations":[{"x":0,"y":1.12,"xref":"paper","yref":"paper","text":"<b>Licensing and retail beat theatrical<\/b>","showarrow":false,"xanchor":"left","font":{"size":11,"color":"#FFFFFF"},"bgcolor":"#E60000","borderwidth":3,"bordercolor":"#E60000","borderpad":6},{"x":0,"y":-0.18,"xref":"paper","yref":"paper","text":"Source: S001 · n=103 franchises (TidyTuesday / mid-2019 Wikipedia scrape)  ·  Artometrics<br><span style='font-family:DM Mono, ui-monospace, monospace'>n=103 franchises (TidyTuesday / mid-2019 Wikipedia scrape)<\/span>","showarrow":false,"xanchor":"left","font":{"size":9,"color":"#6B6B6B"}}],"xaxis":{"domain":[0,1],"automargin":true,"title":"share_pct"},"yaxis":{"domain":[0,1],"automargin":true,"title":"revenue_category","type":"category","categoryorder":"array","categoryarray":["Music","Book sales","TV","Home Video/Entertainment","Comic or Manga","Box Office","Video Games/Games","Merchandise, Licensing & Retail"]},"hovermode":"closest","showlegend":false},"config":{"displayModeBar":false,"displaylogo":false,"responsive":true,"scrollZoom":false,"doubleClick":false,"staticPlot":false,"editable":false,"showTips":false}};const target=JSON.parse(JSON.stringify(spec));function zeroTraces(d){return d.map(t=>{const c=JSON.parse(JSON.stringify(t));['x','y','z','values','labels'].forEach(k=>{if(Array.isArray(c[k])&&c[k].every(v=>typeof v==='number'))c[k]=c[k].map(()=>0);});if(c.type==='bar'&&c.orientation==='h'&&Array.isArray(c.x))c.x=c.x.map(()=>0);if(c.type==='bar'&&(!c.orientation||c.orientation==='v')&&Array.isArray(c.y))c.y=c.y.map(()=>0);return c;});}const start=performance.now();const dur=1400;Plotly.newPlot('art-chart',{data:zeroTraces(spec.data),layout:spec.layout,config:spec.config}).then(()=>{function frame(now){const p=Math.min(1,(now-start)/dur);const ease=1-Math.pow(1-p,3);const d=target.data.map((t,i)=>{const c=JSON.parse(JSON.stringify(t));['x','y','z','values'].forEach(k=>{if(Array.isArray(c[k])&&target.data[i][k]&&target.data[i][k].every(v=>typeof v==='number'))c[k]=target.data[i][k].map(v=>v*ease);});return c;});Plotly.react('art-chart',d,target.layout);if(p<1)requestAnimationFrame(frame);}requestAnimationFrame(frame);});</script></body></html>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap"/>
+<style>
+  html,body { margin:0; height:100%; background:#0a0a0a; color:#fff; }
+  body { display:flex; flex-direction:column; padding:28px 36px 18px; box-sizing:border-box; font-family:"DM Sans",sans-serif; }
+  h1 { font-size:34px; font-weight:600; margin:0 0 8px; letter-spacing:-0.02em; }
+  .sub { font-family:"DM Mono",monospace; font-size:16px; color:#9a9a9a; margin:0 0 18px; }
+  .plot { flex:1; min-height:0; }
+  .chart-svg { width:100%; height:100%; }
+  .src { font-family:"DM Mono",monospace; font-size:14px; color:#8a8a8a; margin:10px 0 0; }
+  .stage-data { opacity:0; animation:rise .7s ease forwards; }
+  .stage-highlight { opacity:0; animation:rise .35s ease 1.15s forwards; }
+  .bar { transform-box:fill-box; transform-origin:left center; }
+  @keyframes rise { from { opacity:0; } to { opacity:1; } }
+</style></head>
+<body>
+  <h1>Merchandise is most of the file. Theatre is not.</h1>
+  <p class="sub">Share of lifetime revenue by stream · n=103</p>
+  <div class="plot"><svg class="chart-svg" viewBox="0 0 1600 464" xmlns="http://www.w3.org/2000/svg" role="img">
+<line class="stage-axes" x1="340" y1="24" x2="340" y2="436" stroke="#3a3a3a" stroke-width="1"/>
+<line class="stage-axes" x1="340" y1="436" x2="1560" y2="436" stroke="#3a3a3a" stroke-width="1"/>
+<text class="stage-axes" x="328" y="62.400000000000006" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Music</text>
+<rect class="stage-data bar" x="340" y="42" width="22.4" height="34" fill="#6a6a6a" style="animation-delay:0.35s"/>
+<text class="stage-data" x="370.4" y="62.400000000000006" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.35s">1.1</text>
+<text class="stage-axes" x="328" y="110.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Book sales</text>
+<rect class="stage-data bar" x="340" y="90" width="26.5" height="34" fill="#6a6a6a" style="animation-delay:0.39s"/>
+<text class="stage-data" x="374.5" y="110.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.39s">1.3</text>
+<text class="stage-axes" x="328" y="158.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">TV</text>
+<rect class="stage-data bar" x="340" y="138" width="30.5" height="34" fill="#6a6a6a" style="animation-delay:0.43s"/>
+<text class="stage-data" x="378.5" y="158.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.43s">1.5</text>
+<text class="stage-axes" x="328" y="206.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Home Video/Entertainme</text>
+<rect class="stage-data bar" x="340" y="186" width="67.2" height="34" fill="#6a6a6a" style="animation-delay:0.47s"/>
+<text class="stage-data" x="415.2" y="206.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.47s">3.3</text>
+<text class="stage-axes" x="328" y="254.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Comic or Manga</text>
+<rect class="stage-data bar" x="340" y="234" width="162.9" height="34" fill="#6a6a6a" style="animation-delay:0.51s"/>
+<text class="stage-data" x="510.9" y="254.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.51s">8</text>
+<text class="stage-axes" x="328" y="302.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Box Office</text>
+<rect class="stage-data bar" x="340" y="282" width="181.2" height="34" fill="#6a6a6a" style="animation-delay:0.55s"/>
+<text class="stage-data" x="529.2" y="302.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.55s">8.9</text>
+<text class="stage-axes" x="328" y="350.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Video Games/Games</text>
+<rect class="stage-data bar" x="340" y="330" width="407.1" height="34" fill="#6a6a6a" style="animation-delay:0.59s"/>
+<text class="stage-data" x="755.1" y="350.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.59s">20</text>
+<text class="stage-axes" x="328" y="398.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Merchandise, Licensing</text>
+<rect class="stage-data bar" x="340" y="378" width="1140.0" height="34" fill="#E60000" style="animation-delay:0.63s"/>
+<text class="stage-data" x="1488.0" y="398.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.63s">56</text>
+<rect class="stage-highlight" x="336" y="374" width="1218.0" height="42" fill="none" stroke="#E60000" stroke-width="3"/>
+</svg></div>
+  <p class="src">Source: S001 · TidyTuesday / mid-2019 Wikipedia scrape</p>
+  <script>
+    const q = new URLSearchParams(location.search);
+    const hl = (q.get("hl") || "").toLowerCase();
+    if (hl) {
+      document.querySelectorAll(".chart-svg text").forEach((t) => {
+        if (t.textContent.toLowerCase().includes(hl)) {
+          const y = t.getAttribute("y");
+          t.setAttribute("fill", "#fff");
+        }
+      });
+    }
+    setTimeout(() => document.body.setAttribute("data-chart-ready", "1"), 1500);
+  </script>
+</body></html>
