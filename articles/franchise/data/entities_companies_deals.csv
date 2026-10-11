@@ -1,0 +1,8 @@
+acquirer,target,year,price_usd_b,franchises_gained,lifetime_revenue_gained_usd_b,source_ids,notes
+The Walt Disney Company,Pixar,2006,7.4,Toy Story; Cars; The Incredibles,19.54,S009;S001,
+The Walt Disney Company,Marvel Entertainment,2009,4.0,Marvel Cinematic Universe,31.0,S010;S001,
+The Walt Disney Company,Lucasfilm,2012,4.05,Star Wars; Indiana Jones,63.004,S011;S001,
+The Walt Disney Company,21st Century Fox (film & TV),2019,71.3,The Simpsons; Avatar; X-Men,13.527,S012;S001,Enterprise value; franchise anchor is illustrative
+Comcast (NBCUniversal),DreamWorks Animation,2016,3.8,Shrek; Kung Fu Panda; How to Train Your Dragon,,S055,Price per Comcast 2016 8-K
+Hasbro,eOne,2019,4.0,Peppa Pig; PJ Masks,,S056,
+Amazon,MGM Holdings,2022,8.45,James Bond; Rocky; Pink Panther,,S057,Enterprise value per Amazon press release

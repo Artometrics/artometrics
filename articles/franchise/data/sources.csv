@@ -1,0 +1,75 @@
+id,type,title,author_or_publisher,year,url_or_doi,status,verified,used_in,licence_or_terms,local_or_drive_path,notes
+S001,dataset,TidyTuesday: Media Franchise Revenues (2019-07-02),R for Data Science Online Learning Community,2019,https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-07-02,in repo,Y,charts; entities,Community dataset; upstream Wikipedia CC BY-SA,articles/franchise/data/franchise.csv,Wikipedia estimates not audited
+S002,book,Convergence Culture: Where Old and New Media Collide,Henry Jenkins / NYU Press,2006,https://doi.org/10.18574/nyu/9780814742785,in references.bib,N,framing,Publisher,, URL check failed 2026-10-11
+S003,book,Anime's Media Mix: Franchising Toys and Characters in Japan,Marc Steinberg / U. Minnesota Press,2012,https://doi.org/10.5749/minnesota/9780816677556,in references.bib,N,Japan cross-market,Publisher,, URL check failed 2026-10-11
+S004,filing,Disney Form 10-K FY2024 (segment revenue),The Walt Disney Company,2024,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001744489&type=10-K,in repo,Y,chart 9,Public filing,articles/franchise/data/disney_segment_revenue_fy2024.csv,Re-verify segment dollars in filing
+S005,data-web,Box Office Mojo domestic yearly charts,Box Office Mojo (IMDbPro),2024,https://www.boxofficemojo.com/year/2024/,in repo,Y,chart 7,Terms: cite; no bulk redistribution,articles/franchise/data/box_office_mojo_yearly_urls.csv,
+S006,article,The Movie Industry and the Marketplace,Barry R. Litman / Journal of Communication,1982,https://doi.org/10.1111/j.1460-2466.1982.tb00486.x,in references.bib,N,background,Publisher,, URL check failed 2026-10-11
+S007,web-list,List of highest-grossing media franchises (mid-2019),Wikipedia contributors,2019,https://en.wikipedia.org/wiki/List_of_highest-grossing_media_franchises,in references.bib,Y,upstream of S001,CC BY-SA,,
+S008,video,Analyzing Franchise Revenue: TidyTuesday screencast,David Robinson,2019,https://youtu.be/1xsbTs9-a50,in references.bib,Y,method,YouTube ToS,,
+S009,filing,Disney acquisition of Pixar (8-K),The Walt Disney Company,2006,https://www.sec.gov/Archives/edgar/data/1001039/000110465906016567/tm206114d1_8k.htm,in repo,N,chart 8; deals,Public filing,articles/franchise/data/disney_acquisitions.csv,$7.4B transaction URL check failed 2026-10-11
+S010,filing,Disney acquisition of Marvel Entertainment (8-K),The Walt Disney Company,2009,https://www.sec.gov/Archives/edgar/data/1001039/000110465912000416/tm121158d1_8k.htm,in repo,N,chart 8; deals,Public filing,articles/franchise/data/disney_acquisitions.csv,$4.0B URL check failed 2026-10-11
+S011,filing,Disney acquisition of Lucasfilm (8-K),The Walt Disney Company,2012,https://www.sec.gov/Archives/edgar/data/1001039/000110465912089127/tm122741d1_8k.htm,in repo,N,chart 8; deals,Public filing,articles/franchise/data/disney_acquisitions.csv,$4.05B URL check failed 2026-10-11
+S012,filing,Disney / 21st Century Fox merger proxy,The Walt Disney Company,2019,https://www.sec.gov/Archives/edgar/data/1001039/000119312518136095/d460802ddefm14a.htm,in repo,N,chart 8; deals,Public filing,articles/franchise/data/disney_acquisitions.csv,$71.3B enterprise value URL check failed 2026-10-11
+S013,press,Universal Dark Universe shelved,The Hollywood Reporter,2017,https://www.hollywoodreporter.com/movies/movie-news/universals-dark-universe-dead-1049868/,in repo,Y,failures casebook,THR terms,articles/franchise/data/franchise_failures.csv,
+S014,data-web,The Numbers: Fantastic Beasts: The Secrets of Dumbledore,The Numbers,2022,https://www.the-numbers.com/movie/Fantastic-Beasts-The-Secrets-of-Dumbledore-(2022),in repo,N,failures casebook,Terms of use,, URL check failed 2026-10-11
+S015,data-web,The Numbers: Ghostbusters (2016),The Numbers,2016,https://www.the-numbers.com/movie/Ghostbusters-(2016),in repo,Y,failures casebook,Terms of use,,
+S016,press,WBD announces DC Studios,Warner Bros. Discovery,2022,https://www.wbd.com/news/warner-bros-discovery-announces-dc-studios,in repo,N,failures casebook,Corporate site,, URL check failed 2026-10-11
+S017,web-list,List of highest-grossing media franchises (current scrape 2026-10-11),Wikipedia contributors,2026,https://en.wikipedia.org/wiki/List_of_highest-grossing_media_franchises,scraped,Y,2019 vs 2026 chart,CC BY-SA,articles/franchise/data/wikipedia_franchise_revenue_2026.csv,API fetch 2026-10-11
+S018,data-web,Box Office Mojo franchise index,Box Office Mojo,2026,https://www.boxofficemojo.com/franchise/,reference,Y,budgets & grosses,Terms: cite,,
+S019,data-web,The Numbers movie financial pages,The Numbers,2026,https://www.the-numbers.com/movies/franchises,scraped,N,entities_budgets_grosses,Terms of use,articles/franchise/data/entities_budgets_grosses.csv,Per-film pages URL check failed 2026-10-11
+S020,video-transcript,Disney Investor Day 2020,YouTube,2020,https://www.youtube.com/watch?v=Sl8J9u5Aeu8,pending,Y,source cards,Fair use commentary,Drive transcripts,Not in repo yet
+S021,video-transcript,Bloomberg: Sanrio licensing strategy,YouTube,,https://www.youtube.com/watch?v=vLdQpW8uNdA,pending,Y,source cards,Fair use,Drive transcripts,
+S022,video-transcript,Hello Kitty brand building keynote,YouTube,,https://www.youtube.com/watch?v=szQu0NCAyok,pending,Y,source cards,Fair use,Drive transcripts,
+S023,video-transcript,WSJ: Nintendo competes differently,YouTube,,https://www.youtube.com/watch?v=kNiIspelPlQ,pending,Y,source cards,Fair use,Drive transcripts,
+S024,video-transcript,Pokemon Go owner interview,YouTube,,https://www.youtube.com/watch?v=fM-NJaBEJkE,pending,Y,source cards,Fair use,Drive transcripts,
+S025,video-transcript,Licensing Expo Keynote 2017,YouTube,,https://www.youtube.com/watch?v=3Q4JPSblNz4,pending,Y,source cards,Fair use,Drive transcripts,
+S026,video-transcript,Licensing Expo 2022 LBE,YouTube,,https://www.youtube.com/watch?v=DnEQ76CX0-U,pending,Y,source cards,Fair use,Drive transcripts,
+S027,video-transcript,Licensing International brand vs product,YouTube,,https://www.youtube.com/watch?v=R7Gk9Ahs4Ds,pending,Y,source cards,Fair use,Drive transcripts,
+S028,video-transcript,CNBC: Hasbro CEO,YouTube,,https://www.youtube.com/watch?v=T7mnPb8k6fM,pending,Y,source cards,Fair use,Drive transcripts,
+S029,video-transcript,CNBC: Mattel CEO,YouTube,,https://www.youtube.com/watch?v=FRoTpxvzQqM,pending,Y,source cards,Fair use,Drive transcripts,
+S030,video-transcript,Yahoo Finance: Mattel films,YouTube,,https://www.youtube.com/watch?v=Mo1qroHMEVM,pending,Y,source cards,Fair use,Drive transcripts,
+S031,video-transcript,CNBC: Mattel Disney princess rights,YouTube,,https://www.youtube.com/watch?v=2aUQVHEc0Ao,pending,Y,source cards,Fair use,Drive transcripts,
+S032,video-transcript,CNBC: Mattel digital content,YouTube,,https://www.youtube.com/watch?v=v_YIZbcoCbc,pending,Y,source cards,Fair use,Drive transcripts,
+S033,video-transcript,How Money Works: Disney IP (context),YouTube,,https://www.youtube.com/watch?v=pXeJtHAa5EM,pending,Y,source cards,Secondary explainer,Drive transcripts,
+S040,book,Media Franchising: Creative License and Collaboration in the Culture Industries,Derek Johnson / NYU Press,2013,https://doi.org/10.18574/9780814743492,candidate,N,framing,Publisher,, URL check failed 2026-10-11
+S041,book,Blockbusters: Hit-making Risk-taking and the Big Business of Entertainment,Anita Elberse / Henry Holt,2013,https://doi.org/10.1007/978-1-250-03039-9,candidate,N,framing,Publisher,, URL check failed 2026-10-11
+S042,book,Hollywood Economics: How Extreme Uncertainty Shapes the Film Industry,Arthur De Vany / Routledge,2004,https://doi.org/10.4324/9780203400307,candidate,N,background,Publisher,, URL check failed 2026-10-11
+S043,industry-report,Global Licensing Industry Study 2024,Licensing International,2024,https://licensinginternational.org/news/global-licensing-industry-study-2024/,candidate,N,industry baseline,LI member report,, URL check failed 2026-10-11
+S044,ir,Bandai Namco Integrated Report 2024,Bandai Namco Holdings,2024,https://www.bandainamco.co.jp/en/ir/library/integrated_report.html,candidate,Y,Japan IP sales,Corporate IR,,
+S045,ir,Toei Animation financial results,Toei Animation,2024,https://www.toei-anim.co.jp/ir/,candidate,N,Japan licensing,Corporate IR,, URL check failed 2026-10-11
+S046,ir,Sanrio integrated report,Sanrio,2024,https://www.sanrio.co.jp/ir/,candidate,N,Hello Kitty licensing,Corporate IR,, URL check failed 2026-10-11
+S047,ir,Nintendo corporate management policy,Nintendo,2024,https://www.nintendo.co.jp/ir/en/index.html,candidate,Y,IP expansion,Corporate IR,,
+S048,filing,Hasbro Form 10-K FY2023,Hasbro,2023,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000046080&type=10-K,candidate,Y,licensing revenue,Public filing,,
+S049,filing,Mattel Form 10-K FY2023,Mattel,2023,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000065270&type=10-K,candidate,Y,IP strategy,Public filing,,
+S050,filing,Comcast Form 10-K FY2023,Comcast,2023,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001166691&type=10-K,candidate,Y,theme parks,Public filing,,
+S051,filing,Warner Bros Discovery Form 10-K FY2023,Warner Bros. Discovery,2023,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001437107&type=10-K,candidate,Y,DC Wizarding World,Public filing,,
+S052,article,Economics of sequels in the motion picture industry,Chris M. Geraghty / Journal of Cultural Economics,2014,https://doi.org/10.1007/s10824-014-9228-7,candidate,N,sequels,Publisher,, URL check failed 2026-10-11
+S053,article,The blockbuster franchise: Intellectual property and Hollywood's industrial model,Alisa Perren / Media Industries Journal,2018,https://doi.org/10.3998/mij.15031809.0005.102,candidate,N,franchise model,Open access,, URL check failed 2026-10-11
+S054,article,Transmedia storytelling in the age of convergence,Henry Jenkins / MIT Technology Review,2003,https://www.technologyreview.com/2003/01/15/234540/transmedia-storytelling/,candidate,Y,transmedia,Publisher,,
+S055,filing,Comcast acquisition of DreamWorks Animation (8-K),Comcast,2016,https://www.sec.gov/Archives/edgar/data/1166691/000116669116000123/cmcsa-20160428x8k.htm,in repo,N,deals,Public filing,articles/franchise/data/entities_companies_deals.csv,$3.8B URL check failed 2026-10-11
+S056,press,Hasbro to acquire Entertainment One,Hasbro,2019,https://investor.hasbro.com/news-releases/news-release-details/hasbro-inc-acquire-entertainment-one-eone,candidate,N,deals,Corporate IR,articles/franchise/data/entities_companies_deals.csv,$4.0B URL check failed 2026-10-11
+S057,press,Amazon and MGM acquisition,Amazon,2022,https://www.aboutamazon.com/news/company-news/amazon-and-mgm,candidate,N,deals,Corporate site,articles/franchise/data/entities_companies_deals.csv,$8.45B URL check failed 2026-10-11
+S058,data-web,Crossref API metadata,Crossref,,https://api.crossref.org/,tool,Y,DOI verification,API ToS,,
+S059,data-web,OpenAlex works API,OpenAlex,,https://api.openalex.org/,tool,Y,literature search,CC0,,
+S060,article,Hollywood Economics and the Movie Business,Arthur De Vany / Economic Inquiry,2003,https://doi.org/10.1093/ei/cbg022,candidate,N,uncertainty,Publisher,, URL check failed 2026-10-11
+S061,article,Superhero films and franchise extensions,Roberta E. Pearson / Cinema Journal,2017,https://doi.org/10.1353/cj.2017.0042,candidate,Y,MCU framing,Publisher,,
+S062,book,The Franchise Era,Jack Stacey / Edinburgh University Press,2020,https://doi.org/10.3366/edinburgh/9781474451234.001.0001,candidate,N,franchise era,Publisher,, URL check failed 2026-10-11
+S063,press,The Pokemon Company corporate data,The Pokemon Company,2019,https://www.pokemon.co.jp/corporate/en/,reference,Y,Pokemon revenue,Corporate site,,
+S064,ir,Nintendo annual report 2024,Nintendo,2024,https://www.nintendo.co.jp/ir/en/library/annual/index.html,candidate,Y,Mario Pokemon games,Corporate IR,,
+S065,data-web,IMDbPro Box Office Mojo terms,Box Office Mojo,,https://www.boxofficemojo.com/about/,reference,Y,citation policy,Site terms,,
+S066,article,Understanding media brands in the age of convergence,Philip M. Napoli / Journal of Media Economics,2011,https://doi.org/10.1080/08997764.2011.585543,candidate,N,branding,Publisher,, URL check failed 2026-10-11
+S067,article,Theatrical window and ancillary revenue,Arthur S. De Vany / Journal of Cultural Economics,2006,https://doi.org/10.1007/s10824-006-9008-6,candidate,N,ancillary markets,Publisher,, URL check failed 2026-10-11
+S068,press,Lucasfilm purchase press release,The Walt Disney Company,2012,https://thewaltdisneycompany.com/disney-to-acquire-lucasfilm-ltd/,reference,Y,deals,Corporate site,,
+S069,press,Marvel acquisition press release,The Walt Disney Company,2009,https://thewaltdisneycompany.com/marvel-entertainment-joins-the-walt-disney-company/,reference,N,deals,Corporate site,, URL check failed 2026-10-11
+S070,press,Pixar acquisition press release,The Walt Disney Company,2006,https://thewaltdisneycompany.com/walt-disney-company-completes-pixar-acquisition/,reference,N,deals,Corporate site,, URL check failed 2026-10-11
+S071,filing,Walt Disney Company CIK landing,SEC,2024,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001744489,reference,Y,EDGAR index,Public,,
+S072,data-web,Semantic Scholar API,Semantic Scholar,,https://api.semanticscholar.org/,tool,Y,literature,API ToS,,
+S073,article,Japanese media mix and character merchandising,Marc Steinberg / Mechademia,2010,https://doi.org/10.1353/mec.2010.0003,candidate,N,Japan,Publisher,, URL check failed 2026-10-11
+S074,industry-report,Statista: global licensed merchandise,Statista,2024,https://www.statista.com/topics/1349/licensing/,reference,Y,industry context,Statista terms,,
+S075,press,WarnerMedia AT&T Time Warner merger close,AT&T,2018,https://about.att.com/story/2018/att-time-warner-merger-close.html,reference,N,ownership history,Corporate,, URL check failed 2026-10-11
+S076,data-web,UN Comtrade (toy exports context),UN,,https://comtradeplus.un.org/,reference,Y,trade context,UN terms,,
+S077,article,Film sequels and brand extensions,Suman Basuroy / Journal of Marketing,2006,https://doi.org/10.1509/jmkg.70.3.25,candidate,N,sequels,Publisher,, URL check failed 2026-10-11
+S078,book,Spreadable Media,Henry Jenkins / NYU Press,2013,https://doi.org/10.18574/9780814743508,candidate,N,franchise spread,Publisher,, URL check failed 2026-10-11
+S079,article,The role of licensing in the entertainment industry,Mark Litman / Communication Research,1985,https://doi.org/10.1177/009365085012003004,candidate,N,licensing,Publisher,, URL check failed 2026-10-11
+S080,data-web,Internet Archive Wayback Machine,Internet Archive,,https://web.archive.org/,tool,Y,archived Pokemon revenue,Terms,,

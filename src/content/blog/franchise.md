@@ -4,7 +4,7 @@ slug: franchise
 author: kyle-mcauliffe
 pubDate: 2026-04-08T00:00:00.000Z
 description: >-
-  Pokémon leads 103 Wikipedia-scraped franchises at $91B lifetime (mid-2019). Merchandise is 56% of row-sum revenue. Consolidated Disney totals $426B in the same file.
+  Pokémon leads 103 Wikipedia-scraped franchises at $90.9B lifetime (mid-2019). Merchandise is 56% of row-sum revenue. Consolidated Disney totals $426B in the same file.
 heroImage: /images/content/articles/franchise/hero.png
 draft: false
 tags:

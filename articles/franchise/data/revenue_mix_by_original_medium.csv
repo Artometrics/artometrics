@@ -1,0 +1,82 @@
+original_media,revenue_category,revenue_usd_b,share_within_medium_pct,source_ids
+Novel,Book sales,18.45,21.5,S001
+Novel,Box Office,33.001,38.4,S001
+Novel,Home Video/Entertainment,13.426,15.6,S001
+Novel,TV,5.0,5.8,S001
+Novel,Video Games/Games,1.545,1.8,S001
+Novel,"Merchandise, Licensing & Retail",14.438,16.8,S001
+Animated film,Box Office,11.752,11.5,S001
+Animated film,Home Video/Entertainment,5.271,5.2,S001
+Animated film,"Merchandise, Licensing & Retail",74.5,72.9,S001
+Animated film,Music,8.529,8.3,S001
+Animated film,Video Games/Games,2.2,2.2,S001
+Video game,Box Office,3.694,1.1,S001
+Video game,Home Video/Entertainment,2.475,0.7,S001
+Video game,"Merchandise, Licensing & Retail",82.404,24.6,S001
+Video game,Video Games/Games,239.476,71.5,S001
+Video game,Comic or Manga,6.478,1.9,S001
+Video game,Book sales,0.213,0.1,S001
+Video game,Music,0.16,0.0,S001
+Manga,Box Office,3.869,1.5,S001
+Manga,"Merchandise, Licensing & Retail",97.7,38.5,S001
+Manga,Comic or Manga,112.028,44.1,S001
+Manga,Home Video/Entertainment,2.963,1.2,S001
+Manga,Music,0.232,0.1,S001
+Manga,Video Games/Games,36.999,14.6,S001
+Comic book,Box Office,26.0,27.3,S001
+Comic book,Comic or Manga,2.684,2.8,S001
+Comic book,Home Video/Entertainment,4.164,4.4,S001
+Comic book,"Merchandise, Licensing & Retail",58.9,61.9,S001
+Comic book,TV,1.348,1.4,S001
+Comic book,Music,0.212,0.2,S001
+Comic book,Video Games/Games,1.792,1.9,S001
+Animated series,"Merchandise, Licensing & Retail",108.0,89.2,S001
+Animated series,Home Video/Entertainment,2.032,1.7,S001
+Animated series,Box Office,4.992,4.1,S001
+Animated series,TV,6.0,5.0,S001
+Greeting card,Box Office,0.052,0.6,S001
+Greeting card,"Merchandise, Licensing & Retail",9.0,99.4,S001
+Greeting card,Home Video/Entertainment,0.002,0.0,S001
+Film,Box Office,44.0,39.4,S001
+Film,Home Video/Entertainment,16.17,14.5,S001
+Film,"Merchandise, Licensing & Retail",46.5,41.6,S001
+Film,Book sales,1.0,0.9,S001
+Film,TV,0.004,0.0,S001
+Film,Video Games/Games,4.0,3.6,S001
+Digital pet,Box Office,0.149,1.3,S001
+Digital pet,Comic or Manga,0.252,2.3,S001
+Digital pet,Home Video/Entertainment,0.059,0.5,S001
+Digital pet,"Merchandise, Licensing & Retail",8.0,71.9,S001
+Digital pet,Video Games/Games,2.668,24.0,S001
+Visual novel,Box Office,0.032,0.9,S001
+Visual novel,Comic or Manga,0.038,1.1,S001
+Visual novel,Home Video/Entertainment,0.371,10.4,S001
+Visual novel,"Merchandise, Licensing & Retail",0.128,3.6,S001
+Visual novel,Video Games/Games,3.0,84.1,S001
+Television series,Home Video/Entertainment,1.965,2.9,S001
+Television series,TV,10.096,14.7,S001
+Television series,Box Office,5.695,8.3,S001
+Television series,"Merchandise, Licensing & Retail",50.0,72.8,S001
+Television series,Video Games/Games,0.967,1.4,S001
+Anime,Box Office,0.499,1.0,S001
+Anime,Comic or Manga,0.38,0.8,S001
+Anime,"Merchandise, Licensing & Retail",34.0,70.8,S001
+Anime,Video Games/Games,11.282,23.5,S001
+Anime,Home Video/Entertainment,0.848,1.8,S001
+Anime,Music,0.981,2.0,S001
+Cartoon character,Comic or Manga,0.023,0.0,S001
+Cartoon character,"Merchandise, Licensing & Retail",80.0,100.0,S001
+Cartoon character,Music,0.003,0.0,S001
+Cartoon,Box Office,0.065,1.6,S001
+Cartoon,"Merchandise, Licensing & Retail",4.0,98.4,S001
+Animated cartoon,Box Office,0.823,0.9,S001
+Animated cartoon,"Merchandise, Licensing & Retail",86.0,98.7,S001
+Animated cartoon,Home Video/Entertainment,0.284,0.3,S001
+Comic strip,Box Office,0.25,1.4,S001
+Comic strip,Home Video/Entertainment,0.035,0.2,S001
+Comic strip,"Merchandise, Licensing & Retail",17.0,98.4,S001
+Musical theatre,Box Office,0.155,2.5,S001
+Musical theatre,Music,6.0,97.5,S001
+Book,Box Office,0.48,0.6,S001
+Book,"Merchandise, Licensing & Retail",82.0,99.3,S001
+Book,Home Video/Entertainment,0.059,0.1,S001

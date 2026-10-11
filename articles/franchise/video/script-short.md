@@ -1,6 +1,6 @@
 # FRANCHISE — 3-minute explainer (~3:00)
 
-Pokémon is not a movie studio that sells toys on the side. In the mid-2019 franchise ledger we track, it is a ninety-one-billion-dollar licensing stack where the cartoon is marketing infrastructure and the card game is the cash register.
+Pokémon is not a movie studio that sells toys on the side. In the mid-2019 franchise ledger we track, it is a ninety point nine billion dollar licensing stack where the cartoon is marketing infrastructure and the card game is the cash register.
 
 That ledger comes from TidyTuesday’s 2019 scrape of Wikipedia’s highest-grossing media franchises list. One hundred and three properties. Lifetime revenue estimates, not audited financials. Still: the pattern is too consistent to ignore.
 

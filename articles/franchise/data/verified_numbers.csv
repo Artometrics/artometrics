@@ -1,0 +1,12 @@
+figure,value,unit,computed_how,file,source_ids,status
+Franchises in dataset,103,count,unique franchise names,data/franchise.csv,S001,verified (recomputed 2026-10-11)
+"Total lifetime revenue, all 103",1522.2,USD billions,sum of revenue,data/franchise.csv,S001,verified (recomputed 2026-10-11)
+"Merchandise, Licensing & Retail share",56.0,percent of total,category sum / total,data/franchise.csv,S001,verified (recomputed 2026-10-11)
+Video games share,20.0,percent,category sum / total,data/franchise.csv,S001,verified (recomputed 2026-10-11)
+Box office share,8.9,percent,category sum / total,data/franchise.csv,S001,verified (recomputed 2026-10-11)
+Pokemon lifetime revenue,90.863 (on screen: $90.9B; spoken: ninety point nine billion),USD billions,sum of Pokemon rows,data/franchise.csv,S001,verified (recomputed 2026-10-11)
+Hello Kitty lifetime revenue,80.026,USD billions,sum of rows,data/franchise.csv,S001,verified (recomputed 2026-10-11)
+Winnie the Pooh lifetime revenue,74.519,USD billions,sum of rows,data/franchise.csv,S001,verified (recomputed 2026-10-11)
+franchise.csv SHA-256,6e556287bad580be04e14d346036a8453f7ce975a7b26cf47d2057b873be1090,hash,sha256sum,data/franchise.csv,S001,verified (recomputed 2026-10-11)
+Wikipedia franchises parsed (2026 scrape),122,count,parse_wikipedia_franchises,data/wikipedia_franchise_revenue_2026.csv,S017,verified (recomputed 2026-10-11)
+2019↔2026 matched franchises,81,count,fuzzy name match,data/franchise_revenue_2019_vs_2026.csv,S001;S017,verified (recomputed 2026-10-11)

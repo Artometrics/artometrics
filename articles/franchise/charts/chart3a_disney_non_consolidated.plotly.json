@@ -7,8 +7,8 @@
       "marker": {
         "color": [258.952, 90.863, 80.026, 63.004, 60.092, 49.021, 44.396, 36.256, 33.217, 31, 29.233, 28.715, 28.108, 25.525],
         "colorscale": [
-          ["0", "#1B4F8A"],
-          ["1", "#C0392B"]
+          ["0", "#0047FF"],
+          ["1", "#E60000"]
         ],
         "showscale": false,
         "line": {
@@ -43,7 +43,7 @@
     "plot_bgcolor": "#FFFFFF",
     "font": {
       "family": "DM Sans, Helvetica, sans-serif",
-      "color": "#1C1C1E",
+      "color": "#000000",
       "size": 12
     },
     "annotations": [
@@ -59,15 +59,17 @@
           "size": 11,
           "color": "#FFFFFF"
         },
-        "bgcolor": "#C0392B",
+        "bgcolor": "#E60000",
+        "borderwidth": 3,
+        "bordercolor": "#E60000",
         "borderpad": 6
       },
       {
         "x": 0,
-        "y": -0.2,
+        "y": -0.18,
         "xref": "paper",
         "yref": "paper",
-        "text": "Data: TidyTuesday media franchises (2019-07-02) / Wikipedia estimates — ARTOMETRICS  ·  Artometrics",
+        "text": "Source: S001 · n=103 franchises (TidyTuesday / mid-2019 Wikipedia scrape)  ·  Artometrics<br><span style='font-family:DM Mono, ui-monospace, monospace'>n=103 franchises (TidyTuesday / mid-2019 Wikipedia scrape)<\/span>",
         "showarrow": false,
         "xanchor": "left",
         "font": {
