@@ -97,7 +97,7 @@ What can be said without a fresh club or trade press export is narrower. The clu
 
 ## The Preller doctrine and the tax bill
 
-A.J. Preller has run baseball operations since 2014, and the August approval left him there. The method, as the club has practiced it, is to buy the present with the future. The July draft named the contracts: Machado, Tatis, Bogaerts, and the 2022 trade that sent a Washington package including James Wood, MacKenzie Gore, and CJ Abrams for Juan Soto, who was then moved on. Those terms need a Spotrac or Cot's export before the dollar figures are repeated. The pattern does not. The win totals do, and they are in Lahman: 70 in 2019, 37 in the 60-game 2020 season, 79, 89, 82, 93, and 90 from 2021 through 2025. The floor rose. The pennant did not.
+A.J. Preller has run baseball operations since 2014, and the August approval left him there. The method, as the club has practiced it, is to buy the present with the future. The pattern is the contracts on Machado, Tatis, and Bogaerts, and the 2022 trade that sent a Washington package including James Wood, MacKenzie Gore, and CJ Abrams for Juan Soto, who was then moved on. Dollar figures for those deals are not restated here. The win totals are in Lahman: 70 in 2019, 37 in the 60-game 2020 season, 79, 89, 82, 93, and 90 from 2021 through 2025. The floor rose. The pennant did not.
 
 ![The tax bill bought October access](charts/chart3_tax_payroll.png "Thresholds: 2022–26 Basic Agreement, p. 117. Payrolls: Spotrac compilation in the July 2026 draft, not cash.")
 
@@ -117,7 +117,7 @@ A full chart of October runs per game, regular season against postseason, is not
 
 The useful clubs are not the Dodgers. Los Angeles is the outspend case, and this file does not contain a 2026 Dodgers payroll. The useful clubs are the ones that did something San Diego has not.
 
-**Milwaukee Brewers.** Zero titles. One pennant. Eleven postseasons. A series record of 4–11. Median attendance rank 16. And, in 2026, the club that won the division series. If the new owners want a development model, this is the one that just beat them. The July draft's $124 million Opening Day payroll is a midsummer figure and is not carried forward.
+**Milwaukee Brewers.** Zero titles. One pennant. Eleven postseasons. A series record of 4–11. Median attendance rank 16. And, in 2026, the club that won the division series. If the new owners want a development model, this is the one that just beat them.
 
 **Tampa Bay Rays.** Zero titles. Two pennants. A series record of 7–9 through 2025, the same as San Diego's. Median attendance rank 29, against San Diego's 17. The old alibi was payroll. The measured difference in this file is the gate. A current Rays payroll is not reprinted.
 
@@ -298,4 +298,4 @@ Related Artometrics reports: [The Padres Cost $3.9 Billion. Winning Will Cost Mo
 
 ## Editor's note
 
-Figures through 2025 are computed from the Lahman 2025 subset in this folder. The 2026 wins, attendance, runs, and series results were read from Baseball-Reference on October 11, 2026. Tax payrolls are the July draft's Spotrac compilation and are labeled as tax payrolls, not cash. Claims that needed a page this revision could not confirm — the Mets comparison, the membership and subscriber counts, the remaining guarantees, the farm rank, the trust case, and the local-media dollar range — are marked in the source and left out of the sentences. Payroll rank is omitted from the expansion table for the same reason.
+Figures through 2025 are computed from the Lahman 2025 subset in this folder. The 2026 wins, attendance, runs, and series results were read from Baseball-Reference on October 11, 2026. Tax payrolls are a Spotrac compilation carried from the July 2026 draft and are labeled as tax payrolls, not cash. Payroll rank is omitted from the expansion table because no fresh export was attached to this revision.
