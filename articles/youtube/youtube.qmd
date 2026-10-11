@@ -1,0 +1,14 @@
+---
+title: "YOUTUBE: The Platform's $36B Engine and One Podcast's Borrowed Peak"
+subtitle: "Alphabet disclosures, Nielsen TV-screen share, and the H3 viewership ceiling"
+author: "Kyle McAuliffe"
+date: 2026-04-14
+categories: [civics, communication]
+bibliography: references.bib
+---
+
+The published report is `src/content/blog/youtube.md`. H3 case-study charts use `articles/youtube/data/h3.csv`; platform economics charts and tables are built by `articles/youtube/scripts/build_brief.py`.
+
+```bash
+npm run brief:youtube
+```

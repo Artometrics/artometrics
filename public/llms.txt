@@ -137,7 +137,7 @@
 - [WARRIORS: Seventy-Three Wins Rewrote Basketball Offense](https://artometrics.com/warriors): Golden State won 73 games in 2015–16, launched 15 more threes per game than the league, and changed how every franchise builds offense. (sports)
 - [COFFEE: Ethiopia Scores Highest on Coffee Quality—With Zero Starbucks Stores](https://artometrics.com/coffee): Ethiopia's median CQI cup score is 85.3 — the highest of 16 countries with 20+ samples — yet Starbucks operates zero stores in the top three scoring nations. (culture)
 - [IMPERIAL: What Empire Chronicles Leave Out](https://artometrics.com/imperial): A historical-economics lens asks who captured wealth when rulers claimed order. (humanities)
-- [YOUTUBE: H3's Peak Became a Ceiling](https://artometrics.com/youtube): Frenemies tripled H3 Podcast monthly views in 2020–2021. The show has contracted 70% since, running 220+ minutes per episode for a core audience. (civics)
+- [YOUTUBE: The Platform's $36B Engine and One Podcast's Borrowed Peak](https://artometrics.com/youtube): Alphabet reported $36.1B in YouTube ad revenue in FY2024 while Nielsen puts YouTube at 13.4% of U.S. TV-screen usage. Against that scale, H3 Podcast's Frenemies era tripled monthly views—and set a ceiling the show has not touched since. (civics)
 - [FRANCHISE: Pokémon's $91B Beats Marvel and Star Wars](https://artometrics.com/franchise): Pokémon at $91B tops 107 franchises tracked. Merchandise drives 61% of all revenue. Disney owns $426B across subsidiaries. (arts)
 - [ANIME: Source Sets the Audience Floor](https://artometrics.com/anime): In a century of MyAnimeList data, light-novel TV adaptations draw 32 times the median audience of original series. The data also shows where fan ratings and commercial value part ways. (arts)
 
@@ -150,4 +150,4 @@
 
 ## Generated
 
-Updated: 2026-10-10T23:56:16.707Z
+Updated: 2026-10-11T10:14:08.200Z
