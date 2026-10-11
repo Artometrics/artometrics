@@ -3816,7 +3816,7 @@
     "faq": [
       {
         "question": "What share of hospital-condition pairs exceed the CMS readmission benchmark?",
-        "answer": "48.1% of HRRP-eligible pairs carry an excess readmission ratio above 1.0, meaning more readmissions than CMS models predict."
+        "answer": "48.2% of HRRP-eligible pairs in the October 2026 CMS extract carry an excess readmission ratio above 1.0."
       },
       {
         "question": "Which condition has the highest excess readmission ratio?",
