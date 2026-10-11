@@ -1,11 +1,11 @@
 {
   "data": [
     {
-      "labels": ["China", "Japan", "Korea", "Other", "US"],
-      "values": [6, 681.494, 20, 44.789, 769.959],
+      "labels": ["Japan", "US", "UK", "Korea", "Canada", "Sweden", "Finland", "China"],
+      "values": [681.494, 622.59, 163.425, 20, 11.253, 9, 8.48, 6],
       "marker": {
         "color": "rgba(31,119,180,1)",
-        "colors": ["#E60000", "#0047FF", "#6B6B6B", "#4A6FA5", "#000000"],
+        "colors": ["#E60000", "#0047FF", "#111111", "#6B6B6B", "#4A6FA5", "#2E8B57", "#C4A35A", "#7A4E2D"],
         "line": {
           "color": "rgba(255,255,255,1)"
         }
@@ -22,7 +22,7 @@
       "r": 40
     },
     "title": {
-      "text": "<b>Regional split of franchise-row revenue<\/b><br><span style='font-size:12px;color:#6B6B6B'>region_origin column<\/span>",
+      "text": "<b>Regional split of franchise-row revenue<\/b><br><span style='font-size:12px;color:#6B6B6B'>region_origin, hand-audited<\/span>",
       "x": 0,
       "xanchor": "left"
     },
@@ -39,7 +39,7 @@
         "y": 1.12,
         "xref": "paper",
         "yref": "paper",
-        "text": "<b>Cross-market comparison anchor<\/b>",
+        "text": "<b>UK is separated from the US owner labels<\/b>",
         "showarrow": false,
         "xanchor": "left",
         "font": {

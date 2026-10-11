@@ -218,7 +218,7 @@ def build_budgets_grosses() -> list[dict]:
             2015,
             "https://www.the-numbers.com/movie/Star-Wars-Ep-VII-The-Force-Awakens",
             "https://www.boxofficemojo.com/release/rl2691925505/",
-            "",
+            "Production budget is The Numbers' reported figure of $533,200,000. The page states worldwide box office is 3.9 times that production budget. It is not a Disney filing.",
         ),
         (
             "Marvel Cinematic Universe",
@@ -226,7 +226,7 @@ def build_budgets_grosses() -> list[dict]:
             2019,
             "https://www.the-numbers.com/movie/Avengers-Endgame-(2019)",
             "https://www.boxofficemojo.com/release/rl3059975681/",
-            "Worldwide $2.928B from The Numbers (S019), includes Sept 2026 Encore re-release; domestic $858.4M from BOM original release (S018), not the $897.5M cumulative domestic with reissues.",
+            "Domestic and worldwide are the original April 2019 release on Box Office Mojo: domestic $858,373,000 and worldwide $2,799,439,100. The September 2026 re-release is separate (domestic $39,084,355; worldwide $137,884,355) and is not included. All-releases totals are not used.",
         ),
         (
             "Wizarding World / Harry Potter",
@@ -430,8 +430,9 @@ def build_budgets_grosses() -> list[dict]:
                     ww, ww_src = w2, "S018"
             except Exception:
                 pass
-        if franchise == "Marvel Cinematic Universe" and film == "Avengers: Endgame":
+        if film == "Avengers: Endgame":
             dom, dom_src = "858373000", "S018"
+            ww, ww_src = "2799439100", "S018"
         rows.append(
             {
                 "franchise": franchise,
@@ -681,7 +682,7 @@ def main() -> None:
             "franchises_gained": "Marvel Cinematic Universe",
             "lifetime_revenue_gained_usd_b": 31.0,
             "source_ids": "S010;S001",
-            "notes": "",
+            "notes": "Approximately $4 billion. Disney 8-K exhibit 99.1, 31 Aug 2009.",
         },
         {
             "acquirer": "The Walt Disney Company",
@@ -691,7 +692,7 @@ def main() -> None:
             "franchises_gained": "Star Wars; Indiana Jones",
             "lifetime_revenue_gained_usd_b": 63.004,
             "source_ids": "S011;S001",
-            "notes": "",
+            "notes": "$4.05 billion transaction value. Disney 8-K exhibit 99.1, 30 Oct 2012.",
         },
         {
             "acquirer": "The Walt Disney Company",
@@ -701,7 +702,7 @@ def main() -> None:
             "franchises_gained": "The Simpsons; Avatar; X-Men",
             "lifetime_revenue_gained_usd_b": 13.527,
             "source_ids": "S012;S001",
-            "notes": "Enterprise value per merger proxy.",
+            "notes": "$71.3 billion cash and stock. Disney amended-agreement exhibit, 20 June 2018, closed 2019: https://www.sec.gov/Archives/edgar/data/1001039/000095015718000744/ex99-1.htm",
         },
     ]
     write_csv(
@@ -925,8 +926,16 @@ def main() -> None:
         ("Japan merchandise share 2019", round(region_stats["Japan"]["merch"] / region_stats["Japan"]["revenue"] * 100, 1), "percent", "merch / region total", "data/franchise_region_summary.csv", "S001"),
         ("US region lifetime 2019", round(region_stats["US"]["revenue"], 3), "USD billions", "sum of region_origin=US", "data/franchise_region_summary.csv", "S001"),
         ("US merchandise share 2019", round(region_stats["US"]["merch"] / region_stats["US"]["revenue"] * 100, 1), "percent", "merch / region total", "data/franchise_region_summary.csv", "S001"),
+        ("Japan franchise count 2019", region_stats["Japan"]["count"], "franchises", "count of region_origin=Japan", "data/franchise_region_summary.csv", "S001"),
+        ("US franchise count 2019", region_stats["US"]["count"], "franchises", "count of region_origin=US", "data/franchise_region_summary.csv", "S001"),
+        ("UK region lifetime 2019", round(region_stats["UK"]["revenue"], 3), "USD billions", "sum of region_origin=UK", "data/franchise_region_summary.csv", "S001"),
+        ("UK merchandise share 2019", round(region_stats["UK"]["merch"] / region_stats["UK"]["revenue"] * 100, 1), "percent", "merch / region total", "data/franchise_region_summary.csv", "S001"),
+        ("UK franchise count 2019", region_stats["UK"]["count"], "franchises", "count of region_origin=UK", "data/franchise_region_summary.csv", "S001"),
         ("Korea region lifetime 2019", round(region_stats["Korea"]["revenue"], 3), "USD billions", "CrossFire + Dungeon Fighter Online", "data/franchise_region_summary.csv", "S001"),
         ("China region lifetime 2019", round(region_stats["China"]["revenue"], 3), "USD billions", "Westward Journey", "data/franchise_region_summary.csv", "S001"),
+        ("Sweden region lifetime 2019", round(region_stats["Sweden"]["revenue"], 3), "USD billions", "Minecraft + Candy Crush Saga", "data/franchise_region_summary.csv", "S001"),
+        ("Finland region lifetime 2019", round(region_stats["Finland"]["revenue"], 3), "USD billions", "Angry Birds", "data/franchise_region_summary.csv", "S001"),
+        ("Canada region lifetime 2019", round(region_stats["Canada"]["revenue"], 3), "USD billions", "PAW Patrol + Assassin's Creed", "data/franchise_region_summary.csv", "S001"),
         ("MCU box office share of its 2019 row", round(mcu_bo / mcu_tot * 100, 1), "percent", "Box Office category / MCU total", "data/franchise.csv", "S001"),
         ("Hello Kitty 2026 Wikipedia lifetime", wiki_2026("Hello Kitty"), "USD billions", "paired row; source revision not a real decline", "data/franchise_revenue_2019_vs_2026.csv", "S017"),
         ("Mario 2019 lifetime", round(fr_total("Mario"), 3), "USD billions", "sum of rows", "data/franchise.csv", "S001"),

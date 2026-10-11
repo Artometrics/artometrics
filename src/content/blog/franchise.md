@@ -4,7 +4,7 @@ slug: franchise
 author: kyle-mcauliffe
 pubDate: 2026-04-08T00:00:00.000Z
 description: >-
-  One hundred three Wikipedia-scraped franchises (mid-2019) sum to $1.52T lifetime revenue. Merchandise is 56% of row totals; Pokémon leads at $90.9B. Consolidated Disney franchise rows reach $426.2B. By region_origin (chart 15): Japan 42 franchises ($681.5B), US 52 ($770.0B), Korea 2 ($20.0B).
+  One hundred three Wikipedia-scraped franchises (mid-2019) sum to $1.52T lifetime revenue. Merchandise is 56% of row totals; Pokémon leads at $90.9B. By region of origin: Japan $681.5B, the US $622.6B (45 franchises, 64.6% merchandise), the UK $163.4B.
 heroImage: /images/content/articles/franchise/hero.png
 draft: false
 tags:
@@ -38,7 +38,7 @@ faq:
       Franchise-installment shares use Box Office Mojo domestic yearly charts with manual coding (top10_franchise_share_by_year.csv). 2024: nine of ten top domestic films coded as franchise installments (90%).
   - question: How does Japan compare with the United States in this file?
     answer: >-
-      By region_origin tags (entities_franchises.csv), Japan-origin franchises sum to $681.5B (49.1% merchandise share); US-origin sum to $770.0B (64.3%); Korea (CrossFire, Dungeon Fighter Online) sums to $20.0B; China (Westward Journey) $6.0B (chart 15, S001).
+      By hand-audited region_origin, Japan sums to $681.5B (49.1% merchandise). The United States sums to $622.6B across 45 franchises (64.6% merchandise). The United Kingdom sums to $163.4B across 8 franchises (59.8% merchandise), including Winnie the Pooh, Wizarding World, Middle-earth, and Thomas &amp; Friends. Rights-owner headquarters stay with the current owner, so Pooh’s owner HQ is still Disney in the US.
 ---
 <div id="quarto-content">
 <nav id="TOC" role="doc-toc">
@@ -50,7 +50,7 @@ faq:
 <li><a href="#merchandise-pools">Merchandise pools — Japan’s media-mix vs Hollywood’s vertical stack</a></li>
 <li><a href="#top-twenty">Who tops the table — and who is not crowned</a></li>
 <li><a href="#wiki-drift">Wikipedia moved (2019 vs 2026)</a></li>
-<li><a href="#region-origin">Japan, the United States, Korea, and China</a></li>
+<li><a href="#region-origin">Japan, the United States, and the United Kingdom</a></li>
 <li><a href="#original-medium">Original medium sets the extraction layer</a></li>
 <li><a href="#box-office-slice">Box office is a thin slice for most of the top twenty</a></li>
 <li><a href="#revenue-per-year">Revenue per year of existence</a></li>
@@ -119,13 +119,13 @@ faq:
 <p class="art-p"><strong>Mechanism.</strong> English Wikipedia aggregates press estimates; editors add streams the 2019 scrape under-weighted. The largest dollar increases among paired rows are Pokémon (+$39.8B, from $90.9B in 2019 to $130.7B in 2026), then Call of Duty and Naruto (about +$14B each). Mortal Kombat rises only about $3.9B, from $1.17B to $5.06B, and it is a fighting-game franchise, not a mobile title.</p>
 <p class="art-p"><strong>Counterexample.</strong> Hello Kitty, Mario, and Gundam show large negative percent changes in the paired file because English Wikipedia revised its sourcing between scrapes — not because Sanrio or Nintendo reported collapsing revenue. Chart 10 colors those rows gray. Other drops may reflect renames, splits, or scope changes (e.g., The Simpsons after Fox consolidation). Quote growth only when the crosswalk documents a pair and the match note flags a true like-for-like total.</p>
 
-<h2 id="region-origin" class="anchored">JAPAN, THE UNITED STATES, KOREA, AND CHINA</h2>
+<h2 id="region-origin" class="anchored">JAPAN, THE UNITED STATES, AND THE UNITED KINGDOM</h2>
 <figure class="art-chart">
 <div class="art-chart-live" data-chart="/data/articles/franchise/charts/chart15_region_japan_us_other.plotly.json" data-fallback="/images/content/articles/franchise/charts/chart15_region_japan_us_other.png" data-source="Data: entities_franchises.csv — ARTOMETRICS" role="img" aria-label="Lifetime revenue and merchandise share by region of origin."></div>
-<figcaption class="art-chart-caption art-chart-caption--visible">Japan: 42 franchises, $681.5B (49.1% merch). US: 52, $770.0B (64.3%). Korea: 2, $20.0B. China: 1, $6.0B. Other: 6, $44.8B (S001).</figcaption>
+<figcaption class="art-chart-caption art-chart-caption--visible">Japan: 42 franchises, $681.5B (49.1% merch). US: 45, $622.6B (64.6% merch). UK: 8, $163.4B (59.8% merch). Korea $20.0B. Sweden $9.0B. Finland $8.5B. Canada $11.3B. China $6.0B (S001).</figcaption>
 </figure>
 <p class="art-p"><strong>What it means.</strong> The ledger is Anglo-table biased but still shows two different optimisation paths — Japanese media-mix density versus US theatrical-and-parks scale.</p>
-<p class="art-p"><strong>How we know.</strong> Hand-audited <code>region_origin</code> tags in <code>entities_franchises.csv</code> (Japan: Evangelion, Sonic, Monster Strike, Puzzle &amp; Dragons, Fate, Gran Turismo; Korea: CrossFire, Dungeon Fighter Online; China: Westward Journey; US: Peanuts, TMNT), summed in <code>franchise_region_summary.csv</code> (S001).</p>
+<p class="art-p"><strong>How we know.</strong> Hand-audited <code>region_origin</code> in <code>entities_franchises.csv</code>. UK origin, with the current owner’s headquarters kept separate: Winnie the Pooh (Disney, US), Thomas &amp; Friends (Mattel, US), Wizarding World (Warner film rights, US), Middle-earth (Warner film rights, US), plus James Bond and The Phantom of the Opera (UK owners), Grand Theft Auto (Rockstar, US), and Bob the Builder (Mattel, US — origin UK, owner HQ US). Minecraft and Candy Crush originated in Sweden; owner HQ stays Microsoft and Activision in the US. PAW Patrol is Canada, origin and owner (Spin Master, Toronto). Assassin’s Creed originated at Ubisoft Montreal; owner HQ is Ubisoft in France. Angry Birds is Finland (Rovio, Espoo). Sums are in <code>franchise_region_summary.csv</code>.</p>
 <p class="art-p"><strong>Mechanism.</strong> US studios built global theatrical pipelines and theme-park engines; Japanese franchises optimised for domestic retail and long-tail collectibles (Steinberg, 2012; AJA industry reports for macro anime market context — whole-industry, not per-row).</p>
 <p class="art-p"><strong>Counterexample.</strong> There is no four-billion-dollar inclusion floor. Mortal Kombat sits in the 2019 file at $1.17B. National icons can still be missing from the English table, but that is an editorial gap, not a cutoff we can quote.</p>
 

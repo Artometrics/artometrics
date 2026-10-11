@@ -192,15 +192,21 @@ Experiences at thirty-four point two billion a year is that carrying capacity, i
 
 ## Who sits where
 
-Forty-two Japan-origin franchises sum to six hundred eighty-one point five billion, with merchandise at forty-nine percent of that bucket.
+Forty-two Japan-origin franchises sum to six hundred eighty-one point five billion. Merchandise there is forty-nine point one percent.
 
-Fifty-two United States-origin franchises sum to seven hundred seventy billion, with merchandise at sixty-four percent.
+Forty-five United States-origin franchises sum to six hundred twenty-two point six billion, with merchandise at sixty-four point six percent.
+
+Eight franchises began in the United Kingdom. Winnie the Pooh, the Wizarding World, Middle-earth, Thomas and Friends, James Bond, The Phantom of the Opera, Grand Theft Auto, and Bob the Builder. Together they are one hundred sixty-three point four billion. Merchandise is fifty-nine point eight percent of that.
+
+Disney, Warner, and Mattel still hold several of those rights. Origin and headquarters are different lines. Pooh was written in England. The owner on the 2019 row is Disney, in the United States.
 
 Korea is twenty billion: CrossFire and Dungeon Fighter Online.
 
-China, in this file, is Westward Journey at six billion.
+China is Westward Journey at six billion.
 
-What that means: Japan’s media mix and Hollywood’s parks are both merchandise businesses, built by different owners.
+Minecraft and Candy Crush began in Sweden. Together they are nine billion, and the owner is now American.
+
+What that means: do not call a British book an American franchise just because a studio in Burbank sells the toys.
 
 The English table still misses icons.
 

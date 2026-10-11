@@ -553,19 +553,37 @@ write_plotly_json(fig14, file.path(charts_dir, "chart14_box_office_share_top20.p
 write_motion_html("chart14_box_office_share_top20")
 copy_public("chart14_box_office_share_top20")
 
-# ── Chart 15: Japan vs US vs Other ────────────────────────────────────────────
+# ── Chart 15: region of origin ────────────────────────────────────────────────
 reg <- read_csv(file.path(data_dir, "franchise_region_summary.csv"), show_col_types = FALSE) %>%
-  mutate(region_origin = factor(region_origin, levels = c("Japan", "US", "China", "Korea", "Other")))
+  arrange(desc(lifetime_revenue_usd_b)) %>%
+  mutate(region_origin = factor(region_origin, levels = region_origin))
+region_palette <- c("#E60000", "#0047FF", "#111111", "#6B6B6B", "#4A6FA5", "#2E8B57", "#C4A35A", "#7A4E2D", "#9B4DCA", "#333333")
+region_colors <- setNames(region_palette[seq_len(nrow(reg))], levels(reg$region_origin))
 p15 <- ggplot(reg, aes(x = region_origin, y = lifetime_revenue_usd_b, fill = region_origin)) +
   geom_col(width = 0.55, show.legend = FALSE) +
-  scale_fill_manual(values = c("Japan" = ART_RED, "US" = ART_BLUE, "China" = "#6B6B6B", "Korea" = "#4A6FA5", "Other" = ART_BLACK)) +
-  labs(title = "Franchise revenue by region_origin", subtitle = "From entities_franchises.region_origin + notes (mid-2019 file)", x = NULL, y = "Lifetime $B") +
+  scale_fill_manual(values = region_colors) +
+  scale_x_discrete(expand = expansion(add = c(0.3, 0.45))) +
+  labs(title = "Franchise revenue by region of origin", subtitle = "Hand-audited region_origin. UK includes Pooh, Potter, Middle-earth, Thomas, Bond, Phantom, GTA, Bob the Builder.", x = NULL, y = "Lifetime $B") +
   theme_white()
-p15 <- finish_art_chart(p15, "Japan-origin rows punch above their count on merch-heavy mix", FRANCHISE_SOURCE)
-save_png(p15, "chart15_region_japan_us_other", 5)
+# Wordmark sits in the right margin so it does not cover the China label.
+p15 <- p15 +
+  annotate(
+    "text", x = Inf, y = -Inf, label = "Artometrics",
+    hjust = -0.12, vjust = -0.45, size = 3.8, color = ART_MID,
+    family = art_wordmark_family()
+  ) +
+  labs(caption = art_caption(FRANCHISE_SOURCE)) +
+  coord_cartesian(clip = "off") +
+  theme(
+    plot.margin = margin(t = 12, r = 88, b = 18, l = 14),
+    plot.caption = element_text(color = ART_MID, size = rel(0.72), hjust = 0, margin = margin(t = 14), family = "Helvetica")
+  )
+p15_strip <- art_takeaway_grob("Origin is where the work began, not where the current owner sits")
+p15 <- cowplot::plot_grid(p15_strip, p15, ncol = 1, rel_heights = c(0.07, 1))
+save_png(p15, "chart15_region_japan_us_other", 6)
 fig15 <- plot_ly(reg, labels = ~region_origin, values = ~lifetime_revenue_usd_b, type = "pie",
-                 marker = list(colors = c(ART_RED, ART_BLUE, "#6B6B6B", "#4A6FA5", ART_BLACK))) %>%
-  plotly_chrome("Regional split of franchise-row revenue", "region_origin column", "Cross-market comparison anchor", FRANCHISE_SOURCE, n_line = paste0("n=", sum(reg$franchise_count), " franchises"))
+                 marker = list(colors = unname(region_colors))) %>%
+  plotly_chrome("Regional split of franchise-row revenue", "region_origin, hand-audited", "UK is separated from the US owner labels", FRANCHISE_SOURCE, n_line = paste0("n=", sum(reg$franchise_count), " franchises"))
 write_plotly_json(fig15, file.path(charts_dir, "chart15_region_japan_us_other.plotly.json"))
 write_motion_html("chart15_region_japan_us_other", "dark")
 copy_public("chart15_region_japan_us_other")
