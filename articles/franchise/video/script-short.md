@@ -1,23 +1,79 @@
-# FRANCHISE — 3-minute explainer (~3:00)
+# FRANCHISE — short CEO brief (~3:15, ~480 words)
 
-Pokémon is not a movie studio that sells toys on the side. In the mid-2019 franchise ledger we track, it is a ninety point nine billion dollar licensing stack where the cartoon is marketing infrastructure and the card game is the cash register.
+You do not run a cinema.
 
-That ledger comes from TidyTuesday’s 2019 scrape of Wikipedia’s highest-grossing media franchises list. One hundred and three properties. Lifetime revenue estimates, not audited financials. Still: the pattern is too consistent to ignore.
+You run a licensing machine that sometimes rents a billboard called a premiere.
 
-Fifty-six percent of every dollar in the file sits in one bucket — merchandise, licensing, and retail. Box office is nine percent. Video games are twenty. Theatrical is the trailer; ownership is the business.
+Our mid-2019 ledger is the TidyTuesday scrape of Wikipedia’s highest-grossing media franchises — one hundred and three properties, one point five trillion dollars in lifetime estimates, verified against franchise.csv.
 
-Chart the top twenty and Pokémon still leads, but look at the colors. Merchandise is the fat red band on nearly every bar. Star Wars is the exception that proves the rule — a film universe that learned to sell physical objects at scale. Mario is the opposite exception: Nintendo keeps the IP on its own hardware and refuses to license the character into every aisle.
+Here is the pattern executives miss.
 
-Normalize by age and Pokémon wins again — about four billion dollars per year of existence. Hello Kitty’s eighty-billion lifetime total is real, but it took forty-five years. Efficiency is a design choice.
+Fifty-six percent of that money sits in merchandise, licensing, and retail.
 
-Now roll up owners. The raw file lists Disney, Marvel, and Fox as separate companies. They are not. Consolidate subsidiaries and Disney controls four hundred twenty-six billion in attributed franchise lifetime value in this snapshot — against Nintendo’s forty-nine billion on its own balance sheet, before you count Pokémon Company rows separately.
+Twenty percent is video games.
 
-Disney’s acquisitions read like a shopping list with SEC receipts. Pixar, seven point four billion. Marvel, four billion. Lucasfilm, four billion. Fox, seventy-one billion. Compare those check sizes to the franchise rows they anchor — Star Wars alone is sixty-three billion in the Wikipedia estimates — and you are looking at why conglomerates buy libraries, not single films.
+Box office is eight point nine percent.
 
-Theatrical culture moved the same direction. In twenty-nineteen, eight of the domestic top ten were franchise installments. In twenty-twenty-four, nine of ten. Box Office Mojo yearly charts, manual coding. The hit movie became a serial product.
+We know this by summing every revenue row in the committed file — source S001 — not by reading a press release.
 
-Counterexamples matter. Universal’s Dark Universe died after *The Mummy*. DC spent a decade proving that owning icons is not the same as operating a slate. Angry Birds shows mobile IP can peak and fade even while the row stays in the table.
+The mechanism is old.
 
-If you run a studio, the decision tools are blunt. First: count consolidated ownership before you compare competitors. Second: ask where margin lives — parks, merchandise, games, or subscriptions — because box office rank will lie. Third: treat acquisitions as capitalization of future licensing, not applause for last weekend’s gross.
+In Japan, production committees and a media-mix culture turned anime into a storefront for objects — cards, figures, magazines — long before Hollywood treated parks as balance-sheet infrastructure.
 
-Franchise economics is not fandom. It is where cash flows after the credits roll — and who owns the right to catch it.
+In the United States, vertically integrated studios — especially The Walt Disney Company — bought libraries and wired characters to theme parks and retail aisles.
+
+Counterexample: Nintendo keeps Mario on its own hardware and refuses to license the plumber into every shelf.
+
+Pokémon still leads the table at ninety point nine billion dollars — not because it outran every stacked Marvel and Star Wars row you could add, but because the property was designed as collectible SKUs with a cartoon as advertising.
+
+Hello Kitty and Winnie the Pooh follow at eighty and seventy-four point five billion — almost pure merchandise bands on the chart.
+
+Normalize by age and Pokémon clears about three point nine five billion per year of existence.
+
+Efficiency is a design choice, not a accident of fandom.
+
+Now ownership.
+
+The raw owner field lists Disney, Marvel Entertainment, Lucasfilm, and Twentieth Century Fox as rivals.
+
+They are subsidiaries.
+
+Consolidate and Disney attributes four hundred twenty-six point two billion dollars of franchise rows — Nintendo’s standalone owner label is forty-nine billion.
+
+Top-five owners hold forty-six point four percent of the file.
+
+If you benchmark without consolidation, you are negotiating against a ghost.
+
+Theatrical culture moved the same direction.
+
+On Box Office Mojo domestic yearly charts we coded franchise installments manually.
+
+Sixty percent of the top ten in twenty-ten.
+
+Eighty percent in twenty-nineteen.
+
+Ninety percent in twenty-twenty-four — nine of ten films.
+
+That is risk management: recognition lowers marketing cost.
+
+Counterexamples remain expensive.
+
+Universal shelved the Dark Universe after The Mummy.
+
+Warner Bros. spent years proving DC rows on paper do not operate a slate by themselves.
+
+Three lenses for your next board meeting.
+
+Count consolidated owners.
+
+Map margin to streams — parks and plush beat opening weekend for Hello Kitty.
+
+Price acquisitions as licensing NPV, comparing SEC deal checks to franchise-row anchors.
+
+Audited Disney segment revenue in FY twenty-twenty-four puts Experiences at thirty-four point one five one billion dollars — parks and merchandise on the same balance sheet as characters.
+
+That is the American mirror of Japan’s media-mix aisle.
+
+Franchise economics is not the trailer.
+
+It is who owns the object after the credits roll.

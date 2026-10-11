@@ -1,0 +1,91 @@
+scene_id,narration_words,visual_type,red_box_target,count_up_number,image_credit
+s001,You do not run a cinema.,AI illustration,minimal mechanism scene: You do not run a cinema.,,Artometrics AI prompt — no real people or IP characters
+s002,You run a licensing machine that,AI illustration,stick-figure executives at licensing table with contract and SKU icons,,Artometrics AI prompt — no real people
+s003,sometimes rents a billboard called a premiere.,AI illustration,minimal mechanism scene: sometimes rents a billboard called a premiere.,,Artometrics AI prompt — no real people or IP characters
+s004,Our mid-2019 ledger is the TidyTuesday,AI illustration,minimal mechanism scene: Our mid-2019 ledger is the TidyTuesday,,Artometrics AI prompt — no real people or IP characters
+s005,scrape of Wikipedia’s,chart beat,chart10_wiki_2019_vs_2026,,S017
+s006,highest-grossing media franchises —,AI illustration,minimal mechanism scene: highest-grossing media franchises —,,Artometrics AI prompt — no real people or IP characters
+s007,"one hundred and three properties,",AI illustration,"minimal mechanism scene: one hundred and three properties,",,Artometrics AI prompt — no real people or IP characters
+s008,one point five trillion,AI illustration,minimal mechanism scene: one point five trillion,,Artometrics AI prompt — no real people or IP characters
+s009,"dollars in lifetime estimates,",AI illustration,"minimal mechanism scene: dollars in lifetime estimates,",,Artometrics AI prompt — no real people or IP characters
+s010,verified against franchise.csv.,AI illustration,minimal mechanism scene: verified against franchise.csv.,,Artometrics AI prompt — no real people or IP characters
+s011,Here is the pattern executives miss.,AI illustration,minimal mechanism scene: Here is the pattern executives miss.,,Artometrics AI prompt — no real people or IP characters
+s012,Fifty-six percent of that money,chart beat,chart6_revenue_streams,56,Artometrics / franchise dataset (S001)
+s013,"sits in merchandise, licensing, and retail.",AI illustration,stick-figure executives at licensing table with contract and SKU icons,,Artometrics AI prompt — no real people
+s014,Twenty percent is video games.,AI illustration,minimal mechanism scene: Twenty percent is video games.,,Artometrics AI prompt — no real people or IP characters
+s015,Box office is eight point nine percent.,AI illustration,minimal mechanism scene: Box office is eight point nine percent.,,Artometrics AI prompt — no real people or IP characters
+s016,We know this by summing every,AI illustration,minimal mechanism scene: We know this by summing every,,Artometrics AI prompt — no real people or IP characters
+s017,revenue row in the committed file —,AI illustration,minimal mechanism scene: revenue row in the committed file —,,Artometrics AI prompt — no real people or IP characters
+s018,source S001 —,AI illustration,minimal mechanism scene: source S001 —,,Artometrics AI prompt — no real people or IP characters
+s019,not by reading a press release.,AI illustration,minimal mechanism scene: not by reading a press release.,,Artometrics AI prompt — no real people or IP characters
+s020,The mechanism is old.,AI illustration,minimal mechanism scene: The mechanism is old.,,Artometrics AI prompt — no real people or IP characters
+s021,"In Japan,",chart beat,chart15_region_japan_us_other,,S001
+s022,production committees and a media-mix culture turned,AI illustration,anime-style meeting table with publisher broadcaster toy company icons,,Steinberg (2012) context; Artometrics AI
+s023,anime into a storefront for objects —,AI illustration,minimal mechanism scene: anime into a storefront for objects —,,Artometrics AI prompt — no real people or IP characters
+s024,"cards, figures, magazines —",AI illustration,"minimal mechanism scene: cards, figures, magazines —",,Artometrics AI prompt — no real people or IP characters
+s025,long before Hollywood treated,chart beat,chart15_region_japan_us_other,,S001
+s026,parks as balance-sheet infrastructure.,AI illustration,minimal mechanism scene: parks as balance-sheet infrastructure.,,Artometrics AI prompt — no real people or IP characters
+s027,"In the United States, vertically integrated studios —",AI illustration,"minimal mechanism scene: In the United States, vertically integrated studios —",,Artometrics AI prompt — no real people or IP characters
+s028,especially The Walt Disney Company —,official logo,The Walt Disney Company,,https://commons.wikimedia.org/wiki/File:The_Walt_Disney_Company_logo.svg
+s029,bought libraries and wired characters,AI illustration,minimal mechanism scene: bought libraries and wired characters,,Artometrics AI prompt — no real people or IP characters
+s030,to theme parks and retail aisles.,AI illustration,stylised castle turnstile and merchandise cart silhouettes,,Artometrics AI prompt
+s031,Counterexample: Nintendo keeps Mario,official logo,Nintendo,,https://commons.wikimedia.org/wiki/File:Nintendo.svg
+s032,on its own hardware,AI illustration,minimal mechanism scene: on its own hardware,,Artometrics AI prompt — no real people or IP characters
+s033,and refuses to license the plumber into every shelf.,AI illustration,minimal mechanism scene: and refuses to license the plumber into every shelf.,,Artometrics AI prompt — no real people or IP characters
+s034,Pokémon still leads the table at,official logo,Pokémon,,The Pokémon Company (fair use logo)
+s035,ninety point nine billion dollars —,big number,Pokémon lifetime revenue,90.9,verified_numbers.csv (S001)
+s036,not because it outran every stacked Marvel,official logo,Marvel Entertainment,,SEC filing (S010)
+s037,"and Star Wars row you could add,",AI illustration,"minimal mechanism scene: and Star Wars row you could add,",,Artometrics AI prompt — no real people or IP characters
+s038,but because the property was designed as,AI illustration,minimal mechanism scene: but because the property was designed as,,Artometrics AI prompt — no real people or IP characters
+s039,collectible SKUs with a cartoon as advertising.,AI illustration,minimal mechanism scene: collectible SKUs with a cartoon as advertising.,,Artometrics AI prompt — no real people or IP characters
+s040,Hello Kitty and Winnie the Pooh follow,AI illustration,minimal mechanism scene: Hello Kitty and Winnie the Pooh follow,,Artometrics AI prompt — no real people or IP characters
+s041,at eighty and seventy-four point five billion —,AI illustration,minimal mechanism scene: at eighty and seventy-four point five billion —,,Artometrics AI prompt — no real people or IP characters
+s042,almost pure merchandise bands on the chart.,AI illustration,minimal mechanism scene: almost pure merchandise bands on the chart.,,Artometrics AI prompt — no real people or IP characters
+s043,Normalize by age and Pokémon clears about three,official logo,Pokémon,,The Pokémon Company (fair use logo)
+s044,point nine five billion per year of existence.,AI illustration,minimal mechanism scene: point nine five billion per year of existence.,,Artometrics AI prompt — no real people or IP characters
+s045,"Efficiency is a design choice,",AI illustration,"minimal mechanism scene: Efficiency is a design choice,",,Artometrics AI prompt — no real people or IP characters
+s046,not a accident of fandom.,AI illustration,minimal mechanism scene: not a accident of fandom.,,Artometrics AI prompt — no real people or IP characters
+s047,Now ownership.,AI illustration,minimal mechanism scene: Now ownership.,,Artometrics AI prompt — no real people or IP characters
+s048,"The raw owner field lists Disney,",official logo,The Walt Disney Company,,https://commons.wikimedia.org/wiki/File:The_Walt_Disney_Company_logo.svg
+s049,"Marvel Entertainment,",official logo,Marvel Entertainment,,SEC filing (S010)
+s050,"Lucasfilm,",AI illustration,"minimal mechanism scene: Lucasfilm,",,Artometrics AI prompt — no real people or IP characters
+s051,and Twentieth Century Fox as rivals.,AI illustration,minimal mechanism scene: and Twentieth Century Fox as rivals.,,Artometrics AI prompt — no real people or IP characters
+s052,They are subsidiaries.,AI illustration,minimal mechanism scene: They are subsidiaries.,,Artometrics AI prompt — no real people or IP characters
+s053,Consolidate and Disney,official logo,The Walt Disney Company,,https://commons.wikimedia.org/wiki/File:The_Walt_Disney_Company_logo.svg
+s054,attributes four hundred twenty-six,big number,Disney consolidated franchise rows,426.2,owner_totals_derived.csv (S001)
+s055,point two billion dollars of franchise rows —,AI illustration,minimal mechanism scene: point two billion dollars of franchise rows —,,Artometrics AI prompt — no real people or IP characters
+s056,Nintendo’s standalone owner,official logo,Nintendo,,https://commons.wikimedia.org/wiki/File:Nintendo.svg
+s057,label is forty-nine billion.,AI illustration,minimal mechanism scene: label is forty-nine billion.,,Artometrics AI prompt — no real people or IP characters
+s058,Top-five owners hold forty-six point,AI illustration,minimal mechanism scene: Top-five owners hold forty-six point,,Artometrics AI prompt — no real people or IP characters
+s059,four percent of the file.,AI illustration,minimal mechanism scene: four percent of the file.,,Artometrics AI prompt — no real people or IP characters
+s060,"If you benchmark without consolidation,",AI illustration,"minimal mechanism scene: If you benchmark without consolidation,",,Artometrics AI prompt — no real people or IP characters
+s061,you are negotiating against a ghost.,AI illustration,minimal mechanism scene: you are negotiating against a ghost.,,Artometrics AI prompt — no real people or IP characters
+s062,Theatrical culture moved the same direction.,AI illustration,minimal mechanism scene: Theatrical culture moved the same direction.,,Artometrics AI prompt — no real people or IP characters
+s063,On Box Office Mojo domestic yearly,chart beat,chart7_top10_franchise_share,,Box Office Mojo yearly charts
+s064,charts we coded franchise installments manually.,AI illustration,minimal mechanism scene: charts we coded franchise installments manually.,,Artometrics AI prompt — no real people or IP characters
+s065,Sixty percent of the top ten in twenty-ten.,AI illustration,minimal mechanism scene: Sixty percent of the top ten in twenty-ten.,,Artometrics AI prompt — no real people or IP characters
+s066,Eighty percent in twenty-nineteen.,AI illustration,minimal mechanism scene: Eighty percent in twenty-nineteen.,,Artometrics AI prompt — no real people or IP characters
+s067,Ninety percent in twenty-twenty-four —,AI illustration,minimal mechanism scene: Ninety percent in twenty-twenty-four —,,Artometrics AI prompt — no real people or IP characters
+s068,nine of ten films.,chart beat,chart7_top10_franchise_share,90,
+s069,That is risk management:,AI illustration,minimal mechanism scene: That is risk management:,,Artometrics AI prompt — no real people or IP characters
+s070,recognition lowers marketing cost.,AI illustration,minimal mechanism scene: recognition lowers marketing cost.,,Artometrics AI prompt — no real people or IP characters
+s071,Counterexamples remain expensive.,AI illustration,minimal mechanism scene: Counterexamples remain expensive.,,Artometrics AI prompt — no real people or IP characters
+s072,Universal shelved the Dark Universe after The Mummy.,AI illustration,minimal mechanism scene: Universal shelved the Dark Universe after The Mummy.,,Artometrics AI prompt — no real people or IP characters
+s073,Warner Bros.,AI illustration,minimal mechanism scene: Warner Bros.,,Artometrics AI prompt — no real people or IP characters
+s074,spent years proving DC rows on paper,AI illustration,minimal mechanism scene: spent years proving DC rows on paper,,Artometrics AI prompt — no real people or IP characters
+s075,do not operate a slate by themselves.,AI illustration,minimal mechanism scene: do not operate a slate by themselves.,,Artometrics AI prompt — no real people or IP characters
+s076,Three lenses for your next board meeting.,AI illustration,minimal mechanism scene: Three lenses for your next board meeting.,,Artometrics AI prompt — no real people or IP characters
+s077,Count consolidated owners.,AI illustration,minimal mechanism scene: Count consolidated owners.,,Artometrics AI prompt — no real people or IP characters
+s078,Map margin to streams —,AI illustration,minimal mechanism scene: Map margin to streams —,,Artometrics AI prompt — no real people or IP characters
+s079,parks and plush beat opening weekend for Hello Kitty.,AI illustration,minimal mechanism scene: parks and plush beat opening weekend for Hello Kitty.,,Artometrics AI prompt — no real people or IP characters
+s080,"Price acquisitions as licensing NPV, comparing",AI illustration,stick-figure executives at licensing table with contract and SKU icons,,Artometrics AI prompt — no real people
+s081,SEC deal checks to franchise-row anchors.,AI illustration,minimal mechanism scene: SEC deal checks to franchise-row anchors.,,Artometrics AI prompt — no real people or IP characters
+s082,Audited Disney segment revenue,official logo,The Walt Disney Company,,https://commons.wikimedia.org/wiki/File:The_Walt_Disney_Company_logo.svg
+s083,in FY twenty-twenty-four puts Experiences,AI illustration,minimal mechanism scene: in FY twenty-twenty-four puts Experiences,,Artometrics AI prompt — no real people or IP characters
+s084,at thirty-four point one five one billion dollars —,AI illustration,minimal mechanism scene: at thirty-four point one five one billion dollars —,,Artometrics AI prompt — no real people or IP characters
+s085,parks and merchandise on the,AI illustration,minimal mechanism scene: parks and merchandise on the,,Artometrics AI prompt — no real people or IP characters
+s086,same balance sheet as characters.,AI illustration,minimal mechanism scene: same balance sheet as characters.,,Artometrics AI prompt — no real people or IP characters
+s087,That is the American,AI illustration,minimal mechanism scene: That is the American,,Artometrics AI prompt — no real people or IP characters
+s088,mirror of Japan’s media-mix aisle.,chart beat,chart15_region_japan_us_other,,S001
+s089,Franchise economics is not the trailer.,AI illustration,minimal mechanism scene: Franchise economics is not the trailer.,,Artometrics AI prompt — no real people or IP characters
+s090,It is who owns the object after the credits roll.,AI illustration,minimal mechanism scene: It is who owns the object after the credits roll.,,Artometrics AI prompt — no real people or IP characters
