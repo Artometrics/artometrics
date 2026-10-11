@@ -1,0 +1,73 @@
+ownership_group,condition,penalty_tier,n
+For-Profit,AMI,High,126
+For-Profit,AMI,Low,14
+For-Profit,AMI,Medium,31
+For-Profit,AMI,No Penalty,135
+For-Profit,CABG,High,76
+For-Profit,CABG,Low,2
+For-Profit,CABG,Medium,6
+For-Profit,CABG,No Penalty,52
+For-Profit,COPD,High,116
+For-Profit,COPD,Low,34
+For-Profit,COPD,Medium,53
+For-Profit,COPD,No Penalty,204
+For-Profit,Heart Failure,High,195
+For-Profit,Heart Failure,Low,40
+For-Profit,Heart Failure,Medium,43
+For-Profit,Heart Failure,No Penalty,196
+For-Profit,Hip/Knee,High,120
+For-Profit,Hip/Knee,Low,6
+For-Profit,Hip/Knee,Medium,7
+For-Profit,Hip/Knee,No Penalty,135
+For-Profit,Pneumonia,High,210
+For-Profit,Pneumonia,Low,23
+For-Profit,Pneumonia,Medium,48
+For-Profit,Pneumonia,No Penalty,221
+Government,AMI,High,58
+Government,AMI,Low,16
+Government,AMI,Medium,26
+Government,AMI,No Penalty,81
+Government,CABG,High,43
+Government,CABG,Low,4
+Government,CABG,Medium,2
+Government,CABG,No Penalty,39
+Government,COPD,High,76
+Government,COPD,Low,32
+Government,COPD,Medium,33
+Government,COPD,No Penalty,152
+Government,Heart Failure,High,125
+Government,Heart Failure,Low,24
+Government,Heart Failure,Medium,48
+Government,Heart Failure,No Penalty,151
+Government,Hip/Knee,High,61
+Government,Hip/Knee,Low,4
+Government,Hip/Knee,Medium,6
+Government,Hip/Knee,No Penalty,82
+Government,Pneumonia,High,99
+Government,Pneumonia,Low,28
+Government,Pneumonia,Medium,36
+Government,Pneumonia,No Penalty,215
+Non-Profit,AMI,High,399
+Non-Profit,AMI,Low,80
+Non-Profit,AMI,Medium,102
+Non-Profit,AMI,No Penalty,653
+Non-Profit,CABG,High,232
+Non-Profit,CABG,Low,31
+Non-Profit,CABG,Medium,39
+Non-Profit,CABG,No Penalty,344
+Non-Profit,COPD,High,434
+Non-Profit,COPD,Low,131
+Non-Profit,COPD,Medium,179
+Non-Profit,COPD,No Penalty,865
+Non-Profit,Heart Failure,High,549
+Non-Profit,Heart Failure,Low,107
+Non-Profit,Heart Failure,Medium,140
+Non-Profit,Heart Failure,No Penalty,975
+Non-Profit,Hip/Knee,High,400
+Non-Profit,Hip/Knee,Low,26
+Non-Profit,Hip/Knee,Medium,46
+Non-Profit,Hip/Knee,No Penalty,505
+Non-Profit,Pneumonia,High,564
+Non-Profit,Pneumonia,Low,117
+Non-Profit,Pneumonia,Medium,133
+Non-Profit,Pneumonia,No Penalty,991
