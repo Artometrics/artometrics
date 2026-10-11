@@ -1,4 +1,5 @@
-region,franchise_count,lifetime_revenue_usd_b,merch_share_pct,source_ids
-US,36,599.367,65.8,S001
-Other,36,324.909,35.5,S001
-Japan,31,597.966,57.3,S001
+region_origin,franchise_count,lifetime_revenue_usd_b,merch_share_pct,source_ids
+China,2,20.0,0.0,S001
+Japan,35,632.764,52.3,S001
+Other,20,150.549,42.2,S001
+US,46,718.929,63.7,S001

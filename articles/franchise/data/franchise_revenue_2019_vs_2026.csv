@@ -1,82 +1,83 @@
-franchise,revenue_2019_b,revenue_2026_b,pct_change,wiki_franchise_matched,source_ids
-Mortal Kombat,1.173,5.06,331.4,Mortal Kombat,S001;S017
-One Piece,17.433,45.4,160.4,Disney Princess,S001;S017
-Minecraft,5.0,12.4,148.0,Warcraft,S001;S017
-Dungeon Fighter Online,10.0,22.0,120.0,Dungeon Fighter Online (DFO),S001;S017
-PAW Patrol,7.0,15.4,120.0,Paw Patrol,S001;S017
-Ice Age,3.0,6.42,114.0,Ice Age,S001;S017
-Fate,3.569,7.0,96.1,Fate,S001;S017
-Westward Journey,6.0,11.2,86.7,Star Trek,S001;S017
-Despicable Me / Minions,6.686,12.3,84.0,Despicable Me (Minions),S001;S017
-Call of Duty,17.0,31.0,82.4,Call of Duty,S001;S017
-Barbie,23.005,36.3,57.8,Barbie,S001;S017
-Mission: Impossible,3.146,4.7,49.4,Mission: Impossible,S001;S017
-Shrek,4.275,6.3,47.4,Shrek,S001;S017
-My Little Pony,4.071,5.98,46.9,My Little Pony,S001;S017
-Fast & Furious,5.466,7.98,46.0,Fast & Furious,S001;S017
-Pokémon,90.863,130.7,43.8,Pokémon,S001;S017
-Teenage Mutant Ninja Turtles,12.735,17.4,36.6,Teenage Mutant Ninja Turtles,S001;S017
-Frozen,10.473,13.9,32.7,Frozen,S001;S017
-Pirates of the Caribbean,6.0,7.9,31.7,Pirates of the Caribbean,S001;S017
-Jurassic Park,7.678,10.1,31.5,Jurassic Park,S001;S017
-Looney Tunes,13.299,17.46,31.3,Looney Tunes,S001;S017
-DC Extended Universe,6.204,8.0,28.9,DC Extended Universe (DCEU),S001;S017
-Wizarding World / Harry Potter,28.108,35.1,24.9,Wizarding World (Harry Potter),S001;S017
-SpongeBob SquarePants,13.465,16.6,23.3,SpongeBob SquarePants,S001;S017
-The Lion King,12.987,15.9,22.4,The Lion King,S001;S017
-Marvel Cinematic Universe,31.0,37.5,21.0,Marvel Cinematic Universe (MCU),S001;S017
-Star Trek,9.326,11.2,20.1,Star Trek,S001;S017
-Batman,25.04,29.9,19.4,Batman,S001;S017
-Warcraft,10.451,12.4,18.6,Warcraft,S001;S017
-Beyblade,4.009,4.6,14.7,Beyblade,S001;S017
-Grand Theft Auto,9.0,10.3,14.4,Grand Theft Auto (GTA),S001;S017
-The Big Bang Theory,4.0,4.57,14.3,The Big Bang Theory,S001;S017
-Thomas & Friends,8.02,9.12,13.7,The Railway Series / Thomas & Friends,S001;S017
-Avengers,12.59,14.3,13.6,Avengers,S001;S017
-Halo,6.0,6.8,13.3,Halo,S001;S017
-Angry Birds,8.48,9.54,12.5,Angry Birds,S001;S017
-Ben 10,7.0,7.85,12.1,Ben 10,S001;S017
-Assassin's Creed,4.253,4.7,10.5,Assassin's Creed,S001;S017
-Spider-Man,24.55,26.8,9.2,Spider-Man,S001;S017
-Space Invaders,13.0,13.9,6.9,Space Invaders,S001;S017
-Dora the Explorer,15.25,15.8,3.6,Dora the Explorer,S001;S017
-Disney Princess,44.042,45.4,3.1,Disney Princess,S001;S017
-Pac-Man,15.032,15.43,2.6,Pac-Man,S001;S017
-Gran Turismo,4.0,4.1,2.5,Gran Turismo,S001;S017
-Sesame Street / The Muppets,7.646,7.72,1.0,Sesame Street (The Muppets),S001;S017
-Bob the Builder,5.0,5.0,0.0,Bob the Builder,S001;S017
-Puzzle & Dragons,7.0,7.0,0.0,Puzzle & Dragons,S001;S017
-Strawberry Shortcake,4.002,4.0,-0.0,Strawberry Shortcake,S001;S017
-The Phantom of the Opera,6.155,6.15,-0.1,The Phantom of the Opera,S001;S017
-Cars,21.654,21.5,-0.7,Cars,S001;S017
-Dragon Quest,11.465,10.7,-6.7,Dragon Ball,S001;S017
-Mickey Mouse & Friends,69.737,61.2,-12.2,Mickey Mouse & Friends,S001;S017
-Peanuts,17.285,14.4,-16.7,Peanuts,S001;S017
-Toy Story,19.54,16.0,-18.1,Toy Story,S001;S017
-Twilight,5.388,4.31,-20.0,Twilight,S001;S017
-Star Wars,63.004,46.7,-25.9,Star Wars,S001;S017
-James Bond,13.901,9.75,-29.9,James Bond,S001;S017
-Winnie the Pooh,74.519,50.2,-32.6,Winnie-the-Pooh,S001;S017
-Ultraman,11.242,7.4,-34.2,Ultra Series (Ultraman),S001;S017
-Anpanman,60.092,38.4,-36.1,Anpanman,S001;S017
-Superman,13.152,8.2,-37.7,Superman,S001;S017
-Friends,4.13,2.5,-39.5,Friends,S001;S017
-Care Bears,5.052,3.05,-39.6,Care Bears,S001;S017
-Hunter × Hunter,3.351,2.0,-40.3,Guitar Hero,S001;S017
-Kumamon,4.065,2.36,-41.9,Kumamon,S001;S017
-Yo-kai Watch,4.023,2.09,-48.0,Yo-kai Watch,S001;S017
-Candy Crush Saga,4.0,2.0,-50.0,Farm Heroes Saga,S001;S017
-Dragon Ball,21.825,10.7,-51.0,Dragon Ball,S001;S017
-Aladdin,4.907,2.33,-52.5,Aladdin,S001;S017
-League of Legends,8.0,3.6,-55.0,Blue's Clues,S001;S017
-A Song of Ice and Fire /  Game of Thrones,5.313,2.27,-57.3,Planet of the Apes,S001;S017
-Resident Evil,4.688,2.0,-57.3,Resident Evil (Biohazard),S001;S017
-The Simpsons,13.527,4.9,-63.8,The Simpsons,S001;S017
-Monster Strike,7.01,2.09,-70.2,MonsterVerse,S001;S017
-Super Sentai / Power Rangers,29.233,8.67,-70.3,Super Sentai / Power Rangers,S001;S017
-Yu-Gi-Oh!,18.567,5.42,-70.8,Yu-Gi-Oh!,S001;S017
-Hello Kitty,80.026,15.9,-80.1,The Lion King,S001;S017
-Gundam,25.525,5.0,-80.4,Gundam,S001;S017
-Sailor Moon,14.319,2.5,-82.5,Sailor Moon,S001;S017
-Neon Genesis Evangelion,15.237,2.0,-86.9,Neon Genesis Evangelion,S001;S017
-Mario,35.021,3.02,-91.4,Hamtaro,S001;S017
+franchise,revenue_2019_b,revenue_2026_b,pct_change,wiki_franchise_matched,match_note,source_ids
+Candy Crush Saga,4.0,20.0,400.0,Candy Crush,2019 name maps to Wikipedia 'Candy Crush' row.,S001;S017
+Mortal Kombat,1.173,5.06,331.4,Mortal Kombat,Exact Wikipedia row title.,S001;S017
+Naruto,8.854,22.8,157.5,Naruto,Exact Wikipedia row title.,S001;S017
+Dungeon Fighter Online,10.0,22.0,120.0,Dungeon Fighter Online (DFO),Exact Wikipedia row title.,S001;S017
+PAW Patrol,7.0,15.4,120.0,Paw Patrol,Case/spelling per Wikipedia row.,S001;S017
+Ice Age,3.0,6.42,114.0,Ice Age,Exact Wikipedia row title.,S001;S017
+Fate,3.569,7.0,96.1,Fate,Exact Wikipedia row title.,S001;S017
+Despicable Me / Minions,6.686,12.3,84.0,Despicable Me (Minions),Exact Wikipedia row title.,S001;S017
+Call of Duty,17.0,31.0,82.4,Call of Duty,Exact Wikipedia row title.,S001;S017
+Transformers,15.74,25.0,58.8,Transformers,Exact Wikipedia row title.,S001;S017
+Barbie,23.005,36.3,57.8,Barbie,Exact Wikipedia row title.,S001;S017
+The Hunger Games,2.475,3.83,54.7,The Hunger Games,Exact Wikipedia row title.,S001;S017
+Mission: Impossible,3.146,4.7,49.4,Mission: Impossible,Exact Wikipedia row title.,S001;S017
+Shrek,4.275,6.3,47.4,Shrek,Exact Wikipedia row title.,S001;S017
+My Little Pony,4.071,5.98,46.9,My Little Pony,Exact Wikipedia row title.,S001;S017
+Fast & Furious,5.466,7.98,46.0,Fast & Furious,Exact Wikipedia row title.,S001;S017
+Pokémon,90.863,130.7,43.8,Pokémon,Exact Wikipedia row title.,S001;S017
+Monster Strike,7.01,10.0,42.7,Monster Strike,Exact Wikipedia row title.,S001;S017
+Teenage Mutant Ninja Turtles,12.735,17.4,36.6,Teenage Mutant Ninja Turtles,Exact Wikipedia row title.,S001;S017
+Frozen,10.473,13.9,32.7,Frozen,Exact Wikipedia row title.,S001;S017
+Pirates of the Caribbean,6.0,7.9,31.7,Pirates of the Caribbean,Exact Wikipedia row title.,S001;S017
+Jurassic Park,7.678,10.1,31.5,Jurassic Park,Exact Wikipedia row title.,S001;S017
+Looney Tunes,13.299,17.46,31.3,Looney Tunes,Exact Wikipedia row title.,S001;S017
+DC Extended Universe,6.204,8.0,28.9,DC Extended Universe (DCEU),Exact Wikipedia row title.,S001;S017
+Wizarding World / Harry Potter,28.108,35.1,24.9,Wizarding World (Harry Potter),Exact Wikipedia row title.,S001;S017
+SpongeBob SquarePants,13.465,16.6,23.3,SpongeBob SquarePants,Exact Wikipedia row title.,S001;S017
+The Lion King,12.987,15.9,22.4,The Lion King,Exact Wikipedia row title.,S001;S017
+Marvel Cinematic Universe,31.0,37.5,21.0,Marvel Cinematic Universe (MCU),Exact Wikipedia row title.,S001;S017
+Star Trek,9.326,11.2,20.1,Star Trek,Exact Wikipedia row title.,S001;S017
+Batman,25.04,29.9,19.4,Batman,Exact Wikipedia row title.,S001;S017
+X-Men,7.033,8.35,18.7,X-Men,Wikipedia: X-Men in other media display title.,S001;S017
+Warcraft,10.451,12.4,18.6,Warcraft,Exact Wikipedia row title.,S001;S017
+Beyblade,4.009,4.6,14.7,Beyblade,Wikipedia: Beyblade (franchise) display title.,S001;S017
+Grand Theft Auto,9.0,10.3,14.4,Grand Theft Auto (GTA),Exact Wikipedia row title.,S001;S017
+The Big Bang Theory,4.0,4.57,14.3,The Big Bang Theory,Exact Wikipedia row title.,S001;S017
+Thomas & Friends,8.02,9.12,13.7,The Railway Series / Thomas & Friends,Exact Wikipedia row title.,S001;S017
+Avengers,12.59,14.3,13.6,Avengers,Marvel Avengers row (distinct from MCU aggregate row).,S001;S017
+Halo,6.0,6.8,13.3,Halo,Exact Wikipedia row title.,S001;S017
+Angry Birds,8.48,9.54,12.5,Angry Birds,Exact Wikipedia row title.,S001;S017
+Ben 10,7.0,7.85,12.1,Ben 10,Exact Wikipedia row title.,S001;S017
+Assassin's Creed,4.253,4.7,10.5,Assassin's Creed,Exact Wikipedia row title.,S001;S017
+Spider-Man,24.55,26.8,9.2,Spider-Man,Exact Wikipedia row title.,S001;S017
+Space Invaders,13.0,13.9,6.9,Space Invaders,Exact Wikipedia row title.,S001;S017
+Sonic the Hedgehog,7.007,7.37,5.2,Sonic the Hedgehog,Exact Wikipedia row title.,S001;S017
+Dora the Explorer,15.25,15.8,3.6,Dora the Explorer,Exact Wikipedia row title.,S001;S017
+Disney Princess,44.042,45.4,3.1,Disney Princess,Exact Wikipedia row title.,S001;S017
+Pac-Man,15.032,15.43,2.6,Pac-Man,Exact Wikipedia row title.,S001;S017
+Gran Turismo,4.0,4.1,2.5,Gran Turismo,Exact Wikipedia row title.,S001;S017
+Sesame Street / The Muppets,7.646,7.72,1.0,Sesame Street (The Muppets),Exact Wikipedia row title.,S001;S017
+Bob the Builder,5.0,5.0,0.0,Bob the Builder,Exact Wikipedia row title.,S001;S017
+Puzzle & Dragons,7.0,7.0,0.0,Puzzle & Dragons,Exact Wikipedia row title.,S001;S017
+Strawberry Shortcake,4.002,4.0,-0.0,Strawberry Shortcake,Exact Wikipedia row title.,S001;S017
+The Phantom of the Opera,6.155,6.15,-0.1,The Phantom of the Opera,Exact Wikipedia row title.,S001;S017
+Cars,21.654,21.5,-0.7,Cars,Exact Wikipedia row title.,S001;S017
+Street Fighter,11.235,10.7,-4.8,Street Fighter,Exact Wikipedia row title.,S001;S017
+Mickey Mouse & Friends,69.737,61.2,-12.2,Mickey Mouse & Friends,Exact Wikipedia row title.,S001;S017
+Minecraft,5.0,4.32,-13.6,Minecraft,Wikipedia: Minecraft (franchise) display title.,S001;S017
+Peanuts,17.285,14.4,-16.7,Peanuts,Exact Wikipedia row title.,S001;S017
+Toy Story,19.54,16.0,-18.1,Toy Story,Exact Wikipedia row title.,S001;S017
+Twilight,5.388,4.31,-20.0,Twilight,Exact Wikipedia row title.,S001;S017
+Star Wars,63.004,46.7,-25.9,Star Wars,Exact Wikipedia row title.,S001;S017
+James Bond,13.901,9.75,-29.9,James Bond,Exact Wikipedia row title.,S001;S017
+Winnie the Pooh,74.519,50.2,-32.6,Winnie-the-Pooh,Hyphenation per Wikipedia row.,S001;S017
+Ultraman,11.242,7.4,-34.2,Ultra Series (Ultraman),Exact Wikipedia row title.,S001;S017
+Anpanman,60.092,38.4,-36.1,Anpanman,Exact Wikipedia row title.,S001;S017
+Superman,13.152,8.2,-37.7,Superman,Exact Wikipedia row title.,S001;S017
+Friends,4.13,2.5,-39.5,Friends,TV series row — not Mickey Mouse & Friends.,S001;S017
+Care Bears,5.052,3.05,-39.6,Care Bears,Exact Wikipedia row title.,S001;S017
+Kumamon,4.065,2.36,-41.9,Kumamon,Exact Wikipedia row title.,S001;S017
+Yo-kai Watch,4.023,2.09,-48.0,Yo-kai Watch,Exact Wikipedia row title.,S001;S017
+Dragon Ball,21.825,10.7,-51.0,Dragon Ball,Exact Wikipedia row title.,S001;S017
+Aladdin,4.907,2.33,-52.5,Aladdin,Exact Wikipedia row title.,S001;S017
+Middle-earth / Lord of the Rings,18.722,8.46,-54.8,Middle-earth (The Lord of the Rings),Exact Wikipedia row title.,S001;S017
+Resident Evil,4.688,2.0,-57.3,Resident Evil (Biohazard),Exact Wikipedia row title.,S001;S017
+Hello Kitty,80.026,33.5,-58.1,Hello Kitty,Exact Wikipedia row title.,S001;S017
+The Simpsons,13.527,4.9,-63.8,The Simpsons,Exact Wikipedia row title.,S001;S017
+Super Sentai / Power Rangers,29.233,8.67,-70.3,Super Sentai / Power Rangers,Exact Wikipedia row title.,S001;S017
+Yu-Gi-Oh!,18.567,5.42,-70.8,Yu-Gi-Oh!,Exact Wikipedia row title.,S001;S017
+Mario,35.021,9.74,-72.2,Mario,Wikipedia: Mario (franchise) display title.,S001;S017
+Gundam,25.525,5.0,-80.4,Gundam,Exact Wikipedia row title.,S001;S017
+Sailor Moon,14.319,2.5,-82.5,Sailor Moon,Exact Wikipedia row title.,S001;S017
+Neon Genesis Evangelion,15.237,2.0,-86.9,Neon Genesis Evangelion,Exact Wikipedia row title.,S001;S017

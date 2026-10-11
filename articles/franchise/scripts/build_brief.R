@@ -430,7 +430,7 @@ p10 <- ggplot(delta, aes(x = pct_change, y = franchise, fill = if_else(pct_chang
   scale_fill_identity() +
   labs(
     title = "Wikipedia lifetime estimates — percent change 2019 file → 2026 list",
-    subtitle = "Matched franchise names (fuzzy); not inflation-adjusted",
+    subtitle = "Hand crosswalk (franchise_crosswalk_2019_2026.csv); not inflation-adjusted",
     x = "% change in reported lifetime $B", y = NULL
   ) +
   theme_white()
@@ -543,16 +543,18 @@ write_motion_html("chart14_box_office_share_top20")
 copy_public("chart14_box_office_share_top20")
 
 # ── Chart 15: Japan vs US vs Other ────────────────────────────────────────────
-reg <- read_csv(file.path(data_dir, "franchise_region_summary.csv"), show_col_types = FALSE)
-p15 <- ggplot(reg, aes(x = region, y = lifetime_revenue_usd_b, fill = region)) +
+reg <- read_csv(file.path(data_dir, "franchise_region_summary.csv"), show_col_types = FALSE) %>%
+  mutate(region_origin = factor(region_origin, levels = c("Japan", "US", "China", "Other")))
+p15 <- ggplot(reg, aes(x = region_origin, y = lifetime_revenue_usd_b, fill = region_origin)) +
   geom_col(width = 0.55, show.legend = FALSE) +
-  scale_fill_manual(values = c("Japan" = ART_RED, "US" = ART_BLUE, "Other" = ART_BLACK)) +
-  labs(title = "Franchise revenue by origin region (heuristic)", subtitle = "Classifier uses owner/creator/franchise name markers — not GDP", x = NULL, y = "Lifetime $B (mid-2019 file)") +
+  scale_fill_manual(values = c("Japan" = ART_RED, "US" = ART_BLUE, "China" = "#6B6B6B", "Other" = ART_BLACK)) +
+  labs(title = "Franchise revenue by region_origin", subtitle = "From entities_franchises.region_origin + notes (mid-2019 file)", x = NULL, y = "Lifetime $B") +
   theme_white()
 p15 <- finish_art_chart(p15, "Japan-origin rows punch above their count on merch-heavy mix", FRANCHISE_SOURCE)
 save_png(p15, "chart15_region_japan_us_other", 5)
-fig15 <- plot_ly(reg, labels = ~region, values = ~lifetime_revenue_usd_b, type = "pie", marker = list(colors = c(ART_RED, ART_BLUE, ART_BLACK))) %>%
-  plotly_chrome("Regional split of franchise-row revenue", "Heuristic Japan / US / Other", "Cross-market comparison anchor", FRANCHISE_SOURCE, n_line = paste0("n=", sum(reg$franchise_count), " franchises"))
+fig15 <- plot_ly(reg, labels = ~region_origin, values = ~lifetime_revenue_usd_b, type = "pie",
+                 marker = list(colors = c(ART_RED, ART_BLUE, "#6B6B6B", ART_BLACK))) %>%
+  plotly_chrome("Regional split of franchise-row revenue", "region_origin column", "Cross-market comparison anchor", FRANCHISE_SOURCE, n_line = paste0("n=", sum(reg$franchise_count), " franchises"))
 write_plotly_json(fig15, file.path(charts_dir, "chart15_region_japan_us_other.plotly.json"))
 write_motion_html("chart15_region_japan_us_other", "dark")
 copy_public("chart15_region_japan_us_other")

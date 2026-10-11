@@ -1,11 +1,11 @@
 {
   "data": [
     {
-      "labels": ["US", "Other", "Japan"],
-      "values": [599.367, 324.909, 597.966],
+      "labels": ["China", "Japan", "Other", "US"],
+      "values": [20, 632.764, 150.549, 718.929],
       "marker": {
         "color": "rgba(31,119,180,1)",
-        "colors": ["#E60000", "#0047FF", "#000000"],
+        "colors": ["#E60000", "#0047FF", "#6B6B6B", "#000000"],
         "line": {
           "color": "rgba(255,255,255,1)"
         }
@@ -22,7 +22,7 @@
       "r": 40
     },
     "title": {
-      "text": "<b>Regional split of franchise-row revenue<\/b><br><span style='font-size:12px;color:#6B6B6B'>Heuristic Japan / US / Other<\/span>",
+      "text": "<b>Regional split of franchise-row revenue<\/b><br><span style='font-size:12px;color:#6B6B6B'>region_origin column<\/span>",
       "x": 0,
       "xanchor": "left"
     },

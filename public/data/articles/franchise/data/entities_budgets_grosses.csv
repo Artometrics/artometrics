@@ -1,26 +1,26 @@
-franchise,film,year,production_budget_usd,domestic_gross_usd,worldwide_gross_usd,source_url,source_ids,notes
-Pokémon,Pokémon: The First Movie,1998,30000000,85744662,163644662,https://www.the-numbers.com/movie/Pokemon-The-First-Movie,S019,
-Star Wars,Star Wars: The Force Awakens,2015,,,,https://www.the-numbers.com/movie/Star-Wars-Episode-VII-The-Force-Awakens,S019,HTTP Error 404: Not Found
-Marvel Cinematic Universe,Avengers: Endgame,2019,400000000,897457355,2928453604,https://www.the-numbers.com/movie/Avengers-Endgame-(2019),S019,
-Harry Potter,Harry Potter and the Deathly Hallows Part 2,2011,,,,https://www.the-numbers.com/movie/Harry-Potter-and-the-Deathly-Hallows-Part-2,S019,HTTP Error 404: Not Found
-Batman,The Dark Knight,2008,185000000,536625724,1010082145,https://www.the-numbers.com/movie/Dark-Knight-The,S019,
-Spider-Man,Spider-Man: No Way Home,2021,200000000,814811535,1921206586,https://www.the-numbers.com/movie/Spider-Man-No-Way-Home-(2021),S019,
-James Bond,Skyfall,2012,,,,https://www.the-numbers.com/movie/James-Bond-Skyfall,S019,HTTP Error 404: Not Found
-Fast and the Furious,Furious 7,2015,,,,https://www.the-numbers.com/movie/Fast-and-Furious-7,S019,HTTP Error 404: Not Found
-Jurassic Park,Jurassic World,2015,215000000,653406625,1671063641,https://www.the-numbers.com/movie/Jurassic-World,S019,
-Transformers,Transformers: Dark of the Moon,2011,,,,https://www.the-numbers.com/movie/Transformers-Dark-of-the-Moon,S019,HTTP Error 404: Not Found
-Toy Story,Toy Story 4,2019,,,,https://www.the-numbers.com/movie/Toy-Story-4,S019,HTTP Error 404: Not Found
-Frozen,Frozen II,2019,,,,https://www.the-numbers.com/movie/Frozen-2-(2019),S019,HTTP Error 404: Not Found
-The Lion King,The Lion King (2019),2019,,,,https://www.the-numbers.com/movie/Lion-King-(2019),S019,HTTP Error 404: Not Found
-Despicable Me,Minions,2015,74000000,336045770,1157271759,https://www.the-numbers.com/movie/Minions,S019,
-Shrek,Shrek 2,2004,70000000,439820881,933848612,https://www.the-numbers.com/movie/Shrek-2,S019,
-X-Men,X-Men: Days of Future Past,2014,200000000,233921534,747862775,https://www.the-numbers.com/movie/X-Men-Days-of-Future-Past,S019,
-Lord of the Rings,The Return of the King,2003,,,,https://www.the-numbers.com/movie/Lord-of-the-Rings-The-Return-of-the-King,S019,HTTP Error 404: Not Found
-Pirates of the Caribbean,Dead Man's Chest,2006,225000000,423315812,1064479311,https://www.the-numbers.com/movie/Pirates-of-the-Caribbean-Dead-Mans-Chest,S019,
-Mission: Impossible,Fallout,2018,,,,https://www.the-numbers.com/movie/Mission-Impossible-Fallout-(2018),S019,HTTP Error 404: Not Found
-The Hunger Games,Catching Fire,2013,,,,https://www.the-numbers.com/movie/Hunger-Games-Catching-Fire-The,S019,HTTP Error 404: Not Found
-Twilight,Breaking Dawn Part 2,2012,136200000,292914737,830314737,https://www.the-numbers.com/movie/Twilight-Saga-Breaking-Dawn-Part-2-The,S019,
-Finding Nemo,Finding Dory,2016,200000000,486295561,1025006125,https://www.the-numbers.com/movie/Finding-Dory,S019,
-Cars,Cars 3,2017,175000000,152901115,383541369,https://www.the-numbers.com/movie/Cars-3,S019,
-Indiana Jones,Kingdom of the Crystal Skull,2008,,,,https://www.the-numbers.com/movie/Indiana-Jones-and-the-Kingdom-of-the-Crystal-Skull,S019,HTTP Error 404: Not Found
-Alien,Alien: Covenant,2017,97000000,74262031,242392049,https://www.the-numbers.com/movie/Alien-Covenant,S019,
+franchise,film,year,production_budget_usd,production_budget_source,domestic_gross_usd,domestic_gross_source,worldwide_gross_usd,worldwide_gross_source,the_numbers_url,box_office_mojo_url,source_ids
+Pokémon,Pokémon: The First Movie,1998,30000000,S019,85744662,S019,163644662,S019,https://www.the-numbers.com/movie/Pokemon-The-First-Movie,https://www.boxofficemojo.com/release/rl531481857/,S019
+Star Wars,Star Wars: The Force Awakens,2015,,,,,,,https://www.the-numbers.com/movie/Star-Wars-Episode-VII-The-Force-Awakens,https://www.boxofficemojo.com/release/rl1630274561/,
+Marvel Cinematic Universe,Avengers: Endgame,2019,400000000,S019,897457355,S019,2928453604,S019,https://www.the-numbers.com/movie/Avengers-Endgame-(2019),https://www.boxofficemojo.com/release/rl3320038913/,S019
+Wizarding World / Harry Potter,Harry Potter and the Deathly Hallows Part 2,2011,,,,,,,https://www.the-numbers.com/movie/Harry-Potter-and-the-Deathly-Hallows-Part-2,https://www.boxofficemojo.com/release/rl3859276289/,
+Batman,The Dark Knight,2008,185000000,S019,536625724,S019,1010082145,S019,https://www.the-numbers.com/movie/Dark-Knight-The,https://www.boxofficemojo.com/release/rl1091076097/,S019
+Spider-Man,Spider-Man: No Way Home,2021,200000000,S019,814811535,S019,1921206586,S019,https://www.the-numbers.com/movie/Spider-Man-No-Way-Home-(2021),https://www.boxofficemojo.com/release/rl4044609025/,S019
+James Bond,Skyfall,2012,,,,,,,https://www.the-numbers.com/movie/James-Bond-Skyfall,https://www.boxofficemojo.com/release/rl2667577345/,
+Fast & Furious,Furious 7,2015,,,,,,,https://www.the-numbers.com/movie/Fast-and-Furious-7,https://www.boxofficemojo.com/release/rl2334883841/,
+Jurassic Park,Jurassic World,2015,215000000,S019,653406625,S019,1671063641,S019,https://www.the-numbers.com/movie/Jurassic-World,https://www.boxofficemojo.com/release/rl2334883841/,S019
+Toy Story,Toy Story 4,2019,,,,,,,https://www.the-numbers.com/movie/Toy-Story-4,https://www.boxofficemojo.com/release/rl3311923713/,
+Frozen,Frozen II,2019,,,,,,,https://www.the-numbers.com/movie/Frozen-2-(2019),https://www.boxofficemojo.com/release/rl3311923713/,
+Despicable Me / Minions,Minions,2015,74000000,S019,336045770,S019,1157271759,S019,https://www.the-numbers.com/movie/Minions,https://www.boxofficemojo.com/release/rl2583691265/,S019
+Shrek,Shrek 2,2004,70000000,S019,439820881,S019,933848612,S019,https://www.the-numbers.com/movie/Shrek-2,https://www.boxofficemojo.com/release/rl725614593/,S019
+Lord of the Rings,The Return of the King,2003,,,,,,,https://www.the-numbers.com/movie/Lord-of-the-Rings-The-Return-of-the-King,https://www.boxofficemojo.com/release/rl725614593/,
+Pirates of the Caribbean,Dead Man's Chest,2006,225000000,S019,423315812,S019,1064479311,S019,https://www.the-numbers.com/movie/Pirates-of-the-Caribbean-Dead-Mans-Chest,,S019
+Mission: Impossible,Mission: Impossible - Fallout,2018,,,,,,,https://www.the-numbers.com/movie/Mission-Impossible-Fallout-(2018),,
+The Hunger Games,The Hunger Games: Catching Fire,2013,,,,,,,https://www.the-numbers.com/movie/Hunger-Games-Catching-Fire-The,,
+Twilight,Breaking Dawn Part 2,2012,136200000,S019,292914737,S019,830314737,S019,https://www.the-numbers.com/movie/Twilight-Saga-Breaking-Dawn-Part-2-The,,S019
+Finding Nemo,Finding Dory,2016,200000000,S019,486295561,S019,1025006125,S019,https://www.the-numbers.com/movie/Finding-Dory,,S019
+Cars,Cars 3,2017,175000000,S019,152901115,S019,383541369,S019,https://www.the-numbers.com/movie/Cars-3,,S019
+Transformers,Dark of the Moon,2011,,,,,,,https://www.the-numbers.com/movie/Transformers-Dark-of-the-Moon,,
+X-Men,Days of Future Past,2014,200000000,S019,233921534,S019,747862775,S019,https://www.the-numbers.com/movie/X-Men-Days-of-Future-Past,,S019
+Indiana Jones,Kingdom of the Crystal Skull,2008,,,,,,,https://www.the-numbers.com/movie/Indiana-Jones-and-the-Kingdom-of-the-Crystal-Skull,,
+Alien,Alien: Covenant,2017,97000000,S019,74262031,S019,242392049,S019,https://www.the-numbers.com/movie/Alien-Covenant,,S019
+The Lion King,The Lion King (2019),2019,,,,,,,https://www.the-numbers.com/movie/Lion-King-(2019),,

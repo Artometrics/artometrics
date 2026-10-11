@@ -1,8 +1,8 @@
 {
   "data": [
     {
-      "x": [34.154, 42.233, 17.974],
-      "y": ["Disney Experiences", "Disney Entertainment", "ESPN / Disney Sports"],
+      "x": [41.186, 17.619, 34.151],
+      "y": ["Disney Entertainment", "Disney Sports", "Disney Experiences"],
       "orientation": "h",
       "marker": {
         "color": ["#0047FF", "#E60000", "#4A6FA5"],
@@ -84,7 +84,7 @@
       "title": "segment",
       "type": "category",
       "categoryorder": "array",
-      "categoryarray": ["ESPN / Disney Sports", "Disney Experiences", "Disney Entertainment"]
+      "categoryarray": ["Disney Sports", "Disney Experiences", "Disney Entertainment"]
     },
     "hovermode": "closest",
     "showlegend": false

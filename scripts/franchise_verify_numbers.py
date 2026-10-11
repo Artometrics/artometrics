@@ -7,18 +7,24 @@ import csv
 import hashlib
 import json
 import re
+import time
 import urllib.request
 from collections import defaultdict
-from datetime import date
-from difflib import SequenceMatcher
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parents[1]
+_SCRIPT_DIR = Path(__file__).resolve().parent
+import sys
+
+sys.path.insert(0, str(_SCRIPT_DIR))
+from franchise_crosswalk_data import CROSSWALK, REGION  # noqa: E402
+from franchise_wiki_parse import fetch_wikitext, parse_wiki_index  # noqa: E402
+
+REPO = _SCRIPT_DIR.parent
 ARTICLE = REPO / "articles" / "franchise"
 DATA = ARTICLE / "data"
 RAW = DATA / "raw"
 ACCESS_DATE = "2026-10-11"
-WIKI_USER_AGENT = "ArtometricsResearch/1.0 (https://artometrics.com; franchise phase1)"
+UA = "ArtometricsResearch/1.0 (contact@artometrics.com)"
 
 
 def sha256_file(path: Path) -> str:
@@ -34,138 +40,66 @@ def read_franchise_rows() -> list[dict[str, str]]:
         return list(csv.DictReader(f))
 
 
-def normalize_name(name: str) -> str:
-    s = name.lower()
-    s = re.sub(r"[^\w\s]", " ", s)
-    s = re.sub(r"\s+", " ", s).strip()
-    for old, new in (
-        ("pokemon", "pokemon"),
-        ("harry potter", "wizarding world"),
-        ("wizarding world", "wizarding world"),
-        ("marvel cinematic universe", "marvel cinematic universe"),
-        ("mcu", "marvel cinematic universe"),
-        ("star wars", "star wars"),
-        ("winnie the pooh", "winnie the pooh"),
-        ("winnie-the-pooh", "winnie the pooh"),
-        ("game of thrones", "game of thrones"),
-        ("a song of ice and fire", "game of thrones"),
-    ):
-        if old in s:
-            s = new
-    return s
-
-
-def fetch_wikipedia_wikitext() -> str:
-    url = (
-        "https://en.wikipedia.org/w/api.php?action=query"
-        "&titles=List_of_highest-grossing_media_franchises"
-        "&prop=revisions&rvprop=content&rvslots=main&format=json"
-    )
-    req = urllib.request.Request(url, headers={"User-Agent": WIKI_USER_AGENT})
-    with urllib.request.urlopen(req, timeout=120) as resp:
-        payload = json.load(resp)
-    pages = payload["query"]["pages"]
-    return next(iter(pages.values()))["revisions"][0]["slots"]["main"]["*"]
-
-
-def clean_wiki_cell(s: str) -> str:
-    s = re.sub(r"\[\[([^|\]]+)\|([^\]]+)\]\]", r"\2", s)
-    s = re.sub(r"\[\[([^\]]+)\]\]", r"\1", s)
-    s = re.sub(r"''", "", s)
-    s = re.sub(r"<[^>]+>", "", s)
-    s = re.sub(r"\{\{[^}]+\}\}", "", s)
-    return re.sub(r"\s+", " ", s).strip()
-
-
-def parse_wikipedia_franchises(wikitext: str) -> list[dict]:
-    rows: list[dict] = []
-    for block in re.split(r"\n\|-", wikitext):
-        if "! scope=row" not in block:
-            continue
-        m = re.search(r"! scope=row \| (.+)", block)
-        if not m:
-            continue
-        name = clean_wiki_cell(m.group(1))
-        parts = [p.strip() for p in block.split("\n|")[1:]]
-        if len(parts) < 2:
-            continue
-        year = re.sub(r"[^0-9].*", "", parts[0]) or parts[0][:4]
-        rev_cell = parts[1]
-        display_m = re.search(r"\$([0-9,.]+)\s*billion", rev_cell, re.I)
-        total_b = float(display_m.group(1).replace(",", "")) if display_m else None
-        orig = clean_wiki_cell(parts[3]) if len(parts) > 3 else ""
-        creators = clean_wiki_cell(parts[4]) if len(parts) > 4 else ""
-        owners = clean_wiki_cell(parts[5]) if len(parts) > 5 else ""
-        rows.append(
-            {
-                "franchise": name,
-                "year_created": year,
-                "total_revenue_usd_b_2026": total_b,
-                "original_media": orig,
-                "creators": creators,
-                "owner_now": owners,
-            }
-        )
-    return rows
-
-
-def best_wiki_match(franchise: str, wiki_rows: list[dict]) -> dict | None:
-    target = normalize_name(franchise)
-    best: dict | None = None
-    best_score = 0.0
-    for row in wiki_rows:
-        cand = normalize_name(row["franchise"])
-        score = SequenceMatcher(None, target, cand).ratio()
-        if target in cand or cand in target:
-            score = max(score, 0.92)
-        if score > best_score:
-            best_score = score
-            best = row
-    return best if best_score >= 0.55 else None
+def write_csv(path: Path, fieldnames: list[str], rows: list[dict]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
+        w.writeheader()
+        w.writerows(rows)
 
 
 def split_creators(raw: str) -> list[str]:
-    if not raw or not raw.strip():
+    if not raw or not str(raw).strip():
         return []
+    raw = re.sub(r"\s+", " ", raw.strip())
     parts = re.split(r"\s{2,}|\s+and\s+|,\s*", raw)
-    out = []
-    for p in parts:
-        p = p.strip()
-        if len(p) > 1:
-            out.append(p)
-    return out or [raw.strip()]
+    people: list[str] = []
+    for part in parts:
+        part = part.strip()
+        if not part:
+            continue
+        words = part.split()
+        if len(words) == 4:
+            people.extend([" ".join(words[:2]), " ".join(words[2:])])
+        else:
+            people.append(part)
+    return people
 
 
-JAPAN_MARKERS = (
-    "japan",
-    "nintendo",
-    "sanrio",
-    "bandai",
-    "toei",
-    "shueisha",
-    "shogakukan",
-    "sony music japan",
-    "tv tokyo",
-    "pokemon",
-    "anpanman",
-    "dragon ball",
-    "one piece",
-    "hello kitty",
-    "doraemon",
-    "yokai watch",
-    "gundam",
-)
-
-
-def region_bucket(franchise: str, owners: str, creators: str) -> str:
+def infer_region_fields(franchise: str, owners: str, creators: str) -> tuple[str, str, str, str]:
+    if franchise in REGION:
+        return REGION[franchise]
     blob = f"{franchise} {owners} {creators}".lower()
-    if any(m in blob for m in JAPAN_MARKERS):
-        return "Japan"
-    us_markers = (
+    japan_keys = (
+        "nintendo",
+        "sanrio",
+        "shueisha",
+        "bandai",
+        "toei",
+        "shogakukan",
+        "tv tokyo",
+        "square enix",
+        "capcom",
+        "konami",
+        "namco",
+        "sony music japan",
+        "kumamon",
+        "anpanman",
+        "pokémon",
+        "pokemon",
+    )
+    if any(k in blob for k in japan_keys):
+        return (
+            "Japan",
+            "Owner/creator string references Japan-based company.",
+            "Japan",
+            "Primary rights holder HQ inferred Japan from owner field.",
+        )
+    us_keys = (
         "disney",
         "warner",
         "marvel",
-        "dc comics",
+        "dc ",
         "universal",
         "paramount",
         "hasbro",
@@ -175,20 +109,167 @@ def region_bucket(franchise: str, owners: str, creators: str) -> str:
         "comcast",
         "amazon",
         "microsoft",
-        "apple",
-        "columbia",
+        "riot",
+        "activision",
+        "electronic arts",
+        "nickelodeon",
+        "cartoon network",
     )
-    if any(m in blob for m in us_markers):
-        return "US"
-    return "Other"
+    if any(k in blob for k in us_keys):
+        return (
+            "US",
+            "Owner field references US-listed or US studio.",
+            "US",
+            "Rights-owner HQ inferred United States from owner field.",
+        )
+    if "tencent" in blob or "china" in blob:
+        return (
+            "China",
+            "Owner references China-based parent.",
+            "China",
+            "Tencent or China HQ inferred from owner field.",
+        )
+    return (
+        "Other",
+        "No Japan/US/China marker in 2019 owner/creator strings.",
+        "Other",
+        "HQ not inferred; see owner_2019.",
+    )
 
 
-def write_csv(path: Path, fieldnames: list[str], rows: list[dict]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
-        w.writeheader()
-        w.writerows(rows)
+def parse_numbers_movie(url: str) -> tuple[str, str, str]:
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=60) as resp:
+        html = resp.read().decode("utf-8", errors="replace")
+    budget = ""
+    m = re.search(r"Production(?:&nbsp;|\s)Budget:.*?>\$([0-9,]+)", html, re.I)
+    if m:
+        budget = m.group(1).replace(",", "")
+    dom = ""
+    m = re.search(r"Domestic Box Office</b></td>\s*<td class='data'>\$([0-9,]+)", html)
+    if m:
+        dom = m.group(1).replace(",", "")
+    ww = ""
+    m = re.search(r"Worldwide Box Office</b></td>\s*<td class='data'>\$([0-9,]+)", html)
+    if m:
+        ww = m.group(1).replace(",", "")
+    return budget, dom, ww
+
+
+def parse_bom_title(url: str) -> tuple[str, str, str]:
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=60) as resp:
+        html = resp.read().decode("utf-8", errors="replace")
+    budget = ""
+    dom = ""
+    ww = ""
+    m = re.search(r"Budget</span>[^$]*\$([0-9,]+)", html)
+    if m:
+        budget = m.group(1).replace(",", "")
+    m = re.search(r"Domestic</span>[^$]*\$([0-9,]+)", html) or re.search(
+        r"Domestic Box Office[^$]*\$([0-9,]+)", html
+    )
+    if m:
+        dom = m.group(1).replace(",", "")
+    m = re.search(r"Worldwide</span>[^$]*\$([0-9,]+)", html) or re.search(
+        r"Worldwide Box Office[^$]*\$([0-9,]+)", html
+    )
+    if m:
+        ww = m.group(1).replace(",", "")
+    return budget, dom, ww
+
+
+def build_budgets_grosses() -> list[dict]:
+    films = [
+        ("Pokémon", "Pokémon: The First Movie", 1998, "https://www.the-numbers.com/movie/Pokemon-The-First-Movie", "https://www.boxofficemojo.com/release/rl531481857/"),
+        ("Star Wars", "Star Wars: The Force Awakens", 2015, "https://www.the-numbers.com/movie/Star-Wars-Episode-VII-The-Force-Awakens", "https://www.boxofficemojo.com/release/rl1630274561/"),
+        ("Marvel Cinematic Universe", "Avengers: Endgame", 2019, "https://www.the-numbers.com/movie/Avengers-Endgame-(2019)", "https://www.boxofficemojo.com/release/rl3320038913/"),
+        ("Wizarding World / Harry Potter", "Harry Potter and the Deathly Hallows Part 2", 2011, "https://www.the-numbers.com/movie/Harry-Potter-and-the-Deathly-Hallows-Part-2", "https://www.boxofficemojo.com/release/rl3859276289/"),
+        ("Batman", "The Dark Knight", 2008, "https://www.the-numbers.com/movie/Dark-Knight-The", "https://www.boxofficemojo.com/release/rl1091076097/"),
+        ("Spider-Man", "Spider-Man: No Way Home", 2021, "https://www.the-numbers.com/movie/Spider-Man-No-Way-Home-(2021)", "https://www.boxofficemojo.com/release/rl4044609025/"),
+        ("James Bond", "Skyfall", 2012, "https://www.the-numbers.com/movie/James-Bond-Skyfall", "https://www.boxofficemojo.com/release/rl2667577345/"),
+        ("Fast & Furious", "Furious 7", 2015, "https://www.the-numbers.com/movie/Fast-and-Furious-7", "https://www.boxofficemojo.com/release/rl2334883841/"),
+        ("Jurassic Park", "Jurassic World", 2015, "https://www.the-numbers.com/movie/Jurassic-World", "https://www.boxofficemojo.com/release/rl2334883841/"),
+        ("Toy Story", "Toy Story 4", 2019, "https://www.the-numbers.com/movie/Toy-Story-4", "https://www.boxofficemojo.com/release/rl3311923713/"),
+        ("Frozen", "Frozen II", 2019, "https://www.the-numbers.com/movie/Frozen-2-(2019)", "https://www.boxofficemojo.com/release/rl3311923713/"),
+        ("Despicable Me / Minions", "Minions", 2015, "https://www.the-numbers.com/movie/Minions", "https://www.boxofficemojo.com/release/rl2583691265/"),
+        ("Shrek", "Shrek 2", 2004, "https://www.the-numbers.com/movie/Shrek-2", "https://www.boxofficemojo.com/release/rl725614593/"),
+        ("Lord of the Rings", "The Return of the King", 2003, "https://www.the-numbers.com/movie/Lord-of-the-Rings-The-Return-of-the-King", "https://www.boxofficemojo.com/release/rl725614593/"),
+        ("Pirates of the Caribbean", "Dead Man's Chest", 2006, "https://www.the-numbers.com/movie/Pirates-of-the-Caribbean-Dead-Mans-Chest", ""),
+        ("Mission: Impossible", "Mission: Impossible - Fallout", 2018, "https://www.the-numbers.com/movie/Mission-Impossible-Fallout-(2018)", ""),
+        ("The Hunger Games", "The Hunger Games: Catching Fire", 2013, "https://www.the-numbers.com/movie/Hunger-Games-Catching-Fire-The", ""),
+        ("Twilight", "Breaking Dawn Part 2", 2012, "https://www.the-numbers.com/movie/Twilight-Saga-Breaking-Dawn-Part-2-The", ""),
+        ("Finding Nemo", "Finding Dory", 2016, "https://www.the-numbers.com/movie/Finding-Dory", ""),
+        ("Cars", "Cars 3", 2017, "https://www.the-numbers.com/movie/Cars-3", ""),
+        ("Transformers", "Dark of the Moon", 2011, "https://www.the-numbers.com/movie/Transformers-Dark-of-the-Moon", ""),
+        ("X-Men", "Days of Future Past", 2014, "https://www.the-numbers.com/movie/X-Men-Days-of-Future-Past", ""),
+        ("Indiana Jones", "Kingdom of the Crystal Skull", 2008, "https://www.the-numbers.com/movie/Indiana-Jones-and-the-Kingdom-of-the-Crystal-Skull", ""),
+        ("Alien", "Alien: Covenant", 2017, "https://www.the-numbers.com/movie/Alien-Covenant", ""),
+        ("The Lion King", "The Lion King (2019)", 2019, "https://www.the-numbers.com/movie/Lion-King-(2019)", ""),
+    ]
+    rows = []
+    for franchise, film, year, num_url, bom_url in films:
+        budget, dom, ww = "", "", ""
+        budget_src, dom_src, ww_src = "", "", ""
+        try:
+            b, d, w = parse_numbers_movie(num_url)
+            if b:
+                budget, budget_src = b, "S019"
+            if d:
+                dom, dom_src = d, "S019"
+            if w:
+                ww, ww_src = w, "S019"
+        except Exception:
+            pass
+        if bom_url:
+            try:
+                b2, d2, w2 = parse_bom_title(bom_url)
+                if not budget and b2:
+                    budget, budget_src = b2, "S018"
+                if not dom and d2:
+                    dom, dom_src = d2, "S018"
+                if not ww and w2:
+                    ww, ww_src = w2, "S018"
+            except Exception:
+                pass
+        rows.append(
+            {
+                "franchise": franchise,
+                "film": film,
+                "year": year,
+                "production_budget_usd": budget,
+                "production_budget_source": budget_src,
+                "domestic_gross_usd": dom,
+                "domestic_gross_source": dom_src,
+                "worldwide_gross_usd": ww,
+                "worldwide_gross_source": ww_src,
+                "the_numbers_url": num_url,
+                "box_office_mojo_url": bom_url,
+                "source_ids": ";".join(sorted({s for s in (budget_src, dom_src, ww_src) if s})),
+            }
+        )
+        time.sleep(0.12)
+    return rows
+
+
+def build_crosswalk_csv(wiki: dict[str, dict], totals: dict) -> list[dict]:
+    rows = []
+    for fr in sorted(totals.keys()):
+        if fr not in CROSSWALK:
+            raise SystemExit(f"Missing crosswalk entry for: {fr}")
+        wiki_title, note = CROSSWALK[fr]
+        w = wiki.get(wiki_title) if wiki_title else None
+        rows.append(
+            {
+                "franchise_2019": fr,
+                "franchise_2026_wiki": wiki_title,
+                "revenue_2026_usd_b": w["total_revenue_usd_b_2026"] if w else "",
+                "owner_2026": w["owner_now"] if w else "",
+                "match_note": note,
+                "source_ids": "S017" if wiki_title else "S001",
+            }
+        )
+    return rows
 
 
 def main() -> None:
@@ -203,7 +284,6 @@ def main() -> None:
         rev = float(r["revenue"])
         if fr not in totals:
             totals[fr] = {
-                "franchise": fr,
                 "year_created": r["year_created"],
                 "original_media": r["original_media"],
                 "creators": r["creators"],
@@ -215,9 +295,7 @@ def main() -> None:
         totals[fr]["by_cat"][r["revenue_category"]] += rev
 
     grand_total = sum(t["total"] for t in totals.values())
-    merch = sum(
-        t["by_cat"].get("Merchandise, Licensing & Retail", 0.0) for t in totals.values()
-    )
+    merch = sum(t["by_cat"].get("Merchandise, Licensing & Retail", 0.0) for t in totals.values())
     games = sum(t["by_cat"].get("Video Games/Games", 0.0) for t in totals.values())
     bo = sum(t["by_cat"].get("Box Office", 0.0) for t in totals.values())
     pokemon_total = totals.get("Pokémon", {}).get("total")
@@ -225,38 +303,52 @@ def main() -> None:
         for k, v in totals.items():
             if "Pok" in k:
                 pokemon_total = v["total"]
-                break
 
-    wikitext = fetch_wikipedia_wikitext()
-    wiki_path = RAW / f"wikipedia_franchises_{ACCESS_DATE}.json"
-    wiki_path.write_text(
+    wikitext = fetch_wikitext()
+    (RAW / f"wikipedia_franchises_{ACCESS_DATE}.json").write_text(
         json.dumps({"access_date": ACCESS_DATE, "wikitext_bytes": len(wikitext)}, indent=2),
         encoding="utf-8",
     )
-    wiki_rows = parse_wikipedia_franchises(wikitext)
+    wiki = parse_wiki_index(wikitext)
+    wiki_rows = [
+        {
+            "franchise": name,
+            "year_created": v["year_created"],
+            "total_revenue_usd_b_2026": v["total_revenue_usd_b_2026"],
+            "owner_now": v["owner_now"],
+            "source_ids": "S017",
+        }
+        for name, v in sorted(wiki.items(), key=lambda x: -(x[1]["total_revenue_usd_b_2026"] or 0))
+    ]
     write_csv(
         DATA / "wikipedia_franchise_revenue_2026.csv",
-        [
-            "franchise",
-            "year_created",
-            "total_revenue_usd_b_2026",
-            "original_media",
-            "creators",
-            "owner_now",
-            "source_ids",
-        ],
-        [{**r, "source_ids": "S017"} for r in wiki_rows],
+        ["franchise", "year_created", "total_revenue_usd_b_2026", "owner_now", "source_ids"],
+        wiki_rows,
     )
 
-    ent_franchises: list[dict] = []
+    crosswalk_rows = build_crosswalk_csv(wiki, totals)
+    write_csv(
+        DATA / "franchise_crosswalk_2019_2026.csv",
+        [
+            "franchise_2019",
+            "franchise_2026_wiki",
+            "revenue_2026_usd_b",
+            "owner_2026",
+            "match_note",
+            "source_ids",
+        ],
+        crosswalk_rows,
+    )
+    cross_by_fr = {r["franchise_2019"]: r for r in crosswalk_rows}
+
+    ent_franchises = []
     for fr, t in sorted(totals.items(), key=lambda x: -x[1]["total"]):
+        cw = cross_by_fr[fr]
+        reg_o, reg_on, hq, hq_n = infer_region_fields(fr, t["owners"], t["creators"])
         top_cat = max(t["by_cat"].items(), key=lambda x: x[1])[0]
         merch_share = (
-            t["by_cat"].get("Merchandise, Licensing & Retail", 0.0) / t["total"] * 100
-            if t["total"]
-            else 0.0
+            t["by_cat"].get("Merchandise, Licensing & Retail", 0.0) / t["total"] * 100 if t["total"] else 0
         )
-        wiki = best_wiki_match(fr, wiki_rows)
         ent_franchises.append(
             {
                 "franchise": fr,
@@ -264,14 +356,18 @@ def main() -> None:
                 "original_media": t["original_media"],
                 "creators": t["creators"],
                 "owner_2019": t["owners"],
-                "owner_now": wiki["owner_now"] if wiki else "",
+                "owner_now": cw["owner_2026"],
                 "total_revenue_usd_b_2019": round(t["total"], 3),
-                "total_revenue_usd_b_2026": wiki["total_revenue_usd_b_2026"] if wiki else "",
+                "total_revenue_usd_b_2026": cw["revenue_2026_usd_b"],
                 "top_revenue_stream": top_cat,
                 "merch_share_pct": round(merch_share, 1),
                 "box_office_usd_b": round(t["by_cat"].get("Box Office", 0.0), 3),
                 "films_count": "",
-                "source_ids": "S001;S017" if wiki else "S001",
+                "region_origin": reg_o,
+                "region_origin_note": reg_on,
+                "rights_owner_hq": hq,
+                "rights_owner_hq_note": hq_n,
+                "source_ids": "S001;S017" if cw["franchise_2026_wiki"] else "S001",
             }
         )
     write_csv(
@@ -289,26 +385,30 @@ def main() -> None:
             "merch_share_pct",
             "box_office_usd_b",
             "films_count",
+            "region_origin",
+            "region_origin_note",
+            "rights_owner_hq",
+            "rights_owner_hq_note",
             "source_ids",
         ],
         ent_franchises,
     )
 
-    # 2019 vs 2026 matched delta table for charts
     delta_rows = []
     for fr, t in totals.items():
-        wiki = best_wiki_match(fr, wiki_rows)
-        if not wiki or wiki["total_revenue_usd_b_2026"] is None:
+        cw = cross_by_fr[fr]
+        if not cw["franchise_2026_wiki"] or cw["revenue_2026_usd_b"] == "":
             continue
         b19 = t["total"]
-        b26 = wiki["total_revenue_usd_b_2026"]
+        b26 = float(cw["revenue_2026_usd_b"])
         delta_rows.append(
             {
                 "franchise": fr,
                 "revenue_2019_b": round(b19, 3),
                 "revenue_2026_b": b26,
                 "pct_change": round((b26 - b19) / b19 * 100, 1) if b19 else "",
-                "wiki_franchise_matched": wiki["franchise"],
+                "wiki_franchise_matched": cw["franchise_2026_wiki"],
+                "match_note": cw["match_note"],
                 "source_ids": "S001;S017",
             }
         )
@@ -320,12 +420,12 @@ def main() -> None:
             "revenue_2026_b",
             "pct_change",
             "wiki_franchise_matched",
+            "match_note",
             "source_ids",
         ],
         sorted(delta_rows, key=lambda x: -float(x["pct_change"] or 0)),
     )
 
-    # People
     people: dict[str, dict] = {}
     for fr, t in totals.items():
         for person in split_creators(t["creators"]):
@@ -333,23 +433,51 @@ def main() -> None:
             if key not in people:
                 people[key] = {"person": person, "role": "creator", "franchises": []}
             people[key]["franchises"].append(fr)
-    ent_people = [
-        {
-            "person": v["person"],
-            "role": v["role"],
-            "franchises": "; ".join(sorted(set(v["franchises"]))),
-            "source_ids": "S001",
-        }
-        for v in sorted(people.values(), key=lambda x: x["person"])
-    ]
     write_csv(
         DATA / "entities_people.csv",
         ["person", "role", "franchises", "source_ids"],
-        ent_people,
+        [
+            {
+                "person": v["person"],
+                "role": v["role"],
+                "franchises": "; ".join(sorted(set(v["franchises"]))),
+                "source_ids": "S001",
+            }
+            for v in sorted(people.values(), key=lambda x: x["person"])
+        ],
     )
 
-    # Deals (seed + extensions)
     deals = [
+        {
+            "acquirer": "Comcast Corporation (NBCUniversal)",
+            "target": "DreamWorks Animation",
+            "year": 2016,
+            "price_usd_b": 3.8,
+            "franchises_gained": "Shrek; Kung Fu Panda; How to Train Your Dragon",
+            "lifetime_revenue_gained_usd_b": "",
+            "source_ids": "S055",
+            "notes": "Closed 2016-08-22; $3.8B cash per Comcast 8-K.",
+        },
+        {
+            "acquirer": "Hasbro, Inc.",
+            "target": "Entertainment One (eOne)",
+            "year": 2019,
+            "price_usd_b": 4.0,
+            "franchises_gained": "Peppa Pig; PJ Masks",
+            "lifetime_revenue_gained_usd_b": "",
+            "source_ids": "S056",
+            "notes": "Completed 2019-12-30; ~$4.0B all-cash per Hasbro press release.",
+        },
+        {
+            "acquirer": "Amazon.com, Inc.",
+            "target": "MGM Holdings",
+            "year": 2022,
+            "price_usd_b": 8.45,
+            "franchises_gained": "James Bond; Rocky; Pink Panther",
+            "lifetime_revenue_gained_usd_b": "",
+            "source_ids": "S057",
+            "notes": "Closed 2022-03-17; $8.45B enterprise value per Amazon announcement.",
+        },
         {
             "acquirer": "The Walt Disney Company",
             "target": "Pixar",
@@ -388,37 +516,7 @@ def main() -> None:
             "franchises_gained": "The Simpsons; Avatar; X-Men",
             "lifetime_revenue_gained_usd_b": 13.527,
             "source_ids": "S012;S001",
-            "notes": "Enterprise value; franchise anchor is illustrative",
-        },
-        {
-            "acquirer": "Comcast (NBCUniversal)",
-            "target": "DreamWorks Animation",
-            "year": 2016,
-            "price_usd_b": 3.8,
-            "franchises_gained": "Shrek; Kung Fu Panda; How to Train Your Dragon",
-            "lifetime_revenue_gained_usd_b": "",
-            "source_ids": "S055",
-            "notes": "Price per Comcast 2016 8-K",
-        },
-        {
-            "acquirer": "Hasbro",
-            "target": "eOne",
-            "year": 2019,
-            "price_usd_b": 4.0,
-            "franchises_gained": "Peppa Pig; PJ Masks",
-            "lifetime_revenue_gained_usd_b": "",
-            "source_ids": "S056",
-            "notes": "",
-        },
-        {
-            "acquirer": "Amazon",
-            "target": "MGM Holdings",
-            "year": 2022,
-            "price_usd_b": 8.45,
-            "franchises_gained": "James Bond; Rocky; Pink Panther",
-            "lifetime_revenue_gained_usd_b": "",
-            "source_ids": "S057",
-            "notes": "Enterprise value per Amazon press release",
+            "notes": "Enterprise value per merger proxy.",
         },
     ]
     write_csv(
@@ -436,49 +534,35 @@ def main() -> None:
         deals,
     )
 
-    # Region rollup
     region_stats: dict[str, dict] = defaultdict(lambda: {"count": 0, "revenue": 0.0, "merch": 0.0})
     for fr, t in totals.items():
-        reg = region_bucket(fr, t["owners"], t["creators"])
+        reg = cross_by_fr[fr]  # noqa: F841 — use entity region
+        ent = next(e for e in ent_franchises if e["franchise"] == fr)
+        reg = ent["region_origin"]
         region_stats[reg]["count"] += 1
         region_stats[reg]["revenue"] += t["total"]
         region_stats[reg]["merch"] += t["by_cat"].get("Merchandise, Licensing & Retail", 0.0)
-    region_rows = []
-    for reg, st in region_stats.items():
-        region_rows.append(
+    write_csv(
+        DATA / "franchise_region_summary.csv",
+        ["region_origin", "franchise_count", "lifetime_revenue_usd_b", "merch_share_pct", "source_ids"],
+        [
             {
-                "region": reg,
+                "region_origin": reg,
                 "franchise_count": st["count"],
                 "lifetime_revenue_usd_b": round(st["revenue"], 3),
                 "merch_share_pct": round(st["merch"] / st["revenue"] * 100, 1) if st["revenue"] else 0,
                 "source_ids": "S001",
             }
-        )
-    write_csv(
-        DATA / "franchise_region_summary.csv",
-        ["region", "franchise_count", "lifetime_revenue_usd_b", "merch_share_pct", "source_ids"],
-        region_rows,
+            for reg, st in sorted(region_stats.items())
+        ],
     )
 
-    # Medium stacked mix
+    # derived tables (unchanged logic)
     medium_mix: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
     for fr, t in totals.items():
         om = t["original_media"] or "Unknown"
         for cat, val in t["by_cat"].items():
             medium_mix[om][cat] += val
-    mix_rows = []
-    for om, cats in medium_mix.items():
-        tot = sum(cats.values())
-        for cat, val in cats.items():
-            mix_rows.append(
-                {
-                    "original_media": om,
-                    "revenue_category": cat,
-                    "revenue_usd_b": round(val, 3),
-                    "share_within_medium_pct": round(val / tot * 100, 1) if tot else 0,
-                    "source_ids": "S001",
-                }
-            )
     write_csv(
         DATA / "revenue_mix_by_original_medium.csv",
         [
@@ -488,18 +572,21 @@ def main() -> None:
             "share_within_medium_pct",
             "source_ids",
         ],
-        mix_rows,
+        [
+            {
+                "original_media": om,
+                "revenue_category": cat,
+                "revenue_usd_b": round(val, 3),
+                "share_within_medium_pct": round(val / sum(cats.values()) * 100, 1),
+                "source_ids": "S001",
+            }
+            for om, cats in medium_mix.items()
+            for cat, val in cats.items()
+        ],
     )
 
-    # Owner concentration before/after Fox (mid-2019 file)
     def consolidate_owner(o: str) -> str:
-        if "Disney Company" in o:
-            return "The Walt Disney Company (consolidated)"
-        if "Lucasfilm" in o:
-            return "The Walt Disney Company (consolidated)"
-        if "Marvel Entertainment" in o:
-            return "The Walt Disney Company (consolidated)"
-        if "20th Century Fox" in o:
+        if any(x in o for x in ("Disney Company", "Lucasfilm", "Marvel Entertainment", "20th Century Fox")):
             return "The Walt Disney Company (consolidated)"
         return o
 
@@ -508,11 +595,7 @@ def main() -> None:
         owner_map[consolidate_owner(t["owners"])] += t["total"]
 
     def consolidate_owner_pre_fox(o: str) -> str:
-        if "Disney Company" in o:
-            return "The Walt Disney Company (pre-Fox)"
-        if "Lucasfilm" in o:
-            return "The Walt Disney Company (pre-Fox)"
-        if "Marvel Entertainment" in o:
+        if any(x in o for x in ("Disney Company", "Lucasfilm", "Marvel Entertainment")):
             return "The Walt Disney Company (pre-Fox)"
         if "20th Century Fox" in o:
             return "21st Century Fox (standalone)"
@@ -522,25 +605,41 @@ def main() -> None:
     for t in totals.values():
         owner_pre[consolidate_owner_pre_fox(t["owners"])] += t["total"]
 
-    conc_rows = []
-    for label, mp in (("after_fox_consolidated", owner_map), ("before_fox_split", owner_pre)):
-        top = sorted(mp.items(), key=lambda x: -x[1])[:5]
-        top_sum = sum(v for _, v in top)
-        conc_rows.append(
-            {
-                "scenario": label,
-                "top5_owner_share_pct": round(top_sum / grand_total * 100, 1),
-                "top_owner": top[0][0] if top else "",
-                "top_owner_share_pct": round(top[0][1] / grand_total * 100, 1) if top else 0,
-                "source_ids": "S001",
-            }
-        )
     write_csv(
         DATA / "owner_concentration_scenarios.csv",
         ["scenario", "top5_owner_share_pct", "top_owner", "top_owner_share_pct", "source_ids"],
-        conc_rows,
+        [
+            {
+                "scenario": label,
+                "top5_owner_share_pct": round(sum(v for _, v in sorted(mp.items(), key=lambda x: -x[1])[:5]) / grand_total * 100, 1),
+                "top_owner": sorted(mp.items(), key=lambda x: -x[1])[0][0],
+                "top_owner_share_pct": round(sorted(mp.items(), key=lambda x: -x[1])[0][1] / grand_total * 100, 1),
+                "source_ids": "S001",
+            }
+            for label, mp in (("after_fox_consolidated", owner_map), ("before_fox_split", owner_pre))
+        ],
     )
 
+    write_csv(
+        DATA / "entities_budgets_grosses.csv",
+        [
+            "franchise",
+            "film",
+            "year",
+            "production_budget_usd",
+            "production_budget_source",
+            "domestic_gross_usd",
+            "domestic_gross_source",
+            "worldwide_gross_usd",
+            "worldwide_gross_source",
+            "the_numbers_url",
+            "box_office_mojo_url",
+            "source_ids",
+        ],
+        build_budgets_grosses(),
+    )
+
+    matched_with_2026 = sum(1 for r in crosswalk_rows if r["franchise_2026_wiki"])
     verified = [
         ("Franchises in dataset", len(totals), "count", "unique franchise names", "data/franchise.csv", "S001"),
         ("Total lifetime revenue, all 103", round(grand_total, 1), "USD billions", "sum of revenue", "data/franchise.csv", "S001"),
@@ -558,8 +657,10 @@ def main() -> None:
         ("Hello Kitty lifetime revenue", round(totals.get("Hello Kitty", {}).get("total", 0), 3), "USD billions", "sum of rows", "data/franchise.csv", "S001"),
         ("Winnie the Pooh lifetime revenue", round(totals.get("Winnie the Pooh", {}).get("total", 0), 3), "USD billions", "sum of rows", "data/franchise.csv", "S001"),
         ("franchise.csv SHA-256", franchise_sha, "hash", "sha256sum", "data/franchise.csv", "S001"),
-        ("Wikipedia franchises parsed (2026 scrape)", len(wiki_rows), "count", "parse_wikipedia_franchises", "data/wikipedia_franchise_revenue_2026.csv", "S017"),
-        ("2019↔2026 matched franchises", len(delta_rows), "count", "fuzzy name match", "data/franchise_revenue_2019_vs_2026.csv", "S001;S017"),
+        ("Wikipedia franchises parsed (2026 scrape)", len(wiki), "count", "parse_wiki_index", "data/wikipedia_franchise_revenue_2026.csv", "S017"),
+        ("2019↔2026 crosswalk rows", len(crosswalk_rows), "count", "franchise_crosswalk_2019_2026.csv", "data/franchise_crosswalk_2019_2026.csv", "S001;S017"),
+        ("2019 rows with 2026 Wikipedia pair", matched_with_2026, "count", "non-empty franchise_2026_wiki", "data/franchise_crosswalk_2019_2026.csv", "S017"),
+        ("2019↔2026 delta chart rows", len(delta_rows), "count", "both years have revenue", "data/franchise_revenue_2019_vs_2026.csv", "S001;S017"),
     ]
     write_csv(
         DATA / "verified_numbers.csv",
@@ -578,7 +679,10 @@ def main() -> None:
         ],
     )
 
-    print(f"Wrote entity + verified tables ({len(totals)} franchises, wiki {len(wiki_rows)} rows)")
+    print(
+        f"Wrote tables: {len(totals)} franchises, wiki {len(wiki)}, "
+        f"crosswalk matched {matched_with_2026}, delta {len(delta_rows)}"
+    )
 
 
 if __name__ == "__main__":
