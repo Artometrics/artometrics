@@ -123,6 +123,8 @@ Dozens of culture and civics reports pull a single weekly TidyTuesday extract in
 
 See [`candidate_sources.csv`](./candidate_sources.csv) for the full table (APIs, cost, license, cadence, effort, Apify gap, ToU risk).
 
+**Paid / subscription landscape** (Statista, Nielsen, Parrot, Apify, proxies, newsroom practices, grey-area risks, starter budgets): [`PAID-SOURCES.md`](./PAID-SOURCES.md).
+
 Highlights by Tier A topic:
 
 | Topic | Priority additions |

@@ -905,7 +905,7 @@ def render_audit_md(
             "python3 scripts/data-audit/generate_audit.py",
             "```",
             "",
-            "Outputs: this file, `datasets.csv`, `candidate_sources.csv`.",
+            "Outputs: this file, `datasets.csv`, `candidate_sources.csv`, `PAID-SOURCES.md` (paid-vendor memo; maintained separately).",
             "",
         ]
     )
