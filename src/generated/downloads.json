@@ -694,14 +694,14 @@
   },
   "padres": {
     "slug": "padres",
-    "dataset": null,
+    "dataset": "/data/articles/padres/data/cbt_payroll.csv",
     "quarto": null,
     "html": null,
     "pdf": null,
     "epub": null,
-    "audio": null,
+    "audio": "/audios/padres-the-artometrics-of-paying-for-october.mp3",
     "transcript": "/exports/transcripts/padres.txt",
-    "github": "https://github.com/Artometrics/padres"
+    "github": null
   },
   "pantheon": {
     "slug": "pantheon",

@@ -2,7 +2,7 @@
 
 **Desk:** arts · **Live:** https://artometrics.com/franchise/
 
-Pokémon at $91B tops 107 franchises tracked. Merchandise drives 61% of all revenue. Disney owns $426B across subsidiaries.
+Pokémon at $91B tops 103 franchise rows in the committed TidyTuesday extract. Merchandise is 56% of row-sum revenue. Disney owns $426B across subsidiaries when consolidated.
 
 ## Layout
 

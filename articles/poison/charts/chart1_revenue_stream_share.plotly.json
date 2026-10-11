@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "x": [61, 39],
+      "x": [56, 44],
       "y": ["Merchandise, Licensing & Retail", "Box Office + All Other Streams"],
       "orientation": "h",
       "marker": {
@@ -11,7 +11,7 @@
           "width": 0
         }
       },
-      "text": ["61%", "39%"],
+      "text": ["56%", "44%"],
       "textposition": ["outside", "outside"],
       "hovertemplate": ["<b>%{y}<\/b><br>%{x}% of tracked revenue<extra><\/extra>", "<b>%{y}<\/b><br>%{x}% of tracked revenue<extra><\/extra>"],
       "type": "bar",
@@ -34,7 +34,7 @@
       "r": 50
     },
     "title": {
-      "text": "<b>Merchandise share of revenue across 107 tracked franchises<\/b><br><span style='font-size:12px;color:#6B6B6B'>Share of tracked lifetime revenue by stream<\/span>",
+      "text": "<b>Merchandise share of revenue across 103 franchise rows<\/b><br><span style='font-size:12px;color:#6B6B6B'>Share of row-sum lifetime revenue by stream<\/span>",
       "x": 0,
       "xanchor": "left"
     },
