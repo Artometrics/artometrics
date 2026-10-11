@@ -31,3 +31,7 @@ format:
     theme: cosmo
     bibliography: references.bib
     cite-method: citeproc
+  artometrics-magazine-typst:
+    font-paths:
+      - _extensions/artometrics-magazine/fonts
+  artometrics-magazine-html: default

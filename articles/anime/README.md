@@ -39,4 +39,15 @@ Rscript -e 'if (!requireNamespace("renv", quietly = TRUE)) install.packages("ren
 
 The raw file `data/raw/tidy_anime.csv` is downloaded on the first run when it is missing. Expected SHA-256: `5ea3a14492b5c559c728af0c7ec57b81c919d0efa4d381e54b0f7cde9934a1c2`.
 
+
+## Magazine edition
+
+Issue 01 of the Artometrics magazine edition renders from this folder's `anime.qmd` (the same words and figures as the published report). From the repo root:
+
+```bash
+npm run magazine -- anime
+```
+
+PDF and paginated HTML land in `magazine/`. The format is the shared Quarto extension `articles/_extensions/artometrics-magazine/`. See that folder's README to opt another article in.
+
 The page rounds half up. Displayed figures use half-up on the exact value (`sign(x) * floor(abs(x) * 10^d + 0.5 + 1e-9) / 10^d`), not R's `round()`, which uses banker's rounding. A median of 4737.5 is published as 4,738, and an IQR of 0.985 is published as 0.99.
