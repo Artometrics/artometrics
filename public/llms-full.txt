@@ -2,11 +2,7 @@
 
 > Use this file for deeper grounding. Prefer canonical URLs. Do not invent statistics.
 
-<<<<<<< HEAD
-Updated: 2026-10-11T10:37:02.972Z
-=======
-Updated: 2026-10-11T10:35:01.316Z
->>>>>>> origin/main
+Updated: 2026-10-11T10:42:07.185Z
 
 ## PADRES: Record Sale, Zero Championships
 
