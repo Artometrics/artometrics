@@ -20,7 +20,7 @@ DECKS = {
 
 LOGO = "../../../../public/images/brand/chomsky-a-white.png"
 
-from render_dark_charts import COPY as CHART_COPY  # noqa: E402
+from render_dark_charts import chart_parts, svg_bars  # noqa: E402
 
 UNITS = {
     "zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
@@ -83,6 +83,46 @@ ALIASES = [
 
 def esc(s: str) -> str:
     return html.escape(s or "", quote=True)
+
+
+def load_facts() -> dict[str, dict]:
+    path = VIDEO_DIR.parents[1] / "data" / "franchise.csv"
+    # articles/franchise/data/franchise.csv
+    path = Path(__file__).resolve().parents[2] / "data" / "franchise.csv"
+    rows: dict[str, dict] = {}
+    if not path.exists():
+        return rows
+    for row in csv.DictReader(path.open(encoding="utf-8")):
+        name = (row.get("franchise") or "").strip()
+        if not name:
+            continue
+        slot = rows.setdefault(name, {"rev": 0.0, "year": row.get("year_created") or "", "owners": row.get("owners") or "", "media": row.get("original_media") or ""})
+        try:
+            slot["rev"] += float(row.get("revenue") or 0)
+        except ValueError:
+            pass
+        slot["year"] = row.get("year_created") or slot["year"]
+        slot["owners"] = row.get("owners") or slot["owners"]
+        slot["media"] = row.get("original_media") or slot["media"]
+    return rows
+
+
+def match_fact(name: str, facts: dict[str, dict]) -> dict | None:
+    if name in facts:
+        return facts[name]
+    low = name.lower()
+    for key, val in facts.items():
+        if low in key.lower() or key.lower() in low:
+            return val
+    owned = [v for k, v in facts.items() if low in (v.get("owners") or "").lower()]
+    if not owned:
+        return None
+    return {
+        "rev": sum(v["rev"] for v in owned),
+        "year": "",
+        "owners": name,
+        "media": "Owner",
+    }
 
 
 def load_assets() -> dict[str, dict]:
@@ -316,21 +356,10 @@ def _royalty() -> str:
 
 
 def _sku_stack() -> str:
-    bars = []
-    colors = ["#6a6a6a", "#6a6a6a", "#0047FF", "#E60000", "#6a6a6a"]
-    labels = ["Film", "TV", "Game", "Merch", "Music"]
-    for i, (c, lab) in enumerate(zip(colors, labels)):
-        h = 70 + i * 28
-        if lab == "Merch":
-            h = 280
-        x = 180 + i * 200
-        bars.append(
-            f'<rect x="{x}" y="{520 - h}" width="120" height="{h}" fill="{c}"/>'
-            f'<text x="{x + 60}" y="555" text-anchor="middle" fill="#ddd" font-size="18">{lab}</text>'
-        )
-        if lab == "Merch":
-            bars.append(f'<rect x="{x - 8}" y="{520 - h - 8}" width="136" height="{h + 16}" fill="none" stroke="#E60000" stroke-width="3"/>')
-    return '<svg class="diagram-svg" viewBox="0 0 1400 640" xmlns="http://www.w3.org/2000/svg">' + "".join(bars) + "</svg>"
+    labels = ["Music", "Book sales", "TV", "Home video", "Comic or manga", "Box office", "Video games", "Merchandise"]
+    values = [1.1, 1.3, 1.5, 3.3, 8.0, 8.9, 20.0, 56.0]
+    svg = svg_bars(labels, values, "merchandise", "%", "box office")
+    return f'<div class="chart-stage">{svg}</div><p class="chart-source dm-mono">Source: S001 · share of lifetime revenue · n=103 · unit %</p>'
 
 
 def _flywheel() -> str:
@@ -397,7 +426,13 @@ def render_bookend(deck_id: str, which: str, label: str) -> str:
     </section>'''
 
 
-def render_row(row: dict, assets: dict[str, dict], aspect: str) -> str:
+def money(rev: float) -> str:
+    if rev >= 1:
+        return f"${rev:.1f}bn".replace(".0bn", "bn")
+    return f"${rev:.2f}bn"
+
+
+def render_row(row: dict, assets: dict[str, dict], facts: dict[str, dict], aspect: str) -> str:
     sid = row["scene_id"]
     vt = row["visual_type"]
     narr = row["narration_words"]
@@ -408,18 +443,14 @@ def render_row(row: dict, assets: dict[str, dict], aspect: str) -> str:
 
     if vt == "chart beat":
         key = chart_key(row.get("asset_file", ""), row.get("asset_id", ""))
-        if key in CHART_COPY:
-            head = CHART_COPY[key][0]
-        src = f"../assets/charts/chart_{key}.html" if key else ""
-        hl = ""
-        num = first_number(row.get("count_up_number") or narr)
-        if num:
-            hl = f"?hl={esc(num)}"
+        head, sub, source, svg = chart_parts(key) if key else ("103 franchises in the 2019 file.", "", "Source: S001", "")
         return f'''<section class="slide slide-chart" id="{sid}" data-scene-id="{sid}" data-visual-type="chart beat">
           <div class="slide-frame">
             <p class="section-label dm-mono">{esc(section)}</p>
             <h2 class="headline dm-sans">{esc(head)}</h2>
-            <div class="stage chart-stage"><iframe class="chart-embed" src="{src}{hl}" title="{esc(head)}"></iframe></div>
+            <p class="chart-sub dm-mono">{esc(sub)}</p>
+            <div class="chart-stage">{svg}</div>
+            <p class="chart-source dm-mono">{esc(source)}</p>
             <p class="caption-burn dm-sans">{esc(cap)}</p>
           </div>
           <aside class="speaker-notes">{notes}</aside>
@@ -439,16 +470,42 @@ def render_row(row: dict, assets: dict[str, dict], aspect: str) -> str:
             meaning_short = "years on the clock"
         else:
             meaning_short = "the figure on this beat"
-        head = f"{num} {meaning_short}."
+        spoken = sentence(narr)
+        head = spoken if any(ch.isdigit() for ch in spoken) else f"{num} {meaning_short}."
         cap = caption(narr)
-        meaning_html = "" if meaning_short.lower() in head.lower() else f'<p class="meaning dm-sans">{esc(meaning_short)}</p>'
+        names = entities_in(narr)
+        logo = ""
+        if names:
+            meta = assets.get(names[0]) or {}
+            if meta.get("file"):
+                logo = f'<img class="support-logo" src="../{esc(meta["file"])}" alt="{esc(names[0])}"/>'
+        compare_label, compare_val, compare_w = "File total", "$1.52tn", 100
+        this_w = 70
+        if "percent" in low:
+            compare_label, compare_val, compare_w = "Merchandise", "56%", 100
+            try:
+                this_w = max(8, min(100, float(str(num).replace("%", "").replace(",", ""))))
+            except ValueError:
+                this_w = 40
+        elif num.replace(",", "").isdigit():
+            try:
+                this_w = max(8, min(100, int(num.replace(",", "")) / 103 * 100))
+            except ValueError:
+                this_w = 60
         return f'''<section class="slide slide-bignum" id="{sid}" data-scene-id="{sid}" data-visual-type="big-number card">
           <div class="slide-frame">
             <p class="section-label dm-mono">{esc(section)}</p>
-            <h2 class="headline dm-sans">{esc(head if head != sentence(narr) else meaning)}</h2>
-            <div class="stage"><div class="bignum-wrap">
-              <div class="red-box-target"><span class="count-up dm-mono" data-count-up="{esc(num)}">{esc(num)}</span></div>
-              {meaning_html}
+            <h2 class="headline dm-sans">{esc(head)}</h2>
+            <div class="stage"><div class="bignum-layout">
+              <div class="bignum-wrap">
+                <div class="red-box-target"><span class="count-up dm-mono" data-count-up="{esc(num)}">{esc(num)}</span></div>
+                <p class="context-line dm-sans">{esc(meaning_short)}</p>
+              </div>
+              <div class="support">
+                <div class="mini-row dm-mono"><span>This beat</span><div class="mini-track"><div class="mini-fill red" style="width:{this_w:.0f}%"></div></div><span class="hot">{esc(num)}</span></div>
+                <div class="mini-row dm-mono"><span>{esc(compare_label)}</span><div class="mini-track"><div class="mini-fill blue" style="width:{compare_w}%"></div></div><span style="color:#0047FF">{esc(compare_val)}</span></div>
+                {logo}
+              </div>
             </div></div>
             <p class="caption-burn dm-sans">{esc(cap)}</p>
           </div>
@@ -459,27 +516,47 @@ def render_row(row: dict, assets: dict[str, dict], aspect: str) -> str:
         names = entities_in(narr)
         if not names and row.get("red_box_target"):
             names = [row["red_box_target"].split(".")[0][:48]]
-        if names:
-            head = sentence(narr)
         cards = []
+        headlines = []
+        poster = vt in {"poster", "official still"}
         for name in names or ["Franchise"]:
             meta = assets.get(name) or assets.get(row.get("asset_id", "")) or {}
             src = meta.get("file") or row.get("asset_file") or ""
             rel = f"../{src}" if src else ""
             credit = meta.get("credit_line") or row.get("image_credit") or ""
+            fact = match_fact(name, facts) or {}
+            rev = fact.get("rev") or 0
+            year = fact.get("year") or ""
+            owner = (fact.get("owners") or name).split("(")[0].strip(" ,")
+            if "pokémon company" in owner.lower() or "pokemon company" in owner.lower():
+                owner = "The Pokémon Company"
+            owner = owner[:42]
+            role = fact.get("media") or ("Still" if poster else "Franchise")
+            fig = money(rev) if rev else (first_number(narr) or "—")
+            if rev:
+                headlines.append(f"{name} is {money(rev)} in the 2019 file" + (f", from {year}." if year else "."))
             cards.append(
-                f'''<figure class="entity-card">
+                f'''<figure class="entity-card{' poster' if poster else ''}">
                   <img src="{esc(rel)}" alt="{esc(name)}"/>
-                  <figcaption class="entity-name dm-sans">{esc(name)}</figcaption>
-                  <p class="entity-fact">{fact_line(narr)}</p>
-                  <p class="entity-credit dm-mono">{esc(credit)}</p>
+                  <div class="fact-block">
+                    <p class="entity-name dm-sans">{esc(name)}</p>
+                    <p class="entity-owner dm-sans">Owner · {esc(owner[:80])}</p>
+                    <p class="entity-fig dm-mono"><span class="hot">{esc(fig)}</span><span class="year">{esc(str(year))}</span></p>
+                    <p class="entity-role dm-sans">{esc(role)}</p>
+                    <p class="entity-credit dm-mono">{esc(credit)}</p>
+                  </div>
                 </figure>'''
             )
+        if headlines:
+            head = " ".join(headlines[:2])
+        elif not any(ch.isdigit() for ch in head):
+            head = "103 franchises sit in the 2019 file. This name is one of them."
+        nclass = f"n{min(len(cards), 3)}"
         return f'''<section class="slide slide-entity" id="{sid}" data-scene-id="{sid}" data-visual-type="{esc(vt)}">
           <div class="slide-frame">
             <p class="section-label dm-mono">{esc(section)}</p>
             <h2 class="headline dm-sans">{esc(head)}</h2>
-            <div class="stage"><div class="entity-row">{''.join(cards)}</div></div>
+            <div class="stage"><div class="entity-row {nclass}">{''.join(cards)}</div></div>
             <p class="caption-burn dm-sans">{esc(cap)}</p>
           </div>
           <aside class="speaker-notes">{notes}</aside>
@@ -488,8 +565,8 @@ def render_row(row: dict, assets: dict[str, dict], aspect: str) -> str:
     if vt == "type card":
         source = row.get("image_credit") or row.get("red_box_target") or "Source on file"
         claim = sentence(narr)
-        head = "Cite the file the figure comes from."
-        cap = source if len(source) < 90 else caption(narr)
+        head = claim if any(ch.isdigit() for ch in claim) else "S001 lists 103 franchises and $1.52tn. This line cites that file."
+        cap = caption(narr)
         return f'''<section class="slide slide-type" id="{sid}" data-scene-id="{sid}" data-visual-type="type card">
           <div class="slide-frame">
             <p class="section-label dm-mono">THE SOURCE</p>
@@ -512,7 +589,7 @@ def render_row(row: dict, assets: dict[str, dict], aspect: str) -> str:
         return f'''<section class="slide slide-atmo" id="{sid}" data-scene-id="{sid}" data-visual-type="atmosphere">
           <div class="slide-frame">
             <p class="section-label dm-mono">THE SCENE</p>
-            <h2 class="headline dm-sans">{esc(sentence(narr))}</h2>
+            <h2 class="headline dm-sans">{esc(sentence(narr) if any(ch.isdigit() for ch in sentence(narr)) else "103 franchises in the 2019 file. This beat is the scene around them.")}</h2>
             <div class="stage"><div class="ai-stage"><img class="ai-image" src="{esc(src)}" alt=""/></div></div>
             <p class="caption-burn dm-sans">{esc(cap)}</p>
           </div>
@@ -525,11 +602,13 @@ def render_row(row: dict, assets: dict[str, dict], aspect: str) -> str:
         "royalty": "The licence is the business. The premiere is the advert.",
     }.get("x", head)
     if "park" in narr.lower() or "experiences" in narr.lower():
-        head_d = "The character is sold again after the credits."
+        head_d = "Parks and products are the repeat sale. Merchandise is 56% of the file."
     elif "merchandise" in narr.lower() or "licensing" in narr.lower():
-        head_d = "Licensing and the shelf outrun the ticket."
-    else:
+        head_d = "Merchandise is 56% of all franchise revenue. Box office is 8.9%."
+    elif any(ch.isdigit() for ch in head):
         head_d = head
+    else:
+        head_d = "The licence is the business. Merchandise is 56% of the 2019 file."
     return f'''<section class="slide slide-diagram" id="{sid}" data-scene-id="{sid}" data-visual-type="diagram">
       <div class="slide-frame">
         <p class="section-label dm-mono">THE MACHINE</p>
@@ -541,11 +620,11 @@ def render_row(row: dict, assets: dict[str, dict], aspect: str) -> str:
     </section>'''
 
 
-def build(deck_id: str, assets: dict[str, dict]) -> tuple[Path, int]:
+def build(deck_id: str, assets: dict[str, dict], facts: dict[str, dict]) -> tuple[Path, int]:
     fname, aspect, label = DECKS[deck_id]
     rows = list(csv.DictReader((VIDEO_DIR / fname).open(encoding="utf-8")))
     slides = [render_bookend(deck_id, "open", label)]
-    slides += [render_row(r, assets, aspect) for r in rows]
+    slides += [render_row(r, assets, facts, aspect) for r in rows]
     slides.append(render_bookend(deck_id, "close", label))
     doc = f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"/>
@@ -563,9 +642,10 @@ def build(deck_id: str, assets: dict[str, dict]) -> tuple[Path, int]:
 
 def main() -> int:
     assets = load_assets()
+    facts = load_facts()
     targets = sys.argv[1:] or list(DECKS)
     for deck_id in targets:
-        path, n = build(deck_id, assets)
+        path, n = build(deck_id, assets, facts)
         print(f"Wrote {path} ({n} slides)")
     return 0
 

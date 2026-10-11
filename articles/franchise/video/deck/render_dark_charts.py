@@ -143,45 +143,99 @@ def merge_traces(spec: dict) -> tuple[list[str], list[float]]:
     return [p[0] for p in pairs], [p[1] for p in pairs]
 
 
-def svg_bars(labels: list[str], values: list[float], highlight: str) -> str:
+# viewBox matches an 80% × 65% stage at 1920×1080 so 20px type is 20px on screen.
+FRAME_W, FRAME_H = 1536, 702
+FONT = 22
+
+UNIT = {
+    "chart6_revenue_streams": "%",
+    "chart7_top10_franchise_share": "%",
+    "chart10_wiki_2019_vs_2026": "%",
+    "chart12_owner_concentration": "%",
+    "chart14_box_office_share_top20": "%",
+    "chart1_top20_revenue": "$bn",
+    "chart2_revenue_per_year": "$bn/yr",
+    "chart3a_disney_non_consolidated": "$bn",
+    "chart3b_disney_consolidated": "$bn",
+    "chart5_original_media_revenue": "$bn",
+    "chart8_disney_acquisitions": "$bn",
+    "chart9_disney_segments_fy2024": "$bn",
+    "chart11_mix_by_original_medium": "%",
+    "chart13_deal_price_vs_revenue": "$bn",
+    "chart15_region_japan_us_other": "$bn",
+}
+
+
+def fmt_unit(val: float, unit: str) -> str:
+    if unit == "%":
+        text = f"{val:.1f}".rstrip("0").rstrip(".")
+        return f"{text}%"
+    if unit.startswith("$"):
+        text = f"{val:.1f}".rstrip("0").rstrip(".")
+        return f"${text}{unit[1:]}" if unit != "$bn" else f"${text}bn"
+    if unit:
+        return f"{val:g} {unit}"
+    return f"{val:g}"
+
+
+def insight_headline(name: str, labels: list[str], values: list[float]) -> str:
+    unit = UNIT.get(name, "")
+    if name == "chart6_revenue_streams":
+        return "Merchandise is 56% of all franchise revenue. Box office is 8.9%."
+    if not values:
+        return COPY.get(name, ("The file, drawn.", "", ""))[0]
+    order = sorted(zip(labels, values), key=lambda p: abs(p[1]), reverse=True)
+    a_lab, a_val = order[0]
+    if len(order) > 1:
+        b_lab, b_val = order[1]
+        return f"{a_lab} is {fmt_unit(a_val, unit)}. {b_lab} is {fmt_unit(b_val, unit)}."
+    return f"{a_lab} is {fmt_unit(a_val, unit)}."
+
+
+def svg_bars(labels: list[str], values: list[float], highlight: str, unit: str = "", blue_label: str = "") -> str:
     if not values:
         return ""
     n = len(labels)
-    row_h = 28 if n > 14 else 36 if n > 8 else 48
-    h = 80 + n * row_h
-    w = 1600
-    label_w = 340
-    plot_w = w - label_w - 120
+    w, h = FRAME_W, FRAME_H
+    label_w = 420
+    plot_w = w - label_w - 150
+    top, bot = 16, 28
+    row_h = (h - top - bot) / max(n, 1)
     vmax = max(abs(v) for v in values) or 1
     hi = highlight.lower().strip()
+    blue = blue_label.lower().strip()
     parts = [
-        f'<svg class="chart-svg" viewBox="0 0 {w} {h}" xmlns="http://www.w3.org/2000/svg" role="img">',
-        f'<line class="stage-axes" x1="{label_w}" y1="24" x2="{label_w}" y2="{h - 28}" stroke="#3a3a3a" stroke-width="1"/>',
-        f'<line class="stage-axes" x1="{label_w}" y1="{h - 28}" x2="{w - 40}" y2="{h - 28}" stroke="#3a3a3a" stroke-width="1"/>',
+        f'<svg class="chart-svg" viewBox="0 0 {w} {h}" preserveAspectRatio="xMinYMid meet" xmlns="http://www.w3.org/2000/svg" role="img">',
+        f'<line class="stage-axes" x1="{label_w}" y1="{top}" x2="{label_w}" y2="{h - bot}" stroke="#4a4a4a" stroke-width="2"/>',
+        f'<line class="stage-axes" x1="{label_w}" y1="{h - bot}" x2="{w - 36}" y2="{h - bot}" stroke="#4a4a4a" stroke-width="2"/>',
+        f'<text class="stage-axes" x="{w - 36}" y="{h - 8}" text-anchor="end" fill="#9a9a9a" font-family="DM Mono, monospace" font-size="{FONT - 2}">{esc(unit or "value")}</text>',
     ]
     for i, (lab, val) in enumerate(zip(labels, values)):
-        y = 36 + i * row_h
-        bw = max(2, abs(val) / vmax * plot_w)
-        is_hi = hi and (hi in lab.lower() or lab.lower() in hi)
-        if not hi and i == n - 1:
+        y = top + i * row_h
+        bw = max(4, abs(val) / vmax * (plot_w - 90))
+        is_hi = bool(hi) and (hi in lab.lower() or lab.lower() in hi)
+        is_blue = bool(blue) and blue in lab.lower()
+        if not hi and not blue and i == n - 1:
             is_hi = True
-        color = "#E60000" if is_hi else "#6a6a6a"
+        color = "#E60000" if is_hi else "#0047FF" if is_blue else "#6a6a6a"
+        shown = fmt_unit(val, unit)
+        short = lab.split(",")[0].split("/")[0].strip()[:22]
         parts.append(
-            f'<text class="stage-axes" x="{label_w - 12}" y="{y + row_h * 0.55}" text-anchor="end" '
-            f'fill="#d0d0d0" font-family="DM Mono, monospace" font-size="14">{esc(lab[:28])}</text>'
+            f'<text class="stage-axes" x="{label_w - 16}" y="{y + row_h * 0.62}" text-anchor="end" '
+            f'fill="#eee" font-family="DM Mono, monospace" font-size="{FONT}">{esc(short)}</text>'
         )
         parts.append(
-            f'<rect class="stage-data bar" x="{label_w}" y="{y + 6}" width="{bw:.1f}" height="{row_h - 14}" '
-            f'fill="{color}" style="animation-delay:{0.35 + i * 0.04:.2f}s"/>'
+            f'<rect class="stage-data bar" x="{label_w}" y="{y + row_h * 0.18:.1f}" width="{bw:.1f}" height="{row_h * 0.64:.1f}" '
+            f'fill="{color}" style="animation-delay:{0.25 + i * 0.03:.2f}s"/>'
         )
         parts.append(
-            f'<text class="stage-data" x="{label_w + bw + 8:.1f}" y="{y + row_h * 0.55}" '
-            f'fill="#fff" font-family="DM Mono, monospace" font-size="15" '
-            f'style="animation-delay:{0.35 + i * 0.04:.2f}s">{val:g}</text>'
+            f'<text class="stage-data" x="{label_w + bw + 10:.1f}" y="{y + row_h * 0.62:.1f}" '
+            f'fill="#fff" font-family="DM Mono, monospace" font-size="{FONT}" '
+            f'style="animation-delay:{0.25 + i * 0.03:.2f}s">{esc(shown)}</text>'
         )
         if is_hi:
             parts.append(
-                f'<rect class="stage-highlight" x="{label_w - 4}" y="{y + 2}" width="{bw + 78:.1f}" height="{row_h - 6}" '
+                f'<rect class="stage-highlight" x="{label_w + bw - 4:.1f}" y="{y + row_h * 0.22:.1f}" width="118" height="{row_h * 0.56:.1f}" '
                 f'fill="none" stroke="#E60000" stroke-width="3"/>'
             )
     parts.append("</svg>")
@@ -225,14 +279,29 @@ def svg_dots(labels: list[str], values: list[float], highlight: str) -> str:
     return "\n".join(parts)
 
 
+def load_spec(name: str) -> dict:
+    path = JSON_DIR / f"{name}.plotly.json"
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def chart_parts(name: str) -> tuple[str, str, str, str]:
+    spec = load_spec(name)
+    labels, values = merge_traces(spec) if spec else ([], [])
+    headline = insight_headline(name, labels, values)
+    subtitle, source = COPY.get(name, ("The file, drawn.", "Franchise ledger", "Source: S001"))[1:]
+    unit = UNIT.get(name, "")
+    kind = (spec.get("data") or [{}])[0].get("type", "bar") if spec else "bar"
+    blue = "box office" if name == "chart6_revenue_streams" else ""
+    hi = "merchandise" if name == "chart6_revenue_streams" else ""
+    body = svg_dots(labels, values, "") if kind == "scatter" else svg_bars(labels, values, hi, unit, blue)
+    sub = subtitle if not unit else f"{subtitle} · unit {unit}"
+    return headline, sub, source, body
+
+
 def build_html(name: str, spec: dict) -> str:
-    headline, subtitle, source = COPY.get(
-        name,
-        ("The file, drawn.", "Franchise ledger", "Source: S001"),
-    )
-    labels, values = merge_traces(spec)
-    kind = (spec.get("data") or [{}])[0].get("type", "bar")
-    body = svg_dots(labels, values, "") if kind == "scatter" else svg_bars(labels, values, "")
+    headline, subtitle, source, body = chart_parts(name)
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap"/>
