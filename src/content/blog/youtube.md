@@ -6,6 +6,7 @@ pubDate: 2026-04-14T00:00:00.000Z
 description: >-
   Alphabet reported $36.1B in YouTube ad revenue in FY2024 while Nielsen puts YouTube at 13.4% of U.S. TV-screen usage. Against that scale, H3 Podcast's Frenemies era tripled monthly views—and set a ceiling the show has not touched since.
 heroImage: /images/content/articles/youtube/hero.png
+audioSrc: /audios/youtube-kore.mp3
 draft: false
 tags:
   - civics

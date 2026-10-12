@@ -369,7 +369,7 @@
     "html": "/exports/franchise.html",
     "pdf": null,
     "epub": null,
-    "audio": null,
+    "audio": "/audios/franchise-kore.mp3",
     "transcript": "/exports/transcripts/franchise.txt",
     "github": null
   },
@@ -875,7 +875,7 @@
     "html": "/exports/readmitted.html",
     "pdf": "/exports/readmitted.pdf",
     "epub": "/exports/readmitted.epub",
-    "audio": null,
+    "audio": "/audios/readmitted-kore.mp3",
     "transcript": "/exports/transcripts/readmitted.txt",
     "github": "https://github.com/Artometrics/artometrics-web"
   },
@@ -1095,7 +1095,7 @@
     "html": null,
     "pdf": null,
     "epub": null,
-    "audio": null,
+    "audio": "/audios/youtube-kore.mp3",
     "transcript": "/exports/transcripts/youtube.txt",
     "github": null
   }
