@@ -1,0 +1,55 @@
+name: Anime dataset monthly refresh
+
+on:
+  schedule:
+    # 06:00 UTC on the 1st of each month
+    - cron: "0 6 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/anime-data/requirements.txt
+
+      - name: Install pipeline dependencies
+        working-directory: scripts/anime-data
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Refresh anime snapshot
+        working-directory: scripts/anime-data
+        run: |
+          SNAP_DATE="$(date -u +%Y-%m-%d)"
+          echo "SNAP_DATE=$SNAP_DATE" >> "$GITHUB_ENV"
+          python refresh.py --date "$SNAP_DATE"
+
+      - name: Exploratory correlation charts
+        working-directory: scripts/anime-data
+        run: python correlations.py
+
+      - name: Open PR with new snapshot
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore(data): refresh anime MAL snapshot ${{ env.SNAP_DATE }}"
+          title: "chore(data): anime MAL snapshot ${{ env.SNAP_DATE }}"
+          body: |
+            Monthly automated refresh via `scripts/anime-data/refresh.py` (Jikan + AniList).
+
+            - Snapshot: `data/anime/anime_${{ env.SNAP_DATE }}.parquet` / `.csv`
+            - See `data/anime/CHANGELOG_2019-04-23_to_${{ env.SNAP_DATE }}.md`
+            - Methods: `data/anime/METHODS_NOTE.md`
+          branch: bot/anime-data-${{ env.SNAP_DATE }}
+          delete-branch: true

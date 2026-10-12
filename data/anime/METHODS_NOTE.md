@@ -1,0 +1,3 @@
+We started with the TidyTuesday MyAnimeList export `tidy_anime.csv` (snapshot 2019-04-23, 13,631 titles), then refreshed it to 2026-10-11 via Jikan and AniList, adding 5,186 titles and 14 variables.
+
+**Build note:** `api.jikan.moe` was unreachable from the Cloud Agent build host, so this snapshot carries forward baseline MAL fields where needed and sets `jikan_fetched=false` on all rows (0/18,817). AniList returned `Media` rows for 11,837 titles (`anilist_fetched=true`). The monthly GitHub Actions workflow re-runs the same pipeline with Jikan enabled to populate producers, licensors, themes, demographics, and live MAL `scored_by` / `members` when the API is reachable.
