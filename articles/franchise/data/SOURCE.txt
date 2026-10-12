@@ -1,38 +1,65 @@
-Artometrics FRANCHISE report — data provenance
-=============================================
+Artometrics FRANCHISE report — data provenance (updated 2026-10-11)
+=================================================================
 
-Primary franchise ledger (Charts 1–5, owner rollups)
-----------------------------------------------------
-File: franchise.csv (and raw/media_franchises.csv mirror)
+Access date for new fetches: 2026-10-11 (UTC). Licence notes per row in sources.csv.
+
+Primary franchise ledger (charts 1–6, 11, 14–15, entity rollups)
+----------------------------------------------------------------
+File: franchise.csv
 Origin: TidyTuesday 2019-07-02 — Media Franchise Revenues
 URL: https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-07-02
-Upstream: Wikipedia “List of highest-grossing media franchises” (July 2019 scrape)
-License: Community dataset; Wikipedia text is CC BY-SA 3.0 — revenue figures are editorial estimates, not audited financials.
-SHA-256 (franchise.csv committed in repo): run `sha256sum articles/franchise/data/franchise.csv` before publish.
+Upstream: Wikipedia “List of highest-grossing media franchises” (July 2019 scrape) — S007
+License: Community dataset; Wikipedia CC BY-SA 3.0 — revenue figures are editorial estimates.
+SHA-256: 6e556287bad580be04e14d346036a8453f7ce975a7b26cf47d2057b873be1090
 
-Disney acquisitions (Chart 8)
--------------------------------
-File: disney_acquisitions.csv
-Deal prices: SEC Form 8-K / 10-K acquisition notes and Wikipedia “List of mergers and acquisitions by Disney” with primary citations.
-Franchise lifetime totals: summed from franchise.csv for named properties (mid-2019 Wikipedia estimates).
+2019 ↔ 2026 name crosswalk (chart 10, owner_now / revenue_2026)
+-----------------------------------------------------------------
+File: franchise_crosswalk_2019_2026.csv — hand-built; one row per 2019 franchise; no fuzzy matching.
+Files: wikipedia_franchise_revenue_2026.csv, franchise_revenue_2019_vs_2026.csv, raw/wikipedia_franchises_2026-10-11.json
+Origin: https://en.wikipedia.org/wiki/List_of_highest-grossing_media_franchises (MediaWiki API, User-Agent ArtometricsResearch/1.0)
+Source id: S017
+License: CC BY-SA
 
-Disney segment revenue (Chart 9)
---------------------------------
-File: disney_segment_revenue_fy2024.csv
-The Walt Disney Company Form 10-K for fiscal year ended September 28, 2024 (filed November 2024).
-Segment labels: Entertainment, Sports, Experiences (parks & products).
+Sources registry
+----------------
+File: sources.csv (74 rows; verified URLs/DOIs checked 2026-10-11)
+Companion: research/source-cards.md
 
-Theatrical franchise share (Chart 7)
+Verified headline figures
+-------------------------
+File: verified_numbers.csv — recomputed by scripts/franchise_verify_numbers.py
+
+Entity sheets (Google Sheets mirror)
 ------------------------------------
-File: top10_franchise_share_by_year.csv
-Method: For each calendar year, the domestic top 10 films by calendar gross (Box Office Mojo yearly chart pages).
-Classification: “Franchise installment” = sequel, prequel, spin-off, or shared-universe entry of an existing IP (manual Artometrics coding).
-Source index: data/box_office_mojo_yearly_urls.csv
+entities_franchises.csv, entities_companies_deals.csv, entities_people.csv, entities_budgets_grosses.csv
 
-Studio library comparison (Chart 6 owner bars)
-----------------------------------------------
-Derived in build_brief.R from franchise.csv owner field with Disney consolidation rules documented in data/owner_consolidation_rules.csv
-
-Franchise failure casebook (prose)
+Disney acquisitions (charts 8, 13)
 ----------------------------------
-File: franchise_failures.csv — editorial case rows with press/10-K citations (not revenue ranks).
+File: disney_acquisitions.csv + entities_companies_deals.csv
+Deal prices: SEC 8-K / DEFM14A (S009–S012)
+
+Disney segment revenue (chart 9)
+--------------------------------
+File: disney_segment_revenue_fy2024.csv — Disney Form 10-K FY2024 (S004)
+
+Theatrical franchise share (chart 7)
+------------------------------------
+File: top10_franchise_share_by_year.csv, box_office_mojo_yearly_urls.csv (S005)
+
+Derived analytics tables
+------------------------
+owner_totals_derived.csv, owner_consolidation_rules.csv, revenue_stream_shares_derived.csv,
+revenue_mix_by_original_medium.csv, franchise_region_summary.csv, owner_concentration_scenarios.csv
+
+Film budgets & grosses
+----------------------
+File: entities_budgets_grosses.csv — The Numbers per-film pages (S019); blank cells where fetch failed
+
+Charts (Plotly JSON + PNG + motion HTML)
+----------------------------------------
+Directory: articles/franchise/charts/ — built by articles/franchise/scripts/build_brief.R
+House palette: #E60000 highlight, #0047FF comparison; DM Sans / DM Mono; n= source lines
+
+Franchise failure casebook
+----------------------------
+File: franchise_failures.csv — editorial case rows (S013–S016)

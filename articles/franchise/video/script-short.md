@@ -1,23 +1,71 @@
-# FRANCHISE — 3-minute explainer (~3:00)
+# FRANCHISE — short CEO brief (~3:15, ~480 words)
 
-Pokémon is not a movie studio that sells toys on the side. In the mid-2019 franchise ledger we track, it is a ninety-one-billion-dollar licensing stack where the cartoon is marketing infrastructure and the card game is the cash register.
+Ask which year is on the slide before you quote Pokémon.
 
-That ledger comes from TidyTuesday’s 2019 scrape of Wikipedia’s highest-grossing media franchises list. One hundred and three properties. Lifetime revenue estimates, not audited financials. Still: the pattern is too consistent to ignore.
+In the mid-2019 Wikipedia file we use, one hundred and three franchises add up to one point five two trillion dollars.
 
-Fifty-six percent of every dollar in the file sits in one bucket — merchandise, licensing, and retail. Box office is nine percent. Video games are twenty. Theatrical is the trailer; ownership is the business.
+Merchandise, licensing, and retail are fifty-six percent of that total.
 
-Chart the top twenty and Pokémon still leads, but look at the colors. Merchandise is the fat red band on nearly every bar. Star Wars is the exception that proves the rule — a film universe that learned to sell physical objects at scale. Mario is the opposite exception: Nintendo keeps the IP on its own hardware and refuses to license the character into every aisle.
+Video games are twenty percent.
 
-Normalize by age and Pokémon wins again — about four billion dollars per year of existence. Hello Kitty’s eighty-billion lifetime total is real, but it took forty-five years. Efficiency is a design choice.
+Box office is eight point nine percent of the whole file, not of any one sequel.
 
-Now roll up owners. The raw file lists Disney, Marvel, and Fox as separate companies. They are not. Consolidate subsidiaries and Disney controls four hundred twenty-six billion in attributed franchise lifetime value in this snapshot — against Nintendo’s forty-nine billion on its own balance sheet, before you count Pokémon Company rows separately.
+For a chief executive, that means the premiere is often the advert, and the repeat sale is the business.
 
-Disney’s acquisitions read like a shopping list with SEC receipts. Pixar, seven point four billion. Marvel, four billion. Lucasfilm, four billion. Fox, seventy-one billion. Compare those check sizes to the franchise rows they anchor — Star Wars alone is sixty-three billion in the Wikipedia estimates — and you are looking at why conglomerates buy libraries, not single films.
+Japan reached that pattern through production committees: publishers, broadcasters, and toy makers share the copyright, so the cartoon is built to sell objects.
 
-Theatrical culture moved the same direction. In twenty-nineteen, eight of the domestic top ten were franchise installments. In twenty-twenty-four, nine of ten. Box Office Mojo yearly charts, manual coding. The hit movie became a serial product.
+Hollywood reached it by buying the character and attaching parks and shops.
 
-Counterexamples matter. Universal’s Dark Universe died after *The Mummy*. DC spent a decade proving that owning icons is not the same as operating a slate. Angry Birds shows mobile IP can peak and fade even while the row stays in the table.
+Nintendo sits between those models.
 
-If you run a studio, the decision tools are blunt. First: count consolidated ownership before you compare competitors. Second: ask where margin lives — parks, merchandise, games, or subscriptions — because box office rank will lie. Third: treat acquisitions as capitalization of future licensing, not applause for last weekend’s gross.
+It licenses Mario when it wants to — the twenty-twenty-three film, Super Nintendo World, LEGO Mario — and it keeps creative control.
 
-Franchise economics is not fandom. It is where cash flows after the credits roll — and who owns the right to catch it.
+In that same twenty-nineteen file, Pokémon is the largest named row at ninety point nine billion dollars.
+
+On the twenty-twenty-six Wikipedia list the same name reads one hundred thirty point seven billion, a rise of thirty-nine point eight billion.
+
+That is the biggest upward revision we paired, ahead of Call of Duty and Naruto, each up by about fourteen billion.
+
+Mortal Kombat rises only about three point nine billion, from one point one seven billion, and it is not a mobile game.
+
+For a buyer, ninety point nine and one hundred thirty point seven are different vintages. Say which one you mean.
+
+Hello Kitty follows at eighty billion in twenty-nineteen, and Winnie the Pooh at seventy-four point five.
+
+Almost all of Hello Kitty is merchandise.
+
+Divide Pokémon’s twenty-nineteen total by the years since nineteen ninety-six and you get about three point nine five billion a year.
+
+Speed, here, is a design choice.
+
+Now the owner labels.
+
+Fold Marvel, Lucasfilm, and Fox into Disney and the twenty-nineteen rows sum to four hundred twenty-six point two billion.
+
+Nintendo’s own label is forty-nine billion.
+
+Pokémon’s ninety point nine billion is not inside that forty-nine.
+
+The row belongs to The Pokémon Company, shared by Nintendo, Game Freak, and Creatures.
+
+If you add it to Nintendo, you double-count a partner.
+
+The top five owners hold forty-six point four percent of the file.
+
+Compare rivals only after you have rolled subsidiaries together.
+
+On domestic yearly charts, franchise films were six of the top ten in twenty-ten, eight in twenty-nineteen, and nine in twenty-twenty-four.
+
+Recognition is being used to lower the cost of being noticed.
+
+DC Entertainment’s forty-four point four billion is Batman, Superman, and the extended-universe row.
+
+Wizarding World is a separate twenty-eight billion.
+
+Do not brief them as one library.
+
+In Disney’s twenty-twenty-four accounts, Experiences — parks and products — are thirty-four point two billion, beside Entertainment at forty-one point two.
+
+The character is being sold again after the credits.
+
+Name the year. Name the owner. Then decide what you are actually buying.

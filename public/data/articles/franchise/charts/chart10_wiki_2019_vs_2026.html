@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap"/>
+<style>
+  html,body { margin:0; height:100%; background:#0a0a0a; color:#fff; }
+  body { display:flex; flex-direction:column; padding:28px 36px 18px; box-sizing:border-box; font-family:"DM Sans",sans-serif; }
+  h1 { font-size:34px; font-weight:600; margin:0 0 8px; letter-spacing:-0.02em; }
+  .sub { font-family:"DM Mono",monospace; font-size:16px; color:#9a9a9a; margin:0 0 18px; }
+  .plot { flex:1; min-height:0; }
+  .chart-svg { width:100%; height:100%; }
+  .src { font-family:"DM Mono",monospace; font-size:14px; color:#8a8a8a; margin:10px 0 0; }
+  .stage-data { opacity:0; animation:rise .7s ease forwards; }
+  .stage-highlight { opacity:0; animation:rise .35s ease 1.15s forwards; }
+  .bar { transform-box:fill-box; transform-origin:left center; }
+  @keyframes rise { from { opacity:0; } to { opacity:1; } }
+</style></head>
+<body>
+  <h1>The same names moved between 2019 and 2026.</h1>
+  <p class="sub">Percent change, top movers · n=20 matched franchises</p>
+  <div class="plot"><svg class="chart-svg" viewBox="0 0 1600 640" xmlns="http://www.w3.org/2000/svg" role="img">
+<line class="stage-axes" x1="340" y1="24" x2="340" y2="612" stroke="#3a3a3a" stroke-width="1"/>
+<line class="stage-axes" x1="340" y1="612" x2="1560" y2="612" stroke="#3a3a3a" stroke-width="1"/>
+<text class="stage-axes" x="328" y="51.400000000000006" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Frozen</text>
+<rect class="stage-data bar" x="340" y="42" width="93.2" height="14" fill="#6a6a6a" style="animation-delay:0.35s"/>
+<text class="stage-data" x="441.2" y="51.400000000000006" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.35s">32.7</text>
+<text class="stage-axes" x="328" y="79.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Teenage Mutant Ninja T</text>
+<rect class="stage-data bar" x="340" y="70" width="104.3" height="14" fill="#6a6a6a" style="animation-delay:0.39s"/>
+<text class="stage-data" x="452.3" y="79.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.39s">36.6</text>
+<text class="stage-axes" x="328" y="107.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Monster Strike</text>
+<rect class="stage-data bar" x="340" y="98" width="121.7" height="14" fill="#6a6a6a" style="animation-delay:0.43s"/>
+<text class="stage-data" x="469.7" y="107.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.43s">42.7</text>
+<text class="stage-axes" x="328" y="135.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Pokémon</text>
+<rect class="stage-data bar" x="340" y="126" width="124.8" height="14" fill="#6a6a6a" style="animation-delay:0.47s"/>
+<text class="stage-data" x="472.8" y="135.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.47s">43.8</text>
+<text class="stage-axes" x="328" y="163.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Fast &amp; Furious</text>
+<rect class="stage-data bar" x="340" y="154" width="131.1" height="14" fill="#6a6a6a" style="animation-delay:0.51s"/>
+<text class="stage-data" x="479.1" y="163.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.51s">46</text>
+<text class="stage-axes" x="328" y="191.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">My Little Pony</text>
+<rect class="stage-data bar" x="340" y="182" width="133.7" height="14" fill="#6a6a6a" style="animation-delay:0.55s"/>
+<text class="stage-data" x="481.7" y="191.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.55s">46.9</text>
+<text class="stage-axes" x="328" y="219.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Shrek</text>
+<rect class="stage-data bar" x="340" y="210" width="135.1" height="14" fill="#6a6a6a" style="animation-delay:0.59s"/>
+<text class="stage-data" x="483.1" y="219.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.59s">47.4</text>
+<text class="stage-axes" x="328" y="247.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Mission: Impossible</text>
+<rect class="stage-data bar" x="340" y="238" width="140.8" height="14" fill="#6a6a6a" style="animation-delay:0.63s"/>
+<text class="stage-data" x="488.8" y="247.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.63s">49.4</text>
+<text class="stage-axes" x="328" y="275.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">The Hunger Games</text>
+<rect class="stage-data bar" x="340" y="266" width="155.9" height="14" fill="#6a6a6a" style="animation-delay:0.67s"/>
+<text class="stage-data" x="503.9" y="275.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.67s">54.7</text>
+<text class="stage-axes" x="328" y="303.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Barbie</text>
+<rect class="stage-data bar" x="340" y="294" width="164.7" height="14" fill="#6a6a6a" style="animation-delay:0.71s"/>
+<text class="stage-data" x="512.7" y="303.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.71s">57.8</text>
+<text class="stage-axes" x="328" y="331.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Transformers</text>
+<rect class="stage-data bar" x="340" y="322" width="167.6" height="14" fill="#6a6a6a" style="animation-delay:0.75s"/>
+<text class="stage-data" x="515.6" y="331.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.75s">58.8</text>
+<text class="stage-axes" x="328" y="359.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Call of Duty</text>
+<rect class="stage-data bar" x="340" y="350" width="234.8" height="14" fill="#6a6a6a" style="animation-delay:0.79s"/>
+<text class="stage-data" x="582.8" y="359.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.79s">82.4</text>
+<text class="stage-axes" x="328" y="387.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Despicable Me / Minion</text>
+<rect class="stage-data bar" x="340" y="378" width="239.4" height="14" fill="#6a6a6a" style="animation-delay:0.83s"/>
+<text class="stage-data" x="587.4" y="387.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.83s">84</text>
+<text class="stage-axes" x="328" y="415.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Fate</text>
+<rect class="stage-data bar" x="340" y="406" width="273.9" height="14" fill="#6a6a6a" style="animation-delay:0.87s"/>
+<text class="stage-data" x="621.9" y="415.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.87s">96.1</text>
+<text class="stage-axes" x="328" y="443.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Ice Age</text>
+<rect class="stage-data bar" x="340" y="434" width="324.9" height="14" fill="#6a6a6a" style="animation-delay:0.91s"/>
+<text class="stage-data" x="672.9" y="443.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.91s">114</text>
+<text class="stage-axes" x="328" y="471.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Dungeon Fighter Online</text>
+<rect class="stage-data bar" x="340" y="462" width="342.0" height="14" fill="#6a6a6a" style="animation-delay:0.95s"/>
+<text class="stage-data" x="690.0" y="471.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.95s">120</text>
+<text class="stage-axes" x="328" y="499.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">PAW Patrol</text>
+<rect class="stage-data bar" x="340" y="490" width="342.0" height="14" fill="#6a6a6a" style="animation-delay:0.99s"/>
+<text class="stage-data" x="690.0" y="499.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:0.99s">120</text>
+<text class="stage-axes" x="328" y="527.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Naruto</text>
+<rect class="stage-data bar" x="340" y="518" width="448.9" height="14" fill="#6a6a6a" style="animation-delay:1.03s"/>
+<text class="stage-data" x="796.9" y="527.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:1.03s">157.5</text>
+<text class="stage-axes" x="328" y="555.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Mortal Kombat</text>
+<rect class="stage-data bar" x="340" y="546" width="944.5" height="14" fill="#6a6a6a" style="animation-delay:1.07s"/>
+<text class="stage-data" x="1292.5" y="555.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:1.07s">331.4</text>
+<text class="stage-axes" x="328" y="583.4" text-anchor="end" fill="#d0d0d0" font-family="DM Mono, monospace" font-size="15">Candy Crush Saga</text>
+<rect class="stage-data bar" x="340" y="574" width="1140.0" height="14" fill="#E60000" style="animation-delay:1.11s"/>
+<text class="stage-data" x="1488.0" y="583.4" fill="#fff" font-family="DM Mono, monospace" font-size="15" style="animation-delay:1.11s">400</text>
+<rect class="stage-highlight" x="336" y="570" width="1218.0" height="22" fill="none" stroke="#E60000" stroke-width="3"/>
+</svg></div>
+  <p class="src">Source: S001 + S017 · methodology, not a cash loss</p>
+  <script>
+    const q = new URLSearchParams(location.search);
+    const hl = (q.get("hl") || "").toLowerCase();
+    if (hl) {
+      document.querySelectorAll(".chart-svg text").forEach((t) => {
+        if (t.textContent.toLowerCase().includes(hl)) {
+          const y = t.getAttribute("y");
+          t.setAttribute("fill", "#fff");
+        }
+      });
+    }
+    setTimeout(() => document.body.setAttribute("data-chart-ready", "1"), 1500);
+  </script>
+</body></html>

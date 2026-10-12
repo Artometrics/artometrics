@@ -1,700 +1,102 @@
 {
   "data": [
     {
-      "x": [
-        2,
-        2
-      ],
-      "y": [
-        0.4,
-        15.6
-      ],
-      "text": "yintercept: 2",
-      "type": "scatter",
-      "mode": "lines",
-      "line": {
-        "width": 1.8897637795275593,
-        "color": "rgba(192,57,43,0.6)",
-        "dash": "dash"
-      },
-      "hoveron": "points",
-      "showlegend": false,
-      "xaxis": "x",
-      "yaxis": "y",
-      "hoverinfo": "text",
-      "frame": null,
-      "hovertemplate": "<b>Series 1</b><br>x: %{x}<br>y: %{y}<extra></extra>",
-      "name": "Series 1"
-    },
-    {
-      "x": [
-        0,
-        2.8181818181818183,
-        null,
-        0,
-        2.318,
-        null,
-        0,
-        1.7783555555555555,
-        null,
-        0,
-        1.7455,
-        null,
-        0,
-        1.6656923076923076,
-        null,
-        0,
-        1.5000952380952381,
-        null,
-        0,
-        1.3063478260869565,
-        null,
-        0,
-        1.2776363636363637,
-        null,
-        0,
-        1.1683333333333332,
-        null,
-        0,
-        1.0769230769230769,
-        null,
-        0,
-        1.0625,
-        null,
-        0,
-        1.034,
-        null,
-        0,
-        1,
-        null,
-        0,
-        0.9216052631578947
-      ],
-      "y": [
-        14,
-        14,
-        null,
-        13,
-        13,
-        null,
-        12,
-        12,
-        null,
-        11,
-        11,
-        null,
-        10,
-        10,
-        null,
-        9,
-        9,
-        null,
-        8,
-        8,
-        null,
-        7,
-        7,
-        null,
-        6,
-        6,
-        null,
-        5,
-        5,
-        null,
-        4,
-        4,
-        null,
-        3,
-        3,
-        null,
-        2,
-        2,
-        null,
-        1,
-        1
-      ],
-      "text": [
-        "franchise: Marvel Cinematic Universe<br />y: 0<br />franchise: 14<br />revenue_per_year: 2.8181818<br />is_top: FALSE",
-        "franchise: Marvel Cinematic Universe<br />y: 0<br />franchise: 14<br />revenue_per_year: 2.8181818<br />is_top: FALSE",
-        null,
-        "franchise: Disney Princess<br />y: 0<br />franchise: 13<br />revenue_per_year: 2.3180000<br />is_top: FALSE",
-        "franchise: Disney Princess<br />y: 0<br />franchise: 13<br />revenue_per_year: 2.3180000<br />is_top: FALSE",
-        null,
-        "franchise: Hello Kitty<br />y: 0<br />franchise: 12<br />revenue_per_year: 1.7783556<br />is_top: FALSE",
-        "franchise: Hello Kitty<br />y: 0<br />franchise: 12<br />revenue_per_year: 1.7783556<br />is_top: FALSE",
-        null,
-        "franchise: Frozen<br />y: 0<br />franchise: 11<br />revenue_per_year: 1.7455000<br />is_top: FALSE",
-        "franchise: Frozen<br />y: 0<br />franchise: 11<br />revenue_per_year: 1.7455000<br />is_top: FALSE",
-        null,
-        "franchise: Cars<br />y: 0<br />franchise: 10<br />revenue_per_year: 1.6656923<br />is_top: FALSE",
-        "franchise: Cars<br />y: 0<br />franchise: 10<br />revenue_per_year: 1.6656923<br />is_top: FALSE",
-        null,
-        "franchise: Star Wars<br />y: 0<br />franchise:  9<br />revenue_per_year: 1.5000952<br />is_top: FALSE",
-        "franchise: Star Wars<br />y: 0<br />franchise:  9<br />revenue_per_year: 1.5000952<br />is_top: FALSE",
-        null,
-        "franchise: Anpanman<br />y: 0<br />franchise:  8<br />revenue_per_year: 1.3063478<br />is_top: FALSE",
-        "franchise: Anpanman<br />y: 0<br />franchise:  8<br />revenue_per_year: 1.3063478<br />is_top: FALSE",
-        null,
-        "franchise: Wizarding World / Harry Potter<br />y: 0<br />franchise:  7<br />revenue_per_year: 1.2776364<br />is_top: FALSE",
-        "franchise: Wizarding World / Harry Potter<br />y: 0<br />franchise:  7<br />revenue_per_year: 1.2776364<br />is_top: FALSE",
-        null,
-        "franchise: Monster Strike<br />y: 0<br />franchise:  6<br />revenue_per_year: 1.1683333<br />is_top: FALSE",
-        "franchise: Monster Strike<br />y: 0<br />franchise:  6<br />revenue_per_year: 1.1683333<br />is_top: FALSE",
-        null,
-        "franchise: Wii series<br />y: 0<br />franchise:  5<br />revenue_per_year: 1.0769231<br />is_top: FALSE",
-        "franchise: Wii series<br />y: 0<br />franchise:  5<br />revenue_per_year: 1.0769231<br />is_top: FALSE",
-        null,
-        "franchise: Call of Duty<br />y: 0<br />franchise:  4<br />revenue_per_year: 1.0625000<br />is_top: FALSE",
-        "franchise: Call of Duty<br />y: 0<br />franchise:  4<br />revenue_per_year: 1.0625000<br />is_top: FALSE",
-        null,
-        "franchise: DC Extended Universe<br />y: 0<br />franchise:  3<br />revenue_per_year: 1.0340000<br />is_top: FALSE",
-        "franchise: DC Extended Universe<br />y: 0<br />franchise:  3<br />revenue_per_year: 1.0340000<br />is_top: FALSE",
-        null,
-        "franchise: Puzzle & Dragons<br />y: 0<br />franchise:  2<br />revenue_per_year: 1.0000000<br />is_top: FALSE",
-        "franchise: Puzzle & Dragons<br />y: 0<br />franchise:  2<br />revenue_per_year: 1.0000000<br />is_top: FALSE",
-        null,
-        "franchise: Mario<br />y: 0<br />franchise:  1<br />revenue_per_year: 0.9216053<br />is_top: FALSE",
-        "franchise: Mario<br />y: 0<br />franchise:  1<br />revenue_per_year: 0.9216053<br />is_top: FALSE"
-      ],
-      "type": "scatter",
-      "mode": "lines",
-      "line": {
-        "width": 3.023622047244095,
-        "color": "rgba(44,62,107,1)",
-        "dash": "solid"
-      },
-      "hoveron": "points",
-      "showlegend": false,
-      "xaxis": "x",
-      "yaxis": "y",
-      "hoverinfo": "text",
-      "frame": null,
-      "hovertemplate": "<b>%{text}</b><br>x: %{x}<br>y: %{y}<extra></extra>",
-      "name": "Series 2"
-    },
-    {
-      "x": [
-        0,
-        3.950565217391304
-      ],
-      "y": [
-        15,
-        15
-      ],
-      "text": "franchise: Pokémon<br />y: 0<br />franchise: 15<br />revenue_per_year: 3.9505652<br />is_top: TRUE",
-      "type": "scatter",
-      "mode": "lines",
-      "line": {
-        "width": 3.023622047244095,
-        "color": "rgba(192,57,43,1)",
-        "dash": "solid"
-      },
-      "hoveron": "points",
-      "showlegend": false,
-      "xaxis": "x",
-      "yaxis": "y",
-      "hoverinfo": "text",
-      "frame": null,
-      "hovertemplate": "<b>Series 3</b><br>x: %{x}<br>y: %{y}<extra></extra>",
-      "name": "Series 3"
-    },
-    {
-      "x": [
-        3.950565217391304,
-        2.8181818181818183,
-        2.318,
-        1.7783555555555555,
-        1.7455,
-        1.6656923076923076,
-        1.5000952380952381,
-        1.3063478260869565,
-        1.2776363636363637,
-        1.1683333333333332,
-        1.0769230769230769,
-        1.0625,
-        1.034,
-        1,
-        0.9216052631578947
-      ],
-      "y": [
-        15,
-        14,
-        13,
-        12,
-        11,
-        10,
-        9,
-        8,
-        7,
-        6,
-        5,
-        4,
-        3,
-        2,
-        1
-      ],
-      "text": [
-        "franchise: Pokémon<br />revenue_per_year: 3.9505652<br />is_top: TRUE<br />is_top: TRUE",
-        "franchise: Marvel Cinematic Universe<br />revenue_per_year: 2.8181818<br />is_top: FALSE<br />is_top: FALSE",
-        "franchise: Disney Princess<br />revenue_per_year: 2.3180000<br />is_top: FALSE<br />is_top: FALSE",
-        "franchise: Hello Kitty<br />revenue_per_year: 1.7783556<br />is_top: FALSE<br />is_top: FALSE",
-        "franchise: Frozen<br />revenue_per_year: 1.7455000<br />is_top: FALSE<br />is_top: FALSE",
-        "franchise: Cars<br />revenue_per_year: 1.6656923<br />is_top: FALSE<br />is_top: FALSE",
-        "franchise: Star Wars<br />revenue_per_year: 1.5000952<br />is_top: FALSE<br />is_top: FALSE",
-        "franchise: Anpanman<br />revenue_per_year: 1.3063478<br />is_top: FALSE<br />is_top: FALSE",
-        "franchise: Wizarding World / Harry Potter<br />revenue_per_year: 1.2776364<br />is_top: FALSE<br />is_top: FALSE",
-        "franchise: Monster Strike<br />revenue_per_year: 1.1683333<br />is_top: FALSE<br />is_top: FALSE",
-        "franchise: Wii series<br />revenue_per_year: 1.0769231<br />is_top: FALSE<br />is_top: FALSE",
-        "franchise: Call of Duty<br />revenue_per_year: 1.0625000<br />is_top: FALSE<br />is_top: FALSE",
-        "franchise: DC Extended Universe<br />revenue_per_year: 1.0340000<br />is_top: FALSE<br />is_top: FALSE",
-        "franchise: Puzzle & Dragons<br />revenue_per_year: 1.0000000<br />is_top: FALSE<br />is_top: FALSE",
-        "franchise: Mario<br />revenue_per_year: 0.9216053<br />is_top: FALSE<br />is_top: FALSE"
-      ],
-      "type": "scatter",
-      "mode": "markers",
+      "x": [3.9506, 2.8182, 2.318, 1.7784, 1.7455, 1.6657, 1.5001, 1.3063, 1.2776, 1.1683, 1.0769, 1.0625, 1.034, 1, 0.9216, 0.875, 0.848, 0.8333, 0.8142, 0.8073],
+      "y": ["Pokémon", "Marvel Cinematic Universe", "Disney Princess", "Hello Kitty", "Frozen", "Cars", "Star Wars", "Anpanman", "Wizarding World / Harry Potter", "Monster Strike", "Wii series", "Call of Duty", "DC Extended Universe", "Puzzle & Dragons", "Mario", "PAW Patrol", "Angry Birds", "CrossFire", "Toy Story", "Yu-Gi-Oh!"],
+      "orientation": "h",
       "marker": {
-        "autocolorscale": false,
-        "color": [
-          "rgba(192,57,43,1)",
-          "rgba(44,62,107,1)",
-          "rgba(44,62,107,1)",
-          "rgba(44,62,107,1)",
-          "rgba(44,62,107,1)",
-          "rgba(44,62,107,1)",
-          "rgba(44,62,107,1)",
-          "rgba(44,62,107,1)",
-          "rgba(44,62,107,1)",
-          "rgba(44,62,107,1)",
-          "rgba(44,62,107,1)",
-          "rgba(44,62,107,1)",
-          "rgba(44,62,107,1)",
-          "rgba(44,62,107,1)",
-          "rgba(44,62,107,1)"
-        ],
-        "opacity": 1,
-        "size": [
-          26.45669291338583,
-          17.007874015748033,
-          17.007874015748033,
-          17.007874015748033,
-          17.007874015748033,
-          17.007874015748033,
-          17.007874015748033,
-          17.007874015748033,
-          17.007874015748033,
-          17.007874015748033,
-          17.007874015748033,
-          17.007874015748033,
-          17.007874015748033,
-          17.007874015748033,
-          17.007874015748033
-        ],
-        "symbol": "circle",
+        "color": "#0047FF",
         "line": {
-          "width": 1.8897637795275593,
-          "color": [
-            "rgba(192,57,43,1)",
-            "rgba(44,62,107,1)",
-            "rgba(44,62,107,1)",
-            "rgba(44,62,107,1)",
-            "rgba(44,62,107,1)",
-            "rgba(44,62,107,1)",
-            "rgba(44,62,107,1)",
-            "rgba(44,62,107,1)",
-            "rgba(44,62,107,1)",
-            "rgba(44,62,107,1)",
-            "rgba(44,62,107,1)",
-            "rgba(44,62,107,1)",
-            "rgba(44,62,107,1)",
-            "rgba(44,62,107,1)",
-            "rgba(44,62,107,1)"
-          ]
+          "color": "rgba(31,119,180,1)"
         }
       },
-      "hoveron": "points",
-      "showlegend": false,
-      "xaxis": "x",
-      "yaxis": "y",
-      "hoverinfo": "text",
-      "frame": null,
-      "hovertemplate": "<b>%{text}</b><br>x: %{x}<br>y: %{y}<extra></extra>",
-      "name": "Series 4"
-    },
-    {
-      "x": [
-        3.950565217391304,
-        2.8181818181818183,
-        2.318,
-        1.7783555555555555,
-        1.7455,
-        1.6656923076923076,
-        1.5000952380952381,
-        1.3063478260869565,
-        1.2776363636363637,
-        1.1683333333333332,
-        1.0769230769230769,
-        1.0625,
-        1.034,
-        1,
-        0.9216052631578947
-      ],
-      "y": [
-        15,
-        14,
-        13,
-        12,
-        11,
-        10,
-        9,
-        8,
-        7,
-        6,
-        5,
-        4,
-        3,
-        2,
-        1
-      ],
-      "text": [
-        "$4B/yr",
-        "$2.8B/yr",
-        "$2.3B/yr",
-        "$1.8B/yr",
-        "$1.7B/yr",
-        "$1.7B/yr",
-        "$1.5B/yr",
-        "$1.3B/yr",
-        "$1.3B/yr",
-        "$1.2B/yr",
-        "$1.1B/yr",
-        "$1.1B/yr",
-        "$1B/yr",
-        "$1B/yr",
-        "$0.9B/yr"
-      ],
-      "hovertext": [
-        "franchise: Pokémon<br />revenue_per_year: 3.9505652<br />paste0(\"$\", round(revenue_per_year, 1), \"B/yr\"): $4B/yr",
-        "franchise: Marvel Cinematic Universe<br />revenue_per_year: 2.8181818<br />paste0(\"$\", round(revenue_per_year, 1), \"B/yr\"): $2.8B/yr",
-        "franchise: Disney Princess<br />revenue_per_year: 2.3180000<br />paste0(\"$\", round(revenue_per_year, 1), \"B/yr\"): $2.3B/yr",
-        "franchise: Hello Kitty<br />revenue_per_year: 1.7783556<br />paste0(\"$\", round(revenue_per_year, 1), \"B/yr\"): $1.8B/yr",
-        "franchise: Frozen<br />revenue_per_year: 1.7455000<br />paste0(\"$\", round(revenue_per_year, 1), \"B/yr\"): $1.7B/yr",
-        "franchise: Cars<br />revenue_per_year: 1.6656923<br />paste0(\"$\", round(revenue_per_year, 1), \"B/yr\"): $1.7B/yr",
-        "franchise: Star Wars<br />revenue_per_year: 1.5000952<br />paste0(\"$\", round(revenue_per_year, 1), \"B/yr\"): $1.5B/yr",
-        "franchise: Anpanman<br />revenue_per_year: 1.3063478<br />paste0(\"$\", round(revenue_per_year, 1), \"B/yr\"): $1.3B/yr",
-        "franchise: Wizarding World / Harry Potter<br />revenue_per_year: 1.2776364<br />paste0(\"$\", round(revenue_per_year, 1), \"B/yr\"): $1.3B/yr",
-        "franchise: Monster Strike<br />revenue_per_year: 1.1683333<br />paste0(\"$\", round(revenue_per_year, 1), \"B/yr\"): $1.2B/yr",
-        "franchise: Wii series<br />revenue_per_year: 1.0769231<br />paste0(\"$\", round(revenue_per_year, 1), \"B/yr\"): $1.1B/yr",
-        "franchise: Call of Duty<br />revenue_per_year: 1.0625000<br />paste0(\"$\", round(revenue_per_year, 1), \"B/yr\"): $1.1B/yr",
-        "franchise: DC Extended Universe<br />revenue_per_year: 1.0340000<br />paste0(\"$\", round(revenue_per_year, 1), \"B/yr\"): $1B/yr",
-        "franchise: Puzzle & Dragons<br />revenue_per_year: 1.0000000<br />paste0(\"$\", round(revenue_per_year, 1), \"B/yr\"): $1B/yr",
-        "franchise: Mario<br />revenue_per_year: 0.9216053<br />paste0(\"$\", round(revenue_per_year, 1), \"B/yr\"): $0.9B/yr"
-      ],
-      "textfont": {
-        "size": 11.338582677165356,
-        "color": "rgba(28,28,30,1)"
+      "type": "bar",
+      "error_y": {
+        "color": "rgba(31,119,180,1)"
       },
-      "type": "scatter",
-      "mode": "markers",
-      "hoveron": "points",
-      "showlegend": false,
+      "error_x": {
+        "color": "rgba(31,119,180,1)"
+      },
       "xaxis": "x",
       "yaxis": "y",
-      "hoverinfo": "text",
-      "frame": null,
-      "hovertemplate": "<b>%{text}</b><br>x: %{x}<br>y: %{y}<extra></extra>",
-      "name": "Series 5"
+      "frame": null
     }
   ],
   "layout": {
     "margin": {
-      "t": 54.522208385222086,
-      "r": 21.25363221253632,
-      "b": 50.14528850145289,
-      "l": 204.23412204234123
-    },
-    "plot_bgcolor": "#F2F0EB",
-    "paper_bgcolor": "#F2F0EB",
-    "font": {
-      "color": "#1C1C1E",
-      "family": "DM Sans, Helvetica, sans-serif",
-      "size": 14.611872146118724
+      "b": 90,
+      "l": 200,
+      "t": 120,
+      "r": 50
     },
     "title": {
-      "text": "Revenue Per Year<br><span style='font-size:12px;color:#6B6B6B'>Trend With Milestones - TidyTuesday / R for Data Science community</span>",
-      "font": {
-        "color": "rgba(28,28,30,1)",
-        "family": "Helvetica",
-        "size": 17.268576172685762
-      },
+      "text": "<b>Franchise revenue per year of existence<\/b><br><span style='font-size:12px;color:#6B6B6B'>Top 20 (mid-2019 file)<\/span>",
       "x": 0,
-      "xref": "paper",
       "xanchor": "left"
     },
-    "xaxis": {
-      "domain": [
-        0,
-        1
-      ],
-      "automargin": true,
-      "type": "linear",
-      "autorange": false,
-      "range": [
-        0,
-        5.056723478260869
-      ],
-      "tickmode": "array",
-      "ticktext": [
-        "$0",
-        "$1",
-        "$2",
-        "$3",
-        "$4",
-        "$5"
-      ],
-      "tickvals": [
-        0,
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "categoryorder": "array",
-      "categoryarray": [
-        "$0",
-        "$1",
-        "$2",
-        "$3",
-        "$4",
-        "$5"
-      ],
-      "nticks": null,
-      "ticks": "",
-      "tickcolor": null,
-      "ticklen": 3.652968036529681,
-      "tickwidth": 0,
-      "showticklabels": true,
-      "tickfont": {
-        "color": "rgba(107,107,107,1)",
-        "family": "Helvetica",
-        "size": 11.955168119551681
-      },
-      "tickangle": 0,
-      "showline": false,
-      "linecolor": null,
-      "linewidth": 0,
-      "showgrid": true,
-      "gridcolor": "rgba(213,213,213,1)",
-      "gridwidth": 0.531340805313408,
-      "zeroline": false,
-      "anchor": "y",
-      "title": {
-        "text": "<b> Revenue Per Year (Billions USD) </b>",
-        "font": {
-          "color": "rgba(28,28,30,1)",
-          "family": "Helvetica",
-          "size": 13.283520132835205
-        }
-      },
-      "hoverformat": ".2f"
+    "paper_bgcolor": "#FFFFFF",
+    "plot_bgcolor": "#FFFFFF",
+    "font": {
+      "family": "DM Sans, Helvetica, sans-serif",
+      "color": "#000000",
+      "size": 12
     },
-    "yaxis": {
-      "domain": [
-        0,
-        1
-      ],
-      "automargin": true,
-      "type": "linear",
-      "autorange": false,
-      "range": [
-        0.4,
-        15.6
-      ],
-      "tickmode": "array",
-      "ticktext": [
-        "Mario",
-        "Puzzle & Dragons",
-        "DC Extended Universe",
-        "Call of Duty",
-        "Wii series",
-        "Monster Strike",
-        "Wizarding World / Harry Potter",
-        "Anpanman",
-        "Star Wars",
-        "Cars",
-        "Frozen",
-        "Hello Kitty",
-        "Disney Princess",
-        "Marvel Cinematic Universe",
-        "Pokémon"
-      ],
-      "tickvals": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15
-      ],
-      "categoryorder": "array",
-      "categoryarray": [
-        "Mario",
-        "Puzzle & Dragons",
-        "DC Extended Universe",
-        "Call of Duty",
-        "Wii series",
-        "Monster Strike",
-        "Wizarding World / Harry Potter",
-        "Anpanman",
-        "Star Wars",
-        "Cars",
-        "Frozen",
-        "Hello Kitty",
-        "Disney Princess",
-        "Marvel Cinematic Universe",
-        "Pokémon"
-      ],
-      "nticks": null,
-      "ticks": "",
-      "tickcolor": null,
-      "ticklen": 3.652968036529681,
-      "tickwidth": 0,
-      "showticklabels": true,
-      "tickfont": {
-        "color": "rgba(107,107,107,1)",
-        "family": "Helvetica",
-        "size": 11.955168119551681
-      },
-      "tickangle": 0,
-      "showline": false,
-      "linecolor": null,
-      "linewidth": 0,
-      "showgrid": false,
-      "gridcolor": null,
-      "gridwidth": 0,
-      "zeroline": false,
-      "anchor": "x",
-      "title": {
-        "text": "<b>  </b>",
+    "annotations": [
+      {
+        "x": 0,
+        "y": 1.12,
+        "xref": "paper",
+        "yref": "paper",
+        "text": "<b>Young ecosystems can beat century-old mascots on speed<\/b>",
+        "showarrow": false,
+        "xanchor": "left",
         "font": {
-          "color": "rgba(28,28,30,1)",
-          "family": "Helvetica",
-          "size": 13.283520132835205
-        }
+          "size": 11,
+          "color": "#FFFFFF"
+        },
+        "bgcolor": "#E60000",
+        "borderwidth": 3,
+        "bordercolor": "#E60000",
+        "borderpad": 6
       },
-      "hoverformat": ".2f"
-    },
-    "shapes": [],
-    "showlegend": false,
-    "legend": {
-      "bgcolor": "rgba(242,240,235,1)",
-      "bordercolor": "transparent",
-      "borderwidth": 1.8897637795275593,
-      "font": {
-        "color": "rgba(107,107,107,1)",
-        "family": "Helvetica",
-        "size": 10.62681610626816
-      },
-      "title": {
-        "text": "",
+      {
+        "x": 0,
+        "y": -0.18,
+        "xref": "paper",
+        "yref": "paper",
+        "text": "Source: S001 · n=103 franchises (TidyTuesday / mid-2019 Wikipedia scrape)  ·  Artometrics<br><span style='font-family:DM Mono, ui-monospace, monospace'>n=103 franchises (TidyTuesday / mid-2019 Wikipedia scrape)<\/span>",
+        "showarrow": false,
+        "xanchor": "left",
         "font": {
-          "color": "rgba(28,28,30,1)",
-          "family": "Helvetica",
-          "size": 11.955168119551681
+          "size": 9,
+          "color": "#6B6B6B"
         }
       }
+    ],
+    "xaxis": {
+      "domain": [0, 1],
+      "automargin": true,
+      "title": "$B per year"
+    },
+    "yaxis": {
+      "domain": [0, 1],
+      "automargin": true,
+      "title": "franchise",
+      "type": "category",
+      "categoryorder": "array",
+      "categoryarray": ["Yu-Gi-Oh!", "Toy Story", "CrossFire", "Angry Birds", "PAW Patrol", "Mario", "Puzzle & Dragons", "DC Extended Universe", "Call of Duty", "Wii series", "Monster Strike", "Wizarding World / Harry Potter", "Anpanman", "Star Wars", "Cars", "Frozen", "Hello Kitty", "Disney Princess", "Marvel Cinematic Universe", "Pokémon"]
     },
     "hovermode": "closest",
-    "barmode": "relative",
-    "transition": {
-      "duration": 500,
-      "easing": "cubic-in-out"
-    }
+    "showlegend": false
   },
   "config": {
-    "doubleClick": "reset",
-    "modeBarButtonsToAdd": [
-      "hoverclosest",
-      "hovercompare"
-    ],
-    "showSendToCloud": false
-  },
-  "source": "A",
-  "attrs": {
-    "5c5273decd8b": {
-      "yintercept": {},
-      "type": "scatter"
-    },
-    "5c5228889c1b": {
-      "x": {},
-      "y": {},
-      "xend": {},
-      "yend": {},
-      "colour": {}
-    },
-    "5c5220c0c567": {
-      "x": {},
-      "y": {},
-      "colour": {},
-      "size": {}
-    },
-    "5c524fdffdfd": {
-      "x": {},
-      "y": {},
-      "label": {}
-    }
-  },
-  "cur_data": "5c5273decd8b",
-  "visdat": {
-    "5c5273decd8b": [
-      "function (y) ",
-      "x"
-    ],
-    "5c5228889c1b": [
-      "function (y) ",
-      "x"
-    ],
-    "5c5220c0c567": [
-      "function (y) ",
-      "x"
-    ],
-    "5c524fdffdfd": [
-      "function (y) ",
-      "x"
-    ]
-  },
-  "highlight": {
-    "on": "plotly_click",
-    "persistent": false,
-    "dynamic": false,
-    "selectize": false,
-    "opacityDim": 0.2,
-    "selected": {
-      "opacity": 1
-    },
-    "debounce": 0
-  },
-  "shinyEvents": [
-    "plotly_hover",
-    "plotly_click",
-    "plotly_selected",
-    "plotly_relayout",
-    "plotly_brushed",
-    "plotly_brushing",
-    "plotly_clickannotation",
-    "plotly_doubleclick",
-    "plotly_deselect",
-    "plotly_afterplot",
-    "plotly_sunburstclick"
-  ],
-  "base_url": "https://plot.ly"
+    "displayModeBar": false,
+    "displaylogo": false,
+    "responsive": true,
+    "scrollZoom": false,
+    "doubleClick": false,
+    "staticPlot": false,
+    "editable": false,
+    "showTips": false
+  }
 }

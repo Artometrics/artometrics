@@ -1,0 +1,102 @@
+{
+  "data": [
+    {
+      "x": [34.154, 42.233, 17.974],
+      "y": ["Disney Experiences", "Disney Entertainment", "ESPN / Disney Sports"],
+      "orientation": "h",
+      "marker": {
+        "color": ["#0047FF", "#E60000", "#4A6FA5"],
+        "line": {
+          "color": "rgba(31,119,180,1)"
+        }
+      },
+      "type": "bar",
+      "error_y": {
+        "color": "rgba(31,119,180,1)"
+      },
+      "error_x": {
+        "color": "rgba(31,119,180,1)"
+      },
+      "xaxis": "x",
+      "yaxis": "y",
+      "frame": null
+    }
+  ],
+  "layout": {
+    "margin": {
+      "b": 90,
+      "l": 200,
+      "t": 120,
+      "r": 40
+    },
+    "title": {
+      "text": "<b>The Walt Disney Company — FY2024 segment revenue<\/b><br><span style='font-size:12px;color:#6B6B6B'>Audited 10-K totals<\/span>",
+      "x": 0,
+      "xanchor": "left"
+    },
+    "paper_bgcolor": "#FFFFFF",
+    "plot_bgcolor": "#FFFFFF",
+    "font": {
+      "family": "DM Sans, Helvetica, sans-serif",
+      "color": "#000000",
+      "size": 12
+    },
+    "annotations": [
+      {
+        "x": 0,
+        "y": 1.12,
+        "xref": "paper",
+        "yref": "paper",
+        "text": "<b>Experiences rivals Entertainment in scale<\/b>",
+        "showarrow": false,
+        "xanchor": "left",
+        "font": {
+          "size": 11,
+          "color": "#FFFFFF"
+        },
+        "bgcolor": "#E60000",
+        "borderwidth": 3,
+        "bordercolor": "#E60000",
+        "borderpad": 6
+      },
+      {
+        "x": 0,
+        "y": -0.18,
+        "xref": "paper",
+        "yref": "paper",
+        "text": "Data: The Walt Disney Company Form 10-K FY2024 — ARTOMETRICS  ·  Artometrics<br><span style='font-family:DM Mono, ui-monospace, monospace'>n=103 franchises (TidyTuesday / mid-2019 Wikipedia scrape)<\/span>",
+        "showarrow": false,
+        "xanchor": "left",
+        "font": {
+          "size": 9,
+          "color": "#6B6B6B"
+        }
+      }
+    ],
+    "xaxis": {
+      "domain": [0, 1],
+      "automargin": true,
+      "title": "revenue_usd_b"
+    },
+    "yaxis": {
+      "domain": [0, 1],
+      "automargin": true,
+      "title": "segment",
+      "type": "category",
+      "categoryorder": "array",
+      "categoryarray": ["ESPN / Disney Sports", "Disney Experiences", "Disney Entertainment"]
+    },
+    "hovermode": "closest",
+    "showlegend": false
+  },
+  "config": {
+    "displayModeBar": false,
+    "displaylogo": false,
+    "responsive": true,
+    "scrollZoom": false,
+    "doubleClick": false,
+    "staticPlot": false,
+    "editable": false,
+    "showTips": false
+  }
+}

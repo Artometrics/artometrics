@@ -1,4 +1,4 @@
-segment,fiscal_year,revenue_usd_b,source
-Disney Experiences,2024,34.154,The Walt Disney Company Form 10-K FY2024 Note 1 — segment revenue
-Disney Entertainment,2024,42.233,The Walt Disney Company Form 10-K FY2024 Note 1 — segment revenue
-ESPN / Disney Sports,2024,17.974,The Walt Disney Company Form 10-K FY2024 Note 1 — segment revenue
+segment,fiscal_year,revenue_usd_b,revenue_usd_m,source_document,source_ids,notes
+Disney Entertainment,2024,41.186,41186,https://www.sec.gov/Archives/edgar/data/1744489/000174448924000275/fy2024_q4xprxex991.htm,S004;S081,FY ended 2024-09-28; segment revenues table ($ in millions): Entertainment $41186
+Disney Sports,2024,17.619,17619,https://www.sec.gov/Archives/edgar/data/1744489/000174448924000275/fy2024_q4xprxex991.htm,S004;S081,Same table: Sports $17619
+Disney Experiences,2024,34.151,34151,https://www.sec.gov/Archives/edgar/data/1744489/000174448924000275/fy2024_q4xprxex991.htm,S004;S081,Same table: Experiences $34151

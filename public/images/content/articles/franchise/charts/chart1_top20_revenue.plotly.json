@@ -32,19 +32,19 @@
       "type": "bar",
       "name": "Box Office",
       "marker": {
-        "color": "rgba(27,79,138,1)",
+        "color": "rgba(0,71,255,1)",
         "line": {
-          "color": "rgba(27,79,138,1)"
+          "color": "rgba(0,71,255,1)"
         }
       },
       "textfont": {
-        "color": "rgba(27,79,138,1)"
+        "color": "rgba(0,71,255,1)"
       },
       "error_y": {
-        "color": "rgba(27,79,138,1)"
+        "color": "rgba(0,71,255,1)"
       },
       "error_x": {
-        "color": "rgba(27,79,138,1)"
+        "color": "rgba(0,71,255,1)"
       },
       "xaxis": "x",
       "yaxis": "y",
@@ -107,19 +107,19 @@
       "type": "bar",
       "name": "Merchandise, Licensing & Retail",
       "marker": {
-        "color": "rgba(192,57,43,1)",
+        "color": "rgba(230,0,0,1)",
         "line": {
-          "color": "rgba(192,57,43,1)"
+          "color": "rgba(230,0,0,1)"
         }
       },
       "textfont": {
-        "color": "rgba(192,57,43,1)"
+        "color": "rgba(230,0,0,1)"
       },
       "error_y": {
-        "color": "rgba(192,57,43,1)"
+        "color": "rgba(230,0,0,1)"
       },
       "error_x": {
-        "color": "rgba(192,57,43,1)"
+        "color": "rgba(230,0,0,1)"
       },
       "xaxis": "x",
       "yaxis": "y",
@@ -217,7 +217,7 @@
     "plot_bgcolor": "#FFFFFF",
     "font": {
       "family": "DM Sans, Helvetica, sans-serif",
-      "color": "#1C1C1E",
+      "color": "#000000",
       "size": 12
     },
     "annotations": [
@@ -226,22 +226,24 @@
         "y": 1.12,
         "xref": "paper",
         "yref": "paper",
-        "text": "<b>Pokémon leads; merchandise is the widest band for most properties<\/b>",
+        "text": "<b>Pokémon at $90.9B leads; merchandise is the widest band for most properties<\/b>",
         "showarrow": false,
         "xanchor": "left",
         "font": {
           "size": 11,
           "color": "#FFFFFF"
         },
-        "bgcolor": "#C0392B",
+        "bgcolor": "#E60000",
+        "borderwidth": 3,
+        "bordercolor": "#E60000",
         "borderpad": 6
       },
       {
         "x": 0,
-        "y": -0.2,
+        "y": -0.18,
         "xref": "paper",
         "yref": "paper",
-        "text": "Data: TidyTuesday media franchises (2019-07-02) / Wikipedia estimates — ARTOMETRICS  ·  Artometrics",
+        "text": "Source: S001 · n=103 franchises (TidyTuesday / mid-2019 Wikipedia scrape)  ·  Artometrics<br><span style='font-family:DM Mono, ui-monospace, monospace'>n=103 franchises (TidyTuesday / mid-2019 Wikipedia scrape)<\/span>",
         "showarrow": false,
         "xanchor": "left",
         "font": {
@@ -254,7 +256,10 @@
     "xaxis": {
       "domain": [0, 1],
       "automargin": true,
-      "title": "Lifetime revenue ($B)"
+      "title": "Lifetime revenue ($B)",
+      "tickfont": {
+        "family": "DM Mono, ui-monospace, monospace"
+      }
     },
     "showlegend": true,
     "yaxis": {

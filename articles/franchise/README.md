@@ -1,8 +1,8 @@
-# Pokémon's $91B Earns More Than Marvel, Star Wars, and Harry Potter Combined
+# Pokémon's $90.9B Earns More Than Marvel, Star Wars, and Harry Potter Combined
 
 **Desk:** arts · **Live:** https://artometrics.com/franchise/
 
-Pokémon at $91B tops 103 franchise rows in the committed TidyTuesday extract. Merchandise is 56% of row-sum revenue. Disney owns $426B across subsidiaries when consolidated.
+Pokémon at $90.9B tops 103 franchise rows in the committed TidyTuesday extract. Merchandise is 56% of row-sum revenue. Disney owns $426B across subsidiaries when consolidated.
 
 ## Layout
 

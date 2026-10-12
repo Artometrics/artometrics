@@ -1,13 +1,23 @@
-# FRANCHISE — 60s vertical (9:16)
+# FRANCHISE — 60s vertical (~150 words)
 
-Your blockbuster lost the weekend. Pokémon still won the century.
+Which Pokémon number is on your slide?
 
-In the franchise ledger we track — one hundred three properties, Wikipedia estimates, mid-2019 — merchandise is fifty-six percent of lifetime revenue. Box office? Nine.
+In the mid-2019 file, the row is ninety point nine billion dollars, the largest name among one hundred and three franchises.
 
-Disney looks smaller until you merge Marvel, Lucasfilm, and Fox. Then it is four hundred twenty-six billion dollars of attributed IP — not one studio, an empire.
+Merchandise is most of that file. Theatre is not.
 
-Twenty-twenty-four: nine of the domestic top ten films were franchise installments.
+On the 2026 Wikipedia list, the same Pokémon name reads one hundred thirty point seven billion.
 
-The lesson for executives: buy libraries, sell objects, count consolidated owners.
+That is a jump of thirty-nine point eight billion, bigger than the rises for Call of Duty or Naruto.
 
-That is franchise economics. Not the trailer — the toy aisle.
+Here is the turn.
+
+Those extra billions are a newer public total, not cash you can book to Nintendo alone.
+
+The Pokémon Company shares the property with Nintendo, Game Freak, and Creatures.
+
+Nintendo’s own label in the 2019 file is forty-nine billion, and it does not include that Pokémon row.
+
+Before you rank anyone against Pokémon, say which year you mean, and whose name is on the owner line.
+
+Treat the two figures as different facts.

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap"/>
+<style>
+  html,body { margin:0; height:100%; background:#0a0a0a; color:#fff; }
+  body { display:flex; flex-direction:column; padding:28px 36px 18px; box-sizing:border-box; font-family:"DM Sans",sans-serif; }
+  h1 { font-size:34px; font-weight:600; margin:0 0 8px; letter-spacing:-0.02em; }
+  .sub { font-family:"DM Mono",monospace; font-size:16px; color:#9a9a9a; margin:0 0 18px; }
+  .plot { flex:1; min-height:0; }
+  .chart-svg { width:100%; height:100%; }
+  .src { font-family:"DM Mono",monospace; font-size:14px; color:#8a8a8a; margin:10px 0 0; }
+  .stage-data { opacity:0; animation:rise .7s ease forwards; }
+  .stage-highlight { opacity:0; animation:rise .35s ease 1.15s forwards; }
+  .bar { transform-box:fill-box; transform-origin:left center; }
+  @keyframes rise { from { opacity:0; } to { opacity:1; } }
+</style></head>
+<body>
+  <h1>Hello Kitty is $80bn. Winnie the Pooh is $74bn.</h1>
+  <p class="sub">Top 20 franchise rows · n=103 in the 2019 Wikipedia-based dataset · unit $bn</p>
+  <div class="plot"><svg class="chart-svg" viewBox="0 0 1536 702" preserveAspectRatio="xMinYMid meet" xmlns="http://www.w3.org/2000/svg" role="img">
+<line class="stage-axes" x1="420" y1="16" x2="420" y2="674" stroke="#4a4a4a" stroke-width="2"/>
+<line class="stage-axes" x1="420" y1="674" x2="1500" y2="674" stroke="#4a4a4a" stroke-width="2"/>
+<text class="stage-axes" x="1500" y="694" text-anchor="end" fill="#9a9a9a" font-family="DM Mono, monospace" font-size="20">$bn</text>
+<text class="stage-axes" x="404" y="37.471578947368414" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Fist of the North Star</text>
+<rect class="stage-data bar" x="420" y="22.2" width="4.0" height="22.2" fill="#6a6a6a" style="animation-delay:0.25s"/>
+<text class="stage-data" x="434.0" y="37.5" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.25s">$0bn</text>
+<text class="stage-axes" x="404" y="72.10315789473684" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Mario</text>
+<rect class="stage-data bar" x="420" y="56.9" width="43.8" height="22.2" fill="#6a6a6a" style="animation-delay:0.28s"/>
+<text class="stage-data" x="473.8" y="72.1" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.28s">$4bn</text>
+<text class="stage-axes" x="404" y="106.73473684210525" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Marvel Cinematic Unive</text>
+<rect class="stage-data bar" x="420" y="91.5" width="54.8" height="22.2" fill="#6a6a6a" style="animation-delay:0.31s"/>
+<text class="stage-data" x="484.8" y="106.7" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.31s">$5bn</text>
+<text class="stage-axes" x="404" y="141.36631578947367" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Dragon Ball</text>
+<rect class="stage-data bar" x="420" y="126.1" width="54.8" height="22.2" fill="#6a6a6a" style="animation-delay:0.34s"/>
+<text class="stage-data" x="484.8" y="141.4" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.34s">$5bn</text>
+<text class="stage-axes" x="404" y="175.99789473684208" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Wizarding World</text>
+<rect class="stage-data bar" x="420" y="160.8" width="77.8" height="22.2" fill="#6a6a6a" style="animation-delay:0.37s"/>
+<text class="stage-data" x="507.8" y="176.0" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.37s">$7.1bn</text>
+<text class="stage-axes" x="404" y="210.6294736842105" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Spider-Man</text>
+<rect class="stage-data bar" x="420" y="195.4" width="153.3" height="22.2" fill="#6a6a6a" style="animation-delay:0.40s"/>
+<text class="stage-data" x="583.3" y="210.6" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.40s">$14bn</text>
+<text class="stage-axes" x="404" y="245.26105263157893" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Toy Story</text>
+<rect class="stage-data bar" x="420" y="230.0" width="186.2" height="22.2" fill="#6a6a6a" style="animation-delay:0.43s"/>
+<text class="stage-data" x="616.1" y="245.3" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.43s">$17bn</text>
+<text class="stage-axes" x="404" y="279.8926315789474" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Cars</text>
+<rect class="stage-data bar" x="420" y="264.7" width="208.0" height="22.2" fill="#6a6a6a" style="animation-delay:0.46s"/>
+<text class="stage-data" x="638.0" y="279.9" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.46s">$19bn</text>
+<text class="stage-axes" x="404" y="314.52421052631576" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Batman</text>
+<rect class="stage-data bar" x="420" y="299.3" width="219.0" height="22.2" fill="#6a6a6a" style="animation-delay:0.49s"/>
+<text class="stage-data" x="649.0" y="314.5" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.49s">$20bn</text>
+<text class="stage-axes" x="404" y="349.1557894736842" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Barbie</text>
+<rect class="stage-data bar" x="420" y="333.9" width="240.9" height="22.2" fill="#6a6a6a" style="animation-delay:0.52s"/>
+<text class="stage-data" x="670.9" y="349.2" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.52s">$22bn</text>
+<text class="stage-axes" x="404" y="383.7873684210526" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Gundam</text>
+<rect class="stage-data bar" x="420" y="368.5" width="273.8" height="22.2" fill="#6a6a6a" style="animation-delay:0.55s"/>
+<text class="stage-data" x="703.8" y="383.8" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.55s">$25bn</text>
+<text class="stage-axes" x="404" y="418.418947368421" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Super Sentai</text>
+<rect class="stage-data bar" x="420" y="403.2" width="317.6" height="22.2" fill="#6a6a6a" style="animation-delay:0.58s"/>
+<text class="stage-data" x="747.5" y="418.4" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.58s">$29bn</text>
+<text class="stage-axes" x="404" y="453.05052631578945" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Star Wars</text>
+<rect class="stage-data bar" x="420" y="437.8" width="438.0" height="22.2" fill="#6a6a6a" style="animation-delay:0.61s"/>
+<text class="stage-data" x="868.0" y="453.1" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.61s">$40bn</text>
+<text class="stage-axes" x="404" y="487.68210526315784" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Disney Princess</text>
+<rect class="stage-data bar" x="420" y="472.4" width="481.8" height="22.2" fill="#6a6a6a" style="animation-delay:0.64s"/>
+<text class="stage-data" x="911.8" y="487.7" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.64s">$44bn</text>
+<text class="stage-axes" x="404" y="522.3136842105263" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Anpanman</text>
+<rect class="stage-data bar" x="420" y="507.1" width="657.3" height="22.2" fill="#6a6a6a" style="animation-delay:0.67s"/>
+<text class="stage-data" x="1087.3" y="522.3" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.67s">$60bn</text>
+<text class="stage-axes" x="404" y="556.9452631578947" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Pokémon</text>
+<rect class="stage-data bar" x="420" y="541.7" width="667.9" height="22.2" fill="#6a6a6a" style="animation-delay:0.70s"/>
+<text class="stage-data" x="1097.9" y="556.9" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.70s">$61bn</text>
+<text class="stage-axes" x="404" y="591.5768421052632" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Mickey Mouse &amp; Friends</text>
+<rect class="stage-data bar" x="420" y="576.3" width="755.6" height="22.2" fill="#6a6a6a" style="animation-delay:0.73s"/>
+<text class="stage-data" x="1185.6" y="591.6" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.73s">$69bn</text>
+<text class="stage-axes" x="404" y="626.2084210526316" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Winnie the Pooh</text>
+<rect class="stage-data bar" x="420" y="611.0" width="810.3" height="22.2" fill="#6a6a6a" style="animation-delay:0.76s"/>
+<text class="stage-data" x="1240.3" y="626.2" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.76s">$74bn</text>
+<text class="stage-axes" x="404" y="660.84" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Hello Kitty</text>
+<rect class="stage-data bar" x="420" y="645.6" width="876.0" height="22.2" fill="#E60000" style="animation-delay:0.79s"/>
+<text class="stage-data" x="1306.0" y="660.8" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.79s">$80bn</text>
+<rect class="stage-highlight" x="1292.0" y="647.0" width="118" height="19.4" fill="none" stroke="#E60000" stroke-width="3"/>
+</svg></div>
+  <p class="src">Source: the 2019 Wikipedia-based dataset</p>
+  <script>
+    const q = new URLSearchParams(location.search);
+    const hl = (q.get("hl") || "").toLowerCase();
+    if (hl) {
+      document.querySelectorAll(".chart-svg text").forEach((t) => {
+        if (t.textContent.toLowerCase().includes(hl)) {
+          const y = t.getAttribute("y");
+          t.setAttribute("fill", "#fff");
+        }
+      });
+    }
+    setTimeout(() => document.body.setAttribute("data-chart-ready", "1"), 1500);
+  </script>
+</body></html>
