@@ -138,7 +138,7 @@
 - [COFFEE: Ethiopia Scores Highest on Coffee Quality—With Zero Starbucks Stores](https://artometrics.com/coffee): Ethiopia's median CQI cup score is 85.3 — the highest of 16 countries with 20+ samples — yet Starbucks operates zero stores in the top three scoring nations. (culture)
 - [IMPERIAL: What Empire Chronicles Leave Out](https://artometrics.com/imperial): A historical-economics lens asks who captured wealth when rulers claimed order. (humanities)
 - [YOUTUBE: The Platform's $36B Engine and One Podcast's Borrowed Peak](https://artometrics.com/youtube): Alphabet reported $36.1B in YouTube ad revenue in FY2024 while Nielsen puts YouTube at 13.4% of U.S. TV-screen usage. Against that scale, H3 Podcast's Frenemies era tripled monthly views—and set a ceiling the show has not touched since. (civics)
-- [FRANCHISE: Merchandise Owns the Ledger](https://artometrics.com/franchise): Pokémon leads 103 Wikipedia-scraped franchises at $91B lifetime (mid-2019). Merchandise is 56% of row-sum revenue. Consolidated Disney totals $426B in the same file. (arts)
+- [FRANCHISE: Merchandise Owns the Ledger](https://artometrics.com/franchise): One hundred three Wikipedia-scraped franchises (mid-2019) sum to $1.52T lifetime revenue. Merchandise is 56% of row totals; Pokémon leads at $90.9B. By region of origin: Japan $681.5B, the US $622.6B (45 franchises, 64.6% merchandise), the UK $163.4B. (arts)
 - [ANIME: Source Sets the Audience Floor](https://artometrics.com/anime): In a century of MyAnimeList data, light-novel TV adaptations draw 32 times the median audience of original series. The data also shows where fan ratings and commercial value part ways. (arts)
 
 ## Podcast
@@ -150,4 +150,4 @@
 
 ## Generated
 
-Updated: 2026-10-11T23:53:35.456Z
+Updated: 2026-10-12T17:03:00.313Z

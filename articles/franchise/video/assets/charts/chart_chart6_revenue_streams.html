@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap"/>
+<style>
+  html,body { margin:0; height:100%; background:#0a0a0a; color:#fff; }
+  body { display:flex; flex-direction:column; padding:28px 36px 18px; box-sizing:border-box; font-family:"DM Sans",sans-serif; }
+  h1 { font-size:34px; font-weight:600; margin:0 0 8px; letter-spacing:-0.02em; }
+  .sub { font-family:"DM Mono",monospace; font-size:16px; color:#9a9a9a; margin:0 0 18px; }
+  .plot { flex:1; min-height:0; }
+  .chart-svg { width:100%; height:100%; }
+  .src { font-family:"DM Mono",monospace; font-size:14px; color:#8a8a8a; margin:10px 0 0; }
+  .stage-data { opacity:0; animation:rise .7s ease forwards; }
+  .stage-highlight { opacity:0; animation:rise .35s ease 1.15s forwards; }
+  .bar { transform-box:fill-box; transform-origin:left center; }
+  @keyframes rise { from { opacity:0; } to { opacity:1; } }
+</style></head>
+<body>
+  <h1>Merchandise is 56% of all franchise revenue. Box office is 8.9%.</h1>
+  <p class="sub">Share of lifetime revenue by stream · n=103 · unit %</p>
+  <div class="plot"><svg class="chart-svg" viewBox="0 0 1536 702" preserveAspectRatio="xMinYMid meet" xmlns="http://www.w3.org/2000/svg" role="img">
+<line class="stage-axes" x1="420" y1="16" x2="420" y2="674" stroke="#4a4a4a" stroke-width="2"/>
+<line class="stage-axes" x1="420" y1="674" x2="1500" y2="674" stroke="#4a4a4a" stroke-width="2"/>
+<text class="stage-axes" x="1500" y="694" text-anchor="end" fill="#9a9a9a" font-family="DM Mono, monospace" font-size="20">%</text>
+<text class="stage-axes" x="404" y="66.995" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Music</text>
+<rect class="stage-data bar" x="420" y="30.8" width="17.2" height="52.6" fill="#6a6a6a" style="animation-delay:0.25s"/>
+<text class="stage-data" x="447.2" y="67.0" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.25s">1.1%</text>
+<text class="stage-axes" x="404" y="149.245" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Book sales</text>
+<rect class="stage-data bar" x="420" y="113.1" width="20.3" height="52.6" fill="#6a6a6a" style="animation-delay:0.28s"/>
+<text class="stage-data" x="450.3" y="149.2" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.28s">1.3%</text>
+<text class="stage-axes" x="404" y="231.495" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">TV</text>
+<rect class="stage-data bar" x="420" y="195.3" width="23.5" height="52.6" fill="#6a6a6a" style="animation-delay:0.31s"/>
+<text class="stage-data" x="453.5" y="231.5" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.31s">1.5%</text>
+<text class="stage-axes" x="404" y="313.745" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Home Video</text>
+<rect class="stage-data bar" x="420" y="277.6" width="51.6" height="52.6" fill="#6a6a6a" style="animation-delay:0.34s"/>
+<text class="stage-data" x="481.6" y="313.7" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.34s">3.3%</text>
+<text class="stage-axes" x="404" y="395.995" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Comic or Manga</text>
+<rect class="stage-data bar" x="420" y="359.8" width="125.1" height="52.6" fill="#6a6a6a" style="animation-delay:0.37s"/>
+<text class="stage-data" x="555.1" y="396.0" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.37s">8%</text>
+<text class="stage-axes" x="404" y="478.245" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Box Office</text>
+<rect class="stage-data bar" x="420" y="442.1" width="139.2" height="52.6" fill="#0047FF" style="animation-delay:0.40s"/>
+<text class="stage-data" x="569.2" y="478.2" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.40s">8.9%</text>
+<text class="stage-axes" x="404" y="560.495" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Video Games</text>
+<rect class="stage-data bar" x="420" y="524.3" width="312.9" height="52.6" fill="#6a6a6a" style="animation-delay:0.43s"/>
+<text class="stage-data" x="742.9" y="560.5" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.43s">20%</text>
+<text class="stage-axes" x="404" y="642.745" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Merchandise</text>
+<rect class="stage-data bar" x="420" y="606.6" width="876.0" height="52.6" fill="#E60000" style="animation-delay:0.46s"/>
+<text class="stage-data" x="1306.0" y="642.7" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.46s">56%</text>
+<rect class="stage-highlight" x="1292.0" y="609.8" width="118" height="46.1" fill="none" stroke="#E60000" stroke-width="3"/>
+</svg></div>
+  <p class="src">Source: the 2019 Wikipedia-based dataset</p>
+  <script>
+    const q = new URLSearchParams(location.search);
+    const hl = (q.get("hl") || "").toLowerCase();
+    if (hl) {
+      document.querySelectorAll(".chart-svg text").forEach((t) => {
+        if (t.textContent.toLowerCase().includes(hl)) {
+          const y = t.getAttribute("y");
+          t.setAttribute("fill", "#fff");
+        }
+      });
+    }
+    setTimeout(() => document.body.setAttribute("data-chart-ready", "1"), 1500);
+  </script>
+</body></html>

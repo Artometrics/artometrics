@@ -1,0 +1,102 @@
+{
+  "data": [
+    {
+      "x": [400, 331.4, 157.5, 120, 120, 114, 96.1, 84, 82.4, 58.8, 57.8, 54.7, 49.4, 47.4, 46.9, 46, 43.8, 42.7, 36.6, 32.7],
+      "y": ["Candy Crush Saga", "Mortal Kombat", "Naruto", "Dungeon Fighter Online", "PAW Patrol", "Ice Age", "Fate", "Despicable Me / Minions", "Call of Duty", "Transformers", "Barbie", "The Hunger Games", "Mission: Impossible", "Shrek", "My Little Pony", "Fast & Furious", "Pokémon", "Monster Strike", "Teenage Mutant Ninja Turtles", "Frozen"],
+      "orientation": "h",
+      "marker": {
+        "color": ["#E60000", "#E60000", "#E60000", "#E60000", "#E60000", "#E60000", "#E60000", "#E60000", "#E60000", "#E60000", "#E60000", "#E60000", "#E60000", "#E60000", "#E60000", "#E60000", "#E60000", "#E60000", "#E60000", "#E60000"],
+        "line": {
+          "color": "rgba(31,119,180,1)"
+        }
+      },
+      "type": "bar",
+      "error_y": {
+        "color": "rgba(31,119,180,1)"
+      },
+      "error_x": {
+        "color": "rgba(31,119,180,1)"
+      },
+      "xaxis": "x",
+      "yaxis": "y",
+      "frame": null
+    }
+  ],
+  "layout": {
+    "margin": {
+      "b": 90,
+      "l": 60,
+      "t": 110,
+      "r": 40
+    },
+    "title": {
+      "text": "<b>2019 TidyTuesday row vs 2026 Wikipedia total<\/b><br><span style='font-size:12px;color:#6B6B6B'>Top 20 movers among matched names<\/span>",
+      "x": 0,
+      "xanchor": "left"
+    },
+    "paper_bgcolor": "#FFFFFF",
+    "plot_bgcolor": "#FFFFFF",
+    "font": {
+      "family": "DM Sans, Helvetica, sans-serif",
+      "color": "#000000",
+      "size": 12
+    },
+    "annotations": [
+      {
+        "x": 0,
+        "y": 1.12,
+        "xref": "paper",
+        "yref": "paper",
+        "text": "<b>Hello Kitty, Mario, and Gundam drops reflect Wikipedia methodology — not real revenue losses<\/b>",
+        "showarrow": false,
+        "xanchor": "left",
+        "font": {
+          "size": 11,
+          "color": "#FFFFFF"
+        },
+        "bgcolor": "#E60000",
+        "borderwidth": 3,
+        "bordercolor": "#E60000",
+        "borderpad": 6
+      },
+      {
+        "x": 0,
+        "y": -0.18,
+        "xref": "paper",
+        "yref": "paper",
+        "text": "Source: S001 + S017  ·  Artometrics<br><span style='font-family:DM Mono, ui-monospace, monospace'>n=20 matched franchises<\/span>",
+        "showarrow": false,
+        "xanchor": "left",
+        "font": {
+          "size": 9,
+          "color": "#6B6B6B"
+        }
+      }
+    ],
+    "xaxis": {
+      "domain": [0, 1],
+      "automargin": true,
+      "title": "pct_change"
+    },
+    "yaxis": {
+      "domain": [0, 1],
+      "automargin": true,
+      "title": "franchise",
+      "type": "category",
+      "categoryorder": "array",
+      "categoryarray": ["Frozen", "Teenage Mutant Ninja Turtles", "Monster Strike", "Pokémon", "Fast & Furious", "My Little Pony", "Shrek", "Mission: Impossible", "The Hunger Games", "Barbie", "Transformers", "Call of Duty", "Despicable Me / Minions", "Fate", "Ice Age", "Dungeon Fighter Online", "PAW Patrol", "Naruto", "Mortal Kombat", "Candy Crush Saga"]
+    },
+    "hovermode": "closest",
+    "showlegend": false
+  },
+  "config": {
+    "displayModeBar": false,
+    "displaylogo": false,
+    "responsive": true,
+    "scrollZoom": false,
+    "doubleClick": false,
+    "staticPlot": false,
+    "editable": false,
+    "showTips": false
+  }
+}

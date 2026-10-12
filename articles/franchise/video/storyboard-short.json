@@ -2,7 +2,7 @@
   "script": "script-short.md",
   "scenes": [
     {"id": "s01", "narration_text": "Pokémon is not a movie studio that sells toys on the side.", "type": "title_card", "on_screen_text": "FRANCHISE ECONOMICS", "duration_s": 4},
-    {"id": "s02", "narration_text": "ninety-one-billion-dollar licensing stack", "type": "big_number", "on_screen_text": "$91B", "number_to_count_up": 91, "duration_s": 4},
+    {"id": "s02", "narration_text": "ninety point nine billion dollar licensing stack", "type": "big_number", "on_screen_text": "$90.9B", "number_to_count_up": 90.9, "duration_s": 4},
     {"id": "s03", "narration_text": "One hundred and three properties.", "type": "big_number", "on_screen_text": "103 franchises", "number_to_count_up": 103, "duration_s": 3},
     {"id": "s04", "narration_text": "Fifty-six percent of every dollar in the file sits in one bucket — merchandise, licensing, and retail.", "type": "chart_beat", "chart_id": "chart6_revenue_streams", "on_screen_text": "56% merchandise", "duration_s": 5},
     {"id": "s05", "narration_text": "Box office is nine percent.", "type": "big_number", "on_screen_text": "9% box office", "number_to_count_up": 9, "duration_s": 3},

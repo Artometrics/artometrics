@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap"/>
+<style>
+  html,body { margin:0; height:100%; background:#0a0a0a; color:#fff; }
+  body { display:flex; flex-direction:column; padding:28px 36px 18px; box-sizing:border-box; font-family:"DM Sans",sans-serif; }
+  h1 { font-size:34px; font-weight:600; margin:0 0 8px; letter-spacing:-0.02em; }
+  .sub { font-family:"DM Mono",monospace; font-size:16px; color:#9a9a9a; margin:0 0 18px; }
+  .plot { flex:1; min-height:0; }
+  .chart-svg { width:100%; height:100%; }
+  .src { font-family:"DM Mono",monospace; font-size:14px; color:#8a8a8a; margin:10px 0 0; }
+  .stage-data { opacity:0; animation:rise .7s ease forwards; }
+  .stage-highlight { opacity:0; animation:rise .35s ease 1.15s forwards; }
+  .bar { transform-box:fill-box; transform-origin:left center; }
+  @keyframes rise { from { opacity:0; } to { opacity:1; } }
+</style></head>
+<body>
+  <h1>After Fox (Disney consolidated) is 46.4%. Before Fox deal (Disney split) is 46.4%.</h1>
+  <p class="sub">Share of franchise-row revenue by owner · unit %</p>
+  <div class="plot"><svg class="chart-svg" viewBox="0 0 1536 702" preserveAspectRatio="xMinYMid meet" xmlns="http://www.w3.org/2000/svg" role="img">
+<line class="stage-axes" x1="420" y1="16" x2="420" y2="674" stroke="#4a4a4a" stroke-width="2"/>
+<line class="stage-axes" x1="420" y1="674" x2="1500" y2="674" stroke="#4a4a4a" stroke-width="2"/>
+<text class="stage-axes" x="1500" y="694" text-anchor="end" fill="#9a9a9a" font-family="DM Mono, monospace" font-size="20">%</text>
+<text class="stage-axes" x="404" y="219.98" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">After Fox (Disney cons</text>
+<rect class="stage-data bar" x="420" y="75.2" width="876.0" height="210.6" fill="#6a6a6a" style="animation-delay:0.25s"/>
+<text class="stage-data" x="1306.0" y="220.0" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.25s">46.4%</text>
+<text class="stage-axes" x="404" y="548.98" text-anchor="end" fill="#eee" font-family="DM Mono, monospace" font-size="22">Before Fox deal (Disne</text>
+<rect class="stage-data bar" x="420" y="404.2" width="876.0" height="210.6" fill="#E60000" style="animation-delay:0.28s"/>
+<text class="stage-data" x="1306.0" y="549.0" fill="#fff" font-family="DM Mono, monospace" font-size="22" style="animation-delay:0.28s">46.4%</text>
+<rect class="stage-highlight" x="1292.0" y="417.4" width="118" height="184.2" fill="none" stroke="#E60000" stroke-width="3"/>
+</svg></div>
+  <p class="src">Source: the 2019 Wikipedia-based dataset · consolidated labels</p>
+  <script>
+    const q = new URLSearchParams(location.search);
+    const hl = (q.get("hl") || "").toLowerCase();
+    if (hl) {
+      document.querySelectorAll(".chart-svg text").forEach((t) => {
+        if (t.textContent.toLowerCase().includes(hl)) {
+          const y = t.getAttribute("y");
+          t.setAttribute("fill", "#fff");
+        }
+      });
+    }
+    setTimeout(() => document.body.setAttribute("data-chart-ready", "1"), 1500);
+  </script>
+</body></html>
