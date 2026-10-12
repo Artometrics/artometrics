@@ -77,8 +77,8 @@ export default function StudioPublishScreen() {
         path="/studio/publish"
       />
       <Text className="text-xs tracking-[1.8px] uppercase font-bold text-accent">Studio</Text>
-      <Text className="font-serif text-[36px] font-bold text-fg">Publish</Text>
-      <Text className="font-serif text-base leading-[26px] text-muted">
+      <Text className="font-sans text-[36px] font-bold text-fg">Publish</Text>
+      <Text className="font-sans text-base leading-[26px] text-muted">
         Profile posts go live on your public page. Magazine submissions need editorial review (and can
         sync into Sanity when configured).
       </Text>
@@ -89,7 +89,7 @@ export default function StudioPublishScreen() {
         onChangeText={setTitle}
         placeholder="Title"
         placeholderTextColorClassName="text-subtle"
-        className="border border-border px-3 py-2.5 text-base font-serif text-fg bg-bg-elevated"
+        className="border border-border px-3 py-2.5 text-base font-sans text-fg bg-bg-elevated"
       />
       <Text className="text-[11px] tracking-[1.2px] uppercase font-bold mt-2 text-muted">Body</Text>
       <TextInput
@@ -98,11 +98,11 @@ export default function StudioPublishScreen() {
         placeholder="Write freely…"
         placeholderTextColorClassName="text-subtle"
         multiline
-        className="border border-border px-3 py-2.5 text-base font-serif min-h-[200px] text-fg bg-bg-elevated"
+        className="border border-border px-3 py-2.5 text-base font-sans min-h-[200px] text-fg bg-bg-elevated"
         style={{ textAlignVertical: "top" }}
       />
 
-      {msg ? <Text className="font-serif text-base leading-[26px] text-accent">{msg}</Text> : null}
+      {msg ? <Text className="font-sans text-base leading-[26px] text-accent">{msg}</Text> : null}
 
       <View className="gap-2.5 mt-3">
         <PrimaryButton label="Save draft" onPress={() => void saveDraft()} disabled={busy} />

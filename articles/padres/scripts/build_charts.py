@@ -33,7 +33,7 @@ PUBLIC_IMG = ROOT / "public" / "images" / "content" / "articles" / "padres" / "c
 PUBLIC_DATA = ROOT / "public" / "data" / "articles" / "padres" / "data"
 
 RED = "#E60000"
-BLUE = "#3367E7"
+BLUE = "#0047FF"
 INK = "#1C1C1E"
 WHITE = "#FFFFFF"
 GRID = "#E6E6E6"

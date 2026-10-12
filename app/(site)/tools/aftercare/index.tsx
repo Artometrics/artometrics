@@ -239,7 +239,7 @@ export default function AftercareHomeScreen() {
 
           {/* Slide content */}
           <View className="absolute left-5 right-5 top-[88px] bottom-12 z-[3] justify-between" pointerEvents="box-none">
-            {error ? <Text className="font-serif text-[15px] text-accent">{error}</Text> : null}
+            {error ? <Text className="font-sans text-[15px] text-accent">{error}</Text> : null}
 
             {slide === "open" ? (
               <>

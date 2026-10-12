@@ -8,7 +8,7 @@ import { useTheme } from "@/lib/theme";
  * Renders an ambient, continuous, fuzzy and grainy moving lava-lamp background.
  * Colorway: Artometrics 3D glasses / Slurpee palette:
  *   - Hot Cherry Red (#E60000)
- *   - Cobalt Electric Blue (#3367E7)
+ *   - Cobalt Electric Blue (#0047FF)
  *   - Deep Void Neutrals (#07080D in dark, #F8F8F6 in light)
  *
  * Web: Pure CSS hardware-accelerated animated fluid orbs with SVG analog noise grain.

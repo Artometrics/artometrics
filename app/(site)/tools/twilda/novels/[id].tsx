@@ -261,7 +261,7 @@ export default function TwildaNovelWorkspace() {
         ]}
       />
       <View className="flex-row flex-wrap items-baseline justify-between gap-2">
-        <Text className="font-serif text-[36px] font-bold text-fg">{novel.title}</Text>
+        <Text className="font-sans text-[36px] font-bold text-fg">{novel.title}</Text>
         <Text className="text-xs min-h-4 text-muted">
           {saveState === "saving" ? "Saving…" : saveState === "saved" ? "Saved" : " "}
         </Text>
@@ -294,7 +294,7 @@ export default function TwildaNovelWorkspace() {
           <View className={panelClassName} style={{ gap: 12 }}>
             {novel.chapters.map((ch) => (
               <View key={ch.id} className="border border-border p-3.5 gap-1.5">
-                <Text className="font-serif text-lg font-bold text-fg">{ch.title}</Text>
+                <Text className="font-sans text-lg font-bold text-fg">{ch.title}</Text>
                 {ch.scenes.map((sc) => (
                   <Pressable
                     key={sc.id}
@@ -349,7 +349,7 @@ export default function TwildaNovelWorkspace() {
               onChangeText={onSceneChange}
               placeholder="Write this scene…"
               placeholderTextColorClassName="text-subtle"
-              className="border border-border rounded-sm min-h-[200px] p-3.5 font-serif text-base leading-7 text-fg bg-bg"
+              className="border border-border rounded-sm min-h-[200px] p-3.5 font-sans text-base leading-7 text-fg bg-bg"
               style={{ textAlignVertical: "top" }}
             />
           </View>
@@ -359,7 +359,7 @@ export default function TwildaNovelWorkspace() {
           <View className={panelClassName} style={{ gap: 12 }}>
             {panels.map((p) => (
               <View key={p.id} className="border border-border p-3.5 gap-1.5">
-                <Text className="font-serif text-lg font-bold text-fg">
+                <Text className="font-sans text-lg font-bold text-fg">
                   Panel {p.sort_order + 1}
                 </Text>
                 <Text className="text-muted">{p.caption || "No caption"}</Text>
@@ -381,7 +381,7 @@ export default function TwildaNovelWorkspace() {
             {novel.codex.map((entry) => (
               <View key={entry.id} className="border border-border p-3.5 gap-1.5">
                 <Text className="text-[11px] tracking-[1.2px] uppercase font-bold text-accent">{entry.type}</Text>
-                <Text className="font-serif text-lg font-bold text-fg">{entry.name}</Text>
+                <Text className="font-sans text-lg font-bold text-fg">{entry.name}</Text>
                 <Text className="text-muted">{entry.summary}</Text>
               </View>
             ))}
@@ -429,7 +429,7 @@ export default function TwildaNovelWorkspace() {
                 multiline
                 value={synopsis}
                 onChangeText={setSynopsis}
-                className="border border-border rounded-sm min-h-[120px] p-3.5 font-serif text-base leading-7 text-fg bg-bg"
+                className="border border-border rounded-sm min-h-[120px] p-3.5 font-sans text-base leading-7 text-fg bg-bg"
                 style={{ textAlignVertical: "top" }}
               />
             </View>

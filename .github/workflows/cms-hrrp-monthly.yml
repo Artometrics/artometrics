@@ -1,0 +1,37 @@
+name: CMS HRRP monthly refresh
+
+on:
+  schedule:
+    - cron: "0 14 3 * *" # 14:00 UTC on the 3rd of each month
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check-and-refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check CMS release
+        id: check
+        run: python3 scripts/cms/check_hrrp_release.py
+        continue-on-error: true
+      - name: Rebuild readmitted data
+        if: steps.check.outcome != 'success'
+        run: python3 scripts/cms/check_hrrp_release.py --refresh
+      - name: Open PR when data changed
+        if: steps.check.outcome != 'success'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore(data): refresh CMS HRRP extract for readmitted"
+          title: "CMS HRRP data refresh (automated)"
+          body: |
+            Automated monthly check found a newer CMS HRRP supplemental release.
+            See `articles/readmitted/data/cms_refresh_report.json` for headline delta.
+          branch: automation/cms-hrrp-refresh
+          delete-branch: true

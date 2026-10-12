@@ -333,6 +333,45 @@ const index = {
 };
 writeFileSync(join(OUT, "index.json"), JSON.stringify(index, null, 2));
 
+const calendarPath = join(ROOT, "docs/content-os/content-calendar.csv");
+function parseCalendarCsv(raw) {
+  const lines = raw.trim().split(/\r?\n/).slice(1);
+  return lines
+    .map((line) => {
+      const cols = [];
+      let cur = "";
+      let inQuotes = false;
+      for (let i = 0; i < line.length; i++) {
+        const ch = line[i];
+        if (ch === '"') {
+          inQuotes = !inQuotes;
+          continue;
+        }
+        if (ch === "," && !inQuotes) {
+          cols.push(cur);
+          cur = "";
+          continue;
+        }
+        cur += ch;
+      }
+      cols.push(cur);
+      if (cols.length < 3) return null;
+      return {
+        releaseFriday: cols[0],
+        slug: cols[1],
+        title: cols[2].replace(/^'|'$/g, ""),
+        desk: cols[3] ?? "",
+        subdomain: cols[4] ?? "",
+      };
+    })
+    .filter(Boolean);
+}
+
+if (existsSync(calendarPath)) {
+  const calendar = parseCalendarCsv(readFileSync(calendarPath, "utf8"));
+  writeFileSync(join(OUT, "content-calendar.json"), JSON.stringify(calendar, null, 2));
+}
+
 console.log(
   `Content built → src/generated/ (${blog.length} blog, ${podcast.length} podcast, ${authors.length} authors, ${legal.length} legal)`,
 );

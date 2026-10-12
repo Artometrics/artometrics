@@ -61,7 +61,7 @@ export default function StudioHomeScreen() {
   if (authLoading || !user) {
     return (
       <Wrapper variant="narrow" className="gap-3 py-10">
-        <Text className="font-serif text-[17px] leading-7 text-muted">Opening Studio…</Text>
+        <Text className="font-sans text-[17px] leading-7 text-muted">Opening Studio…</Text>
       </Wrapper>
     );
   }
@@ -76,9 +76,9 @@ export default function StudioHomeScreen() {
         path="/studio"
       />
       <Text className="text-xs tracking-[1.8px] uppercase font-bold text-accent">Your workspace</Text>
-      <Text className="font-serif text-[42px] font-bold text-fg">Studio</Text>
+      <Text className="font-sans text-[42px] font-bold text-fg">Studio</Text>
       <ToolsAccent />
-      <Text className="font-serif text-[17px] leading-7 max-w-[560px] text-muted">
+      <Text className="font-sans text-[17px] leading-7 max-w-[560px] text-muted">
         One place to continue writing, check in, and publish when you are ready.
       </Text>
 
@@ -86,8 +86,8 @@ export default function StudioHomeScreen() {
         <ActivityIndicator className="mt-8" color={colors.accent} />
       ) : empty ? (
         <View className="mt-5 border border-border bg-bg-elevated p-6 gap-2.5">
-          <Text className="font-serif text-[26px] font-bold text-fg">Start with a blank page</Text>
-          <Text className="font-serif text-[17px] leading-7 max-w-[560px] text-muted">
+          <Text className="font-sans text-[26px] font-bold text-fg">Start with a blank page</Text>
+          <Text className="font-sans text-[17px] leading-7 max-w-[560px] text-muted">
             Create a novel in Twilda, or open Aftercare for today's check-in. Your work stays private until
             you publish.
           </Text>
@@ -109,7 +109,7 @@ export default function StudioHomeScreen() {
               className="border border-border bg-bg-elevated p-4 gap-1"
             >
               <Text className="text-xs tracking-wide text-accent">Twilda · Novel</Text>
-              <Text className="font-serif text-xl font-bold text-fg">{cont.novel.title}</Text>
+              <Text className="font-sans text-xl font-bold text-fg">{cont.novel.title}</Text>
               <Text className="text-xs tracking-wide text-subtle">
                 {formatUpdated(cont.novel.last_opened_at ?? cont.novel.updated_at)}
               </Text>
@@ -121,7 +121,7 @@ export default function StudioHomeScreen() {
               className="border border-border bg-bg-elevated p-4 gap-1"
             >
               <Text className="text-xs tracking-wide text-accent">Twilda · Journal</Text>
-              <Text className="font-serif text-xl font-bold text-fg">{cont.journal.title}</Text>
+              <Text className="font-sans text-xl font-bold text-fg">{cont.journal.title}</Text>
             </Pressable>
           ) : null}
           {cont?.aftercareNote ? (
@@ -130,7 +130,7 @@ export default function StudioHomeScreen() {
               className="border border-border bg-bg-elevated p-4 gap-1"
             >
               <Text className="text-xs tracking-wide text-accent">Aftercare</Text>
-              <Text className="font-serif text-xl font-bold text-fg">{cont.aftercareNote}</Text>
+              <Text className="font-sans text-xl font-bold text-fg">{cont.aftercareNote}</Text>
             </Pressable>
           ) : null}
         </View>
@@ -188,8 +188,8 @@ export default function StudioHomeScreen() {
                   if (tool) useStudioStore.getState().setLastTool(tool);
                 }}
               >
-                <Text className="font-serif text-[22px] font-bold text-fg">{item.title}</Text>
-                <Text className="font-serif text-[15px] leading-6 text-muted">{item.body}</Text>
+                <Text className="font-sans text-[22px] font-bold text-fg">{item.title}</Text>
+                <Text className="font-sans text-[15px] leading-6 text-muted">{item.body}</Text>
               </Pressable>
             </Link>
           ))}

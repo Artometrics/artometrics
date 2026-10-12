@@ -117,9 +117,9 @@ export default function SamplesHomeScreen() {
       />
       <ToolsSubnav links={NAV} />
       <Text className="text-xs tracking-[1.8px] uppercase font-bold text-accent">Studio</Text>
-      <Text className="font-serif text-[36px] font-bold text-fg">Sample Maker</Text>
+      <Text className="font-sans text-[36px] font-bold text-fg">Sample Maker</Text>
       <ToolsAccent />
-      <Text className="font-serif text-base leading-[26px] max-w-[560px] text-muted">
+      <Text className="font-sans text-base leading-[26px] max-w-[560px] text-muted">
         Record a sound, tweak synth settings, mark favorite clips, and export the pack.
       </Text>
 
@@ -132,8 +132,8 @@ export default function SamplesHomeScreen() {
         <ActivityIndicator className="mt-7" color={colors.accent} />
       ) : packs.length === 0 ? (
         <View className="mt-5 border border-border bg-bg-elevated p-[22px] gap-2">
-          <Text className="text-[22px] font-bold font-serif text-fg">No packs yet</Text>
-          <Text className="font-serif text-base leading-[26px] max-w-[560px] text-muted">
+          <Text className="text-[22px] font-bold font-sans text-fg">No packs yet</Text>
+          <Text className="font-sans text-base leading-[26px] max-w-[560px] text-muted">
             Start a recording and save clips you want to keep.
           </Text>
         </View>
@@ -145,7 +145,7 @@ export default function SamplesHomeScreen() {
               onPress={() => router.push(`/tools/samples/${pack.id}`)}
               className="border border-border p-4 gap-1.5"
             >
-              <Text className="text-xl font-bold font-serif text-fg">{pack.title}</Text>
+              <Text className="text-xl font-bold font-sans text-fg">{pack.title}</Text>
               <Text className="text-xs tracking-wide text-subtle">
                 {pack.clips.filter((c) => c.favorite).length} favorites ·{" "}
                 {pack.synth.preset} · {new Date(pack.updatedAt).toLocaleDateString()}

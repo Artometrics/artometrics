@@ -127,14 +127,14 @@ export default function Root({ children }: PropsWithChildren) {
                 min-height: 100%;
               }
               ::selection {
-                background: rgba(168, 134, 46, 0.28);
+                background: rgba(230, 0, 0, 0.18);
                 color: inherit;
               }
               body {
                 margin: 0;
-                background: #F4F1EA;
-                font-family: "Archivo", Helvetica Neue, Helvetica, Arial, system-ui, sans-serif;
-                color: #1D1A15;
+                background: #ffffff;
+                font-family: "DM Sans", system-ui, sans-serif;
+                color: #000000;
               }
               /* Prefer explicit site theme over OS preference alone */
               html[data-theme="light"] {
@@ -142,8 +142,8 @@ export default function Root({ children }: PropsWithChildren) {
               }
               html[data-theme="light"] body,
               html[data-theme="light"] #root {
-                background: #F4F1EA !important;
-                color: #1D1A15 !important;
+                background: #ffffff !important;
+                color: #000000 !important;
               }
               html[data-theme="dark"] {
                 color-scheme: dark;

@@ -2,90 +2,117 @@
 @import "uniwind";
 
 /*
-  Artometrics — Bellum Systems aesthetic: warm paper #f4f1ea, ink #1d1a15, bronze-gold #7d6222 / #a8862e,
-  Piazzolla variable serif display, Archivo industrial sans, Chomsky masthead.
+  Artometrics — anaglyph magazine: white/black structure, red + blue accents.
+  Chomsky wordmark only; DM Sans headlines/body; DM Mono data/meta.
 */
 
 @theme {
-  --color-accent-50: #fbf7ee;
-  --color-accent-100: #f5eedc;
-  --color-accent-200: #ebdcb9;
-  --color-accent-300: #d8c6a0;
-  --color-accent-400: #ae8b52;
-  --color-accent-500: #7d6222;
-  --color-accent-600: #6b531d;
-  --color-accent-700: #544117;
-  --color-accent-800: #3f3111;
-  --color-accent-900: #2a200b;
-  --color-accent-950: #151005;
+  --color-accent-50: #ffe8e8;
+  --color-accent-100: #ffd1d1;
+  --color-accent-200: #ffb3b3;
+  --color-accent-300: #ff8080;
+  --color-accent-400: #ff3333;
+  --color-accent-500: #e60000;
+  --color-accent-600: #cc0000;
+  --color-accent-700: #a30000;
+  --color-accent-800: #7a0000;
+  --color-accent-900: #520000;
+  --color-accent-950: #290000;
 
-  --color-base-50: #fcfbf9;
-  --color-base-100: #f4f1ea;
-  --color-base-200: #ebe8e1;
-  --color-base-300: #d6d3cc;
-  --color-base-400: #b3b0aa;
-  --color-base-500: #8a8780;
-  --color-base-600: #68655c;
-  --color-base-700: #59564c;
-  --color-base-800: #2a2722;
-  --color-base-900: #202120;
-  --color-base-950: #111212;
+  --color-base-50: #ffffff;
+  --color-base-100: #f7f7f7;
+  --color-base-200: #f2f2f2;
+  --color-base-300: #e5e5e5;
+  --color-base-400: #a3a3a3;
+  --color-base-500: #767676;
+  --color-base-600: #525252;
+  --color-base-700: #404040;
+  --color-base-800: #262626;
+  --color-base-900: #171717;
+  --color-base-950: #000000;
 
-  --color-paper: #f4f1ea;
-  --color-paper-elevated: #ebe8e1;
-  --color-magazine-accent: #7d6222;
-  --color-magazine-accent-soft: #f5eedc;
-  --color-secondary: #a8862e;
+  --color-paper: #ffffff;
+  --color-paper-elevated: #f2f2f2;
+  --color-magazine-accent: #0047ff;
+  --color-magazine-accent-soft: #e6eeff;
+  --color-secondary: #e60000;
 
-  --font-display: "Piazzolla", Georgia, serif;
-  --font-sans: "Archivo", Helvetica Neue, Helvetica, Arial, system-ui, sans-serif;
-  --font-serif: "Piazzolla", Georgia, serif;
+  --font-display: "DM Sans", system-ui, sans-serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-serif: "DM Sans", system-ui, sans-serif;
   --font-wordmark: "Chomsky", Georgia, serif;
   --font-mono: "DM Mono", ui-monospace, Menlo, monospace;
 
   --radius-btn: 0px;
 }
 
+@layer utilities {
+  .home-lead-headline {
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: manual;
+    text-wrap: balance;
+  }
+}
+
 @layer theme {
   :root {
     @variant light {
-      --color-bg: #f4f1ea;
-      --color-bg-elevated: #ebe8e1;
-      --color-fg: #1d1a15;
-      --color-muted: #59564c;
-      --color-subtle: #68655c;
-      --color-border: #d6d3cc;
-      --color-accent: #7d6222;
-      --color-accent-soft: #f5eedc;
-      --color-secondary: #a8862e;
-      --color-inverse: #f4f1ea;
-      --color-header: #f4f1ea;
-      --color-overlay: #ebe8e1;
-      --color-rule: #d6d3cc;
-      --font-display: "Piazzolla", Georgia, serif;
-      --font-sans: "Archivo", Helvetica Neue, Helvetica, Arial, system-ui, sans-serif;
-      --font-serif: "Piazzolla", Georgia, serif;
+      --color-bg: #ffffff;
+      --color-bg-elevated: #f2f2f2;
+      --color-fg: #000000;
+      --color-muted: #525252;
+      --color-subtle: #767676;
+      --color-border: #e5e5e5;
+      --color-accent: #0047ff;
+      --color-accent-soft: #e6eeff;
+      --color-secondary: #e60000;
+      --color-inverse: #ffffff;
+      --color-header: #ffffff;
+      --color-overlay: #f2f2f2;
+      --color-rule: #000000;
+      --font-display: "DM Sans", system-ui, sans-serif;
+      --font-sans: "DM Sans", system-ui, sans-serif;
+      --font-serif: "DM Sans", system-ui, sans-serif;
       --font-wordmark: "Chomsky", Georgia, serif;
       --font-mono: "DM Mono", ui-monospace, monospace;
+      --art-paper: #ffffff;
+      --art-paper-muted: #f2f2f2;
+      --art-ink: #000000;
+      --art-ink-muted: #525252;
+      --art-rule: #e5e5e5;
+      --art-red: #e60000;
+      --art-blue: #0047ff;
+      --art-ui-accent: #0047ff;
+      --art-ui-counter: #e60000;
     }
 
     @variant dark {
-      --color-bg: #111212;
-      --color-bg-elevated: #202120;
-      --color-fg: #f4f1ea;
-      --color-muted: #d8c6a0;
-      --color-subtle: #b3b0aa;
-      --color-border: #2a2722;
-      --color-accent: #ae8b52;
-      --color-accent-soft: #2a2316;
-      --color-secondary: #d8c6a0;
-      --color-overlay: #202120;
-      --color-rule: #2a2722;
-      --font-display: "Piazzolla", Georgia, serif;
-      --font-sans: "Archivo", Helvetica Neue, Helvetica, Arial, system-ui, sans-serif;
-      --font-serif: "Piazzolla", Georgia, serif;
+      --color-bg: #000000;
+      --color-bg-elevated: #171717;
+      --color-fg: #ffffff;
+      --color-muted: #a3a3a3;
+      --color-subtle: #767676;
+      --color-border: #262626;
+      --color-accent: #0047ff;
+      --color-accent-soft: #1a2744;
+      --color-secondary: #ff3333;
+      --color-overlay: #171717;
+      --color-rule: #ffffff;
+      --font-display: "DM Sans", system-ui, sans-serif;
+      --font-sans: "DM Sans", system-ui, sans-serif;
+      --font-serif: "DM Sans", system-ui, sans-serif;
       --font-wordmark: "Chomsky", Georgia, serif;
       --font-mono: "DM Mono", ui-monospace, monospace;
+      --art-paper: #000000;
+      --art-paper-muted: #171717;
+      --art-ink: #ffffff;
+      --art-ink-muted: #a3a3a3;
+      --art-rule: #262626;
+      --art-red: #ff3333;
+      --art-blue: #0047ff;
+      --art-ui-accent: #0047ff;
+      --art-ui-counter: #ff3333;
     }
   }
 }

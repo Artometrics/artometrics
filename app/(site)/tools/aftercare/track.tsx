@@ -141,8 +141,8 @@ export default function AftercareTrackScreen() {
       />
       <ToolsSubnav links={NAV} />
       <Text className="text-xs tracking-[1.8px] uppercase font-bold text-accent">Aftercare</Text>
-      <Text className="font-serif text-[36px] font-bold text-fg">Track</Text>
-      <Text className="font-serif text-base leading-[26px] max-w-[560px] text-muted">
+      <Text className="font-sans text-[36px] font-bold text-fg">Track</Text>
+      <Text className="font-sans text-base leading-[26px] max-w-[560px] text-muted">
         Log mood from 1 (heavy) to 5 (light). A short note is enough.
       </Text>
 
@@ -178,10 +178,10 @@ export default function AftercareTrackScreen() {
           onChangeText={setNote}
           placeholder="Optional note"
           placeholderTextColorClassName="text-subtle"
-          className="border border-border p-3 min-h-[88px] font-serif text-base leading-6 text-fg bg-bg-elevated"
+          className="border border-border p-3 min-h-[88px] font-sans text-base leading-6 text-fg bg-bg-elevated"
           style={{ textAlignVertical: "top" }}
         />
-        {error ? <Text className="font-serif text-[15px] text-accent">{error}</Text> : null}
+        {error ? <Text className="font-sans text-[15px] text-accent">{error}</Text> : null}
         <PrimaryButton
           label={saving ? "Saving…" : "Log mood"}
           onPress={onSave}
@@ -193,7 +193,7 @@ export default function AftercareTrackScreen() {
       {loading ? (
         <ActivityIndicator color={colors.accent} />
       ) : recentMoods.length === 0 ? (
-        <Text className="font-serif text-base leading-[26px] max-w-[560px] text-muted">
+        <Text className="font-sans text-base leading-[26px] max-w-[560px] text-muted">
           No mood logs yet.
         </Text>
       ) : (
@@ -213,14 +213,14 @@ export default function AftercareTrackScreen() {
           <View className="gap-2">
             {recentMoods.map((log) => (
               <View key={`row-${log.id}`} className="border border-border p-3 flex-row gap-3 items-start">
-                <Text className="font-serif text-lg font-bold min-w-10 text-fg">{log.value}/5</Text>
+                <Text className="font-sans text-lg font-bold min-w-10 text-fg">{log.value}/5</Text>
                 <View className="flex-1 gap-0.5">
                   <Text className="text-xs text-subtle">
                     {log.logged_on ||
                       (log.created_at ? new Date(log.created_at).toLocaleDateString() : "")}
                   </Text>
                   {log.notes ? (
-                    <Text className="font-serif text-[15px] leading-[22px] text-muted">{log.notes}</Text>
+                    <Text className="font-sans text-[15px] leading-[22px] text-muted">{log.notes}</Text>
                   ) : null}
                 </View>
               </View>

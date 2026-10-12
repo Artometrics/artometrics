@@ -145,8 +145,8 @@ export default function AftercareJournalScreen() {
       />
       <ToolsSubnav links={NAV} />
       <Text className="text-xs tracking-[1.8px] uppercase font-bold text-accent">Aftercare</Text>
-      <Text className="font-serif text-[36px] font-bold text-fg">Journal</Text>
-      <Text className="font-serif text-base leading-[26px] max-w-[560px] text-muted">
+      <Text className="font-sans text-[36px] font-bold text-fg">Journal</Text>
+      <Text className="font-sans text-base leading-[26px] max-w-[560px] text-muted">
         Name the feeling, then write what wants tending.
       </Text>
 
@@ -182,7 +182,7 @@ export default function AftercareJournalScreen() {
           onChangeText={setTitle}
           placeholder="Title (optional)"
           placeholderTextColorClassName="text-subtle"
-          className="border border-border px-3 py-2.5 font-serif text-base text-fg bg-bg-elevated"
+          className="border border-border px-3 py-2.5 font-sans text-base text-fg bg-bg-elevated"
         />
         <TextInput
           multiline
@@ -190,10 +190,10 @@ export default function AftercareJournalScreen() {
           onChangeText={setBody}
           placeholder="What softens, what stays…"
           placeholderTextColorClassName="text-subtle"
-          className="border border-border p-3 min-h-[140px] font-serif text-base leading-[26px] text-fg bg-bg-elevated"
+          className="border border-border p-3 min-h-[140px] font-sans text-base leading-[26px] text-fg bg-bg-elevated"
           style={{ textAlignVertical: "top" }}
         />
-        {error ? <Text className="font-serif text-[15px] text-accent">{error}</Text> : null}
+        {error ? <Text className="font-sans text-[15px] text-accent">{error}</Text> : null}
         <PrimaryButton
           label={saving ? "Saving…" : "Save entry"}
           onPress={onCreate}
@@ -207,7 +207,7 @@ export default function AftercareJournalScreen() {
       {loading ? (
         <ActivityIndicator color={colors.accent} />
       ) : entries.length === 0 ? (
-        <Text className="font-serif text-base leading-[26px] max-w-[560px] text-muted">
+        <Text className="font-sans text-base leading-[26px] max-w-[560px] text-muted">
           No entries yet. Start with whatever is true today.
         </Text>
       ) : (
@@ -227,9 +227,9 @@ export default function AftercareJournalScreen() {
                 ) : null}
               </View>
               {entry.title ? (
-                <Text className="font-serif text-lg font-bold text-fg">{entry.title}</Text>
+                <Text className="font-sans text-lg font-bold text-fg">{entry.title}</Text>
               ) : null}
-              <Text className="font-serif text-[15px] leading-6 text-muted">{entry.body}</Text>
+              <Text className="font-sans text-[15px] leading-6 text-muted">{entry.body}</Text>
             </View>
           ))}
         </View>

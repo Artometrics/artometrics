@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Pressable, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { SiteCoverImage } from "@/components/SiteCoverImage";
 import { useLocalSearchParams, Link } from "expo-router";
 import { assetUrl } from "@/lib/assets";
@@ -48,9 +48,9 @@ export default function ReportScreen() {
   if (!post) {
     return (
       <Wrapper variant="narrow" className="gap-3 pb-4 pt-10">
-        <Text className="font-serif text-2xl text-fg">Report not found</Text>
+        <Text className="font-sans text-2xl text-fg">Report not found</Text>
         <Link href="/">
-          <Text className="font-sans text-[11px] uppercase tracking-[2px] text-muted">
+          <Text className="font-mono text-[11px] uppercase tracking-[2px] text-muted">
             ← Contents
           </Text>
         </Link>
@@ -65,6 +65,7 @@ export default function ReportScreen() {
   const authorLabel = post.author ? formatAuthorName(String(post.author)) : "Kyle McAuliffe";
   const faq = (post as { faq?: { question: string; answer: string }[] }).faq ?? [];
   const headline = splitReportHeadline(post.title);
+  const audioSrc = (post as { audioSrc?: string | null }).audioSrc;
 
   const imageAbs = post.heroImage?.startsWith("http")
     ? post.heroImage
@@ -117,7 +118,7 @@ export default function ReportScreen() {
       />
       <SeoJsonLd data={jsonLd} />
 
-      <Wrapper variant="wide" className="gap-6 border-b border-border pb-8 pt-3 md:pt-4">
+      <Wrapper variant="measure" className="gap-4 border-b border-border pb-6 pt-3 md:pt-5">
         <View className="flex-row flex-wrap items-center justify-between gap-x-3 gap-y-2">
           <View className="min-w-0 shrink">
             <ReportBreadcrumb tags={post.tags} />
@@ -126,74 +127,83 @@ export default function ReportScreen() {
             slug={post.slug}
             title={post.title}
             description={post.description}
-            audioSrc={(post as { audioSrc?: string | null }).audioSrc}
+            audioSrc={audioSrc}
             placement="header"
             variant="inline"
           />
         </View>
-        <View className="flex-col gap-6 md:flex-row md:items-center md:gap-8">
-          {hero ? (
-            <View className="min-w-0 w-full shrink-0 md:w-1/2 md:flex-1">
-              <SiteCoverImage
-                source={{ uri: hero }}
-                wrapperClassName="w-full overflow-hidden border border-border"
-                wrapperStyle={{ aspectRatio: post.slug === "anime" ? 16 / 9 : 16 / 10 }}
-                transition={200}
-                accessibilityLabel={
-                  post.slug === "anime"
-                    ? "AI-generated illustration of an animator's lightbox and stacks of timing sheets on a darkened studio desk, with a single red pencil."
-                    : post.title
-                }
-              />
-              {post.slug === "anime" ? (
-                <Text className="mt-2 font-sans text-[12px] font-bold uppercase tracking-[1.2px] text-fg">
-                  Illustration: Artometrics (AI-generated)
-                </Text>
-              ) : null}
-            </View>
+
+        {label ? (
+          <Text className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-accent">
+            {label}
+          </Text>
+        ) : null}
+
+        <Text
+          role="heading"
+          aria-level={1}
+          className="font-sans text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.06] tracking-[-0.02em] text-fg"
+        >
+          {headline ? (
+            <Text>
+              <Text className="text-accent">{headline.slug}</Text>
+              <Text className="text-fg">{`: ${headline.subtitle}`}</Text>
+            </Text>
+          ) : (
+            post.title
+          )}
+        </Text>
+
+        <Text className="font-sans text-lg font-medium leading-snug text-muted md:text-xl">
+          {deckLine(post.description, 12)}
+        </Text>
+      </Wrapper>
+
+      {hero ? (
+        <Wrapper variant="bleed" className="w-full px-0">
+          <SiteCoverImage
+            source={{ uri: hero }}
+            wrapperClassName="w-full overflow-hidden"
+            wrapperStyle={{ aspectRatio: post.slug === "anime" ? 16 / 9 : 16 / 10 }}
+            transition={200}
+            accessibilityLabel={
+              post.slug === "anime"
+                ? "AI-generated illustration of an animator's lightbox and stacks of timing sheets on a darkened studio desk, with a single red pencil."
+                : post.title
+            }
+          />
+          {post.slug === "anime" ? (
+            <Wrapper variant="measure" className="pt-2">
+              <Text className="font-mono text-[11px] uppercase tracking-[0.1em] text-muted">
+                Illustration: Artometrics (AI-generated)
+              </Text>
+            </Wrapper>
           ) : null}
-          <View
-            className={[
-              "min-w-0 justify-center gap-3",
-              hero ? "w-full md:w-1/2 md:flex-1" : "w-full",
-            ].join(" ")}
-          >
-            <Text
-              role="heading"
-              aria-level={1}
-              className="font-serif text-[28px] font-bold leading-[1.12] tracking-tight text-secondary sm:text-[32px] md:text-[36px] lg:text-[42px]"
-            >
-              {headline ? (
-                <Text>
-                  <Text className="text-accent">{headline.slug}</Text>
-                  {`: ${headline.subtitle}`}
-                </Text>
-              ) : (
-                post.title
-              )}
-            </Text>
-            <Text className="font-serif text-lg font-bold leading-snug text-accent md:text-xl md:leading-relaxed">
-              {deckLine(post.description, 12)}
-            </Text>
-            {(post as { audioSrc?: string | null }).audioSrc ? (
-              <ArticleNarrationPlayer
-                audioSrc={(post as { audioSrc?: string | null }).audioSrc}
-                title={post.title}
-                runtimeSeconds={post.slug === "anime" ? 1818 : undefined}
-                label={post.slug === "anime" ? "Listen: narrated by AI voice (Kore), 30:18" : undefined}
-              />
-            ) : null}
-            <Text className="font-sans text-[13px] font-bold uppercase tracking-[1.4px] text-fg md:text-sm">
-              <Text className="text-accent">By </Text>
-              {authorLabel}
-              {post.pubDate ? ` · ${formatDate(post.pubDate)}` : ""} · {minutes} min
-            </Text>
-          </View>
-        </View>
+        </Wrapper>
+      ) : null}
+
+      <Wrapper variant="measure" className="gap-4 border-b-2 border-fg py-5">
+        {audioSrc ? (
+          <ArticleNarrationPlayer
+            audioSrc={audioSrc}
+            title={post.title}
+            runtimeSeconds={post.slug === "anime" ? 1818 : undefined}
+            label={
+              post.slug === "anime"
+                ? "Listen: narrated by AI voice (Kore), 30:18"
+                : undefined
+            }
+          />
+        ) : null}
+        <Text className="font-mono text-[12px] uppercase tracking-[0.12em] text-fg">
+          <Text className="text-accent">By </Text>
+          {authorLabel}
+          {post.pubDate ? ` · ${formatDate(post.pubDate)}` : ""} · {minutes} min read
+        </Text>
       </Wrapper>
 
       {post.keyPoints && post.keyPoints.length > 0 ? (
-        <Wrapper variant="wide" className="pt-6 pb-2">
+        <Wrapper variant="measure" className="pt-6 pb-2">
           <ReportStatGrid
             keyPoints={post.keyPoints}
             subject={post.subject}
@@ -202,8 +212,11 @@ export default function ReportScreen() {
         </Wrapper>
       ) : null}
 
-      <Wrapper variant="bleed" className="w-full min-w-0 max-w-[1600px] self-stretch gap-3 px-3 py-8 md:px-4">
+      <Wrapper variant="measure" className="w-full min-w-0 gap-3 py-8">
         <ArticleBody html={post.body} />
+      </Wrapper>
+
+      <Wrapper variant="measure" className="pb-10">
         <ReportRelatedReads slug={post.slug} limit={4} />
       </Wrapper>
     </View>

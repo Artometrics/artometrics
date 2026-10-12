@@ -1,0 +1,101 @@
+[
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2015,
+    "value_usd": 55519000000,
+    "filed": "2016-02-11",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2016,
+    "value_usd": 66001000000,
+    "filed": "2017-02-03",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2017,
+    "value_usd": 74989000000,
+    "filed": "2018-02-06",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+    "fiscal_year": 2018,
+    "value_usd": 90272000000,
+    "filed": "2019-02-05",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+    "fiscal_year": 2019,
+    "value_usd": 110855000000,
+    "filed": "2020-02-04",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2020,
+    "value_usd": 136819000000,
+    "filed": "2021-02-03",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2021,
+    "value_usd": 161857000000,
+    "filed": "2022-02-02",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+    "fiscal_year": 2022,
+    "value_usd": 182527000000,
+    "filed": "2023-02-03",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+    "fiscal_year": 2023,
+    "value_usd": 257637000000,
+    "filed": "2024-01-31",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+    "fiscal_year": 2024,
+    "value_usd": 282836000000,
+    "filed": "2025-02-05",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  },
+  {
+    "tag": "Revenues",
+    "fiscal_year": 2025,
+    "value_usd": 307394000000,
+    "filed": "2026-02-05",
+    "form": "10-K",
+    "fp": "FY",
+    "unit": "USD"
+  }
+]

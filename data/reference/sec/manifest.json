@@ -1,0 +1,64 @@
+[
+  {
+    "company": "alphabet",
+    "cik": "0001652044",
+    "note": "YouTube ads in segment notes; consolidated revenues below",
+    "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json",
+    "rows": 11,
+    "entity": "Alphabet Inc."
+  },
+  {
+    "company": "disney",
+    "cik": "0001744489",
+    "note": "",
+    "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001744489.json",
+    "rows": 7,
+    "entity": "WALT DISNEY CO/"
+  },
+  {
+    "company": "netflix",
+    "cik": "0001065280",
+    "note": "",
+    "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001065280.json",
+    "rows": 17,
+    "entity": "NETFLIX INC"
+  },
+  {
+    "company": "warner_bros_discovery",
+    "cik": "0001437107",
+    "note": "Warner Bros. Discovery, Inc.",
+    "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001437107.json",
+    "rows": 18,
+    "entity": "Warner Bros. Discovery, Inc."
+  },
+  {
+    "company": "comcast",
+    "cik": "0001166691",
+    "note": "",
+    "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001166691.json",
+    "rows": 17,
+    "entity": "COMCAST\u00a0CORPORATION"
+  },
+  {
+    "company": "paramount_global",
+    "cik": "0000813828",
+    "note": "Paramount Global",
+    "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000813828.json",
+    "rows": 16,
+    "entity": "Paramount Skydance Corp"
+  },
+  {
+    "company": "sony_group",
+    "cik": "0000313838",
+    "note": "Sony Group Corp (ADR)",
+    "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000313838.json",
+    "rows": 0,
+    "entity": "Sony Group Corp"
+  },
+  {
+    "company": "nintendo",
+    "cik": "0001069392",
+    "error": "HTTP Error 404: Not Found",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001069392.json"
+  }
+]

@@ -1,0 +1,660 @@
+[
+  {
+    "releaseFriday": "2026-09-26",
+    "slug": "padres",
+    "title": "$3.9bn for Zero Championships: Inside the Padres' Record Sale",
+    "desk": "sports",
+    "subdomain": "baseball"
+  },
+  {
+    "releaseFriday": "2026-10-03",
+    "slug": "blueprint",
+    "title": "$3.9 Billion Buys the Padres—But Not a Championship Blueprint",
+    "desk": "sports",
+    "subdomain": "baseball"
+  },
+  {
+    "releaseFriday": "2026-10-10",
+    "slug": "beyonce",
+    "title": "Beyoncé and the Cost of Controlling the House",
+    "desk": "humanities",
+    "subdomain": "psychology"
+  },
+  {
+    "releaseFriday": "2026-10-17",
+    "slug": "trademarks",
+    "title": "A ¥10.3 million trademark award in China turned a legal win into a cultural reckoning",
+    "desk": "arts",
+    "subdomain": "fashion"
+  },
+  {
+    "releaseFriday": "2026-10-24",
+    "slug": "streaming",
+    "title": "Netflix Holds 4,800 Titles While Marketing 40: What Catalog Data Shows About Platform Inventory",
+    "desk": "culture",
+    "subdomain": ""
+  },
+  {
+    "releaseFriday": "2026-10-31",
+    "slug": "oscars",
+    "title": "Oscars vs Grammys: How Award Shows Build Prestige",
+    "desk": "humanities",
+    "subdomain": "sociology"
+  },
+  {
+    "releaseFriday": "2026-11-07",
+    "slug": "rivalry",
+    "title": "California leads in GDP and tech, Texas in energy and migration—7 dimensions of the most-compared state rivalry",
+    "desk": "civics",
+    "subdomain": "politics"
+  },
+  {
+    "releaseFriday": "2026-11-14",
+    "slug": "celtics",
+    "title": "18 NBA titles have turned the Celtics into a franchise judged against its own history",
+    "desk": "sports",
+    "subdomain": "basketball"
+  },
+  {
+    "releaseFriday": "2026-11-21",
+    "slug": "bioeconomics",
+    "title": "What does a city export? A data framework for economic identity",
+    "desk": "civics",
+    "subdomain": "economics"
+  },
+  {
+    "releaseFriday": "2026-11-28",
+    "slug": "cowboys",
+    "title": "Dallas Cowboys carry $10B franchise value through 29-year championship drought",
+    "desk": "sports",
+    "subdomain": "football"
+  },
+  {
+    "releaseFriday": "2026-12-05",
+    "slug": "geopolitics",
+    "title": "Film and music lead cultural export scales; South Korea's geopolitics index rose 70 points since 1990",
+    "desk": "civics",
+    "subdomain": "economics"
+  },
+  {
+    "releaseFriday": "2026-12-12",
+    "slug": "dodgers",
+    "title": "The Dodgers won 111 games in 2022—and still needed two titles to prove the machine works",
+    "desk": "sports",
+    "subdomain": "baseball"
+  },
+  {
+    "releaseFriday": "2026-12-19",
+    "slug": "exporters",
+    "title": "U.S. Platforms, Chinese Factories, German Machines: Three Export Systems",
+    "desk": "civics",
+    "subdomain": "economics"
+  },
+  {
+    "releaseFriday": "2026-12-26",
+    "slug": "blockbusters",
+    "title": "How Movies Become Famous on IMDb’s Public Scoreboard",
+    "desk": "arts",
+    "subdomain": "film"
+  },
+  {
+    "releaseFriday": "2027-01-02",
+    "slug": "lakers",
+    "title": "17 championships — how the Lakers convert star gravity into title eras",
+    "desk": "sports",
+    "subdomain": "basketball"
+  },
+  {
+    "releaseFriday": "2027-01-09",
+    "slug": "leagues",
+    "title": "NFL Franchises Average $6.5B — Why League Rules, Not Market Size, Set Team Value",
+    "desk": "sports",
+    "subdomain": "football"
+  },
+  {
+    "releaseFriday": "2027-01-16",
+    "slug": "fame",
+    "title": "Catalog Depth and Genre Travel Predict Pop Fame Duration",
+    "desk": "arts",
+    "subdomain": "music"
+  },
+  {
+    "releaseFriday": "2027-01-23",
+    "slug": "atlas",
+    "title": "Germany Sells Machines, Saudi Arabia Sells Oil—What Does Your Country Sell?",
+    "desk": "civics",
+    "subdomain": "economics"
+  },
+  {
+    "releaseFriday": "2027-01-30",
+    "slug": "metros",
+    "title": "New York commands capital while San Francisco invents the future",
+    "desk": "civics",
+    "subdomain": "economics"
+  },
+  {
+    "releaseFriday": "2027-02-06",
+    "slug": "pantheon",
+    "title": "Power, Art, and Science Dominate Global Memory—85,000 Lives in MIT's Pantheon Dataset",
+    "desk": "humanities",
+    "subdomain": "sociology"
+  },
+  {
+    "releaseFriday": "2027-02-13",
+    "slug": "patriots",
+    "title": "Six Super Bowls in 19 Seasons — The Patriots' Systemic Discontinuity",
+    "desk": "sports",
+    "subdomain": "football"
+  },
+  {
+    "releaseFriday": "2027-02-20",
+    "slug": "lcsh",
+    "title": "English Commands 72% of Gutenberg's 75,000-Book Public-Domain Shelf",
+    "desk": "arts",
+    "subdomain": "language"
+  },
+  {
+    "releaseFriday": "2027-02-27",
+    "slug": "fandom",
+    "title": "Large U.S. markets anchor six distinct sports identity patterns",
+    "desk": "sports",
+    "subdomain": "football"
+  },
+  {
+    "releaseFriday": "2027-03-06",
+    "slug": "sf",
+    "title": "Can San Francisco Absorb Its Own Invention Machine?",
+    "desk": "civics",
+    "subdomain": "economics"
+  },
+  {
+    "releaseFriday": "2027-03-13",
+    "slug": "dynasties",
+    "title": "Which Sports Dynasties Convert Finals Appearances Into Championships?",
+    "desk": "sports",
+    "subdomain": "football"
+  },
+  {
+    "releaseFriday": "2027-03-20",
+    "slug": "yankees",
+    "title": "27 Championships Built the Yankees' Empire—15 Years Without One Defines the Modern Paradox",
+    "desk": "sports",
+    "subdomain": "baseball"
+  },
+  {
+    "releaseFriday": "2027-03-27",
+    "slug": "airlines",
+    "title": "Airline Safety by Capacity: How Incident Counts Hide Exposure Differences",
+    "desk": "culture",
+    "subdomain": "travel"
+  },
+  {
+    "releaseFriday": "2027-04-03",
+    "slug": "alcohol",
+    "title": "Who Drinks the Most Alcohol Per Capita?",
+    "desk": "culture",
+    "subdomain": "food"
+  },
+  {
+    "releaseFriday": "2027-04-10",
+    "slug": "pizza",
+    "title": "Pizza Price Floors: How a 10,000-Row Menu Extract Reveals Two Economies",
+    "desk": "culture",
+    "subdomain": "food"
+  },
+  {
+    "releaseFriday": "2027-04-17",
+    "slug": "lyrics",
+    "title": "Beyoncé and Taylor Swift, Line by Line",
+    "desk": "arts",
+    "subdomain": "music"
+  },
+  {
+    "releaseFriday": "2027-04-24",
+    "slug": "mac",
+    "title": "What Twenty Years of Big Mac Prices Say About Purchasing Power",
+    "desk": "civics",
+    "subdomain": "economics"
+  },
+  {
+    "releaseFriday": "2027-05-01",
+    "slug": "bikeshare",
+    "title": "How Far Do Portland’s Biketown Rides Actually Go?",
+    "desk": "culture",
+    "subdomain": "travel"
+  },
+  {
+    "releaseFriday": "2027-05-08",
+    "slug": "billboard",
+    "title": "How Long Number-One Hits Stay on Top of the Hot 100",
+    "desk": "arts",
+    "subdomain": "music"
+  },
+  {
+    "releaseFriday": "2027-05-15",
+    "slug": "rankings",
+    "title": "How the Top of the Billboard Chart Got More Crowded",
+    "desk": "arts",
+    "subdomain": "music"
+  },
+  {
+    "releaseFriday": "2027-05-22",
+    "slug": "games",
+    "title": "Which Board Games Combine Crowd Scale With Elite Ratings?",
+    "desk": "sports",
+    "subdomain": "gaming"
+  },
+  {
+    "releaseFriday": "2027-05-29",
+    "slug": "broadway",
+    "title": "Springsteen On Broadway Commands $509 Average Ticket—Double Hamilton's $273",
+    "desk": "arts",
+    "subdomain": "theater"
+  },
+  {
+    "releaseFriday": "2027-06-05",
+    "slug": "ceos",
+    "title": "CEO Tenure Caps at 2.5 Years in 9,423 Departure Records",
+    "desk": "civics",
+    "subdomain": "business"
+  },
+  {
+    "releaseFriday": "2027-06-12",
+    "slug": "cetaceans",
+    "title": "Captive cetacean transfers peaked in 1972 with 170 US-logged records",
+    "desk": "science",
+    "subdomain": "biology"
+  },
+  {
+    "releaseFriday": "2027-06-19",
+    "slug": "novels",
+    "title": "Victorian Authors Dominate the Christmas Novel Canon",
+    "desk": "arts",
+    "subdomain": "language"
+  },
+  {
+    "releaseFriday": "2027-06-26",
+    "slug": "carols",
+    "title": "Jingle Bell Rock spent 19 weeks on chart across six decades",
+    "desk": "arts",
+    "subdomain": "music"
+  },
+  {
+    "releaseFriday": "2027-07-03",
+    "slug": "factbook",
+    "title": "China holds 1.36 billion people against a 5.2 million median — five countries control 72% of aggregate population",
+    "desk": "civics",
+    "subdomain": "economics"
+  },
+  {
+    "releaseFriday": "2027-07-10",
+    "slug": "majors",
+    "title": "Psychology Graduates Fill 48,207 Low-Wage Jobs—Four Times Business Majors",
+    "desk": "civics",
+    "subdomain": "education"
+  },
+  {
+    "releaseFriday": "2027-07-17",
+    "slug": "comics",
+    "title": "Spider-Man Leads 23,272 Comic Characters at 4,043 Appearances; Top Five Hold 45% of Aggregate",
+    "desk": "arts",
+    "subdomain": "design"
+  },
+  {
+    "releaseFriday": "2027-07-24",
+    "slug": "breweries",
+    "title": "U.S. Craft Beer Peaks at 12.8% ABV; Median Remains 6%",
+    "desk": "culture",
+    "subdomain": "food"
+  },
+  {
+    "releaseFriday": "2027-07-31",
+    "slug": "emmys",
+    "title": "Saturday Night Live Earned 859 Emmy Records—More Than Any Other Show",
+    "desk": "arts",
+    "subdomain": "film"
+  },
+  {
+    "releaseFriday": "2027-08-07",
+    "slug": "exercise",
+    "title": "Colorado leads U.S. exercise participation at 32.0; median state posts 23.0",
+    "desk": "culture",
+    "subdomain": "wellness"
+  },
+  {
+    "releaseFriday": "2027-08-14",
+    "slug": "calories",
+    "title": "515 Fast-Food Items: Median 490 Calories, Ceiling 2,430",
+    "desk": "culture",
+    "subdomain": "food"
+  },
+  {
+    "releaseFriday": "2027-08-21",
+    "slug": "longevity",
+    "title": "Global median life expectancy nearly tripled in five centuries",
+    "desk": "science",
+    "subdomain": "medicine"
+  },
+  {
+    "releaseFriday": "2027-08-28",
+    "slug": "plastic",
+    "title": "Median GDP per capita doubled 1700–2017 while plastic mismanagement stayed geographically uneven",
+    "desk": "culture",
+    "subdomain": "environment"
+  },
+  {
+    "releaseFriday": "2027-09-04",
+    "slug": "margins",
+    "title": "Star Wars Led a Horror-Profit Dataset—How Genre Mislabeling Hides the Real Winners",
+    "desk": "arts",
+    "subdomain": "film"
+  },
+  {
+    "releaseFriday": "2027-09-11",
+    "slug": "horror",
+    "title": "Horror's median rating rose 0.35 points as catalog volume grew 50× in seven decades",
+    "desk": "arts",
+    "subdomain": "film"
+  },
+  {
+    "releaseFriday": "2027-09-18",
+    "slug": "hurricanes",
+    "title": "Hurricane Maria delivered 5,072-unit peak to Puerto Rico in 2017 three-state season",
+    "desk": "culture",
+    "subdomain": "environment"
+  },
+  {
+    "releaseFriday": "2027-09-25",
+    "slug": "wastewater",
+    "title": "Singapore's wastewater plants discharge 200× the global median",
+    "desk": "science",
+    "subdomain": "engineering"
+  },
+  {
+    "releaseFriday": "2027-10-02",
+    "slug": "prisons",
+    "title": "U.S. Incarceration by County, 1970–2016 — Median Population 3,553, Top Exceeds 6.8 Million",
+    "desk": "civics",
+    "subdomain": "law"
+  },
+  {
+    "releaseFriday": "2027-10-09",
+    "slug": "languages",
+    "title": "8,612 Glottolog records concentrate 27% in Africa — a map of fieldwork, not speech",
+    "desk": "arts",
+    "subdomain": "language"
+  },
+  {
+    "releaseFriday": "2027-10-16",
+    "slug": "legos",
+    "title": "LEGO's median set shrank to 60 pieces while flagship builds hit 11,695",
+    "desk": "culture",
+    "subdomain": "leisure"
+  },
+  {
+    "releaseFriday": "2027-10-23",
+    "slug": "medium",
+    "title": "Medium posts at 4 minutes median — does length predict claps?",
+    "desk": "science",
+    "subdomain": "tech"
+  },
+  {
+    "releaseFriday": "2027-10-30",
+    "slug": "parks",
+    "title": "Golden Gate draws 14.6 million visits — 94× the median national park",
+    "desk": "culture",
+    "subdomain": "travel"
+  },
+  {
+    "releaseFriday": "2027-11-06",
+    "slug": "netflix",
+    "title": "Squid Game Season 2 Logs 730 Million Netflix Hours — 292× the Catalog Median",
+    "desk": "arts",
+    "subdomain": "film"
+  },
+  {
+    "releaseFriday": "2027-11-13",
+    "slug": "catalog",
+    "title": "Netflix carried more movies than TV shows through 2021—but the longest titles were interactive films",
+    "desk": "arts",
+    "subdomain": "film"
+  },
+  {
+    "releaseFriday": "2027-11-20",
+    "slug": "nuclear",
+    "title": "Nuclear test body-wave magnitudes peaked at 7.40 across 2,051 recorded detonations",
+    "desk": "science",
+    "subdomain": "physics"
+  },
+  {
+    "releaseFriday": "2027-11-27",
+    "slug": "restaurants",
+    "title": "NYC Restaurant Inspections Show 15-Point Median, 156-Point Outlier",
+    "desk": "culture",
+    "subdomain": "food"
+  },
+  {
+    "releaseFriday": "2027-12-04",
+    "slug": "pixar",
+    "title": "Pixar's 96% median critic score broke twice—Cars 2 and Lightyear",
+    "desk": "arts",
+    "subdomain": "film"
+  },
+  {
+    "releaseFriday": "2027-12-11",
+    "slug": "lcsh",
+    "title": "69,027 LCSH Records Anchor Project Gutenberg's Catalog Core",
+    "desk": "arts",
+    "subdomain": "language"
+  },
+  {
+    "releaseFriday": "2027-12-18",
+    "slug": "radio",
+    "title": "U.S. radio stations cluster at 101 MHz — except News/Talk, which sits 1,039 above median",
+    "desk": "arts",
+    "subdomain": "music"
+  },
+  {
+    "releaseFriday": "2027-12-25",
+    "slug": "ramen",
+    "title": "Malaysia averages 4.25 stars — 0.50 above the global ramen median",
+    "desk": "culture",
+    "subdomain": "food"
+  },
+  {
+    "releaseFriday": "2028-01-01",
+    "slug": "albums",
+    "title": "691 albums, median rank 250 — Rolling Stone's 2003 canon structure",
+    "desk": "arts",
+    "subdomain": "music"
+  },
+  {
+    "releaseFriday": "2028-01-08",
+    "slug": "emperors",
+    "title": "Constantine lasted 31 years—Nerva–Antonine emperors averaged 12.5 above median",
+    "desk": "humanities",
+    "subdomain": "history"
+  },
+  {
+    "releaseFriday": "2028-01-15",
+    "slug": "schools",
+    "title": "U.S. School Diversity Peaks at 85.3, Median Holds at 2.38",
+    "desk": "civics",
+    "subdomain": "education"
+  },
+  {
+    "releaseFriday": "2028-01-22",
+    "slug": "sherlock",
+    "title": "Sherlock Holmes Stories Cluster Around 12 Words per Record in Tokenized Corpus",
+    "desk": "arts",
+    "subdomain": "language"
+  },
+  {
+    "releaseFriday": "2028-01-29",
+    "slug": "simpsons",
+    "title": "Marcia Wallace Appeared 175 Times — More Than Any Other Simpsons Guest Star",
+    "desk": "arts",
+    "subdomain": "film"
+  },
+  {
+    "releaseFriday": "2028-02-05",
+    "slug": "superbowl",
+    "title": "Five brands capture 87% of post-game Super Bowl ad views on YouTube",
+    "desk": "civics",
+    "subdomain": "communication"
+  },
+  {
+    "releaseFriday": "2028-02-12",
+    "slug": "television",
+    "title": "Median Prestige-TV Scores Rose 0.29 Points from 1990 to 2018—Not the Leap Critics Claimed",
+    "desk": "arts",
+    "subdomain": "film"
+  },
+  {
+    "releaseFriday": "2028-02-19",
+    "slug": "museums",
+    "title": "UK Museums Cluster in Less-Deprived Areas — Wiltshire Leads, Cornwall Trails",
+    "desk": "arts",
+    "subdomain": "architecture"
+  },
+  {
+    "releaseFriday": "2028-02-26",
+    "slug": "diplomacy",
+    "title": "Brazil Dominates UN Roll-Call Records — 747 Appearances in 100,000-Vote Sample",
+    "desk": "civics",
+    "subdomain": "politics"
+  },
+  {
+    "releaseFriday": "2028-03-04",
+    "slug": "phds",
+    "title": "Social Sciences Drove 63% of U.S. Doctorate Growth, 2008–2017",
+    "desk": "civics",
+    "subdomain": "education"
+  },
+  {
+    "releaseFriday": "2028-03-11",
+    "slug": "tuition",
+    "title": "Vermont Led U.S. Public Tuition at $13,486; National Median Rose 56% by 2015",
+    "desk": "civics",
+    "subdomain": "education"
+  },
+  {
+    "releaseFriday": "2028-03-18",
+    "slug": "voters",
+    "title": "National Turnout Hit 132.6 Million While Median State Recorded 1.17 Million Votes",
+    "desk": "civics",
+    "subdomain": "politics"
+  },
+  {
+    "releaseFriday": "2028-03-25",
+    "slug": "slices",
+    "title": "Steam Concurrency 2012–2021 — Median Player Count Rose 46 % While a Dozen Titles Captured Half the Audience",
+    "desk": "sports",
+    "subdomain": "gaming"
+  },
+  {
+    "releaseFriday": "2028-04-01",
+    "slug": "steam",
+    "title": "Games That Delivered 10+ Hours Per Dollar Own 12% of Steam's Top Shelf",
+    "desk": "sports",
+    "subdomain": "gaming"
+  },
+  {
+    "releaseFriday": "2028-04-08",
+    "slug": "wealth",
+    "title": "Income share in mid-tier brackets rose 6.6 points above the median; top brackets trailed by 6.7",
+    "desk": "civics",
+    "subdomain": "economics"
+  },
+  {
+    "releaseFriday": "2028-04-15",
+    "slug": "metrics",
+    "title": "Page Speed Improved 31% at the Median Between 2016 and 2022",
+    "desk": "science",
+    "subdomain": "tech"
+  },
+  {
+    "releaseFriday": "2028-04-22",
+    "slug": "wine",
+    "title": "100,000 wine ratings reveal a 2-point spread between Austria and Chile",
+    "desk": "culture",
+    "subdomain": "food"
+  },
+  {
+    "releaseFriday": "2028-04-29",
+    "slug": "heritage",
+    "title": "Sweden Added 15 UNESCO Sites by 2022 While Denmark Grew 150%",
+    "desk": "culture",
+    "subdomain": "travel"
+  },
+  {
+    "releaseFriday": "2028-05-06",
+    "slug": "pokemon",
+    "title": "Dragon-types earn their 100 median Attack — Bug-types don't recover from 60",
+    "desk": "sports",
+    "subdomain": "gaming"
+  },
+  {
+    "releaseFriday": "2028-05-13",
+    "slug": "readmitted",
+    "title": "48% of U.S. Hospitals Still Exceed CMS's 30-Day Readmission Benchmark",
+    "desk": "science",
+    "subdomain": "medicine"
+  },
+  {
+    "releaseFriday": "2028-05-20",
+    "slug": "caesar",
+    "title": "Caesar scored 0.95 on Need for Power — then trusted the men who killed him",
+    "desk": "humanities",
+    "subdomain": "history"
+  },
+  {
+    "releaseFriday": "2028-05-27",
+    "slug": "giants",
+    "title": "The Giants won three World Series in five years at payroll rank 9",
+    "desk": "sports",
+    "subdomain": "baseball"
+  },
+  {
+    "releaseFriday": "2028-06-03",
+    "slug": "warriors",
+    "title": "73 wins, four titles, and the franchise that rewrote basketball offense",
+    "desk": "sports",
+    "subdomain": "basketball"
+  },
+  {
+    "releaseFriday": "2028-06-10",
+    "slug": "coffee",
+    "title": "Ethiopia scores 85.3 — highest coffee quality, zero Starbucks stores",
+    "desk": "culture",
+    "subdomain": "food"
+  },
+  {
+    "releaseFriday": "2028-06-17",
+    "slug": "youtube",
+    "title": "H3's Nine-Month Peak Created a Viewership Ceiling the Podcast Never Reached Again",
+    "desk": "civics",
+    "subdomain": "communication"
+  },
+  {
+    "releaseFriday": "2028-06-24",
+    "slug": "imperial",
+    "title": "What Empire Chronicles Leave Out: Who Got Rich",
+    "desk": "humanities",
+    "subdomain": "history"
+  },
+  {
+    "releaseFriday": "2028-07-01",
+    "slug": "franchise",
+    "title": "Pokémon's $91B Earns More Than Marvel, Star Wars, and Harry Potter Combined",
+    "desk": "arts",
+    "subdomain": "film"
+  },
+  {
+    "releaseFriday": "2028-07-08",
+    "slug": "anime",
+    "title": "What a Century of Anime Titles Reveals About the Industry",
+    "desk": "arts",
+    "subdomain": "film"
+  }
+]

@@ -1,9 +1,8 @@
-import { View } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { Wrapper } from "@/components/Wrapper";
-import { BlogCard } from "@/components/BlogCard";
+import { MagazineJournalIndex } from "@/components/MagazineJournalIndex";
 import { getBlogPosts, primarySection, primarySubdomain } from "@/lib/content";
-import { isSubdomainSlug, SECTION_SLUGS, type SectionSlug } from "@/data/sections";
+import { isSubdomainSlug, SECTION_META, SECTION_SLUGS, type SectionSlug } from "@/data/sections";
 import { PageSeo } from "@/components/PageSeo";
 import { paramString } from "@/lib/params";
 
@@ -24,18 +23,24 @@ export default function BlogIndex() {
     return true;
   });
 
+  const title = sectionFilter
+    ? SECTION_META[sectionFilter].title
+    : subdomainFilter
+      ? subdomainFilter.replace(/-/g, " ")
+      : "All investigations";
+
+  const description = sectionFilter
+    ? SECTION_META[sectionFilter].description
+    : "Every Artometrics data report — cover stories, charts, and downloadable sources.";
+
   return (
-    <Wrapper variant="standard" className="gap-0 py-8 md:py-10">
+    <Wrapper variant="wide" className="gap-0 py-8 md:py-10">
       <PageSeo
-        title="Index"
-        description="All Artometrics reports."
+        title={sectionFilter ? title : "Reports"}
+        description={description}
         path="/blog"
       />
-      <View className="border-t border-border">
-        {posts.map((post) => (
-          <BlogCard key={post.slug} post={post} variant="pick" editorial />
-        ))}
-      </View>
+      <MagazineJournalIndex title={title} description={description} posts={posts} />
     </Wrapper>
   );
 }

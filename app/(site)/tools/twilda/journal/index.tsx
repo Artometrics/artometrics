@@ -77,8 +77,8 @@ export default function TwildaJournalScreen() {
       <PageSeo title="Twilda Journal" description="Private writing notes." path="/tools/twilda/journal" />
       <ToolsSubnav links={NAV} />
       <Text className="text-xs tracking-[1.8px] uppercase font-bold text-accent">Twilda</Text>
-      <Text className="font-serif text-[36px] font-bold text-fg">Journal</Text>
-      <Text className="font-serif text-base leading-[26px] text-muted">
+      <Text className="font-sans text-[36px] font-bold text-fg">Journal</Text>
+      <Text className="font-sans text-base leading-[26px] text-muted">
         Private notes — only you can see these.
       </Text>
       <PrimaryButton
@@ -113,7 +113,7 @@ export default function TwildaJournalScreen() {
             />
           }
           ListEmptyComponent={
-            <Text className="font-serif text-base leading-[26px] mt-5 text-muted">
+            <Text className="font-sans text-base leading-[26px] mt-5 text-muted">
               No entries yet.
             </Text>
           }
@@ -122,7 +122,7 @@ export default function TwildaJournalScreen() {
               onPress={() => router.push(`/tools/twilda/journal/${item.id}`)}
               className="py-3.5 border-b border-border gap-1"
             >
-              <Text className="font-serif text-lg text-fg">
+              <Text className="font-sans text-lg text-fg">
                 {item.title || "Untitled"}
               </Text>
               <Text className="text-muted text-[13px]">

@@ -1,0 +1,17 @@
+tag,fiscal_year,value_usd,filed,form,fp,unit
+Revenues,2009,14072900000,2010-02-25,10-K,FY,USD
+Revenues,2010,13950400000,2011-02-25,10-K,FY,USD
+Revenues,2011,13015000000,2012-02-23,10-K,FY,USD
+Revenues,2012,13466000000,2013-02-15,10-K,FY,USD
+Revenues,2013,13637000000,2014-02-14,10-K,FY,USD
+Revenues,2014,12820000000,2015-02-13,10-K,FY,USD
+Revenues,2015,14005000000,2016-02-16,10-K,FY,USD
+Revenues,2016,12519000000,2017-02-17,10-K,FY,USD
+Revenues,2017,12671000000,2018-02-20,10-K,FY,USD
+RevenueFromContractWithCustomerExcludingAssessedTax,2018,13166000000,2019-02-15,10-K,FY,USD
+RevenueFromContractWithCustomerExcludingAssessedTax,2019,26535000000,2020-02-20,10-K,FY,USD
+RevenueFromContractWithCustomerExcludingAssessedTax,2020,26425000000,2021-02-24,10-K,FY,USD
+RevenueFromContractWithCustomerExcludingAssessedTax,2021,26998000000,2022-02-15,10-K,FY,USD
+RevenueFromContractWithCustomerExcludingAssessedTax,2022,25285000000,2023-02-16,10-K,FY,USD
+RevenueFromContractWithCustomerExcludingAssessedTax,2023,28586000000,2024-02-28,10-K,FY,USD
+RevenueFromContractWithCustomerExcludingAssessedTax,2024,30154000000,2025-02-26,10-K,FY,USD
