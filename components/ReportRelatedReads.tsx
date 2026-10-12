@@ -37,7 +37,7 @@ export function ReportRelatedReads({ slug, limit = 4 }: Props) {
                 <Text className="font-serif text-[20px] font-semibold leading-[1.25] tracking-tight text-fg">
                   {headline ? (
                     <Text>
-                      <Text className="text-secondary">{headline.slug}</Text>
+                      <Text className="text-accent">{headline.slug}</Text>
                       {`: ${headline.subtitle}`}
                     </Text>
                   ) : (

@@ -134,7 +134,7 @@ export default function ReportScreen() {
         </View>
 
         {label ? (
-          <Text className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-secondary">
+          <Text className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-accent">
             {label}
           </Text>
         ) : null}
