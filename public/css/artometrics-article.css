@@ -3,7 +3,7 @@
   position: fixed;
   top: 0; left: 0;
   height: 3px; width: 0%;
-  background: #E60000;
+  background: var(--art-highlight, #3367e7);
   z-index: 9999;
   transition: width 0.08s linear;
   pointer-events: none;
@@ -248,8 +248,11 @@ html[data-theme="dark"] .artometrics-article-body .art-citations-toolbar__btn--a
   --art-bg:        transparent;
   --art-dark:      #000000;
   --art-mid:       #525252;
-  --art-highlight: #E60000;
-  --art-secondary: #3367E7;
+  /* UI anaglyph (swapped): blue accent, red counter — chart literals unchanged below */
+  --art-highlight: #3367E7;
+  --art-secondary: #E60000;
+  --art-chart-red: #E60000;
+  --art-chart-blue: #3367E7;
   --art-muted:     #E5E5E5;
   --art-white:     #FFFFFF;
   --art-cream:     #F2F2F2;
@@ -268,8 +271,10 @@ html[data-theme="dark"] .artometrics-article-body{
   --art-bg:        transparent;
   --art-dark:      #FFFFFF;
   --art-mid:       #A3A3A3;
-  --art-highlight: #FF3333;
-  --art-secondary: #5A8AF0;
+  --art-highlight: #5A8AF0;
+  --art-secondary: #FF3333;
+  --art-chart-red: #FF3333;
+  --art-chart-blue: #5A8AF0;
   --art-muted:     #262626;
   --art-white:     #000000;
   --art-cream:     #171717;
