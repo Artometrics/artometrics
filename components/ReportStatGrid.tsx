@@ -114,7 +114,7 @@ export function ReportStatGrid({
               : "#E60000"
             : isDark
               ? "#7AA2FF"
-              : "#3367E7";
+              : "#0047FF";
 
           return (
             <View
@@ -221,7 +221,7 @@ export function ReportStatGrid({
                           fontFamily: "DM Sans",
                           fontSize: 11,
                           fontWeight: "600",
-                          color: isDark ? "#8BAAFE" : "#3367E7",
+                          color: "#0047FF",
                         }
                   }
                 >

@@ -16,7 +16,7 @@ These HTML files are design references — recreate in the Expo codebase (`compo
 | `--art-ink-muted` | `#525252` | Secondary prose, captions |
 | `--art-rule` | `#E5E5E5` | Hairlines between stories |
 | `--art-red` / `--color-accent` | `#E60000` | Links, active nav, chart callouts |
-| `--art-blue` / `--color-secondary` | `#3367E7` | Data links, secondary series |
+| `--art-blue` / `--color-secondary` | `#0047FF` | Data links, secondary series |
 
 **Type:** Display, headlines, and body — **DM Sans** (bold/italic/underline for emphasis). Wordmark only — **Chomsky**. Data, labels, datelines, axes — **DM Mono**.
 

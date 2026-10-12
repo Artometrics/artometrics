@@ -55,7 +55,7 @@ The Artometrics visual identity pairs high-rigor data journalism with a dreamy, 
 ### 3.1 Color Theory: 3D Glasses & Slurpee Palette
 The ambient environment leverages anaglyph stereoscopic chromatic tension:
 - **Cherry Red (`#E60000`)**: High-saturation hot crimson, representing intensity, risk, and anomaly detection.
-- **Cobalt Blue (`#3367E7`)**: Deep electric blue raspberry, representing baseline stability, institutional authority, and verification.
+- **Cobalt Blue (`#0047FF`)**: Deep electric blue raspberry, representing baseline stability, institutional authority, and verification.
 - **Deep Void Background (`#06070B` in Dark Mode, `#F8F8F5` in Light Mode)**: Pure dark indigo-black obsidian or tactile warm archival paper.
 
 ### 3.2 Drifting Fluid Mesh (Lava Lamp Physics)
@@ -91,7 +91,7 @@ Artometrics rejects flat, lifeless corporate UI in favor of tactile physical ele
 ### 4.1 Card Anatomy
 Each stat box and callout card features a structured four-part layout:
 1. **Category Pill Badge**: Positioned at the top right, featuring monospace typography (`DM Mono`), high-contrast pill styling, and color-coded status badges (`Financial Risk`, `Mandatory Scope`, `Market Opportunity`, `Dataset Scale`).
-2. **Hero Metric**: Large display numerals (Anton / DM Sans) set in electric blue (`#3367E7`) or cherry red (`#E60000`).
+2. **Hero Metric**: Large display numerals (Anton / DM Sans) set in electric blue (`#0047FF`) or cherry red (`#E60000`).
 3. **Narrative Finding**: DM Sans body text delivering an objective editorial summary.
 4. **Citation Anchor**: A bottom-aligned citation with an external link arrow (`↗`).
 

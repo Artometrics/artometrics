@@ -38,7 +38,7 @@ export function SiteHeader() {
               className="h-10 w-10 items-center justify-center lg:hidden"
               testID="site-menu-button"
             >
-              <Menu size={22} color={colors.secondary} />
+              <Menu size={22} color={colors.textMuted} />
             </Pressable>
             <Pressable
               onPress={toggleLocale}
@@ -46,7 +46,7 @@ export function SiteHeader() {
               accessibilityRole="button"
               className="hidden h-10 w-10 items-center justify-center lg:flex"
             >
-              <Globe size={20} color={colors.secondary} strokeWidth={1.75} />
+              <Globe size={20} color={colors.textMuted} strokeWidth={1.75} />
             </Pressable>
           </View>
 
@@ -62,7 +62,7 @@ export function SiteHeader() {
               accessibilityRole="link"
               className="h-10 w-10 items-center justify-center"
             >
-              <Search size={20} color={colors.secondary} strokeWidth={1.75} />
+              <Search size={20} color={colors.textMuted} strokeWidth={1.75} />
             </Pressable>
           </Link>
         </View>

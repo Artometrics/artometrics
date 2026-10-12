@@ -81,7 +81,7 @@ High-DPI PNG                Plotly JSON
 Located in `scripts/r/artometrics_theme.R`, the brand theme provides:
 - Gridlines: Minimalist horizontal rules in subtle grey (`#E5E5E5`), vertical gridlines removed.
 - Typography: DM Sans for titles, subtitles, and axis labels; DM Mono for coordinate ticks and numerical data callouts.
-- Palette Tokens: Hot Cherry Red (`#E60000`) for focal callouts, Cobalt Blue (`#3367E7`) for baseline groups, and Slate Grey (`#6B6B6B`) for context cohorts.
+- Palette Tokens: Hot Cherry Red (`#E60000`) for focal callouts, Cobalt Blue (`#0047FF`) for baseline groups, and Slate Grey (`#6B6B6B`) for context cohorts.
 
 ### 4.2 Automated Export Command
 To generate all charts for a report:
