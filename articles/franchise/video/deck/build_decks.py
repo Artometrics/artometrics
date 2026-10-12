@@ -1002,6 +1002,172 @@ def money(rev: float) -> str:
     return f"${text}bn"
 
 
+# Long deep-dive beats, split only at playback. Joined words equal the storyboard line.
+# At 150 words/minute, 10 words is 4.0s, so no step is longer than that.
+BUILD_STEPS: dict[str, list[dict]] = {
+    "d032": [
+        {"words": "What that means: a green light", "box": "a green light"},
+        {"words": "that cannot reach a shop or a turnstile", "box": "a shop or a turnstile"},
+        {"words": "is leaving most of the file’s money on the table.", "box": "the file’s money"},
+    ],
+    "d038": [
+        {"words": "On the 2026 Wikipedia list, Pokémon reads", "box": "Pokémon", "chart": "Pokémon"},
+        {"words": "one hundred thirty point seven billion.", "box": "130.7bn", "chart": "", "stat": "130.7bn", "stat_label": "2026 list"},
+    ],
+    "d155": [
+        {"words": "What that means: do not call a British book", "box": "a British book"},
+        {"words": "an American franchise just because a studio in Burbank", "box": "Burbank"},
+        {"words": "sells the toys.", "box": "the toys"},
+    ],
+    "d194": [
+        {"words": "Disney paid four billion for Marvel", "box": "4bn", "cards": ["Marvel"]},
+        {"words": "and four point zero five billion for Lucasfilm", "box": "4.05bn", "cards": ["Marvel", "Lucasfilm"]},
+        {"words": "so that the characters would sit on one balance sheet,", "box": "one balance sheet", "cards": ["Marvel", "Lucasfilm"]},
+    ],
+    "d199": [
+        {"words": "The 2019 row is ninety point nine billion", "box": "90.9bn", "stat": "90.9bn", "stat_label": "2019 row"},
+        {"words": "and the 2026 list says one hundred thirty point seven,", "box": "130.7bn", "stat": "130.7bn", "stat_label": "2026 list", "line": "and the 2026 list says 130.7bn,"},
+    ],
+    "d201": [
+        {"words": "A chief executive who wants “the Nintendo number”", "box": "the Nintendo number"},
+        {"words": "has to decide whether they mean the forty-nine billion", "box": "49bn", "stat": "49bn", "stat_label": "Nintendo’s own label"},
+        {"words": "on Nintendo’s own label,", "box": "Nintendo’s own label", "stat": "49bn", "stat_label": "Nintendo’s own label"},
+    ],
+}
+
+BUILD_CARDS = {
+    "Marvel": ("assets/logo_marvel.png", "Marvel", "$4bn"),
+    "Lucasfilm": ("assets/logo_lucasfilm.png", "Lucasfilm", "$4.05bn"),
+}
+
+
+def expand_build_steps(rows: list[dict]) -> list[dict]:
+    """Insert visual build steps. Spoken words stay in order and unchanged."""
+    out: list[dict] = []
+    for row in rows:
+        steps = BUILD_STEPS.get(row["scene_id"])
+        if not steps:
+            out.append(row)
+            continue
+        joined = " ".join(step["words"] for step in steps)
+        if joined != row["narration_words"]:
+            raise SystemExit(f"{row['scene_id']} build steps do not match the storyboard line")
+        for index, step in enumerate(steps):
+            words = step["words"].split()
+            if len(words) > 10:
+                raise SystemExit(f"{row['scene_id']} step {index + 1} is {len(words)} words")
+            child = dict(row)
+            child["scene_id"] = row["scene_id"] if index == 0 else f"{row['scene_id']}{chr(ord('b') + index - 1)}"
+            child["_layer_id"] = row["scene_id"]
+            child["_source_line"] = row["narration_words"]
+            child["narration_words"] = step["words"]
+            child["_build"] = {"index": index, "steps": steps, "parent": row["scene_id"]}
+            out.append(child)
+    return out
+
+
+def _step_line(step: dict) -> str:
+    if step.get("line"):
+        return step["line"]
+    return spoken_to_digits(step["words"]).strip()
+
+
+def _box_line(line: str, box: str) -> str:
+    if not box:
+        return esc(line)
+    match = re.search(re.escape(box), line)
+    if not match:
+        digitized = spoken_to_digits(box).strip()
+        if digitized and digitized != box:
+            match = re.search(re.escape(digitized), line)
+    if not match:
+        return esc(line)
+    a, b = match.span()
+    return esc(line[:a]) + f'<span class="red-box-target">{esc(line[a:b])}</span>' + esc(line[b:])
+
+
+def render_build(
+    row: dict,
+    aspect: str,
+    extra: str,
+    layer_html: str,
+) -> str:
+    spec = row["_build"]
+    steps: list[dict] = spec["steps"]
+    index = spec["index"]
+    sid = row["scene_id"]
+    current = steps[index]
+    section = section_for(row.get("_source_line") or row["narration_words"], row["visual_type"])
+    lines = []
+    for i, step in enumerate(steps[: index + 1]):
+        line = _step_line(step)
+        state = "is-now" if i == index else "is-done"
+        box_on_line = i == index and step.get("box") not in {step.get("stat"), step.get("stat_label")}
+        body = _box_line(line, step.get("box") or "") if box_on_line else esc(line)
+        lines.append(f'<li class="{state} dm-sans">{body}</li>')
+    cards_html = ""
+    names = current.get("cards") or []
+    if names:
+        bits = []
+        for name in names:
+            src, label, fig = BUILD_CARDS[name]
+            hot = (current.get("box") or "") in fig
+            fig_html = f'<span class="{"hot" if hot else "dim"}">{esc(fig)}</span>'
+            bits.append(
+                f'<figure class="build-card {"is-now" if hot else "is-done"}">'
+                f'{mark_html(src, label)}'
+                f'<p class="build-card-name dm-sans">{esc(label)}</p>'
+                f'<p class="build-card-fig dm-mono">{fig_html}</p>'
+                f'</figure>'
+            )
+        cards_html = f'<div class="build-cards">{"".join(bits)}</div>'
+    stat_html = ""
+    if current.get("stat"):
+        ordered: list[dict] = []
+        for step in steps[: index + 1]:
+            if not step.get("stat"):
+                continue
+            if step is current:
+                ordered = [earlier for earlier in ordered if earlier.get("stat") != step.get("stat")]
+            elif any(earlier.get("stat") == step.get("stat") for earlier in ordered):
+                continue
+            ordered.append(step)
+        shown = []
+        for step in ordered:
+            live = step is current
+            label = step.get("stat_label") or ""
+            number = f'<span class="red-box-target">{esc(step["stat"])}</span>' if live and step.get("box") == step.get("stat") else esc(step["stat"])
+            label_html = f'<span class="red-box-target">{esc(label)}</span>' if live and step.get("box") == label else esc(label)
+            shown.append(
+                f'<div class="build-stat {"is-now" if live else "is-done"}">'
+                f'<p class="dm-mono">{number}</p>'
+                f'<p class="dm-sans">{label_html}</p>'
+                f'</div>'
+            )
+        stat_html = f'<div class="build-stats">{"".join(shown)}</div>'
+    chart_html = ""
+    if "chart" in current:
+        _head, sub, source, svg = chart_parts("chart10_wiki_2019_vs_2026", current.get("chart") or "")
+        chart_html = (
+            f'<p class="chart-sub dm-mono">{esc(sub)}</p>'
+            f'<div class="chart-stage build-chart">{svg}</div>'
+            f'<p class="chart-source dm-mono">{esc(source)}</p>'
+        )
+    cap = finish_caption(_step_line(current))
+    return f'''<section class="slide slide-build {extra}" id="{sid}" data-scene-id="{sid}" data-visual-type="build" data-build="{index + 1}" data-build-of="{len(steps)}">
+      <div class="slide-frame">
+        {layer_html}
+        <p class="section-label dm-mono">{esc(section)}</p>
+        <ol class="build-lines">{''.join(lines)}</ol>
+        {cards_html}
+        {stat_html}
+        {chart_html}
+        <p class="caption-burn dm-sans">{esc(cap)}</p>
+      </div>
+      <aside class="speaker-notes">{esc(row["narration_words"])}</aside>
+    </section>'''
+
+
 def focus_names(narr: str, last: list[str]) -> list[str]:
     found = entities_in(narr)
     if found:
@@ -1025,8 +1191,18 @@ def render_row(
     sid = row["scene_id"]
     vt = row["visual_type"]
     narr = row["narration_words"]
-    section = section_for(narr, vt)
-    extra, layer_html = visual_layer(deck_id, sid, vt, visuals, assets)
+    section = section_for(row.get("_source_line") or narr, vt)
+    extra, layer_html = visual_layer(deck_id, row.get("_layer_id") or sid, vt, visuals, assets)
+    if row.get("_build"):
+        spec = row["_build"]
+        if vt == "chart beat" and spec["index"] == len(spec["steps"]) - 1:
+            key = chart_key(row.get("asset_file", ""), row.get("asset_id", ""))
+            labels, values, _kind = chart_series(key) if key else ([], [], "bar")
+            source_line = row.get("_source_line") or narr
+            hi = pick_highlight(source_line, labels, values, [], state.get("prev_chart", ""), key, state.get("prev_hi", ""), "")
+            state["prev_chart"] = key
+            state["prev_hi"] = hi
+        return render_build(row, aspect, extra, layer_html)
     cap = scrub_source_ids(cap)
     notes = esc(narr)
     focus = focus_names(narr, state.get("last_entities") or [])
@@ -1214,7 +1390,7 @@ def render_row(
             <h2 class="headline dm-sans">{esc(head)}</h2>
             <div class="stage" style="align-items:flex-start">
               <div>
-                <p class="type-quote dm-sans"><span class="red-box-target">{esc(claim)}</span></p>
+                {'' if row.get('_clean_end') else f'<p class="type-quote dm-sans"><span class="red-box-target">{esc(claim)}</span></p>'}
                 <p class="type-source dm-mono">{esc(source)}</p>
               </div>
             </div>
@@ -1270,7 +1446,10 @@ def build(
     visuals: dict[tuple[str, str], dict],
 ) -> tuple[Path, int]:
     fname, aspect, label = DECKS[deck_id]
-    rows = list(csv.DictReader((VIDEO_DIR / fname).open(encoding="utf-8")))
+    rows = expand_build_steps(list(csv.DictReader((VIDEO_DIR / fname).open(encoding="utf-8"))))
+    if deck_id == "vertical" and rows:
+        rows[-1] = dict(rows[-1])
+        rows[-1]["_clean_end"] = True
     caps = captions_for(rows)
     state: dict = {"prev_chart": "", "prev_hi": "", "last_entities": []}
     slides = [render_bookend(deck_id, "open", label)]

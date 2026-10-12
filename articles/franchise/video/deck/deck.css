@@ -227,6 +227,28 @@ body.deck--review .slide { margin: 28px auto; }
 .aspect-9x16 .entity-card { flex-direction: column; align-items: flex-start; }
 .aspect-9x16 .entity-card img { height: 280px; max-width: 100%; }
 .aspect-9x16 .entity-wordmark { height: 160px; max-width: 100%; width: 100%; font-size: 56px; }
+.aspect-9x16 .entity-row.n3 {
+  align-items: stretch;
+  gap: 18px;
+}
+.aspect-9x16 .entity-row.n3 .entity-card {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+.aspect-9x16 .entity-row.n3 .entity-card img,
+.aspect-9x16 .entity-row.n3 .entity-wordmark {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
+  padding: 18px 12px;
+  font-size: 44px;
+  line-height: 0.95;
+}
 .support-mark {
   margin-top: 16px;
   height: 88px;
@@ -286,6 +308,10 @@ body.deck--review .slide { margin: 28px auto; }
 .slide-frame > .headline,
 .slide-frame > .chart-sub,
 .slide-frame > .chart-source,
+.slide-frame > .chart-stage,
+.slide-frame > .build-lines,
+.slide-frame > .build-cards,
+.slide-frame > .build-stats,
 .slide-frame > .stage {
   position: relative;
   z-index: 2;
@@ -425,6 +451,60 @@ body.deck--review .slide { margin: 28px auto; }
   left: 0;
   box-shadow: none;
 }
+/* Build steps: earlier lines stay, the red box sits on the line being spoken. */
+.build-lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 1500px;
+}
+.build-lines li {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 650;
+  line-height: 1.25;
+  color: rgba(255, 255, 255, 0.42);
+}
+.build-lines li.is-now { color: #fff; }
+.has-bleed .build-lines li { text-shadow: 0 2px 18px rgba(0, 0, 0, 0.9); }
+.slide-build.has-illust .build-lines,
+.slide-build.has-illust .build-cards,
+.slide-build.has-illust .build-stats {
+  width: 50%;
+  max-width: 50%;
+}
+.build-cards, .build-stats {
+  display: flex;
+  gap: 28px;
+  align-items: stretch;
+  margin-top: 28px;
+}
+.build-card, .build-stat {
+  background: rgba(10, 10, 10, 0.72);
+  padding: 16px 18px 18px;
+  min-width: 280px;
+}
+.build-card .entity-wordmark,
+.build-card img {
+  height: 120px;
+  width: 100%;
+  max-width: none;
+  object-fit: contain;
+}
+.build-card-name { margin: 12px 0 0; font-size: 28px; font-weight: 700; }
+.build-card-fig { margin: 6px 0 0; font-size: 36px; }
+.build-card-fig .dim { color: rgba(255, 255, 255, 0.45); }
+.build-stat p { margin: 0; }
+.build-stat .dm-mono, .build-stat .red-box-target { font-size: 64px; }
+.build-stat .dm-sans { margin-top: 8px; font-size: 22px; color: #ddd; }
+.build-stat.is-done .dm-mono { color: rgba(255, 255, 255, 0.45); }
+.build-chart { height: calc(var(--frame-h) * 0.42); }
+.slide-build .chart-sub,
+.slide-build .chart-source { margin-top: 8px; }
+
 .slide.slide-entity.has-illust .vis-illust .vis-media,
 .slide.slide-bignum.has-illust .vis-illust .vis-media {
   filter: saturate(0.8) contrast(1.05) brightness(0.4);
