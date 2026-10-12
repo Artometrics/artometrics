@@ -87,7 +87,12 @@
 
   function runCountUps() {
     document.querySelectorAll(".count-up[data-count-up]").forEach((el) => {
-      const raw = el.getAttribute("data-count-up");
+      const raw = el.getAttribute("data-count-up") || "";
+      // Final frame keeps the authored figure, including bn / tn / %.
+      if (freeze || /[a-z%]/i.test(raw)) {
+        el.textContent = raw;
+        return;
+      }
       const target = parseSpokenNumber(raw);
       if (target == null) return;
       const duration = freeze ? 0 : 1400;

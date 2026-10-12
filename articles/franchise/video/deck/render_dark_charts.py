@@ -117,6 +117,8 @@ def series_from_trace(tr: dict) -> tuple[list[str], list[float]]:
         labels = [str(t) for t in text]
         return labels, [float(y) for y in ys]
     if xs and ys and all(isinstance(x, (int, float)) for x in xs) and all(isinstance(y, (int, float)) for y in ys):
+        if all(1900 <= float(x) <= 2100 for x in xs):
+            return [str(int(x)) for x in xs], [float(y) for y in ys]
         labels = [str(t) for t in text] if text else [str(i + 1) for i in range(len(xs))]
         return labels, [float(y) for y in ys]
     return [], []
@@ -234,15 +236,16 @@ def svg_bars(labels: list[str], values: list[float], highlight: str, unit: str =
             f'style="animation-delay:{0.25 + i * 0.03:.2f}s">{esc(shown)}</text>'
         )
         if is_hi:
+            box_w = max(118, 14 * len(shown) + 36)
             parts.append(
-                f'<rect class="stage-highlight" x="{label_w + bw - 4:.1f}" y="{y + row_h * 0.22:.1f}" width="118" height="{row_h * 0.56:.1f}" '
-                f'fill="none" stroke="#E60000" stroke-width="3"/>'
+                f'<rect class="stage-highlight" x="{label_w + bw - 4:.1f}" y="{y + row_h * 0.22:.1f}" width="{box_w}" height="{row_h * 0.56:.1f}" '
+                f'fill="none" stroke="#E60000" stroke-width="3" opacity="1"/>'
             )
     parts.append("</svg>")
     return "\n".join(parts)
 
 
-def svg_dots(labels: list[str], values: list[float], highlight: str, mark_max: bool = False) -> str:
+def svg_dots(labels: list[str], values: list[float], highlight: str, mark_max: bool = False, unit: str = "") -> str:
     if not values:
         return ""
     w, h = 1600, 640
@@ -271,9 +274,15 @@ def svg_dots(labels: list[str], values: list[float], highlight: str, mark_max: b
             f'font-family="DM Mono, monospace" font-size="13">{esc(lab[:18])}</text>'
         )
         if is_hi or (mark_max and not hi and i == max(range(n), key=lambda k: values[k])):
+            shown = fmt_unit(val, unit) if unit else f"{val:g}"
+            box_w = max(96, 15 * len(shown) + 28)
             parts.append(
-                f'<rect class="stage-highlight" x="{x - 36:.1f}" y="{y - 28:.1f}" width="72" height="40" '
-                f'fill="none" stroke="#E60000" stroke-width="3"/>'
+                f'<rect class="stage-highlight" x="{x - box_w / 2:.1f}" y="{y - 52:.1f}" width="{box_w:.1f}" height="36" '
+                f'fill="none" stroke="#E60000" stroke-width="3" opacity="1"/>'
+            )
+            parts.append(
+                f'<text class="stage-data" x="{x:.1f}" y="{y - 28:.1f}" text-anchor="middle" fill="#fff" '
+                f'font-family="DM Mono, monospace" font-size="18">{esc(shown)}</text>'
             )
     parts.append("</svg>")
     return "\n".join(parts)
@@ -316,7 +325,7 @@ def chart_parts(name: str, highlight: str | None = None) -> tuple[str, str, str,
     unit = UNIT.get(name, "")
     blue = "box office" if name == "chart6_revenue_streams" else ""
     mark_max = not explicit and not hi
-    body = svg_dots(labels, values, hi, mark_max) if kind == "scatter" else svg_bars(labels, values, hi, unit, blue, mark_max)
+    body = svg_dots(labels, values, hi, mark_max, unit) if kind == "scatter" else svg_bars(labels, values, hi, unit, blue, mark_max)
     sub = subtitle if not unit else f"{subtitle} · unit {unit}"
     return headline, sub, source, body
 

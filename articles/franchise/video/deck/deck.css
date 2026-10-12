@@ -116,6 +116,23 @@ body.deck--review .slide { margin: 28px auto; }
   letter-spacing: -0.04em;
   color: #fff;
 }
+.aspect-9x16 .bignum-layout {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 28px;
+}
+.aspect-9x16 .bignum-wrap { align-self: flex-start; }
+.aspect-9x16 .support { width: 100%; }
+.aspect-9x16 .bignum-wrap,
+.aspect-9x16 .slide-bignum .red-box-target {
+  max-width: 100%;
+}
+.aspect-9x16 .count-up {
+  font-size: min(200px, calc((var(--frame-w) - (2 * var(--pad-x)) - 64px) / (var(--chars, 4) * 0.62)));
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.aspect-9x16 .file-total { font-size: 56px; }
 .support { flex: 1; min-width: 0; }
 .context-line { margin: 0 0 18px; font-size: 28px; font-weight: 600; }
 .mini-row { display: flex; align-items: center; gap: 12px; margin: 10px 0; font-size: 20px; }
@@ -144,6 +161,13 @@ body.deck--review .slide { margin: 28px auto; }
   box-shadow: inset 0 0 0 3px var(--red);
   padding: 8px 16px 12px;
   display: inline-block;
+  opacity: 1;
+  animation: none;
+}
+.chart-svg .stage-highlight,
+.chart-svg .stage-data {
+  opacity: 1;
+  animation: none;
 }
 .meaning {
   margin: 8px 0 0;
@@ -172,7 +196,8 @@ body.deck--review .slide { margin: 28px auto; }
   justify-content: flex-start;
 }
 .entity-card { flex: 1; display: flex; flex-direction: row; align-items: center; gap: 28px; min-width: 0; }
-.entity-card img {
+.entity-card img,
+.entity-wordmark {
   height: 460px;
   width: auto;
   max-width: 52%;
@@ -180,11 +205,39 @@ body.deck--review .slide { margin: 28px auto; }
   background: #f3f3f3;
   padding: 18px 22px;
 }
+.entity-wordmark {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  color: #111;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
 .entity-row.n2 .entity-card img { height: 380px; }
+.entity-row.n2 .entity-wordmark { height: 200px; font-size: 52px; }
 .entity-row.n3 .entity-card img { height: 300px; max-width: 46%; }
+.entity-row.n3 .entity-wordmark { height: 180px; max-width: 46%; font-size: 40px; }
 .entity-card.poster img { height: 620px; max-width: 46%; padding: 0; background: transparent; }
 .aspect-9x16 .entity-card { flex-direction: column; align-items: flex-start; }
-.aspect-9x16 .entity-card img { height: 640px; max-width: 100%; }
+.aspect-9x16 .entity-card img { height: 280px; max-width: 100%; }
+.aspect-9x16 .entity-wordmark { height: 160px; max-width: 100%; width: 100%; font-size: 56px; }
+.support-mark {
+  margin-top: 16px;
+  height: 88px;
+  width: auto;
+  max-width: 280px;
+  min-width: 160px;
+  background: #f3f3f3;
+  padding: 8px 12px;
+  object-fit: contain;
+  font-size: 22px;
+}
 .fact-block { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .entity-name { margin: 0; font-size: 36px; font-weight: 700; }
 .entity-owner, .entity-role { margin: 0; font-size: 22px; color: #ddd; }

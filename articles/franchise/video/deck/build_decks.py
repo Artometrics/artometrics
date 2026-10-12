@@ -489,18 +489,134 @@ def public_source(narr: str, raw: str) -> str:
 
 
 def first_number(text: str) -> str | None:
-    text = re.sub(r"(?<=[A-Za-z])-(?=[A-Za-z])", " ", text)
-    words = tokenize(text)
-    val, j = consume_number(words, 0)
-    # search anywhere
-    i = 0
-    while i < len(words):
-        val, j = consume_number(words, i)
-        if val is not None and j > i:
-            return fmt_num(val)
-        i += 1
-    m = re.search(r"\d+(?:\.\d+)?", text)
-    return m.group(0) if m else None
+    figs = classify_figures(text)
+    for kind in ("money", "percent", "count", "year"):
+        for piece, k in figs:
+            if k == kind:
+                return piece
+    return None
+
+
+FIG_RE = re.compile(r"\$?\d[\d,]*(?:\.\d+)?(?:bn|tn|m|%)?")
+
+
+def classify_figures(text: str) -> list[tuple[str, str]]:
+    """Figures in reading order, after year phrases are mapped to years."""
+    digitized = spoken_to_digits(text or "")
+    out: list[tuple[str, str]] = []
+    for match in FIG_RE.finditer(digitized):
+        raw = match.group(0).rstrip(",")
+        if raw.startswith("$"):
+            raw = raw[1:]
+        if re.fullmatch(r"(?:19|20)\d{2}", raw):
+            kind = "year"
+        elif raw.endswith("%"):
+            kind = "percent"
+        elif raw.endswith(("bn", "tn", "m")):
+            kind = "money"
+        else:
+            kind = "count"
+        out.append((raw, kind))
+    return out
+
+
+def beat_figure(narr: str, cap: str) -> str:
+    """The stat this beat states. A truncated count-up token is not used."""
+    narr_figs = classify_figures(narr)
+    monies = [(i, p) for i, (p, k) in enumerate(narr_figs) if k == "money"]
+    percents = [(i, p) for i, (p, k) in enumerate(narr_figs) if k == "percent"]
+    counts = [p for p, k in narr_figs if k == "count"]
+    years = [p for p, k in narr_figs if k == "year"]
+    if monies:
+        money_i, money = monies[0]
+        if percents and percents[0][0] < money_i:
+            return percents[0][1]
+        return money
+    if percents:
+        return percents[0][1]
+    if counts:
+        return counts[0]
+    cap_figs = classify_figures(cap)
+    for kind in ("money", "percent", "count"):
+        for piece, k in cap_figs:
+            if k == kind:
+                return piece
+    return years[0] if years else ""
+
+
+def box_stat(text: str, prefer: str = "") -> str:
+    """Wrap the spoken figure so the captured frame shows the red box on it."""
+    target = prefer
+    if not target:
+        for kind in ("money", "percent", "count", "year"):
+            for piece, k in classify_figures(text):
+                if k == kind and not (k == "count" and piece == "1"):
+                    target = piece
+                    break
+            if target:
+                break
+    if not target:
+        return esc(text)
+    match = re.search(r"\$?" + re.escape(target), text)
+    if not match:
+        return esc(text)
+    a, b = match.span()
+    return esc(text[:a]) + f'<span class="red-box-target">{esc(text[a:b])}</span>' + esc(text[b:])
+
+
+def scene_stat(narr: str, cap: str) -> str:
+    """Figure this scene is saying, without borrowing a stray count from the caption."""
+    figs = classify_figures(narr)
+    monies = [(i, p) for i, (p, k) in enumerate(figs) if k == "money"]
+    percents = [(i, p) for i, (p, k) in enumerate(figs) if k == "percent"]
+    counts = [p for p, k in figs if k == "count" and p != "1"]
+    years = [p for p, k in figs if k == "year"]
+    if monies:
+        money_i, money = monies[0]
+        if percents and percents[0][0] < money_i:
+            return percents[0][1]
+        return money
+    if percents:
+        return percents[0][1]
+    if counts:
+        return counts[0]
+    for piece, kind in classify_figures(cap):
+        if kind in {"money", "percent"}:
+            return piece
+    return years[0] if years else ""
+
+
+BLANK_LOGO_FILES = {
+    "logo_activision_blizzard.png",
+    "logo_angry_birds.png",
+    "logo_call_of_duty.png",
+    "logo_fast_furious.png",
+    "logo_game_freak.png",
+    "logo_ghostbusters.png",
+    "logo_james_bond.png",
+    "logo_lotr.png",
+    "logo_lucasfilm.png",
+    "logo_pixar.png",
+    "logo_shueisha.png",
+    "logo_smilegate.png",
+    "logo_sony.png",
+    "logo_ubisoft.png",
+    "logo_universal.png",
+    "logo_warner_bros.png",
+}
+
+
+def mark_html(src: str, name: str, extra_class: str = "") -> str:
+    """A logo image, or a text wordmark when the file is missing or blank."""
+    src = (src or "").split(";")[0].strip()
+    base = Path(src).name
+    usable = bool(src) and (VIDEO_DIR / src).exists() and base not in BLANK_LOGO_FILES
+    if not usable:
+        classes = "entity-wordmark dm-sans" + (f" {extra_class}" if extra_class else "")
+        return f'<div class="{classes}" role="img" aria-label="{esc(name)}">{esc(name)}</div>'
+    classes = extra_class
+    attr = f' class="{classes}"' if classes else ""
+    return f'<img{attr} src="../{esc(src)}" alt="{esc(name)}"/>'
 
 
 def section_for(narr: str, visual: str) -> str:
@@ -682,6 +798,16 @@ HIGHLIGHT_HINTS = [
     ("mortal kombat", "mortal kombat"),
     ("united kingdom", "uk"),
     ("britain", "uk"),
+    ("experiences", "experience"),
+    ("entertainment", "entertainment"),
+    ("sports", "sports"),
+    ("mario", "mario"),
+    ("simpson", "simpson"),
+    ("gundam", "gundam"),
+    ("batman", "batman"),
+    ("top five", "after fox"),
+    ("forty-six point four", "after fox"),
+    ("46.4", "after fox"),
 ]
 
 
@@ -709,9 +835,19 @@ def _ranked_labels(labels: list[str], values: list[float]) -> list[str]:
     return [labels[i] for i in order]
 
 
-def pick_highlight(narr: str, labels: list[str], values: list[float], focus: list[str], prev_key: str, key: str, prev_hi: str) -> str:
-    blob = f"{narr} {' '.join(focus)}"
-    hi = match_label(blob, labels)
+def pick_highlight(
+    narr: str,
+    labels: list[str],
+    values: list[float],
+    focus: list[str],
+    prev_key: str,
+    key: str,
+    prev_hi: str,
+    cap: str = "",
+) -> str:
+    hi = match_label(spoken_to_digits(f"{narr} {' '.join(focus)}"), labels)
+    if not hi and cap:
+        hi = match_label(spoken_to_digits(cap), labels)
     same_chart = bool(key and key == prev_key and labels)
     if not hi and same_chart:
         ranked = _ranked_labels(labels, values)
@@ -900,7 +1036,7 @@ def render_row(
     if vt == "chart beat":
         key = chart_key(row.get("asset_file", ""), row.get("asset_id", ""))
         labels, values, _kind = chart_series(key) if key else ([], [], "bar")
-        hi = pick_highlight(f"{narr} {cap}", labels, values, focus, state.get("prev_chart", ""), key, state.get("prev_hi", ""))
+        hi = pick_highlight(narr, labels, values, focus, state.get("prev_chart", ""), key, state.get("prev_hi", ""), cap)
         head, sub, source, svg = chart_parts(key, hi) if key else (
             "103 franchises in the 2019 Wikipedia-based dataset.",
             "",
@@ -917,7 +1053,7 @@ def render_row(
           <div class="slide-frame">
             {layer_html}
             <p class="section-label dm-mono">{esc(section)}</p>
-            <h2 class="headline dm-sans">{esc(head)}</h2>
+            <h2 class="headline dm-sans">{esc(head) if hi else box_stat(head, scene_stat(narr, head))}</h2>
             <p class="chart-sub dm-mono">{esc(sub)}</p>
             <div class="chart-stage">{svg}</div>
             <p class="chart-source dm-mono">{esc(source)}</p>
@@ -930,24 +1066,21 @@ def render_row(
     state["prev_hi"] = ""
 
     if vt == "big-number card":
-        raw = row.get("count_up_number") or narr
-        num = first_number(raw) or first_number(narr) or ""
-        low = narr.lower()
+        num = beat_figure(narr, cap)
+        low = f"{narr} {cap}".lower()
         count_103 = num.replace(",", "") == "103" and ("franchise" in low or "hundred and three" in low)
         if count_103:
             meaning_short = "franchises in the 2019 Wikipedia-based dataset"
-        elif "franchise" in low:
-            meaning_short = "franchises in the 2019 Wikipedia-based dataset"
-        elif "percent" in low:
-            meaning_short = "share of the file"
-        elif "billion" in low or "trillion" in low:
+        elif num.endswith("tn"):
+            meaning_short = "trillion dollars"
+        elif num.endswith("bn"):
             meaning_short = "billion dollars"
-        elif "year" in low:
-            meaning_short = "years on the clock"
+        elif num.endswith("%"):
+            meaning_short = "share of the file"
+        elif re.fullmatch(r"(?:19|20)\d{2}", num or ""):
+            meaning_short = "the year on this beat"
         else:
             meaning_short = "the figure on this beat"
-        if "trillion" in low:
-            meaning_short = "trillion dollars"
         spoken = sentence(narr)
         if any(ch.isdigit() for ch in cap):
             head = cap
@@ -956,15 +1089,13 @@ def render_row(
         else:
             head = f"{num} {meaning_short}." if num else cap
         head = scrub_source_ids(head)
-        narr_num = first_number(narr) or ""
-        if narr_num.endswith(("bn", "tn")) and not str(num).endswith(("bn", "tn")):
-            num = narr_num
         names = entities_in(narr)
         logo = ""
         if names:
             meta = assets.get(names[0]) or {}
-            if meta.get("file"):
-                logo = f'<img class="support-logo" src="../{esc(meta["file"])}" alt="{esc(names[0])}"/>'
+            src = (meta.get("file") or "").split(";")[0].strip()
+            if src:
+                logo = mark_html(src, names[0], "support-mark")
         file_total_slide = count_103 or num in {"1.52tn", "$1.52tn"} or "trillion" in low
         if count_103:
             support = (
@@ -996,8 +1127,9 @@ def render_row(
             )
         else:
             support = logo
+        chars = max(len(num), 1)
         number_html = (
-            f'<div class="red-box-target"><span class="count-up dm-mono" data-count-up="{esc(num)}">{esc(num)}</span></div>'
+            f'<div class="red-box-target"><span class="count-up dm-mono" style="--chars:{chars}" data-count-up="{esc(num)}">{esc(num)}</span></div>'
             if num
             else ""
         )
@@ -1031,7 +1163,6 @@ def render_row(
             name = fact["name"]
             meta = assets.get(name) or assets.get(row.get("asset_id", "")) or {}
             src = meta.get("file") or row.get("asset_file") or ""
-            rel = f"../{src}" if src else ""
             credit = scrub_source_ids(meta.get("credit_line") or row.get("image_credit") or "")
             fig_html = ""
             if fact.get("rev") is not None:
@@ -1045,7 +1176,7 @@ def render_row(
                 role = ""
             cards_html.append(
                 f'''<figure class="entity-card{' poster' if poster else ''}">
-                  <img src="{esc(rel)}" alt="{esc(name)}"/>
+                  {mark_html(src, name)}
                   <div class="fact-block">
                     <p class="entity-name dm-sans">{esc(name)}</p>
                     {f'<p class="entity-owner dm-sans">{esc(owner)}</p>' if owner else ''}
@@ -1102,7 +1233,7 @@ def render_row(
           <div class="slide-frame">
             {layer_html}
             <p class="section-label dm-mono">THE SCENE</p>
-            <h2 class="headline dm-sans">{esc(scrub_source_ids(head))}</h2>
+            <h2 class="headline dm-sans">{box_stat(scrub_source_ids(head))}</h2>
             <div class="stage">{pictured}</div>
             <p class="caption-burn dm-sans">{esc(cap)}</p>
           </div>
@@ -1123,7 +1254,7 @@ def render_row(
       <div class="slide-frame">
         {layer_html}
         <p class="section-label dm-mono">THE MACHINE</p>
-        <h2 class="headline dm-sans">{esc(scrub_source_ids(head_d))}</h2>
+        <h2 class="headline dm-sans">{box_stat(scrub_source_ids(head_d))}</h2>
         <div class="stage">{stage_inner}</div>
         <p class="caption-burn dm-sans">{esc(cap)}</p>
       </div>
