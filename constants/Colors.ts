@@ -43,19 +43,19 @@ export const Colors = {
   ink: "#000000",
   ink2: "#525252",
   ink3: "#767676",
-  blue: "#3367E7",
-  blueSoft: "#E8EFFF",
+  blue: "#0047FF",
+  blueSoft: "#E6EEFF",
   redSoft: "#FFE8E8",
   night: "#000000",
   night2: "#171717",
   rule: "#E5E5E5",
   /** UI chrome accent (nav, kickers, CTAs) — blue in swapped anaglyph magazine. */
-  magazineAccent: "#3367E7",
-  magazineAccentSoft: "#E8EFFF",
+  magazineAccent: "#0047FF",
+  magazineAccentSoft: "#E6EEFF",
   /** Wordmark + dateline counterweight — red. */
   wordmarkRed: "#E60000",
-  editorialNavy: "#3367E7",
-  editorialNavyDark: "#1E4BB8",
+  editorialNavy: "#0047FF",
+  editorialNavyDark: "#0038CC",
 } as const;
 
 export type BrandFonts = {
@@ -166,7 +166,7 @@ const MagazineThemes: Record<ThemeMode, ThemeColors> = {
     textMuted: Colors.base400,
     textSubtle: Colors.base500,
     border: Colors.base800,
-    accent: "#5A8AF0",
+    accent: "#0047FF",
     accentSoft: "#1A2744",
     secondary: Colors.accent400,
     inverse: Colors.black,

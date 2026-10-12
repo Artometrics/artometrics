@@ -179,7 +179,7 @@ function mergePlotlyLayout(
       t: Math.min(Math.max(Number(margin.t ?? 48), 28), 72),
       b: Math.min(Math.max(Number(margin.b ?? 52), 40), 84),
     },
-    colorway: ["#E60000", "#3367E7", "#000000", "#525252"],
+    colorway: ["#E60000", "#0047FF", "#000000", "#525252"],
     dragmode: false,
     hovermode: "closest",
   };

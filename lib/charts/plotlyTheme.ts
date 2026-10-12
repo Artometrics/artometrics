@@ -25,7 +25,7 @@ export function artPlotlyLayout(partial: Record<string, unknown> = {}) {
       tickfont: { family: ART_PLOTLY_FONT, size: 11 },
       titlefont: { family: ART_PLOTLY_FONT, size: 11 },
     },
-    colorway: ["#E60000", "#3367E7", "#000000", "#525252"],
+    colorway: ["#E60000", "#0047FF", "#000000", "#525252"],
     ...partial,
   };
 }
