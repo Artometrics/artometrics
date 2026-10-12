@@ -35,6 +35,14 @@ export async function generateStaticParams() {
   return getBlogPosts().map((post) => ({ slug: post.slug }));
 }
 
+/** Full-article AI narrations (Gemini TTS, Kore). Runtimes are ffprobe durations floored to whole seconds. */
+const NARRATION_META: Record<string, { runtimeSeconds: number; label: string }> = {
+  anime: { runtimeSeconds: 1818, label: "Listen: narrated by AI voice (Kore), 30:18" },
+  readmitted: { runtimeSeconds: 1145, label: "Listen: narrated by AI voice (Kore), 19:05" },
+  franchise: { runtimeSeconds: 1451, label: "Listen: narrated by AI voice (Kore), 24:11" },
+  youtube: { runtimeSeconds: 945, label: "Listen: narrated by AI voice (Kore), 15:45" },
+};
+
 export default function ReportScreen() {
   const params = useLocalSearchParams<{ slug: string | string[] }>();
   const slug = paramString(params.slug);
@@ -187,12 +195,8 @@ export default function ReportScreen() {
           <ArticleNarrationPlayer
             audioSrc={audioSrc}
             title={post.title}
-            runtimeSeconds={post.slug === "anime" ? 1818 : undefined}
-            label={
-              post.slug === "anime"
-                ? "Listen: narrated by AI voice (Kore), 30:18"
-                : undefined
-            }
+            runtimeSeconds={NARRATION_META[post.slug]?.runtimeSeconds}
+            label={NARRATION_META[post.slug]?.label}
           />
         ) : null}
         <Text className="font-mono text-[12px] uppercase tracking-[0.12em] text-fg">

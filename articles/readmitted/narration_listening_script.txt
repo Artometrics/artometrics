@@ -1,0 +1,97 @@
+READMITTED: The 3% Stick Medicare Keeps Swinging.
+
+In 2009, Jencks and colleagues reported that nearly one in five Medicare fee-for-service patients returned to the hospital within thirty days. Congress answered with the Hospital Readmissions Reduction Program (HRRP): starting in October 2012, CMS began shaving inpatient prospective payment system (IPPS) dollars when risk-standardized thirty-day readmissions exceeded targets for six conditions. The maximum cut rose from 1% in fiscal year 2013 to 3% in FY2015, and it applies to all Medicare DRG payments—not just the condition that missed (CMS, QualityNet; MedPAC, 2024).
+
+The October 2026 CMS supplemental extract (dataset 9n3s-kdb3, measurement window July 1, 2021–June 30, 2024) still flags 48.15% of hospital–condition pairs above an excess readmission ratio (ERR) of 1.0. ERR divides predicted readmissions by expected readmissions for each hospital’s patient mix. Above 1.0 triggers penalty math; below 1.0 earns no bonus. The national mean ERR is 1.002. The program clarified the problem faster than it eliminated it.
+
+Research Question.
+
+After fourteen years of HRRP, where do penalties still concentrate in the latest CMS file—by state, condition, ownership, and safety-net proxy—and what should hospital executives infer about transitional care, observation-status gaming, mortality tradeoffs, and CMS’s shift toward episode-based models such as TEAM?
+
+Executive Summary.
+
+What it means. Medicare still penalizes roughly half of measured hospital–condition pairs for excess thirty-day readmissions, with elective joint surgery posting the highest average ERR and for-profit systems carrying more high-tier exposure than non-profits.
+
+How we know. We rebuilt working tables from CMS HRRP supplemental data and Hospital General Information, then exported eight charts (npm run brief:readmitted). Penalty-timeline points for FY2025–FY2026 come from Advisory Board analyses of CMS preliminary payment-reduction files; 2012–2015 national rates follow Zuckerman et al. (NEJM, 2016, doi:10.1056/NEJMsa1513024).
+
+What explains it. HRRP financialized a logistics problem—discharge planning, medication reconciliation, follow-up access—without paying for the fixes. Observation stays moved returns off the inpatient ledger (Zuckerman et al., 2016). Safety-net hospitals face higher dual-eligible mix; CMS peer-groups on dual proportion, but case-mix adjustment remains imperfect (Joynt & Jha, 2013, doi:10.1001/jama.2012.94856). OECD countries track readmissions with different payment levers (OECD Health at a Glance).
+
+Method & data box.
+
+Population: 11,720 hospital–condition pairs with non-suppressed ERR after CMS’s ≥25-discharge rule (six conditions, ~2,700 hospitals).
+
+Primary files: CMS Provider Data Catalog 9n3s-kdb3 (HRRP) joined offline to xubh-q36u (ownership and hospital type).
+
+Rounding: National shares use two decimal places on the exact ratio (48.15%, not 48.2%), matching articles/readmitted/data/SOURCE.txt.
+
+Hrrp Since 2012: Cap, Peers, And Who Pays.
+
+HRRP is a hospital-level payment adjustment, not a per-readmission fine. CMS multiplies a hospital-specific factor into Medicare operating DRG payments for the fiscal year. Who pays? The hospital’s Medicare revenue pool—finance, not quality officers, feels the hit first. Teaching hospitals and safety-net systems still compete inside peer groups defined by dual-eligible (Medicare–Medicaid) proportion so a suburban elective center is not always the comparator (CMS QualityNet HRRP documentation).
+
+Penalty mechanics executives quote wrong.
+
+Three percent is a ceiling on operating DRG payments, not three percent of readmission cost. Advisory Board’s reading of CMS preliminary files shows only 7.0% of hospitals paying ≥1% reductions in FY2025 and 8.1% in FY2026—while roughly 79.9% face some reduction in FY2026. Most hospitals pay a shallow penalty; outliers take the deep cut.
+
+National Readmissions Fell, Then Plateaued.
+
+Zuckerman et al. documented declining national readmission rates for targeted conditions after HRRP while observation stays rose—returns that never achieved inpatient status do not enter the ERR numerator. That does not prove gaming; it shows the metric and the clinical pathway diverged. Gupta et al. (BMJ, 2019, doi:10.1136/bmj.l4563) quantified broader thirty-day revisit burdens beyond the HRRP denominator.
+
+The Geography of Failure.
+
+New Jersey leads the country at 65.4%—nearly two of every three hospital-condition pairs in the state perform worse than CMS models expect. Massachusetts (62.5%) and Mississippi (61.1%) follow. New Jersey hosts high-revenue systems such as Hackensack Meridian and RWJBarnabas; Massachusetts concentrates academic medical power around Mass General Brigham; Mississippi is rural, high-poverty, and chronically under-served. Different systems, different patient mixes, same penalty outcome. Georgia, Kentucky, West Virginia, Alabama, and Louisiana cluster high—which fits the familiar population-health narrative. So do Illinois, California, New York, and Pennsylvania. This is not a rural-poverty map with a clean boundary. High-resource markets do not immunize a system. Chart 1 shows only states above the national average—the cohort pulling the 48.1% mean up. Even below-average states are not clean. "Below average" means a smaller share of pairs exceed ERR 1.0, not zero penalties.
+
+The Condition Nobody Is Solving.
+
+Hip and knee replacement posts the highest average ERR in this extract (1.004), ahead of CABG, AMI, pneumonia, heart failure, and COPD. The gaps live in the fourth decimal—and still matter multiplied across roughly one million U.S. joint replacements annually. All six conditions average above 1.0. COPD’s lower ERR reflects a sicker expected baseline in CMS’s model, not a victory on absolute returns.
+
+Safety-Net Pressure And Teaching Hospitals.
+
+Joynt and Jha (JAMA, 2013) showed early HRRP penalties disproportionately hit teaching and safety-net hospitals—systems with more complex patients and thinner margins. CMS later refined peer grouping by dual proportion, but academic corridors still dominate intensity lists: Massachusetts averages 1.034 ERR in this file while New Jersey leads on breadth (65.4% of pairs penalized). Mass General Brigham, Beth Israel Deaconess, and Hackensack Meridian sit in those states; the data do not prove causation, but they show where episode-based models such as TEAM will land first.
+
+Counterexample. Integrated systems that invested in transitions—clinic access within seven days, pharmacist callbacks, home monitoring—can sit below ERR 1.0 on multiple tracks even in high-penalty states. The extract rewards operational depth, not market glamour.
+
+Observation Stays And The Mortality Debate.
+
+Observation status is the accounting escape hatch. When a return is billed as observation, it is not an inpatient readmission in HRRP math. Zuckerman et al. tied observation growth to HRRP’s early years. Wadhera et al. (JAMA, 2018, doi:10.1001/jama.2018.19232) reported associations between HRRP implementation and post-discharge mortality trends for heart failure—sparking a policy fight, not a settled verdict. Krumholz et al. (JAMA, 2017, doi:10.1001/jama.2017.8444) cautioned that hospitals can lower readmissions without improving survival. Dzau and McClellan’s NEJM perspective (doi:10.1056/NEJMp1901225) argued for rebooting incentives toward outcomes, not single metrics.
+
+How Other Systems Measure Returns.
+
+The U.S. is unusual in docking a slice of all Medicare DRG payments. OECD Health at a Glance indicators track thirty-day hospital readmission rates for member countries—England’s NHS, Canada’s provinces, Germany’s sickness funds—without an identical three-percent IPPS stick. Cross-country comparisons require harmonized definitions; still, the pattern is clear: readmissions are a global quality signal, but the U.S. chose the bluntest payer lever. International readers should not import U.S. penalty percentages into their payment models without mapping observation rules and post-acute financing.
+
+Ownership, Penalty, And Who Pays.
+
+For-profit hospitals carry a higher share of medium and high penalty tiers than either non-profits or government hospitals. Every ownership type has roughly half or more of its hospital-condition pairs at or below the CMS expected readmission rate. HRRP is often described as a blanket stick. The data says the stick is concentrated—closer to an audit sampling than a universal fine. Systems such as HCA, Tenet, and Steward sit in the for-profit column; that does not mean every for-profit campus is High-tier. The gap is real—on the order of 8 to 10 percentage points more penalized pairs than non-profits—but it is a difference of degree, not kind. All three ownership types are playing the same game. For-profits lose it slightly more often. Government-owned facilities land between non-profit and for-profit. Neither the safety-net excuse nor the public-accountability story fits cleanly. County systems operate under political oversight that can slow discharge innovation; middle-of-pack performance is its own finding.
+
+Intensity, Not Just Share.
+
+Chart 1 measured how widely penalties spread across hospital–condition pairs. Chart 4 measures how far above the CMS expected line those pairs sit on average. Massachusetts posts the highest average ERR in the working extract at 1.0344, ahead of New Jersey's breadth-first pattern at 65.4% of pairs penalized. That distinction matters for systems such as Mass General Brigham, Beth Israel Deaconess Medical Center, and the Boston academic corridor: a market can look merely "above average" on share and still run hotter on intensity. Mississippi, Illinois, and several Mid-Atlantic states also appear in the top-15 intensity list—the same mixed geography of high-resource and high-poverty markets seen in Chart 1. The dotted reference at ERR = 1.0 is the CMS expected line. Every state in this top-15 panel sits above it. The national mean ERR of 1.0018 looks small in isolation; stacked across thousands of pairs and roughly 1.3 million U.S. joint replacements a year, fourth-decimal gaps become budget lines.
+
+Where the High Tier Concentrates.
+
+Chart 3 showed the full tier mix. Chart 5 isolates the High tier—the pairs farthest above CMS's expected readmission rate. For-profit ownership places 39.5% of hospital–condition pairs in High, compared with 32.1% for non-profits and 32.0% for government facilities. Named for-profit operators in the CMS Hospital General Information join—including campuses associated with HCA Healthcare, Tenet Healthcare, and historically Steward Health Care—sit inside that column. The chart does not prove that for-profit status causes excess readmissions. It shows that when CMS's published ratios are stacked by ownership, the High-tier mass sits heavier on the for-profit side. For TEAM's 742 mandatory hospitals in 2026, that concentration is the practical signal: episode-level accountability will land hardest where High-tier HRRP exposure already clusters, not where the "no penalty" majority still holds.
+
+Decision Tools For Hospital Executives.
+
+Mass General Brigham (Massachusetts).
+
+CEO Anne Klibanski leads a system in the highest average-ERR state in this extract. Academic intensity plus complex transfers can inflate ERR even when individual service lines perform. Executives here should separate transfer-heavy tracks from elective bundles before signing performance contracts.
+
+HCA Healthcare (for-profit scale).
+
+CEO Sam Hazen runs the largest for-profit U.S. hospital operator—squarely in the ownership column with heavier high-tier HRRP weight in this file. Scale enables standardized transition playbooks; the data ask whether those playbooks propagate to every joint program.
+
+Limitations.
+
+CMS suppresses readmission data for hospitals that fall below 25 discharges per condition per measurement period. That threshold protects statistical reliability, but the effect is systematic—small rural hospitals disappear from this analysis. The hospitals remaining skew toward larger, busier facilities.
+
+Ownership classification for Chart 3 comes from CMS Hospital General Information, which uses inconsistent labeling across hospital types. Physician-owned facilities, tribal hospitals, and church-affiliated systems do not always map cleanly into three buckets. The Government, Non-Profit, and For-Profit groupings are reasonable approximations—not clean legal categories.
+
+ERR compares actual readmissions to what CMS's risk model predicts for a hospital's patient mix. Case-mix adjustment is imperfect. Hospitals in high-poverty, high-comorbidity markets may still face structural disadvantage the model does not fully absorb. Observation-status shifts after the ACA (documented by Zuckerman et al., 2016) also mean some returns never appear as inpatient readmissions.
+
+Conclusion.
+
+48.1% of hospital-condition pairs still exceed CMS's expected readmission rate—but the distribution is uneven. The highest-penalty states cut across market type and regional demographics. Hip/Knee replacement sits nearly 2× above the next closest condition on excess readmissions. For-profit hospitals carry modestly more penalty exposure than non-profits, though all three ownership types remain majority no-penalty.
+
+HRRP has been in effect since 2012. That 48.1% of pairs still clear the 1.0 ERR threshold more than a decade later says something about the limits of financial penalties as a behavior-change mechanism. Hospitals have responded—rates have declined—but the program has defined the problem more than it has solved it.
+
+CMS's TEAM model, mandatory for 742 hospitals starting January 1, 2026, goes further by tying entire episodes of care to reimbursement. The hospitals that struggled under HRRP are the ones most likely to feel TEAM. This report describes the problem TEAM is designed to address. Whether bundled payments succeed where readmission penalties have not is the next question.

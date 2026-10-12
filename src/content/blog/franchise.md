@@ -6,6 +6,7 @@ pubDate: 2026-04-08T00:00:00.000Z
 description: >-
   One hundred three Wikipedia-scraped franchises (mid-2019) sum to $1.52T lifetime revenue. Merchandise is 56% of row totals; Pokémon leads at $90.9B. By region of origin: Japan $681.5B, the US $622.6B (45 franchises, 64.6% merchandise), the UK $163.4B.
 heroImage: /images/content/articles/franchise/hero.png
+audioSrc: /audios/franchise-kore.mp3
 draft: false
 tags:
   - arts

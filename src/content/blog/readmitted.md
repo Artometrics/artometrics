@@ -6,6 +6,7 @@ pubDate: 2026-04-21T00:00:00.000Z
 description: >-
   In CMS's latest Hospital Readmissions Reduction Program extract, 48.15% of hospital–condition pairs still exceed the expected readmission ratio after a decade of penalties capped at 3% of Medicare payments. This R2 report maps HRRP history, who pays, safety-net effects, observation and mortality debates, international comparators, and eight charts for hospital executives.
 heroImage: /images/content/articles/readmitted/hero.png
+audioSrc: /audios/readmitted-kore.mp3
 draft: false
 tags:
   - science
