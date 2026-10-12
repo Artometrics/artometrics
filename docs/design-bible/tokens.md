@@ -8,9 +8,9 @@ Canonical implementation: `constants/Colors.ts`, `global.css`, `lib/uniwind-them
 
 | Role | Hex | Tailwind / semantic | Usage |
 |------|-----|---------------------|--------|
-| **Wordmark** | `#E60000` | `text-secondary`, Chomsky logo | Masthead only — primary red anchor |
-| **UI accent** | `#0047FF` | `text-accent`, `ThemeColors.accent` | Nav links, kickers, category labels, CTAs (“Read investigation”), “This week”, progress bar, exhibit labels |
-| **UI counter** | `#E60000` | `text-secondary`, `ThemeColors.secondary` | Desk/dateline meta, issue-row dates, wordmark |
+| **Wordmark** | `#E60000` | `text-secondary` on `Logo` only | Masthead — **only** on-screen red type |
+| **UI accent** | `#0047FF` | `text-accent`, `ThemeColors.accent` | Nav links, **all kickers** (home lead, article hero, cards), category labels, CTAs, “This week”, progress bar, exhibit labels |
+| **Semantic secondary** | `#E60000` | `ThemeColors.secondary` | Logo color token — do **not** use `text-secondary` on prose or kickers |
 | **Chart primary** | `#E60000` | `--art-chart-red` | Plotly/static series — **do not** remap with UI swap |
 | **Chart secondary** | `#0047FF` | `--art-chart-blue` | Second Plotly/static series (house blue) |
 

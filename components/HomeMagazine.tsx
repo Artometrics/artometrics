@@ -61,7 +61,7 @@ function HomeMainStory({ post }: { post: BlogPost }) {
       </Link>
       <View className="min-w-0 justify-end gap-3 md:w-[38%] md:flex-[2] md:py-2">
         {label ? (
-          <Text className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-secondary">
+          <Text className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-accent">
             {label}
           </Text>
         ) : null}
@@ -137,7 +137,7 @@ function HomeThisWeekRow() {
           <Text className="min-w-0 flex-1 font-sans text-[15px] font-semibold leading-snug text-fg">
             {title}
           </Text>
-          <Text className="shrink-0 font-mono text-[10px] uppercase tracking-[0.1em] text-secondary">
+          <Text className="shrink-0 font-mono text-[10px] uppercase tracking-[0.1em] text-muted">
             {dateLabel}
           </Text>
         </Pressable>

@@ -16,7 +16,7 @@ function JournalLead({ post }: { post: BlogPost }) {
   return (
     <View className="gap-6 border-b-2 border-fg pb-8">
       {label ? (
-        <Text className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-secondary">
+        <Text className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-accent">
           {label}
         </Text>
       ) : null}

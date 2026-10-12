@@ -27,7 +27,7 @@ export default function TopicsIndex() {
         {SECTION_SLUGS.map((slug) => (
           <Link key={slug} href={`/topics/${slug}` as `/topics/${string}`} asChild>
             <Pressable className="gap-1 border-b border-border py-5">
-              <Text className="font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-secondary">
+              <Text className="font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-accent">
                 {slug}
               </Text>
               <Text className="font-sans text-2xl font-bold leading-tight text-fg">

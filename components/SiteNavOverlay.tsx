@@ -229,7 +229,7 @@ export function SiteNavOverlay() {
                   Did you know?
                 </Text>
                 <Text
-                  className="text-center font-serif text-[26px] italic leading-[1.35] tracking-tight text-secondary md:text-[30px]"
+                  className="text-center font-serif text-[26px] italic leading-[1.35] tracking-tight text-fg md:text-[30px]"
                   style={{ transform: [{ rotate: "-1.25deg" }] }}
                 >
                   {funFact.text}
