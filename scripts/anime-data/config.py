@@ -11,7 +11,10 @@ STATE_DIR = DATA_DIR / ".state"
 BASELINE_CSV = DATA_DIR / "baseline" / "anime_tidy_anime_2019-04-23.csv"
 LEGACY_ARTICLE_CSV = REPO_ROOT / "articles" / "anime" / "data" / "anime.csv"
 
-JIKAN_BASE = "https://api.jikan.moe/v4"
+import os
+
+# api.jikan.moe/v4 was discontinued 2026-10-01; Tenrai v1 is the drop-in successor (same schema).
+JIKAN_BASE = os.environ.get("JIKAN_BASE", "https://api.tenrai.org/v1")
 ANILIST_URL = "https://graphql.anilist.co"
 
 # Jikan: 3 req/s and 60/min — stay under both.

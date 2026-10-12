@@ -9,7 +9,7 @@ One row per MyAnimeList anime id (`animeID`). Snapshot files live at `data/anime
 | Baseline | TidyTuesday `tidy_anime.csv` (Kaggle MyAnimeList scrape by Tam Nguyen, early 2019) |
 | Baseline snapshot date | 2019-04-23 |
 | Baseline SHA-256 | `5ea3a14492b5c559c728af0c7ec57b81c919d0efa4d381e54b0f7cde9934a1c2` |
-| Refresh APIs | [Jikan v4](https://docs.api.jikan.moe/) (MAL mirror), [AniList GraphQL](https://anilist.gitbook.io/anilist-apiv2-docs/) (`idMal`) |
+| Refresh APIs | Tenrai API (api.tenrai.org), Jikan-compatible MyAnimeList mirror, accessed 2026-10-12 (replaces Jikan v4, discontinued 2026-10-01; field names below keep the Jikan v4 schema), [AniList GraphQL](https://anilist.gitbook.io/anilist-apiv2-docs/) (`idMal`) |
 | Pipeline | `scripts/anime-data/refresh.py` |
 
 ## Columns

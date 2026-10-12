@@ -1,6 +1,6 @@
 # Anime data refresh pipeline
 
-Reproducibly extends the Artometrics **ANIME** report dataset (baseline: TidyTuesday `tidy_anime.csv`, 2019-04-23) with current MyAnimeList ids via **Jikan v4** and **AniList GraphQL** (`idMal`).
+Reproducibly extends the Artometrics **ANIME** report dataset (baseline: TidyTuesday `tidy_anime.csv`, 2019-04-23) with current MyAnimeList ids via the **Tenrai API** (Jikan v4-compatible; `api.jikan.moe` was discontinued 2026-10-01; override with `JIKAN_BASE`) and **AniList GraphQL** (`idMal`).
 
 ## Setup
 
@@ -13,6 +13,13 @@ pip freeze > requirements.lock
 ```
 
 ## Refresh
+
+For long Jikan/Tenrai passes, warm the cache first (new titles first, resumable):
+
+```bash
+python prefetch_jikan.py --snapshot ../../data/anime/anime_YYYY-MM-DD.csv --deadline-hours 6
+python refresh.py --date YYYY-MM-DD --max-jikan 0 --no-jikan-seasons
+```
 
 ```bash
 python refresh.py --date 2026-10-11

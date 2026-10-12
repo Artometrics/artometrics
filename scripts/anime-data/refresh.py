@@ -177,8 +177,11 @@ def write_methods_note(path: Path, stats: dict) -> None:
     text = (
         f"We started with the TidyTuesday MyAnimeList export `tidy_anime.csv` "
         f"(snapshot {BASELINE_SNAPSHOT_DATE}, {stats['baseline_rows']:,} titles), "
-        f"then refreshed it to {stats['refresh_date']} via Jikan and AniList, "
-        f"adding {stats['new_titles']:,} titles and {stats['new_variables']:,} variables."
+        f"then refreshed it to {stats['refresh_date']} via the Tenrai API and AniList, "
+        f"adding {stats['new_titles']:,} titles and {stats['new_variables']:,} variables. "
+        "MyAnimeList fields (score, members, rank, etc.) come from the Tenrai API (api.tenrai.org), "
+        "Jikan-compatible MyAnimeList mirror, accessed 2026-10-12; the public Jikan v4 API "
+        "(api.jikan.moe) was discontinued on 2026-10-01."
     )
     path.write_text(text + "\n", encoding="utf-8")
 

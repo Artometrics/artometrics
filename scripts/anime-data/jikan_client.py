@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any
 
 import httpx
-from tenacity import retry, stop_after_attempt, wait_exponential
+from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
 from config import (
     CACHE_DIR,
@@ -59,7 +59,12 @@ class JikanClient:
     def close(self) -> None:
         self._client.close()
 
-    @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=2, max=30))
+    @retry(
+        retry=retry_if_exception_type(httpx.HTTPStatusError),
+        stop=stop_after_attempt(4),
+        wait=wait_exponential(multiplier=2, min=4, max=60),
+        reraise=True,
+    )
     def _get_json(self, path: str) -> dict[str, Any]:
         if not self.enabled or self.unreachable:
             raise RuntimeError("jikan_disabled")
@@ -70,8 +75,10 @@ class JikanClient:
             self.unreachable = True
             log.warning("Jikan unreachable (%s); further Jikan calls skipped this run.", exc)
             raise RuntimeError("jikan_unreachable") from exc
-        if resp.status_code == 429:
-            raise httpx.HTTPStatusError("rate limited", request=resp.request, response=resp)
+        if resp.status_code == 404:
+            return {"data": None, "_not_found": True}
+        if resp.status_code == 429 or resp.status_code >= 500:
+            raise httpx.HTTPStatusError(f"retryable {resp.status_code}", request=resp.request, response=resp)
         resp.raise_for_status()
         return resp.json()
 
@@ -82,7 +89,7 @@ class JikanClient:
             return cached.get("data", [])
         try:
             body = self._get_json(f"/seasons/{year}/{season}")
-        except RuntimeError:
+        except (RuntimeError, httpx.HTTPError):
             return []
         data = body.get("data") or []
         _write_cache(key, {"data": data})
@@ -95,8 +102,10 @@ class JikanClient:
             return cached.get("data")
         try:
             body = self._get_json(f"/anime/{mal_id}/full")
-        except RuntimeError:
+        except (RuntimeError, httpx.HTTPError) as exc:
+            log.warning("Jikan anime %s failed: %s", mal_id, exc)
             return None
         data = body.get("data")
-        _write_cache(key, {"data": data})
+        if data is not None or body.get("_not_found"):
+            _write_cache(key, {"data": data})
         return data

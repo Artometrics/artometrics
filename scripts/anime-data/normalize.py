@@ -199,7 +199,7 @@ def row_from_sources(
         "season": season,
         "season_year": season_year,
         "premiered": legacy.get("premiered"),
-        "broadcast": j.get("broadcast") or legacy.get("broadcast"),
+        "broadcast": ((j.get("broadcast") or {}).get("string") if isinstance(j.get("broadcast"), dict) else j.get("broadcast")) or legacy.get("broadcast"),
         "anilist_id": a.get("id"),
         "anilist_trending": a.get("trending"),
         "anilist_tags": json.dumps(tag_names, ensure_ascii=False),
