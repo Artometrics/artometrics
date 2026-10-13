@@ -1,0 +1,9 @@
+Lahman's Baseball Database, 2025 edition (1871–2025).
+Society for American Baseball Research. Released January 2, 2026.
+Licence: CC BY-SA 3.0. https://sabr.org/lahman-database/
+
+Derived tables under data/padres/clean/ may be republished under the same licence with that attribution.
+
+2026 season rows are verified against the MLB Stats API (fact-check only; not redistributed as an MLB dataset) and published from Baseball-Reference team and postseason pages with per-page credit.
+
+Competitive-balance-tax payrolls in raw/spotrac_cbt_payroll.csv are a Spotrac compilation carried from the July 2026 draft; cite Spotrac, do not republish their tables.

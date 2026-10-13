@@ -40,6 +40,7 @@
 
 ## Reports
 
+- [PADRES: What Changed When We Fixed the Data](https://artometrics.com/padres-data-fix): We audited the Padres dataset behind our record-sale report, rebuilt it from Lahman 1969–2025 plus a verified 2026 season, and reconciled every number the July 2026 live page had published—including a corrupted HTML sync, stale sale copy, and an FAQ that claimed eight runs in two deciding games. (sports)
 - [FRANCHISE: What Changed When We Fixed the Data](https://artometrics.com/franchise-data-fix): We audited the franchise dataset behind our FRANCHISE report, rebuilt it from Wikipedia's October 2026 list and recomputed every published number. Merchandise still dominates (55.8%), but the Japan–US ranking flipped and Hello Kitty's $80B was a source error. (arts)
 - [PADRES: Record Sale, Zero Championships](https://artometrics.com/padres): San Diego solved demand and the tax bill. It has not solved October. Franchise values follow the market and the ballpark anyway. (sports)
 - [INSTITUTIONS: When Dynasties Are Systems](https://artometrics.com/institutions): Yankees, Patriots, Celtics, Cowboys: a synthesis of Artometrics' sports-dynasty reports asks what transfers when winning is a system, not a roster. (sports)
@@ -151,4 +152,4 @@
 
 ## Generated
 
-Updated: 2026-10-13T02:44:59.766Z
+Updated: 2026-10-13T02:55:01.467Z
