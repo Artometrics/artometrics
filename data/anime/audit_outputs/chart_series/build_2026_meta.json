@@ -1,0 +1,55 @@
+{
+  "scorecard": [
+    {
+      "source": "Light novel",
+      "n": 634,
+      "median_score": 7.105,
+      "median_members": 196448.0,
+      "share_ge8": 0.0946372239747634
+    },
+    {
+      "source": "Manga",
+      "n": 1980,
+      "median_score": 7.17,
+      "median_members": 69622.5,
+      "share_ge8": 0.1484848484848485
+    },
+    {
+      "source": "Novel",
+      "n": 166,
+      "median_score": 7.07,
+      "median_members": 16925.5,
+      "share_ge8": 0.10240963855421686
+    },
+    {
+      "source": "Original",
+      "n": 1423,
+      "median_score": 6.52,
+      "median_members": 7158.0,
+      "share_ge8": 0.030217849613492623
+    },
+    {
+      "source": "Game",
+      "n": 318,
+      "median_score": 6.56,
+      "median_members": 24509.5,
+      "share_ge8": 0.015723270440251572
+    }
+  ],
+  "new_headline": {
+    "Isekai share 2015": 2.2,
+    "Isekai share 2021": 20.4,
+    "Isekai share 2024": 18.1,
+    "Manga scoring 8.0+ (TV)": 14.8,
+    "Manga + web manga 2024": 47.2,
+    "LN \u00f7 Original median members": 27.5
+  },
+  "old_headline": {
+    "Isekai share 2015": 0.9,
+    "Isekai share 2021": 20.4,
+    "Isekai share 2024": 17.7,
+    "Manga scoring 8.0+ (TV)": 17.0,
+    "Manga + web manga 2024": 47.2,
+    "LN \u00f7 Original median members": 32.0
+  }
+}

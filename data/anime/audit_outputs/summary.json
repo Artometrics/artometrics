@@ -1,0 +1,513 @@
+{
+  "versions": {
+    "python": "3.13.5",
+    "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
+    "pandas": "3.0.6",
+    "numpy": "2.5.3",
+    "seed": 20261011,
+    "run_utc": "2026-10-12T19:47:34Z",
+    "raw_csv_sha256": "77b0f9112db7bf0337a998730c1f10838d80628831be2c59ea3a1e4c1b619340"
+  },
+  "profile": {
+    "n_rows": 18818,
+    "n_cols": 41,
+    "jikan_fetched_true": 18662,
+    "jikan_fetched_false": 156,
+    "anilist_fetched_true": 11838,
+    "missing_rate": {
+      "aired_from_year": 0.2813795302370071,
+      "season_year": 0.07344032309490912,
+      "season": 0.4305983632692103,
+      "type": 0.006483154426612818,
+      "source": 0.007811669677967903,
+      "genre": 0.0884259751301945,
+      "themes": 0.22855776384312892,
+      "score": 0.005207779785311935,
+      "members": 0.001115952811138272,
+      "studio": 0.20097778722499735,
+      "start_date": 0.004729514294824105
+    },
+    "duplicate_animeID": 0,
+    "duplicate_name_casefold": 8,
+    "type_mix": {
+      "TV": 6095,
+      "OVA": 4044,
+      "Movie": 3189,
+      "ONA": 1917,
+      "Special": 1527,
+      "Music": 1003,
+      "TV Special": 586,
+      "CM": 247,
+      "(missing)": 122,
+      "PV": 86,
+      "Unknown": 2
+    },
+    "isekai_any_tag_n": 794
+  },
+  "anomalies": {
+    "score_lt_0": 0,
+    "score_gt_10": 0,
+    "score_eq_0": 0,
+    "year_lt_1917": 0,
+    "year_gt_2026": 0,
+    "end_before_start": 5,
+    "members_lt_0": 0,
+    "source_categories": {
+      "Original": 5503,
+      "Manga": 5123,
+      "Unknown": 1776,
+      "Visual novel": 1154,
+      "Light novel": 1132,
+      "Game": 991,
+      "Other": 863,
+      "Novel": 524,
+      "Web manga": 473,
+      "4-koma manga": 326,
+      "Picture book": 197,
+      "Music": 179,
+      "Mixed media": 160,
+      "Book": 156,
+      "(missing)": 147,
+      "Card game": 70,
+      "Web novel": 30,
+      "Radio": 14
+    },
+    "tenrai_anilist_score_pairs": 11777,
+    "tenrai_anilist_mae": 0.3702819054088477,
+    "tenrai_anilist_gt_1pt": 608
+  },
+  "rules": [
+    {
+      "rule": "R1_dedupe_animeID",
+      "description": "Keep one row per animeID; prefer jikan_fetched=True.",
+      "rows_before": 18818,
+      "rows_after": 18818,
+      "rows_removed": 0
+    },
+    {
+      "rule": "R2_score_range",
+      "description": "Set score to NA if outside [0, 10].",
+      "rows_affected": 0,
+      "rows_before": 18818,
+      "rows_after": 18818
+    },
+    {
+      "rule": "R3_year_range",
+      "description": "Set aired_from_year/season_year to NA if outside [1917, 2026].",
+      "rows_affected": 0,
+      "rows_before": 18818,
+      "rows_after": 18818
+    },
+    {
+      "rule": "R4_end_before_start",
+      "description": "Clear end_date/aired_to_year when end < start.",
+      "rows_affected": 5,
+      "rows_before": 18818,
+      "rows_after": 18818
+    },
+    {
+      "rule": "R5_source_normalize",
+      "description": "Normalize source label casing/aliases (Web manga, Light novel, etc.).",
+      "rows_affected": "see source_mix",
+      "source_before_top": {
+        "Original": 5503,
+        "Manga": 5123,
+        "Unknown": 1776,
+        "Visual novel": 1154,
+        "Light novel": 1132,
+        "Game": 991,
+        "Other": 863,
+        "Novel": 524,
+        "Web manga": 473,
+        "4-koma manga": 326,
+        "Picture book": 197,
+        "Music": 179,
+        "Mixed media": 160,
+        "Book": 156,
+        "(missing)": 147
+      },
+      "source_after_top": {
+        "Original": 5503,
+        "Manga": 5123,
+        "Unknown": 1776,
+        "Visual novel": 1154,
+        "Light novel": 1132,
+        "Game": 991,
+        "Other": 863,
+        "Novel": 524,
+        "Web manga": 473,
+        "4-koma manga": 326,
+        "Picture book": 197,
+        "Music": 179,
+        "Mixed media": 160,
+        "Book": 156,
+        "(missing)": 147
+      },
+      "rows_before": 18818,
+      "rows_after": 18818
+    },
+    {
+      "rule": "R6_analysis_flags",
+      "description": "Add flag_unfetched_jikan, flag_isekai, flag_analysis_year, flag_tv, flag_core_av. Unfetched rows retained.",
+      "rows_before": 18818,
+      "rows_after": 18818,
+      "unfetched_n": 156,
+      "isekai_n": 794
+    },
+    {
+      "rule": "R7_require_id_name",
+      "description": "Require non-null animeID and name.",
+      "rows_before": 18818,
+      "rows_after": 18813,
+      "rows_removed": 5
+    }
+  ],
+  "flow": [
+    [
+      "A_raw_snapshot",
+      18818,
+      "Rows in anime_2026-10-11.csv"
+    ],
+    [
+      "B_after_dedupe",
+      18818,
+      "After R1 dedupe"
+    ],
+    [
+      "C_clean_all_types",
+      18813,
+      "Clean file (all types; flags only)"
+    ],
+    [
+      "D_tv_only",
+      6095,
+      "Inclusion: type==TV (article narrative frame)"
+    ],
+    [
+      "E_tv_fetched",
+      6094,
+      "TV \u2229 jikan_fetched"
+    ],
+    [
+      "F_tv_scored",
+      6073,
+      "TV with non-null score"
+    ],
+    [
+      "G_core_av",
+      15245,
+      "Sensitivity: TV/Movie/ONA/OVA"
+    ],
+    [
+      "H_excl_music_special",
+      16283,
+      "Sensitivity: drop Music+Special"
+    ]
+  ],
+  "raw_stats": {
+    "label": "raw_new",
+    "n_tv": 6095,
+    "isekai_2015": {
+      "share": 0.021739130434782608,
+      "ci95": [
+        0.004347826086956522,
+        0.043478260869565216
+      ],
+      "n": 230,
+      "pct": "2.2%"
+    },
+    "isekai_2021": {
+      "share": 0.2037914691943128,
+      "ci95": [
+        0.15165876777251186,
+        0.26066350710900477
+      ],
+      "n": 211,
+      "pct": "20.4%"
+    },
+    "isekai_2024": {
+      "share": 0.1814516129032258,
+      "ci95": [
+        0.13709677419354838,
+        0.22983870967741934
+      ],
+      "n": 248,
+      "pct": "18.1%"
+    },
+    "manga_2024": {
+      "share": 0.3467741935483871,
+      "ci95": [
+        0.2902217741935484,
+        0.4112903225806452
+      ],
+      "n": 248,
+      "pct": "34.7%"
+    },
+    "web_manga_2024": {
+      "share": 0.125,
+      "ci95": [
+        0.0846774193548387,
+        0.16532258064516128
+      ],
+      "n": 248,
+      "pct": "12.5%"
+    },
+    "manga_plus_web_2024": {
+      "share": 0.4717741935483871,
+      "ci95": [
+        0.4112903225806452,
+        0.5323588709677414
+      ],
+      "n": 248,
+      "pct": "47.2%"
+    },
+    "ln_vs_original_median_members_ratio": 27.514089443431935,
+    "manga_share_score_ge_8": 0.1484848484848485,
+    "n_tv_scored": 6073
+  },
+  "clean_stats": {
+    "label": "clean_new",
+    "n_tv": 6095,
+    "isekai_2015": {
+      "share": 0.021739130434782608,
+      "ci95": [
+        0.004347826086956522,
+        0.043478260869565216
+      ],
+      "n": 230,
+      "pct": "2.2%"
+    },
+    "isekai_2021": {
+      "share": 0.2037914691943128,
+      "ci95": [
+        0.15165876777251186,
+        0.25604265402843535
+      ],
+      "n": 211,
+      "pct": "20.4%"
+    },
+    "isekai_2024": {
+      "share": 0.1814516129032258,
+      "ci95": [
+        0.13709677419354838,
+        0.22983870967741934
+      ],
+      "n": 248,
+      "pct": "18.1%"
+    },
+    "manga_2024": {
+      "share": 0.3467741935483871,
+      "ci95": [
+        0.2903225806451613,
+        0.40725806451612906
+      ],
+      "n": 248,
+      "pct": "34.7%"
+    },
+    "web_manga_2024": {
+      "share": 0.125,
+      "ci95": [
+        0.0846774193548387,
+        0.16532258064516128
+      ],
+      "n": 248,
+      "pct": "12.5%"
+    },
+    "manga_plus_web_2024": {
+      "share": 0.4717741935483871,
+      "ci95": [
+        0.4112903225806452,
+        0.532258064516129
+      ],
+      "n": 248,
+      "pct": "47.2%"
+    },
+    "ln_vs_original_median_members_ratio": 27.514089443431935,
+    "manga_share_score_ge_8": 0.1484848484848485,
+    "n_tv_scored": 6073
+  },
+  "clean_fetched_stats": {
+    "label": "clean_tv_fetched",
+    "n_tv": 6094,
+    "isekai_2015": {
+      "share": 0.021739130434782608,
+      "ci95": [
+        0.004347826086956522,
+        0.0391304347826087
+      ],
+      "n": 230,
+      "pct": "2.2%"
+    },
+    "isekai_2021": {
+      "share": 0.2037914691943128,
+      "ci95": [
+        0.15165876777251186,
+        0.26066350710900477
+      ],
+      "n": 211,
+      "pct": "20.4%"
+    },
+    "isekai_2024": {
+      "share": 0.1814516129032258,
+      "ci95": [
+        0.13709677419354838,
+        0.22993951612903168
+      ],
+      "n": 248,
+      "pct": "18.1%"
+    },
+    "manga_2024": {
+      "share": 0.3467741935483871,
+      "ci95": [
+        0.2862903225806452,
+        0.4073588709677414
+      ],
+      "n": 248,
+      "pct": "34.7%"
+    },
+    "web_manga_2024": {
+      "share": 0.125,
+      "ci95": [
+        0.0846774193548387,
+        0.1693548387096774
+      ],
+      "n": 248,
+      "pct": "12.5%"
+    },
+    "manga_plus_web_2024": {
+      "share": 0.4717741935483871,
+      "ci95": [
+        0.4153225806451613,
+        0.532258064516129
+      ],
+      "n": 248,
+      "pct": "47.2%"
+    },
+    "ln_vs_original_median_members_ratio": 27.514089443431935,
+    "manga_share_score_ge_8": 0.1484848484848485,
+    "n_tv_scored": 6072
+  },
+  "sensitivity": {
+    "isekai_2024_tv_only": {
+      "share": 0.1814516129032258,
+      "ci95": [
+        0.13709677419354838,
+        0.22993951612903168
+      ],
+      "n": 248,
+      "pct": "18.1%"
+    },
+    "isekai_2024_core_av": {
+      "share": 0.11655011655011654,
+      "ci95": [
+        0.08624708624708624,
+        0.14458041958041926
+      ],
+      "n": 429,
+      "pct": "11.7%"
+    },
+    "isekai_2024_excl_music_special": {
+      "share": 0.11389521640091116,
+      "ci95": [
+        0.08656036446469248,
+        0.14350797266514806
+      ],
+      "n": 439,
+      "pct": "11.4%"
+    },
+    "isekai_2024_all_types": {
+      "share": 0.1111111111111111,
+      "ci95": [
+        0.08222222222222222,
+        0.14005555555555527
+      ],
+      "n": 450,
+      "pct": "11.1%"
+    },
+    "isekai_2024_tv_including_unfetched": {
+      "share": 0.1814516129032258,
+      "ci95": [
+        0.13709677419354838,
+        0.23387096774193547
+      ],
+      "n": 248,
+      "pct": "18.1%"
+    },
+    "isekai_2024_tv_excluding_unfetched": {
+      "share": 0.1814516129032258,
+      "ci95": [
+        0.13709677419354838,
+        0.22983870967741934
+      ],
+      "n": 248,
+      "pct": "18.1%"
+    }
+  },
+  "validation": {
+    "sample_n": 200,
+    "seed": 20261011,
+    "universe": "rows with jikan_fetched & anilist_fetched",
+    "universe_n": 11804,
+    "score_agreement_within_0_5": {
+      "agree": 146,
+      "comparable": 200,
+      "rate": 0.73
+    },
+    "year_season_year_match": {
+      "agree": 119,
+      "sample_n": 200,
+      "rate": 0.595
+    },
+    "note": "Cross-check uses co-present Tenrai/Jikan fields vs AniList fields already joined on idMal (offline validation; no live API re-fetch). Score: |MAL - AniList/10| \u2264 0.5."
+  },
+  "stats_table": [
+    {
+      "stat": "isekai share 2015 (TV)",
+      "old_article": "0.9%",
+      "raw_new": "2.2% [0.4%\u20134.3%] (n=230)",
+      "clean_new": "2.2% [0.4%\u20134.3%] (n=230)"
+    },
+    {
+      "stat": "isekai share 2021 (TV)",
+      "old_article": "20.4%",
+      "raw_new": "20.4% [15.2%\u201326.1%] (n=211)",
+      "clean_new": "20.4% [15.2%\u201325.6%] (n=211)"
+    },
+    {
+      "stat": "isekai share 2024 (TV)",
+      "old_article": "17.7%",
+      "raw_new": "18.1% [13.7%\u201323.0%] (n=248)",
+      "clean_new": "18.1% [13.7%\u201323.0%] (n=248)"
+    },
+    {
+      "stat": "manga share 2024 (TV)",
+      "old_article": "34.7%",
+      "raw_new": "34.7% [29.0%\u201341.1%] (n=248)",
+      "clean_new": "34.7% [29.0%\u201340.7%] (n=248)"
+    },
+    {
+      "stat": "web manga share 2024 (TV)",
+      "old_article": "12.5%",
+      "raw_new": "12.5% [8.5%\u201316.5%] (n=248)",
+      "clean_new": "12.5% [8.5%\u201316.5%] (n=248)"
+    },
+    {
+      "stat": "manga+web manga 2024 (TV)",
+      "old_article": "47.2%",
+      "raw_new": "47.2% [41.1%\u201353.2%] (n=248)",
+      "clean_new": "47.2% [41.1%\u201353.2%] (n=248)"
+    },
+    {
+      "stat": "LN / Original median members (TV)",
+      "old_article": "32.0\u00d7",
+      "raw_new": "27.51\u00d7",
+      "clean_new": "27.51\u00d7"
+    },
+    {
+      "stat": "manga share score\u22658.0 (TV)",
+      "old_article": "17.0%",
+      "raw_new": "14.8%",
+      "clean_new": "14.8%"
+    }
+  ]
+}

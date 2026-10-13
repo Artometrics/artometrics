@@ -1,0 +1,9 @@
+step,n,label
+A_raw_snapshot,18818,Rows in anime_2026-10-11.csv
+B_after_dedupe,18818,After R1 dedupe
+C_clean_all_types,18813,Clean file (all types; flags only)
+D_tv_only,6095,Inclusion: type==TV (article narrative frame)
+E_tv_fetched,6094,TV ∩ jikan_fetched
+F_tv_scored,6073,TV with non-null score
+G_core_av,15245,Sensitivity: TV/Movie/ONA/OVA
+H_excl_music_special,16283,Sensitivity: drop Music+Special

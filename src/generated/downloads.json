@@ -32,6 +32,17 @@
     "transcript": "/exports/transcripts/alcohol.txt",
     "github": null
   },
+  "anime-data-fix": {
+    "slug": "anime-data-fix",
+    "dataset": null,
+    "quarto": null,
+    "html": null,
+    "pdf": null,
+    "epub": null,
+    "audio": null,
+    "transcript": null,
+    "github": "https://github.com/Artometrics/anime-data-fix"
+  },
   "anime": {
     "slug": "anime",
     "dataset": "/data/articles/anime/titles.csv",

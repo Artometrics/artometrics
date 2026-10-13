@@ -1,0 +1,29 @@
+{
+  "note": "Not a formal Little MCAR test; compares covariate profiles for score-missing vs present and association with unfetched flag.",
+  "score_missing_vs_present": [
+    {
+      "group": "score_missing",
+      "n": 93,
+      "mean_year": 2010.5176470588235,
+      "share_tv": 0.23655913978494625,
+      "median_members": 254.0,
+      "share_unfetched": 0.043010752688172046
+    },
+    {
+      "group": "score_present",
+      "n": 18720,
+      "mean_year": 2007.2064557709866,
+      "share_tv": 0.3244123931623932,
+      "median_members": 4842.5,
+      "share_unfetched": 0.007852564102564102
+    }
+  ],
+  "unfetched_x_score_missing": {
+    "a_unfetched_miss": 4,
+    "b_unfetched_present": 147,
+    "c_fetched_miss": 89,
+    "d_fetched_present": 18573,
+    "chi_square": 14.366953916664785
+  },
+  "interpretation": "If unfetched strongly predicts score missing, missingness is at least MAR/MNAR w.r.t. fetch success, not MCAR."
+}

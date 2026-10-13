@@ -59,3 +59,16 @@ One row per MyAnimeList anime id (`animeID`). Snapshot files live at `data/anime
 | `anilist_fetched` | bool | Whether AniList returned `Media` for `idMal` |
 
 Legacy narrative fields (`synopsis`, `background`, `related`, `aired` blob) are omitted from refreshed snapshots to keep files smaller; they remain in the 2019 baseline export under `data/anime/baseline/`.
+
+
+## Clean-file analysis flags (`anime_2026-10-11_clean.*`)
+
+Added by `scripts/anime-data/clean_audit.py` (seed 20261011). See `CLEANING_LOG.md` / `METHODS_NOTE.md`.
+
+| Column | Type | Definition |
+|--------|------|------------|
+| `flag_unfetched_jikan` | bool | `not jikan_fetched` |
+| `flag_isekai` | bool | "isekai" in themes/genre/anilist_tags/demographics |
+| `flag_analysis_year` | float | `aired_from_year` with `season_year` fallback |
+| `flag_tv` | bool | `type == "TV"` |
+| `flag_core_av` | bool | type in TV, Movie, ONA, OVA |

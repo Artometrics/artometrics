@@ -37,6 +37,7 @@
     "render:beyonce-psychonomics": "Rscript scripts/render-beyonce-psychonomics-charts.R",
     "render:readmitted:py": "python3 scripts/render-readmitted-charts.py",
     "brief:anime": "Rscript articles/anime/scripts/build_brief.R && node scripts/sync-article.mjs --slug anime",
+    "charts:anime:2026": "python3 articles/anime/scripts/build_2026_charts.py",
     "verify:franchise": "python3 scripts/franchise_verify_numbers.py",
     "brief:franchise": "python3 scripts/franchise_verify_numbers.py && Rscript articles/franchise/scripts/build_brief.R && node scripts/sync-article.mjs --slug franchise",
     "brief:youtube": "python3 articles/youtube/scripts/build_brief.py && node scripts/sync-article.mjs --slug youtube",

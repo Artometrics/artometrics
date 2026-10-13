@@ -176,6 +176,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://artometrics.com/anime-data-fix</loc>
+    <lastmod>2026-10-13</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://artometrics.com/anime</loc>
     <lastmod>2026-03-31</lastmod>
     <priority>0.8</priority>

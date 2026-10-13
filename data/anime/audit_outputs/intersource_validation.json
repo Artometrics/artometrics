@@ -1,0 +1,17 @@
+{
+  "sample_n": 200,
+  "seed": 20261011,
+  "universe": "rows with jikan_fetched & anilist_fetched",
+  "universe_n": 11804,
+  "score_agreement_within_0_5": {
+    "agree": 146,
+    "comparable": 200,
+    "rate": 0.73
+  },
+  "year_season_year_match": {
+    "agree": 119,
+    "sample_n": 200,
+    "rate": 0.595
+  },
+  "note": "Cross-check uses co-present Tenrai/Jikan fields vs AniList fields already joined on idMal (offline validation; no live API re-fetch). Score: |MAL - AniList/10| \u2264 0.5."
+}
