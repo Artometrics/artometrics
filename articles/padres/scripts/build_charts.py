@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[3]
 ART = ROOT / "articles" / "padres"
 LAHMAN = ART / "data" / "lahman"
 DATA = ART / "data"
+PADRES_RAW = ROOT / "data" / "padres" / "raw"
 CHARTS = ART / "charts"
 PUBLIC_CHARTS = ROOT / "public" / "data" / "articles" / "padres" / "charts"
 PUBLIC_IMG = ROOT / "public" / "images" / "content" / "articles" / "padres" / "charts"
@@ -39,38 +40,34 @@ WHITE = "#FFFFFF"
 GRID = "#E6E6E6"
 MUTED = "#525252"
 
-# Spotrac competitive-balance-tax payrolls, $ millions, as compiled for the
-# July 31, 2026 draft. 2026 is a July 29 snapshot, not a closed season total.
-# TODO: replace with a Spotrac or Cot's export before treating these as final.
-CBT_PAYROLL = {
-    2021: 216.5,
-    2022: 235.1,
-    2023: 291.2,
-    2024: 227.8,
-    2025: 270.4,
-    2026: 259.1,
-}
-# 2022–26 Basic Agreement, p. 117. The 2021 threshold is not in that document.
-CBT_THRESHOLD = {2022: 230, 2023: 233, 2024: 237, 2025: 241, 2026: 244}
+def _load_cbt() -> tuple[dict[int, float], dict[int, int]]:
+    path = PADRES_RAW / "spotrac_cbt_payroll.csv"
+    payroll: dict[int, float] = {}
+    threshold: dict[int, int] = {}
+    for row in load_csv(path):
+        year = int(row["year"])
+        payroll[year] = float(row["cbt_payroll_millions"])
+        if row.get("cba_threshold_millions"):
+            threshold[year] = int(float(row["cba_threshold_millions"]))
+    return payroll, threshold
 
-# Baseball-Reference, 2026 San Diego Padres team page, read October 11, 2026.
-# https://www.baseball-reference.com/teams/SDP/2026.shtml
-BREF_2026 = {
-    "year": 2026,
-    "w": 91,
-    "l": 71,
-    "r": 722,
-    "ra": 681,
-    "attendance": 3347081,
-    "attendance_note": "2nd of 15, National League",
-    "wc": "W",
-    "wc_note": "Won NL Wild Card Series 2-0 over the Chicago Cubs (89-73)",
-    "nlds": "L",
-    "nlds_note": "Lost NL Division Series 1-3 to the Milwaukee Brewers (103-59)",
-    "lg": "N",
-    "ws": "N",
-    "source": "https://www.baseball-reference.com/teams/SDP/2026.shtml",
-}
+
+def _load_bref_2026() -> dict:
+    row = load_csv(PADRES_RAW / "padres_2026_bref.csv")[0]
+    return {
+        "year": int(row["year"]),
+        "w": int(row["w"]),
+        "l": int(row["l"]),
+        "r": int(row["r"]),
+        "ra": int(row["ra"]),
+        "attendance": int(row["attendance"]),
+        "wc": row["wc"],
+        "nlds": row["nlds"],
+        "lg": row.get("lg", "N"),
+        "ws": row.get("ws", "N"),
+        "source": row["source"],
+    }
+
 
 EXPANSION = [
     ("ANA", "Angels", 1961),
@@ -129,6 +126,10 @@ def write_csv(path: Path, rows: list[dict], fields: list[str]) -> None:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         writer.writerows(rows)
+
+
+CBT_PAYROLL, CBT_THRESHOLD = _load_cbt()
+BREF_2026 = _load_bref_2026()
 
 
 def setup_fonts() -> tuple[fm.FontProperties, fm.FontProperties]:
@@ -686,8 +687,12 @@ def main() -> None:
         "padres_2026_bref.csv",
         "cbt_payroll.csv",
         "playoff_series_record_gap.csv",
+        "playoff_series_outcomes_1995_2025.csv",
         "expansion_clubs.csv",
         "summary.json",
+        "rate_bootstrap.csv",
+        "old_vs_new.csv",
+        "audit_summary.json",
     ):
         (PUBLIC_DATA / name).write_bytes((DATA / name).read_bytes())
     license_src = LAHMAN / "LICENSE_NOTE.txt"

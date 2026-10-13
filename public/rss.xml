@@ -12,6 +12,15 @@
     <category>Civics</category>
     <category>Culture</category>
     <item>
+      <title>PADRES: What Changed When We Fixed the Data</title>
+      <link>https://artometrics.com/padres-data-fix</link>
+      <guid isPermaLink="true">https://artometrics.com/padres-data-fix</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 GMT</pubDate>
+      <description>We audited the Padres dataset behind our record-sale report, rebuilt it from Lahman 1969–2025 plus a verified 2026 season, and reconciled every number the July 2026 live page had published—including a corrupted HTML sync, stale sale copy, and an FAQ that claimed eight runs in two deciding games.</description>
+      <category>sports</category>
+      <category>baseball</category>
+    </item>
+    <item>
       <title>FRANCHISE: What Changed When We Fixed the Data</title>
       <link>https://artometrics.com/franchise-data-fix</link>
       <guid isPermaLink="true">https://artometrics.com/franchise-data-fix</guid>

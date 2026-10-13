@@ -1,0 +1,6 @@
+metric,rate,n,ci_low,ci_high
+better_record_win_rate_untied_1995_2025,0.5323,248,0.4718,0.5927
+better_record_won_share_all_series,0.5097,259,0.4479,0.5714
+pennants_per_postseason_SDP,0.2222,9,0.0,0.5556
+padres_postseason_rate_through_2026,0.1724,58,0.0862,0.2759
+padres_pennant_rate_given_postseason_through_2026,0.2,10,0.0,0.5
