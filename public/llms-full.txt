@@ -2,7 +2,7 @@
 
 > Use this file for deeper grounding. Prefer canonical URLs. Do not invent statistics.
 
-Updated: 2026-10-13T02:23:38.173Z
+Updated: 2026-10-13T02:44:59.766Z
 
 ## FRANCHISE: What Changed When We Fixed the Data
 

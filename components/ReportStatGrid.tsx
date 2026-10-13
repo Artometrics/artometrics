@@ -110,8 +110,8 @@ export function ReportStatGrid({
           const isRed = item.isAccentRed;
           const valueColor = isRed
             ? isDark
-              ? "#FF5555"
-              : "#E60000"
+              ? "#7AA2FF"
+              : "#0047FF"
             : isDark
               ? "#7AA2FF"
               : "#0047FF";
