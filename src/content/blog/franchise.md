@@ -7,7 +7,7 @@ updatedDate: 2026-10-12T00:00:00.000Z
 description: >-
   140 franchises on the October 2026 Wikipedia ledger sum to $1.45T lifetime revenue. Merchandise is 55.8%; box office 18.3%; Pokémon leads at $130.7B. The US now out-earns Japan ($816B vs $394B), but Japan runs the higher merchandise share (71.4% vs 52.0%). Nine of 2025's ten biggest films were franchise entries.
 heroImage: /images/content/articles/franchise/hero.png
-audioSrc: /audios/franchise-kore.mp3
+audioSrc: /audios/franchise-kore-v4.mp3
 draft: false
 tags:
   - arts
