@@ -714,6 +714,17 @@
     "transcript": "/exports/transcripts/oscars.txt",
     "github": "https://github.com/Artometrics/oscars"
   },
+  "padres-data-fix": {
+    "slug": "padres-data-fix",
+    "dataset": null,
+    "quarto": null,
+    "html": null,
+    "pdf": null,
+    "epub": null,
+    "audio": null,
+    "transcript": null,
+    "github": "https://github.com/Artometrics/padres-data-fix"
+  },
   "padres": {
     "slug": "padres",
     "dataset": "/data/articles/padres/data/cbt_payroll.csv",

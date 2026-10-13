@@ -1,0 +1,15 @@
+{
+  "mlb_api": {
+    "wins": 91,
+    "losses": 71,
+    "division_rank": "2",
+    "wild_card_rank": "1",
+    "source_url": "https://statsapi.mlb.com/api/v1/standings?leagueId=104&season=2026&standingsTypes=regularSeason",
+    "checked_at": "2026-10-13"
+  },
+  "bref_publish_row": {
+    "w": 91,
+    "l": 71
+  },
+  "wins_match": true
+}

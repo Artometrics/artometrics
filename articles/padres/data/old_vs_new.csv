@@ -1,0 +1,35 @@
+figure,old_published,raw_new,clean_new_oct2026,unit,status,source
+Franchise seasons counted,57,57,58,seasons,updated,Lahman through 2025; 2026 completed
+Postseason appearances,9,9,10,count,updated,Lahman SeriesPost + 2026 B-Ref
+World Series titles,0,0,0,count,unchanged,Lahman WSWin
+National League pennants,2,2,2,count,unchanged,Lahman LgWin 1984 1998
+Postseason series record,7-9,7-9,8-10,W-L,updated,Lahman through 2025; +1 W +1 L in 2026
+Winning seasons (through 2025),19,19,20,count,updated,Lahman W>L; 2026 91-71
+2026 regular-season record,55-53 in progress,,91-71,W-L,corrected,MLB Stats API + Baseball-Reference
+Sale approval status,waits on 22 of 29 owners,,unanimous Aug 17 2026,text,corrected,MLB press release
+FAQ deciding-game runs (2024+2025),combined eight runs,,0 + 1,runs,corrected,Baseball-Reference NLDS 2024 G4-5; NLWC 2025 G3
+Payroll headline wording,about $1.5bn of payroll / cash spent,,"$1,500.1M CBT tax payroll sum",USD millions,corrected,Spotrac CBT; not cash
+Pennant chart first bar label,years between pennants,,debut to first pennant,axis,corrected,chart6_pennant_clock
+Postseasons since 2020,four in six years (blueprint),five since 2020,5,count,aligned,2020 2022 2024 2025 2026
+Better-record series wins 1995-2025,132,132,132,series,unchanged,Lahman SeriesPost join
+Worse-record series wins 1995-2025,116,116,116,series,unchanged,Lahman SeriesPost join
+Tied win-pct series 1995-2025,11,11,11,series,unchanged,Lahman SeriesPost join
+Better record among untied series,53.2%,53.2%,53.2% [46.8–59.3],percent,unchanged,132/(132+116)
+2025 attendance,"3,437,201",3437201,3437201,fans,unchanged,Lahman Teams 2025
+2026 attendance,,,3347081,fans,new,Baseball-Reference team page
+Petco era avg attendance 2004-19,~2.37M,2372417,2372417,fans/season,unchanged,Lahman mean
+Pre-Petco avg 1996-2003,~2.29M,2292236,2292236,fans/season,unchanged,Lahman mean
+Wins 2019,70,70,70,wins,unchanged,Lahman
+Wins 2020,37,37,37,wins,unchanged,Lahman 60-game season
+Wins 2021,79,79,79,wins,unchanged,Lahman
+Wins 2022,89,89,89,wins,unchanged,Lahman
+Wins 2023,82,82,82,wins,unchanged,Lahman
+Wins 2024,93,93,93,wins,unchanged,Lahman
+Wins 2025,90,90,90,wins,unchanged,Lahman
+CBT payroll sum 2021-26,~$1.5bn,1500.1,1500.1,USD millions,unchanged,Spotrac draft
+"70,000 DTC subscribers",stated in July draft,,removed,count,unsourced_removed,needs SBJ URL
+"25,000 memberships / 3-year wait",stated in July draft,,removed,count,unsourced_removed,needs club or SBJ
+$858M owed five players,stated in July draft,,removed,USD,unsourced_removed,needs Spotrac/Cot's export
+$1.48bn more than Cohen Mets,stated in July draft,,removed,USD,unsourced_removed,needs cited Mets price
+Farm rank last of 30,stated in July draft,,removed,rank,unsourced_removed,needs FanGraphs/BA cite
+Three bids at least $3.5bn,stated in July draft,,removed,count,unsourced_removed,needs SDUT/SBJ

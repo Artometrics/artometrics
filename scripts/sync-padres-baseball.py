@@ -39,21 +39,26 @@ def download_lahman() -> str:
 
 
 def mlb_padres_season(year: int) -> dict:
+    """Regular-season W-L from standings (team stats endpoint omits wins)."""
     url = (
-        f"https://statsapi.mlb.com/api/v1/teams/{MLB_TEAM_ID}/stats"
-        f"?stats=season&season={year}"
+        "https://statsapi.mlb.com/api/v1/standings"
+        f"?leagueId=104&season={year}&standingsTypes=regularSeason"
     )
     with urllib.request.urlopen(url, timeout=60) as resp:
         data = json.load(resp)
-    stats = data.get("stats", [{}])[0].get("splits", [{}])[0].get("stat", {})
-    return {
-        "year": year,
-        "wins": stats.get("wins"),
-        "losses": stats.get("losses"),
-        "runs": stats.get("runs"),
-        "runs_allowed": stats.get("runsScoredAgainst") or stats.get("runsAllowed"),
-        "source": url,
-    }
+    for rec in data.get("records", []):
+        for team in rec.get("teamRecords", []):
+            if team.get("team", {}).get("id") == MLB_TEAM_ID:
+                league = team.get("leagueRecord", {})
+                return {
+                    "year": year,
+                    "wins": league.get("wins"),
+                    "losses": league.get("losses"),
+                    "division_rank": team.get("divisionRank"),
+                    "wild_card_rank": team.get("wildCardRank"),
+                    "source": url,
+                }
+    raise ValueError(f"Padres not found in {year} NL standings")
 
 
 def sha256(path: Path) -> str:
