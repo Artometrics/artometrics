@@ -1,0 +1,44 @@
+{
+ "profile": {
+  "rows": 321,
+  "franchises": 103,
+  "missing_cells": 0,
+  "dup_franchise_category": 0,
+  "placeholder_rows_lt_0.01B": 15,
+  "citation_residue_cells": 6,
+  "double_space_cells": 59,
+  "year_created_range": "1924-2013",
+  "franchises_by_decade": {
+   "1920": 2,
+   "1930": 4,
+   "1940": 1,
+   "1950": 3,
+   "1960": 8,
+   "1970": 8,
+   "1980": 15,
+   "1990": 29,
+   "2000": 24,
+   "2010": 9
+  }
+ },
+ "verification": {
+  "sample_n": 40,
+  "matched": 39,
+  "breakdown_agree": 5,
+  "headline_agree_10pct": 28
+ },
+ "flow": {
+  "wiki_rows_parsed": 140,
+  "dropped_no_total": 0,
+  "dropped_duplicate_names": 0,
+  "franchises_clean_2026": 140,
+  "below_4B_floor": 53,
+  "breakdown_overshoot_rescaled": 0,
+  "with_unallocated_gt_5pct": 8,
+  "matched_to_2019": 82,
+  "new_since_2019": 58
+ },
+ "dropped": [],
+ "cpi": "base = CPI-U 2026-08-01 (334.131)",
+ "cpi_2024_to_base_factor": 1.0651
+}

@@ -1,0 +1,41 @@
+franchise,tidytuesday_sum_b,wiki_rev904026364_total_b,breakdown_sum_b,matched,agree_breakdown_within_1pct,agree_headline_within_10pct
+Mission: Impossible,3.146,4.0,3.646,True,False,False
+Aladdin,4.907,6.11,6.107,True,False,False
+Barbie,23.005,24.0,24.003,True,False,True
+A Song of Ice and Fire /  Game of Thrones,5.313,5.81,5.814,True,False,True
+Avengers,12.59,13.4,13.381,True,False,True
+Shōnen Jump / Jump Comics,33.217,34.0,34.123,True,False,True
+Rurouni Kenshin / Samurai X,3.57,4.31,4.306,True,False,False
+The Big Bang Theory,4.0,4.57,4.57,True,False,False
+Ben 10,7.0,7.85,7.853,True,False,False
+Fate,3.569,4.06,4.055,True,False,False
+Middle-earth / Lord of the Rings,18.722,19.9,19.875,True,False,True
+X-Men,7.033,7.78,7.783,True,False,True
+Disney Princess,44.042,44.7,44.687,True,False,True
+Final Fantasy,11.199,11.9,11.828,True,False,True
+Wii series,14.0,14.8,14.808,True,False,True
+The Phantom of the Opera,6.155,6.22,6.215,True,True,True
+The Simpsons,13.527,,,False,False,False
+Beyblade,4.009,4.6,4.609,True,False,False
+Star Trek,9.326,10.6,10.453,True,False,False
+Sesame Street / The Muppets,7.646,8.49,8.485,True,False,True
+James Bond,13.901,19.9,7.628,True,False,False
+My Little Pony,4.071,4.3,4.298,True,False,True
+Care Bears,5.052,5.05,5.052,True,True,True
+Tamagotchi,5.16,6.2,6.197,True,False,False
+CrossFire,10.0,10.6,10.6,True,False,True
+Bleach,7.066,7.24,7.235,True,False,True
+KochiKame,15.817,16.3,16.265,True,False,True
+Gundam,25.525,26.0,26.457,True,False,True
+Sonic the Hedgehog,7.007,7.25,7.241,True,False,True
+Neon Genesis Evangelion,15.237,16.3,16.279,True,False,True
+Ultraman,11.242,11.6,11.557,True,False,True
+Hello Kitty,80.026,80.0,80.026,True,True,True
+Call of Duty,17.0,17.0,17.0,True,True,True
+Bob the Builder,5.0,5.0,5.0,True,True,True
+Transformers,15.74,17.2,17.22,True,False,True
+One Piece,17.433,21.0,20.515,True,False,False
+SpongeBob SquarePants,13.465,14.1,14.084,True,False,True
+Warcraft,10.451,11.1,11.078,True,False,True
+The Lion King,12.987,13.8,13.757,True,False,True
+Assassin's Creed,4.253,4.34,4.344,True,False,True
