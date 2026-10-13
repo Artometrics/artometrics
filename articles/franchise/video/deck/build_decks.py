@@ -904,11 +904,11 @@ def _royalty() -> str:
       {_box(1020, 80, 280, 100, "LICENSEE")}
       {_box(1020, 250, 280, 100, "TOY MAKER")}
       {_box(1020, 420, 280, 100, "PARK / RETAIL")}
-      <line class="stage-data" x1="360" y1="300" x2="1020" y2="130" stroke="#E60000" stroke-width="3"/>
-      <line class="stage-data" x1="360" y1="300" x2="1020" y2="300" stroke="#E60000" stroke-width="3"/>
+      <line class="stage-data" x1="360" y1="300" x2="1020" y2="130" stroke="#0047FF" stroke-width="3"/>
+      <line class="stage-data" x1="360" y1="300" x2="1020" y2="300" stroke="#0047FF" stroke-width="3"/>
       <line class="stage-data" x1="360" y1="300" x2="1020" y2="470" stroke="#0047FF" stroke-width="3"/>
-      <text x="640" y="200" fill="#E60000" font-size="18">royalty</text>
-      <text x="640" y="280" fill="#E60000" font-size="18">SKU licence</text>
+      <text x="640" y="200" fill="#0047FF" font-size="18">royalty</text>
+      <text x="640" y="280" fill="#0047FF" font-size="18">SKU licence</text>
       <text x="640" y="430" fill="#0047FF" font-size="18">gate + shelf</text>
       <circle cx="220" cy="210" r="18" fill="none" stroke="#fff" stroke-width="2"/>
       <line x1="220" y1="228" x2="220" y2="250" stroke="#fff" stroke-width="2"/>
@@ -922,9 +922,9 @@ def _sku_stack() -> str:
       {_box(1010, 80, 300, 130, "TOY AISLE")}
       {_box(1010, 250, 300, 130, "RETAIL SHELF")}
       {_box(1010, 420, 300, 130, "PARK GATE")}
-      <line x1="350" y1="305" x2="540" y2="305" stroke="#E60000" stroke-width="3"/>
-      <line x1="820" y1="280" x2="1010" y2="145" stroke="#E60000" stroke-width="3"/>
-      <line x1="820" y1="305" x2="1010" y2="315" stroke="#E60000" stroke-width="3"/>
+      <line x1="350" y1="305" x2="540" y2="305" stroke="#0047FF" stroke-width="3"/>
+      <line x1="820" y1="280" x2="1010" y2="145" stroke="#0047FF" stroke-width="3"/>
+      <line x1="820" y1="305" x2="1010" y2="315" stroke="#0047FF" stroke-width="3"/>
       <line x1="820" y1="340" x2="1010" y2="485" stroke="#0047FF" stroke-width="3"/>
       <circle cx="180" cy="190" r="16" fill="none" stroke="#fff" stroke-width="2"/>
       <line x1="180" y1="206" x2="180" y2="228" stroke="#fff" stroke-width="2"/>
@@ -934,13 +934,13 @@ def _sku_stack() -> str:
 def _flywheel() -> str:
     return '''<svg class="diagram-svg" viewBox="0 0 1400 640" xmlns="http://www.w3.org/2000/svg">
       <circle cx="700" cy="320" r="210" fill="none" stroke="#333" stroke-width="2"/>
-      <circle cx="700" cy="90" r="64" fill="#141414" stroke="#E60000" stroke-width="3"/>
+      <circle cx="700" cy="90" r="64" fill="#141414" stroke="#0047FF" stroke-width="3"/>
       <circle cx="930" cy="420" r="64" fill="#141414" stroke="#0047FF" stroke-width="3"/>
       <circle cx="470" cy="420" r="64" fill="#141414" stroke="#fff" stroke-width="2"/>
       <text x="700" y="96" text-anchor="middle" fill="#fff" font-size="16">FILM</text>
       <text x="930" y="426" text-anchor="middle" fill="#fff" font-size="16">PARK</text>
       <text x="470" y="426" text-anchor="middle" fill="#fff" font-size="16">SHELF</text>
-      <path d="M760 120 C 900 160, 980 280, 960 360" fill="none" stroke="#E60000" stroke-width="3"/>
+      <path d="M760 120 C 900 160, 980 280, 960 360" fill="none" stroke="#0047FF" stroke-width="3"/>
       <path d="M860 450 C 700 520, 540 480, 500 450" fill="none" stroke="#0047FF" stroke-width="3"/>
       <path d="M500 360 C 520 200, 600 120, 650 110" fill="none" stroke="#fff" stroke-width="3"/>
     </svg>'''
@@ -953,8 +953,8 @@ def _rollup() -> str:
       {_box(80, 360, 240, 90, "PIXAR")}
       {_box(80, 490, 240, 90, "FOX")}
       {_box(980, 240, 320, 140, "DISNEY", "one owner line")}
-      <line x1="320" y1="125" x2="980" y2="280" stroke="#E60000" stroke-width="3"/>
-      <line x1="320" y1="265" x2="980" y2="300" stroke="#E60000" stroke-width="3"/>
+      <line x1="320" y1="125" x2="980" y2="280" stroke="#0047FF" stroke-width="3"/>
+      <line x1="320" y1="265" x2="980" y2="300" stroke="#0047FF" stroke-width="3"/>
       <line x1="320" y1="405" x2="980" y2="330" stroke="#0047FF" stroke-width="3"/>
       <line x1="320" y1="535" x2="980" y2="360" stroke="#0047FF" stroke-width="3"/>
     </svg>'''
@@ -965,9 +965,9 @@ def _pipeline() -> str:
       {_box(60, 250, 240, 110, "PREMIERE")}
       {_box(460, 250, 240, 110, "ADVERT")}
       {_box(860, 250, 280, 110, "REPEAT SALE")}
-      <line x1="300" y1="305" x2="460" y2="305" stroke="#E60000" stroke-width="3"/>
+      <line x1="300" y1="305" x2="460" y2="305" stroke="#0047FF" stroke-width="3"/>
       <line x1="700" y1="305" x2="860" y2="305" stroke="#0047FF" stroke-width="3"/>
-      <rect x="868" y="242" width="264" height="126" fill="none" stroke="#E60000" stroke-width="3"/>
+      <rect x="868" y="242" width="264" height="126" fill="none" stroke="#0047FF" stroke-width="3"/>
     </svg>'''
 
 

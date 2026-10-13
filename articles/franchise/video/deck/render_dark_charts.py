@@ -219,7 +219,7 @@ def svg_bars(labels: list[str], values: list[float], highlight: str, unit: str =
         is_blue = bool(blue) and blue in lab.lower()
         if mark_max and not hi and not blue and i == n - 1:
             is_hi = True
-        color = "#E60000" if is_hi else "#0047FF" if is_blue else "#6a6a6a"
+        color = "#0047FF" if is_hi else "#0047FF" if is_blue else "#6a6a6a"
         shown = fmt_unit(val, unit)
         short = lab.split(",")[0].split("/")[0].strip()[:22]
         parts.append(
@@ -239,7 +239,7 @@ def svg_bars(labels: list[str], values: list[float], highlight: str, unit: str =
             box_w = max(118, 14 * len(shown) + 36)
             parts.append(
                 f'<rect class="stage-highlight" x="{label_w + bw - 4:.1f}" y="{y + row_h * 0.22:.1f}" width="{box_w}" height="{row_h * 0.56:.1f}" '
-                f'fill="none" stroke="#E60000" stroke-width="3" opacity="1"/>'
+                f'fill="none" stroke="#0047FF" stroke-width="3" opacity="1"/>'
             )
     parts.append("</svg>")
     return "\n".join(parts)
@@ -264,7 +264,7 @@ def svg_dots(labels: list[str], values: list[float], highlight: str, mark_max: b
         x = pad_l + 40 + (i + 0.5) * ((w - pad_l - 80) / max(n, 1))
         y = (h - pad_b) - ((val - vmin) / span) * (h - pad_b - 80)
         is_hi = hi and hi in lab.lower()
-        color = "#E60000" if is_hi else "#0047FF"
+        color = "#0047FF" if is_hi else "#0047FF"
         parts.append(
             f'<circle class="stage-data" cx="{x:.1f}" cy="{y:.1f}" r="8" fill="{color}" '
             f'style="animation-delay:{0.4 + i * 0.08:.2f}s"/>'
@@ -278,7 +278,7 @@ def svg_dots(labels: list[str], values: list[float], highlight: str, mark_max: b
             box_w = max(96, 15 * len(shown) + 28)
             parts.append(
                 f'<rect class="stage-highlight" x="{x - box_w / 2:.1f}" y="{y - 52:.1f}" width="{box_w:.1f}" height="36" '
-                f'fill="none" stroke="#E60000" stroke-width="3" opacity="1"/>'
+                f'fill="none" stroke="#0047FF" stroke-width="3" opacity="1"/>'
             )
             parts.append(
                 f'<text class="stage-data" x="{x:.1f}" y="{y - 28:.1f}" text-anchor="middle" fill="#fff" '

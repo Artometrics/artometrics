@@ -1,6 +1,6 @@
 # Franchise video storyboard decks (Phase 4b)
 
-HTML storyboard decks generated from `storyboard-*.csv`, styled to match the Anime explainer gold standard (black/white, `#E60000` / `#0047FF`, DM Sans + DM Mono, Chomsky bookends only).
+HTML storyboard decks generated from `storyboard-*.csv`, styled to match the Anime explainer gold standard (black/white, `#0047FF` accents; `#E60000` is reserved for the logo, DM Sans + DM Mono, Chomsky bookends only).
 
 ## Build
 
@@ -24,7 +24,7 @@ Outputs:
 
 - Section label in red DM Mono, top left
 - Headline sentence (digits, not spelled-out numbers; no internal ids)
-- **Big number** — DM Mono at ~30% of frame height, 3px `#E60000` box, spoken line as the bottom caption
+- **Big number** — DM Mono at ~30% of frame height, 3px `#0047FF` box, spoken line as the bottom caption
 - **Chart beat** — dark SVG chart (`render_dark_charts.py`): black ground, DM Sans headline, n subtitle, grey bars, red highlight box, DM Mono labels, source line. Bars reveal after the axes.
 - **Entity** — logo or still on a light plate, name, figure in DM Mono when the line has one, small credit. Two or three names sit side by side when the line compares them.
 - **Type card** — claim in a red box, source in DM Mono
