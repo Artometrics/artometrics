@@ -256,9 +256,9 @@ html[data-theme="dark"] .art-stat-pill {
 }
 
 .art-stat-pill--red {
-  background: rgba(230, 0, 0, 0.08);
-  color: #E60000;
-  border-color: rgba(230, 0, 0, 0.18);
+  background: rgba(0, 71, 255, 0.08);
+  color: #0047FF;
+  border-color: rgba(0, 71, 255, 0.18);
 }
 
 html[data-theme="dark"] .art-stat-pill--red {
@@ -282,11 +282,11 @@ html[data-theme="dark"] .art-stat-value {
 }
 
 .art-stat-value--red {
-  color: #E60000;
+  color: #0047FF;
 }
 
 html[data-theme="dark"] .art-stat-value--red {
-  color: #FF4D4D;
+  color: #6B94FF;
 }
 
 /* ── Stat Card Body Text ───────────────────────────────────────────── */
@@ -319,7 +319,7 @@ html[data-theme="dark"] .art-stat-body {
 
 .art-stat-citation:hover {
   text-decoration: underline;
-  color: #E60000;
+  color: #0047FF;
 }
 
 html[data-theme="dark"] .art-stat-citation {
