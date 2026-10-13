@@ -40,6 +40,7 @@
 
 ## Reports
 
+- [ANIME: What Changed When We Fixed the Data](https://artometrics.com/anime-data-fix): We refreshed the MyAnimeList catalog behind ANIME after Jikan shut down, moved to the Tenrai-compatible API, and recomputed every headline on the clean TV frame. The light-novel reach premium fell from 32× to 27.5×; manga's 8.0+ share fell to 14.8%; 2015 isekai was under-counted at 0.9% (now 2.2%). (arts)
 - [FRANCHISE: What Changed When We Fixed the Data](https://artometrics.com/franchise-data-fix): We audited the franchise dataset behind our FRANCHISE report, rebuilt it from Wikipedia's October 2026 list and recomputed every published number. Merchandise still dominates (55.8%), but the Japan–US ranking flipped and Hello Kitty's $80B was a source error. (arts)
 - [PADRES: Record Sale, Zero Championships](https://artometrics.com/padres): San Diego solved demand and the tax bill. It has not solved October. Franchise values follow the market and the ballpark anyway. (sports)
 - [INSTITUTIONS: When Dynasties Are Systems](https://artometrics.com/institutions): Yankees, Patriots, Celtics, Cowboys: a synthesis of Artometrics' sports-dynasty reports asks what transfers when winning is a system, not a roster. (sports)
@@ -140,7 +141,7 @@
 - [IMPERIAL: What Empire Chronicles Leave Out](https://artometrics.com/imperial): A historical-economics lens asks who captured wealth when rulers claimed order. (humanities)
 - [YOUTUBE: The Platform's $36B Engine and One Podcast's Borrowed Peak](https://artometrics.com/youtube): Alphabet reported $36.1B in YouTube ad revenue in FY2024 while Nielsen puts YouTube at 13.4% of U.S. TV-screen usage. Against that scale, H3 Podcast's Frenemies era tripled monthly views—and set a ceiling the show has not touched since. (civics)
 - [FRANCHISE: Merchandise Owns the Ledger](https://artometrics.com/franchise): 140 franchises on the October 2026 Wikipedia ledger sum to $1.45T lifetime revenue. Merchandise is 55.8%; box office 18.3%; Pokémon leads at $130.7B. The US now out-earns Japan ($816B vs $394B), but Japan runs the higher merchandise share (71.4% vs 52.0%). Nine of 2025's ten biggest films were franchise entries. (arts)
-- [ANIME: Source Sets the Audience Floor](https://artometrics.com/anime): In a century of MyAnimeList data, light-novel TV adaptations draw 32 times the median audience of original series. The data also shows where fan ratings and commercial value part ways. (arts)
+- [ANIME: Source Sets the Audience Floor](https://artometrics.com/anime): On the October 2026 MyAnimeList ledger, light-novel TV adaptations still draw 27.5 times the median audience of originals. Source mix and isekai tags trace how committees greenlight shows — with wide uncertainty on any single year. (arts)
 
 ## Podcast
 
@@ -151,4 +152,4 @@
 
 ## Generated
 
-Updated: 2026-10-13T02:44:59.766Z
+Updated: 2026-10-13T02:57:48.906Z
