@@ -5,7 +5,7 @@ import { assetUrl } from "@/lib/assets";
 import type { EditionManifest } from "@/data/editions";
 import { SECTION_META } from "@/data/sections";
 
-const SPINE_PALETTE = ["#C0392B", "#000000", "#FFFFFF", "#000000"] as const;
+const SPINE_PALETTE = ["#E60000", "#000000", "#FFFFFF", "#000000"] as const;
 
 function spineColors(i: number) {
   const bg = SPINE_PALETTE[i % SPINE_PALETTE.length];
@@ -30,7 +30,7 @@ export function VhsShelf({ editions }: { editions: EditionManifest[] }) {
         >
           Artometrics Media
         </Text>
-        <Text className="font-mono text-[13px] uppercase tracking-[0.06em] text-accent">
+        <Text className="font-mono text-[13px] uppercase tracking-[0.06em] text-[#6E95FF]">
           The Archive — Vol. 01–{String(editions.length).padStart(2, "0")}
         </Text>
       </View>
@@ -54,6 +54,8 @@ export function VhsShelf({ editions }: { editions: EditionManifest[] }) {
                   {hero ? (
                     <Image
                       source={{ uri: hero }}
+                      alt=""
+                      accessibilityIgnoresInvertColors
                       className="absolute inset-0 h-full w-full"
                       contentFit="cover"
                       transition={200}
@@ -87,7 +89,7 @@ export function VhsShelf({ editions }: { editions: EditionManifest[] }) {
         })}
       </ScrollView>
 
-      <Text className="border-b border-[#262626] pb-3 font-mono text-[12px] uppercase tracking-[0.06em] text-[#525252]">
+      <Text className="border-b border-[#262626] pb-3 font-mono text-[12px] uppercase tracking-[0.06em] text-[#A3A3A3]">
         Full collection
       </Text>
 
