@@ -30,29 +30,46 @@ export function BlogCard({
     "font-sans text-[19px] font-semibold leading-[1.2] tracking-tight text-fg md:text-[21px]";
 
   if (variant === "pick") {
+    // Mobbin refs (Finimize / NYT iOS feeds): kicker -> headline -> meta, thumb on the right.
     return (
       <Link href={`/${post.slug}`} asChild>
-        <Pressable className="flex-row gap-3 border-b border-border py-3">
-          {hero ? (
-            <SiteCoverImage
-              source={{ uri: hero }}
-              wrapperClassName="h-14 w-14 shrink-0 bg-border"
-              transition={200}
-              accessibilityLabel={post.title}
-            />
-          ) : (
-            <View className="h-14 w-14 shrink-0 bg-border" />
-          )}
-          <View className="min-w-0 flex-1 gap-1">
+        <Pressable
+          accessibilityRole="link"
+          accessibilityLabel={post.title}
+          className="flex-row items-start gap-4 border-b border-border py-4"
+        >
+          <View className="min-w-0 flex-1 gap-1.5">
             {label ? (
-              <Text className="font-sans text-[10px] font-semibold uppercase tracking-[1.8px] text-accent">
+              <Text className="font-mono text-[10px] font-semibold uppercase tracking-[1.6px] text-accent">
                 {label}
               </Text>
             ) : null}
             <Text className={titleClass} numberOfLines={3}>
               {post.title}
             </Text>
+            {post.pubDate ? (
+              <Text className="font-mono text-[10px] uppercase tracking-[1.4px] text-subtle">
+                {formatDate(post.pubDate)}
+              </Text>
+            ) : null}
           </View>
+          {hero ? (
+            <SiteCoverImage
+              source={{ uri: hero }}
+              wrapperClassName="h-[72px] w-[72px] shrink-0 border border-border bg-border"
+              transition={0}
+              accessibilityLabel=""
+            />
+          ) : (
+            <View
+              accessibilityElementsHidden
+              className="h-[72px] w-[72px] shrink-0 items-center justify-center bg-fg"
+            >
+              <Text className="font-mono text-[18px] font-bold text-[#E60000]">
+                {(label || post.title).charAt(0).toUpperCase()}
+              </Text>
+            </View>
+          )}
         </Pressable>
       </Link>
     );

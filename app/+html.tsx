@@ -49,7 +49,7 @@ export default function Root({ children }: PropsWithChildren) {
         />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="mask-icon" href="/favicon.svg" color="#C0392B" />
+        <link rel="mask-icon" href="/favicon.svg" color="#E60000" />
         <link rel="manifest" href="/manifest.webmanifest" />
         <meta name="theme-color" content="#000000" />
         <meta name="color-scheme" content="dark" />

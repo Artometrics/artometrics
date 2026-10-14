@@ -34,6 +34,7 @@ export function SiteHeader() {
           <View className="h-10 w-10 items-center justify-center">
             <Pressable
               onPress={() => setMenuOpen(true)}
+              accessibilityRole="button"
               accessibilityLabel="Open menu"
               className="h-10 w-10 items-center justify-center lg:hidden"
               testID="site-menu-button"

@@ -39,7 +39,8 @@ function HomeHeroImage({
       source={{ uri: hero }}
       wrapperClassName="w-full"
       wrapperStyle={{ aspectRatio }}
-      transition={250}
+      transition={0}
+      priority="high"
       accessibilityLabel={post.title}
     />
   );
@@ -184,9 +185,21 @@ function HomeEditorsPicks({ posts }: { posts: BlogPost[] }) {
   if (!posts.length) return null;
   return (
     <View className="md:flex-[2] md:min-w-0 md:border-l md:border-border md:pl-6">
-      <Text className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-muted">
-        Editor&apos;s picks
-      </Text>
+      <View className="mb-1 flex-row items-baseline justify-between border-b-2 border-fg pb-2">
+        <Text
+          accessibilityRole="header"
+          className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-fg"
+        >
+          Editor&apos;s picks
+        </Text>
+        <Link href="/blog" asChild>
+          <Pressable accessibilityRole="link" accessibilityLabel="See all reports">
+            <Text className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-accent">
+              See all →
+            </Text>
+          </Pressable>
+        </Link>
+      </View>
       {posts.map((post) => (
         <BlogCard key={post.slug} post={post} variant="pick" editorial />
       ))}
