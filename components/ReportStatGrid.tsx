@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Platform, Pressable } from "react-native";
-import { useTheme } from "@/lib/theme";
+import { House } from "@/constants/Colors";
 
 export interface StatItem {
   value: string;
@@ -90,9 +90,6 @@ export function ReportStatGrid({
   subject,
   sourceLabel,
 }: ReportStatGridProps) {
-  const { mode } = useTheme();
-  const isDark = mode === "dark";
-
   const defaultSource = sourceLabel || (subject ? `${subject} Analysis` : "Artometrics Audit");
 
   const items: StatItem[] = explicitStats?.length
@@ -108,13 +105,8 @@ export function ReportStatGrid({
       <View className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {items.map((item, idx) => {
           const isRed = item.isAccentRed;
-          const valueColor = isRed
-            ? isDark
-              ? "#7AA2FF"
-              : "#0047FF"
-            : isDark
-              ? "#7AA2FF"
-              : "#0047FF";
+          const valueColor = House.cream;
+          const rule = idx % 2 === 0 ? House.red : House.tiffany;
 
           return (
             <View
@@ -122,39 +114,42 @@ export function ReportStatGrid({
               className="art-floating-box flex flex-col justify-between p-5 min-h-[220px]"
               style={
                 Platform.OS === "web"
-                  ? undefined
+                  ? {
+                      backgroundColor: "#100e0c",
+                      borderTopWidth: 3,
+                      borderTopColor: rule,
+                      boxShadow: "4px 4px 0 #ff3d8a",
+                    }
                   : {
-                      backgroundColor: isDark ? "#0E1018" : "#FFFFFF",
-                      borderRadius: 16,
+                      backgroundColor: "#100e0c",
+                      borderRadius: 0,
                       borderWidth: 1,
-                      borderColor: isDark ? "rgba(255,255,255,0.14)" : "rgba(0,0,0,0.12)",
-                      shadowColor: "#000000",
-                      shadowOffset: { width: 0, height: 8 },
-                      shadowOpacity: isDark ? 0.6 : 0.15,
-                      shadowRadius: 16,
-                      elevation: 6,
+                      borderColor: "#2a3330",
+                      borderTopWidth: 3,
+                      borderTopColor: rule,
+                      shadowColor: House.pink,
+                      shadowOffset: { width: 4, height: 4 },
+                      shadowOpacity: 1,
+                      shadowRadius: 0,
+                      elevation: 4,
                     }
               }
             >
               {/* Header: Category Badge / Pill in top right */}
               <View className="flex-row items-center justify-between w-full mb-3">
-                <View className="h-1 w-6 rounded-full" style={{ backgroundColor: valueColor }} />
+                <View className="h-1 w-6" style={{ backgroundColor: rule }} />
                 <View
                   className={`art-stat-pill ${isRed ? "art-stat-pill--red" : ""}`}
                   style={
                     Platform.OS === "web"
                       ? undefined
                       : {
-                          backgroundColor: isRed
-                            ? isDark
-                              ? "rgba(230,0,0,0.2)"
-                              : "rgba(230,0,0,0.08)"
-                            : isDark
-                              ? "rgba(51,103,231,0.2)"
-                              : "rgba(51,103,231,0.08)",
+                          backgroundColor: "transparent",
+                          borderWidth: 1,
+                          borderColor: House.tiffany,
                           paddingHorizontal: 10,
                           paddingVertical: 3,
-                          borderRadius: 9999,
+                          borderRadius: 0,
                         }
                   }
                 >
@@ -163,7 +158,7 @@ export function ReportStatGrid({
                       fontFamily: "DM Mono",
                       fontSize: 11,
                       fontWeight: "600",
-                      color: valueColor,
+                      color: House.tiffany,
                       letterSpacing: 0.5,
                     }}
                   >
@@ -201,7 +196,7 @@ export function ReportStatGrid({
                           fontFamily: "DM Sans",
                           fontSize: 13,
                           lineHeight: 18,
-                          color: isDark ? "#E2E2E6" : "#1C1C1E",
+                          color: House.muted,
                           marginBottom: 16,
                         }
                   }
@@ -221,7 +216,7 @@ export function ReportStatGrid({
                           fontFamily: "DM Sans",
                           fontSize: 11,
                           fontWeight: "600",
-                          color: "#0047FF",
+                          color: House.muted,
                         }
                   }
                 >

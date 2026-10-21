@@ -153,7 +153,7 @@ export default function SettingsScreen() {
 
         <Text className="font-serif text-[22px] font-bold mt-5 text-fg">Brand style</Text>
         <Text className="font-serif text-base leading-7 text-muted mb-2">
-          Magazine (DM Sans / Mono) is the default. Swiss is an alternate condensed chrome.
+          Magazine (Anton display, DM Sans body) is the default. Swiss is an alternate condensed chrome.
         </Text>
         {(["swiss", "magazine"] as BrandStyle[]).map((style) => {
           const isSelected = brandStyle === style;

@@ -51,12 +51,13 @@ export default function Root({ children }: PropsWithChildren) {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="mask-icon" href="/favicon.svg" color="#E60000" />
         <link rel="manifest" href="/manifest.webmanifest" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#0e1110" />
         <meta name="color-scheme" content="dark" />
         <ScrollViewStyleReset />
         <link rel="stylesheet" href="/css/artometrics-article.css" />
         <link rel="stylesheet" href="/css/site-images.css" />
         <link rel="stylesheet" href="/css/shoegaze-theme.css" />
+        <link rel="stylesheet" href="/css/house-style.css" />
         <style
           dangerouslySetInnerHTML={{
             __html: `
@@ -132,9 +133,9 @@ export default function Root({ children }: PropsWithChildren) {
               }
               body {
                 margin: 0;
-                background: #ffffff;
+                background: #0e1110;
                 font-family: "DM Sans", system-ui, sans-serif;
-                color: #000000;
+                color: #f4f7f6;
               }
               /* Prefer explicit site theme over OS preference alone */
               html[data-theme="light"] {
@@ -142,29 +143,29 @@ export default function Root({ children }: PropsWithChildren) {
               }
               html[data-theme="light"] body,
               html[data-theme="light"] #root {
-                background: #ffffff !important;
-                color: #000000 !important;
+                background: #f3ead7 !important;
+                color: #14110e !important;
               }
               html[data-theme="dark"] {
                 color-scheme: dark;
               }
               html[data-theme="dark"] body,
               html[data-theme="dark"] #root {
-                background: #111212 !important;
-                color: #F4F1EA !important;
+                background: #0e1110 !important;
+                color: #f4f7f6 !important;
               }
               @media (prefers-color-scheme: dark) {
                 html:not([data-theme]) body,
                 html:not([data-theme]) #root,
                 html[data-theme="dark"] body,
                 html[data-theme="dark"] #root {
-                  background: #111212;
-                  color: #F4F1EA;
+                  background: #0e1110;
+                  color: #f4f7f6;
                 }
                 html[data-theme="light"] body,
                 html[data-theme="light"] #root {
-                  background: #F4F1EA !important;
-                  color: #1D1A15 !important;
+                  background: #f3ead7 !important;
+                  color: #14110e !important;
                 }
               }
               a { color: inherit; text-decoration: none; }
@@ -194,8 +195,8 @@ export default function Root({ children }: PropsWithChildren) {
                       ? "dark"
                       : "light";
                   } else if (saved === "dark") mode = "dark";
-                  var bg = mode === "dark" ? "#000000" : "#FFFFFF";
-                  var fg = mode === "dark" ? "#FFFFFF" : "#000000";
+                  var bg = mode === "dark" ? "#0e1110" : "#f3ead7";
+                  var fg = mode === "dark" ? "#f4f7f6" : "#14110e";
                   var root = document.documentElement;
                   root.setAttribute("data-theme", mode);
                   root.style.setProperty("color-scheme", mode === "dark" ? "dark" : "light only");

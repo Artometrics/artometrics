@@ -2,7 +2,7 @@
  * Client-side chart hydration: interactive Plotly when data-chart is present,
  * PNG fallback on failure or reduced motion.
  */
-import { artPlotlyLayout, ART_PLOTLY_FONT, ART_PLOTLY_TITLE_FONT } from "@/lib/charts/plotlyTheme";
+import { applyHouseLayout, applyHouseTraces } from "@/lib/charts/plotlyTheme";
 
 export type PlotlyLike = {
   newPlot: (
@@ -105,81 +105,32 @@ export function markChartReady(live: HTMLElement, isStatic: boolean) {
   live.dataset.hydrated = "1";
 }
 
-function isDarkTheme(): boolean {
-  return document.documentElement.dataset.theme === "dark";
-}
-
 function mergePlotlyLayout(
   rawLayout: Record<string, unknown>,
+  flags: { zeroAxes: string[]; hasGeo: boolean },
 ): Record<string, unknown> {
-  const dark = isDarkTheme();
-  const ink = dark ? "#FFFFFF" : "#000000";
-  const grid = dark ? "#262626" : "#E5E5E5";
-  const base = artPlotlyLayout({
-    paper_bgcolor: "rgba(0,0,0,0)",
-    plot_bgcolor: "rgba(0,0,0,0)",
-    font: { family: ART_PLOTLY_FONT, size: 11, color: ink },
-  });
-
-  const axisLocks: Record<string, unknown> = {};
-  for (const [key, value] of Object.entries(rawLayout)) {
-    if (!/^xaxis|^yaxis/.test(key)) continue;
-    const axis = (value && typeof value === "object" ? value : {}) as Record<
-      string,
-      unknown
-    >;
-    axisLocks[key] = {
+  const house = applyHouseLayout(rawLayout, flags);
+  const margin = (house.margin as Record<string, number> | undefined) ?? {};
+  const axes: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(house)) {
+    if (!/^xaxis|^yaxis/.test(key) || !value || typeof value !== "object") continue;
+    const axis = value as Record<string, unknown>;
+    axes[key] = {
       ...axis,
       fixedrange: true,
-      showgrid: axis.showgrid ?? true,
-      gridcolor: axis.gridcolor ?? grid,
-      zeroline: axis.zeroline ?? false,
       automargin: true,
-      tickfont: {
-        ...((axis.tickfont as Record<string, unknown>) ?? {}),
-        family: ART_PLOTLY_FONT,
-        size: 11,
-        color: ink,
-      },
-      titlefont: {
-        ...((axis.titlefont as Record<string, unknown>) ?? {}),
-        family: ART_PLOTLY_FONT,
-        size: 11,
-        color: ink,
-      },
     };
   }
-
-  const rawTitle = rawLayout.title;
-  let title = rawTitle;
-  if (rawTitle && typeof rawTitle === "object") {
-    const titleObj = { ...(rawTitle as Record<string, unknown>) };
-    titleObj.font = {
-      ...((titleObj.font as Record<string, unknown>) ?? {}),
-      family: ART_PLOTLY_TITLE_FONT,
-      size: Math.min(
-        Number((titleObj.font as { size?: number } | undefined)?.size ?? 14),
-        15,
-      ),
-      color: ink,
-    };
-    title = titleObj;
-  }
-
-  const margin = (rawLayout.margin as Record<string, number> | undefined) ?? {};
   return {
-    ...base,
-    ...rawLayout,
-    ...axisLocks,
-    title,
+    ...house,
+    ...axes,
     margin: {
       ...margin,
-      l: Math.min(Math.max(Number(margin.l ?? 56), 44), 96),
-      r: Math.min(Math.max(Number(margin.r ?? 28), 16), 48),
-      t: Math.min(Math.max(Number(margin.t ?? 48), 28), 72),
-      b: Math.min(Math.max(Number(margin.b ?? 52), 40), 84),
+      l: Math.min(Math.max(Number(margin.l ?? 56), 44), 120),
+      r: Math.min(Math.max(Number(margin.r ?? 28), 16), 64),
+      t: Math.min(Math.max(Number(margin.t ?? 48), 28), 80),
+      b: Math.min(Math.max(Number(margin.b ?? 52), 40), 96),
     },
-    colorway: ["#E60000", "#0047FF", "#000000", "#525252"],
     dragmode: false,
     hovermode: "closest",
   };
@@ -207,12 +158,15 @@ async function renderInteractive(live: HTMLElement, Plotly: PlotlyLike) {
     280,
   );
   const hostHeight = Math.min(Math.max(Math.round(hostWidth * 0.58), 300), 460);
+  const rawLayout = payload.layout ?? {};
+  const house = applyHouseTraces(payload.data ?? [], rawLayout);
+  live.classList.toggle("house-bars", house.hasBars);
 
   await Plotly.newPlot(
     live,
-    payload.data ?? [],
+    house.traces,
     {
-      ...mergePlotlyLayout(payload.layout ?? {}),
+      ...mergePlotlyLayout(rawLayout, house),
       autosize: true,
       height: hostHeight,
     },

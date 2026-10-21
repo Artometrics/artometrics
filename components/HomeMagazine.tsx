@@ -50,44 +50,56 @@ function HomeMainStory({ post }: { post: BlogPost }) {
   const label = sectionLabel(post.tags, post.subject);
   const dateline = post.pubDate ? formatDate(post.pubDate) : null;
   return (
-    <View className="flex-col gap-6 md:flex-row md:items-stretch md:gap-8">
-      <Link href={`/${post.slug}`} asChild>
-        <Pressable
-          accessibilityRole="link"
-          accessibilityLabel={post.title}
-          className="min-w-0 md:w-[62%] md:flex-[3]"
-        >
-          <HomeHeroImage post={post} aspectRatio={16 / 10} />
-        </Pressable>
-      </Link>
-      <View className="min-w-0 justify-end gap-3 md:w-[38%] md:flex-[2] md:py-2">
-        {label ? (
-          <Text className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-accent">
-            {label}
-          </Text>
-        ) : null}
-        {dateline ? (
-          <Text className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted">
-            {dateline}
-          </Text>
-        ) : null}
-        <Link href={`/${post.slug}`} asChild>
-          <Pressable accessibilityRole="link">
+    <View className="house-hero">
+      <View className="house-hero__drift" accessibilityElementsHidden />
+      <View className="house-hero__benday" accessibilityElementsHidden />
+      <View className="house-hero__line" accessibilityElementsHidden />
+      <View className="house-hero__copy flex-col gap-4 md:flex-row md:items-end">
+        <View className="min-w-0 flex-1 gap-3">
+          {label ? (
+            <Text className="house-kicker" style={{ fontFamily: "DM Mono" }}>
+              {label}
+            </Text>
+          ) : null}
+          {dateline ? (
             <Text
-              className="home-lead-headline font-sans text-[clamp(1.625rem,2.75vw,2.625rem)] font-bold leading-[1.08] tracking-[-0.02em] text-fg"
+              className="font-mono text-[11px] uppercase tracking-[0.12em]"
+              style={{ color: "#b7d0cb" }}
             >
-              {post.title}
+              {dateline}
             </Text>
-          </Pressable>
-        </Link>
-        <Text className="font-sans text-[17px] leading-[1.45] text-muted">
-          {deckLine(post.description, 36)}
-        </Text>
+          ) : null}
+          <Link href={`/${post.slug}`} asChild>
+            <Pressable accessibilityRole="link">
+              <Text
+                className="home-lead-headline house-display text-[clamp(2.4rem,5vw,4.25rem)]"
+                style={{ fontFamily: "Anton", color: "#f3ead7" }}
+              >
+                {post.title}
+              </Text>
+            </Pressable>
+          </Link>
+          <Text className="font-sans text-[17px] leading-[1.45]" style={{ color: "#f4f7f6" }}>
+            {deckLine(post.description, 36)}
+          </Text>
+          <Link href={`/${post.slug}`} asChild>
+            <Pressable accessibilityRole="link" className="self-start pt-1">
+              <Text
+                className="font-mono text-[11px] font-medium uppercase tracking-[0.14em]"
+                style={{ color: "#7fded6" }}
+              >
+                Read investigation →
+              </Text>
+            </Pressable>
+          </Link>
+        </View>
         <Link href={`/${post.slug}`} asChild>
-          <Pressable accessibilityRole="link" className="self-start pt-1">
-            <Text className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-accent">
-              Read investigation →
-            </Text>
+          <Pressable
+            accessibilityRole="link"
+            accessibilityLabel={post.title}
+            className="w-[148px] shrink-0"
+          >
+            <HomeHeroImage post={post} aspectRatio={4 / 5} />
           </Pressable>
         </Link>
       </View>
@@ -106,7 +118,10 @@ function HomeSecondaryStory({ post }: { post: BlogPost }) {
       ) : null}
       <Link href={`/${post.slug}`} asChild>
         <Pressable accessibilityRole="link" className="gap-1">
-          <Text className="font-sans text-[20px] font-semibold leading-[1.2] tracking-tight text-fg md:text-[22px]">
+          <Text
+            className="font-display text-[26px] leading-[1.05] text-fg md:text-[30px]"
+            style={{ fontFamily: "Anton" }}
+          >
             {post.title}
           </Text>
           <Text className="font-sans text-[14px] leading-[1.4] text-muted">

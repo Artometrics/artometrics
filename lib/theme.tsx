@@ -136,7 +136,7 @@ function applyDomTheme(mode: ThemeMode, brand: BrandStyle, colors: ThemeColors) 
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [preference, setPreferenceState] = useState<Preference>(
-    () => readStoredPreferenceSync() ?? "light",
+    () => readStoredPreferenceSync() ?? "dark",
   );
   const [brandStyle, setBrandStyleState] = useState<BrandStyle>(
     () => readStoredBrandSync() ?? DEFAULT_BRAND_STYLE,
@@ -242,8 +242,8 @@ export function useTheme() {
   if (!ctx) {
     return {
       preference: "system" as Preference,
-      mode: "light" as ThemeMode,
-      colors: resolveThemeColors("light", DEFAULT_BRAND_STYLE),
+      mode: "dark" as ThemeMode,
+      colors: resolveThemeColors("dark", DEFAULT_BRAND_STYLE),
       brandStyle: DEFAULT_BRAND_STYLE,
       fonts: resolveBrandFonts(DEFAULT_BRAND_STYLE),
       setPreference: () => {},

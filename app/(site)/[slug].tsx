@@ -142,7 +142,7 @@ export default function ReportScreen() {
         </View>
 
         {label ? (
-          <Text className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-accent">
+          <Text className="house-kicker self-start" style={{ fontFamily: "DM Mono" }}>
             {label}
           </Text>
         ) : null}
@@ -150,7 +150,8 @@ export default function ReportScreen() {
         <Text
           role="heading"
           aria-level={1}
-          className="font-sans text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.06] tracking-[-0.02em] text-fg"
+          className="font-display text-[clamp(2.4rem,5vw,4rem)] leading-[0.95] text-fg"
+          style={{ fontFamily: "Anton" }}
         >
           {headline ? (
             <Text>

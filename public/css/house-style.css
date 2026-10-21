@@ -1,0 +1,397 @@
+/*
+  Artometrics house style — Kyle's Style Lab picks (Oct 2026).
+  Source: https://stylelab-510519.web.app (agent bc-70887014).
+  Body face stays DM Sans. Display is Anton (3B). Page ground is 2A.
+*/
+
+:root {
+  --house-ground: #0e1110;
+  --house-ground-deep: #100e0c;
+  --house-offset: #121014;
+  --house-ink: #f4f7f6;
+  --house-cream: #f3ead7;
+  --house-muted: #b7d0cb;
+  --house-subtle: #8fb8b2;
+  --house-red: #e60000;
+  --house-tiffany: #7fded6;
+  --house-pink: #ff3d8a;
+  --house-cyan: #21e4ff;
+  --house-split-red: #ff2a2a;
+  --house-shadow: #241820;
+  --house-paper: #f3ead7;
+  --house-paper-ink: #14110e;
+  --house-link-on-paper: #0b5c56;
+  --house-display: "Anton", "Arial Narrow", Impact, sans-serif;
+  --house-body: "DM Sans", system-ui, sans-serif;
+  --house-mono: "DM Mono", ui-monospace, monospace;
+  --house-wordmark: "Chomsky", Georgia, serif;
+}
+
+/* 18A slow red/cyan drift. 16A Ben-Day sits on top. Motion stops when requested. */
+.house-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--house-ground-deep);
+  color: var(--house-cream);
+  min-height: 320px;
+}
+
+.house-hero__drift {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      110deg,
+      #14080b,
+      #6d1020,
+      #08343a,
+      #149e96,
+      #14080b
+    )
+    0 0 / 280% 280%;
+  animation: house-drift 16s ease-in-out infinite alternate;
+}
+
+.house-hero__benday {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, #ff2a2a 1.05px, transparent 1.25px),
+    radial-gradient(circle, #21e4ff 1.05px, transparent 1.25px),
+    radial-gradient(circle, #f4efe4 0.9px, transparent 1.15px);
+  background-size: 8px 8px, 8px 8px, 8px 8px;
+  background-position: 2px 1px, -2px -1px, 0 0;
+  opacity: 0.38;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.house-hero__line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 46%;
+  pointer-events: none;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 90' preserveAspectRatio='none'><path d='M0 72 C28 70 48 58 70 50 S120 28 150 34 S210 18 280 12' fill='none' stroke='%237fded6' stroke-width='3'/></svg>")
+    center / 100% 100% no-repeat;
+}
+
+.house-hero__copy {
+  position: relative;
+  z-index: 1;
+  max-width: 40rem;
+  padding: 1.75rem 0 2.25rem;
+}
+
+.house-kicker {
+  display: inline-block;
+  margin: 0 0 0.75rem;
+  padding: 4px 8px;
+  border: 1px solid #f4efe4;
+  box-shadow: 4px 4px #ff3d8a;
+  color: #f4efe4;
+  background: transparent;
+  font-family: var(--house-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+.house-display {
+  font-family: var(--house-display);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+  color: var(--house-cream);
+}
+
+.house-card {
+  border: 1px solid #f4efe4;
+  background: #07070a;
+  color: #f4efe4;
+  box-shadow: 4px 4px 0 #ff3d8a;
+}
+
+.house-card__issue {
+  font-family: var(--house-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #b7d0cb;
+}
+
+.house-nav-tab {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 10px;
+  border: 1px solid var(--house-cream);
+  color: var(--house-cream);
+  background: transparent;
+  font-family: var(--house-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.house-nav-tab--on {
+  color: #100e0c;
+  background: var(--house-cream);
+}
+
+@keyframes house-drift {
+  to {
+    background-position: 100% 0;
+  }
+}
+
+html[data-theme="light"] .house-kicker {
+  color: #14110e;
+  border-color: #14110e;
+}
+
+/* 14C — stat pass. Figures stay cream on near-black; red is a rule, not type. */
+.art-floating-box,
+html[data-theme="dark"] .art-floating-box,
+html[data-theme="light"] .art-floating-box {
+  background: #100e0c !important;
+  color: #f4efe4 !important;
+  border: 1px solid #2a3330 !important;
+  border-top: 3px solid #e60000 !important;
+  border-radius: 0 !important;
+  box-shadow: 4px 4px 0 #ff3d8a !important;
+}
+
+.art-floating-box:nth-child(even),
+html[data-theme="dark"] .art-floating-box:nth-child(even) {
+  border-top-color: #7fded6 !important;
+}
+
+.art-floating-box:hover,
+html[data-theme="dark"] .art-floating-box:hover {
+  transform: none;
+  border-color: #2a3330 !important;
+  box-shadow: 4px 4px 0 #ff3d8a !important;
+}
+
+.art-stat-value,
+.art-stat-value--red,
+html[data-theme="dark"] .art-stat-value,
+html[data-theme="dark"] .art-stat-value--red {
+  color: #f3ead7 !important;
+  font-family: "Anton", Impact, sans-serif;
+}
+
+.art-stat-body,
+html[data-theme="dark"] .art-stat-body {
+  color: #b7d0cb !important;
+}
+
+.art-stat-pill,
+.art-stat-pill--red,
+html[data-theme="dark"] .art-stat-pill,
+html[data-theme="dark"] .art-stat-pill--red {
+  color: #7fded6 !important;
+  background: transparent !important;
+  border-color: #7fded6 !important;
+  border-radius: 0 !important;
+}
+
+.art-stat-citation,
+html[data-theme="dark"] .art-stat-citation {
+  color: #8fb8b2 !important;
+}
+
+/* 8C — hard offset on the bar layer. Does not move the data. */
+.house-bars .barlayer .trace {
+  filter: drop-shadow(5px 5px 0 #241820);
+}
+
+/* 11C pattern is available for a real seven-way share. Existing charts are not retiled. */
+.house-share-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  background: #121014;
+}
+
+.house-share-tile {
+  background: #181512;
+  color: #f4efe4;
+  padding: 12px;
+}
+
+.house-share-tile strong {
+  display: block;
+  font-family: "Anton", Impact, sans-serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+}
+
+.house-share-tile i {
+  display: block;
+  height: 4px;
+  margin-top: 8px;
+  background: #e60000;
+  font-style: normal;
+}
+
+/* Article chrome. Loaded after artometrics-article.css so these win. */
+.artometrics-article-body main.art-article-main > h2 {
+  font-family: "Anton", Impact, sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.03em !important;
+  text-transform: none !important;
+  text-align: left !important;
+  align-items: flex-start !important;
+  color: #f3ead7 !important;
+  line-height: 0.95 !important;
+}
+
+html[data-theme="light"] .artometrics-article-body main.art-article-main > h2 {
+  color: #14110e !important;
+}
+
+.artometrics-article-body main.art-article-main > h2:not(#toc-title)::before,
+html[data-theme="dark"] .artometrics-article-body main.art-article-main > h2:not(#toc-title)::before {
+  background-color: #7fded6 !important;
+}
+
+html[data-theme="light"] .artometrics-article-body main.art-article-main > h2:not(#toc-title)::before {
+  background-color: #0b5c56 !important;
+}
+
+.artometrics-article-body main.art-article-main > h3,
+.artometrics-article-body main.art-article-main > h3.anchored,
+html[data-theme="dark"] .artometrics-article-body main.art-article-main > h3:not(.art-back-matter__subhead) {
+  font-family: "Anton", Impact, sans-serif !important;
+  font-weight: 400 !important;
+  font-size: clamp(1.35rem, 2vw, 1.8rem) !important;
+  letter-spacing: -0.02em !important;
+  text-transform: none !important;
+  text-align: left !important;
+  color: #f3ead7 !important;
+}
+
+html[data-theme="light"] .artometrics-article-body main.art-article-main > h3,
+html[data-theme="light"] .artometrics-article-body main.art-article-main > h3.anchored {
+  color: #14110e !important;
+}
+
+.artometrics-article-body main.art-article-main > p.art-p:nth-of-type(2) {
+  color: inherit !important;
+  font-weight: 400 !important;
+}
+
+.artometrics-article-body main.art-article-main > p.art-p:first-of-type::first-letter {
+  color: #f3ead7 !important;
+  border-color: #7fded6 !important;
+  background: #0e1110 !important;
+}
+
+html[data-theme="light"] .artometrics-article-body main.art-article-main > p.art-p:first-of-type::first-letter {
+  color: #14110e !important;
+  border-color: #0b5c56 !important;
+  background: #f3ead7 !important;
+}
+
+.artometrics-article-body table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 12px !important;
+  background: transparent !important;
+}
+
+.artometrics-article-body thead tr,
+.artometrics-article-body tbody tr {
+  box-shadow: 4px 4px 0 #ff3d8a;
+}
+
+.artometrics-article-body th,
+.artometrics-article-body td {
+  background: #121014 !important;
+  color: #f4efe4 !important;
+  border-top: 1px solid #f3ead7 !important;
+  border-bottom: 1px solid #f3ead7 !important;
+  padding: 0.6rem 0.8rem !important;
+}
+
+.artometrics-article-body th:first-child,
+.artometrics-article-body td:first-child {
+  border-left: 1px solid #f3ead7 !important;
+}
+
+.artometrics-article-body th:last-child,
+.artometrics-article-body td:last-child {
+  border-right: 1px solid #f3ead7 !important;
+}
+
+.artometrics-article-body figure.art-exhibit,
+html[data-theme="dark"] .artometrics-article-body figure.art-exhibit {
+  background: #121014 !important;
+  border: 1px solid #f3ead7 !important;
+  box-shadow: 4px 4px 0 #ff3d8a !important;
+}
+
+.artometrics-article-body .art-exhibit__header,
+.artometrics-article-body .art-chart-heading,
+.artometrics-article-body .art-chart-credit {
+  background: #121014 !important;
+  color: #f3ead7 !important;
+  border-color: #2a3330 !important;
+}
+
+.artometrics-article-body .art-exhibit__label {
+  display: inline-block !important;
+  padding: 4px 8px !important;
+  border: 1px solid #f4efe4 !important;
+  box-shadow: 4px 4px #ff3d8a !important;
+  color: #f4efe4 !important;
+  background: transparent !important;
+}
+
+.artometrics-article-body .art-exhibit__title,
+.artometrics-article-body .art-chart-heading,
+.artometrics-article-body .art-chart-heading__line,
+.artometrics-article-body .art-chart-heading__line--primary,
+.artometrics-article-body .art-chart-heading__line--accent {
+  color: #f3ead7 !important;
+  font-family: "Anton", Impact, sans-serif !important;
+  font-weight: 400 !important;
+}
+
+.artometrics-article-body .art-exhibit__source,
+.artometrics-article-body .art-exhibit__caption,
+.artometrics-article-body .art-chart-heading__subtitle,
+.artometrics-article-body .art-chart-credit {
+  color: #b7d0cb !important;
+}
+
+.artometrics-article-body .art-chart-live,
+html[data-theme="dark"] .artometrics-article-body .art-chart-live,
+html[data-theme="light"] .artometrics-article-body .art-chart-live {
+  background: #0e1110 !important;
+  border-color: #2a3330 !important;
+}
+
+.artometrics-article-body .art-chart-insight,
+.artometrics-article-body .art-report-summary {
+  background: #100e0c !important;
+  color: #f4f7f6 !important;
+  border-color: #2a3330 !important;
+  border-left-color: #7fded6 !important;
+}
+
+.artometrics-article-body .art-chart-insight strong,
+.artometrics-article-body .art-report-summary__label {
+  color: #7fded6 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .house-hero__drift {
+    animation: none;
+  }
+}

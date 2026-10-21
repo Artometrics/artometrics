@@ -1,8 +1,30 @@
 /**
- * Artometrics brand tokens — anaglyph magazine (red/blue on newsprint B&W).
- * Wordmark: Chomsky only. Display + body: DM Sans. Data/meta: DM Mono.
- * Canonical refs: docs/design-bible/tokens.md, docs/design-system/README.md
+ * Artometrics house tokens — Style Lab picks (Oct 2026).
+ * 1A cream Chomsky on near-black. 2A signal red + Tiffany on green-black.
+ * 3B Anton display. Body stays DM Sans (body options were rejected).
+ * Data/meta: DM Mono. Canonical CSS: public/css/house-style.css
  */
+
+/** Style Lab 2A / 7C / 8C / 10C literals. */
+export const House = {
+  ground: "#0e1110",
+  groundDeep: "#100e0c",
+  offset: "#121014",
+  ink: "#f4f7f6",
+  cream: "#f3ead7",
+  muted: "#b7d0cb",
+  subtle: "#8fb8b2",
+  red: "#e60000",
+  tiffany: "#7fded6",
+  pink: "#ff3d8a",
+  cyan: "#21e4ff",
+  splitRed: "#ff2a2a",
+  shadow: "#241820",
+  paper: "#f3ead7",
+  paperInk: "#14110e",
+  /** Darkened Tiffany so small links clear cream paper (2A itself is dark-only). */
+  linkOnPaper: "#0b5c56",
+} as const;
 
 export type BrandStyle = "swiss" | "magazine";
 
@@ -38,24 +60,24 @@ export const Colors = {
   chartDark: "#000000",
   chartMid: "#525252",
 
-  paper: "#FFFFFF",
-  paperElevated: "#F2F2F2",
-  ink: "#000000",
-  ink2: "#525252",
-  ink3: "#767676",
-  blue: "#0047FF",
-  blueSoft: "#E6EEFF",
-  redSoft: "#FFE8E8",
-  night: "#000000",
-  night2: "#171717",
-  rule: "#E5E5E5",
-  /** UI chrome accent (nav, kickers, CTAs) — blue in swapped anaglyph magazine. */
-  magazineAccent: "#0047FF",
-  magazineAccentSoft: "#E6EEFF",
-  /** Wordmark + dateline counterweight — red. */
-  wordmarkRed: "#E60000",
-  editorialNavy: "#0047FF",
-  editorialNavyDark: "#0038CC",
+  paper: House.paper,
+  paperElevated: "#fffef8",
+  ink: House.paperInk,
+  ink2: "#3a332c",
+  ink3: "#5c5148",
+  blue: House.tiffany,
+  blueSoft: "#e7f3f1",
+  redSoft: "#3a1020",
+  night: House.ground,
+  night2: House.offset,
+  rule: "#2a3330",
+  /** Readable UI accent on the 2A ground. Signal red is for large marks and rules. */
+  magazineAccent: House.tiffany,
+  magazineAccentSoft: "#143532",
+  /** Wordmark is cream (1A), not red. */
+  wordmarkRed: House.cream,
+  editorialNavy: House.tiffany,
+  editorialNavyDark: House.linkOnPaper,
 } as const;
 
 export type BrandFonts = {
@@ -75,9 +97,9 @@ export const SwissFonts: BrandFonts = {
   mono: "DM Mono, 'Courier New', Courier, monospace",
 };
 
-/** Magazine default — DM Sans display/body, Chomsky masthead only. */
+/** Magazine default — Anton display (3B), DM Sans body, Chomsky masthead only. */
 export const MagazineFonts: BrandFonts = {
-  display: "DM Sans, system-ui, sans-serif",
+  display: "Anton, Impact, sans-serif",
   sans: "DM Sans, system-ui, sans-serif",
   serif: "DM Sans, system-ui, sans-serif",
   wordmark: "Chomsky, Georgia, serif",
@@ -144,35 +166,35 @@ const SwissThemes: Record<ThemeMode, ThemeColors> = {
 const MagazineThemes: Record<ThemeMode, ThemeColors> = {
   light: {
     mode: "light",
-    bg: Colors.paper,
+    bg: House.paper,
     bgElevated: Colors.paperElevated,
-    text: Colors.ink,
+    text: House.paperInk,
     textMuted: Colors.ink2,
     textSubtle: Colors.ink3,
-    border: Colors.rule,
-    accent: Colors.blue,
-    accentSoft: Colors.blueSoft,
-    secondary: Colors.accent500,
-    inverse: Colors.paper,
-    headerBg: Colors.paper,
+    border: "#d9cbb8",
+    accent: House.linkOnPaper,
+    accentSoft: "#d5ebe8",
+    secondary: House.red,
+    inverse: House.paper,
+    headerBg: House.groundDeep,
     overlayBg: Colors.paperElevated,
-    rule: Colors.black,
+    rule: House.paperInk,
   },
   dark: {
     mode: "dark",
-    bg: Colors.night,
-    bgElevated: Colors.night2,
-    text: Colors.white,
-    textMuted: Colors.base400,
-    textSubtle: Colors.base500,
-    border: Colors.base800,
-    accent: "#0047FF",
-    accentSoft: "#1A2744",
-    secondary: Colors.accent400,
-    inverse: Colors.black,
-    headerBg: Colors.night,
-    overlayBg: Colors.night2,
-    rule: Colors.white,
+    bg: House.ground,
+    bgElevated: House.offset,
+    text: House.ink,
+    textMuted: House.muted,
+    textSubtle: House.subtle,
+    border: "#2a3330",
+    accent: House.tiffany,
+    accentSoft: "#143532",
+    secondary: House.red,
+    inverse: House.groundDeep,
+    headerBg: House.groundDeep,
+    overlayBg: House.offset,
+    rule: House.cream,
   },
 };
 
@@ -188,7 +210,7 @@ export function resolveBrandFonts(brand: BrandStyle): BrandFonts {
 
 export const BRAND_STYLE_LABELS: Record<BrandStyle, string> = {
   swiss: "Swiss Modern",
-  magazine: "Magazine (DM Sans / anaglyph)",
+  magazine: "Magazine (Anton / Tiffany)",
 };
 
 export const DEFAULT_BRAND_STYLE: BrandStyle = "magazine";

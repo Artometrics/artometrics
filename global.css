@@ -2,8 +2,10 @@
 @import "uniwind";
 
 /*
-  Artometrics — anaglyph magazine: white/black structure, red + blue accents.
-  Chomsky wordmark only; DM Sans headlines/body; DM Mono data/meta.
+  Artometrics house style (Style Lab, Oct 2026).
+  2A green-black ground, Tiffany accent, signal red for large marks.
+  3B Anton display. Body stays DM Sans. Chomsky is the wordmark only.
+  Canonical literals also live in public/css/house-style.css and constants/Colors.ts.
 */
 
 @theme {
@@ -31,13 +33,13 @@
   --color-base-900: #171717;
   --color-base-950: #000000;
 
-  --color-paper: #ffffff;
-  --color-paper-elevated: #f2f2f2;
-  --color-magazine-accent: #0047ff;
-  --color-magazine-accent-soft: #e6eeff;
+  --color-paper: #f3ead7;
+  --color-paper-elevated: #fffef8;
+  --color-magazine-accent: #7fded6;
+  --color-magazine-accent-soft: #143532;
   --color-secondary: #e60000;
 
-  --font-display: "DM Sans", system-ui, sans-serif;
+  --font-display: "Anton", Impact, sans-serif;
   --font-sans: "DM Sans", system-ui, sans-serif;
   --font-serif: "DM Sans", system-ui, sans-serif;
   --font-wordmark: "Chomsky", Georgia, serif;
@@ -58,61 +60,63 @@
 @layer theme {
   :root {
     @variant light {
-      --color-bg: #ffffff;
-      --color-bg-elevated: #f2f2f2;
-      --color-fg: #000000;
-      --color-muted: #525252;
-      --color-subtle: #767676;
-      --color-border: #e5e5e5;
-      --color-accent: #0047ff;
-      --color-accent-soft: #e6eeff;
+      --color-bg: #f3ead7;
+      --color-bg-elevated: #fffef8;
+      --color-fg: #14110e;
+      --color-muted: #3a332c;
+      --color-subtle: #5c5148;
+      --color-border: #d9cbb8;
+      --color-accent: #0b5c56;
+      --color-accent-soft: #d5ebe8;
       --color-secondary: #e60000;
-      --color-inverse: #ffffff;
-      --color-header: #ffffff;
-      --color-overlay: #f2f2f2;
-      --color-rule: #000000;
-      --font-display: "DM Sans", system-ui, sans-serif;
+      --color-inverse: #f3ead7;
+      --color-header: #100e0c;
+      --color-overlay: #fffef8;
+      --color-rule: #14110e;
+      --font-display: "Anton", Impact, sans-serif;
       --font-sans: "DM Sans", system-ui, sans-serif;
       --font-serif: "DM Sans", system-ui, sans-serif;
       --font-wordmark: "Chomsky", Georgia, serif;
       --font-mono: "DM Mono", ui-monospace, monospace;
-      --art-paper: #ffffff;
-      --art-paper-muted: #f2f2f2;
-      --art-ink: #000000;
-      --art-ink-muted: #525252;
-      --art-rule: #e5e5e5;
+      --art-paper: #f3ead7;
+      --art-paper-muted: #fffef8;
+      --art-ink: #14110e;
+      --art-ink-muted: #3a332c;
+      --art-rule: #d9cbb8;
       --art-red: #e60000;
-      --art-blue: #0047ff;
-      --art-ui-accent: #0047ff;
+      --art-blue: #0b5c56;
+      --art-ui-accent: #0b5c56;
       --art-ui-counter: #e60000;
     }
 
     @variant dark {
-      --color-bg: #000000;
-      --color-bg-elevated: #171717;
-      --color-fg: #ffffff;
-      --color-muted: #a3a3a3;
-      --color-subtle: #767676;
-      --color-border: #262626;
-      --color-accent: #0047ff;
-      --color-accent-soft: #1a2744;
-      --color-secondary: #ff3333;
-      --color-overlay: #171717;
-      --color-rule: #ffffff;
-      --font-display: "DM Sans", system-ui, sans-serif;
+      --color-bg: #0e1110;
+      --color-bg-elevated: #121014;
+      --color-fg: #f4f7f6;
+      --color-muted: #b7d0cb;
+      --color-subtle: #8fb8b2;
+      --color-border: #2a3330;
+      --color-accent: #7fded6;
+      --color-accent-soft: #143532;
+      --color-secondary: #e60000;
+      --color-inverse: #100e0c;
+      --color-header: #100e0c;
+      --color-overlay: #121014;
+      --color-rule: #f3ead7;
+      --font-display: "Anton", Impact, sans-serif;
       --font-sans: "DM Sans", system-ui, sans-serif;
       --font-serif: "DM Sans", system-ui, sans-serif;
       --font-wordmark: "Chomsky", Georgia, serif;
       --font-mono: "DM Mono", ui-monospace, monospace;
-      --art-paper: #000000;
-      --art-paper-muted: #171717;
-      --art-ink: #ffffff;
-      --art-ink-muted: #a3a3a3;
-      --art-rule: #262626;
-      --art-red: #ff3333;
-      --art-blue: #0047ff;
-      --art-ui-accent: #0047ff;
-      --art-ui-counter: #ff3333;
+      --art-paper: #0e1110;
+      --art-paper-muted: #121014;
+      --art-ink: #f4f7f6;
+      --art-ink-muted: #b7d0cb;
+      --art-rule: #2a3330;
+      --art-red: #e60000;
+      --art-blue: #7fded6;
+      --art-ui-accent: #7fded6;
+      --art-ui-counter: #e60000;
     }
   }
 }

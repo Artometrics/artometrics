@@ -27,29 +27,36 @@ export function BlogCard({
     : "Kyle McAuliffe";
 
   const titleClass =
-    "font-sans text-[19px] font-semibold leading-[1.2] tracking-tight text-fg md:text-[21px]";
+    "font-display text-[22px] leading-[1.05] text-fg md:text-[26px]";
 
   if (variant === "pick") {
-    // Mobbin refs (Finimize / NYT iOS feeds): kicker -> headline -> meta, thumb on the right.
     return (
       <Link href={`/${post.slug}`} asChild>
         <Pressable
           accessibilityRole="link"
           accessibilityLabel={post.title}
-          className="flex-row items-start gap-4 border-b border-border py-4"
+          className="house-card mt-3 flex-row items-start gap-4 p-3"
+          style={{
+            backgroundColor: "#07070a",
+            borderWidth: 1,
+            borderColor: "#f4efe4",
+            boxShadow: "4px 4px 0 #ff3d8a",
+          }}
         >
           <View className="min-w-0 flex-1 gap-1.5">
-            {label ? (
-              <Text className="font-mono text-[10px] font-semibold uppercase tracking-[1.6px] text-accent">
-                {label}
-              </Text>
-            ) : null}
-            <Text className={titleClass} numberOfLines={3}>
+            <Text className="house-card__issue" style={{ fontFamily: "DM Mono", color: "#b7d0cb" }}>
+              {post.pubDate ? formatDate(post.pubDate) : label}
+            </Text>
+            <Text
+              className="font-display text-[22px] leading-[1.02]"
+              style={{ fontFamily: "Anton", color: "#f4efe4" }}
+              numberOfLines={3}
+            >
               {post.title}
             </Text>
-            {post.pubDate ? (
-              <Text className="font-mono text-[10px] uppercase tracking-[1.4px] text-subtle">
-                {formatDate(post.pubDate)}
+            {label ? (
+              <Text className="font-mono text-[10px] uppercase tracking-[1.4px]" style={{ color: "#8fb8b2" }}>
+                {label}
               </Text>
             ) : null}
           </View>
@@ -93,7 +100,10 @@ export function BlogCard({
                 {label}
               </Text>
             ) : null}
-            <Text className="font-sans text-3xl font-semibold leading-[1.08] tracking-tight text-white md:text-4xl">
+            <Text
+              className="font-display text-3xl leading-[0.95] text-white md:text-4xl"
+              style={{ fontFamily: "Anton" }}
+            >
               {post.title}
             </Text>
             <Text className="font-sans text-[12px] uppercase tracking-[1.4px] text-white/70">
@@ -108,7 +118,7 @@ export function BlogCard({
   if (variant === "stack") {
     const borderClass = "border border-border";
     const stackTitle =
-      "font-sans text-[18px] font-semibold leading-[1.25] tracking-tight text-fg";
+      "font-display text-[22px] leading-[1.05] text-fg";
     return (
       <Link href={`/${post.slug}`} asChild>
         <Pressable className={`min-w-[140px] flex-1 gap-0 overflow-hidden ${borderClass} bg-header`}>
@@ -153,7 +163,7 @@ export function BlogCard({
               {label}
             </Text>
           ) : null}
-          <Text className="font-sans text-2xl font-semibold leading-7 tracking-tight text-fg">
+          <Text className="font-display text-[28px] leading-[1.02] text-fg" style={{ fontFamily: "Anton" }}>
             {post.title}
           </Text>
           <Text

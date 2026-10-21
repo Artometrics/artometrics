@@ -1,28 +1,39 @@
 # Artometrics shared ggplot2 export helpers.
-# Source from chart scripts: source("scripts/r/artometrics_theme.R")
+# House style (Style Lab, Oct 2026): green-black ground, pink bars,
+# Tiffany line, cream ink. Source from chart scripts:
+# source("scripts/r/artometrics_theme.R")
+#
+# PNG posters already on the site keep their old colors until a report is
+# re-exported. Live Plotly picks the same palette up in lib/charts/plotlyTheme.ts.
+# 9B zero baseline, 10C scatter stroke, 12A Equal Earth, and 15B sign colors
+# are opt-in helpers below. They do not recompute a series.
 
 suppressPackageStartupMessages({
   library(ggplot2)
   library(scales)
 })
 
-ART_HIGHLIGHT <- "#C0392B"
-ART_SECONDARY <- "#1C1C1E"
-ART_MID <- "#6B6B6B"
-ART_CREAM <- "#FAFAF8"
-ART_DARK <- "#1C1C1E"
-ART_MUTED <- "#D5D5D5"
+ART_GROUND <- "#0e1110"
+ART_INK <- "#f4f7f6"
+ART_HIGHLIGHT <- "#ff3d8a"
+ART_SECONDARY <- "#7fded6"
+ART_MID <- "#8fb8b2"
+ART_CREAM <- ART_GROUND
+ART_DARK <- ART_INK
+ART_MUTED <- "#2a3330"
+ART_RED <- "#e60000"
+ART_CYAN <- "#21e4ff"
+ART_SPLIT_RED <- "#ff2a2a"
 
 ART_BAR_GRADIENT <- c(
-  "#1C1C1E", "#2A2A2A", "#3A3A3A", "#4A4A4A", "#5C5C5C",
-  "#6E3A34", "#8B3228", "#A93226", "#C0392B", "#E74C3C"
+  "#7fded6", "#9adfd6", "#f3ead7", "#ffb3d4", "#ff3d8a"
 )
 
 ART_TIER_COLORS <- c(
-  "No Penalty" = "#1C1C1E",
-  "Low" = "#6B6B6B",
-  "Medium" = "#B03A2E",
-  "High" = "#C0392B"
+  "No Penalty" = "#8fb8b2",
+  "Low" = "#7fded6",
+  "Medium" = "#f3ead7",
+  "High" = "#ff3d8a"
 )
 
 ART_SOURCE_DEFAULT <- "Source: CMS Hospital Readmissions Reduction Program (HRRP), FY2025 supplemental data"
@@ -64,13 +75,13 @@ art_title_theme <- function() {
 theme_artometrics <- function(base_size = 11) {
   theme_minimal(base_size = base_size, base_family = "Helvetica") +
     theme(
-      plot.background = element_rect(fill = ART_CREAM, color = NA),
-      panel.background = element_rect(fill = ART_CREAM, color = NA),
-      panel.grid.major.y = element_line(color = "#E8E6E1", linewidth = 0.32),
-      panel.grid.major.x = element_line(color = "#EFEDE8", linewidth = 0.22),
+      plot.background = element_rect(fill = ART_GROUND, color = NA),
+      panel.background = element_rect(fill = ART_GROUND, color = NA),
+      panel.grid.major.y = element_line(color = ART_MUTED, linewidth = 0.32),
+      panel.grid.major.x = element_line(color = "#1c2422", linewidth = 0.22),
       panel.grid.minor = element_blank(),
-      axis.line.x = element_line(color = "#D5D5D5", linewidth = 0.35),
-      axis.ticks = element_line(color = "#D5D5D5", linewidth = 0.3),
+      axis.line.x = element_line(color = ART_MUTED, linewidth = 0.35),
+      axis.ticks = element_line(color = ART_MUTED, linewidth = 0.3),
       axis.ticks.length = unit(3, "pt"),
       axis.title = element_text(color = ART_MID, size = rel(0.82), margin = margin(t = 6, r = 6)),
       axis.text = element_text(color = ART_DARK, size = rel(0.78)),
@@ -83,7 +94,7 @@ theme_artometrics <- function(base_size = 11) {
       legend.key.height = unit(10, "pt"),
       legend.key.width = unit(14, "pt"),
       strip.text = element_text(face = "bold", color = ART_DARK, size = rel(0.8)),
-      strip.background = element_rect(fill = "#F7F5F1", color = NA),
+      strip.background = element_rect(fill = "#121014", color = NA),
       plot.margin = margin(t = 14, r = 18, b = 16, l = 14)
     )
 }
@@ -134,7 +145,7 @@ art_bar_colors <- function(n, highlight_last = TRUE) {
 }
 
 #' Fallback in-plot takeaway strip when cowplot unavailable
-art_takeaway_strip <- function(takeaway, fill = ART_HIGHLIGHT) {
+art_takeaway_strip <- function(takeaway, fill = "#100e0c") {
   list(
     annotate(
       "rect",
@@ -146,7 +157,7 @@ art_takeaway_strip <- function(takeaway, fill = ART_HIGHLIGHT) {
       x = -Inf, y = Inf,
       label = takeaway,
       hjust = -0.02, vjust = 1.8,
-      color = "#FFFFFF",
+      color = ART_INK,
       size = 3.2,
       fontface = "bold",
       family = "Helvetica"
@@ -155,7 +166,7 @@ art_takeaway_strip <- function(takeaway, fill = ART_HIGHLIGHT) {
 }
 
 #' Emerald takeaway strip (Economist-style header band)
-art_takeaway_grob <- function(takeaway, fill = ART_HIGHLIGHT, width = 12, height = 0.55) {
+art_takeaway_grob <- function(takeaway, fill = "#100e0c", width = 12, height = 0.55) {
   if (!requireNamespace("cowplot", quietly = TRUE)) {
     return(NULL)
   }
@@ -165,7 +176,7 @@ art_takeaway_grob <- function(takeaway, fill = ART_HIGHLIGHT, width = 12, height
       x = 0.015,
       hjust = 0,
       fontface = "bold",
-      color = "#FFFFFF",
+      color = ART_INK,
       size = 11,
       fontfamily = "Helvetica"
     ) +
@@ -229,7 +240,7 @@ save_art_chart <- function(
     width = width,
     height = height,
     dpi = dpi,
-    bg = ART_CREAM
+    bg = ART_GROUND
   )
 
   if (!is.null(plotly_obj)) {
@@ -250,4 +261,30 @@ save_art_chart <- function(
   }
 
   invisible(png_path)
+}
+
+#' 9B — include zero on a continuous y scale. Opt in; do not wrap published series.
+art_zero_scale <- function() {
+  scale_y_continuous(expand = expansion(mult = c(0, 0.06)))
+}
+
+#' 10C — red point, cyan stroke. Pass the real x/y; this does not offset them.
+art_scatter_layer <- function(...) {
+  geom_point(
+    color = ART_CYAN,
+    fill = ART_SPLIT_RED,
+    shape = 21,
+    stroke = 1.1,
+    ...
+  )
+}
+
+#' 12A — Equal Earth proj string (EPSG:8857). Caller applies it; this does not reproject data.
+art_equal_earth <- function() {
+  "+proj=eqearth +datum=WGS84 +units=m +no_defs"
+}
+
+#' 15B — color an already-computed change column by sign. Does not difference levels.
+art_change_colors <- function(change) {
+  ifelse(change < 0, ART_SECONDARY, ifelse(change > 0, ART_HIGHLIGHT, ART_MID))
 }

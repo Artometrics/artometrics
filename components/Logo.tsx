@@ -6,7 +6,7 @@ import {
   type ViewStyle,
 } from "react-native";
 import { Image } from "expo-image";
-import { Colors } from "@/constants/Colors";
+import { House } from "@/constants/Colors";
 import { assetUrl } from "@/lib/assets";
 import { useTheme } from "@/lib/theme";
 
@@ -26,8 +26,8 @@ type Props = {
 };
 
 /**
- * Artometrics wordmark — Magazine keeps Chomsky on the logo only;
- * Swiss uses Anton. Site titles/body stay on DM Sans / DM Mono.
+ * 1A lockup — cream Chomsky wordmark plus the standalone A.
+ * Header ground is near-black in both themes, so the mark stays cream.
  */
 export function Logo({
   style,
@@ -40,17 +40,12 @@ export function Logo({
   className,
   containerClassName,
 }: Props) {
-  const { mode, brandStyle } = useTheme();
+  const { brandStyle } = useTheme();
   const progress = Math.max(0, Math.min(1, compact));
   const markSize = Math.round(size * (0.95 + progress * 0.15));
   const useMark = progress > 0.5;
-  const markMode =
-    markVariant === "auto" ? mode : markVariant === "light" ? "dark" : "light";
-  const mark =
-    markMode === "dark"
-      ? assetUrl("/images/brand/chomsky-a-white.png")
-      : assetUrl("/images/brand/chomsky-a-black.png");
-  const markColor = markMode === "dark" ? Colors.white : Colors.black;
+  const mark = assetUrl("/images/brand/chomsky-a-white.png");
+  const markColor = House.cream;
   const isLeft = align === "left";
   const isMagazine = brandStyle === "magazine";
   const alignClass = isLeft ? "items-start" : "items-center";
@@ -103,10 +98,17 @@ export function Logo({
       style={[{ height: Math.max(size + 2, markSize + 2) }, containerStyle]}
       accessibilityLabel="Artometrics"
     >
+      {mark ? (
+        <Image
+          source={{ uri: mark }}
+          style={{ width: Math.round(size * 0.85), height: Math.round(size * 0.85) }}
+          contentFit="contain"
+          accessibilityElementsHidden
+        />
+      ) : null}
       {showWordmark ? (
         <Text
           className={[
-            markVariant === "auto" ? "text-secondary" : "",
             isMagazine ? "tracking-wide" : "uppercase tracking-wider",
             isLeft ? "text-left" : "text-center",
             className,
@@ -117,14 +119,14 @@ export function Logo({
             {
               fontFamily: isMagazine ? "Chomsky" : "Anton",
               fontSize: size * (isMagazine ? 0.88 : 0.92),
-              color: forcedWordColor,
+              color: forcedWordColor ?? markColor,
             },
             style,
           ]}
           numberOfLines={1}
         >
           Artometrics
-          {!isMagazine ? <Text className="text-accent">.</Text> : null}
+          {!isMagazine ? <Text style={{ color: House.tiffany }}>.</Text> : null}
         </Text>
       ) : null}
     </View>
