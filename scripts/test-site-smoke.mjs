@@ -17,7 +17,6 @@ const paths = [
   "/studio",
   "/llms.txt",
   "/llms-full.txt",
-  "/sitemap.xml",
   "/rss.xml",
   "/podcast.xml",
   "/robots.txt",

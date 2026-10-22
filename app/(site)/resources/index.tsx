@@ -21,7 +21,6 @@ const guides = [
 const modelLinks = [
   { href: "/llms.txt", label: "/llms.txt" },
   { href: "/llms-full.txt", label: "/llms-full.txt" },
-  { href: "/sitemap.xml", label: "/sitemap.xml" },
   { href: "/rss.xml", label: "/rss.xml" },
   { href: "/podcast.xml", label: "/podcast.xml" },
 ];

@@ -68,3 +68,7 @@ See [AGENTS.md](./AGENTS.md) for routing, content schemas, and contributor guard
 
 - **GitHub:** https://github.com/Artometrics
 - **Ethics:** https://artometrics.com/legal/ethics-statement
+
+## Search indexing
+
+SEO/indexing intentionally disabled; re-enable robots, sitemap, meta at promoted launch.
