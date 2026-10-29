@@ -12,11 +12,6 @@
   node_bundler = "esbuild"
 
 [[headers]]
-  for = "/*"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
-
-[[headers]]
   for = "/llms.txt"
   [headers.values]
     Cache-Control = "public, max-age=3600"
@@ -1631,6 +1626,12 @@
   to = "/institutions/:splat"
   status = 301
   force = true
+
+# Preview edition used trailing slashes (/franchise/). Canonical URLs have none.
+[[redirects]]
+  from = "/:slug/"
+  to = "/:slug"
+  status = 301
 
 # Expo Router static export SPA fallback (keep after API + legacy redirects)
 [[redirects]]

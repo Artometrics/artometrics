@@ -1,0 +1,10 @@
+report_year,condition,national_readmit_rate_pct,source_note
+2012,Heart Failure,24.8,CMS national rate cited in Zuckerman et al. NEJM 2016
+2015,Heart Failure,22.0,Zuckerman et al. NEJM 2016
+2012,Pneumonia,18.4,Zuckerman et al. NEJM 2016
+2015,Pneumonia,16.7,Zuckerman et al. NEJM 2016
+2012,AMI,19.7,Zuckerman et al. NEJM 2016
+2015,AMI,16.7,Zuckerman et al. NEJM 2016
+2024,Heart Failure,19.4,CMS extract mean predicted readmission rate (Jul 2021–Jun 2024 window)
+2024,Pneumonia,15.6,CMS extract mean predicted readmission rate
+2024,AMI,13.4,CMS extract mean predicted readmission rate

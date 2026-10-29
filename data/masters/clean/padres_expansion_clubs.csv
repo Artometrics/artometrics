@@ -1,0 +1,15 @@
+franchID,club,debut,titles,title_years,pennants,postseasons,series_wins,series_losses,pennants_per_postseason,median_attendance_rank,attendance_seasons
+ANA,Angels,1961,1,2002,1,10,5,9,0.1,9,64
+TEX,Rangers,1961,1,2023,3,9,8,8,0.333,16,64
+HOU,Astros,1962,2,2017 2022,5,18,18,16,0.278,14,63
+NYM,Mets,1962,2,1969 1986,5,11,13,9,0.455,12,63
+KCR,Royals,1969,2,1985 2015,4,10,10,8,0.4,22,56
+MIL,Brewers,1969,0,,1,11,4,11,0.091,16,56
+SDP,Padres,1969,0,,2,9,7,9,0.222,17,56
+WSN,Nationals,1969,1,2019,1,6,5,5,0.167,19,56
+SEA,Mariners,1977,0,,0,6,5,6,0.0,19,48
+TOR,Blue Jays,1977,2,1992 1993,3,11,9,9,0.273,13,48
+COL,Rockies,1993,0,,1,5,3,5,0.2,10,32
+FLA,Marlins,1993,2,1997 2003,2,4,7,2,0.5,28,32
+ARI,D-backs,1998,1,2001,2,7,8,6,0.286,19,27
+TBD,Rays,1998,0,,2,9,7,9,0.222,29,27

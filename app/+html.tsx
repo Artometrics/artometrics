@@ -1,5 +1,6 @@
 import { ScrollViewStyleReset } from "expo-router/html";
 import type { PropsWithChildren } from "react";
+import { MAGAZINE_SLUGS } from "@/lib/magazine";
 
 /**
  * Root HTML shell for static web export.
@@ -10,9 +11,9 @@ export default function Root({ children }: PropsWithChildren) {
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <meta name="robots" content="noindex, nofollow" />
+        <meta name="robots" content="index, follow" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
         <meta property="og:site_name" content="Artometrics" />
         <meta property="og:image" content="https://artometrics.com/images/brand/og-default.png" />
         <link rel="alternate" type="application/rss+xml" title="Artometrics Reports" href="/rss.xml" />
@@ -55,6 +56,7 @@ export default function Root({ children }: PropsWithChildren) {
         <meta name="theme-color" content="#0e1110" />
         <meta name="color-scheme" content="dark" />
         <ScrollViewStyleReset />
+        <link rel="stylesheet" href="/css/mag.css" />
         <link rel="stylesheet" href="/css/artometrics-article.css" />
         <link rel="stylesheet" href="/css/site-images.css" />
         <link rel="stylesheet" href="/css/shoegaze-theme.css" />
@@ -186,6 +188,28 @@ export default function Root({ children }: PropsWithChildren) {
             __html: `
               (function () {
                 try {
+                  var MAG = ${JSON.stringify(MAGAZINE_SLUGS)};
+                  var path = (location.pathname || "/").replace(/\\/$/, "") || "/";
+                  var seg = path === "/" ? "" : path.slice(1);
+                  var isMag = path === "/" || (seg && seg.indexOf("/") === -1 && MAG.indexOf(seg) !== -1);
+                  if (isMag) {
+                    var rootEl = document.documentElement;
+                    rootEl.classList.add("mag-mode");
+                    rootEl.style.backgroundColor = "#ffffff";
+                    rootEl.style.color = "#111111";
+                    document.addEventListener("DOMContentLoaded", function () {
+                      document.body.style.backgroundColor = "#ffffff";
+                      document.body.style.color = "#111111";
+                      document.body.style.overflow = "hidden";
+                      var app = document.getElementById("root");
+                      if (app) {
+                        app.style.backgroundColor = "#ffffff";
+                        app.style.color = "#111111";
+                        app.style.overflow = "hidden";
+                      }
+                    });
+                    return;
+                  }
                   var key = "artometrics-theme";
                   var saved = localStorage.getItem(key);
                   // Default dark (KSM-energy magazine) unless user saved light/system.

@@ -1,0 +1,18 @@
+Artometrics READMITTED working data
+Generated: 2026-10-11T23:16:30.688526+00:00
+CMS HRRP modified: 2026-01-26
+
+Primary CMS files:
+- HRRP supplemental: dataset 9n3s-kdb3 (raw_hrrp.csv)
+- Hospital General Information: dataset xubh-q36u (raw_hospital_general.csv)
+
+Licence: U.S. government public data (CMS Provider Data Catalog).
+
+Rounding: headline share uses two decimal places (half-up), e.g. 48.15% — not rounded to 48.2%.
+
+Working pairs after suppression filter: 11720
+National penalized share: 48.15%
+
+SHA256:
+- raw_hrrp.csv: 7e7915dd2751a1e59ac46dbc9194fb781e820962a04d47c31344ea2bb30c91f6
+- raw_hospital_general.csv: f874f09fef895a1ccf5bb7392dcbb2be05c9860339261b093fe00f0c1b013480

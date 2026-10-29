@@ -22,8 +22,16 @@ import {
 } from "@/lib/content";
 import { SECTION_META } from "@/data/sections";
 import { SeoJsonLd } from "@/components/SeoJsonLd";
+import { MagazineFrame } from "@/components/MagazineFrame";
 import { paramString } from "@/lib/params";
 import { trackEvent } from "@/lib/analytics/ga";
+import {
+  issueJsonLd,
+  magazineImg,
+  magazineIssue,
+  magazineIssues,
+  renderIssueBody,
+} from "@/lib/magazine";
 
 function estimateMinutes(html: string) {
   const text = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
@@ -32,7 +40,11 @@ function estimateMinutes(html: string) {
 }
 
 export async function generateStaticParams() {
-  return getBlogPosts().map((post) => ({ slug: post.slug }));
+  const slugs = new Set<string>([
+    ...getBlogPosts().map((post) => post.slug),
+    ...magazineIssues().map((issue) => issue.slug),
+  ]);
+  return [...slugs].map((slug) => ({ slug }));
 }
 
 /** Full-article AI narrations (Gemini TTS, Kore). Runtimes are ffprobe durations floored to whole seconds. */
@@ -46,12 +58,35 @@ const NARRATION_META: Record<string, { runtimeSeconds: number; label: string }> 
 export default function ReportScreen() {
   const params = useLocalSearchParams<{ slug: string | string[] }>();
   const slug = paramString(params.slug);
+  const issue = magazineIssue(slug);
   const post = getBlogPost(slug);
 
   useEffect(() => {
-    if (!post) return;
-    trackEvent("report_view", { slug: post.slug });
-  }, [post?.slug]);
+    const viewed = issue?.slug || post?.slug;
+    if (!viewed) return;
+    trackEvent("report_view", { slug: viewed });
+  }, [issue?.slug, post?.slug]);
+
+  if (issue) {
+    const image = magazineImg(issue.hero);
+    return (
+      <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
+        <PageSeo
+          title={`${issue.title} — Artometrics`}
+          description={issue.dek}
+          path={`/${issue.slug}`}
+          image={image || undefined}
+          type="article"
+        />
+        <SeoJsonLd data={issueJsonLd(issue)} />
+        <MagazineFrame
+          pageKey={issue.slug}
+          label={`Artometrics · ${issue.kicker}`}
+          bodyHtml={renderIssueBody(issue)}
+        />
+      </View>
+    );
+  }
 
   if (!post) {
     return (

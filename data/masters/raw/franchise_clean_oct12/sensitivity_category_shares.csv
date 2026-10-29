@@ -1,0 +1,38 @@
+scenario,category,share_pct
+2019 excl. 15 placeholder rows (<$0.01B),Book sales,1.3
+2019 excl. 15 placeholder rows (<$0.01B),Box Office,8.9
+2019 excl. 15 placeholder rows (<$0.01B),Comic or Manga,8.0
+2019 excl. 15 placeholder rows (<$0.01B),Home Video/Entertainment,3.3
+2019 excl. 15 placeholder rows (<$0.01B),"Merchandise, Licensing & Retail",56.0
+2019 excl. 15 placeholder rows (<$0.01B),Music,1.1
+2019 excl. 15 placeholder rows (<$0.01B),TV,1.5
+2019 excl. 15 placeholder rows (<$0.01B),Video Games/Games,20.0
+2026 excl. unallocated remainder,Book sales,0.7
+2026 excl. unallocated remainder,Box Office,18.6
+2026 excl. unallocated remainder,Home Video/Entertainment,2.6
+2026 excl. unallocated remainder,Live & Other,0.1
+2026 excl. unallocated remainder,"Merchandise, Licensing & Retail",56.9
+2026 excl. unallocated remainder,Mixed (unsplit),0.1
+2026 excl. unallocated remainder,Music,1.5
+2026 excl. unallocated remainder,TV,1.2
+2026 excl. unallocated remainder,Video Games/Games,18.2
+2026 restricted to franchises matched to 2019,Book sales,0.8
+2026 restricted to franchises matched to 2019,Box Office,15.4
+2026 restricted to franchises matched to 2019,Home Video/Entertainment,2.3
+2026 restricted to franchises matched to 2019,Live & Other,0.1
+2026 restricted to franchises matched to 2019,"Merchandise, Licensing & Retail",60.2
+2026 restricted to franchises matched to 2019,Mixed (unsplit),0.2
+2026 restricted to franchises matched to 2019,Music,1.2
+2026 restricted to franchises matched to 2019,TV,1.0
+2026 restricted to franchises matched to 2019,Unallocated,1.8
+2026 restricted to franchises matched to 2019,Video Games/Games,17.1
+2026 >= $4B floor only,Book sales,0.8
+2026 >= $4B floor only,Box Office,15.0
+2026 >= $4B floor only,Home Video/Entertainment,2.2
+2026 >= $4B floor only,Live & Other,0.1
+2026 >= $4B floor only,"Merchandise, Licensing & Retail",58.9
+2026 >= $4B floor only,Mixed (unsplit),0.2
+2026 >= $4B floor only,Music,1.4
+2026 >= $4B floor only,TV,1.0
+2026 >= $4B floor only,Unallocated,1.9
+2026 >= $4B floor only,Video Games/Games,18.6

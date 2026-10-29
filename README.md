@@ -71,4 +71,4 @@ See [AGENTS.md](./AGENTS.md) for routing, content schemas, and contributor guard
 
 ## Search indexing
 
-SEO/indexing intentionally disabled; re-enable robots, sitemap, meta at promoted launch.
+Public site is indexable. `npm run cos:aeo` writes `llms.txt`, `llms-full.txt`, `rss.xml`, `podcast.xml`, and `sitemap.xml`.

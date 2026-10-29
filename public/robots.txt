@@ -1,3 +1,4 @@
-# Search indexing intentionally disabled until promoted launch.
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://artometrics.com/sitemap.xml
