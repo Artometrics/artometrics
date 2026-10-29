@@ -1,0 +1,275 @@
+{
+  "data": [
+    {
+      "x": [
+        49.55,
+        49.57,
+        50.88,
+        51.01,
+        51.06,
+        51.35,
+        51.98,
+        52.56,
+        52.63,
+        52.69,
+        53.68,
+        54.19,
+        55.2,
+        55.78,
+        57.46,
+        57.84,
+        61.08,
+        62.5,
+        65.44
+      ],
+      "y": [
+        "TX",
+        "AZ",
+        "TN",
+        "PA",
+        "NV",
+        "LA",
+        "OH",
+        "AR",
+        "AL",
+        "NY",
+        "WV",
+        "KY",
+        "CA",
+        "GA",
+        "FL",
+        "IL",
+        "MS",
+        "MA",
+        "NJ"
+      ],
+      "orientation": "h",
+      "marker": {
+        "color": [
+          "#1C1C1E",
+          "#2A2A2A",
+          "#2A2A2A",
+          "#2A2A2A",
+          "#3A3A3A",
+          "#4A4A4A",
+          "#4A4A4A",
+          "#4A4A4A",
+          "#5C5C5C",
+          "#6E3A34",
+          "#6E3A34",
+          "#6E3A34",
+          "#8B3228",
+          "#A93226",
+          "#A93226",
+          "#A93226",
+          "#C0392B",
+          "#E74C3C",
+          "#C0392B"
+        ],
+        "line": {
+          "color": "rgba(31,119,180,1)",
+          "width": 0
+        }
+      },
+      "text": [
+        "49.5%",
+        "49.6%",
+        "50.9%",
+        "51%",
+        "51.1%",
+        "51.4%",
+        "52%",
+        "52.6%",
+        "52.6%",
+        "52.7%",
+        "53.7%",
+        "54.2%",
+        "55.2%",
+        "55.8%",
+        "57.5%",
+        "57.8%",
+        "61.1%",
+        "62.5%",
+        "65.4%"
+      ],
+      "textposition": [
+        "outside",
+        "outside",
+        "outside",
+        "outside",
+        "outside",
+        "outside",
+        "outside",
+        "outside",
+        "outside",
+        "outside",
+        "outside",
+        "outside",
+        "outside",
+        "outside",
+        "outside",
+        "outside",
+        "outside",
+        "outside",
+        "outside"
+      ],
+      "hovertemplate": [
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>",
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>",
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>",
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>",
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>",
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>",
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>",
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>",
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>",
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>",
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>",
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>",
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>",
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>",
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>",
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>",
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>",
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>",
+        "<b>%{y}</b><br>%{x:.1f}% of pairs penalized<extra></extra>"
+      ],
+      "type": "bar",
+      "error_y": {
+        "color": "rgba(31,119,180,1)"
+      },
+      "error_x": {
+        "color": "rgba(31,119,180,1)"
+      },
+      "xaxis": "x",
+      "yaxis": "y",
+      "frame": null
+    }
+  ],
+  "layout": {
+    "margin": {
+      "b": 60,
+      "l": 60,
+      "t": 90,
+      "r": 40
+    },
+    "title": {
+      "text": "<b>Which <span style='color:#C0392B;'>States</span> Have the Most Penalized Hospitals?</b><br><span style='font-size:12px;color:#6B6B6B'>Above-average states only \u2014 share of hospital-condition pairs with ERR > 1.0</span>",
+      "x": 0,
+      "xanchor": "left"
+    },
+    "paper_bgcolor": "#F2F0EB",
+    "plot_bgcolor": "#F2F0EB",
+    "font": {
+      "family": "Helvetica",
+      "color": "#1C1C1E",
+      "size": 12
+    },
+    "xaxis": {
+      "domain": [
+        0,
+        1
+      ],
+      "automargin": true,
+      "title": "% of Hospital-Condition Pairs with ERR > 1.0",
+      "gridcolor": "#D5D5D5",
+      "zeroline": false,
+      "range": [
+        0,
+        74.6016
+      ],
+      "fixedrange": true
+    },
+    "yaxis": {
+      "domain": [
+        0,
+        1
+      ],
+      "automargin": true,
+      "title": "",
+      "categoryorder": "array",
+      "categoryarray": [
+        "TX",
+        "AZ",
+        "TN",
+        "PA",
+        "NV",
+        "LA",
+        "OH",
+        "AR",
+        "AL",
+        "NY",
+        "WV",
+        "KY",
+        "CA",
+        "GA",
+        "FL",
+        "IL",
+        "MS",
+        "MA",
+        "NJ"
+      ],
+      "type": "category",
+      "fixedrange": true
+    },
+    "shapes": [
+      {
+        "type": "line",
+        "x0": 48.1,
+        "x1": 48.1,
+        "y0": 0,
+        "y1": 1,
+        "yref": "paper",
+        "line": {
+          "color": "#1C1C1E",
+          "dash": "dash",
+          "width": 1.5
+        }
+      }
+    ],
+    "annotations": [
+      {
+        "x": 48.1,
+        "y": 1.02,
+        "xref": "x",
+        "yref": "paper",
+        "text": "National avg (48.1%)",
+        "showarrow": false,
+        "xanchor": "center",
+        "yanchor": "bottom",
+        "font": {
+          "size": 9,
+          "color": "#1C1C1E"
+        }
+      },
+      {
+        "x": 0.99,
+        "y": 0.01,
+        "xref": "paper",
+        "yref": "paper",
+        "text": "Artometrics",
+        "showarrow": false,
+        "xanchor": "right",
+        "yanchor": "bottom",
+        "font": {
+          "size": 11,
+          "color": "#6B6B6B",
+          "family": "Georgia, serif"
+        }
+      }
+    ],
+    "showlegend": false,
+    "hovermode": "closest",
+    "dragmode": false
+  },
+  "config": {
+    "displayModeBar": false,
+    "displaylogo": false,
+    "responsive": true,
+    "scrollZoom": false,
+    "doubleClick": false,
+    "staticPlot": false,
+    "editable": false,
+    "showTips": false
+  }
+}

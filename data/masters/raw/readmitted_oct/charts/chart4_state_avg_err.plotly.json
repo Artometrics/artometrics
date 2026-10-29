@@ -1,0 +1,208 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "orientation": "h",
+      "x": [
+        1.006687,
+        1.006878,
+        1.007988,
+        1.008479,
+        1.010077,
+        1.010135,
+        1.011403,
+        1.011438,
+        1.011502,
+        1.013884,
+        1.014094,
+        1.01939,
+        1.022866,
+        1.027668,
+        1.034428
+      ],
+      "y": [
+        "SC",
+        "PA",
+        "LA",
+        "OH",
+        "CA",
+        "KY",
+        "GA",
+        "NV",
+        "WV",
+        "AL",
+        "MS",
+        "IL",
+        "FL",
+        "NJ",
+        "MA"
+      ],
+      "marker": {
+        "color": [
+          "#1C1C1E",
+          "#2A2A2A",
+          "#3A3A3A",
+          "#4A4A4A",
+          "#5C5C5C",
+          "#6E3A34",
+          "#8B3228",
+          "#A93226",
+          "#C0392B",
+          "#C0392B"
+        ],
+        "line": {
+          "width": 0
+        }
+      },
+      "text": [
+        "1.0067",
+        "1.0069",
+        "1.0080",
+        "1.0085",
+        "1.0101",
+        "1.0101",
+        "1.0114",
+        "1.0114",
+        "1.0115",
+        "1.0139",
+        "1.0141",
+        "1.0194",
+        "1.0229",
+        "1.0277",
+        "1.0344"
+      ],
+      "textposition": "outside",
+      "cliponaxis": false,
+      "hovertemplate": "<b>%{y}</b><br>Avg ERR %{x:.5f}<extra></extra>"
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Average excess readmission ratio by state (top 15)",
+      "font": {
+        "family": "Helvetica",
+        "size": 15,
+        "color": "#1C1C1E"
+      },
+      "x": 0,
+      "xanchor": "left"
+    },
+    "paper_bgcolor": "#F2F0EB",
+    "plot_bgcolor": "#F2F0EB",
+    "font": {
+      "family": "Helvetica",
+      "size": 12,
+      "color": "#1C1C1E"
+    },
+    "margin": {
+      "l": 72,
+      "r": 36,
+      "t": 96,
+      "b": 56
+    },
+    "height": 420,
+    "dragmode": false,
+    "hovermode": "closest",
+    "xaxis": {
+      "title": "Average ERR",
+      "fixedrange": true,
+      "gridcolor": "#E8E6E1",
+      "zeroline": false,
+      "automargin": true
+    },
+    "yaxis": {
+      "title": "",
+      "fixedrange": true,
+      "gridcolor": "#EFEDE8",
+      "automargin": true,
+      "categoryorder": "array",
+      "categoryarray": [
+        "SC",
+        "PA",
+        "LA",
+        "OH",
+        "CA",
+        "KY",
+        "GA",
+        "NV",
+        "WV",
+        "AL",
+        "MS",
+        "IL",
+        "FL",
+        "NJ",
+        "MA"
+      ]
+    },
+    "shapes": [
+      {
+        "type": "rect",
+        "xref": "paper",
+        "yref": "paper",
+        "x0": 0,
+        "x1": 1,
+        "y0": 1.0,
+        "y1": 1.1,
+        "fillcolor": "#C0392B",
+        "line": {
+          "width": 0
+        },
+        "layer": "below"
+      },
+      {
+        "type": "line",
+        "x0": 1,
+        "x1": 1,
+        "y0": -0.5,
+        "y1": 14.5,
+        "line": {
+          "color": "#1C1C1E",
+          "width": 1,
+          "dash": "dot"
+        }
+      }
+    ],
+    "annotations": [
+      {
+        "x": 0.02,
+        "y": 1.05,
+        "xref": "paper",
+        "yref": "paper",
+        "text": "Massachusetts posts the highest average ERR among states in the working extract",
+        "showarrow": false,
+        "xanchor": "left",
+        "yanchor": "middle",
+        "font": {
+          "family": "Helvetica",
+          "size": 12,
+          "color": "#FFFFFF"
+        }
+      },
+      {
+        "x": 0.99,
+        "y": 0.01,
+        "xref": "paper",
+        "yref": "paper",
+        "text": "Artometrics",
+        "showarrow": false,
+        "xanchor": "right",
+        "yanchor": "bottom",
+        "font": {
+          "family": "Georgia, serif",
+          "size": 11,
+          "color": "#6B6B6B"
+        }
+      }
+    ]
+  },
+  "config": {
+    "displayModeBar": false,
+    "displaylogo": false,
+    "responsive": true,
+    "scrollZoom": false,
+    "doubleClick": false,
+    "staticPlot": false,
+    "editable": false,
+    "showTips": false
+  }
+}

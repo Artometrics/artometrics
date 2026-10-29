@@ -1,13 +1,16 @@
-import { HomeMagazine } from "@/components/HomeMagazine";
+import { MagazineFrame } from "@/components/MagazineFrame";
 import { PageSeo } from "@/components/PageSeo";
 import { SeoJsonLd } from "@/components/SeoJsonLd";
+import { contentsJsonLd, magazineIssues, renderContentsBody } from "@/lib/magazine";
+
+const issues = magazineIssues();
 
 export default function HomeScreen() {
   return (
     <>
       <PageSeo
-        title="Artometrics"
-        description="Data reporting on culture, sports, film, music, and cities — clear, citable, easy to read."
+        title="Artometrics Magazine"
+        description="Data stories, five minutes each. Arts, sports, science, humanities, civics, and culture."
         path="/"
       />
       <SeoJsonLd
@@ -31,9 +34,10 @@ export default function HomeScreen() {
               "query-input": "required name=search_term_string",
             },
           },
+          contentsJsonLd(issues),
         ]}
       />
-      <HomeMagazine />
+      <MagazineFrame pageKey="contents" label="Contents" bodyHtml={renderContentsBody(issues)} />
     </>
   );
 }

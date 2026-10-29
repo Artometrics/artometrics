@@ -1,0 +1,73 @@
+condition,ownership_group,penalty_tier,n,total_in_group,pct
+AMI,For-Profit,No Penalty,141,318,44.34
+AMI,For-Profit,Low,14,318,4.4
+AMI,For-Profit,Medium,32,318,10.06
+AMI,For-Profit,High,131,318,41.19
+AMI,Government,No Penalty,82,183,44.81
+AMI,Government,Low,16,183,8.74
+AMI,Government,Medium,26,183,14.21
+AMI,Government,High,59,183,32.24
+AMI,Non-Profit,No Penalty,651,1235,52.71
+AMI,Non-Profit,Low,80,1235,6.48
+AMI,Non-Profit,Medium,103,1235,8.34
+AMI,Non-Profit,High,401,1235,32.47
+CABG,For-Profit,No Penalty,55,142,38.73
+CABG,For-Profit,Low,2,142,1.41
+CABG,For-Profit,Medium,7,142,4.93
+CABG,For-Profit,High,78,142,54.93
+CABG,Government,No Penalty,40,88,45.45
+CABG,Government,Low,4,88,4.55
+CABG,Government,Medium,2,88,2.27
+CABG,Government,High,42,88,47.73
+CABG,Non-Profit,No Penalty,345,648,53.24
+CABG,Non-Profit,Low,31,648,4.78
+CABG,Non-Profit,Medium,39,648,6.02
+CABG,Non-Profit,High,233,648,35.96
+COPD,For-Profit,No Penalty,209,416,50.24
+COPD,For-Profit,Low,36,416,8.65
+COPD,For-Profit,Medium,54,416,12.98
+COPD,For-Profit,High,117,416,28.12
+COPD,Government,No Penalty,152,297,51.18
+COPD,Government,Low,32,297,10.77
+COPD,Government,Medium,36,297,12.12
+COPD,Government,High,77,297,25.93
+COPD,Non-Profit,No Penalty,865,1610,53.73
+COPD,Non-Profit,Low,132,1610,8.2
+COPD,Non-Profit,Medium,179,1610,11.12
+COPD,Non-Profit,High,434,1610,26.96
+Heart Failure,For-Profit,No Penalty,207,491,42.16
+Heart Failure,For-Profit,Low,41,491,8.35
+Heart Failure,For-Profit,Medium,43,491,8.76
+Heart Failure,For-Profit,High,200,491,40.73
+Heart Failure,Government,No Penalty,156,357,43.7
+Heart Failure,Government,Low,24,357,6.72
+Heart Failure,Government,Medium,48,357,13.45
+Heart Failure,Government,High,129,357,36.13
+Heart Failure,Non-Profit,No Penalty,976,1773,55.05
+Heart Failure,Non-Profit,Low,107,1773,6.03
+Heart Failure,Non-Profit,Medium,142,1773,8.01
+Heart Failure,Non-Profit,High,548,1773,30.91
+Hip/Knee,For-Profit,No Penalty,166,313,53.04
+Hip/Knee,For-Profit,Low,8,313,2.56
+Hip/Knee,For-Profit,Medium,9,313,2.88
+Hip/Knee,For-Profit,High,130,313,41.53
+Hip/Knee,Government,No Penalty,83,155,53.55
+Hip/Knee,Government,Low,4,155,2.58
+Hip/Knee,Government,Medium,6,155,3.87
+Hip/Knee,Government,High,62,155,40
+Hip/Knee,Non-Profit,No Penalty,505,979,51.58
+Hip/Knee,Non-Profit,Low,26,979,2.66
+Hip/Knee,Non-Profit,Medium,46,979,4.7
+Hip/Knee,Non-Profit,High,402,979,41.06
+Pneumonia,For-Profit,No Penalty,229,518,44.21
+Pneumonia,For-Profit,Low,25,518,4.83
+Pneumonia,For-Profit,Medium,51,518,9.85
+Pneumonia,For-Profit,High,213,518,41.12
+Pneumonia,Government,No Penalty,223,390,57.18
+Pneumonia,Government,Low,29,390,7.44
+Pneumonia,Government,Medium,37,390,9.49
+Pneumonia,Government,High,101,390,25.9
+Pneumonia,Non-Profit,No Penalty,992,1807,54.9
+Pneumonia,Non-Profit,Low,116,1807,6.42
+Pneumonia,Non-Profit,Medium,133,1807,7.36
+Pneumonia,Non-Profit,High,566,1807,31.32

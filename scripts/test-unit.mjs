@@ -2,7 +2,7 @@
 /**
  * Lightweight unit checks (no Jest) for Aftercare calculators / planets.
  */
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -74,5 +74,50 @@ assert(colorsTs.includes("magazine"), "magazine brand tokens present");
 const themeTs = readFileSync(join(ROOT, "lib/theme.tsx"), "utf8");
 assert(themeTs.includes("artometrics-brand-style"), "brand style persistence key");
 assert(themeTs.includes("toggleBrandStyle"), "brand style toggle");
+
+const issues = JSON.parse(readFileSync(join(ROOT, "magazine/issues.json"), "utf8"));
+const blog = JSON.parse(readFileSync(join(ROOT, "src/generated/blog.json"), "utf8")).filter(
+  (post) => !post.draft,
+);
+const issueSlugs = new Set(issues.map((issue) => issue.slug));
+const blogSlugs = new Set(blog.map((post) => post.slug));
+assert(issues.length === 103, `expected 103 magazine issues, got ${issues.length}`);
+for (const slug of blogSlugs) assert(issueSlugs.has(slug), `magazine missing blog slug ${slug}`);
+for (const slug of issueSlugs) assert(blogSlugs.has(slug), `blog missing magazine slug ${slug}`);
+assert(issues.every((issue) => issue.sections || issue.custom), "every issue has sections or custom body");
+assert(issues.every((issue) => Array.isArray(issue.src)), "every issue has a source list");
+
+const htmlShell = readFileSync(join(ROOT, "app/+html.tsx"), "utf8");
+assert(!htmlShell.includes("noindex"), "+html must not ship noindex");
+assert(htmlShell.includes('content="index, follow"'), "+html asks crawlers to index");
+const netlify = readFileSync(join(ROOT, "netlify.toml"), "utf8");
+assert(!netlify.includes("noindex"), "netlify must not send noindex");
+const firebase = readFileSync(join(ROOT, "firebase.json"), "utf8");
+assert(!firebase.includes("noindex"), "firebase hosting must not send noindex");
+const robots = readFileSync(join(ROOT, "public/robots.txt"), "utf8");
+assert(!/Disallow:\s*\//.test(robots), "robots.txt must allow crawling");
+assert(robots.includes("Sitemap: https://artometrics.com/sitemap.xml"), "robots points at sitemap");
+assert(existsSync(join(ROOT, "public/sitemap.xml")), "sitemap.xml present");
+assert(existsSync(join(ROOT, "public/llms.txt")), "llms.txt present");
+assert(existsSync(join(ROOT, "public/rss.xml")), "rss.xml present");
+assert(readFileSync(join(ROOT, "public/css/mag.css"), "utf8").includes("#0047ff"), "house blue");
+assert(existsSync(join(ROOT, "public/mag.js")), "mag.js present");
+assert(existsSync(join(ROOT, "public/logo.png")), "magazine logo present");
+
+function walk(dir, out = []) {
+  for (const name of readdirSync(dir)) {
+    const full = join(dir, name);
+    const stat = statSync(full);
+    if (stat.isDirectory()) walk(full, out);
+    else out.push({ full, size: stat.size });
+  }
+  return out;
+}
+const masters = walk(join(ROOT, "data/masters"));
+const oversize = masters.filter((file) => file.size >= 50 * 1024 * 1024);
+assert(oversize.length === 0, `master files over 50MB must stay out of git: ${oversize.map((f) => f.full).join(", ")}`);
+assert(masters.some((file) => file.full.endsWith("artometrics_masters.sqlite")), "sqlite index present");
+assert(masters.some((file) => file.full.includes("CHANGELOG_2026-10-29.md")), "changelog present");
+assert(masters.some((file) => file.full.includes("dataset_inventory_2026-10-29.csv")), "inventory present");
 
 console.log("unit OK");

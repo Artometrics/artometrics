@@ -1,0 +1,7 @@
+condition,avg_err
+Hip/Knee,1.00485
+COPD,1.00271
+Heart Failure,1.00254
+AMI,1.00212
+Pneumonia,1.00198
+CABG,1.00187

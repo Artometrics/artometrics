@@ -1,0 +1,139 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "x": [
+        "Government",
+        "Non-Profit",
+        "For-Profit"
+      ],
+      "y": [
+        31.97278911564626,
+        32.09140586189766,
+        39.53594176524113
+      ],
+      "marker": {
+        "color": [
+          "#1C1C1E",
+          "#6B6B6B",
+          "#C0392B"
+        ],
+        "line": {
+          "width": 0
+        }
+      },
+      "text": [
+        "32.0%",
+        "32.1%",
+        "39.5%"
+      ],
+      "textposition": "outside",
+      "cliponaxis": false,
+      "hovertemplate": "<b>%{x}</b><br>High tier %{y:.1f}%<extra></extra>"
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Share of hospital\u2013condition pairs in High penalty tier by ownership",
+      "font": {
+        "family": "Helvetica",
+        "size": 15,
+        "color": "#1C1C1E"
+      },
+      "x": 0,
+      "xanchor": "left"
+    },
+    "paper_bgcolor": "#F2F0EB",
+    "plot_bgcolor": "#F2F0EB",
+    "font": {
+      "family": "Helvetica",
+      "size": 12,
+      "color": "#1C1C1E"
+    },
+    "margin": {
+      "l": 56,
+      "r": 28,
+      "t": 96,
+      "b": 64
+    },
+    "height": 380,
+    "dragmode": false,
+    "hovermode": "closest",
+    "xaxis": {
+      "title": "Ownership",
+      "fixedrange": true,
+      "gridcolor": "#EFEDE8",
+      "automargin": true
+    },
+    "yaxis": {
+      "title": "High-tier share (%)",
+      "fixedrange": true,
+      "gridcolor": "#E8E6E1",
+      "zeroline": false,
+      "automargin": true,
+      "range": [
+        0,
+        49.41992720655141
+      ]
+    },
+    "shapes": [
+      {
+        "type": "rect",
+        "xref": "paper",
+        "yref": "paper",
+        "x0": 0,
+        "x1": 1,
+        "y0": 1.0,
+        "y1": 1.1,
+        "fillcolor": "#C0392B",
+        "line": {
+          "width": 0
+        },
+        "layer": "below"
+      }
+    ],
+    "annotations": [
+      {
+        "x": 0.02,
+        "y": 1.05,
+        "xref": "paper",
+        "yref": "paper",
+        "text": "For-profit hospitals carry the highest share of High-tier penalty pairs",
+        "showarrow": false,
+        "xanchor": "left",
+        "yanchor": "middle",
+        "font": {
+          "family": "Helvetica",
+          "size": 12,
+          "color": "#FFFFFF"
+        }
+      },
+      {
+        "x": 0.99,
+        "y": 0.01,
+        "xref": "paper",
+        "yref": "paper",
+        "text": "Artometrics",
+        "showarrow": false,
+        "xanchor": "right",
+        "yanchor": "bottom",
+        "font": {
+          "family": "Georgia, serif",
+          "size": 11,
+          "color": "#6B6B6B"
+        }
+      }
+    ],
+    "bargap": 0.35
+  },
+  "config": {
+    "displayModeBar": false,
+    "displaylogo": false,
+    "responsive": true,
+    "scrollZoom": false,
+    "doubleClick": false,
+    "staticPlot": false,
+    "editable": false,
+    "showTips": false
+  }
+}

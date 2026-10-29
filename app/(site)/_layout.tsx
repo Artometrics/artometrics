@@ -19,6 +19,7 @@ import { LocaleProvider } from "@/lib/locale";
 import { ThemeProvider, useTheme } from "@/lib/theme";
 import { trackPageView } from "@/lib/analytics/ga";
 import { getBlogPost } from "@/lib/content";
+import { isMagazinePath } from "@/lib/magazine";
 
 function SiteChrome() {
   const pathname = usePathname();
@@ -27,6 +28,7 @@ function SiteChrome() {
   const scrollRef = useRef<ScrollView>(null);
   const bareChrome =
     pathname === "/welcome" || pathname === "/welcome/" || pathname.startsWith("/welcome?");
+  const magazine = isMagazinePath(pathname);
 
   useEffect(() => {
     const slug = pathname.replace(/^\//, "").replace(/\/$/, "");
@@ -45,6 +47,16 @@ function SiteChrome() {
   const onScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     setScrollY(e.nativeEvent.contentOffset.y);
   };
+
+  if (magazine) {
+    return (
+      <View style={{ flex: 1, backgroundColor: "#ffffff", overflow: "hidden" }}>
+        <StatusBar style="dark" />
+        <Slot />
+        <Analytics />
+      </View>
+    );
+  }
 
   return (
     <SafeAreaView

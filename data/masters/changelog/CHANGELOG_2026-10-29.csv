@@ -1,0 +1,15 @@
+dataset,action,detail,n,at
+inventory,created,64 rows,64.0,2026-10-29T07:32:36Z
+cpi,refreshed,old_max=2026-08-01 new_max=2026-09-01 delta_rows=1,1.0,2026-10-29T07:32:36Z
+youtube_ads,added_row,"Alphabet Inc. Form 10-K FY2025 (filed 2026-02-05, accession 0001652044-26-000018) — YouTube ads line item",1.0,2026-10-29T07:32:36Z
+padres_seasons,verified,MLB API matches existing 2026 row 91-71,0.0,2026-10-29T07:32:36Z
+padres_playoff_series,added_2026_series,NLWC SDN>CHN; NLDS MIL>SDN,2.0,2026-10-29T07:32:36Z
+franchise,reparsed_wikipedia,revid=1382255498 ts=2026-10-27T16:15:22Z entities=140 long=346 added=0 removed=0 total_changes≈1,140.0,2026-10-29T07:32:36Z
+readmitted_hrrp,redownloaded,cms_modified=2026-01-26 hash_same_as_oct11=True new_sha=7e7915dd2751,18330.0,2026-10-29T07:32:36Z
+anime,anilist_season,2026 WINTER n=108,108.0,2026-10-29T07:32:36Z
+anime,anilist_season,2026 SPRING n=116,116.0,2026-10-29T07:32:36Z
+anime,anilist_season,2026 SUMMER n=121,121.0,2026-10-29T07:32:36Z
+anime,anilist_season,2026 FALL n=114,114.0,2026-10-29T07:32:36Z
+anime,incremental_refresh,anilist_2026_mal_ids=437 new_ids=4 tenrai_ok=4 tenrai_err=0 deduped=0,4.0,2026-10-29T07:32:36Z
+article_snapshots,archived,57 files copied to masters/article_snapshots,57.0,2026-10-29T07:32:36Z
+sqlite,built,/workspace/artometrics-data/masters/artometrics_masters.sqlite,,2026-10-29T07:32:36Z

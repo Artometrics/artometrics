@@ -1,0 +1,19 @@
+{
+  "checked_at": "2026-10-11T23:16:37.843278+00:00",
+  "dataset_hrrp": "9n3s-kdb3",
+  "dataset_hospital": "xubh-q36u",
+  "remote_modified_hrrp": "2026-01-26",
+  "remote_modified_hospital": "2026-07-22",
+  "committed_modified_hrrp": "2026-01-26",
+  "newer_release_available": false,
+  "local_raw_hrrp_sha256": "7e7915dd2751a1e59ac46dbc9194fb781e820962a04d47c31344ea2bb30c91f6",
+  "headline_before": {
+    "pairs_n": 11720,
+    "pct_err_gt_1": 48.15
+  },
+  "headline_after": {
+    "pairs_n": 11720,
+    "pct_err_gt_1": 48.15
+  },
+  "headline_delta_pct": 0.0
+}

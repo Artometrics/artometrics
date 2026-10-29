@@ -1,0 +1,14 @@
+dataset,old_coverage,new_coverage,rows,status,notes
+cpi,2026-08-01,2026-09-01,956.0,refreshed,FRED public CSV
+youtube_ads,FY2018–FY2024,FY2018–FY2025,8.0,refreshed,10-K verified=True; Nielsen/Goldman/H3 not freely refreshable
+youtube_h3,case-study snapshot,unchanged,,stale,Needs YouTube Data API key; no key in env
+youtube_nielsen_goldman,press/research extracts,unchanged,,stale,Proprietary; no free API
+padres_seasons,1969–2026 (Bref for 2026),1969–2026 (MLB API verified 2026-10-29),58.0,verified,2026 final 91-71; attendance from BRef retained; Spotrac CBT not freely refreshable
+padres_playoff_series,1995–2025,1995–2026,261.0,refreshed,Added 2026 NLWC + NLDS from MLB schedule
+padres_cbt_payroll,2021–2026 Spotrac snapshot,unchanged,6.0,stale,Spotrac proprietary; July 2026 snapshot retained
+franchise,"wiki rev 1379832186 (2026-10-12), n≈140","wiki rev 1382255498 (2026-10-27T16:15:22Z), n=140",140.0,refreshed,"added=[]; removed=[]; Wikipedia editorial estimates, not audited accounts"
+readmitted_hrrp,CMS modified 2026-01-26 (fetched 2026-10-11),CMS modified 2026-01-26 (fetched 2026-10-29),18330.0,current_no_upstream_change,No newer CMS HRRP release since Jan 2026; hospital general also re-fetched
+readmitted_hospitals,CMS hospital general (Oct 11 fetch),CMS hospital general (fetched 2026-10-29),5419.0,refreshed,modified=2026-07-22
+anime,through 2026-10-11 (n=18813 clean),through 2026-10-29 (+4 new MAL ids via AniList+Tenrai),18817.0,refreshed,Full re-score of 18k titles not re-run (rate limits); new 2026-season titles fetched. Tenrai errors=0
+billboard,1958-08-04T00:00:00Z → 2025-01-11T00:00:00Z,unchanged,1177.0,stale,No free Billboard chart API; coded feature dataset is a fixed research extract
+article_snapshots_bundle,static at article build,copied unchanged,57.0,static,58 article dataset.csv files archived as snapshots; not live-refreshed

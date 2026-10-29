@@ -1,0 +1,309 @@
+/* October 2026 magazine edition. Scoped so the rest of the Expo site keeps its chrome.
+   House blue #0047FF. */
+html.mag-mode,
+html.mag-mode body,
+html.mag-mode #root {
+  height: 100% !important;
+  min-height: 100% !important;
+  overflow: hidden !important;
+  background: #fff !important;
+  color: #111 !important;
+}
+
+.mag-shell {
+  --red: #e10600;
+  --blue: #0047ff;
+  --ink: #111;
+  --mute: #6b6b6b;
+  --paper: #fff;
+  --g: 40px;
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  height: 100%;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  font: 18px/1.55 Georgia, "Iowan Old Style", "Times New Roman", serif;
+  touch-action: pan-y pinch-zoom;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  overscroll-behavior: none;
+  -webkit-text-size-adjust: 100%;
+}
+.mag-shell * { box-sizing: border-box; }
+.mag-shell header.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(44px + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 5;
+  background: var(--paper);
+  font: 600 12px/1 -apple-system, system-ui, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.mag-shell header.bar img { width: 22px; height: 22px; }
+.mag-shell header.bar .t {
+  flex: 1;
+  color: var(--mute);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mag-shell header.bar a { display: flex; color: inherit; text-decoration: none; }
+.mag-shell header.bar a.site {
+  color: var(--blue);
+  text-decoration: none;
+  letter-spacing: 0.12em;
+}
+.mag-shell footer.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(36px + env(safe-area-inset-bottom));
+  padding: 0 16px env(safe-area-inset-bottom);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 5;
+  background: var(--paper);
+  font: 500 11px/1 -apple-system, system-ui, sans-serif;
+  color: var(--mute);
+}
+.mag-shell .prog { flex: 1; height: 2px; background: #eee; border-radius: 2px; overflow: hidden; }
+.mag-shell .prog i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--blue);
+  transition: width 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.mag-shell #view {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: calc(44px + env(safe-area-inset-top));
+  bottom: calc(36px + env(safe-area-inset-bottom));
+  overflow: hidden;
+  perspective: 1600px;
+  background: var(--paper);
+}
+.mag-shell #book {
+  height: 100%;
+  padding: 8px 22px 0;
+  margin: 0;
+  column-gap: var(--g);
+  column-fill: auto;
+  will-change: transform;
+  transition: transform 0.55s cubic-bezier(0.2, 0.7, 0.15, 1);
+}
+.mag-shell #book.noanim { transition: none; }
+.mag-shell #fold {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0) 60%);
+  background-size: 300% 100%;
+  z-index: 3;
+}
+.mag-shell #fold.go-n { animation: mag-foldn 0.55s ease-out; }
+.mag-shell #fold.go-p { animation: mag-foldp 0.55s ease-out; }
+@keyframes mag-foldn {
+  0% { opacity: 1; background-position: 0 0; }
+  100% { opacity: 0; background-position: 100% 0; }
+}
+@keyframes mag-foldp {
+  0% { opacity: 1; background-position: 100% 0; }
+  100% { opacity: 0; background-position: 0 0; }
+}
+.mag-shell h1 {
+  font: 800 40px/1.02 -apple-system, system-ui, "Helvetica Neue", sans-serif;
+  letter-spacing: -0.02em;
+  margin: 6px 0 12px;
+  color: var(--ink);
+}
+.mag-shell h1 em { font-style: normal; color: var(--red); }
+.mag-shell .kick {
+  font: 700 11px/1 -apple-system, system-ui, sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.mag-shell .dek { font-size: 17px; color: #333; margin: 0 0 12px; }
+.mag-shell .by {
+  font: 500 12px/1.4 -apple-system, system-ui, sans-serif;
+  color: var(--mute);
+  margin: 0 0 14px;
+}
+.mag-shell .hero {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+.mag-shell h2 {
+  font: 800 13px/1.2 -apple-system, system-ui, sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 18px 0 8px;
+  break-after: avoid;
+}
+.mag-shell h3 {
+  font: 800 28px/1.05 -apple-system, system-ui, sans-serif;
+  margin: 10px 0 4px;
+  color: var(--ink);
+}
+.mag-shell p { margin: 0 0 0.8em; hyphens: auto; -webkit-hyphens: auto; }
+.mag-shell .big {
+  font: 800 64px/1 -apple-system, system-ui, sans-serif;
+  letter-spacing: -0.03em;
+  color: var(--blue);
+}
+.mag-shell figure {
+  break-inside: avoid;
+  margin: 10px 0 16px;
+  padding: 14px 0;
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #eee;
+}
+.mag-shell figcaption {
+  font: 500 12px/1.4 -apple-system, system-ui, sans-serif;
+  color: var(--mute);
+  margin-top: 8px;
+}
+.mag-shell figcaption a { color: var(--mute); }
+.mag-shell .bars { display: grid; gap: 7px; font: 600 12px/1 -apple-system, system-ui, sans-serif; }
+.mag-shell .row { display: grid; grid-template-columns: 92px 1fr 52px; align-items: center; gap: 8px; }
+.mag-shell .row b {
+  display: block;
+  height: 14px;
+  background: var(--blue);
+  border-radius: 2px;
+  width: 0;
+  transition: width 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.mag-shell .row.hl b { background: var(--red); }
+.mag-shell .row span:last-child { text-align: right; opacity: 0; transition: opacity 0.4s 0.7s; }
+.mag-shell figure.on .row b { width: var(--w); }
+.mag-shell figure.on .row span:last-child { opacity: 1; }
+.mag-shell .row:nth-child(2) b { transition-delay: 0.08s; }
+.mag-shell .row:nth-child(3) b { transition-delay: 0.16s; }
+.mag-shell .row:nth-child(4) b { transition-delay: 0.24s; }
+.mag-shell .row:nth-child(5) b { transition-delay: 0.32s; }
+.mag-shell .row:nth-child(6) b { transition-delay: 0.4s; }
+.mag-shell .donut { display: flex; gap: 16px; align-items: center; }
+.mag-shell .donut svg { width: 110px; height: 110px; transform: rotate(-90deg); }
+.mag-shell .donut circle { fill: none; stroke-width: 16; }
+.mag-shell .donut .arc {
+  stroke-dasharray: 0 100;
+  stroke-dashoffset: var(--o, 0);
+  transition: stroke-dasharray 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.mag-shell figure.on .donut .arc { stroke-dasharray: var(--p) 100; }
+.mag-shell .donut ul { list-style: none; font: 600 12px/1.6 -apple-system, system-ui, sans-serif; padding: 0; margin: 0; }
+.mag-shell .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
+.mag-shell .fade { opacity: 0; transform: translateY(8px); transition: opacity 0.6s, transform 0.6s; }
+.mag-shell .fade.on { opacity: 1; transform: none; }
+.mag-shell ol.src { font: 13px/1.45 -apple-system, system-ui, sans-serif; padding-left: 18px; }
+.mag-shell ol.src li { margin-bottom: 6px; }
+.mag-shell a { color: var(--blue); }
+.mag-shell .end {
+  font: 700 12px/1 -apple-system, system-ui, sans-serif;
+  color: var(--red);
+  letter-spacing: 0.2em;
+}
+.mag-shell .hint {
+  position: fixed;
+  left: 50%;
+  bottom: calc(52px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+  font: 600 12px/1 -apple-system, system-ui, sans-serif;
+  padding: 9px 14px;
+  border-radius: 99px;
+  z-index: 6;
+  transition: opacity 0.6s;
+}
+@media (min-width: 700px) {
+  .mag-shell #book { padding: 16px 48px 0; }
+  .mag-shell h1 { font-size: 56px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mag-shell #book,
+  .mag-shell .row b,
+  .mag-shell .donut .arc { transition: none !important; }
+  .mag-shell #fold { display: none; }
+}
+.mag-shell .fig img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 46vh;
+  object-fit: contain;
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+  transition: opacity 0.7s, transform 0.7s;
+}
+.mag-shell figure.on.fig img { opacity: 1; transform: none; }
+.mag-shell .kp { break-inside: avoid; margin: 6px 0 14px; }
+.mag-shell .kp .big { font-size: 44px; }
+.mag-shell .kp p { font: 600 13px/1.35 -apple-system, system-ui, sans-serif; color: #333; }
+.mag-shell .cv-mast {
+  font: 900 46px/0.9 -apple-system, system-ui, sans-serif;
+  letter-spacing: -0.03em;
+  color: var(--red);
+  margin: 8px 0 4px;
+}
+.mag-shell .cv-sub {
+  font: 700 11px/1 -apple-system, system-ui, sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 14px;
+}
+.mag-shell .cv-feat { display: block; text-decoration: none; color: inherit; }
+.mag-shell .cv-feat img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  max-height: 42vh;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.mag-shell .toc { list-style: none; margin: 0; padding: 0; }
+.mag-shell .toc li { break-inside: avoid; border-top: 1px solid #eee; }
+.mag-shell .toc a {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 9px 0;
+  text-decoration: none;
+  color: inherit;
+}
+.mag-shell .toc img { width: 56px; height: 56px; object-fit: cover; border-radius: 4px; background: #f3f3f3; }
+.mag-shell .toc b { display: block; font: 700 15px/1.2 -apple-system, system-ui, sans-serif; }
+.mag-shell .toc small {
+  font: 600 10px/1 -apple-system, system-ui, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.mag-shell .toc em {
+  font: 500 11px/1 -apple-system, system-ui, sans-serif;
+  color: var(--mute);
+  font-style: normal;
+}
+.mag-shell .toc-sec { margin-top: 22px; padding-top: 4px; border-top: 2px solid var(--ink); }
+.mag-shell .toc + .toc-sec { margin-top: 18px; }

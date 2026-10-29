@@ -1,0 +1,125 @@
+{
+  "seed": 20261013,
+  "bootstrap_draws": 5000,
+  "lahman_tables": [
+    "Teams",
+    "SeriesPost",
+    "TeamsFranchises",
+    "Salaries"
+  ],
+  "mlb_api_check": {
+    "mlb_api": {
+      "wins": 91,
+      "losses": 71,
+      "division_rank": "2",
+      "wild_card_rank": "1",
+      "source_url": "https://statsapi.mlb.com/api/v1/standings?leagueId=104&season=2026&standingsTypes=regularSeason",
+      "checked_at": "2026-10-13"
+    },
+    "bref_publish_row": {
+      "w": 91,
+      "l": 71
+    },
+    "wins_match": true
+  },
+  "summary_keys": {
+    "lahman_seasons": 57,
+    "seasons_through_2026": 58,
+    "postseasons_through_2025": 9,
+    "postseason_years": [
+      1984,
+      1996,
+      1998,
+      2005,
+      2006,
+      2020,
+      2022,
+      2024,
+      2025
+    ],
+    "postseasons_through_2026": 10,
+    "pennants": [
+      1984,
+      1998
+    ],
+    "winning_seasons_through_2025": 19,
+    "series_through_2025": "7-9",
+    "series_through_2026": "8-10",
+    "attendance_1996_2003": [
+      2292236,
+      8
+    ],
+    "attendance_2004_2019": [
+      2372417,
+      16
+    ],
+    "attendance_2004": 3016752,
+    "attendance_2025": 3437201,
+    "attendance_2026": 3347081,
+    "wins_2019_2025": {
+      "2019": 70,
+      "2020": 37,
+      "2021": 79,
+      "2022": 89,
+      "2023": 82,
+      "2024": 93,
+      "2025": 90
+    },
+    "coin_flip": {
+      "better": 132,
+      "worse": 116,
+      "tied": 11
+    },
+    "cbt_sum_millions": 1500.1,
+    "bref_2026": {
+      "year": 2026,
+      "w": 91,
+      "l": 71,
+      "r": 722,
+      "ra": 681,
+      "attendance": 3347081,
+      "wc": "W",
+      "nlds": "L",
+      "lg": "N",
+      "ws": "N",
+      "source": "https://www.baseball-reference.com/teams/SDP/2026.shtml"
+    }
+  },
+  "bootstrap": [
+    {
+      "metric": "better_record_win_rate_untied_1995_2025",
+      "rate": 0.5323,
+      "n": 248,
+      "ci_low": 0.4718,
+      "ci_high": 0.5927
+    },
+    {
+      "metric": "better_record_won_share_all_series",
+      "rate": 0.5097,
+      "n": 259,
+      "ci_low": 0.4479,
+      "ci_high": 0.5714
+    },
+    {
+      "metric": "pennants_per_postseason_SDP",
+      "rate": 0.2222,
+      "n": 9,
+      "ci_low": 0.0,
+      "ci_high": 0.5556
+    },
+    {
+      "metric": "padres_postseason_rate_through_2026",
+      "rate": 0.1724,
+      "n": 58,
+      "ci_low": 0.0862,
+      "ci_high": 0.2759
+    },
+    {
+      "metric": "padres_pennant_rate_given_postseason_through_2026",
+      "rate": 0.2,
+      "n": 10,
+      "ci_low": 0.0,
+      "ci_high": 0.5
+    }
+  ]
+}

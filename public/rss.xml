@@ -12,6 +12,15 @@
     <category>Civics</category>
     <category>Culture</category>
     <item>
+      <title>ANIME: What Changed When We Fixed the Data</title>
+      <link>https://artometrics.com/anime-data-fix</link>
+      <guid isPermaLink="true">https://artometrics.com/anime-data-fix</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 GMT</pubDate>
+      <description>We refreshed the MyAnimeList catalog behind ANIME after Jikan shut down, moved to the Tenrai-compatible API, and recomputed every headline on the clean TV frame. The light-novel reach premium fell from 32× to 27.5×; manga's 8.0+ share fell to 14.8%; 2015 isekai was under-counted at 0.9% (now 2.2%).</description>
+      <category>arts</category>
+      <category>film</category>
+    </item>
+    <item>
       <title>PADRES: What Changed When We Fixed the Data</title>
       <link>https://artometrics.com/padres-data-fix</link>
       <guid isPermaLink="true">https://artometrics.com/padres-data-fix</guid>
@@ -925,7 +934,7 @@
       <link>https://artometrics.com/anime</link>
       <guid isPermaLink="true">https://artometrics.com/anime</guid>
       <pubDate>Tue, 31 Mar 2026 00:00:00 GMT</pubDate>
-      <description>In a century of MyAnimeList data, light-novel TV adaptations draw 32 times the median audience of original series. The data also shows where fan ratings and commercial value part ways.</description>
+      <description>On the October 2026 MyAnimeList ledger, light-novel TV adaptations still draw 27.5 times the median audience of originals. Source mix and isekai tags trace how committees greenlight shows — with wide uncertainty on any single year.</description>
       <category>arts</category>
       <category>film</category>
     </item>
