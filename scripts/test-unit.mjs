@@ -87,6 +87,38 @@ for (const slug of issueSlugs) assert(blogSlugs.has(slug), `blog missing magazin
 assert(issues.every((issue) => issue.sections || issue.custom), "every issue has sections or custom body");
 assert(issues.every((issue) => Array.isArray(issue.src)), "every issue has a source list");
 
+const skinDefaults = JSON.parse(readFileSync(join(ROOT, "magazine/skin-defaults.json"), "utf8"));
+assert(skinDefaults.length === 3, "three magazine skins");
+assert(
+  skinDefaults.map((skin) => skin.closing.name).join("|") === "The Fine Print|Back of the Box|End Credits",
+  "closing box names",
+);
+const billboard = issues.find((issue) => issue.slug === "billboard");
+assert(billboard && !("skins" in billboard), "billboard issue record stays untouched");
+for (const issue of issues) {
+  if (issue.slug === "billboard") continue;
+  assert(Array.isArray(issue.skins) && issue.skins.length === 3, `${issue.slug} has three skins`);
+  assert(
+    issue.skins.map((skin) => skin.id).join(",") === "ledger,box,trade",
+    `${issue.slug} skin order`,
+  );
+}
+const skinSource = readFileSync(join(ROOT, "lib/magazine-skins.ts"), "utf8");
+assert(skinSource.includes("artometrics-mag-skin:"), "skin choice is stored per issue");
+assert(skinSource.includes("data-for"), "closing names switch with the skin");
+const frame = readFileSync(join(ROOT, "components/MagazineFrame.web.tsx"), "utf8");
+assert(frame.includes('data-skin'), "reader root carries data-skin");
+assert(frame.includes("localStorage"), "picker remembers the skin");
+const magJs = readFileSync(join(ROOT, "public/mag.js"), "utf8");
+assert(magJs.includes("location.search"), "page turns keep ?skin=");
+assert(readFileSync(join(ROOT, "public/css/mag-skins.css"), "utf8").includes('[data-skin="ledger"]'), "ledger skin css");
+assert(readFileSync(join(ROOT, "public/css/mag-skins.css"), "utf8").includes('[data-skin="box"]'), "box skin css");
+assert(readFileSync(join(ROOT, "public/css/mag-skins.css"), "utf8").includes('[data-skin="trade"]'), "trade skin css");
+for (const plate of ["pacioli.jpg", "toy-shop.jpg", "belasco-box-office.jpg"]) {
+  const bytes = readFileSync(join(ROOT, "public/images/skins", plate));
+  assert(bytes[0] === 0xff && bytes[1] === 0xd8, `${plate} is a jpeg`);
+}
+
 const htmlShell = readFileSync(join(ROOT, "app/+html.tsx"), "utf8");
 assert(!htmlShell.includes("noindex"), "+html must not ship noindex");
 assert(htmlShell.includes('content="index, follow"'), "+html asks crawlers to index");

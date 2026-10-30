@@ -32,6 +32,7 @@ import {
   magazineIssues,
   renderIssueBody,
 } from "@/lib/magazine";
+import { skinsForIssue } from "@/lib/magazine-skins";
 
 function estimateMinutes(html: string) {
   const text = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
@@ -83,6 +84,7 @@ export default function ReportScreen() {
           pageKey={issue.slug}
           label={`Artometrics · ${issue.kicker}`}
           bodyHtml={renderIssueBody(issue)}
+          skins={skinsForIssue(issue)}
         />
       </View>
     );
