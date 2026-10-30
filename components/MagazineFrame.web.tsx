@@ -1,9 +1,12 @@
-import { createElement, useEffect } from "react";
+import { createElement, useEffect, useLayoutEffect, useState } from "react";
+import type { CSSProperties } from "react";
+import { skinCssVars, skinStorageKey, type MagSkin } from "@/lib/magazine-skins";
 
 type Props = {
   pageKey: string;
   label: string;
   bodyHtml: string;
+  skins?: MagSkin[];
 };
 
 declare global {
@@ -12,11 +15,89 @@ declare global {
   }
 }
 
+function readSkinChoice(slug: string, skins: MagSkin[]): string {
+  const ids = new Set(skins.map((skin) => skin.id));
+  const fallback = skins[0]?.id || "ledger";
+  if (typeof window === "undefined") return fallback;
+  const query = new URLSearchParams(window.location.search).get("skin");
+  if (query && ids.has(query)) return query;
+  try {
+    const saved = window.localStorage.getItem(skinStorageKey(slug));
+    if (saved && ids.has(saved)) return saved;
+  } catch {
+    /* private mode */
+  }
+  return fallback;
+}
+
+function rememberSkin(slug: string, id: string) {
+  try {
+    window.localStorage.setItem(skinStorageKey(slug), id);
+  } catch {
+    /* private mode */
+  }
+}
+
+function writeSkinUrl(id: string, skins: MagSkin[]) {
+  const url = new URL(window.location.href);
+  if (id === skins[0]?.id) url.searchParams.delete("skin");
+  else url.searchParams.set("skin", id);
+  const next = url.pathname + url.search + url.hash;
+  if (next !== window.location.pathname + window.location.search + window.location.hash) {
+    window.history.replaceState(null, "", next);
+  }
+}
+
+function relayout() {
+  window.dispatchEvent(new Event("resize"));
+}
+
+function SkinIcon({ id }: { id: string }) {
+  if (id === "box") {
+    return (
+      <svg viewBox="0 0 18 18" aria-hidden="true">
+        <rect x="2" y="3" width="14" height="12" fill="none" stroke="currentColor" strokeWidth="1.4" />
+        <circle cx="9" cy="2.2" r="1.3" fill="none" stroke="currentColor" strokeWidth="1.2" />
+        <path d="M9 6.2l.7 1.6 1.7.2-1.3 1.1.4 1.7L9 9.9 7.5 10.8l.4-1.7-1.3-1.1 1.7-.2z" fill="#FFCC00" stroke="currentColor" strokeWidth="0.4" />
+      </svg>
+    );
+  }
+  if (id === "trade") {
+    return (
+      <svg viewBox="0 0 18 18" aria-hidden="true">
+        <path d="M3 4h12M3 8h12M3 12h9" fill="none" stroke="currentColor" strokeWidth="1.6" />
+        <circle cx="4" cy="15.2" r="0.9" fill="#0047FF" />
+        <circle cx="8" cy="15.2" r="0.9" fill="#0047FF" />
+        <circle cx="12" cy="15.2" r="0.9" fill="#0047FF" />
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 18 18" aria-hidden="true">
+      <path d="M3 5h12M3 9h12M3 13h12" fill="none" stroke="currentColor" strokeWidth="1" />
+      <rect x="10" y="7" width="5" height="4" fill="none" stroke="#C8102E" strokeWidth="1.2" transform="rotate(-8 12.5 9)" />
+    </svg>
+  );
+}
+
 /**
  * Kindle-style page flip. The DOM matches the October 2026 edition
  * (`#view`, `#book`, `#pg`) so `public/mag.js` can measure columns.
+ * Skins set `data-skin` on this shell, the reader root.
  */
-export function MagazineFrame({ pageKey, label, bodyHtml }: Props) {
+export function MagazineFrame({ pageKey, label, bodyHtml, skins }: Props) {
+  const palette = skins && skins.length ? skins : undefined;
+  const [skinId, setSkinId] = useState(palette?.[0]?.id || "");
+  const skin = palette?.find((item) => item.id === skinId) || palette?.[0];
+
+  useLayoutEffect(() => {
+    if (!palette?.length || pageKey === "contents") return;
+    const next = readSkinChoice(pageKey, palette);
+    setSkinId(next);
+    rememberSkin(pageKey, next);
+    if (next !== palette[0].id) writeSkinUrl(next, palette);
+  }, [pageKey, palette]);
+
   useEffect(() => {
     document.documentElement.classList.add("mag-mode");
     const root = document.getElementById("root");
@@ -27,11 +108,13 @@ export function MagazineFrame({ pageKey, label, bodyHtml }: Props) {
       rootBg: root?.style.backgroundColor,
       rootOverflow: root?.style.overflow,
     };
-    document.body.style.backgroundColor = "#ffffff";
-    document.body.style.color = "#111111";
+    const paper = skin?.tokens.paper || "#ffffff";
+    const ink = skin?.tokens.ink || "#111111";
+    document.body.style.backgroundColor = paper;
+    document.body.style.color = ink;
     document.body.style.overflow = "hidden";
     if (root) {
-      root.style.backgroundColor = "#ffffff";
+      root.style.backgroundColor = paper;
       root.style.overflow = "hidden";
     }
 
@@ -65,11 +148,40 @@ export function MagazineFrame({ pageKey, label, bodyHtml }: Props) {
         root.style.overflow = prev.rootOverflow || "";
       }
     };
-  }, [pageKey, bodyHtml]);
+  }, [pageKey, bodyHtml, skin?.tokens.paper, skin?.tokens.ink]);
+
+  useEffect(() => {
+    if (!skin) return;
+    document.body.style.backgroundColor = skin.tokens.paper;
+    document.body.style.color = skin.tokens.ink;
+    const root = document.getElementById("root");
+    if (root) root.style.backgroundColor = skin.tokens.paper;
+    const fonts = document.fonts;
+    if (fonts?.ready) {
+      void fonts.ready.then(relayout);
+      fonts.addEventListener?.("loadingdone", relayout, { once: true });
+    } else {
+      relayout();
+    }
+  }, [skin]);
+
+  function choose(id: string) {
+    if (!palette) return;
+    setSkinId(id);
+    rememberSkin(pageKey, id);
+    writeSkinUrl(id, palette);
+  }
+
+  const shellStyle = (skin ? skinCssVars(skin) : undefined) as CSSProperties | undefined;
 
   return createElement(
     "div",
-    { className: "mag-shell", "data-magazine": pageKey },
+    {
+      className: "mag-shell",
+      "data-magazine": pageKey,
+      "data-skin": skin?.id,
+      style: shellStyle,
+    },
     createElement(
       "header",
       { className: "bar" },
@@ -79,6 +191,50 @@ export function MagazineFrame({ pageKey, label, bodyHtml }: Props) {
         createElement("img", { src: "/logo.png", alt: "Artometrics" }),
       ),
       createElement("span", { className: "t" }, label),
+      palette
+        ? createElement(
+            "div",
+            {
+              className: "skin-picker",
+              role: "radiogroup",
+              "aria-label": "Magazine skin",
+              onClick: (event: { stopPropagation: () => void }) => event.stopPropagation(),
+              onTouchStart: (event: { stopPropagation: () => void }) => event.stopPropagation(),
+            },
+            palette.map((item) =>
+              createElement(
+                "button",
+                {
+                  key: item.id,
+                  type: "button",
+                  role: "radio",
+                  "aria-checked": item.id === skin?.id,
+                  "aria-label": item.name,
+                  "data-skin-id": item.id,
+                  onClick: (event: { stopPropagation: () => void }) => {
+                    event.stopPropagation();
+                    choose(item.id);
+                  },
+                  onPointerDown: (event: { currentTarget: HTMLButtonElement; pointerType: string }) => {
+                    if (event.pointerType !== "touch") return;
+                    const button = event.currentTarget;
+                    const timer = window.setTimeout(() => button.classList.add("is-held"), 380);
+                    const clear = () => {
+                      window.clearTimeout(timer);
+                      button.classList.remove("is-held");
+                      button.removeEventListener("pointerup", clear);
+                      button.removeEventListener("pointercancel", clear);
+                    };
+                    button.addEventListener("pointerup", clear);
+                    button.addEventListener("pointercancel", clear);
+                  },
+                },
+                createElement(SkinIcon, { id: item.id }),
+                createElement("span", { className: "tip" }, item.name),
+              ),
+            ),
+          )
+        : null,
       createElement("a", { className: "site", href: "/blog" }, "Site"),
       createElement("span", { id: "pg", "aria-live": "polite" }, "1"),
     ),

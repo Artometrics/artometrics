@@ -85,7 +85,7 @@
       }
       setTimeout(reveal, dir ? 380 : 50);
       try {
-        history.replaceState(null, "", "#p" + (i + 1));
+        history.replaceState(null, "", location.pathname + location.search + "#p" + (i + 1));
       } catch (e) {}
     }
 
@@ -107,11 +107,20 @@
     var sx = 0;
     var sy = 0;
     var moved = false;
+    var ignoreGesture = false;
+    function fromChrome(target) {
+      return target && target.closest && target.closest("a, button, .skin-picker, input, textarea");
+    }
     on(
       document,
       "touchstart",
       function (e) {
         if (!e.target.closest || !e.target.closest(".mag-shell")) return;
+        if (fromChrome(e.target)) {
+          ignoreGesture = true;
+          return;
+        }
+        ignoreGesture = false;
         var t = e.touches[0];
         sx = t.clientX;
         sy = t.clientY;
@@ -123,6 +132,7 @@
       document,
       "touchmove",
       function (e) {
+        if (ignoreGesture) return;
         if (!e.target.closest || !e.target.closest(".mag-shell")) return;
         var t = e.touches[0];
         if (Math.abs(t.clientX - sx) > 10) moved = true;
@@ -134,6 +144,7 @@
       document,
       "touchend",
       function (e) {
+        if (ignoreGesture || fromChrome(e.target)) return;
         if (!e.target.closest || !e.target.closest(".mag-shell")) return;
         var t = e.changedTouches[0];
         var dx = t.clientX - sx;
@@ -158,11 +169,12 @@
     on(document, "click", function (e) {
       if (suppressClick || e.pointerType === "touch") return;
       if (!e.target.closest || !e.target.closest(".mag-shell")) return;
-      if (e.target.closest("a")) return;
+      if (fromChrome(e.target)) return;
       e.clientX > innerWidth * 0.5 ? next() : prev();
     });
     on(document, "keydown", function (e) {
       if (!document.querySelector(".mag-shell")) return;
+      if (fromChrome(e.target)) return;
       if (["ArrowRight", "PageDown", " "].indexOf(e.key) !== -1) {
         next();
         e.preventDefault();
