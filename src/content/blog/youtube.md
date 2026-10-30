@@ -4,7 +4,7 @@ slug: youtube
 author: kyle-mcauliffe
 pubDate: 2026-04-14T00:00:00.000Z
 description: >-
-  Alphabet reported $36.1B in YouTube ad revenue in FY2024 while Nielsen puts YouTube at 13.4% of U.S. TV-screen usage. Against that scale, H3 Podcast's Frenemies era tripled monthly views—and set a ceiling the show has not touched since.
+  Alphabet reported $36.1B in YouTube ad revenue in FY2024 while Nielsen puts YouTube at 15.8% of U.S. TV-screen usage (Nielsen Gauge, August 2026, before Nielsen's September 2026 method change). Against that scale, H3 Podcast's Frenemies era tripled monthly views—and set a ceiling the show has not touched since.
 heroImage: /images/content/articles/youtube/hero.png
 audioSrc: /audios/youtube-kore.mp3
 draft: false
@@ -13,11 +13,11 @@ tags:
   - communication
 subject: YouTube
 tldr: >-
-  YouTube is no longer a sidebar in Google's filings: $36.1B in FY2024 YouTube ad revenue, $100B+ paid to creators since 2021 (YouTube, Sep 2025), and 13.4% of U.S. TV-screen usage in Nielsen's July 2025 Media Distributor Gauge—ahead of Disney and Netflix on the TV set. The Partner Program still splits watch-page ad revenue 55/45 with creators on long-form video. In that economy, the H3 Podcast Frenemies co-host run (Sep 2020–Jun 2021) tripled monthly views and left a structural ceiling; episodes now median 220+ minutes for a smaller core audience.
+  YouTube is no longer a sidebar in Google's filings: $36.1B in FY2024 YouTube ad revenue, $100B+ paid to creators since 2021 (YouTube, Sep 2025), and 15.8% of U.S. TV watch-time in August 2026 (Nielsen Gauge, August 2026, before Nielsen's September 2026 method change), ahead of Disney (9.3%) and Netflix (7.7%). July 2025 was 13.4%. The Partner Program still splits watch-page ad revenue 55/45 with creators on long-form video. In that economy, the H3 Podcast Frenemies co-host run (Sep 2020–Jun 2021) tripled monthly views and left a structural ceiling; episodes now median 220+ minutes for a smaller core audience.
 keyPoints:
   - "$36.1B — YouTube advertising revenue, Alphabet FY2024 10-K"
   - "$100B+ — paid to creators, artists, and media companies in four years (YouTube, Sep 2025)"
-  - "13.4% — YouTube share of U.S. TV usage on TV screens, Nielsen July 2025"
+  - "15.8% — Nielsen Gauge, August 2026, before Nielsen's September 2026 method change"
   - "55% — creator share of net watch-page ad revenue (Google YouTube Help)"
   - "3× — H3 Podcast monthly views at Frenemies peak vs pre-co-host baseline"
   - "220 min — median H3 Podcast episode length in 2024 (Podchaser), vs 42 min in 2017"
@@ -30,7 +30,7 @@ faq:
       YouTube said in September 2025 it has paid out over $100 billion to creators, artists, and media companies globally over the preceding four years (since 2021).
   - question: What share of TV viewing does YouTube capture on television sets?
     answer: >-
-      Nielsen's July 2025 Media Distributor Gauge attributes 13.4% of U.S. TV usage to YouTube on TV screens. Nielsen notes this excludes YouTube TV.
+      YouTube led Nielsen's Media Distributor Gauge with 15.8% of U.S. TV watch-time in August 2026, ahead of Disney (9.3%) and Netflix (7.7%). Nielsen Gauge, August 2026, before Nielsen's September 2026 method change. In July 2025 the same gauge placed YouTube at 13.4%. Nielsen measures TV-screen viewing only, and "YouTube" in The Gauge means YouTube main, excluding YouTube TV.
   - question: What revenue share do YouTube partners get on long-form ads?
     answer: >-
       Google documents 55% of net revenues from ads on a creator's public watch page when the Watch Page Monetization Module is enabled.
@@ -61,7 +61,7 @@ faq:
 <main class="art-article-main">
 
 <h2 id="executive-summary" class="anchored">Executive summary</h2>
-<p class="art-p">YouTube is a disclosed advertising business inside Alphabet, a TV-screen habit in Nielsen's monthly Gauge, and a payout machine for the creator economy. Alphabet reported $36.1 billion in YouTube advertising revenue for fiscal 2024—roughly the same order of magnitude as Netflix's $39.0 billion in total streaming revenue that year, though the two lines measure different things (auction-based ads vs subscription receipts). YouTube said in September 2025 it has paid more than $100 billion to creators, artists, and media companies over the prior four years. Nielsen's Media Distributor Gauge placed YouTube at 13.4% of U.S. television usage on TV screens in July 2025, ahead of Disney (9.4%) and Netflix (8.8%) in the same release.</p>
+<p class="art-p">YouTube is a disclosed advertising business inside Alphabet, a TV-screen habit in Nielsen's monthly Gauge, and a payout machine for the creator economy. Alphabet reported $36.1 billion in YouTube advertising revenue for fiscal 2024—roughly the same order of magnitude as Netflix's $39.0 billion in total streaming revenue that year, though the two lines measure different things (auction-based ads vs subscription receipts). YouTube said in September 2025 it has paid more than $100 billion to creators, artists, and media companies over the prior four years. YouTube led Nielsen's Media Distributor Gauge with 15.8% of U.S. TV watch-time in August 2026, ahead of Disney (9.3%) and Netflix (7.7%). Nielsen's Media Distributor Gauge placed YouTube at 13.4% of U.S. television usage on TV screens in July 2025, ahead of Disney (9.4%) and Netflix (8.8%) in the same release.</p>
 <p class="art-p">The mechanism underneath those platform numbers is a revenue-share contract. Google documents a 55% partner share of net watch-page advertising revenue on long-form video; Shorts pools pay creators 45% in YouTube's published Partner Program updates. Goldman Sachs Research sized the broader creator economy at about $250 billion in 2022, projecting roughly $480 billion by 2027, with short-form ad monetization as a growth driver— including estimates that Shorts ads could rise from a low single-digit share of YouTube ad revenue toward one quarter of the total by 2027.</p>
 <p class="art-p">This report's case study sits inside that macro frame. The H3 Podcast's nine-month Frenemies co-host era (Ethan Klein and Trisha Paytas, September 2020–June 2021) tripled monthly channel views and established a viewership ceiling the podcast has not approached since. When the partnership ended mid-episode on camera, views reverted to baseline within a month. The show that remained is longer—220+ minute median episodes in 2024 versus 42 minutes in 2017—and smaller than the Frenemies peak. Platform economics explain why a borrowed audience matters: in a $36B ad market, missing your own peak is not necessarily failure, but it is a strategic fact.</p>
 
@@ -102,8 +102,8 @@ faq:
 
 <h2 id="tv-screen" class="anchored">TV-screen share is now a lead indicator</h2>
 <figure class="art-chart">
-<div class="art-chart-live" data-chart="/data/articles/youtube/charts/chart5_nielsen_tv_share.plotly.json" data-fallback="/images/content/articles/youtube/charts/chart5_nielsen_tv_share.png" data-source="Data: Nielsen Media Distributor Gauge — ARTOMETRICS" role="img" aria-label="Line chart of YouTube share of U.S. TV usage on TV screens from July 2024 through July 2025."></div>
-<figcaption class="art-chart-caption art-chart-caption--visible">Nielsen placed YouTube at 10.4% (Jul 2024), 11.6% (Feb 2025), 12.4% (Apr 2025), and 13.4% (Jul 2025) of U.S. TV usage on TV screens.</figcaption>
+<div class="art-chart-live" data-chart="/data/articles/youtube/charts/chart5_nielsen_tv_share.plotly.json" data-fallback="/images/content/articles/youtube/charts/chart5_nielsen_tv_share.png" data-source="Data: Nielsen Media Distributor Gauge — ARTOMETRICS" role="img" aria-label="Line chart of YouTube share of U.S. TV usage on TV screens from July 2024 through August 2026, with a dashed marker for Nielsen's September 2026 method change."></div>
+<figcaption class="art-chart-caption art-chart-caption--visible">Nielsen placed YouTube at 10.4% (Jul 2024), 11.6% (Feb 2025), 12.4% (Apr 2025), 13.4% (Jul 2025), 14.2% (Jul 2026), and 15.8% (Aug 2026) of U.S. TV usage on TV screens. August 2026 was a five-week interval.</figcaption>
 </figure>
 <p class="art-p"><strong>What it means.</strong> YouTube competes for living-room attention with Disney, Netflix, and linear bundles—not only for mobile minutes. Nielsen's Media Distributor Gauge ranks media companies by share of time spent watching television; YouTube led in multiple 2024–2025 months.</p>
 <p class="art-p"><strong>How we know.</strong> Nielsen press releases document month-level shares. The February 2025 release notes YouTube usage in The Gauge excludes viewing on YouTube TV (the pay-TV bundle). Methodology is TV-screen only; mobile and desktop are out of scope.</p>
@@ -203,7 +203,7 @@ faq:
 <p class="art-p">Alphabet reports YouTube ads, not creator margin by channel. Nielsen's Gauge is U.S.-only and TV-screen-based. Goldman Sachs Shorts figures are estimates. H3 view counts are lifetime totals as of April 2026, biased upward for older uploads. Reddit archives miss deletions; r/h3snark history starts April 2023. Podchaser durations may misclassify live streams. Frenemies episode numbering in titles is inconsistent—era labels are editorial.</p>
 
 <h2 id="conclusion" class="anchored">Conclusion</h2>
-<p class="art-p">YouTube's disclosed economics are those of a major media company: $36.1 billion in FY2024 ads, TV-screen leadership in Nielsen's 2025 Gauge months, and $100 billion plus paid to creators over four years per YouTube's 2025 statement. The Partner Program still allocates 55% of watch-page ad net revenue to creators on long-form video—while Shorts and music modules complicate the effective rate.</p>
+<p class="art-p">YouTube's disclosed economics are those of a major media company: $36.1 billion in FY2024 ads, TV-screen leadership in Nielsen's Gauge months through August 2026, and $100 billion plus paid to creators over four years per YouTube's 2025 statement. The Partner Program still allocates 55% of watch-page ad net revenue to creators on long-form video—while Shorts and music modules complicate the effective rate.</p>
 <p class="art-p">Inside that machine, H3 Podcast shows the micro story: a nine-month co-host peak that tripled views and became a ceiling; a format that lengthened as the audience narrowed; critic communities that spike on scandal while fan communities erode slowly. Platform growth does not rescue a brand from its own borrowed audience. It only raises the stakes for getting the next partnership right.</p>
 
 <section class="art-back-matter">
@@ -214,7 +214,13 @@ faq:
 <div class="art-references">
 <div class="art-ref-item">Alphabet Inc. Form 10-K FY2018–FY2024. U.S. SEC EDGAR. YouTube ads disaggregation.</div>
 <div class="art-ref-item">Netflix Inc. Form 10-K FY2024. Total revenue $39,000,966 thousand.</div>
-<div class="art-ref-item">Nielsen. Media Distributor Gauge &amp; The Gauge press releases (2024–2025).</div>
+<div class="art-ref-item">Nielsen. Media Distributor Gauge, July 2024 (press release 2024-09-03).</div>
+<div class="art-ref-item">Nielsen. Media Distributor Gauge, February 2025 (press release 2025-03-25).</div>
+<div class="art-ref-item">Nielsen. Media Distributor Gauge, April 2025 (press release 2025-05-27).</div>
+<div class="art-ref-item"><a href="https://www.nielsen.com/news-center/2025/youtube-netflix-ride-the-wave-of-summer-streaming-highs-in-nielsens-media-distributor-gauge/">Nielsen. Media Distributor Gauge, July 2025 (press release August 26, 2025).</a></div>
+<div class="art-ref-item"><a href="https://www.nielsen.com/news-center/2026/tv-usage-kicks-usual-summer-slowdown-fueled-by-world-cup-and-streaming-in-nielsens-july-gauge-reports/">Nielsen. Media Distributor Gauge, July 2026 (press release September 10, 2026).</a></div>
+<div class="art-ref-item"><a href="https://www.nielsen.com/news-center/2026/tv-viewing-cools-off-in-nielsens-august-gauge-reports-as-sports-take-a-breather-and-school-resumes/">Nielsen. Media Distributor Gauge, August 2026 (press release October 22, 2026).</a></div>
+<div class="art-ref-item">Nielsen measures TV-screen viewing only, and "YouTube" in The Gauge means YouTube main, excluding YouTube TV.</div>
 <div class="art-ref-item">Goldman Sachs Global Investment Research. Creator economy primer (Apr 2023).</div>
 <div class="art-ref-item">Google. YouTube Help — partner earnings (answer/72902).</div>
 <div class="art-ref-item">YouTube Official Blog. Made on YouTube 2025 ($100B+ payouts).</div>
