@@ -1,8 +1,8 @@
-# Netflix Holds 4,800 Titles While Marketing 40: What Catalog Data Shows About Platform Inventory
+# Netflix's Top 10% of Titles Drew 68% of Viewing
 
 **Desk:** culture · **Live:** https://artometrics.com/streaming/
 
-Public streaming inventories reveal 90% of titles generate less than 1% of engagement while platforms market the same 50 properties quarterly.
+Netflix's January–June 2026 engagement report lists 17,370 titles with at least 50,000 views worldwide (8,193 shows and 9,177 movies). The top 10% drew 67.9% of named hours; the top 20% drew 82.6%.
 
 ## Layout
 
