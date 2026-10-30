@@ -1,5 +1,7 @@
-month_label,year,month,share_pct,source
-July 2024,2024,7,10.4,"Nielsen Media Distributor Gauge, July 2024 (press release 2024-09-03)"
-February 2025,2025,2,11.6,"Nielsen Media Distributor Gauge, February 2025 (press release 2025-03-25)"
-April 2025,2025,4,12.4,"Nielsen Media Distributor Gauge, April 2025 (press release 2025-05-27)"
-July 2025,2025,7,13.4,"Nielsen Media Distributor Gauge, July 2025 (press release 2025-08-26)"
+month_label,year,month,share_pct,source,url,interval
+July 2024,2024,7,10.4,"Nielsen Media Distributor Gauge, July 2024 (press release 2024-09-03)",,
+February 2025,2025,2,11.6,"Nielsen Media Distributor Gauge, February 2025 (press release 2025-03-25)",,
+April 2025,2025,4,12.4,"Nielsen Media Distributor Gauge, April 2025 (press release 2025-05-27)",,
+July 2025,2025,7,13.4,"Nielsen Media Distributor Gauge, July 2025 (press release 2025-08-26)",https://www.nielsen.com/news-center/2025/youtube-netflix-ride-the-wave-of-summer-streaming-highs-in-nielsens-media-distributor-gauge/,"Jun 30 to Jul 27, 2025 (4 weeks)"
+July 2026,2026,7,14.2,"Nielsen Media Distributor Gauge, July 2026 (press release 2026-09-10)",https://www.nielsen.com/news-center/2026/tv-usage-kicks-usual-summer-slowdown-fueled-by-world-cup-and-streaming-in-nielsens-july-gauge-reports/,"Jun 29 to Jul 26, 2026 (4 weeks)"
+August 2026,2026,8,15.8,"Nielsen Media Distributor Gauge, August 2026 (press release 2026-10-22)",https://www.nielsen.com/news-center/2026/tv-viewing-cools-off-in-nielsens-august-gauge-reports-as-sports-take-a-breather-and-school-resumes/,"Jul 27 to Aug 30, 2026 (5 weeks)"

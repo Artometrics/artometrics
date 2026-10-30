@@ -1,7 +1,15 @@
 {
   "data": [
     {
-      "hovertemplate": "%{x}<br>%{y:.1f}% of U.S. TV (TV screen)<extra></extra>",
+      "customdata": [
+        "July 2024",
+        "February 2025",
+        "April 2025",
+        "July 2025",
+        "July 2026",
+        "August 2026"
+      ],
+      "hovertemplate": "%{customdata}<br>%{y:.1f}% of U.S. TV (TV screen)<extra></extra>",
       "line": {
         "color": "#E60000",
         "width": 3
@@ -16,14 +24,16 @@
       },
       "mode": "lines+markers",
       "x": [
-        "July 2024",
-        "February 2025",
-        "April 2025",
-        "July 2025"
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
       ],
       "y": {
         "dtype": "f8",
-        "bdata": "zczMzMzMJEAzMzMzMzMnQM3MzMzMzChAzczMzMzMKkA="
+        "bdata": "zczMzMzMJEAzMzMzMzMnQM3MzMzMzChAzczMzMzMKkBmZmZmZmYsQJqZmZmZmS9A"
       },
       "type": "scatter"
     }
@@ -806,15 +816,36 @@
     },
     "margin": {
       "l": 60,
-      "r": 40,
+      "r": 72,
       "t": 70,
-      "b": 80
+      "b": 120
     },
     "xaxis": {
       "title": {
         "text": ""
       },
-      "gridcolor": "#E6E6E6"
+      "gridcolor": "#E6E6E6",
+      "tickmode": "array",
+      "tickvals": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "ticktext": [
+        "July 2024",
+        "February 2025",
+        "April 2025",
+        "July 2025",
+        "July 2026",
+        "August 2026"
+      ],
+      "range": [
+        -0.35,
+        6.2
+      ]
     },
     "yaxis": {
       "title": {
@@ -825,7 +856,7 @@
     },
     "paper_bgcolor": "#F2F0EB",
     "plot_bgcolor": "#F2F0EB",
-    "height": 480,
+    "height": 520,
     "annotations": [
       {
         "align": "left",
@@ -836,9 +867,57 @@
         "showarrow": false,
         "text": "Source: Nielsen Media Distributor Gauge press releases \u00b7 Artometrics",
         "x": 0,
+        "xanchor": "left",
         "xref": "paper",
-        "y": -0.18,
+        "y": -0.2,
         "yref": "paper"
+      },
+      {
+        "align": "left",
+        "font": {
+          "color": "#6B6B6B",
+          "family": "DM Sans, Helvetica, Arial",
+          "size": 10
+        },
+        "showarrow": false,
+        "text": "August 2026 was a five-week interval",
+        "x": 0,
+        "xanchor": "left",
+        "xref": "paper",
+        "y": -0.3,
+        "yref": "paper"
+      },
+      {
+        "font": {
+          "color": "#1C1C1E",
+          "family": "DM Sans, Helvetica, Arial",
+          "size": 11
+        },
+        "showarrow": false,
+        "text": "Nielsen method change from Sep 2026",
+        "textangle": -90,
+        "x": 5.45,
+        "xanchor": "center",
+        "xshift": 12,
+        "y": 0.55,
+        "yanchor": "middle",
+        "yref": "paper"
+      }
+    ],
+    "shapes": [
+      {
+        "line": {
+          "color": "#6B6B6B",
+          "dash": "dash",
+          "width": 1.5
+        },
+        "type": "line",
+        "x0": 5.45,
+        "x1": 5.45,
+        "xref": "x",
+        "y0": 0,
+        "y1": 1,
+        "yref": "y domain"
       }
     ]
   },

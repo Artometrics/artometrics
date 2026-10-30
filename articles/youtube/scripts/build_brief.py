@@ -103,23 +103,72 @@ def chart4_youtube_ads_revenue() -> None:
 
 def chart5_nielsen_tv_share() -> None:
     df = pd.read_csv(DATA / "nielsen_youtube_tv_screen_share.csv")
+    x_pos = list(range(len(df)))
+    last = x_pos[-1]
+    # Sit the method-change marker after August 2026 and leave the area after it empty.
+    marker_x = last + 0.45
     fig = go.Figure(
         go.Scatter(
-            x=df["month_label"],
+            x=x_pos,
             y=df["share_pct"],
             mode="lines+markers",
             line=dict(color=RED, width=3),
             marker=dict(size=10, color=BLUE, line=dict(width=2, color=INK)),
-            hovertemplate="%{x}<br>%{y:.1f}% of U.S. TV (TV screen)<extra></extra>",
+            customdata=df["month_label"],
+            hovertemplate="%{customdata}<br>%{y:.1f}% of U.S. TV (TV screen)<extra></extra>",
+        )
+    )
+    layout = base_layout(
+        "YouTube’s TV-screen share keeps climbing in Nielsen’s Gauge",
+        "Source: Nielsen Media Distributor Gauge press releases",
+        height=520,
+    )
+    layout["margin"] = dict(l=60, r=72, t=70, b=120)
+    layout["annotations"][0]["y"] = -0.20
+    layout["annotations"][0]["xanchor"] = "left"
+    layout["annotations"].append(
+        dict(
+            text="August 2026 was a five-week interval",
+            xref="paper",
+            yref="paper",
+            x=0,
+            y=-0.30,
+            showarrow=False,
+            font=dict(family="DM Sans, Helvetica, Arial", size=10, color=GRAY),
+            align="left",
+            xanchor="left",
         )
     )
     fig.update_layout(
-        **base_layout(
-            "YouTube’s TV-screen share keeps climbing in Nielsen’s Gauge",
-            "Source: Nielsen Media Distributor Gauge press releases",
+        **layout,
+        xaxis=dict(
+            title="",
+            gridcolor=GRID,
+            tickmode="array",
+            tickvals=x_pos,
+            ticktext=df["month_label"].tolist(),
+            range=[-0.35, last + 1.2],
         ),
-        xaxis=dict(title="", gridcolor=GRID),
         yaxis=dict(title="Share of total U.S. TV usage (%)", gridcolor=GRID, zeroline=False),
+    )
+    # Add the marker after layout so Plotly does not drop the source annotation.
+    fig.add_vline(
+        x=marker_x,
+        line_dash="dash",
+        line_color=GRAY,
+        line_width=1.5,
+    )
+    fig.add_annotation(
+        x=marker_x,
+        y=0.55,
+        yref="paper",
+        text="Nielsen method change from Sep 2026",
+        textangle=-90,
+        showarrow=False,
+        font=dict(family="DM Sans, Helvetica, Arial", size=11, color=INK),
+        xanchor="center",
+        yanchor="middle",
+        xshift=12,
     )
     write_chart(fig, "chart5_nielsen_tv_share")
 
