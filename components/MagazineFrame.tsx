@@ -5,6 +5,7 @@ type Props = {
   pageKey: string;
   label: string;
   bodyHtml: string;
+  skins?: { id: string; name: string }[];
 };
 
 function htmlToText(html: string) {

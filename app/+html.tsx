@@ -57,6 +57,7 @@ export default function Root({ children }: PropsWithChildren) {
         <meta name="color-scheme" content="dark" />
         <ScrollViewStyleReset />
         <link rel="stylesheet" href="/css/mag.css" />
+        <link rel="stylesheet" href="/css/mag-skins.css" />
         <link rel="stylesheet" href="/css/artometrics-article.css" />
         <link rel="stylesheet" href="/css/site-images.css" />
         <link rel="stylesheet" href="/css/shoegaze-theme.css" />

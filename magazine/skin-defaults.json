@@ -1,0 +1,56 @@
+[
+  {
+    "id": "ledger",
+    "name": "Ledger",
+    "tokens": {
+      "paper": "#F6F1E4",
+      "ink": "#1B2433",
+      "accent": "#0047FF",
+      "accent2": "#C8102E",
+      "rule": "#9DB7A5"
+    },
+    "fonts": {
+      "display": "Libre Caslon Text",
+      "body": "Source Serif 4",
+      "figures": "IBM Plex Mono"
+    },
+    "ornaments": ["column-tick", "coin-stack", "receipt-tear", "fist-pointer"],
+    "closing": { "name": "The Fine Print", "style": "audit" }
+  },
+  {
+    "id": "box",
+    "name": "Back of the Box",
+    "tokens": {
+      "paper": "#FFFDF7",
+      "ink": "#111111",
+      "accent": "#0047FF",
+      "accent2": "#FFCC00",
+      "rule": "#111111"
+    },
+    "fonts": {
+      "display": "Dela Gothic One",
+      "body": "Inter",
+      "figures": "Space Mono"
+    },
+    "ornaments": ["price-tag", "card-frame", "collect-140", "barcode"],
+    "closing": { "name": "Back of the Box", "style": "packaging" }
+  },
+  {
+    "id": "trade",
+    "name": "Trade Paper",
+    "tokens": {
+      "paper": "#EFEDE6",
+      "ink": "#141414",
+      "accent": "#0047FF",
+      "accent2": "#8A8A8A",
+      "rule": "#141414"
+    },
+    "fonts": {
+      "display": "Oswald",
+      "body": "Old Standard TT",
+      "figures": "Oswald"
+    },
+    "ornaments": ["ticket", "sprocket", "marquee-bulbs", "halftone"],
+    "closing": { "name": "End Credits", "style": "credits" }
+  }
+]

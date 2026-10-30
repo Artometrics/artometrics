@@ -1,0 +1,256 @@
+import type { MagIssue, MagSource } from "@/lib/magazine";
+import skinDefaults from "@/magazine/skin-defaults.json";
+
+export type MagSkinTokens = {
+  paper: string;
+  ink: string;
+  accent: string;
+  accent2: string;
+  rule: string;
+};
+
+export type MagSkin = {
+  id: string;
+  name: string;
+  tokens: MagSkinTokens;
+  fonts: { display: string; body: string; figures: string };
+  ornaments: string[];
+  closing: { name: string; style: string };
+};
+
+export const DEFAULT_SKINS = skinDefaults as MagSkin[];
+
+const FONT_STACK: Record<string, string> = {
+  "Libre Caslon Text": '"Libre Caslon Text", Georgia, "Iowan Old Style", serif',
+  "Source Serif 4": '"Source Serif 4", Georgia, "Iowan Old Style", serif',
+  "IBM Plex Mono": '"IBM Plex Mono", ui-monospace, monospace',
+  "Dela Gothic One": '"Dela Gothic One", "Hiragino Sans", "Yu Gothic", sans-serif',
+  Inter: "Inter, system-ui, sans-serif",
+  "Space Mono": '"Space Mono", ui-monospace, monospace',
+  Oswald: "Oswald, Impact, sans-serif",
+  "Old Standard TT": '"Old Standard TT", Georgia, serif',
+};
+
+const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+
+export function skinsForIssue(issue: { skins?: MagSkin[] | null }): MagSkin[] {
+  const list = issue.skins;
+  if (!Array.isArray(list) || list.length === 0) return DEFAULT_SKINS;
+  const usable = list.filter(
+    (skin) => skin && skin.id && skin.name && skin.tokens?.paper && skin.tokens?.ink && skin.closing?.name,
+  );
+  if (usable.length === list.length) return list;
+  return usable.length ? usable : DEFAULT_SKINS;
+}
+
+export function skinStorageKey(slug: string): string {
+  return `artometrics-mag-skin:${slug}`;
+}
+
+export function skinCssVars(skin: MagSkin): Record<string, string> {
+  return {
+    "--paper": skin.tokens.paper,
+    "--ink": skin.tokens.ink,
+    "--accent": skin.tokens.accent,
+    "--accent2": skin.tokens.accent2,
+    "--rule": skin.tokens.rule,
+    "--blue": skin.tokens.accent,
+    "--skin-display": FONT_STACK[skin.fonts.display] || `"${skin.fonts.display}", Georgia, serif`,
+    "--skin-body": FONT_STACK[skin.fonts.body] || `"${skin.fonts.body}", Georgia, serif`,
+    "--skin-figures": FONT_STACK[skin.fonts.figures] || `"${skin.fonts.figures}", ui-monospace, monospace`,
+    backgroundColor: skin.tokens.paper,
+    color: skin.tokens.ink,
+  };
+}
+
+function esc(value: string | number | null | undefined): string {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function safeHref(href: string | null | undefined): string | null {
+  if (!href) return null;
+  const trimmed = href.trim();
+  if (/^(https?:|mailto:)/i.test(trimmed)) return trimmed;
+  if (trimmed.startsWith("/") && !trimmed.startsWith("//")) return trimmed;
+  return null;
+}
+
+export function formatSkinDate(date: string | undefined): string {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date || "");
+  if (!match) return date || "";
+  const month = MONTHS[Number(match[2]) - 1] || match[2];
+  return `${month} ${Number(match[3])}, ${match[1]}`;
+}
+
+function named(ledger: string, box: string, trade: string): string {
+  return `<span data-for="ledger">${ledger}</span><span data-for="box">${box}</span><span data-for="trade">${trade}</span>`;
+}
+
+function ornaments(): string {
+  return `<div class="skin-ornaments" aria-hidden="true">
+<svg data-orn="tick" viewBox="0 0 24 24"><path d="M5 4h2v16H5zM10 12l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+<svg data-orn="coins" viewBox="0 0 24 24"><ellipse cx="12" cy="7" rx="6" ry="2.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 7v4c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V7M6 11v4c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+<svg data-orn="tear" viewBox="0 0 24 24"><path d="M3 8h18M4 14l2 2 2-2 2 2 2-2 2 2 2-2 2 2" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+<svg data-orn="fist" viewBox="0 0 24 24"><path d="M4 12h8l2-2h3M14 12c2 2 6 2 7 0M8 12v5M11 12v4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+<svg data-orn="tag" viewBox="0 0 24 24"><path d="M4 12l8-8h7v7l-8 8z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16.5" cy="7.5" r="1" fill="currentColor"/></svg>
+<svg data-orn="card" viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 5l4 4M20 5l-4 4M4 19l4-4M20 19l-4-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+<svg data-orn="burst" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z" fill="currentColor"/></svg>
+<svg data-orn="barcode" viewBox="0 0 24 24"><path d="M4 6h1.2v12H4zM7 6h.6v12H7zM9 6h1.6v12H9zM12 6h.5v12H12zM14 6h1.4v12H14zM17 6h.7v12H17zM19.2 6H21v12h-1.8z" fill="currentColor"/></svg>
+<svg data-orn="ticket" viewBox="0 0 24 24"><path d="M3 8a2 2 0 010 8v3h18v-3a2 2 0 010-8V5H3z" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M12 6v12" stroke="currentColor" stroke-dasharray="1.5 2"/></svg>
+<svg data-orn="sprocket" viewBox="0 0 24 24"><circle cx="7" cy="6" r="1.4" fill="currentColor"/><circle cx="7" cy="12" r="1.4" fill="currentColor"/><circle cx="7" cy="18" r="1.4" fill="currentColor"/><circle cx="17" cy="6" r="1.4" fill="currentColor"/><circle cx="17" cy="12" r="1.4" fill="currentColor"/><circle cx="17" cy="18" r="1.4" fill="currentColor"/></svg>
+<svg data-orn="bulbs" viewBox="0 0 24 24"><circle cx="4" cy="12" r="1.6" fill="currentColor"/><circle cx="10" cy="12" r="1.6" fill="currentColor"/><circle cx="16" cy="12" r="1.6" fill="currentColor"/><circle cx="22" cy="12" r="1.6" fill="currentColor"/></svg>
+<svg data-orn="halftone" viewBox="0 0 24 24"><circle cx="6" cy="6" r="1.2" fill="currentColor"/><circle cx="12" cy="6" r="1.8" fill="currentColor"/><circle cx="18" cy="6" r="1.1" fill="currentColor"/><circle cx="6" cy="12" r="2" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/><circle cx="18" cy="12" r="2.1" fill="currentColor"/><circle cx="6" cy="18" r="1.1" fill="currentColor"/><circle cx="12" cy="18" r="1.7" fill="currentColor"/><circle cx="18" cy="18" r="1.2" fill="currentColor"/></svg>
+</div>`;
+}
+
+function plates(): string {
+  return `<figure class="skin-plate">
+<img data-for="ledger" src="/images/skins/pacioli.jpg" width="960" height="800" alt="Portrait of Luca Pacioli, attributed to Jacopo de' Barbari, about 1495">
+<img data-for="box" src="/images/skins/toy-shop.jpg" width="960" height="679" alt="Color print of a toy shop by Utagawa Sadahide, 1860">
+<img data-for="trade" src="/images/skins/belasco-box-office.jpg" width="960" height="1189" alt="Belasco Theatre box office, published 1907">
+<figcaption>${named(
+    "Pacioli, c. 1495 · public domain",
+    "Sadahide, toy shop, 1860 · CC0",
+    "Belasco box office, 1907 · public domain",
+  )}</figcaption>
+</figure>`;
+}
+
+function dateline(issue: MagIssue): string {
+  const date = formatSkinDate(issue.date);
+  if (issue.slug === "franchise") return `${date} · 140 FRANCHISES · $1,448.1B`;
+  return `${date}${issue.kicker ? ` · ${issue.kicker}` : ""}`;
+}
+
+function disclaimer(issue: MagIssue): string {
+  if (issue.slug === "franchise") {
+    return "Figures are Wikipedia editors' estimates of consumer spending in nominal dollars, not audited studio financials. “The US out-earns Japan” is a fact about this English-language list, not about national industries. Several Japanese totals were revised at the source (Hello Kitty $80.0B to $33.5B; Mario $35.0B to $9.74B); Sanrio and Nintendo reported no collapse.";
+  }
+  return "Artometrics data brief. Figures come from the sources below. Derived shares and editorial indices are not audited financials.";
+}
+
+function method(issue: MagIssue): string {
+  if (issue.slug === "franchise") {
+    return `Shares carry 95% bootstrap ranges (merchandise 44.0–66.2). The 2019 file was audited against Wikipedia revision 904026364 on a 40-franchise random sample (seed 20261012). <a href="/franchise-data-fix">What changed when we fixed the data</a>.`;
+  }
+  return "Numbers in this issue are the published figures. The skin changes type, rules, and chart color only.";
+}
+
+function alreadyListed(text: string, href: string | null, published: string): boolean {
+  if (!published) return false;
+  if (text.includes("904026364") && !published.includes("904026364")) return false;
+  if (href && published.includes(href)) return true;
+  const needles = ["10-K", "S004", "Hernández", "doi.org/10.3390/arts7030042", "2019-07-02", "1379832186", "tidytuesday", "CPI-U", "CPIAUCSL", "Jenkins", "Steinberg", "Robinson", "box_office_mojo"];
+  for (const needle of needles) {
+    if (text.includes(needle) && published.includes(needle)) return true;
+  }
+  const slice = text.slice(0, 42);
+  return slice.length > 16 && published.includes(slice);
+}
+
+function sourceItem(source: MagSource): string {
+  const href = safeHref(source.href);
+  const text = esc(source.text);
+  const body = href ? `<a href="${esc(href)}">${text}</a>` : text;
+  return `<li><span class="role">Source</span>${body}</li>`;
+}
+
+function closingSources(issue: MagIssue, publishedInner: string): string {
+  const items: string[] = [];
+  const published = publishedInner.trim().replace(/<li>/g, '<li><span class="role">Source</span>');
+  if (published) items.push(published);
+  for (const source of issue.src || []) {
+    const href = safeHref(source.href);
+    if (alreadyListed(source.text || "", href, published)) continue;
+    items.push(sourceItem(source));
+  }
+  const reportHref = `https://artometrics.com/${issue.slug}`;
+  const joined = items.join("");
+  if (!joined.includes(`artometrics.com/${issue.slug}`)) {
+    items.push(
+      `<li><span class="role">Report</span>Full report: <a href="${esc(reportHref)}">artometrics.com/${esc(issue.slug)}</a></li>`,
+    );
+  }
+  return items.join("\n");
+}
+
+function credits(issue: MagIssue): string {
+  const hero = issue.hero
+    ? `<li class="hero-credit"><span class="role">Hero</span>Artometrics ${esc(issue.kicker || "report")} illustration.</li>`
+    : "";
+  return `${hero}
+<li data-for="ledger"><span class="role">Plate</span><a href="https://commons.wikimedia.org/wiki/File:Pacioli.jpg">Portrait of Luca Pacioli</a>, attributed to Jacopo de' Barbari, c. 1495. Public domain, via Wikimedia Commons.</li>
+<li data-for="box"><span class="role">Plate</span><a href="https://commons.wikimedia.org/wiki/File:Doban-e_J%C5%8Dgy%C5%8D_shiki-Color_Print_of_a_Copperplate_Picture_of_a_Toy_Shop_MET_DP147967.jpg">Color print of a toy shop</a>, Utagawa Sadahide, 1860. The Metropolitan Museum of Art, CC0, via Wikimedia Commons.</li>
+<li data-for="trade"><span class="role">Plate</span><a href="https://commons.wikimedia.org/wiki/File:Belasco_Theatre_box_office.jpg">Belasco Theatre box office</a>, published November 1907 in Architects' and Builders' Magazine. Unknown photographer. Public domain, via Wikimedia Commons.</li>`;
+}
+
+function closingSection(issue: MagIssue, publishedInner: string): string {
+  const names = skinsForIssue(issue)
+    .map((skin) => `<span data-for="${esc(skin.id)}">${esc(skin.closing.name)}</span>`)
+    .join("");
+  return `<section class="closing" id="closing">
+<p class="end">■ END</p>
+<h2 class="closing-name">${names}</h2>
+<div class="close-warn"><h3>${named("Note", "Warnings", "Disclaimer")}</h3><p class="disclaimer">${esc(disclaimer(issue))}</p></div>
+<div class="close-src"><h3>${named("Sources", "Contents", "Sources")}</h3><ol class="src">${closingSources(issue, publishedInner)}</ol></div>
+<div class="close-method"><h3>${named("Method", "Assembly", "Method")}</h3><p class="method">${method(issue)}</p></div>
+<div class="close-credit"><h3>${named("Plates", "Made by", "Image credits")}</h3><ul class="credits">${credits(issue)}</ul></div>
+<p class="updated">Updated through ${esc(formatSkinDate(issue.date))}.</p>
+<p class="by skin-back"><a href="/">← Contents</a></p>
+</section>`;
+}
+
+function franchisePresentation(html: string): string {
+  return html
+    .replace(
+      '<h1 itemprop="headline">Merchandise <em>owns</em> the ledger</h1>',
+      '<h1 class="skin-title" itemprop="headline"><span class="deck">Merchandise</span> <span class="deck"><em>owns</em></span> <span class="deck">the ledger</span></h1>',
+    )
+    .replace("<h2>The cinema is the ad</h2>", '<h2 class="skin-accounts">The cinema is the ad</h2>')
+    .replace("<h2>Pokémon, then everyone</h2>", '<h2 class="skin-running">Pokémon, then everyone</h2>')
+    .replace(
+      '<h2>Five parents, 58%</h2>\n<p class="big fade">58.2%</p>',
+      '<h2 class="skin-balance">Five parents, 58%</h2>\n<p class="big fade skin-balance">58.2%</p>',
+    )
+    .replace("<h2>The flip</h2>", '<h2 class="skin-flip">The flip</h2>')
+    .replace(
+      '<h2 class="skin-flip">The flip</h2>\n<figure>',
+      '<h2 class="skin-flip">The flip</h2>\n<figure class="skin-flip-fig">',
+    )
+    .replace(
+      '<h2>A sequel chart</h2>\n<p class="big fade">9 of 10</p>',
+      '<h2 class="skin-tally">A sequel chart</h2>\n<p class="big fade skin-tally">9 of 10</p>',
+    )
+    .replace("<h2>For a buyer</h2>", '<h2 class="skin-memo">For a buyer</h2>');
+}
+
+function splitAtEnd(html: string): { article: string; publishedInner: string } {
+  const endAt = html.lastIndexOf('<p class="end">');
+  if (endAt < 0) return { article: html, publishedInner: "" };
+  const article = html.slice(0, endAt);
+  const tail = html.slice(endAt);
+  const list = tail.match(/<ol class="src">([\s\S]*?)<\/ol>/);
+  return { article, publishedInner: list ? list[1] : "" };
+}
+
+export function decorateIssueHtml(issue: MagIssue, html: string): string {
+  let body = html.replace(/<p>(<strong>What it means\.)/g, '<p class="means">$1');
+  body = body.replace(/<img class="hero"/g, '<span class="hero-frame"><img class="hero"');
+  body = body.replace(/<span class="hero-frame"><img class="hero"([^>]*)>/g, '<span class="hero-frame"><img class="hero"$1></span>');
+  if (issue.slug === "franchise") body = franchisePresentation(body);
+  const { article, publishedInner } = splitAtEnd(body);
+  const stamp =
+    issue.slug === "franchise"
+      ? '<p class="audit-stamp" aria-hidden="true">Audited · Oct 2026</p>'
+      : "";
+  const collect =
+    issue.slug === "franchise"
+      ? '<p class="collect-140" aria-hidden="true"><span></span><span></span><span></span> Collect all 140</p>'
+      : "";
+  const preface = `<div class="skin-top">${ornaments()}<div class="skin-top-row">${plates()}<div class="skin-top-copy"><p class="skin-dateline">${esc(dateline(issue))}</p>${stamp}${collect}</div></div></div>`;
+  return preface + article + closingSection(issue, publishedInner);
+}

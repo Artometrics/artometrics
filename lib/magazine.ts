@@ -1,4 +1,6 @@
 import issuesData from "@/magazine/issues.json";
+import type { MagSkin } from "@/lib/magazine-skins";
+import { decorateIssueHtml } from "@/lib/magazine-skins";
 
 export type MagSource = { href: string | null; text: string };
 export type MagFigure = { src: string; cap?: string | null };
@@ -24,6 +26,8 @@ export type MagIssue = {
   origWords?: number;
   isFix?: boolean;
   custom?: string;
+  /** Reader skins. Omitted issues use the three shared defaults. */
+  skins?: MagSkin[];
 };
 
 const DESKS = [
@@ -101,7 +105,7 @@ function figureHtml(fig: MagFigure | null | undefined, caption: boolean): string
 export function renderIssueBody(issue: MagIssue): string {
   const minutes = magazineMins(issue.words);
   if (issue.custom) {
-    return issue.custom.replace(/· 5 min/g, `· ${minutes} min`);
+    return decorateIssueHtml(issue, issue.custom.replace(/· 5 min/g, `· ${minutes} min`));
   }
   const sections = issue.sections || [];
   const [first, ...rest] = sections;
@@ -124,14 +128,9 @@ export function renderIssueBody(issue: MagIssue): string {
       return `${heading}${figureHtml(section.fig, true)}${paragraphs}`;
     })
     .join("");
-  const sources = (issue.src || [])
-    .map((source) => {
-      const href = safeHref(source.href);
-      if (href) return `<li><a href="${esc(href)}">${esc(source.text)}</a></li>`;
-      return `<li>${esc(source.text)}</li>`;
-    })
-    .join("");
-  return `<p class="kick">${esc(issue.kicker)}</p>
+  return decorateIssueHtml(
+    issue,
+    `<p class="kick">${esc(issue.kicker)}</p>
 <h1 itemprop="headline">${esc(issue.title)}</h1>
 <p class="dek" itemprop="description">${esc(issue.dek)}</p>
 <p class="by">By <span itemprop="author">${esc(issue.author)}</span> · <time itemprop="dateModified" datetime="${esc(issue.date)}">${esc(issue.date)}</time> · ${minutes} min</p>
@@ -139,12 +138,8 @@ ${hero}
 ${lead}
 ${points}
 ${figureHtml(first?.fig, true)}
-${restHtml}
-<p class="end">■ END</p>
-<h2>Sources</h2>
-<ol class="src">${sources}
-<li>Full report: <a href="https://artometrics.com/${esc(issue.slug)}">artometrics.com/${esc(issue.slug)}</a></li></ol>
-<p class="by" style="margin-top:12px"><a href="/">← Contents</a></p>`;
+${restHtml}`,
+  );
 }
 
 export function renderContentsBody(issues: MagIssue[] = magazineIssues()): string {
