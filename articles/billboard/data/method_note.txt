@@ -1,0 +1,8 @@
+All I Want for Christmas Is You is set to 22 weeks at No. 1.
+
+That figure is Billboard's cumulative total through the chart dated Oct 31, 2026, from Gary Trust, "Ella Langley's 'Choosin' Texas' Rebounds for Record-Extending 25th Week at No. 1 on Hot 100" (Billboard, Oct. 26, 2026):
+https://www.billboard.com/lists/ella-langley-choosin-texas-hot-100-number-one-25th-week
+
+The same 22 is the count of Hot 100 weeks at No. 1 for "All I Want For Christmas Is You" by Mariah Carey in utdata/rwd-billboard-data data-out/hot-100-current.csv at commit ff86f04 (first week 2019-12-21, last week 2026-01-03).
+
+On the issue file this replaces the TidyTuesday value of 8 in weeks_at_number_one. The row is still titled "All I Want for Christmas is You". No other column on that row was changed.
