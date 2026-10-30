@@ -1,0 +1,5 @@
+number_ones.csv is built from utdata/rwd-billboard-data
+path: data-out/hot-100-current.csv
+commit: ff86f0456f55f8174ea5e91c0872a00df21b8603
+chart weeks included: current_week == 1 and chart_week <= 2026-10-31
+Repository code is MIT. Chart data is Billboard's.

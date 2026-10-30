@@ -2,21 +2,21 @@ BILLBOARD: How Long Number-Ones Stay on Top
 
 The Billboard Hot 100 has published a number-one song every week since August 1958. In that time it has absorbed the British Invasion, the disco era, the rise of hip-hop, the collapse of the album format, and the complete restructuring of the music industry by streaming platforms. Through all of it, the same basic question persists: how long can a song stay at the top?
 
-The file covers 1,177 distinct number-one entries — the full record of Hot 100 dominance through early 2025. The median run lasts just 2 weeks. The record holder, as of this dataset, is 19 weeks. Between those two facts sits the entire history of popular music.
+The file covers 1,195 distinct number-one entries as of the chart dated Oct 31, 2026. The median run lasts just 2 weeks. The longest runs are 25 weeks for Choosin' Texas, 22 for All I Want for Christmas Is You, 19 for A Bar Song (Tipsy) and Old Town Road, and 16 for Last Night, Despacito, and One Sweet Day. Between those facts sits the entire history of popular music.
 
-Start with the scale: 1,177 number-one songs (1958–2025); 2 wks median run length; The Beatles with the most appearances; Taylor Swift with the highest average run length among modern artists.
+Start with the scale: 1,195 number-one songs (1958–2026); 2 wks median run length; The Beatles with the most appearances; Taylor Swift with the highest average run length among modern artists.
 
 RUN LENGTH OVER THE DECADES
 
-MEDIAN WEEKS AT NUMBER ONE PER YEAR — 1958 TO 2025
+MEDIAN WEEKS AT NUMBER ONE PER YEAR — 1958 TO 2026
 
-The trend line tells a story in two halves. From 1958 through the 1990s, median run length drifts between 2 and 3 weeks — an era when radio play and physical sales set natural limits on how long one song could dominate. Post-2012, the median begins a slow climb as streaming rewrites the economics: a song that goes viral accumulates plays continuously, making it structurally harder for anything else to unseat it. The highest single-year medians in the dataset cluster in the 2015–2025 range. This is the streaming era in action: longer runs, fewer number-ones per year, and a winner-take-most dynamic that concentrates attention on a shrinking pool of mega-hits.
+The trend line tells a story in two halves. From 1958 through the 1990s, median run length drifts between 2 and 3 weeks — an era when radio play and physical sales set natural limits on how long one song could dominate. Post-2012, the median begins a slow climb as streaming rewrites the economics: a song that goes viral accumulates plays continuously, making it structurally harder for anything else to unseat it. The highest single-year medians in the dataset cluster in the 2015–2025 range. The 2025 median is 6.5 weeks. The 2026 median is 1 week so far. This is the streaming era in action: longer runs, fewer number-ones per year, and a winner-take-most dynamic that concentrates attention on a shrinking pool of mega-hits.
 
 LONGEST RUNS EVER
 
 TOP 12 SONGS BY TOTAL WEEKS AT NUMBER ONE
 
-"A Bar Song (Tipsy)" by Shaboozey leads the all-time list at 19 weeks — a record achieved in the full streaming era where a country-rap crossover could accumulate plays from audiences that would never overlap in the pre-streaming world. The median among the top dozen is 14.5 weeks, suggesting that record-length runs cluster in a narrow range rather than showing one extreme outlier followed by a rapid drop. The most striking feature of this chart is what is absent: no Beatles song, no Motown classic, no 1970s or 1980s blockbuster. Every song on this list is from 1992 or later, with the majority from 2010 onward. The longest runs in Hot 100 history are a product of the modern era — of digital music, streaming infrastructure, and the global distribution of taste.
+As of the chart dated Oct 31, 2026, Billboard's longest Hot 100 runs are Choosin' Texas by Ella Langley at 25 weeks, All I Want for Christmas Is You by Mariah Carey at 22, A Bar Song (Tipsy) by Shaboozey and Old Town Road at 19, and Last Night, Despacito, and One Sweet Day at 16. The median among the top dozen is 16 weeks. The most striking feature of this chart is what is absent: no Beatles song, no Motown classic, no 1970s or 1980s blockbuster. Every song on this list is from 1992 or later, with the majority from 2010 onward. The longest runs in Hot 100 history are a product of the modern era — of digital music, streaming infrastructure, and the global distribution of taste.
 
 HOW ARTISTS COMPARE
 
@@ -33,6 +33,8 @@ Taylor Swift sits above the median — her number-one runs average longer than t
 SCATTER: WEEKS VS REACH
 
 WEEKS AT NUMBER ONE VS SECONDARY CHART REACH — SCATTER OF ALL SONGS
+
+New No. 1s from 2025 to 2026 have no secondary-reach value in the source file.
 
 The scatter of all songs against a secondary reach metric shows the expected cluster near the origin — most songs arrive briefly and reach a moderate audience — and a sparse upper-right region of true blockbusters: long runs, broad reach, and the kind of cultural saturation that transcends a single chart. The outliers in the upper right are not outliers in the statistical sense — they are archetypes. They represent what the entire industry is optimized to produce, and what it very rarely achieves. Studying them is studying the ceiling, not the average.
 
