@@ -94,9 +94,12 @@ assert(
   "closing box names",
 );
 const billboard = issues.find((issue) => issue.slug === "billboard");
-assert(billboard && !("skins" in billboard), "billboard issue record stays untouched");
+assert(billboard && billboard.kp.some((point) => point.n === "1,195"), "billboard keeps the Oct 31 Hot 100 count");
+assert(
+  billboard.kp.some((point) => String(point.l).includes("Oct 31, 2026")),
+  "billboard keeps the Oct 31 chart date",
+);
 for (const issue of issues) {
-  if (issue.slug === "billboard") continue;
   assert(Array.isArray(issue.skins) && issue.skins.length === 3, `${issue.slug} has three skins`);
   assert(
     issue.skins.map((skin) => skin.id).join(",") === "ledger,box,trade",
