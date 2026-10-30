@@ -53,7 +53,7 @@
 - [BLUEPRINT: Record Sale, No Championship Formula](https://artometrics.com/blueprint): José E. Feliciano and Kwanza Jones paid a record $3.9bn for a club drawing 42,000 a game, ranked last in farm talent, and carrying $858m owed to five underperforming stars. (sports)
 - [BEYONCE: The Cost of Controlling the House](https://artometrics.com/beyonce): A Psychonomics profile of Beyoncé — Hermann Leadership Trait Analysis, Parkwood as institutionalized self, Lemonade’s canon economics, and an 8,000-line lyric machine. (humanities)
 - [TRADEMARKS: A ¥10.3 Million Win Becomes Cultural Reckoning](https://artometrics.com/trademarks): Louis Vuitton won ¥10.3 million against Molly Tea in Suzhou court on 29 June 2026 for four-petal logo infringement. Chinese social media reframed the first-to-file trademark case as foreign enclosure of Tang-era motifs. (arts)
-- [STREAMING: Netflix Markets 40 Hits Against a 4,800-Title Catalog](https://artometrics.com/streaming): Public streaming inventories reveal 90% of titles generate less than 1% of engagement while platforms market the same 50 properties quarterly. (arts)
+- [Netflix's Top 10% of Titles Drew 68% of Viewing](https://artometrics.com/streaming): Netflix's January–June 2026 engagement report lists 17,370 titles with at least 50,000 views worldwide (8,193 shows and 9,177 movies). The top 10% drew 67.9% of named hours; the top 20% drew 82.6%. (arts)
 - [ATLAS: What Does Your Country Sell?](https://artometrics.com/atlas): Export ledgers reveal national identity under market constraint—200+ countries, 5,000+ products, six diagnostic questions. (civics)
 - [BIOECONOMICS: A Data Framework for Economic Identity](https://artometrics.com/bioeconomics): 1,667 subnational regions and 1,100+ datasets define the economic signature of cities — exports, housing, transit, culture, and historical infrastructure. (civics)
 - [BLOCKBUSTERS: How Movies Become IMDb Famous](https://artometrics.com/blockbusters): Title fields, ratings, and box-office references explain how films accumulate attention. (arts)
@@ -153,4 +153,4 @@
 
 ## Generated
 
-Updated: 2026-10-29T14:35:35.371Z
+Updated: 2026-10-30T21:51:00.239Z
