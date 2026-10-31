@@ -118,9 +118,75 @@ assert(billboard.skins[1].tokens.paper === "#FBF6EC" && billboard.skins[1].fonts
 assert(billboard.skins[2].tokens.accent2 === "#12B886" && billboard.skins[2].fonts.figures === "JetBrains Mono", "stream tokens");
 assert(billboard.title === "How Long Number-Ones Stay on Top", "billboard title unchanged");
 assert(billboard.src.length === 4, "billboard keeps its four sources");
+const streaming = issues.find((issue) => issue.slug === "streaming");
+assert(
+  streaming.skins.map((skin) => skin.id).join(",") === "shelf,guide,late",
+  "streaming skin order",
+);
+assert(
+  streaming.skins.map((skin) => skin.name).join("|") === "Top Shelf|Program Guide|Late Show",
+  "streaming skin names",
+);
+assert(
+  streaming.skins.map((skin) => skin.closing.name).join("|") === "Return Slip|Listings Key|After the Credits",
+  "streaming closing names",
+);
+assert(streaming.skins[0].tokens.paper === "#F5F1E8" && streaming.skins[0].tokens.ink === "#15171C", "shelf paper and ink");
+assert(streaming.skins[0].tokens.accent === "#0047FF" && streaming.skins[0].tokens.accent2 === "#D9480F", "shelf accents");
+assert(streaming.skins[0].tokens.rule === "#CFC6B4", "shelf rule");
+assert(
+  streaming.skins[0].fonts.display === "Oswald" &&
+    streaming.skins[0].fonts.body === "Source Serif 4" &&
+    streaming.skins[0].fonts.figures === "IBM Plex Mono",
+  "shelf fonts",
+);
+assert(streaming.skins[1].tokens.paper === "#FAF7F0" && streaming.skins[1].tokens.ink === "#111111", "guide paper and ink");
+assert(streaming.skins[1].tokens.accent === "#0047FF" && streaming.skins[1].tokens.accent2 === "#2B8A3E", "guide accents");
+assert(streaming.skins[1].tokens.rule === "#BDB6A6", "guide rule");
+assert(
+  streaming.skins[1].fonts.display === "Archivo" &&
+    streaming.skins[1].fonts.body === "Source Serif 4" &&
+    streaming.skins[1].fonts.figures === "Space Mono",
+  "guide fonts",
+);
+assert(streaming.skins[2].tokens.paper === "#10131A" && streaming.skins[2].tokens.ink === "#E9ECF2", "late paper and ink");
+assert(streaming.skins[2].tokens.accent === "#7FA2FF" && streaming.skins[2].tokens.accent2 === "#F2A900", "late accents");
+assert(streaming.skins[2].tokens.rule === "#2A3040", "late rule");
+assert(
+  streaming.skins[2].fonts.display === "Space Grotesk" &&
+    streaming.skins[2].fonts.body === "Inter" &&
+    streaming.skins[2].fonts.figures === "JetBrains Mono",
+  "late fonts",
+);
+assert(streaming.title === "Netflix's Top 10% of Titles Drew 68% of Viewing", "streaming title unchanged");
+assert(streaming.src.length === 5, "streaming keeps its five sources");
+assert(
+  streaming.src.some((source) => String(source.text).includes("User-supplied or public streaming availability export")),
+  "streaming keeps the availability src line",
+);
+function channel(hex) {
+  const n = parseInt(hex.slice(1), 16);
+  const raw = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((value) => value / 255);
+  const lin = raw.map((c) => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2];
+}
+function contrastRatio(a, b) {
+  const hi = Math.max(channel(a), channel(b));
+  const lo = Math.min(channel(a), channel(b));
+  return (hi + 0.05) / (lo + 0.05);
+}
+for (const skin of streaming.skins) {
+  assert(contrastRatio(skin.tokens.ink, skin.tokens.paper) >= 4.5, `${skin.id} body contrast`);
+  assert(contrastRatio(skin.tokens.accent, skin.tokens.paper) >= 4.5, `${skin.id} link contrast`);
+}
+assert(contrastRatio("#3A3A3A", "#F5F1E8") >= 4.5, "shelf caption contrast");
+assert(contrastRatio("#3A3A3A", "#FAF7F0") >= 4.5, "guide caption contrast");
+assert(contrastRatio("#C5CAD3", "#10131A") >= 4.5, "late caption contrast");
+assert(contrastRatio("#15171C", "#F6F3EC") >= 4.5, "late chart mat text contrast");
+assert(contrastRatio("#0047FF", "#F6F3EC") >= 4.5, "late chart mat link contrast");
 for (const issue of issues) {
   assert(Array.isArray(issue.skins) && issue.skins.length === 3, `${issue.slug} has three skins`);
-  if (issue.slug === "billboard") continue;
+  if (issue.slug === "billboard" || issue.slug === "streaming") continue;
   assert(
     issue.skins.map((skin) => skin.id).join(",") === "ledger,box,trade",
     `${issue.slug} skin order`,
@@ -134,6 +200,11 @@ assert(skinSource.includes('new Set(["ledger", "box", "trade"])'), "retired bill
 assert(skinSource.includes("Updated through: chart dated Oct 31, 2026"), "billboard chart date line");
 assert(skinSource.includes("Artometrics Billboard report illustration."), "billboard hero credit");
 assert(skinSource.includes("How Long Number-Ones Stay on Top"), "billboard title treatment keeps the headline");
+assert(skinSource.includes('slug === "streaming"'), "streaming retires the shared skins");
+assert(skinSource.includes("Updated through: weeks ending June 28, 2026"), "streaming updated line");
+assert(skinSource.includes("Netflix's Top 10% of Titles Drew 68% of Viewing"), "streaming title treatment keeps the headline");
+assert(skinSource.includes("JAN–JUN 2026"), "program guide time slot");
+assert(skinSource.includes("top 10% of titles"), "late show scrubber label");
 const frame = readFileSync(join(ROOT, "components/MagazineFrame.web.tsx"), "utf8");
 assert(frame.includes('data-skin'), "reader root carries data-skin");
 assert(frame.includes("localStorage"), "picker remembers the skin");
@@ -146,8 +217,19 @@ assert(skinCss.includes('[data-skin="trade"]'), "trade skin css");
 assert(skinCss.includes('[data-skin="chart"]'), "chart skin css");
 assert(skinCss.includes('[data-skin="sleeve"]'), "sleeve skin css");
 assert(skinCss.includes('[data-skin="stream"]'), "stream skin css");
+assert(skinCss.includes('[data-skin="shelf"]'), "shelf skin css");
+assert(skinCss.includes('[data-skin="guide"]'), "guide skin css");
+assert(skinCss.includes('[data-skin="late"]'), "late skin css");
+assert(skinCss.includes("67.9%"), "late scrubber stops at 67.9%");
+assert(skinCss.includes("#F6F3EC"), "late charts sit on a light mat");
+assert(!skinCss.includes("#E50914"), "skins do not use Netflix red");
+assert(!/filter:\s*invert/.test(skinCss), "chart pngs are not inverted");
 assert(skinCss.includes("prefers-reduced-motion"), "skins keep a reduced-motion path");
 assert(frame.includes("resolveSkinId"), "reader uses the skin resolver");
+assert(
+  frame.includes('id === "shelf"') && frame.includes('id === "guide"') && frame.includes('id === "late"'),
+  "picker draws the streaming skins",
+);
 for (const font of ["archivo-latin.woff2", "bungee-latin.woff2", "space-grotesk-latin.woff2", "jetbrains-mono-latin.woff2"]) {
   const bytes = readFileSync(join(ROOT, "public/fonts/skins", font));
   assert(bytes.toString("ascii", 0, 4) === "wOF2", `${font} is a woff2`);
