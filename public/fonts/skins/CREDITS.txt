@@ -10,5 +10,9 @@ Inter — Copyright 2020 The Inter Project Authors (https://github.com/rsms/inte
 Space Mono — Copyright 2016 Google Inc.
 Oswald — Copyright 2016 The Oswald Project Authors
 Old Standard TT — Copyright (c) 2011, Alexey Kryukov, with Reserved Font Name 'Old Standard'
+Archivo — Copyright 2020 The Archivo Project Authors (https://github.com/Omnibus-Type/Archivo)
+Bungee — Copyright 2023 The Bungee Project Authors (https://github.com/djrrb/Bungee)
+Space Grotesk — Copyright 2020 The Space Grotesk Project Authors (https://github.com/floriankarsten/space-grotesk)
+JetBrains Mono — Copyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono)
 
 Latin subsets are self-hosted. Dela Gothic One also includes its kana subset so Japanese kana can set in the Back of the Box display face. Kanji, when a string needs them, fall back to the reader's Japanese gothic.

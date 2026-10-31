@@ -100,8 +100,27 @@ assert(
   billboard.kp.some((point) => String(point.l).includes("Oct 31, 2026")),
   "billboard keeps the Oct 31 chart date",
 );
+const franchiseIssue = issues.find((issue) => issue.slug === "franchise");
+assert(
+  franchiseIssue.skins.map((skin) => skin.id).join(",") === "ledger,box,trade",
+  "franchise keeps the shared skins",
+);
+assert(
+  billboard.skins.map((skin) => skin.id).join(",") === "chart,sleeve,stream",
+  "billboard skin order",
+);
+assert(
+  billboard.skins.map((skin) => skin.closing.name).join("|") === "Chart Notes|Liner Notes|Track Info",
+  "billboard closing names",
+);
+assert(billboard.skins[0].tokens.paper === "#F7F3EA" && billboard.skins[0].tokens.accent2 === "#E4002B", "chart tokens");
+assert(billboard.skins[1].tokens.paper === "#FBF6EC" && billboard.skins[1].fonts.display === "Bungee", "sleeve tokens");
+assert(billboard.skins[2].tokens.accent2 === "#12B886" && billboard.skins[2].fonts.figures === "JetBrains Mono", "stream tokens");
+assert(billboard.title === "How Long Number-Ones Stay on Top", "billboard title unchanged");
+assert(billboard.src.length === 4, "billboard keeps its four sources");
 for (const issue of issues) {
   assert(Array.isArray(issue.skins) && issue.skins.length === 3, `${issue.slug} has three skins`);
+  if (issue.slug === "billboard") continue;
   assert(
     issue.skins.map((skin) => skin.id).join(",") === "ledger,box,trade",
     `${issue.slug} skin order`,
@@ -110,14 +129,29 @@ for (const issue of issues) {
 const skinSource = readFileSync(join(ROOT, "lib/magazine-skins.ts"), "utf8");
 assert(skinSource.includes("artometrics-mag-skin:"), "skin choice is stored per issue");
 assert(skinSource.includes("data-for"), "closing names switch with the skin");
+assert(skinSource.includes("resolveSkinId"), "skin ids resolve before they are applied");
+assert(skinSource.includes('new Set(["ledger", "box", "trade"])'), "retired billboard skins are named");
+assert(skinSource.includes("Updated through: chart dated Oct 31, 2026"), "billboard chart date line");
+assert(skinSource.includes("Artometrics Billboard report illustration."), "billboard hero credit");
+assert(skinSource.includes("How Long Number-Ones Stay on Top"), "billboard title treatment keeps the headline");
 const frame = readFileSync(join(ROOT, "components/MagazineFrame.web.tsx"), "utf8");
 assert(frame.includes('data-skin'), "reader root carries data-skin");
 assert(frame.includes("localStorage"), "picker remembers the skin");
 const magJs = readFileSync(join(ROOT, "public/mag.js"), "utf8");
 assert(magJs.includes("location.search"), "page turns keep ?skin=");
-assert(readFileSync(join(ROOT, "public/css/mag-skins.css"), "utf8").includes('[data-skin="ledger"]'), "ledger skin css");
-assert(readFileSync(join(ROOT, "public/css/mag-skins.css"), "utf8").includes('[data-skin="box"]'), "box skin css");
-assert(readFileSync(join(ROOT, "public/css/mag-skins.css"), "utf8").includes('[data-skin="trade"]'), "trade skin css");
+const skinCss = readFileSync(join(ROOT, "public/css/mag-skins.css"), "utf8");
+assert(skinCss.includes('[data-skin="ledger"]'), "ledger skin css");
+assert(skinCss.includes('[data-skin="box"]'), "box skin css");
+assert(skinCss.includes('[data-skin="trade"]'), "trade skin css");
+assert(skinCss.includes('[data-skin="chart"]'), "chart skin css");
+assert(skinCss.includes('[data-skin="sleeve"]'), "sleeve skin css");
+assert(skinCss.includes('[data-skin="stream"]'), "stream skin css");
+assert(skinCss.includes("prefers-reduced-motion"), "skins keep a reduced-motion path");
+assert(frame.includes("resolveSkinId"), "reader uses the skin resolver");
+for (const font of ["archivo-latin.woff2", "bungee-latin.woff2", "space-grotesk-latin.woff2", "jetbrains-mono-latin.woff2"]) {
+  const bytes = readFileSync(join(ROOT, "public/fonts/skins", font));
+  assert(bytes.toString("ascii", 0, 4) === "wOF2", `${font} is a woff2`);
+}
 for (const plate of ["pacioli.jpg", "toy-shop.jpg", "belasco-box-office.jpg"]) {
   const bytes = readFileSync(join(ROOT, "public/images/skins", plate));
   assert(bytes[0] === 0xff && bytes[1] === 0xd8, `${plate} is a jpeg`);

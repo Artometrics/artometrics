@@ -1,6 +1,6 @@
 import { createElement, useEffect, useLayoutEffect, useState } from "react";
 import type { CSSProperties } from "react";
-import { skinCssVars, skinStorageKey, type MagSkin } from "@/lib/magazine-skins";
+import { resolveSkinId, skinCssVars, skinStorageKey, type MagSkin } from "@/lib/magazine-skins";
 
 type Props = {
   pageKey: string;
@@ -16,18 +16,16 @@ declare global {
 }
 
 function readSkinChoice(slug: string, skins: MagSkin[]): string {
-  const ids = new Set(skins.map((skin) => skin.id));
   const fallback = skins[0]?.id || "ledger";
   if (typeof window === "undefined") return fallback;
   const query = new URLSearchParams(window.location.search).get("skin");
-  if (query && ids.has(query)) return query;
+  let saved: string | null = null;
   try {
-    const saved = window.localStorage.getItem(skinStorageKey(slug));
-    if (saved && ids.has(saved)) return saved;
+    saved = window.localStorage.getItem(skinStorageKey(slug));
   } catch {
-    /* private mode */
+    saved = null;
   }
-  return fallback;
+  return resolveSkinId(slug, skins, query, saved);
 }
 
 function rememberSkin(slug: string, id: string) {
@@ -72,6 +70,35 @@ function SkinIcon({ id }: { id: string }) {
       </svg>
     );
   }
+  if (id === "chart") {
+    return (
+      <svg viewBox="0 0 18 18" aria-hidden="true">
+        <rect x="1.5" y="3" width="6" height="12" fill="none" stroke="currentColor" strokeWidth="1.3" />
+        <path d="M4.1 6.2v6" fill="none" stroke="currentColor" strokeWidth="1.3" />
+        <rect x="9.5" y="7" width="6.5" height="2.4" fill="#E4002B" />
+        <path d="M9.5 12.2h6.5M9.5 14.6h4.2" fill="none" stroke="currentColor" strokeWidth="1.2" />
+      </svg>
+    );
+  }
+  if (id === "sleeve") {
+    return (
+      <svg viewBox="0 0 18 18" aria-hidden="true">
+        <rect x="2.5" y="2.5" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="1.3" />
+        <circle cx="9" cy="9" r="3.1" fill="none" stroke="#F2A900" strokeWidth="1.8" />
+        <circle cx="9" cy="9" r="0.8" fill="currentColor" />
+      </svg>
+    );
+  }
+  if (id === "stream") {
+    return (
+      <svg viewBox="0 0 18 18" aria-hidden="true">
+        <circle cx="5" cy="6" r="2.6" fill="#0047FF" />
+        <path d="M4.2 4.8v2.4l2.1-1.2z" fill="#ffffff" />
+        <rect x="2" y="12.2" width="14" height="2" rx="1" fill="#D5DAE6" />
+        <rect x="2" y="12.2" width="9" height="2" rx="1" fill="#12B886" />
+      </svg>
+    );
+  }
   return (
     <svg viewBox="0 0 18 18" aria-hidden="true">
       <path d="M3 5h12M3 9h12M3 13h12" fill="none" stroke="currentColor" strokeWidth="1" />
@@ -95,7 +122,7 @@ export function MagazineFrame({ pageKey, label, bodyHtml, skins }: Props) {
     const next = readSkinChoice(pageKey, palette);
     setSkinId(next);
     rememberSkin(pageKey, next);
-    if (next !== palette[0].id) writeSkinUrl(next, palette);
+    writeSkinUrl(next, palette);
   }, [pageKey, palette]);
 
   useEffect(() => {

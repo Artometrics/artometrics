@@ -85,7 +85,13 @@
       }
       setTimeout(reveal, dir ? 380 : 50);
       try {
-        history.replaceState(null, "", location.pathname + location.search + "#p" + (i + 1));
+        var params = new URLSearchParams(location.search);
+        var asked = params.get("skin");
+        var shell = document.querySelector(".mag-shell");
+        var active = shell && shell.getAttribute("data-skin");
+        if (asked && active && asked !== active) params.delete("skin");
+        var search = params.toString();
+        history.replaceState(null, "", location.pathname + (search ? "?" + search : "") + "#p" + (i + 1));
       } catch (e) {}
     }
 
