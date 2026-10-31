@@ -99,6 +99,33 @@ function SkinIcon({ id }: { id: string }) {
       </svg>
     );
   }
+  if (id === "shelf") {
+    return (
+      <svg viewBox="0 0 18 18" aria-hidden="true">
+        <path d="M2 14.6h14v1.5H2z" fill="currentColor" />
+        <path d="M3 3.5h2.4V14.6H3zM7.2 8.6h2.1V14.6H7.2zM11.2 10h2.1v4.6h-2.1z" fill="currentColor" />
+        <circle cx="14.4" cy="5" r="2.1" fill="#D9480F" />
+      </svg>
+    );
+  }
+  if (id === "guide") {
+    return (
+      <svg viewBox="0 0 18 18" aria-hidden="true">
+        <rect x="2" y="3" width="5.2" height="12" fill="none" stroke="currentColor" strokeWidth="1.3" />
+        <path d="M2 6.2h5.2" stroke="#2B8A3E" strokeWidth="1.8" />
+        <path d="M9.2 6h6.6M9.2 9.5h6.6M9.2 13h4.4" fill="none" stroke="currentColor" strokeWidth="1.3" />
+      </svg>
+    );
+  }
+  if (id === "late") {
+    return (
+      <svg viewBox="0 0 18 18" aria-hidden="true">
+        <path d="M2 5.6l4.4 2.7L2 11z" fill="currentColor" />
+        <rect x="2" y="13.2" width="14" height="1.8" rx="0.9" fill="currentColor" opacity="0.35" />
+        <rect x="2" y="13.2" width="9.5" height="1.8" rx="0.9" fill="#F2A900" />
+      </svg>
+    );
+  }
   return (
     <svg viewBox="0 0 18 18" aria-hidden="true">
       <path d="M3 5h12M3 9h12M3 13h12" fill="none" stroke="currentColor" strokeWidth="1" />

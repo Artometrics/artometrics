@@ -35,8 +35,12 @@ const FONT_STACK: Record<string, string> = {
   "JetBrains Mono": '"JetBrains Mono", ui-monospace, monospace',
 };
 
-/** Skins Billboard used before it had its own set. Shared links and saved choices for these resolve to Chart. */
-const RETIRED_BILLBOARD_SKINS = new Set(["ledger", "box", "trade"]);
+/** Skins Billboard and Streaming used before they had their own sets. A saved or shared link for one of these resolves to that issue's first skin. */
+const RETIRED_SHARED_SKINS = new Set(["ledger", "box", "trade"]);
+
+function retiredSharedSkin(slug: string, id: string): boolean {
+  return (slug === "billboard" || slug === "streaming") && RETIRED_SHARED_SKINS.has(id);
+}
 
 export function resolveSkinId(
   slug: string,
@@ -47,10 +51,10 @@ export function resolveSkinId(
   const ids = new Set(skins.map((skin) => skin.id));
   const fallback = skins[0]?.id || "ledger";
   const asked = (query || "").trim();
-  if (slug === "billboard" && RETIRED_BILLBOARD_SKINS.has(asked)) return fallback;
+  if (retiredSharedSkin(slug, asked)) return fallback;
   if (asked && ids.has(asked)) return asked;
   const stored = (saved || "").trim();
-  if (slug === "billboard" && RETIRED_BILLBOARD_SKINS.has(stored)) return fallback;
+  if (retiredSharedSkin(slug, stored)) return fallback;
   if (stored && ids.has(stored)) return stored;
   return fallback;
 }
@@ -140,6 +144,18 @@ function ornaments(): string {
 <svg data-orn="scrub" viewBox="0 0 24 24"><path d="M3 12h18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="16" cy="12" r="2.5" fill="var(--accent2)"/></svg>
 <svg data-orn="wave" viewBox="0 0 24 24"><path d="M4 15V9M8 17V7M12 19V5M16 17V7M20 15V9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
 <svg data-orn="queue" viewBox="0 0 24 24"><path d="M4 7h16M4 12h11M4 17h16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+<svg data-orn="spines" viewBox="0 0 24 24"><path d="M3 4h3.2v16H3zM9 12h3v8H9zM15 13.5h3v6.5h-3z" fill="currentColor"/></svg>
+<svg data-orn="shelf-rule" viewBox="0 0 24 24"><path d="M2 17h20v2.2H2zM5 7h2.2v10H5zM10.5 11h2.2v6h-2.2zM16 12.5h2.2v4.5H16z" fill="currentColor"/></svg>
+<svg data-orn="price-sticker" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7" fill="var(--accent2)"/><circle cx="12" cy="12" r="1.3" fill="var(--paper)"/></svg>
+<svg data-orn="tape-label" viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="6" fill="var(--accent2)" transform="rotate(-8 12 12)"/></svg>
+<svg data-orn="time-slot" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h18" stroke="var(--accent2)" stroke-width="2"/><path d="M7 14h6" stroke="currentColor" stroke-width="1.4"/></svg>
+<svg data-orn="listing-grid" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16M9 4v16" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+<svg data-orn="dot-leaders" viewBox="0 0 24 24"><circle cx="4" cy="12" r="1.3" fill="currentColor"/><circle cx="9" cy="12" r="1.3" fill="currentColor"/><circle cx="14" cy="12" r="1.3" fill="currentColor"/><circle cx="19" cy="12" r="1.3" fill="currentColor"/></svg>
+<svg data-orn="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 8v4.2l2.6 1.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.1" fill="var(--accent2)"/></svg>
+<svg data-orn="scrubber" viewBox="0 0 24 24"><path d="M3 13h18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3 13h12" fill="none" stroke="var(--accent2)" stroke-width="1.6" stroke-linecap="round"/><circle cx="15" cy="13" r="2.3" fill="var(--accent2)"/></svg>
+<svg data-orn="chapter-ticks" viewBox="0 0 24 24"><path d="M4 17V9M8 17v-5M12 17V7M16 17v-6M20 17v-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+<svg data-orn="play-triangle" viewBox="0 0 24 24"><path d="M8 6.2v11.6l10-5.8z" fill="currentColor"/></svg>
+<svg data-orn="film-frame" viewBox="0 0 24 24"><path d="M5 9V5h4M15 5h4v4M19 15v4h-4M9 19H5v-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
 </div>`;
 }
 
@@ -242,6 +258,30 @@ function billboardPresentation(html: string): string {
   return html.includes(title) ? html.replace(title, stage) : html;
 }
 
+const STREAMING_TITLE = "Netflix's Top 10% of Titles Drew 68% of Viewing";
+
+/** Title chrome only. The headline string stays the published title. */
+function streamingPresentation(html: string): string {
+  const lead = `<p class="kick">Streaming</p>\n<h1 itemprop="headline">${STREAMING_TITLE}</h1>`;
+  const spines = `<svg class="st-spines" viewBox="0 0 340 86" aria-hidden="true" focusable="false" fill="currentColor"><rect x="0" y="76" width="340" height="8"/><rect x="6" y="4" width="24" height="72"/><rect x="44" y="40" width="18" height="36"/><rect x="76" y="40" width="20" height="36"/><rect x="110" y="40" width="16" height="36"/><rect x="140" y="40" width="20" height="36"/><rect x="174" y="40" width="18" height="36"/><rect x="206" y="40" width="20" height="36"/><rect x="240" y="40" width="16" height="36"/><rect x="270" y="40" width="20" height="36"/><rect x="304" y="40" width="18" height="36"/></svg>`;
+  const stage = `<div class="st-stage"><span class="st-clip" aria-hidden="true"></span><span class="st-slot">JAN–JUN 2026</span><h1 class="skin-title" itemprop="headline">${STREAMING_TITLE}</h1><span class="st-leaders" aria-hidden="true"></span><p class="kick st-channel">Streaming</p>${spines}<div class="st-scrub"><span class="st-play" aria-hidden="true"></span><span class="st-track" aria-hidden="true"><span class="st-fill"></span></span><span class="st-scrub-label">top 10% of titles</span></div></div>`;
+  return html.includes(lead) ? html.replace(lead, stage) : html;
+}
+
+function streamingClosing(issue: MagIssue): string {
+  const names = skinsForIssue(issue)
+    .map((skin) => `<span data-for="${esc(skin.id)}">${esc(skin.closing.name)}</span>`)
+    .join("");
+  const sources = (issue.src || []).map(billboardSourceItem).join("");
+  return `<section class="closing" id="closing">
+<p class="end">■ END</p>
+<h2 class="closing-name">${names}</h2>
+<ol class="src">${sources}</ol>
+<p class="updated">Updated through: weeks ending June 28, 2026</p>
+<p class="by skin-back"><a href="/">← Contents</a></p>
+</section>`;
+}
+
 function billboardClosing(issue: MagIssue): string {
   const names = skinsForIssue(issue)
     .map((skin) => `<span data-for="${esc(skin.id)}">${esc(skin.closing.name)}</span>`)
@@ -259,6 +299,7 @@ function billboardClosing(issue: MagIssue): string {
 
 function closingSection(issue: MagIssue, publishedInner: string): string {
   if (issue.slug === "billboard") return billboardClosing(issue);
+  if (issue.slug === "streaming") return streamingClosing(issue);
   const names = skinsForIssue(issue)
     .map((skin) => `<span data-for="${esc(skin.id)}">${esc(skin.closing.name)}</span>`)
     .join("");
@@ -313,6 +354,7 @@ export function decorateIssueHtml(issue: MagIssue, html: string): string {
   body = body.replace(/<span class="hero-frame"><img class="hero"([^>]*)>/g, '<span class="hero-frame"><img class="hero"$1></span>');
   if (issue.slug === "franchise") body = franchisePresentation(body);
   if (issue.slug === "billboard") body = billboardPresentation(body);
+  if (issue.slug === "streaming") body = streamingPresentation(body);
   const { article, publishedInner } = splitAtEnd(body);
   const stamp =
     issue.slug === "franchise"
