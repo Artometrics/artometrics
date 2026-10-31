@@ -1872,23 +1872,23 @@
           "citations": [
             {
               "text": "Academy of Motion Picture Arts and Sciences. Academy Awards Database.",
-              "href": null
+              "href": "https://awardsdatabase.oscars.org/"
             },
             {
               "text": "Oscars.org. Awards Databases and Acceptance Speech Database.",
-              "href": null
+              "href": "https://aaspeechesdb.oscars.org/"
             },
             {
               "text": "Nobel Prize. Public prize and laureate data/API documentation.",
-              "href": null
+              "href": "https://www.nobelprize.org/about/developer-zone-2/"
             },
             {
               "text": "DLu/oscar_data. Curated Academy Award nomination dataset with identifiers.",
-              "href": null
+              "href": "https://github.com/DLu/oscar_data"
             },
             {
               "text": "Recording Academy public Grammy records and Wikidata award tables.",
-              "href": null
+              "href": "https://www.wikidata.org/wiki/Q41254"
             },
             {
               "text": "Academy of Motion Picture Arts and Sciences. Academy Awards Database. https://awardsdatabase.oscars.org/",
@@ -1908,7 +1908,7 @@
             },
             {
               "text": "English, J. F. (2005). The Economy of Prestige: Prizes, Awards, and the Circulation of Cultural Value. Harvard University Press.",
-              "href": null
+              "href": "https://openlibrary.org/works/OL3953582W"
             }
           ],
           "fixes": []
