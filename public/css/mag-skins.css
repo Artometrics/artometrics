@@ -1,5 +1,6 @@
 /* Reader skins. Scoped to [data-skin] on the magazine shell so the rest of the site stays put.
-   Ledger, Back of the Box, Trade Paper. Fonts are self-hosted SIL OFL (public/fonts/skins). */
+   Ledger, Back of the Box, Trade Paper, plus Billboard's Chart, Sleeve, and Stream.
+   Fonts are self-hosted SIL OFL (public/fonts/skins). */
 
 @font-face {
   font-family: "Libre Caslon Text";
@@ -122,6 +123,39 @@
   font-display: swap;
   src: url("/fonts/skins/old-standard-tt-700.woff2") format("woff2");
 }
+@font-face {
+  font-family: Archivo;
+  font-style: normal;
+  font-weight: 600 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("/fonts/skins/archivo-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: Bungee;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/skins/bungee-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url("/fonts/skins/space-grotesk-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("/fonts/skins/jetbrains-mono-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 .mag-shell[data-skin] {
   background: var(--paper);
@@ -145,6 +179,9 @@
 .mag-shell[data-skin="ledger"] { --mute: #3c4654; }
 .mag-shell[data-skin="box"] { --mute: #2c2c2c; }
 .mag-shell[data-skin="trade"] { --mute: #2e2e2e; }
+.mag-shell[data-skin="chart"] { --mute: #3a3a3a; }
+.mag-shell[data-skin="sleeve"] { --mute: #3a3a3a; }
+.mag-shell[data-skin="stream"] { --mute: #2c3344; }
 .mag-shell[data-skin] a { color: var(--accent); }
 .mag-shell[data-skin] h1 {
   font-family: var(--skin-display);
@@ -232,7 +269,19 @@
 .mag-shell[data-skin="trade"] .skin-ornaments svg[data-orn="ticket"],
 .mag-shell[data-skin="trade"] .skin-ornaments svg[data-orn="sprocket"],
 .mag-shell[data-skin="trade"] .skin-ornaments svg[data-orn="bulbs"],
-.mag-shell[data-skin="trade"] .skin-ornaments svg[data-orn="halftone"] { display: block; }
+.mag-shell[data-skin="trade"] .skin-ornaments svg[data-orn="halftone"],
+.mag-shell[data-skin="chart"] .skin-ornaments svg[data-orn="rank"],
+.mag-shell[data-skin="chart"] .skin-ornaments svg[data-orn="peak"],
+.mag-shell[data-skin="chart"] .skin-ornaments svg[data-orn="weeks"],
+.mag-shell[data-skin="chart"] .skin-ornaments svg[data-orn="bullet"],
+.mag-shell[data-skin="sleeve"] .skin-ornaments svg[data-orn="spindle"],
+.mag-shell[data-skin="sleeve"] .skin-ornaments svg[data-orn="grooves"],
+.mag-shell[data-skin="sleeve"] .skin-ornaments svg[data-orn="flap"],
+.mag-shell[data-skin="sleeve"] .skin-ornaments svg[data-orn="center"],
+.mag-shell[data-skin="stream"] .skin-ornaments svg[data-orn="play"],
+.mag-shell[data-skin="stream"] .skin-ornaments svg[data-orn="scrub"],
+.mag-shell[data-skin="stream"] .skin-ornaments svg[data-orn="wave"],
+.mag-shell[data-skin="stream"] .skin-ornaments svg[data-orn="queue"] { display: block; }
 .mag-shell[data-skin="box"] .skin-ornaments svg[data-orn="burst"] { color: var(--accent2); }
 
 .mag-shell .skin-plate {
@@ -259,7 +308,10 @@
 .mag-shell[data-skin="box"] .skin-plate [data-for="box"],
 .mag-shell[data-skin="box"] .closing [data-for="box"],
 .mag-shell[data-skin="trade"] .skin-plate [data-for="trade"],
-.mag-shell[data-skin="trade"] .closing [data-for="trade"] { display: inline; }
+.mag-shell[data-skin="trade"] .closing [data-for="trade"],
+.mag-shell[data-skin="chart"] .closing [data-for="chart"],
+.mag-shell[data-skin="sleeve"] .closing [data-for="sleeve"],
+.mag-shell[data-skin="stream"] .closing [data-for="stream"] { display: inline; }
 .mag-shell .skin-dateline,
 .mag-shell .audit-stamp,
 .mag-shell .collect-140 { display: none; }
@@ -680,4 +732,397 @@
 @media (prefers-reduced-motion: reduce) {
   .mag-shell[data-skin="box"] h1 em { animation: none; transform: rotate(-8deg); }
   .mag-shell[data-skin] .audit-stamp { transform: rotate(-6deg); }
+  .mag-shell[data-skin="stream"] .bb-fill { animation: none; width: 100%; }
+}
+
+/* Billboard — Chart, Sleeve, Stream. Red, gold, and green are fills and markers. Body type stays ink. */
+.mag-shell .bb-rank,
+.mag-shell .bb-hole,
+.mag-shell .bb-player { display: none; }
+.mag-shell .bb-stage { break-inside: avoid; }
+
+.mag-shell[data-skin="chart"] .kick,
+.mag-shell[data-skin="stream"] .kick {
+  font-family: var(--skin-figures);
+  color: var(--accent);
+}
+.mag-shell[data-skin="sleeve"] .kick {
+  font-family: "Space Mono", ui-monospace, monospace;
+  color: var(--ink);
+  text-align: center;
+}
+
+.mag-shell[data-skin="chart"] .bb-stage {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 14px;
+  align-items: stretch;
+  margin: 2px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+  box-shadow: 0 4px 0 var(--paper), 0 5px 0 var(--rule);
+}
+.mag-shell[data-skin="chart"] .bb-rank {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  min-height: 64px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1;
+  position: relative;
+}
+.mag-shell[data-skin="chart"] .bb-rank::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 10px;
+  height: 10px;
+  background: var(--accent2);
+}
+.mag-shell[data-skin="chart"] h1.skin-title {
+  align-self: center;
+  margin: 0;
+  font-family: Archivo, system-ui, sans-serif;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-size: clamp(28px, 6.2vw, 52px);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+.mag-shell[data-skin="chart"] h2 {
+  font-family: Archivo, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+}
+.mag-shell[data-skin="chart"] h2::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  background: var(--accent2);
+  vertical-align: 0.05em;
+}
+.mag-shell[data-skin="chart"] .hero-frame {
+  display: block;
+  position: relative;
+  padding: 10px;
+  background: #fffdf8;
+  border: 1px solid var(--ink);
+}
+.mag-shell[data-skin="chart"] .hero-frame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--accent2);
+}
+.mag-shell[data-skin="chart"] .hero { border-radius: 0; }
+.mag-shell[data-skin="chart"] .kp { border-bottom: 1px solid var(--rule); padding-bottom: 6px; }
+.mag-shell[data-skin="chart"] figure { border-top-color: var(--rule); border-bottom-color: var(--rule); }
+.mag-shell[data-skin="chart"] .closing {
+  break-inside: avoid;
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 2px solid var(--ink);
+}
+.mag-shell[data-skin="chart"] .closing h2 {
+  font-size: 22px;
+  letter-spacing: 0.08em;
+}
+.mag-shell[data-skin="chart"] .closing ol.src {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.mag-shell[data-skin="chart"] .closing ol.src li::marker {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  color: var(--accent);
+}
+.mag-shell[data-skin="chart"] .closing .updated,
+.mag-shell[data-skin="chart"] .closing .hero-credit {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.mag-shell[data-skin="sleeve"] .bb-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(100%, 440px);
+  aspect-ratio: 1;
+  margin: 4px auto 18px;
+  padding: 36px 22px 84px;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: 7px 7px 0 var(--ink);
+}
+.mag-shell[data-skin="sleeve"] .bb-stage::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid var(--ink);
+  pointer-events: none;
+  background:
+    linear-gradient(var(--ink), var(--ink)) 6px 2px / 16px 1px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) 2px 6px / 1px 16px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) calc(100% - 6px) 2px / 16px 1px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) calc(100% - 2px) 6px / 1px 16px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) 6px calc(100% - 2px) / 16px 1px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) 2px calc(100% - 6px) / 1px 16px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) calc(100% - 6px) calc(100% - 2px) / 16px 1px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) calc(100% - 2px) calc(100% - 6px) / 1px 16px no-repeat;
+}
+.mag-shell[data-skin="sleeve"] .bb-hole {
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  width: 58px;
+  height: 58px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, var(--ink) 0 3px, transparent 3.6px),
+    radial-gradient(circle at 50% 50%, var(--paper) 0 15px, var(--ink) 15.6px 17px, var(--accent2) 17.5px 100%);
+  box-shadow: 0 0 0 1px var(--ink);
+}
+.mag-shell[data-skin="sleeve"] h1.skin-title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  max-width: 16ch;
+  font-family: Bungee, system-ui, sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
+  font-size: clamp(18px, 4.8vw, 32px);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-align: center;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--ink);
+}
+.mag-shell[data-skin="sleeve"] h2 {
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+}
+.mag-shell[data-skin="sleeve"] h2::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 4px;
+  margin-right: 8px;
+  background: var(--accent2);
+  vertical-align: 0.15em;
+}
+.mag-shell[data-skin="sleeve"] .hero-frame {
+  display: block;
+  border: 2px solid var(--ink);
+  padding: 6px;
+  background: var(--paper);
+}
+.mag-shell[data-skin="sleeve"] .hero { border-radius: 0; }
+.mag-shell[data-skin="sleeve"] .kp .big {
+  color: var(--accent);
+  box-shadow: inset 8px 0 0 var(--accent2);
+  padding-left: 12px;
+}
+.mag-shell[data-skin="sleeve"] figure { border-top: 2px solid var(--ink); }
+.mag-shell[data-skin="sleeve"] .closing {
+  break-inside: avoid;
+  width: min(100%, 440px);
+  margin: 16px auto 8px;
+  padding: 14px 14px 10px;
+  border: 2px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.mag-shell[data-skin="sleeve"] .closing h2::before { content: none; }
+.mag-shell[data-skin="sleeve"] .closing h2 {
+  display: block;
+  font-family: Bungee, system-ui, sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  border-bottom: 6px solid var(--accent2);
+  padding-bottom: 8px;
+}
+.mag-shell[data-skin="sleeve"] .closing ol.src,
+.mag-shell[data-skin="sleeve"] .closing .updated,
+.mag-shell[data-skin="sleeve"] .closing .hero-credit {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink);
+  text-align: left;
+}
+
+.mag-shell[data-skin="stream"] .bb-stage {
+  position: relative;
+  margin: 2px 0 16px;
+  padding: 16px 16px 14px;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  box-shadow: 0 10px 28px rgba(14, 18, 32, 0.06);
+}
+.mag-shell[data-skin="stream"] .bb-player { display: block; }
+.mag-shell[data-skin="stream"] .bb-play {
+  position: absolute;
+  top: 18px;
+  left: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: grid;
+  place-items: center;
+}
+.mag-shell[data-skin="stream"] .bb-play::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  margin-left: 3px;
+  border-style: solid;
+  border-width: 7px 0 7px 11px;
+  border-color: transparent transparent transparent #fff;
+}
+.mag-shell[data-skin="stream"] h1.skin-title {
+  margin: 0 0 16px;
+  padding-left: 56px;
+  min-height: 40px;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(26px, 5.4vw, 44px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+.mag-shell[data-skin="stream"] .bb-track {
+  display: block;
+  position: relative;
+  height: 6px;
+  border-radius: 99px;
+  background: var(--rule);
+}
+.mag-shell[data-skin="stream"] .bb-track::before,
+.mag-shell[data-skin="stream"] .bb-track::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  width: 1px;
+  height: 14px;
+  background: var(--ink);
+}
+.mag-shell[data-skin="stream"] .bb-track::before { left: 0; }
+.mag-shell[data-skin="stream"] .bb-track::after { right: 0; }
+.mag-shell[data-skin="stream"] .bb-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  background: var(--accent2);
+  position: relative;
+  animation: skin-weeks 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.mag-shell[data-skin="stream"] .bb-fill::after {
+  content: "";
+  position: absolute;
+  right: -7px;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent2);
+  box-shadow: 0 0 0 2px #fff;
+  transform: translateY(-50%);
+}
+@keyframes skin-weeks {
+  from { width: 0; }
+  to { width: 100%; }
+}
+.mag-shell[data-skin="stream"] .bb-scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.mag-shell[data-skin="stream"] h2 {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+}
+.mag-shell[data-skin="stream"] .hero-frame {
+  display: block;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+.mag-shell[data-skin="stream"] .hero { border-radius: 0; }
+.mag-shell[data-skin="stream"] .kp .big {
+  color: var(--accent);
+  box-shadow: inset 0 -4px 0 var(--accent2);
+}
+.mag-shell[data-skin="stream"] figure {
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 12px;
+  background: #fff;
+}
+.mag-shell[data-skin="stream"] .closing {
+  break-inside: avoid;
+  margin-top: 16px;
+  padding: 16px 16px 12px;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  box-shadow: inset 0 4px 0 var(--accent2);
+}
+.mag-shell[data-skin="stream"] .closing h2 {
+  font-size: 22px;
+  letter-spacing: 0.06em;
+}
+.mag-shell[data-skin="stream"] .closing ol.src,
+.mag-shell[data-skin="stream"] .closing .updated,
+.mag-shell[data-skin="stream"] .closing .hero-credit {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.mag-shell[data-skin="stream"] .closing .updated,
+.mag-shell[data-skin="chart"] .closing .updated,
+.mag-shell[data-skin="sleeve"] .closing .updated {
+  margin-top: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mag-shell[data-skin="stream"] .bb-fill { animation: none; width: 100%; }
 }

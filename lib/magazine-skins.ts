@@ -29,7 +29,31 @@ const FONT_STACK: Record<string, string> = {
   "Space Mono": '"Space Mono", ui-monospace, monospace',
   Oswald: "Oswald, Impact, sans-serif",
   "Old Standard TT": '"Old Standard TT", Georgia, serif',
+  Archivo: "Archivo, system-ui, sans-serif",
+  Bungee: "Bungee, system-ui, sans-serif",
+  "Space Grotesk": '"Space Grotesk", system-ui, sans-serif',
+  "JetBrains Mono": '"JetBrains Mono", ui-monospace, monospace',
 };
+
+/** Skins Billboard used before it had its own set. Shared links and saved choices for these resolve to Chart. */
+const RETIRED_BILLBOARD_SKINS = new Set(["ledger", "box", "trade"]);
+
+export function resolveSkinId(
+  slug: string,
+  skins: { id: string }[],
+  query: string | null | undefined,
+  saved: string | null | undefined,
+): string {
+  const ids = new Set(skins.map((skin) => skin.id));
+  const fallback = skins[0]?.id || "ledger";
+  const asked = (query || "").trim();
+  if (slug === "billboard" && RETIRED_BILLBOARD_SKINS.has(asked)) return fallback;
+  if (asked && ids.has(asked)) return asked;
+  const stored = (saved || "").trim();
+  if (slug === "billboard" && RETIRED_BILLBOARD_SKINS.has(stored)) return fallback;
+  if (stored && ids.has(stored)) return stored;
+  return fallback;
+}
 
 const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
@@ -104,6 +128,18 @@ function ornaments(): string {
 <svg data-orn="sprocket" viewBox="0 0 24 24"><circle cx="7" cy="6" r="1.4" fill="currentColor"/><circle cx="7" cy="12" r="1.4" fill="currentColor"/><circle cx="7" cy="18" r="1.4" fill="currentColor"/><circle cx="17" cy="6" r="1.4" fill="currentColor"/><circle cx="17" cy="12" r="1.4" fill="currentColor"/><circle cx="17" cy="18" r="1.4" fill="currentColor"/></svg>
 <svg data-orn="bulbs" viewBox="0 0 24 24"><circle cx="4" cy="12" r="1.6" fill="currentColor"/><circle cx="10" cy="12" r="1.6" fill="currentColor"/><circle cx="16" cy="12" r="1.6" fill="currentColor"/><circle cx="22" cy="12" r="1.6" fill="currentColor"/></svg>
 <svg data-orn="halftone" viewBox="0 0 24 24"><circle cx="6" cy="6" r="1.2" fill="currentColor"/><circle cx="12" cy="6" r="1.8" fill="currentColor"/><circle cx="18" cy="6" r="1.1" fill="currentColor"/><circle cx="6" cy="12" r="2" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/><circle cx="18" cy="12" r="2.1" fill="currentColor"/><circle cx="6" cy="18" r="1.1" fill="currentColor"/><circle cx="12" cy="18" r="1.7" fill="currentColor"/><circle cx="18" cy="18" r="1.2" fill="currentColor"/></svg>
+<svg data-orn="rank" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 8.2h1.4V16M11 16h2.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+<svg data-orn="peak" viewBox="0 0 24 24"><path d="M12 4.5l6.5 13h-13z" fill="var(--accent2)"/></svg>
+<svg data-orn="weeks" viewBox="0 0 24 24"><path d="M3 17h18M6 17V11M10 17V7M14 17V12M18 17V9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+<svg data-orn="bullet" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3" fill="var(--accent2)"/></svg>
+<svg data-orn="spindle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="1.7" fill="currentColor"/></svg>
+<svg data-orn="grooves" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="6.2" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+<svg data-orn="flap" viewBox="0 0 24 24"><path d="M4 8h16v12H4z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 8c2.4 3.2 13.6 3.2 16 0" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+<svg data-orn="center" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="var(--accent2)"/></svg>
+<svg data-orn="play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10.2 8.8v6.4l5.4-3.2z" fill="currentColor"/></svg>
+<svg data-orn="scrub" viewBox="0 0 24 24"><path d="M3 12h18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="16" cy="12" r="2.5" fill="var(--accent2)"/></svg>
+<svg data-orn="wave" viewBox="0 0 24 24"><path d="M4 15V9M8 17V7M12 19V5M16 17V7M20 15V9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+<svg data-orn="queue" viewBox="0 0 24 24"><path d="M4 7h16M4 12h11M4 17h16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
 </div>`;
 }
 
@@ -188,7 +224,41 @@ function credits(issue: MagIssue): string {
 <li data-for="trade"><span class="role">Plate</span><a href="https://commons.wikimedia.org/wiki/File:Belasco_Theatre_box_office.jpg">Belasco Theatre box office</a>, published November 1907 in Architects' and Builders' Magazine. Unknown photographer. Public domain, via Wikimedia Commons.</li>`;
 }
 
+function usesSharedPlates(issue: MagIssue): boolean {
+  return skinsForIssue(issue).some((skin) => skin.id === "ledger" || skin.id === "box" || skin.id === "trade");
+}
+
+function billboardSourceItem(source: MagSource): string {
+  const href = safeHref(source.href);
+  const text = esc(source.text);
+  const body = href ? `<a href="${esc(href)}">${text}</a>` : text;
+  return `<li>${body}</li>`;
+}
+
+/** Title chrome only. The headline string stays the published title. */
+function billboardPresentation(html: string): string {
+  const title = '<h1 itemprop="headline">How Long Number-Ones Stay on Top</h1>';
+  const stage = `<div class="bb-stage"><span class="bb-rank" aria-hidden="true">1</span><h1 class="skin-title" itemprop="headline">How Long Number-Ones Stay on Top</h1><span class="bb-hole" aria-hidden="true"></span><span class="bb-player" aria-hidden="true"><span class="bb-play"></span><span class="bb-track"><span class="bb-fill"></span></span><span class="bb-scale"><span>0</span><span>25 weeks</span></span></span></div>`;
+  return html.includes(title) ? html.replace(title, stage) : html;
+}
+
+function billboardClosing(issue: MagIssue): string {
+  const names = skinsForIssue(issue)
+    .map((skin) => `<span data-for="${esc(skin.id)}">${esc(skin.closing.name)}</span>`)
+    .join("");
+  const sources = (issue.src || []).map(billboardSourceItem).join("");
+  return `<section class="closing" id="closing">
+<p class="end">■ END</p>
+<h2 class="closing-name">${names}</h2>
+<ol class="src">${sources}</ol>
+<p class="updated">Updated through: chart dated Oct 31, 2026</p>
+<p class="hero-credit">Artometrics Billboard report illustration.</p>
+<p class="by skin-back"><a href="/">← Contents</a></p>
+</section>`;
+}
+
 function closingSection(issue: MagIssue, publishedInner: string): string {
+  if (issue.slug === "billboard") return billboardClosing(issue);
   const names = skinsForIssue(issue)
     .map((skin) => `<span data-for="${esc(skin.id)}">${esc(skin.closing.name)}</span>`)
     .join("");
@@ -242,6 +312,7 @@ export function decorateIssueHtml(issue: MagIssue, html: string): string {
   body = body.replace(/<img class="hero"/g, '<span class="hero-frame"><img class="hero"');
   body = body.replace(/<span class="hero-frame"><img class="hero"([^>]*)>/g, '<span class="hero-frame"><img class="hero"$1></span>');
   if (issue.slug === "franchise") body = franchisePresentation(body);
+  if (issue.slug === "billboard") body = billboardPresentation(body);
   const { article, publishedInner } = splitAtEnd(body);
   const stamp =
     issue.slug === "franchise"
@@ -251,6 +322,7 @@ export function decorateIssueHtml(issue: MagIssue, html: string): string {
     issue.slug === "franchise"
       ? '<p class="collect-140" aria-hidden="true"><span></span><span></span><span></span> Collect all 140</p>'
       : "";
-  const preface = `<div class="skin-top">${ornaments()}<div class="skin-top-row">${plates()}<div class="skin-top-copy"><p class="skin-dateline">${esc(dateline(issue))}</p>${stamp}${collect}</div></div></div>`;
+  const plate = usesSharedPlates(issue) ? plates() : "";
+  const preface = `<div class="skin-top">${ornaments()}<div class="skin-top-row">${plate}<div class="skin-top-copy"><p class="skin-dateline">${esc(dateline(issue))}</p>${stamp}${collect}</div></div></div>`;
   return preface + article + closingSection(issue, publishedInner);
 }
