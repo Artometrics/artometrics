@@ -21,6 +21,7 @@ const paths = [
   "/podcast.xml",
   "/robots.txt",
   "/resources",
+  "/sources",
   "/press",
   "/downloads",
   "/welcome",

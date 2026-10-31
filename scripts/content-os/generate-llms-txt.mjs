@@ -40,6 +40,7 @@ const short = [
   "- Brand: Artometrics (Chomsky wordmark); black, white, and red",
   "- Reports pair investigative narrative with Plotly charts and downloadable data",
   "- Resources: https://artometrics.com/resources",
+  "- Sources: https://artometrics.com/sources",
   "- Datasets: https://artometrics.com/datasets",
   "- Downloads: https://artometrics.com/downloads",
   "- Special editions: https://artometrics.com/editions",
