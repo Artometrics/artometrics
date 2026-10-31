@@ -164,6 +164,70 @@ assert(
   streaming.src.some((source) => String(source.text).includes("User-supplied or public streaming availability export")),
   "streaming keeps the availability src line",
 );
+const youtube = issues.find((issue) => issue.slug === "youtube");
+assert(
+  youtube.skins.map((skin) => skin.id).join(",") === "filing,gauge,onair",
+  "youtube skin order",
+);
+assert(
+  youtube.skins.map((skin) => skin.name).join("|") === "Filing|Living Room|On Air",
+  "youtube skin names",
+);
+assert(
+  youtube.skins.map((skin) => skin.closing.name).join("|") === "Notes to the Figures|Ratings Key|Show Notes",
+  "youtube closing names",
+);
+assert(youtube.skins[0].tokens.paper === "#F8F7F2" && youtube.skins[0].tokens.ink === "#1A1D24", "filing paper and ink");
+assert(youtube.skins[0].tokens.accent === "#0047FF" && youtube.skins[0].tokens.accent2 === "#B42318", "filing accents");
+assert(youtube.skins[0].tokens.rule === "#C8C6BC", "filing rule");
+assert(
+  youtube.skins[0].fonts.display === "Archivo" &&
+    youtube.skins[0].fonts.body === "Source Serif 4" &&
+    youtube.skins[0].fonts.figures === "IBM Plex Mono",
+  "filing fonts",
+);
+assert(youtube.skins[1].tokens.paper === "#F3F4F0" && youtube.skins[1].tokens.ink === "#121417", "gauge paper and ink");
+assert(youtube.skins[1].tokens.accent === "#0047FF" && youtube.skins[1].tokens.accent2 === "#2F9E44", "gauge accents");
+assert(youtube.skins[1].tokens.rule === "#C3C7BE", "gauge rule");
+assert(
+  youtube.skins[1].fonts.display === "Space Grotesk" &&
+    youtube.skins[1].fonts.body === "Inter" &&
+    youtube.skins[1].fonts.figures === "JetBrains Mono",
+  "gauge fonts",
+);
+assert(youtube.skins[2].tokens.paper === "#14110F" && youtube.skins[2].tokens.ink === "#EFE9E1", "onair paper and ink");
+assert(youtube.skins[2].tokens.accent === "#7FA2FF" && youtube.skins[2].tokens.accent2 === "#E8590C", "onair accents");
+assert(youtube.skins[2].tokens.rule === "#2E2823", "onair rule");
+assert(
+  youtube.skins[2].fonts.display === "Oswald" &&
+    youtube.skins[2].fonts.body === "Inter" &&
+    youtube.skins[2].fonts.figures === "Space Mono",
+  "onair fonts",
+);
+assert(youtube.title === "The Platform's $36B Engine and One Podcast's Borrowed Peak", "youtube title unchanged");
+assert(youtube.src.length === 13, "youtube keeps its thirteen sources");
+assert(
+  youtube.src.some((source) => String(source.text).includes("YouTube ads disaggregation")),
+  "youtube keeps the 10-K src line",
+);
+assert(
+  youtube.src.some((source) => source.text === "Nielsen. Media Distributor Gauge, August 2026 (press release October 22, 2026)."),
+  "youtube keeps the August 2026 src line",
+);
+assert(youtube.sections[1].h === "YouTube ads crossed $36B", "youtube section headings stay");
+assert(
+  youtube.sections[1].fig.src.endsWith("chart4_youtube_ads_revenue.png"),
+  "youtube chart figure stays",
+);
+for (const skin of youtube.skins) {
+  assert(contrastRatio(skin.tokens.ink, skin.tokens.paper) >= 4.5, `${skin.id} body contrast`);
+  assert(contrastRatio(skin.tokens.accent, skin.tokens.paper) >= 4.5, `${skin.id} link contrast`);
+}
+assert(contrastRatio("#3A3A3A", "#F8F7F2") >= 4.5, "filing caption contrast");
+assert(contrastRatio("#3A3A3A", "#F3F4F0") >= 4.5, "gauge caption contrast");
+assert(contrastRatio("#C9C2B8", "#14110F") >= 4.5, "onair caption contrast");
+assert(contrastRatio("#15171C", "#F6F3EC") >= 4.5, "onair chart mat text contrast");
+assert(contrastRatio("#0047FF", "#F6F3EC") >= 4.5, "onair chart mat link contrast");
 function channel(hex) {
   const n = parseInt(hex.slice(1), 16);
   const raw = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((value) => value / 255);
@@ -186,7 +250,7 @@ assert(contrastRatio("#15171C", "#F6F3EC") >= 4.5, "late chart mat text contrast
 assert(contrastRatio("#0047FF", "#F6F3EC") >= 4.5, "late chart mat link contrast");
 for (const issue of issues) {
   assert(Array.isArray(issue.skins) && issue.skins.length === 3, `${issue.slug} has three skins`);
-  if (issue.slug === "billboard" || issue.slug === "streaming") continue;
+  if (issue.slug === "billboard" || issue.slug === "streaming" || issue.slug === "youtube") continue;
   assert(
     issue.skins.map((skin) => skin.id).join(",") === "ledger,box,trade",
     `${issue.slug} skin order`,
@@ -201,6 +265,14 @@ assert(skinSource.includes("Updated through: chart dated Oct 31, 2026"), "billbo
 assert(skinSource.includes("Artometrics Billboard report illustration."), "billboard hero credit");
 assert(skinSource.includes("How Long Number-Ones Stay on Top"), "billboard title treatment keeps the headline");
 assert(skinSource.includes('slug === "streaming"'), "streaming retires the shared skins");
+assert(skinSource.includes('slug === "youtube"'), "youtube retires the shared skins");
+assert(skinSource.includes("Updated through: Nielsen Gauge, August 2026 (press release October 22, 2026)"), "youtube updated line");
+assert(skinSource.includes("The Platform's $36B Engine and One Podcast's Borrowed Peak"), "youtube title treatment keeps the headline");
+assert(skinSource.includes("YouTube ads, FY2024"), "filing revenue row label");
+assert(skinSource.includes("$36,147 million"), "filing revenue row total");
+assert(skinSource.includes("of U.S. TV-screen time, August 2026 (Nielsen Gauge)"), "living room share label");
+assert(skinSource.includes("ON AIR"), "on air lamp");
+assert(skinSource.includes("the borrowed peak"), "on air peak label");
 assert(skinSource.includes("Updated through: weeks ending June 28, 2026"), "streaming updated line");
 assert(skinSource.includes("Netflix's Top 10% of Titles Drew 68% of Viewing"), "streaming title treatment keeps the headline");
 assert(skinSource.includes("JAN–JUN 2026"), "program guide time slot");
@@ -220,15 +292,24 @@ assert(skinCss.includes('[data-skin="stream"]'), "stream skin css");
 assert(skinCss.includes('[data-skin="shelf"]'), "shelf skin css");
 assert(skinCss.includes('[data-skin="guide"]'), "guide skin css");
 assert(skinCss.includes('[data-skin="late"]'), "late skin css");
+assert(skinCss.includes('[data-skin="filing"]'), "filing skin css");
+assert(skinCss.includes('[data-skin="gauge"]'), "gauge skin css");
+assert(skinCss.includes('[data-skin="onair"]'), "onair skin css");
 assert(skinCss.includes("67.9%"), "late scrubber stops at 67.9%");
+assert(skinCss.includes("15.8%"), "living room share bar stops at 15.8%");
 assert(skinCss.includes("#F6F3EC"), "late charts sit on a light mat");
 assert(!skinCss.includes("#E50914"), "skins do not use Netflix red");
+assert(!skinCss.includes("#FF0000"), "skins do not use YouTube red");
 assert(!/filter:\s*invert/.test(skinCss), "chart pngs are not inverted");
 assert(skinCss.includes("prefers-reduced-motion"), "skins keep a reduced-motion path");
 assert(frame.includes("resolveSkinId"), "reader uses the skin resolver");
 assert(
   frame.includes('id === "shelf"') && frame.includes('id === "guide"') && frame.includes('id === "late"'),
   "picker draws the streaming skins",
+);
+assert(
+  frame.includes('id === "filing"') && frame.includes('id === "gauge"') && frame.includes('id === "onair"'),
+  "picker draws the youtube skins",
 );
 for (const font of ["archivo-latin.woff2", "bungee-latin.woff2", "space-grotesk-latin.woff2", "jetbrains-mono-latin.woff2"]) {
   const bytes = readFileSync(join(ROOT, "public/fonts/skins", font));
