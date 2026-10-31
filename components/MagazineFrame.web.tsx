@@ -174,7 +174,7 @@ export function MagazineFrame({ pageKey, label, bodyHtml, skins }: Props) {
   const skin = palette?.find((item) => item.id === skinId) || palette?.[0];
 
   useLayoutEffect(() => {
-    if (!palette?.length || pageKey === "contents") return;
+    if (!palette?.length) return;
     const next = readSkinChoice(pageKey, palette);
     setSkinId(next);
     rememberSkin(pageKey, next);
@@ -270,7 +270,7 @@ export function MagazineFrame({ pageKey, label, bodyHtml, skins }: Props) {
       { className: "bar" },
       createElement(
         "a",
-        { href: "/", "aria-label": "Contents" },
+        { href: "/mag", "aria-label": "Contents" },
         createElement("img", { src: "/logo.png", alt: "Artometrics" }),
       ),
       createElement("span", { className: "t" }, label),

@@ -1,16 +1,16 @@
-import { MagazineFrame } from "@/components/MagazineFrame";
+import { HomeMagazine } from "@/components/HomeMagazine";
 import { PageSeo } from "@/components/PageSeo";
 import { SeoJsonLd } from "@/components/SeoJsonLd";
-import { contentsJsonLd, magazineIssues, renderContentsBody } from "@/lib/magazine";
+import { getBlogPosts } from "@/lib/content";
 
-const issues = magazineIssues();
+const posts = getBlogPosts();
 
 export default function HomeScreen() {
   return (
     <>
       <PageSeo
-        title="Artometrics Magazine"
-        description="Data stories, five minutes each. Arts, sports, science, humanities, civics, and culture."
+        title="Artometrics — data reports for creative industries"
+        description="Investigative data stories on arts, sports, science, humanities, civics, and culture."
         path="/"
       />
       <SeoJsonLd
@@ -34,10 +34,20 @@ export default function HomeScreen() {
               "query-input": "required name=search_term_string",
             },
           },
-          contentsJsonLd(issues),
+          {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "Artometrics Reports",
+            url: "https://artometrics.com/",
+            hasPart: posts.slice(0, 12).map((post) => ({
+              "@type": "Article",
+              headline: post.title,
+              url: `https://artometrics.com/${post.slug}`,
+            })),
+          },
         ]}
       />
-      <MagazineFrame pageKey="contents" label="Contents" bodyHtml={renderContentsBody(issues)} />
+      <HomeMagazine />
     </>
   );
 }

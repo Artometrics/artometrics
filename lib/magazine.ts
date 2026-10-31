@@ -71,13 +71,28 @@ export function magazineIssue(slug: string | undefined): MagIssue | undefined {
   return BY_SLUG.get(key);
 }
 
-/** Home and single-segment report URLs that render the page-flip edition. */
+/** URL prefix for the page-flip magazine reader (not the default site chrome). */
+export const MAGAZINE_HOME_PATH = "/mag";
+
+export function magazineContentsHref(skinId?: string | null): string {
+  if (!skinId || skinId === "ledger") return MAGAZINE_HOME_PATH;
+  return `${MAGAZINE_HOME_PATH}?skin=${encodeURIComponent(skinId)}`;
+}
+
+export function magazineIssueHref(slug: string, skinId?: string | null): string {
+  const base = `${MAGAZINE_HOME_PATH}/${encodeURIComponent(slug.replace(/^\/+|\/+$/g, ""))}`;
+  if (!skinId || skinId === "ledger") return base;
+  return `${base}?skin=${encodeURIComponent(skinId)}`;
+}
+
+/** `/mag` and `/mag/{slug}` render the page-flip edition without site chrome. */
 export function isMagazinePath(pathname: string | undefined): boolean {
   const path = (pathname || "/").split("?")[0].split("#")[0].replace(/\/$/, "") || "/";
-  if (path === "/") return true;
-  const slug = path.startsWith("/") ? path.slice(1) : path;
-  if (!slug || slug.includes("/")) return false;
-  return BY_SLUG.has(slug);
+  if (path === MAGAZINE_HOME_PATH) return true;
+  if (!path.startsWith(`${MAGAZINE_HOME_PATH}/`)) return false;
+  const rest = path.slice(MAGAZINE_HOME_PATH.length + 1);
+  if (!rest || rest.includes("/")) return false;
+  return BY_SLUG.has(rest);
 }
 
 function esc(value: string | number | null | undefined): string {
@@ -155,13 +170,13 @@ export function renderContentsBody(issues: MagIssue[] = magazineIssues()): strin
 <ul class="toc">${desk.items
         .map(
           (issue) =>
-            `<li><a href="/${esc(issue.slug)}"><img src="${esc(magazineImg(issue.hero))}" alt="" loading="lazy"><span><small>${esc(issue.kicker)}</small><b>${esc(issue.title)}</b><em>${magazineMins(issue.words)} min</em></span></a></li>`,
+            `<li><a href="${esc(magazineIssueHref(issue.slug))}"><img src="${esc(magazineImg(issue.hero))}" alt="" loading="lazy"><span><small>${esc(issue.kicker)}</small><b>${esc(issue.title)}</b><em>${magazineMins(issue.words)} min</em></span></a></li>`,
         )
         .join("")}</ul>`,
     )
     .join("");
   return `<p class="cv-mast">ARTOMETRICS</p><p class="cv-sub">Magazine · ${issues.length} issues · 5-minute reads</p>
-<a class="cv-feat" href="/${esc(featured.slug)}"><img src="${esc(magazineImg(featured.hero))}" alt=""><p class="kick" style="margin-top:12px">${esc(featured.kicker)}</p><h3>${esc(featured.title)}</h3><p class="dek">${esc(featured.dek)}</p></a>
+<a class="cv-feat" href="${esc(magazineIssueHref(featured.slug))}"><img src="${esc(magazineImg(featured.hero))}" alt=""><p class="kick" style="margin-top:12px">${esc(featured.kicker)}</p><h3>${esc(featured.title)}</h3><p class="dek">${esc(featured.dek)}</p></a>
 ${lists}`;
 }
 
@@ -181,7 +196,7 @@ export function issueJsonLd(issue: MagIssue): Record<string, unknown> {
     },
     datePublished: issue.pub,
     dateModified: issue.date,
-    mainEntityOfPage: `https://artometrics.com/${issue.slug}`,
+    mainEntityOfPage: `https://artometrics.com${magazineIssueHref(issue.slug)}`,
     image: image ? [`https://artometrics.com${image}`] : undefined,
     wordCount: issue.words,
     timeRequired: `PT${minutes}M`,
@@ -195,11 +210,11 @@ export function contentsJsonLd(issues: MagIssue[] = magazineIssues()): Record<st
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Artometrics Magazine",
-    url: "https://artometrics.com/",
+    url: "https://artometrics.com/mag",
     hasPart: issues.map((issue) => ({
       "@type": "Article",
       headline: issue.title,
-      url: `https://artometrics.com/${issue.slug}`,
+      url: `https://artometrics.com${magazineIssueHref(issue.slug)}`,
     })),
   };
 }

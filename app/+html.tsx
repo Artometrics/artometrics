@@ -1,6 +1,5 @@
 import { ScrollViewStyleReset } from "expo-router/html";
 import type { PropsWithChildren } from "react";
-import { MAGAZINE_SLUGS } from "@/lib/magazine";
 
 /**
  * Root HTML shell for static web export.
@@ -189,10 +188,12 @@ export default function Root({ children }: PropsWithChildren) {
             __html: `
               (function () {
                 try {
-                  var MAG = ${JSON.stringify(MAGAZINE_SLUGS)};
+                  var MAG_ROOT = "/mag";
                   var path = (location.pathname || "/").replace(/\\/$/, "") || "/";
-                  var seg = path === "/" ? "" : path.slice(1);
-                  var isMag = path === "/" || (seg && seg.indexOf("/") === -1 && MAG.indexOf(seg) !== -1);
+                  var isMag =
+                    path === MAG_ROOT ||
+                    (path.indexOf(MAG_ROOT + "/") === 0 &&
+                      path.slice(MAG_ROOT.length + 1).indexOf("/") === -1);
                   if (isMag) {
                     var rootEl = document.documentElement;
                     rootEl.classList.add("mag-mode");
