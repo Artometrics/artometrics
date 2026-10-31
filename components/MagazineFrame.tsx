@@ -33,7 +33,7 @@ export function MagazineFrame({ label, bodyHtml }: Props) {
       contentContainerStyle={{ paddingHorizontal: 22, paddingTop: 28, paddingBottom: 48 }}
     >
       <View style={{ flexDirection: "row", justifyContent: "space-between", marginBottom: 16 }}>
-        <Link href="/">
+        <Link href="/mag">
           <Text style={{ color: "#0047FF", fontSize: 12, letterSpacing: 1.4, fontWeight: "700" }}>
             CONTENTS
           </Text>
