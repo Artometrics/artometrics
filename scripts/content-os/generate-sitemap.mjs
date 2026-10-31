@@ -38,6 +38,7 @@ const editions = existsSync(join(ROOT, "public/data/meta/editions.json"))
 const staticPaths = [
   "/",
   "/blog",
+  "/sources",
   "/topics",
   ...SECTIONS.map((s) => `/topics/${s}`),
   "/podcast",

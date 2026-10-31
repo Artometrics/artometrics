@@ -38,8 +38,11 @@ export default function ResourcesScreen() {
       </Text>
       <Text className="font-display text-[40px] text-fg">Resources</Text>
       <Text className="mb-2 max-w-[560px] text-base leading-6 text-muted">
-        Guides for readers, analysts, and models — plus the dataset library and machine-readable
-        indexes behind the reports.
+        Guides for readers, analysts, and models — plus the dataset library, the{" "}
+        <Link href="/sources">
+          <Text className="font-bold text-accent">sources ledger</Text>
+        </Link>
+        , and machine-readable indexes behind the reports.
       </Text>
 
       <View className="gap-3.5">
@@ -65,6 +68,11 @@ export default function ResourcesScreen() {
       </View>
 
       <View className="mt-4 flex-row flex-wrap gap-3">
+        <Link href="/sources" asChild>
+          <Pressable className="min-h-11 justify-center border border-border px-[18px] py-3">
+            <Text className="text-xs font-bold uppercase tracking-[1.5px] text-fg">Sources</Text>
+          </Pressable>
+        </Link>
         <Link href="/datasets" asChild>
           <Pressable className="bg-fg px-[18px] py-3">
             <Text className="text-xs font-bold uppercase tracking-[1.5px] text-inverse">

@@ -88,6 +88,7 @@ Schemas are enforced by `scripts/build-content.mjs` (not Astro Zod).
 - **Profiles:** `/u/<handle>` (public), `/me` (private hub)
 - **Social:** `/following`
 - **Library / reference:** `/library`, `/library/reference`
+- **Sources:** `/sources` — citations grouped by topic, generated from `magazine/issues.json` (`npm run sources`), linked from `/resources`
 - **Special editions:** `/editions`, `/editions/<id>` (Vice-style manifests in `data/editions.ts`; packs via `cos:ebook` / `cos:pdf -- --edition`)
 - **About / contact:** `/about`, `/contact`
 - **RSS / AEO:** `/rss.xml`, `/llms.txt`, `/sitemap.xml`
@@ -102,7 +103,8 @@ Vision / phases: `docs/00_ARTOMETRICS_MASTER_VISION.md`, `docs/01_BUILD_PHASES_A
 | `npm run setup:pipeline` | R + Quarto + pandoc + Python + print libs |
 | `npm run setup:clis` | Netlify / Supabase / Stripe CLIs |
 | `npm run doctor` | Green/red toolchain inventory |
-| `npm run content` | Rebuild `src/generated/*` |
+| `npm run content` | Rebuild `src/generated/*` (includes the sources catalog) |
+| `npm run sources` | Rebuild `src/generated/sources.json` from `magazine/issues.json` |
 | `npm run dev` | Expo web |
 | `npm start` | Expo CLI |
 | `npm run build` | Static web export → `dist/` |

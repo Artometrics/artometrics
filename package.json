@@ -6,6 +6,7 @@
   "description": "Artometrics — data reports on culture, power, and the creative economy (Expo for app + web)",
   "scripts": {
     "content": "node scripts/build-content.mjs",
+    "sources": "node scripts/build-sources.mjs",
     "content:ensure": "node scripts/ensure-generated-content.mjs",
     "prestart": "npm run content:ensure",
     "preweb": "npm run content:ensure",

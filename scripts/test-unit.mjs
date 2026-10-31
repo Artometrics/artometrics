@@ -5,6 +5,7 @@
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { buildSourcesCatalog, loadSourcesInputs } from "./lib/sources-catalog.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -154,5 +155,62 @@ assert(oversize.length === 0, `master files over 50MB must stay out of git: ${ov
 assert(masters.some((file) => file.full.endsWith("artometrics_masters.sqlite")), "sqlite index present");
 assert(masters.some((file) => file.full.includes("CHANGELOG_2026-10-29.md")), "changelog present");
 assert(masters.some((file) => file.full.includes("dataset_inventory_2026-10-29.csv")), "inventory present");
+
+const sourcesRoute = readFileSync(join(ROOT, "app/(site)/sources/index.tsx"), "utf8");
+assert(sourcesRoute.includes("no link yet"), "unlinked citations are tagged");
+assert(sourcesRoute.includes('path="/sources"'), "sources page sets a canonical path");
+const resources = readFileSync(join(ROOT, "app/(site)/resources/index.tsx"), "utf8");
+assert(resources.includes('href="/sources"'), "resources links to sources");
+const sitemapScript = readFileSync(join(ROOT, "scripts/content-os/generate-sitemap.mjs"), "utf8");
+assert(sitemapScript.includes('"/sources"'), "sitemap generator lists /sources");
+assert(readFileSync(join(ROOT, "public/llms.txt"), "utf8").includes("https://artometrics.com/sources"), "llms.txt lists sources");
+assert(readFileSync(join(ROOT, "docs/sources-page.md"), "utf8").includes("# Decided"), "decided note recorded");
+
+const { issues: sourceIssues, packs } = loadSourcesInputs(ROOT);
+const freshSources = buildSourcesCatalog(sourceIssues, packs);
+const committedSources = JSON.parse(readFileSync(join(ROOT, "src/generated/sources.json"), "utf8"));
+assert(
+  JSON.stringify(freshSources) === JSON.stringify(committedSources),
+  "src/generated/sources.json is stale — run npm run sources",
+);
+assert(freshSources.orphanFixes.length === 0, "every data fix has a parent issue");
+assert(freshSources.topics.map((topic) => topic.id).join(",") === "arts,sports,science,humanities,civics,culture", "topics follow the site order");
+const listed = freshSources.topics.flatMap((topic) => topic.issues);
+assert(listed.length === 100, `expected 100 parent reports, got ${listed.length}`);
+assert(listed.every((issue) => !issue.slug.endsWith("-data-fix")), "data fixes are not top-level rows");
+const anime = listed.find((issue) => issue.slug === "anime");
+assert(anime && anime.updatedThrough === "Updated through October 11, 2026", "anime uses the snapshot coverage end");
+assert(anime.fixes.length === 1 && anime.fixes[0].slug === "anime-data-fix", "anime data fix sits under anime");
+assert(anime.datasets.some((pack) => pack.id === "streaming-catalogs"), "anime links its dataset pack");
+const padres = listed.find((issue) => issue.slug === "padres");
+assert(padres && padres.fixes.some((fix) => fix.slug === "padres-data-fix"), "padres data fix sits under padres");
+const franchise = listed.find((issue) => issue.slug === "franchise");
+assert(franchise && franchise.datasets.some((pack) => pack.id === "movies"), "franchise links the movies pack");
+assert(franchise.fixes.some((fix) => fix.slug === "franchise-data-fix"), "franchise data fix sits under franchise");
+const coffee = listed.find((issue) => issue.slug === "coffee");
+assert(coffee && coffee.datasets.length === 0, "reports without a pack do not invent a dataset link");
+const albums = listed.find((issue) => issue.slug === "albums");
+assert(albums && albums.updatedThroughKind === "unchecked", "albums says not yet checked");
+const pantheon = listed.find((issue) => issue.slug === "pantheon");
+assert(pantheon && pantheon.updatedThrough === "Updated through: editorial index", "pantheon says it is an editorial index");
+const geopolitics = listed.find((issue) => issue.slug === "geopolitics");
+assert(geopolitics && geopolitics.updatedThroughKind === "editorial", "geopolitics says it is an editorial index");
+const gutenberg = listed.find((issue) => issue.slug === "gutenberg");
+assert(gutenberg && gutenberg.datasets.some((pack) => pack.id === "gutenberg-reference"), "gutenberg links its pack");
+let sawUnlinked = false;
+for (const issue of listed) {
+  for (const citation of issue.citations) {
+    assert(citation.href === null || /^https?:\/\//i.test(citation.href), `${issue.slug} citation href`);
+    if (citation.href === null) sawUnlinked = true;
+  }
+  for (const fix of issue.fixes) {
+    for (const citation of fix.citations) {
+      assert(citation.href === null || /^https?:\/\//i.test(citation.href), `${fix.slug} citation href`);
+    }
+  }
+}
+assert(sawUnlinked, "at least one citation is unlinked");
+const catalogText = JSON.stringify(freshSources);
+assert(!/sk_live|api_key|BEGIN (RSA |OPENSSH )?PRIVATE/i.test(catalogText), "sources catalog has no secrets");
 
 console.log("unit OK");

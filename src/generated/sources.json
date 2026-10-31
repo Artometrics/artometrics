@@ -1,0 +1,3084 @@
+{
+  "generatedFrom": "magazine/issues.json",
+  "topics": [
+    {
+      "id": "arts",
+      "title": "Arts",
+      "description": "Design, music, film, theater, architecture, fashion, and language.",
+      "href": "/topics/arts",
+      "issues": [
+        {
+          "slug": "lcsh",
+          "title": "69,027 Headings Anchor Gutenberg's Core",
+          "kicker": "Gutenberg",
+          "href": "/lcsh",
+          "updatedThrough": "Updated through June 3, 2025",
+          "updatedThroughKind": "coverage",
+          "datasets": [
+            {
+              "id": "gutenberg-reference",
+              "title": "Project Gutenberg reference pack",
+              "href": "/datasets/gutenberg-reference"
+            }
+          ],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2025). TidyTuesday: Project Gutenberg (curated via {lcshr}). https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-06-03",
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-06-03"
+            },
+            {
+              "text": "Data Science Learning Community. (2025). TidyTuesday: lcsh_subjects.csv. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-06-03/lcsh_subjects.csv — subject types and labels (lcsh, lcc, and related fields)…",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-06-03/lcsh_subjects.csv"
+            },
+            {
+              "text": "Fenner, M. (n.d.). lcshr: Download and Process Public Domain Works from Project Gutenberg. rOpenSci. https://docs.ropensci.org/lcshr/",
+              "href": "https://docs.ropensci.org/lcshr/"
+            },
+            {
+              "text": "Project Gutenberg. (n.d.). Project Gutenberg. https://www.gutenberg.org/",
+              "href": "https://www.gutenberg.org/"
+            },
+            {
+              "text": "Library of Congress. (n.d.). Library of Congress Subject Headings (LCSH). https://www.loc.gov/aba/cataloging/subject/headings/",
+              "href": "https://www.loc.gov/aba/cataloging/subject/headings/"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "trademarks",
+          "title": "A ¥10.3 Million Win Becomes Cultural Reckoning",
+          "kicker": "Trademarks",
+          "href": "/trademarks",
+          "updatedThrough": "Updated through July 2026",
+          "updatedThroughKind": "citation",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "AP News — \"Louis Vuitton court victory against Chinese tea chain stirs up a copyright debate\" (2026). apnews.com",
+              "href": "https://apnews.com/article/china-louis-ipr-fashion-trademark-6b579f6cd9ec5b5b4aae2412f8fb5348"
+            },
+            {
+              "text": "China IP Law Update — \"Louis Vuitton Scores 10 Million RMB in a Controversial Trademark Infringement Dispute Against Molly Tea\" (July 2026). chinaiplawupdate.com",
+              "href": "https://www.chinaiplawupdate.com/2026/07/louis-vuitton-scores-10-million-rmb-in-trademark-infringement-dispute-against-molly-tea/"
+            },
+            {
+              "text": "D'Andrea & Partners — \"Louis Vuitton v. Molly Tea: Chinese Court Rules on Trademark Infringement in the Beverage Sector.\" dandreapartners.com",
+              "href": "https://www.dandreapartners.com/louis-vuitton-v-molly-tea-chinese-court-rules-on-trademark-infringement-in-the-beverage-sector/"
+            },
+            {
+              "text": "China Briefing — \"Trademark Protection in China: Legal Victory Is Only Part of the Strategy.\" china-briefing.com",
+              "href": "https://www.china-briefing.com/news/trademark-protection-in-china-legal-victory-only-part-strategy/"
+            },
+            {
+              "text": "Global Times — \"LV vs Molly Tea case exposes modern IP's cultural blind spot.\" globaltimes.cn",
+              "href": "https://www.globaltimes.cn/page/202607/1365372.shtml"
+            },
+            {
+              "text": "Jiemian / Xinhua / Southern Metropolis secondary reporting on judgment date, appeal statements, and damages.",
+              "href": null
+            },
+            {
+              "text": "Artometrics ethics — evidence tiers.",
+              "href": "https://artometrics.com/legal/ethics-statement"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "lyrics",
+          "title": "Beyoncé and Taylor Swift Line by Line",
+          "kicker": "Beyoncé",
+          "href": "/lyrics",
+          "updatedThrough": "Updated through September 29, 2020",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2020). TidyTuesday: Beyoncé & Taylor Swift Lyrics. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-09-29/beyonce_lyrics.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-09-29/beyonce_lyrics.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "fame",
+          "title": "Catalog Depth Predicts Pop Duration",
+          "kicker": "Pop Music",
+          "href": "/fame",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "MusicBrainz. JSON Data Dumps documentation.",
+              "href": null
+            },
+            {
+              "text": "MetaBrainz Foundation. Datasets: PostgreSQL and JSON dumps.",
+              "href": null
+            },
+            {
+              "text": "MusicBrainz Database Download documentation and CC0 license notes.",
+              "href": null
+            },
+            {
+              "text": "Wikidata and public chart-history references for artist-level context.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "gutenberg",
+          "title": "English Holds 72% of the Shelf",
+          "kicker": "Canon",
+          "href": "/gutenberg",
+          "updatedThrough": "Updated through June 3, 2025",
+          "updatedThroughKind": "coverage",
+          "datasets": [
+            {
+              "id": "gutenberg-reference",
+              "title": "Project Gutenberg reference pack",
+              "href": "/datasets/gutenberg-reference"
+            }
+          ],
+          "citations": [
+            {
+              "text": "Project Gutenberg. (n.d.). About Project Gutenberg. https://www.gutenberg.org/about/",
+              "href": "https://www.gutenberg.org/about/"
+            },
+            {
+              "text": "Project Gutenberg. (n.d.). Online Distributed Metadata and Catalog Feeds. https://www.gutenberg.org/feeds/",
+              "href": "https://www.gutenberg.org/feeds/"
+            },
+            {
+              "text": "Project Gutenberg. (n.d.). pg_catalog.csv. https://www.gutenberg.org/cache/epub/feeds/pg_catalog.csv",
+              "href": "https://www.gutenberg.org/cache/epub/feeds/pg_catalog.csv"
+            },
+            {
+              "text": "Cornell University Library. (n.d.). Copyright Term and the Public Domain in the United States. https://guides.library.cornell.edu/copyright/publicdomain",
+              "href": "https://guides.library.cornell.edu/copyright/publicdomain"
+            },
+            {
+              "text": "U.S. Copyright Office. (n.d.). Title 17, Chapter 1 — Subject Matter and Scope of Copyright. https://www.copyright.gov/title17/92chap1.html",
+              "href": "https://www.copyright.gov/title17/92chap1.html"
+            },
+            {
+              "text": "Baldwin, P. (2014). The Copyright Wars: Three Centuries of Trans-Atlantic Battle. Princeton University Press.",
+              "href": null
+            },
+            {
+              "text": "Jenkins, H. (2006). Convergence Culture: Where Old and New Media Collide. NYU Press.",
+              "href": null
+            },
+            {
+              "text": "Yu, A. Z., et al. (2016). Pantheon 1.0, a manually verified dataset of globally famous biographies. Scientific Data, 3, 150075. https://doi.org/10.1038/sdata.2015.75",
+              "href": "https://doi.org/10.1038/sdata.2015.75"
+            },
+            {
+              "text": "Data Science Learning Community. (2025). TidyTuesday: Project Gutenberg metadata tables. https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-06-03",
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-06-03"
+            },
+            {
+              "text": "Fenner, M. (n.d.). gutenbergr. rOpenSci. https://docs.ropensci.org/gutenbergr/",
+              "href": "https://docs.ropensci.org/gutenbergr/"
+            },
+            {
+              "text": "Wikimedia Foundation. (n.d.). Wikidata. https://www.wikidata.org/",
+              "href": "https://www.wikidata.org/"
+            },
+            {
+              "text": "Library of Congress. (n.d.). Library of Congress Subject Headings (LCSH). https://www.loc.gov/aba/cataloging/subject/headings/",
+              "href": "https://www.loc.gov/aba/cataloging/subject/headings/"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "margins",
+          "title": "Genre Mislabeling Hides the Winners",
+          "kicker": "Horror",
+          "href": "/margins",
+          "updatedThrough": "Updated through October 23, 2018",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2018). TidyTuesday: Horror Movie Profit. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-10-23/movie_profit.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-10-23/movie_profit.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "languages",
+          "title": "Glottolog's 8,612 Records Map Fieldwork, Not Where People Speak",
+          "kicker": "Languages",
+          "href": "/languages",
+          "updatedThrough": "Updated through December 23, 2025",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2025). TidyTuesday: Glottolog / language data. https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-12-23",
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-12-23"
+            },
+            {
+              "text": "Hammarström, H., Forkel, R., Haspelmath, M., & Bank, S. Glottolog. Max Planck Institute for Evolutionary Anthropology. https://glottolog.org/",
+              "href": "https://glottolog.org/"
+            },
+            {
+              "text": "UNESCO. Atlas of the World's Languages in Danger. https://www.unesco.org/languages-atlas/",
+              "href": "https://www.unesco.org/languages-atlas/"
+            },
+            {
+              "text": "Dryer, M. S., & Haspelmath, M. (Eds.). The World Atlas of Language Structures Online. https://wals.info/",
+              "href": "https://wals.info/"
+            },
+            {
+              "text": "Skirgård, H., et al. (2023). Grambank reveals the importance of genealogical constraints on linguistic diversity and highlights the impact of language loss. Science Advances, 9(16). https://doi.org/10.1126/sciadv.adg6175",
+              "href": "https://doi.org/10.1126/sciadv.adg6175"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "horror",
+          "title": "Horror Ratings Rose as Catalog Volume Grew 50× in Seven Decades",
+          "kicker": "Horror",
+          "href": "/horror",
+          "updatedThrough": "Updated through November 1, 2022",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2022). TidyTuesday: Horror Movies. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-11-01/horror_movies.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-11-01/horror_movies.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "billboard",
+          "title": "How Long Number-Ones Stay on Top",
+          "kicker": "Billboard",
+          "href": "/billboard",
+          "updatedThrough": "Updated through August 26, 2025",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2025). TidyTuesday: Billboard Hot 100 Number Ones. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-08-26/billboard.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-08-26/billboard.csv"
+            },
+            {
+              "text": "Billboard. (2025). Hot 100 chart history. billboard.com/charts/hot-100",
+              "href": "https://www.billboard.com/charts/hot-100/"
+            },
+            {
+              "text": "Billboard Hot 100 chart data, via utdata/rwd-billboard-data (MIT), through the chart dated Oct 31, 2026",
+              "href": "https://github.com/utdata/rwd-billboard-data/blob/ff86f0456f55f8174ea5e91c0872a00df21b8603/data-out/hot-100-current.csv"
+            },
+            {
+              "text": "Trust, Gary. (2026). Ella Langley's 'Choosin' Texas' Rebounds for Record-Extending 25th Week at No. 1 on Hot 100. Billboard. https://www.billboard.com/lists/ella-langley-choosin-texas-hot-100-number-one-25th-week",
+              "href": "https://www.billboard.com/lists/ella-langley-choosin-texas-hot-100-number-one-25th-week"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "blockbusters",
+          "title": "How Movies Become IMDb Famous",
+          "kicker": "Blockbusters",
+          "href": "/blockbusters",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [
+            {
+              "id": "movies",
+              "title": "Movies pack",
+              "href": "/datasets/movies"
+            }
+          ],
+          "citations": [
+            {
+              "text": "IMDb Developer. IMDb Non-Commercial Datasets.",
+              "href": null
+            },
+            {
+              "text": "IMDb required credit: Information courtesy of IMDb (https://www.imdb.com). Used with permission.",
+              "href": "https://www.imdb.com"
+            },
+            {
+              "text": "IMDb Help. Required credit statement and non-commercial terms.",
+              "href": null
+            },
+            {
+              "text": "Box Office Mojo and The Numbers public box-office reference pages.",
+              "href": null
+            },
+            {
+              "text": "The Movie Database and Wikidata documentation for alternate open film metadata paths.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "rankings",
+          "title": "How the Chart Top Got Crowded",
+          "kicker": "Billboard",
+          "href": "/rankings",
+          "updatedThrough": "Updated through September 14, 2021",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2021). TidyTuesday: Billboard Top 100. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-09-14/billboard.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-09-14/billboard.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "carols",
+          "title": "Jingle Bell Rock Spent 19 Weeks on Chart Across Six Decades",
+          "kicker": "Christmas",
+          "href": "/carols",
+          "updatedThrough": "Updated through December 24, 2019",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2019). TidyTuesday: Christmas Songs. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-12-24/christmas_songs.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-12-24/christmas_songs.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "simpsons",
+          "title": "Marcia Wallace, 175 Guest Appearances",
+          "kicker": "Simpsons",
+          "href": "/simpsons",
+          "updatedThrough": "Updated through August 27, 2019",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2019). TidyTuesday: Simpsons Guest Stars. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-08-27/simpsons-guests.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-08-27/simpsons-guests.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "franchise",
+          "title": "Merchandise Owns the Ledger",
+          "kicker": "Franchises",
+          "href": "/franchise",
+          "updatedThrough": "Updated through October 12, 2026",
+          "updatedThroughKind": "coverage",
+          "datasets": [
+            {
+              "id": "movies",
+              "title": "Movies pack",
+              "href": "/datasets/movies"
+            }
+          ],
+          "citations": [
+            {
+              "text": "TidyTuesday (2019-07-02). Media Franchise Revenues (S001). github.com/rfordatascience/tidytuesday/…/2019-07-02",
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-07-02"
+            },
+            {
+              "text": "Wikipedia. List of highest-grossing media franchises — revision 904026364, 2019-06-29 (audit of S001); revision 1379832186, 2026-10-12 (primary ledger, S017). Accessed 2026-10-12.",
+              "href": null
+            },
+            {
+              "text": "Wikipedia. 2025 in film (rev. 1378645325) and 2026 in film (rev. 1379926625), citing Box Office Mojo and The Numbers (S091, S092). Accessed 2026-10-12.",
+              "href": null
+            },
+            {
+              "text": "Federal Reserve Bank of St. Louis. CPI-U, CPIAUCSL (S090). Accessed 2026-10-12.",
+              "href": null
+            },
+            {
+              "text": "Robinson, D. (2019). Analyzing Franchise Revenue — TidyTuesday Screencast. youtu.be/1xsbTs9-a50",
+              "href": "https://youtu.be/1xsbTs9-a50"
+            },
+            {
+              "text": "Jenkins, H. (2006). Convergence Culture. NYU Press.",
+              "href": null
+            },
+            {
+              "text": "Steinberg, M. (2012). Anime's Media Mix. University of Minnesota Press.",
+              "href": null
+            },
+            {
+              "text": "Hernández Hernández, Á. D. (2018). Production committees (Arts 7(3): 42). doi:10.3390/arts7030042",
+              "href": "https://doi.org/10.3390/arts7030042"
+            },
+            {
+              "text": "The Walt Disney Company. Form 10-K FY2024; segment revenues exhibit (S004, S081).",
+              "href": null
+            },
+            {
+              "text": "Box Office Mojo yearly domestic charts (2010–2024) — data/box_office_mojo_yearly_urls.csv.",
+              "href": null
+            }
+          ],
+          "fixes": [
+            {
+              "slug": "franchise-data-fix",
+              "title": "What Changed When We Fixed the Data",
+              "kicker": "Franchises",
+              "href": "/franchise-data-fix",
+              "updatedThrough": "Updated through October 12, 2026",
+              "updatedThroughKind": "citation",
+              "datasets": [],
+              "citations": [
+                {
+                  "text": "The original report used the TidyTuesday file of July 2, 2019: 321 rows, 103 franchises, eight revenue categories. It had no missing values or duplicates, but it had 15 placeholder rows under $10 million (Star Wars TV at $0.004B), six ce…",
+                  "href": null
+                },
+                {
+                  "text": "Wikipedia “List of highest-grossing media franchises” revisions 904026364 (2019-06-29) and 1379832186 (2026-10-12)",
+                  "href": null
+                },
+                {
+                  "text": "“2025 in film” and “2026 in film” (citing Box Office Mojo and The Numbers)",
+                  "href": null
+                },
+                {
+                  "text": "FRED CPI-U. All accessed October 12, 2026. Bootstrap: 5,000 resamples of franchises.",
+                  "href": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "catalog",
+          "title": "Netflix's Movie-Heavy Catalog Hid Its Longest Titles in Interactives",
+          "kicker": "Netflix",
+          "href": "/catalog",
+          "updatedThrough": "Updated through April 20, 2021",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2021). TidyTuesday: Netflix Titles. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-04-20/netflix_titles.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-04-20/netflix_titles.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "streaming",
+          "title": "Netflix's Top 10% of Titles Drew 68% of Viewing",
+          "kicker": "Streaming",
+          "href": "/streaming",
+          "updatedThrough": "Updated through June 28, 2026",
+          "updatedThroughKind": "coverage",
+          "datasets": [
+            {
+              "id": "streaming-catalogs",
+              "title": "Streaming catalogs pack",
+              "href": "/datasets/streaming-catalogs"
+            }
+          ],
+          "citations": [
+            {
+              "text": "Netflix, What We Watched the First Half of 2026 (published July 16, 2026): https://about.netflix.com/news/what-we-watched-the-first-half-of-2026",
+              "href": "https://about.netflix.com/news/what-we-watched-the-first-half-of-2026"
+            },
+            {
+              "text": "Netflix Top 10, global weekly lists, all-weeks-global.tsv (weeks ending January 4–June 28, 2026; file read October 30, 2026): https://www.netflix.com/tudum/top10",
+              "href": "https://www.netflix.com/tudum/top10"
+            },
+            {
+              "text": "User-supplied or public streaming availability export: https://artometrics.com/methodology/",
+              "href": "https://artometrics.com/methodology/"
+            },
+            {
+              "text": "Related Artometrics report: anime",
+              "href": "https://artometrics.com/anime"
+            },
+            {
+              "text": "Related Artometrics report: franchise",
+              "href": "https://artometrics.com/franchise"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "radio",
+          "title": "News/Talk Lives on AM While FM Clusters at 101 MHz",
+          "kicker": "Radio",
+          "href": "/radio",
+          "updatedThrough": "Updated through November 8, 2022",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "The source is the TidyTuesday release from 2022-11-08, maintained by the R for Data Science community. The working file contains 17,186 rows and 11 columns after cleaning — call signs, frequencies, formats, and license status fields.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "pixar",
+          "title": "Pixar's Critic Scores Broke Only Twice—Cars 2 and Lightyear",
+          "kicker": "Pixar",
+          "href": "/pixar",
+          "updatedThrough": "Updated through 2025",
+          "updatedThroughKind": "citation",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2025). TidyTuesday: Pixar Films. pixar_films.csv; public_response.csv. Original pixarfilms R package by Eric Leung.",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-03-11/pixar_films.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "television",
+          "title": "Prestige TV Scores Drifted Up—Slowly—From 1990 to 2018",
+          "kicker": "Television",
+          "href": "/television",
+          "updatedThrough": "Updated through January 8, 2019",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2019). TidyTuesday: TV Golden Age. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-01-08/IMDb_Economist_tv_ratings.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-01-08/IMDb_Economist_tv_ratings.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "albums",
+          "title": "Rolling Stone's 2003 Canon, Rank by Rank",
+          "kicker": "Albums",
+          "href": "/albums",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "The source is the TidyTuesday Rolling Stone albums release from the R for Data Science community. The working file contains 691 rows — album titles, artists, release years, types, genre labels, and 2003 rank fields.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "emmys",
+          "title": "SNL's 859 Records Beat Every Show",
+          "kicker": "Emmys",
+          "href": "/emmys",
+          "updatedThrough": "Updated through September 21, 2021",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2021). TidyTuesday: Emmy Awards. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-09-21/nominees.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-09-21/nominees.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "anime",
+          "title": "Source Sets the Audience Floor",
+          "kicker": "Anime",
+          "href": "/anime",
+          "updatedThrough": "Updated through October 11, 2026",
+          "updatedThroughKind": "coverage",
+          "datasets": [
+            {
+              "id": "streaming-catalogs",
+              "title": "Streaming catalogs pack",
+              "href": "/datasets/streaming-catalogs"
+            }
+          ],
+          "citations": [
+            {
+              "text": "Primary data. MyAnimeList metadata via Tenrai API, snapshot 2026-10-11; baseline comparison TidyTuesday 2019-04-23. TidyTuesday 2019-04-23 · data/anime/METHODS_NOTE.md.",
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-23"
+            },
+            {
+              "text": "Hernández Hernández, Á. D. (2018). \"The Anime Industry, Networks of Participation, and Environments for the Management of Content in Japan.\" Arts 7(3): 42. Cited for §4.3 (pp. 8–9), the committee mechanism. doi:10.3390/arts7030042.",
+              "href": "https://doi.org/10.3390/arts7030042"
+            },
+            {
+              "text": "Hanzawa, Seiji (2004). \"The Japanese Animation and Home Video Game Industries.\" Japanese Journal of Human Geography 56(6): 587–602. Cited for subcontracting and freelance labor. doi:10.4200/jjhg1948.56.587.",
+              "href": "https://doi.org/10.4200/jjhg1948.56.587"
+            },
+            {
+              "text": "Mihara, Ryotaro (2018). \"Involution: a perspective for understanding Japanese animation's domestic business in a global context.\" Japan Forum 32(1): 102–125. Published online 2018. doi:10.1080/09555803.2018.1442362.",
+              "href": "https://doi.org/10.1080/09555803.2018.1442362"
+            },
+            {
+              "text": "Morisawa, Tomohiro (2015). \"Managing the unmanageable: Emotional labour and creative hierarchy in the Japanese animation industry.\" Ethnography 16(2): 262–284. Cited only for the production-management layer (seisaku shinkou) that depends…",
+              "href": "https://doi.org/10.1177/1466138114547624"
+            },
+            {
+              "text": "Steinberg, M. (2012). Anime's Media Mix: Franchising Toys and Characters in Japan. University of Minnesota Press. Cited for the media mix and for the television wave beginning with Tetsuwan Atom (1963) and sponsor merchandising.",
+              "href": null
+            },
+            {
+              "text": "Creamer, Nick (2015-12-02). \"What Makes Kyoto Animation So Special?\" Anime News Network. animenewsnetwork.com.",
+              "href": "https://www.animenewsnetwork.com/feature/2015-12-02/what-makes-kyoto-animation-so-special/.95559"
+            },
+            {
+              "text": "Moore, D. M. (2017-10-20). \"A Silent Voice shows why Kyoto Animation is one of the top animation studios.\" The Verge. theverge.com.",
+              "href": "https://www.theverge.com/2017/10/20/16482234/a-silent-voice-kyoto-animation-kyoani"
+            },
+            {
+              "text": "Kyoto Animation, training school. kyotoanimation.co.jp/school.",
+              "href": "https://www.kyotoanimation.co.jp/school/"
+            },
+            {
+              "text": "Morrissy, Kim (2018-12-12). \"Looking Back on 20 Years of Studio Bones.\" Anime News Network. animenewsnetwork.com.",
+              "href": "https://www.animenewsnetwork.com/feature/2018-12-12/looking-back-on-20-years-of-studio-bones/.139456"
+            },
+            {
+              "text": "Kyoto Animation, company outline. kyotoanimation.co.jp/company/outline. Hiring page. new-graduate animator terms.",
+              "href": "https://www.kyotoanimation.co.jp/company/outline/"
+            },
+            {
+              "text": "OLM, company site. olm.co.jp/about. Anime News Network encyclopedia entry. animenewsnetwork.com.",
+              "href": "https://www.olm.co.jp/about?lang=en"
+            },
+            {
+              "text": "Toei Animation, company history. corp.toei-anim.co.jp.",
+              "href": "https://corp.toei-anim.co.jp/en/company/history.html"
+            },
+            {
+              "text": "DLE, company history. dle.jp/jp/company. Anime News Network (2020) on Eagle Talon. animenewsnetwork.com.",
+              "href": "https://www.dle.jp/jp/company/"
+            },
+            {
+              "text": "IDOLiSH7 official announcement (Jan 17, 2017). idolish7.com. Anime News Network (2017). animenewsnetwork.com.",
+              "href": "https://idolish7.com/news/2017/4582"
+            },
+            {
+              "text": "Netflix Media Center, Devilman: Crybaby. media.netflix.com. Anime News Network (2017). animenewsnetwork.com.",
+              "href": "https://media.netflix.com/en/only-on-netflix/80174974"
+            },
+            {
+              "text": "Studio Pierrot, Dallos archive. pierrot.jp. Pineda, Rafael Antonio (2022-11-21). \"1st Ever OVA Dallos Gets Blu-ray Disc Release in March 2023.\" Anime News Network. animenewsnetwork.com.",
+              "href": "https://pierrot.jp/archive/ova/title01.html"
+            },
+            {
+              "text": "Ristola, Jacqueline C. R. (2024). \"Going Gonzo: Crunchyroll, Anime Streaming, and Unpaid Digital Labour.\" Kinephanos 10(1): 145–174. Cited for p. 4: Crunchyroll began licensed simulcasts in 2008 and went licensed-only in January 2009, af…",
+              "href": "https://doi.org/10.7202/1113453ar"
+            },
+            {
+              "text": "Same-day Naruto Shippuden (January 2009), as reported by Anime News Network. 2009. August 2008 Gonzo license announcement. 2008.",
+              "href": "https://www.animenewsnetwork.com/press-release/2009-01-08/naruto-shippuden-and-gintama-arrives-on-crunchyroll-today"
+            },
+            {
+              "text": "Association of Japanese Animations, Anime Industry Report English summaries (2019 and 2024 editions). 2023 was the second time overseas sales passed domestic ones (the first was 2020; 2024 summary, p. 8). 2023 summary. 2024 summary. Whol…",
+              "href": "https://aja.gr.jp/download/2023_anime_ind_rpt_summary_en?refresh=6604b4af938671711584431&wpdmdl=2304"
+            },
+            {
+              "text": "JustWatch US, accessed October 10, 2026. Subscription, free-with-ads, rental, and purchase offers. Checked by hand for the Buried Canon shortlist.",
+              "href": null
+            }
+          ],
+          "fixes": [
+            {
+              "slug": "anime-data-fix",
+              "title": "What Changed When We Fixed the Data",
+              "kicker": "Anime",
+              "href": "/anime-data-fix",
+              "updatedThrough": "Updated through October 12, 2026",
+              "updatedThroughKind": "coverage",
+              "datasets": [],
+              "citations": [
+                {
+                  "text": "TidyTuesday 2019-04-23 baseline",
+                  "href": null
+                },
+                {
+                  "text": "Tenrai API accessed 2026-10-12",
+                  "href": null
+                },
+                {
+                  "text": "AniList GraphQL via idMal. Seed 20261011",
+                  "href": null
+                },
+                {
+                  "text": "bootstrap B = 2000.",
+                  "href": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "comics",
+          "title": "Spider-Man Leads 23,000 Comic Characters at 4,043 Appearances",
+          "kicker": "Comics",
+          "href": "/comics",
+          "updatedThrough": "Updated through May 29, 2018",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2018). TidyTuesday: Comic Book Characters. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-05-29/week9_comic_characters.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-05-29/week9_comic_characters.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "broadway",
+          "title": "Springsteen on Broadway Doubled Hamilton's Average Ticket Price",
+          "kicker": "Broadway",
+          "href": "/broadway",
+          "updatedThrough": "Updated through April 28, 2020",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2020). TidyTuesday: Broadway Musicals. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-04-28/grosses.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-04-28/grosses.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "netflix",
+          "title": "Squid Game Season 2 Logged 730 Million Hours on Netflix",
+          "kicker": "Netflix",
+          "href": "/netflix",
+          "updatedThrough": "Updated through July 29, 2025",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2025). TidyTuesday: Netflix Engagement. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-07-29/shows.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-07-29/shows.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "sherlock",
+          "title": "Twelve Words per Tokenized Record",
+          "kicker": "Sherlock",
+          "href": "/sherlock",
+          "updatedThrough": "Updated through November 18, 2025",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2025). TidyTuesday: Sherlock Holmes. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-11-18/holmes.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-11-18/holmes.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "museums",
+          "title": "UK Cluster in Less-Deprived Areas",
+          "kicker": "Museums",
+          "href": "/museums",
+          "updatedThrough": "Updated through November 22, 2022",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2022). TidyTuesday: UK Museums. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-11-22/museums.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-11-22/museums.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "novels",
+          "title": "Victorian Authors Own the Christmas Canon",
+          "kicker": "Christmas",
+          "href": "/novels",
+          "updatedThrough": "Updated through December 30, 2025",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2025). TidyTuesday: Christmas Novels. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-12-30/christmas_novels.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-12-30/christmas_novels.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "poison",
+          "title": "What Star Risk Costs an IP",
+          "kicker": "Franchises",
+          "href": "/poison",
+          "updatedThrough": "Updated through 2026",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "De Vany, A., & Walls, W. D. (2004). Motion pictures and the risk of product market failure. Journal of Economic Perspectives, 18(3), 173–186. AEA Web",
+              "href": "https://pubs.aeaweb.org/doi/pdfplus/10.1257/0895330042162378"
+            },
+            {
+              "text": "Jenkins, H. (2006). Convergence Culture: Where Old and New Media Collide. NYU Press.",
+              "href": null
+            },
+            {
+              "text": "Data Science Learning Community. (2019). TidyTuesday: Media franchise revenues. GitHub",
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-07-02"
+            },
+            {
+              "text": "Box Office Mojo. Title-level worldwide gross and trade-reported budget figures, 2021–2026. boxofficemojo.com",
+              "href": "https://www.boxofficemojo.com/"
+            },
+            {
+              "text": "Artometrics. Franchise revenue report. artometrics.com/franchise",
+              "href": "https://artometrics.com/franchise"
+            },
+            {
+              "text": "Artometrics. Horror-profit / margins report. artometrics.com/margins",
+              "href": "https://artometrics.com/margins"
+            },
+            {
+              "text": "Artometrics. The Protection Threshold. artometrics.com/protection",
+              "href": "https://artometrics.com/protection"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "protection",
+          "title": "When Flops End Hollywood's Silence",
+          "kicker": "Franchises",
+          "href": "/protection",
+          "updatedThrough": "Updated through July 2026",
+          "updatedThroughKind": "citation",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "BBC News. Jared Leto criminal sexual conduct allegations, July 2026. https://www.bbc.com/news/articles/cd7lg2nz2x2o — Primary reporting on the documentary's claims and Leto's denial; allegation language only.",
+              "href": "https://www.bbc.com/news/articles/cd7lg2nz2x2o"
+            },
+            {
+              "text": "BBC Three. Jared Leto: Hollywood's Dark Secret. https://www.bbc.co.uk/programmes/m002zl1y — Documentary programme page.",
+              "href": "https://www.bbc.co.uk/programmes/m002zl1y"
+            },
+            {
+              "text": "Box Office Mojo. Film gross data. https://www.boxofficemojo.com/ — Observed worldwide gross figures for the Leto 2020s slate.",
+              "href": "https://www.boxofficemojo.com/"
+            },
+            {
+              "text": "MarketWatch. The Weinstein Company struggled financially even before Harvey Weinstein's sexual misconduct allegations, October 12, 2017. https://www.marketwatch.com/story/the-weinstein-company-struggled-financially-even-before-harvey-wei…",
+              "href": "https://www.marketwatch.com/story/the-weinstein-company-struggled-financially-even-before-harvey-weinsteins-sexual-misconduct-allegations-2017-10-12"
+            },
+            {
+              "text": "The Atlantic. Bryan Singer's Accusers Speak Out, March 2019. https://www.theatlantic.com/magazine/archive/2019/03/bryan-singers-accusers-speak-out/580462/ — Report after which Singer's mainstream studio attachments largely stopped.",
+              "href": "https://www.theatlantic.com/magazine/archive/2019/03/bryan-singers-accusers-speak-out/580462/"
+            },
+            {
+              "text": "Variety. Bryan Singer secret movie, Jon Voight, 2025. https://variety.com/2025/film/news/bryan-singer-secret-movie-jon-voight-israel-lebanon-1236499696/ — Reporting on a fringe project, distinguished from a mainstream studio comeback.",
+              "href": "https://variety.com/2025/film/news/bryan-singer-secret-movie-jon-voight-israel-lebanon-1236499696/"
+            },
+            {
+              "text": "Related Artometrics report: The Prestige Economy: Oscars, Grammys, and Nobels",
+              "href": "https://artometrics.com/oscars"
+            }
+          ],
+          "fixes": []
+        }
+      ]
+    },
+    {
+      "id": "sports",
+      "title": "Sports",
+      "description": "Football, basketball, baseball, soccer, and the wider field of play.",
+      "href": "/topics/sports",
+      "issues": [
+        {
+          "slug": "cowboys",
+          "title": "$10B Value, 29-Year Title Drought",
+          "kicker": "Cowboys",
+          "href": "/cowboys",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [
+            {
+              "id": "sports-franchises",
+              "title": "Sports franchises pack",
+              "href": "/datasets/sports-franchises"
+            }
+          ],
+          "citations": [
+            {
+              "text": "Pro Football Reference. Dallas Cowboys Franchise Encyclopedia.",
+              "href": null
+            },
+            {
+              "text": "Forbes. NFL Team Valuations, recent estimates.",
+              "href": null
+            },
+            {
+              "text": "Sports Reference playoff and quarterback starter records.",
+              "href": null
+            },
+            {
+              "text": "NFL historical postseason records.",
+              "href": null
+            },
+            {
+              "text": "Related Artometrics report: Patriots",
+              "href": "https://artometrics.com/patriots"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "dodgers",
+          "title": "111 Wins Still Wasn't Enough",
+          "kicker": "Dodgers",
+          "href": "/dodgers",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Baseball Reference. Los Angeles Dodgers Franchise History.",
+              "href": null
+            },
+            {
+              "text": "Lahman, S. Lahman Baseball Database.",
+              "href": null
+            },
+            {
+              "text": "Forbes and public payroll-rank summaries.",
+              "href": null
+            },
+            {
+              "text": "Retrosheet and Baseball Almanac pennant/title records.",
+              "href": null
+            },
+            {
+              "text": "Related Artometrics report: Yankees",
+              "href": "https://artometrics.com/yankees"
+            },
+            {
+              "text": "Related Artometrics report: Padres",
+              "href": "https://artometrics.com/padres"
+            },
+            {
+              "text": "Related Artometrics report: Giants",
+              "href": "https://artometrics.com/giants"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "slices",
+          "title": "A Dozen Steam Titles Captured Half the Audience",
+          "kicker": "Games",
+          "href": "/slices",
+          "updatedThrough": "Updated through March 16, 2021",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2021). TidyTuesday: Video Games. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-03-16/sliced-tidytuesday.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-03-16/sliced-tidytuesday.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "games",
+          "title": "Crowd Scale Meets Elite Ratings",
+          "kicker": "Board Games",
+          "href": "/games",
+          "updatedThrough": "Updated through March 12, 2019",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2019). TidyTuesday: Board Games. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-03-12/board_games.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-03-12/board_games.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "pokemon",
+          "title": "Dragon-types Earn Their Attack Stats—Bug-types Don't Recover",
+          "kicker": "Pokémon",
+          "href": "/pokemon",
+          "updatedThrough": "Updated through 2025",
+          "updatedThroughKind": "citation",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "The PokéAPI/TidyTuesday file is useful because it exposes the game-design schema behind the franchise: types, stats, generation IDs, dimensions, and battle-related mechanics in a machine-readable form. It is less useful for competitive o…",
+              "href": null
+            },
+            {
+              "text": "The historical anchors are Satoshi Tajiri, Game Freak, Nintendo, Creatures, and The Pokémon Company because the numbers emerge from a designed commercial system that began with Pocket Monsters Red and Green in 1996. Bulbapedia and PokéAP…",
+              "href": null
+            },
+            {
+              "text": "Data Science Learning Community. (2025). TidyTuesday: A weekly social data project. Week 13, 2025 — Pokémon. https://tidytues.day",
+              "href": "https://tidytues.day"
+            },
+            {
+              "text": "Ito, S. (Producer), & Tajiri, S. (Director). (1996). Pocket Monsters Red and Green [Video game]. Nintendo / Game Freak.",
+              "href": null
+            },
+            {
+              "text": "PokéAPI. (2025). The RESTful Pokémon API. https://pokeapi.co",
+              "href": "https://pokeapi.co"
+            },
+            {
+              "text": "Bulbapedia contributors. (2025). Base experience. Bulbapedia, the community-driven Pokémon encyclopedia. https://bulbapedia.bulbagarden.net/wiki/Base_experience",
+              "href": "https://bulbapedia.bulbagarden.net/wiki/Base_experience"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "celtics",
+          "title": "Eighteen Titles Made the Celtics a Franchise Judged Against Itself",
+          "kicker": "Celtics",
+          "href": "/celtics",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Basketball Reference. Boston Celtics Franchise Index.",
+              "href": null
+            },
+            {
+              "text": "NBA.com historical championship records.",
+              "href": null
+            },
+            {
+              "text": "Sports Reference Finals appearance summaries.",
+              "href": null
+            },
+            {
+              "text": "Related Artometrics report: Lakers",
+              "href": "https://artometrics.com/lakers"
+            },
+            {
+              "text": "Related Artometrics report: Warriors",
+              "href": "https://artometrics.com/warriors"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "blueprint",
+          "title": "Record Sale, No Championship Formula",
+          "kicker": "Padres",
+          "href": "/blueprint",
+          "updatedThrough": "Updated through July 14, 2026",
+          "updatedThroughKind": "citation",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Baseball Reference. 2026 San Diego Padres Statistics. baseball-reference.com",
+              "href": "https://www.baseball-reference.com/teams/SDP/2026.shtml"
+            },
+            {
+              "text": "Forbes. (2026, March). Baseball's Most Valuable Teams. forbes.com/mlb-valuations",
+              "href": "https://www.forbes.com/mlb-valuations/"
+            },
+            {
+              "text": "Major League Baseball. Commissioner remarks on Padres sale documentation, July 14, 2026. mlb.com",
+              "href": "https://www.mlb.com/"
+            },
+            {
+              "text": "Sportico. (2026). San Diego Padres Sale: Feliciano, Jones to Pay MLB-Record $3.9 Billion. sportico.com",
+              "href": "https://www.sportico.com/"
+            },
+            {
+              "text": "Sports Business Journal. (2026, July). Feliciano group submits final documentation for Padres sale. sportsbusinessjournal.com",
+              "href": "https://www.sportsbusinessjournal.com/"
+            },
+            {
+              "text": "San Diego Union-Tribune. (2026, July). Padres farm-system and trade-deadline coverage. sandiegouniontribune.com",
+              "href": "https://www.sandiegouniontribune.com/"
+            },
+            {
+              "text": "Baseball America. (2026, July). MLB Farm System Midseason Talent Rankings. baseballamerica.com",
+              "href": "https://www.baseballamerica.com/"
+            },
+            {
+              "text": "Related Artometrics report: The Most Expensive Team That Has Never Won Anything",
+              "href": "https://artometrics.com/padres"
+            },
+            {
+              "text": "Related Artometrics report: Dodgers",
+              "href": "https://artometrics.com/dodgers"
+            },
+            {
+              "text": "Related Artometrics report: Sports Dynasty Index",
+              "href": "https://artometrics.com/dynasties"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "padres",
+          "title": "Record Sale, Zero Championships",
+          "kicker": "Padres",
+          "href": "/padres",
+          "updatedThrough": "Updated through 2026",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Lahman, S. (2026). Lahman's Baseball Database, 1871–2025. Society for American Baseball Research. Released January 2, 2026. CC BY-SA 3.0. sabr.org/lahman-database.",
+              "href": "https://sabr.org/lahman-database/"
+            },
+            {
+              "text": "Sports Reference LLC. 2026 San Diego Padres statistics. Baseball-Reference.com. teams/SDP/2026. 2025 NL Wild Card Series, Cubs over Padres (2–1). 2025_NLWC2. Tony Gwynn. Eight batting titles listed on the player page. gwynnto01.",
+              "href": "https://www.baseball-reference.com/teams/SDP/2026.shtml"
+            },
+            {
+              "text": "Major League Baseball (August 17, 2026). MLB owners unanimously approve Kwanza Jones and José E. Feliciano as new owners of the San Diego Padres. Press release.",
+              "href": "https://www.mlb.com/press-release/mlb-owners-approve-kwanza-jones-and-jose-e-feliciano-as-new-owners-of-the-san-diego-padres"
+            },
+            {
+              "text": "Associated Press (August 17, 2026). MLB approves sale of San Diego Padres to José E. Feliciano and Kwanza Jones. AP News.",
+              "href": "https://apnews.com/article/padres-sale-jose-feliciano-5a634c7c83275de68bc71e784202fedc"
+            },
+            {
+              "text": "NBC 7 San Diego (August 17, 2026). MLB owners approve San Diego Padres sale to group led by José E. Feliciano and Kwanza Jones ($3.9 billion; 30 percent Petco Park stake). Article.",
+              "href": "https://www.nbcsandiego.com/news/sports/san-diego-padres/mlb-owners-approve-san-diego-padres-sale-to-group-led-by-jose-e-feliciano-and-kwanza-jones/4062081/"
+            },
+            {
+              "text": "Major League Baseball and the Major League Baseball Players Association (2022). 2022–2026 Basic Agreement. Base tax thresholds on p. 117. PDF.",
+              "href": "https://registrationz.mlbpa.org/pdf/MLB%20Basic%20Agreement%202022-26.pdf"
+            },
+            {
+              "text": "Lopez, M. J., Matthews, G. J., and Baumer, B. S. (2018). How often does the best team win? The Annals of Applied Statistics, 12(4), 2483–2516. doi:10.1214/18-AOAS1165.",
+              "href": "https://doi.org/10.1214/18-AOAS1165"
+            },
+            {
+              "text": "Alexander, D. L., and Kern, W. (2004). The economic determinants of professional sports franchise values. Journal of Sports Economics, 5(1), 51–66. doi:10.1177/1527002503251715.",
+              "href": "https://doi.org/10.1177/1527002503251715"
+            },
+            {
+              "text": "Hall, S., Szymanski, S., and Zimbalist, A. S. (2002). Testing causality between team performance and payroll. Journal of Sports Economics, 3(2), 149–168. doi:10.1177/152700250200300204.",
+              "href": "https://doi.org/10.1177/152700250200300204"
+            },
+            {
+              "text": "Rockerbie, D. W., and Easton, S. T. (2018). Revenue sharing in Major League Baseball. International Journal of Financial Studies, 6(3), 71. doi:10.3390/ijfs6030071.",
+              "href": "https://doi.org/10.3390/ijfs6030071"
+            },
+            {
+              "text": "Rockerbie, D. W. (2020). Revenue sharing and collusive behavior in the posting system. Economies, 8(3), 71. doi:10.3390/economies8030071.",
+              "href": "https://doi.org/10.3390/economies8030071"
+            },
+            {
+              "text": "Hakes, J. K., and Sauer, R. D. (2006). An economic evaluation of the Moneyball hypothesis. Journal of Economic Perspectives, 20(3), 173–185. doi:10.1257/jep.20.3.173.",
+              "href": "https://doi.org/10.1257/jep.20.3.173"
+            },
+            {
+              "text": "Siegfried, J., and Zimbalist, A. (2000). The economics of sports facilities and their communities. Journal of Economic Perspectives, 14(3), 95–114. doi:10.1257/jep.14.3.95.",
+              "href": "https://doi.org/10.1257/jep.14.3.95"
+            },
+            {
+              "text": "Bradbury, J. C., Coates, D., and Humphreys, B. R. (2023). The impact of professional sports franchises and venues on local economies. Journal of Economic Surveys, 37(4), 1389–1431. doi:10.1111/joes.12533.",
+              "href": "https://doi.org/10.1111/joes.12533"
+            },
+            {
+              "text": "Krautmann, A. C., and Solow, J. L. (2009). The dynamics of performance over long-term contracts. Journal of Sports Economics, 10(1), 6–22. doi:10.1177/1527002508327382.",
+              "href": "https://doi.org/10.1177/1527002508327382"
+            },
+            {
+              "text": "Lemke, R. J., Leonard, M., and Tlhokwane, K. (2010). Estimating attendance at Major League Baseball games. Journal of Sports Economics, 11(3), 316–348. doi:10.1177/1527002509337212.",
+              "href": "https://doi.org/10.1177/1527002509337212"
+            },
+            {
+              "text": "Szymanski, S. (2003). The economic design of sporting contests. Journal of Economic Literature, 41(4), 1137–1187. doi:10.1257/jel.41.4.1137.",
+              "href": "https://doi.org/10.1257/jel.41.4.1137"
+            },
+            {
+              "text": "Rottenberg, S. (1956). The baseball players' labor market. Journal of Political Economy, 64(3), 242–258. doi:10.1086/257790.",
+              "href": "https://doi.org/10.1086/257790"
+            },
+            {
+              "text": "Chapin, T. S. (2004). Sports facilities as urban redevelopment catalysts. Journal of the American Planning Association, 70(2), 193–209. doi:10.1080/01944360408976370.",
+              "href": "https://doi.org/10.1080/01944360408976370"
+            },
+            {
+              "text": "Herzog, L. A., and Sohn, C. (2019). The San Diego–Tijuana cross-border metropolis. Territory, Politics, Governance, 7(2), 177–199. doi:10.1080/21622671.2017.1323003.",
+              "href": "https://doi.org/10.1080/21622671.2017.1323003"
+            },
+            {
+              "text": "Kunz, W. M. (2017). The rise of the local: regional sports networks. Journal of Sports Media, 12(1), 141–168. doi:10.1353/jsm.2017.0006.",
+              "href": "https://doi.org/10.1353/jsm.2017.0006"
+            },
+            {
+              "text": "Erie, S. P., Kogan, V., and MacKenzie, S. A. (2011). Paradise Plundered. Stanford University Press. doi:10.1515/9780804782180.",
+              "href": "https://doi.org/10.1515/9780804782180"
+            },
+            {
+              "text": "Related Artometrics report: The Padres Cost $3.9 Billion. Winning Will Cost More.",
+              "href": "https://artometrics.com/blueprint"
+            },
+            {
+              "text": "Related Artometrics report: Dodgers",
+              "href": "https://artometrics.com/dodgers"
+            },
+            {
+              "text": "Related Artometrics report: Giants",
+              "href": "https://artometrics.com/giants"
+            },
+            {
+              "text": "Related Artometrics report: Yankees",
+              "href": "https://artometrics.com/yankees"
+            }
+          ],
+          "fixes": [
+            {
+              "slug": "padres-data-fix",
+              "title": "What Changed When We Fixed the Data",
+              "kicker": "Padres",
+              "href": "/padres-data-fix",
+              "updatedThrough": "Updated through 2025",
+              "updatedThroughKind": "coverage",
+              "datasets": [],
+              "citations": [
+                {
+                  "text": "Published is what the July 2026 live page or sports-canon generator stated. Raw new recomputes from Lahman without changing the file. Clean new is the October 2026 audit, including 2026 and copy fixes. Brackets on rates are 95% bootstrap…",
+                  "href": null
+                },
+                {
+                  "text": "Calendar, not math. Lahman through 2025 was already correct on wins, attendance, and the 132/116/11 coin-flip split. The step change is 2026: a third straight postseason, a wild-card sweep of the Cubs, and an NLDS loss to the Brewers—the…",
+                  "href": null
+                },
+                {
+                  "text": "Bootstrap rates in rate_bootstrap.csv: better record among untied series 0.5323 [0.4718–0.5927], n = 248; Padres postseason rate 10/58 = 0.1724 [0.0862–0.2759]; pennants per postseason (Lahman-era PS only) 0.2222 [0.0–0.5556], n = 9. See…",
+                  "href": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "lakers",
+          "title": "Seventeen Championships, Star Gravity",
+          "kicker": "Lakers",
+          "href": "/lakers",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [
+            {
+              "id": "sports-franchises",
+              "title": "Sports franchises pack",
+              "href": "/datasets/sports-franchises"
+            }
+          ],
+          "citations": [
+            {
+              "text": "Basketball Reference. Los Angeles Lakers Franchise Index.",
+              "href": null
+            },
+            {
+              "text": "NBA.com historical championship records.",
+              "href": null
+            },
+            {
+              "text": "Sports Reference and Basketball Reference Finals appearance summaries.",
+              "href": null
+            },
+            {
+              "text": "Related Artometrics report: Celtics",
+              "href": "https://artometrics.com/celtics"
+            },
+            {
+              "text": "Related Artometrics report: Warriors",
+              "href": "https://artometrics.com/warriors"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "warriors",
+          "title": "Seventy-Three Wins Rewrote Basketball Offense",
+          "kicker": "Warriors",
+          "href": "/warriors",
+          "updatedThrough": "Updated through 2024",
+          "updatedThroughKind": "citation",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Basketball Reference. (2024). Golden State Warriors franchise history. Sportradar. Retrieved from https://www.basketball-reference.com/teams/GSW/",
+              "href": "https://www.basketball-reference.com/teams/GSW/"
+            },
+            {
+              "text": "Basketball Reference. (2024). NBA season summaries, 1979–2024. Sportradar. Retrieved from https://www.basketball-reference.com/leagues/",
+              "href": "https://www.basketball-reference.com/leagues/"
+            },
+            {
+              "text": "Bresler, A. (2023). nbastatR: An interface to the NBA Stats API, Basketball Reference, and related sources (R package version 0.1.153). GitHub. Retrieved from https://github.com/abresler/nbastatR",
+              "href": "https://github.com/abresler/nbastatR"
+            },
+            {
+              "text": "Goldsberry, K. (2019). Sprawlball: A visual tour of the new era of the NBA. Houghton Mifflin Harcourt.",
+              "href": null
+            },
+            {
+              "text": "Lewis, M. (2004). Moneyball: The art of winning an unfair game. W. W. Norton & Company.",
+              "href": null
+            },
+            {
+              "text": "Oliver, D. (2004). Basketball on paper: Rules and tools for performance analysis. Potomac Books.",
+              "href": null
+            },
+            {
+              "text": "Shea, S., & Baker, C. (2013). Basketball analytics: Objective and efficient strategies for understanding how teams win. Advanced Metrics.",
+              "href": null
+            },
+            {
+              "text": "Silver, N. (2015, June 11). The Warriors' three-point revolution and how it changed basketball. FiveThirtyEight. Retrieved from https://fivethirtyeight.com",
+              "href": "https://fivethirtyeight.com"
+            },
+            {
+              "text": "Related Artometrics report: Celtics",
+              "href": "https://artometrics.com/celtics"
+            },
+            {
+              "text": "Related Artometrics report: Lakers",
+              "href": "https://artometrics.com/lakers"
+            },
+            {
+              "text": "Related Artometrics report: Giants",
+              "href": "https://artometrics.com/giants"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "fandom",
+          "title": "Six Sports Identity Patterns",
+          "kicker": "Fandom",
+          "href": "/fandom",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Reference franchise histories from Baseball Reference, Basketball Reference, Pro Football Reference, and Hockey Reference.",
+              "href": null
+            },
+            {
+              "text": "Forbes. Professional sports franchise valuation lists.",
+              "href": null
+            },
+            {
+              "text": "U.S. Census regional framing, used only as a broad geography reference.",
+              "href": null
+            },
+            {
+              "text": "Public attendance, championship, and market summaries from league history pages.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "patriots",
+          "title": "Six Super Bowls in Nineteen Seasons",
+          "kicker": "Patriots",
+          "href": "/patriots",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Pro Football Reference. New England Patriots Franchise Encyclopedia.",
+              "href": null
+            },
+            {
+              "text": "NFL historical postseason records.",
+              "href": null
+            },
+            {
+              "text": "Forbes. NFL Team Valuations, recent estimates.",
+              "href": null
+            },
+            {
+              "text": "Sports Reference team season summaries.",
+              "href": null
+            },
+            {
+              "text": "Related Artometrics report: Cowboys",
+              "href": "https://artometrics.com/cowboys"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "steam",
+          "title": "Ten Hours per Dollar Owns the Shelf",
+          "kicker": "Steam",
+          "href": "/steam",
+          "updatedThrough": "Updated through July 30, 2019",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2019). TidyTuesday: Video Games Steam Spy. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-07-30/video_games.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-07-30/video_games.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "giants",
+          "title": "Three Titles in Five Years at Payroll Nine",
+          "kicker": "Giants",
+          "href": "/giants",
+          "updatedThrough": "Updated through 2024",
+          "updatedThroughKind": "citation",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Lahman, S. (2024). Lahman Baseball Database (Version 11.0). Retrieved from http://www.seanlahman.com/baseball-archive/statistics/",
+              "href": "http://www.seanlahman.com/baseball-archive/statistics/"
+            },
+            {
+              "text": "Friendly, M., Dalzell, C., Monkman, M., & Murphy, D. (2021). Lahman: Sean 'Lahman' Baseball Database (R package version 10.0-1). Retrieved from https://CRAN.R-project.org/package=Lahman",
+              "href": "https://CRAN.R-project.org/package=Lahman"
+            },
+            {
+              "text": "Baseball Reference. (2024). San Francisco Giants franchise history. Sports Reference LLC. Retrieved from https://www.baseball-reference.com/teams/SFG/",
+              "href": "https://www.baseball-reference.com/teams/SFG/"
+            },
+            {
+              "text": "James, B. (2001). The New Bill James Historical Baseball Abstract. Free Press.",
+              "href": null
+            },
+            {
+              "text": "Schwarz, A. (2004). The Numbers Game: Baseball's Lifelong Fascination with Statistics. Thomas Dunne Books.",
+              "href": null
+            },
+            {
+              "text": "Brown, G. (2012). The San Francisco Giants: 50 Years. Arcadia Publishing.",
+              "href": null
+            },
+            {
+              "text": "Related Artometrics report: Padres",
+              "href": "https://artometrics.com/padres"
+            },
+            {
+              "text": "Related Artometrics report: Dodgers",
+              "href": "https://artometrics.com/dodgers"
+            },
+            {
+              "text": "Related Artometrics report: Yankees",
+              "href": "https://artometrics.com/yankees"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "yankees",
+          "title": "Twenty-Seven Titles Built the Yankees—Fifteen Dry Years Define Them Now",
+          "kicker": "Yankees",
+          "href": "/yankees",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [
+            {
+              "id": "sports-franchises",
+              "title": "Sports franchises pack",
+              "href": "/datasets/sports-franchises"
+            }
+          ],
+          "citations": [
+            {
+              "text": "Baseball Reference. New York Yankees Franchise History.",
+              "href": null
+            },
+            {
+              "text": "Lahman, S. Lahman Baseball Database.",
+              "href": null
+            },
+            {
+              "text": "Forbes. MLB Team Valuations, historical rankings.",
+              "href": null
+            },
+            {
+              "text": "Retrosheet and Baseball Almanac championship/pennant records.",
+              "href": null
+            },
+            {
+              "text": "Related Artometrics report: Dodgers",
+              "href": "https://artometrics.com/dodgers"
+            },
+            {
+              "text": "Related Artometrics report: Padres",
+              "href": "https://artometrics.com/padres"
+            },
+            {
+              "text": "Related Artometrics report: Giants",
+              "href": "https://artometrics.com/giants"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "institutions",
+          "title": "When Dynasties Are Systems",
+          "kicker": "Dynasties",
+          "href": "/institutions",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Artometrics. Which Sports Dynasties Convert Finals Appearances Into Championships? (source report.)",
+              "href": "https://artometrics.com/dynasties"
+            },
+            {
+              "text": "Artometrics. Six Super Bowls in 19 Seasons — The Patriots' Systemic Discontinuity (source report.)",
+              "href": "https://artometrics.com/patriots"
+            },
+            {
+              "text": "Artometrics. 18 NBA titles have turned the Celtics into a franchise judged against its own history (source report.)",
+              "href": "https://artometrics.com/celtics"
+            },
+            {
+              "text": "Related Artometrics report: Lakers",
+              "href": "https://artometrics.com/lakers"
+            },
+            {
+              "text": "Related Artometrics report: Warriors",
+              "href": "https://artometrics.com/warriors"
+            },
+            {
+              "text": "Related Artometrics report: Dodgers",
+              "href": "https://artometrics.com/dodgers"
+            },
+            {
+              "text": "Related Artometrics report: Padres",
+              "href": "https://artometrics.com/padres"
+            },
+            {
+              "text": "Related Artometrics report: Cowboys",
+              "href": "https://artometrics.com/cowboys"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "dynasties",
+          "title": "Who Converts Finals Into Championships?",
+          "kicker": "Dynasties",
+          "href": "/dynasties",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Baseball Reference. Franchise history pages.",
+              "href": null
+            },
+            {
+              "text": "Basketball Reference. Team season and playoff records.",
+              "href": null
+            },
+            {
+              "text": "Pro Football Reference. Team franchise records.",
+              "href": null
+            },
+            {
+              "text": "Hockey Reference. Franchise records.",
+              "href": null
+            },
+            {
+              "text": "Forbes. Professional sports franchise valuations, recent lists.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "leagues",
+          "title": "Why Rules Set Team Value, Not Markets",
+          "kicker": "Leagues",
+          "href": "/leagues",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Forbes. Professional sports franchise valuation lists.",
+              "href": null
+            },
+            {
+              "text": "Spotrac. Salary-cap and payroll summaries.",
+              "href": null
+            },
+            {
+              "text": "Basketball Reference, Baseball Reference, Pro Football Reference, Hockey Reference. League and team records.",
+              "href": null
+            },
+            {
+              "text": "Premier League and MLS public competition records.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        }
+      ]
+    },
+    {
+      "id": "science",
+      "title": "Science",
+      "description": "Chemistry through tech — the measurable world.",
+      "href": "/topics/science",
+      "issues": [
+        {
+          "slug": "cetaceans",
+          "title": "Captive Cetacean Transfers Peaked in 1972 at 170 U.S. Records",
+          "kicker": "Whales",
+          "href": "/cetaceans",
+          "updatedThrough": "Updated through December 18, 2018",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2018). TidyTuesday: Cetaceans. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-12-18/allCetaceanData.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-12-18/allCetaceanData.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "medium",
+          "title": "Do Four-Minute Medium Posts Earn More Claps?",
+          "kicker": "Medium",
+          "href": "/medium",
+          "updatedThrough": "Updated through December 4, 2018",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "The source is the TidyTuesday release from 2018-12-04 (R for Data Science community). The working file contains 78,388 rows and 22 columns after assembly — titles, publications, reading time, claps, and related metadata.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "longevity",
+          "title": "Global Life Expectancy Nearly Tripled in Five Centuries",
+          "kicker": "Longevity",
+          "href": "/longevity",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data note (no linked source on the original page): Life expectancy at birth stayed between 25 and 40 years for most of recorded history because childhood mortality dominated the average, not because adults aged faster. Parish registers, …",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "nuclear",
+          "title": "Nuclear Test Magnitudes Peaked at 7.40 Across 2,051 Detonations",
+          "kicker": "Nuclear",
+          "href": "/nuclear",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "The source is the TidyTuesday nuclear explosions release maintained by the R for Data Science community. The working file assembles event-level rows with country labels, purpose codes, body-wave magnitude, depth, and related fields after…",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "metrics",
+          "title": "Page Speed Improved 31% at the Median, 2016–2022",
+          "kicker": "Web",
+          "href": "/metrics",
+          "updatedThrough": "Updated through November 15, 2022",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2022). TidyTuesday: Web Page Metrics. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-11-15/speed_index.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-11-15/speed_index.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "wastewater",
+          "title": "Singapore's Wastewater Plants Discharge 200× the Global Norm",
+          "kicker": "Water",
+          "href": "/wastewater",
+          "updatedThrough": "Updated through September 20, 2022",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "The source is the TidyTuesday release from 2022-09-20 (R for Data Science community). The working file contains 58,502 rows and 25 columns after merging country, treatment level, discharge, and quality fields.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "readmitted",
+          "title": "The 3% Stick Medicare Keeps Swinging",
+          "kicker": "Hospitals",
+          "href": "/readmitted",
+          "updatedThrough": "Updated through January 1, 2026",
+          "updatedThroughKind": "citation",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Jencks, S.F., Williams, M.V., & Coleman, E.A. (2009). Rehospitalizations among Patients in the Medicare Fee-for-Service Program. NEJM, 360(14), 1418–1428. doi:10.1056/NEJMsa0803563",
+              "href": "https://doi.org/10.1056/NEJMsa0803563"
+            },
+            {
+              "text": "Joynt, K.E., & Jha, A.K. (2013). Characteristics of hospitals receiving penalties under the Hospital Readmissions Reduction Program. JAMA, 309(4), 342–343. doi:10.1001/jama.2012.94856",
+              "href": "https://doi.org/10.1001/jama.2012.94856"
+            },
+            {
+              "text": "Centers for Medicare & Medicaid Services. Hospital Readmissions Reduction Program (HRRP) — FY2025 Supplemental Data. CMS Provider Data Catalog, Dataset ID: 9n3s-kdb3. https://data.cms.gov/provider-data/dataset/9n3s-kdb3",
+              "href": "https://data.cms.gov/provider-data/dataset/9n3s-kdb3"
+            },
+            {
+              "text": "Centers for Medicare & Medicaid Services. Hospital General Information. CMS Provider Data Catalog, Dataset ID: xubh-q36u. https://data.cms.gov/provider-data/dataset/xubh-q36u — joined to HRRP data for ownership classification in Chart 3.",
+              "href": "https://data.cms.gov/provider-data/dataset/xubh-q36u"
+            },
+            {
+              "text": "Centers for Medicare & Medicaid Services. (2024). Transforming Episode Accountability Model (TEAM). https://www.cms.gov/priorities/innovation/innovation-models/team — mandatory participation effective January 1, 2026 for 742 hospitals.",
+              "href": "https://www.cms.gov/priorities/innovation/innovation-models/team"
+            },
+            {
+              "text": "Medicare Payment Advisory Commission. (2024). Report to the Congress: Medicare Payment Policy, Chapter 9 (hospital inpatient and outpatient services; readmissions discussion). https://www.medpac.gov",
+              "href": "https://www.medpac.gov"
+            },
+            {
+              "text": "Zuckerman, R.B., Sheingold, S.H., Orav, E.J., Ruhter, J., & Epstein, A.M. (2016). Readmissions, observation, and the Hospital Readmissions Reduction Program. New England Journal of Medicine, 374(16), 1543–1551. https://doi.org/10.1056/NE…",
+              "href": "https://doi.org/10.1056/NEJMsa1513024"
+            },
+            {
+              "text": "Krumholz, H.M., et al. (2017). Association of Changing Hospital Readmission Rates With Mortality Rates After Hospital Discharge. JAMA, 318(3), 270–278. doi:10.1001/jama.2017.8444",
+              "href": "https://doi.org/10.1001/jama.2017.8444"
+            },
+            {
+              "text": "Wadhera, R.K., et al. (2018). Association of the Hospital Readmissions Reduction Program With Mortality Among Medicare Beneficiaries Hospitalized for Heart Failure, Acute Myocardial Infarction, and Pneumonia. JAMA, 320(24), 2542–2552. do…",
+              "href": "https://doi.org/10.1001/jama.2018.19232"
+            },
+            {
+              "text": "Gupta, A., et al. (2019). Hospital revisits within 30 days after discharge for medical conditions targeted by the Hospital Readmissions Reduction Program in the United States. BMJ, 366, l4563. doi:10.1136/bmj.l4563",
+              "href": "https://doi.org/10.1136/bmj.l4563"
+            },
+            {
+              "text": "Dzau, V.J., & McClellan, M.B. (2019). The Hospital Readmissions Reduction Program — Time for a Reboot. NEJM perspective. doi:10.1056/NEJMp1901225",
+              "href": "https://doi.org/10.1056/NEJMp1901225"
+            },
+            {
+              "text": "Advisory Board (2024, 2025). Analyses of CMS preliminary HRRP payment-reduction files for FY2025 and FY2026. FY2025 chart; FY2026 chart.",
+              "href": "https://www.advisory.com/daily-briefing/2024/09/24/readmisson-penalties"
+            },
+            {
+              "text": "OECD (2023). Health at a Glance 2023: OECD Indicators — hospital readmission indicators. oecd.org",
+              "href": "https://www.oecd.org/health/health-at-a-glance/"
+            },
+            {
+              "text": "Full bibliography: articles/readmitted/references.bib. Image credits: articles/readmitted/CREDITS.md.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        }
+      ]
+    },
+    {
+      "id": "humanities",
+      "title": "Humanities",
+      "description": "History, philosophy, religion, and the study of people.",
+      "href": "/topics/humanities",
+      "issues": [
+        {
+          "slug": "emperors",
+          "title": "Constantine Lasted 31 Years; the Nerva–Antonine Line Averaged 12.5 More",
+          "kicker": "Emperors",
+          "href": "/emperors",
+          "updatedThrough": "Updated through August 13, 2019",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2019). TidyTuesday: Roman Emperors. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-08-13/emperors.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-08-13/emperors.csv"
+            },
+            {
+              "text": "Data Science Learning Community. (2019). TidyTuesday Roman Emperors source folder. https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-08-13",
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-08-13"
+            },
+            {
+              "text": "Boatwright, M. T., Gargola, D. J., Lenski, N., & Talbert, R. J. A. (2012). The Romans: From Village to Empire (2nd ed.). Oxford University Press.",
+              "href": null
+            },
+            {
+              "text": "Potter, D. S. (2014). The Roman Empire at Bay, AD 180–395 (2nd ed.). Routledge. https://doi.org/10.4324/9780203080971",
+              "href": "https://doi.org/10.4324/9780203080971"
+            },
+            {
+              "text": "Ando, C. (2012). Imperial Rome AD 193 to 284: The Critical Century. Edinburgh University Press. https://edinburghuniversitypress.com/book-imperial-rome-ad-193-to-284.html",
+              "href": "https://edinburghuniversitypress.com/book-imperial-rome-ad-193-to-284.html"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "oscars",
+          "title": "How Award Shows Build Prestige",
+          "kicker": "Oscars",
+          "href": "/oscars",
+          "updatedThrough": "Updated through 2005",
+          "updatedThroughKind": "citation",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Academy of Motion Picture Arts and Sciences. Academy Awards Database.",
+              "href": null
+            },
+            {
+              "text": "Oscars.org. Awards Databases and Acceptance Speech Database.",
+              "href": null
+            },
+            {
+              "text": "Nobel Prize. Public prize and laureate data/API documentation.",
+              "href": null
+            },
+            {
+              "text": "DLu/oscar_data. Curated Academy Award nomination dataset with identifiers.",
+              "href": null
+            },
+            {
+              "text": "Recording Academy public Grammy records and Wikidata award tables.",
+              "href": null
+            },
+            {
+              "text": "Academy of Motion Picture Arts and Sciences. Academy Awards Database. https://awardsdatabase.oscars.org/",
+              "href": "https://awardsdatabase.oscars.org/"
+            },
+            {
+              "text": "Academy of Motion Picture Arts and Sciences. Academy Awards Acceptance Speech Database. https://aaspeechesdb.oscars.org/",
+              "href": "https://aaspeechesdb.oscars.org/"
+            },
+            {
+              "text": "Nobel Prize Outreach. Nobel Prize API. https://www.nobelprize.org/about/developer-zone-2/",
+              "href": "https://www.nobelprize.org/about/developer-zone-2/"
+            },
+            {
+              "text": "The Recording Academy. GRAMMY Awards rules and guidelines. https://www.grammy.com/awards/rules-guidelines",
+              "href": "https://www.grammy.com/awards/rules-guidelines"
+            },
+            {
+              "text": "English, J. F. (2005). The Economy of Prestige: Prizes, Awards, and the Circulation of Cultural Value. Harvard University Press.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "caesar",
+          "title": "Power at 0.95, Then the Ides",
+          "kicker": "Caesar",
+          "href": "/caesar",
+          "updatedThrough": "Updated through 2020",
+          "updatedThroughKind": "citation",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Bolt, J., & van Zanden, J.L. (2020). Maddison Project Database, version 2020. University of Groningen.",
+              "href": null
+            },
+            {
+              "text": "Caesar, J. (58–50 BCE). Commentarii de Bello Gallico. Trans. W.A. McDevitte & W.S. Bohn. Project Gutenberg.",
+              "href": null
+            },
+            {
+              "text": "Cicero, M.T. (46 BCE). Brutus.",
+              "href": null
+            },
+            {
+              "text": "Dyson, S.B. (2006). Personality and foreign policy: Tony Blair's Iraq decisions. Foreign Policy Analysis, 2(3), 289–306.",
+              "href": null
+            },
+            {
+              "text": "Goldsworthy, A. (2006). Caesar: Life of a Colossus. Yale University Press.",
+              "href": null
+            },
+            {
+              "text": "Hermann, M.G. (1999). Assessing Leadership Style: A Trait Analysis. Social Science Automation.",
+              "href": null
+            },
+            {
+              "text": "Lo Cascio, E., & Malanima, P. (2011). Ancient and pre-modern economies: GDP in the Roman Empire and early modern Europe. Paper presented at the Conference on Quantifying Long Run Economic Development, Venice, March 22–24.",
+              "href": null
+            },
+            {
+              "text": "Maddison, A. (2007). Contours of the World Economy 1–2030 AD. Oxford University Press.",
+              "href": null
+            },
+            {
+              "text": "Milanovic, B., Lindert, P.H., & Williamson, J.G. (2011). Pre-industrial inequality. The Economic Journal, 121(551), 255–272.",
+              "href": null
+            },
+            {
+              "text": "Pliny the Elder. Naturalis Historia, 7.54.",
+              "href": null
+            },
+            {
+              "text": "Plutarch. (c. AD 100). Parallel Lives: Caesar. Trans. Robin Seager. Penelope/University of Chicago.",
+              "href": null
+            },
+            {
+              "text": "Post, J.M. (2004). Leaders and Their Followers in a Dangerous World. Cornell University Press.",
+              "href": null
+            },
+            {
+              "text": "Scheidel, W., & Friesen, S.J. (2009). The size of the economy and the distribution of income in the Roman Empire. Journal of Roman Studies, 99, 61–91.",
+              "href": null
+            },
+            {
+              "text": "Strauss, B. (2015). The Death of Caesar: The Story of History's Most Famous Assassination. Simon & Schuster.",
+              "href": null
+            },
+            {
+              "text": "Suetonius. (c. AD 121). The Twelve Caesars: Divus Julius. Trans. Robert Graves. Penguin Classics.",
+              "href": null
+            },
+            {
+              "text": "Wang, X., & Guo, Y. (2019). Leadership trait analysis of Chinese Communist leaders. Journal of Chinese Political Science, 24(3).",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "pantheon",
+          "title": "Power, Art, and Science Dominate MIT's Pantheon of Global Memory",
+          "kicker": "Pantheon",
+          "href": "/pantheon",
+          "updatedThrough": "Updated through: editorial index",
+          "updatedThroughKind": "editorial",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Pantheon aggregates biographical notability using multilingual Wikipedia presence. Cross-language edition counts act as passport stamps for global memory—a person who exists in many Wikipedias has traveled farther through culture than on…",
+              "href": null
+            },
+            {
+              "text": "The charts use editorial indices to make domain, era, city, and occupation comparisons legible. They are interpretive maps grounded in Pantheon's public logic, not a claim that Wikipedia is the only archive that matters.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "jackson",
+          "title": "The Cost of Being the Product",
+          "kicker": "Jackson",
+          "href": "/jackson",
+          "updatedThrough": "Updated through 2026",
+          "updatedThroughKind": "citation",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Hermann, M.G. (1999). Assessing Leadership Style: A Trait Analysis. Social Science Automation.",
+              "href": null
+            },
+            {
+              "text": "Recording Industry Association of America (RIAA). Gold & Platinum certification search — Michael Jackson, Thriller. riaa.com.",
+              "href": null
+            },
+            {
+              "text": "Reuters. (2016). Sony buys out Michael Jackson estate's stake in music publisher Sony/ATV for $750 million.",
+              "href": null
+            },
+            {
+              "text": "Billboard. (2016). Coverage of the Sony/ATV buyout of the Michael Jackson estate's 50% stake.",
+              "href": null
+            },
+            {
+              "text": "Forbes. (2016). Top-Earning Dead Celebrities list — Michael Jackson estate, $825 million.",
+              "href": null
+            },
+            {
+              "text": "People v. Jackson, Santa Barbara County Superior Court (2003–2005) — trial record and June 2005 acquittal on all 14 counts.",
+              "href": null
+            },
+            {
+              "text": "Leaving Neverland (2019). HBO documentary — renewed allegations; Michael Jackson estate public statements and legal filings disputing the film.",
+              "href": null
+            },
+            {
+              "text": "Artometrics. (2026). Julius Caesar and the Cost of Managing Power — Psychonomics method template. artometrics.com/caesar",
+              "href": "https://artometrics.com/caesar"
+            },
+            {
+              "text": "Artometrics. (2026). Beyoncé and the Cost of Controlling the House — Psychonomics series. artometrics.com/beyonce",
+              "href": "https://artometrics.com/beyonce"
+            },
+            {
+              "text": "Supporting chart files: /data/articles/jackson/charts/ (chart1_catalog_milestones.plotly.json, chart2_legal_timeline.plotly.json, chart3_lta_radar.plotly.json).",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "beyonce",
+          "title": "The Cost of Controlling the House",
+          "kicker": "Beyoncé",
+          "href": "/beyonce",
+          "updatedThrough": "Updated through 2019",
+          "updatedThroughKind": "citation",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Hermann, M. G. (1999). Assessing Leadership Style: A Trait Analysis. Social Science Automation. socialscienceautomation.org",
+              "href": "https://socialscienceautomation.org/"
+            },
+            {
+              "text": "Hermann, M. G. (1980). Explaining foreign policy behavior using the personal characteristics of political leaders. International Studies Quarterly, 24(1), 7–46. doi.org/10.2307/2600126",
+              "href": "https://doi.org/10.2307/2600126"
+            },
+            {
+              "text": "Preston, T. (2001). The President and His Inner Circle: Leadership Style and the Advisory Process in Foreign Affairs. Columbia University Press. (Expert-coded LTA precedent for non-automated trait scoring.)",
+              "href": null
+            },
+            {
+              "text": "Rolling Stone. (2020, September 22). The 500 Greatest Albums of All Time (2020 update). rollingstone.com — list positions for Lemonade (#32) and Beyoncé (#81).",
+              "href": "https://www.rollingstone.com/music/music-lists/best-albums-of-all-time-1062063/"
+            },
+            {
+              "text": "Billboard. Billboard 200 weekly chart archives for Beyoncé (2013) and Lemonade (2016). Weeks-on-chart and peak positions cited in the economic fingerprint chart. billboard.com/charts/billboard-200",
+              "href": "https://www.billboard.com/charts/billboard-200/"
+            },
+            {
+              "text": "Academy of Television Arts & Sciences. (2019). 71st Primetime Emmy Awards — nominee data for Homecoming: A Film by Beyoncé. televisionacademy.com",
+              "href": "https://www.televisionacademy.com/awards/nominees-winners/2019/outstanding-documentary-or-nonfiction-special"
+            },
+            {
+              "text": "Netflix. (2019). Homecoming: A film by Beyoncé [Documentary]. netflix.com",
+              "href": "https://www.netflix.com/title/81013626"
+            },
+            {
+              "text": "Parkwood Entertainment. Label, touring, and production structure. beyonce.com/parkwood",
+              "href": "https://www.beyonce.com/parkwood/"
+            },
+            {
+              "text": "Data Science Learning Community. (2020, November 3). TidyTuesday: Beyoncé & Taylor Swift lyrics. Corpus lineage for the lyric extract. github.com/rfordatascience/tidytuesday",
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/master/data/2020/2020-11-03"
+            },
+            {
+              "text": "MusicBrainz Foundation. Artist and release metadata for discography years and era sequencing. musicbrainz.org (Beyoncé artist record).",
+              "href": "https://musicbrainz.org/artist/859d0860-d480-4efd-970c-c05d5f1776b8"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "imperial",
+          "title": "What Empire Chronicles Leave Out",
+          "kicker": "Empires",
+          "href": "/imperial",
+          "updatedThrough": "Updated through 2024",
+          "updatedThroughKind": "citation",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "The core economic series come from the Maddison Project Database and associated long-run GDP reconstructions by Angus Maddison, Jutta Bolt, Jan Luiten van Zanden, Elio Lo Cascio, Paolo Malanima, Walter Scheidel, and Steven Friesen. These…",
+              "href": null
+            },
+            {
+              "text": "The wage-side interpretation relies on Robert Allen’s European wage series, Özmucur and Pamuk’s Ottoman reconstruction, and Allen, Bassino, Ma, Moll-Murata, and van Zanden’s China/Asia wage work because GDP per capita alone cannot identi…",
+              "href": null
+            },
+            {
+              "text": "Allen, R. C. (2001). The great divergence in European wages and prices from the Middle Ages to the First World War. Explorations in Economic History, 38(4), 411–447.",
+              "href": null
+            },
+            {
+              "text": "Allen, R. C., Bassino, J. P., Ma, D., Moll-Murata, C., & van Zanden, J. L. (2011). Wages, prices, and living standards in China, 1738–1925. Economic History Review, 64(S1), 8–38.",
+              "href": null
+            },
+            {
+              "text": "Bolt, J., & van Zanden, J. L. (2024). Maddison style estimates of the evolution of the world economy: A new 2023 update. Journal of Economic Surveys, 1–41. https://doi.org/10.1111/joes.12618",
+              "href": "https://doi.org/10.1111/joes.12618"
+            },
+            {
+              "text": "Goldstone, J. A. (1991). Revolution and rebellion in the early modern world. University of California Press.",
+              "href": null
+            },
+            {
+              "text": "Lo Cascio, E., & Malanima, P. (2009). GDP in pre-modern agrarian economies (1–1820 AD): A revision of the estimates. Rivista di Storia Economica, 25(3), 391–420.",
+              "href": null
+            },
+            {
+              "text": "Morris, I. (2013). The measure of civilization: How social development decides the fate of nations. Princeton University Press.",
+              "href": null
+            },
+            {
+              "text": "Özmucur, S., & Pamuk, Ş. (2002). Real wages and standards of living in the Ottoman Empire, 1489–1914. Journal of Economic History, 62(2), 293–321.",
+              "href": null
+            },
+            {
+              "text": "Pomeranz, K. (2000). The great divergence: China, Europe, and the making of the modern world economy. Princeton University Press.",
+              "href": null
+            },
+            {
+              "text": "Scheidel, W. (2017). The great leveler: Violence and the history of inequality from the stone age to the twenty-first century. Princeton University Press.",
+              "href": null
+            },
+            {
+              "text": "Scheidel, W., & Friesen, S. J. (2009). The size of the economy and the distribution of income in the Roman Empire. Journal of Roman Studies, 99, 61–91.",
+              "href": null
+            },
+            {
+              "text": "Turchin, P. (2006). War and peace and war: The rise and fall of empires. Pi Press.",
+              "href": null
+            },
+            {
+              "text": "Turchin, P., & Nefedov, S. A. (2009). Secular cycles. Princeton University Press.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        }
+      ]
+    },
+    {
+      "id": "civics",
+      "title": "Civics",
+      "description": "Economics, business, politics, law, education, and communication.",
+      "href": "/topics/civics",
+      "issues": [
+        {
+          "slug": "bioeconomics",
+          "title": "A Data Framework for Economic Identity",
+          "kicker": "Cities",
+          "href": "/bioeconomics",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "BEA. Regional GDP by county and metropolitan area documentation/API.",
+              "href": null
+            },
+            {
+              "text": "DOSE / PIK. Global subnational economic output dataset.",
+              "href": null
+            },
+            {
+              "text": "World Cities Culture Forum. CREATIVE Data Framework and 5th Edition Data Explorer.",
+              "href": null
+            },
+            {
+              "text": "DataSF and NYC Open Data. Socrata/SODA portal documentation.",
+              "href": null
+            },
+            {
+              "text": "U.S. Census ACS and International Trade Administration Metropolitan Export Series.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "diplomacy",
+          "title": "Brazil Dominates the UN Roll-Call in a 100,000-Vote Sample",
+          "kicker": "United Nations",
+          "href": "/diplomacy",
+          "updatedThrough": "Updated through March 23, 2021",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2021). TidyTuesday: UN Votes. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-03-23/unvotes.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-03-23/unvotes.csv"
+            },
+            {
+              "text": "Data Science Learning Community. (2021). TidyTuesday UN Votes source folder. https://github.com/rfordatascience/tidytuesday/tree/main/data/2021/2021-03-23",
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2021/2021-03-23"
+            },
+            {
+              "text": "Erik Voeten. United Nations General Assembly Voting Data. Harvard Dataverse. https://doi.org/10.7910/DVN/LEJUQZ",
+              "href": "https://doi.org/10.7910/DVN/LEJUQZ"
+            },
+            {
+              "text": "Bailey, M. A., Strezhnev, A., & Voeten, E. (2017). Estimating dynamic state preferences from United Nations voting data. Journal of Conflict Resolution, 61(2), 430–456. https://doi.org/10.1177/0022002715595700",
+              "href": "https://doi.org/10.1177/0022002715595700"
+            },
+            {
+              "text": "United Nations Digital Library. Voting data and General Assembly records. https://digitallibrary.un.org/",
+              "href": "https://digitallibrary.un.org/"
+            },
+            {
+              "text": "United Nations. Member States. https://www.un.org/en/about-us/member-states",
+              "href": "https://www.un.org/en/about-us/member-states"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "rivalry",
+          "title": "California vs. Texas on Seven Economic Dimensions",
+          "kicker": "States",
+          "href": "/rivalry",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "BEA. State GDP by industry.",
+              "href": null
+            },
+            {
+              "text": "U.S. Census ACS and population estimates.",
+              "href": null
+            },
+            {
+              "text": "IRS migration data summaries.",
+              "href": null
+            },
+            {
+              "text": "BLS state employment statistics.",
+              "href": null
+            },
+            {
+              "text": "International Trade Administration and OEC export references.",
+              "href": null
+            },
+            {
+              "text": "State budget and tax agency documents.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "sf",
+          "title": "Can It Absorb Its Own Invention Machine?",
+          "kicker": "San Francisco",
+          "href": "/sf",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "DataSF / SF.gov. Open Data portal and developer documentation.",
+              "href": null
+            },
+            {
+              "text": "Socrata / SODA API documentation.",
+              "href": null
+            },
+            {
+              "text": "BEA. Metropolitan GDP and regional data.",
+              "href": null
+            },
+            {
+              "text": "U.S. Census ACS. Housing, income, commuting, and demographic tables.",
+              "href": null
+            },
+            {
+              "text": "International Trade Administration. Metropolitan Export Series.",
+              "href": null
+            },
+            {
+              "text": "World Cities Culture Forum. CREATIVE Data Framework.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "ceos",
+          "title": "CEO Tenure Caps at 2.5 Years in 9,423 Departure Records",
+          "kicker": "CEOs",
+          "href": "/ceos",
+          "updatedThrough": "Updated through April 27, 2021",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2021). TidyTuesday: CEO Departures. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-04-27/departures.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-04-27/departures.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "geopolitics",
+          "title": "Film and Music Lead Cultural Exports; Korea Rose 70 Points Since 1990",
+          "kicker": "Exports",
+          "href": "/geopolitics",
+          "updatedThrough": "Updated through: editorial index",
+          "updatedThroughKind": "editorial",
+          "datasets": [
+            {
+              "id": "creative-exports",
+              "title": "Creative exports pack",
+              "href": "/datasets/creative-exports"
+            }
+          ],
+          "citations": [
+            {
+              "text": "UNESCO Institute for Statistics and UNESCO cultural trade references.",
+              "href": null
+            },
+            {
+              "text": "WIPO creative economy and intellectual property indicators.",
+              "href": null
+            },
+            {
+              "text": "World Cities Culture Forum. CREATIVE Data Framework.",
+              "href": null
+            },
+            {
+              "text": "MusicBrainz / MetaBrainz dumps.",
+              "href": null
+            },
+            {
+              "text": "IMDb/TMDb/Wikidata public metadata references.",
+              "href": null
+            },
+            {
+              "text": "World Bank and OECD services and export datasets.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "superbowl",
+          "title": "Five Brands Capture 87% of Ad Views",
+          "kicker": "Super Bowl",
+          "href": "/superbowl",
+          "updatedThrough": "Updated through March 2, 2021",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2021). TidyTuesday: Super Bowl Ads. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-03-02/youtube.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-03-02/youtube.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "factbook",
+          "title": "Five Countries Hold 72% of World Population",
+          "kicker": "Nations",
+          "href": "/factbook",
+          "updatedThrough": "Updated through October 22, 2024",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2024). TidyTuesday: CIA World Factbook. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-10-22/cia_factbook.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-10-22/cia_factbook.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "wealth",
+          "title": "Middle Brackets Gained Income Share; Top Tiers Trailed the Median",
+          "kicker": "Wealth",
+          "href": "/wealth",
+          "updatedThrough": "Updated through February 9, 2021",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2021). TidyTuesday: Wealth and Income. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-02-09/income_distribution.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-02-09/income_distribution.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "voters",
+          "title": "National Turnout Hit 132 Million; Most States Stayed Near 1.2 Million",
+          "kicker": "Voters",
+          "href": "/voters",
+          "updatedThrough": "Updated through October 9, 2018",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2018). TidyTuesday: US Voter Turnout. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-10-09/voter_turnout.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-10-09/voter_turnout.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "metros",
+          "title": "New York Capital, San Francisco Invention",
+          "kicker": "Cities",
+          "href": "/metros",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "BEA. Metropolitan GDP and regional industry data.",
+              "href": null
+            },
+            {
+              "text": "BLS metro employment data.",
+              "href": null
+            },
+            {
+              "text": "DataSF and NYC Open Data Socrata portals.",
+              "href": null
+            },
+            {
+              "text": "World Cities Culture Forum CREATIVE Data Framework.",
+              "href": null
+            },
+            {
+              "text": "Transit agency and office-market public summaries.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "exporters",
+          "title": "Platforms, Factories, and Machines",
+          "kicker": "Exports",
+          "href": "/exporters",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Observatory of Economic Complexity. Country and product trade profiles. https://oec.world/en",
+              "href": "https://oec.world/en"
+            },
+            {
+              "text": "United Nations Statistics Division. UN Comtrade Database. https://comtradeplus.un.org/",
+              "href": "https://comtradeplus.un.org/"
+            },
+            {
+              "text": "World Bank. World Development Indicators: Exports of goods and services. https://data.worldbank.org/indicator/NE.EXP.GNFS.CD",
+              "href": "https://data.worldbank.org/indicator/NE.EXP.GNFS.CD"
+            },
+            {
+              "text": "OECD. Trade in Value Added (TiVA) database. https://www.oecd.org/sti/ind/measuring-trade-in-value-added.htm",
+              "href": "https://www.oecd.org/sti/ind/measuring-trade-in-value-added.htm"
+            },
+            {
+              "text": "International Monetary Fund. Direction of Trade Statistics. https://data.imf.org/?sk=9D6028D4-F14A-464C-A2F2-59B2CD424B85",
+              "href": "https://data.imf.org/?sk=9D6028D4-F14A-464C-A2F2-59B2CD424B85"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "majors",
+          "title": "Psychology Grads Fill Low-Wage Jobs at Four Times the Business Rate",
+          "kicker": "Majors",
+          "href": "/majors",
+          "updatedThrough": "Updated through October 16, 2018",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2018). TidyTuesday: College Major & Income. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-10-16/recent-grads.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-10-16/recent-grads.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "schools",
+          "title": "School Diversity Peaks at 85.3 While the Median Holds at 2.38",
+          "kicker": "Schools",
+          "href": "/schools",
+          "updatedThrough": "Updated through September 24, 2019",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2019). TidyTuesday: School Diversity. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-09-24/school_diversity.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-09-24/school_diversity.csv"
+            },
+            {
+              "text": "Data Science Learning Community. (2019). TidyTuesday School Diversity source folder. https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-09-24",
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-09-24"
+            },
+            {
+              "text": "National Center for Education Statistics. Common Core of Data. https://nces.ed.gov/ccd/",
+              "href": "https://nces.ed.gov/ccd/"
+            },
+            {
+              "text": "Reardon, S. F., & Owens, A. (2014). 60 years after Brown: Trends and consequences of school segregation. Annual Review of Sociology, 40, 199–218. https://doi.org/10.1146/annurev-soc-071913-043152",
+              "href": "https://doi.org/10.1146/annurev-soc-071913-043152"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "phds",
+          "title": "Social Sciences Drove 63% of Growth",
+          "kicker": "PhDs",
+          "href": "/phds",
+          "updatedThrough": "Updated through February 19, 2019",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2019). TidyTuesday: US PhDs Awarded. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-02-19/phd_by_field.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-02-19/phd_by_field.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "narratives",
+          "title": "The Field Guide Culture Workers Needed",
+          "kicker": "Narratives",
+          "href": "/narratives",
+          "updatedThrough": "Updated through 2019",
+          "updatedThroughKind": "citation",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Shiller, R. J. (2019). Narrative Economics: How Stories Go Viral and Drive Major Economic Events. Princeton University Press.",
+              "href": null
+            },
+            {
+              "text": "Kuran, T. (1995). Private Truths, Public Lies: The Social Consequences of Preference Falsification. Harvard University Press.",
+              "href": null
+            },
+            {
+              "text": "Artometrics Editorial. The Protection Threshold — a related Artometrics report examining the \"why didn't we know sooner\" mechanism as a measurable point of institutional silence collapse in Hollywood.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "youtube",
+          "title": "The Platform's $36B Engine and One Podcast's Borrowed Peak",
+          "kicker": "YouTube",
+          "href": "/youtube",
+          "updatedThrough": "Updated through August 2026",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Alphabet Inc. Form 10-K FY2018–FY2024. U.S. SEC EDGAR. YouTube ads disaggregation.",
+              "href": null
+            },
+            {
+              "text": "Netflix Inc. Form 10-K FY2024. Total revenue $39,000,966 thousand.",
+              "href": null
+            },
+            {
+              "text": "Nielsen. Media Distributor Gauge, July 2024 (press release 2024-09-03).",
+              "href": null
+            },
+            {
+              "text": "Nielsen. Media Distributor Gauge, February 2025 (press release 2025-03-25).",
+              "href": null
+            },
+            {
+              "text": "Nielsen. Media Distributor Gauge, April 2025 (press release 2025-05-27).",
+              "href": null
+            },
+            {
+              "text": "Nielsen. Media Distributor Gauge, July 2025 (press release August 26, 2025).",
+              "href": "https://www.nielsen.com/news-center/2025/youtube-netflix-ride-the-wave-of-summer-streaming-highs-in-nielsens-media-distributor-gauge/"
+            },
+            {
+              "text": "Nielsen. Media Distributor Gauge, July 2026 (press release September 10, 2026).",
+              "href": "https://www.nielsen.com/news-center/2026/tv-usage-kicks-usual-summer-slowdown-fueled-by-world-cup-and-streaming-in-nielsens-july-gauge-reports/"
+            },
+            {
+              "text": "Nielsen. Media Distributor Gauge, August 2026 (press release October 22, 2026).",
+              "href": "https://www.nielsen.com/news-center/2026/tv-viewing-cools-off-in-nielsens-august-gauge-reports-as-sports-take-a-breather-and-school-resumes/"
+            },
+            {
+              "text": "Nielsen measures TV-screen viewing only, and \"YouTube\" in The Gauge means YouTube main, excluding YouTube TV.",
+              "href": null
+            },
+            {
+              "text": "Goldman Sachs Global Investment Research. Creator economy primer (Apr 2023).",
+              "href": null
+            },
+            {
+              "text": "Google. YouTube Help — partner earnings (answer/72902).",
+              "href": null
+            },
+            {
+              "text": "YouTube Official Blog. Made on YouTube 2025 ($100B+ payouts).",
+              "href": null
+            },
+            {
+              "text": "Artometrics. H3 dataset (Apr 2026).",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "mac",
+          "title": "Twenty Years of Big Mac Prices",
+          "kicker": "Burgers",
+          "href": "/mac",
+          "updatedThrough": "Updated through December 22, 2020",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2020). TidyTuesday: Big Mac Index. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-12-22/mac.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-12-22/mac.csv"
+            },
+            {
+              "text": "The Economist. (2020). The Big Mac Index. economist.com/mac",
+              "href": "https://www.economist.com/mac"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "prisons",
+          "title": "U.S. Jail Populations, County by County, 1970–2016",
+          "kicker": "Prisons",
+          "href": "/prisons",
+          "updatedThrough": "Updated through January 22, 2019",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2019). TidyTuesday: Incarceration Trends. https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-01-22",
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-01-22"
+            },
+            {
+              "text": "Bureau of Justice Statistics. Correctional Populations in the United States. https://bjs.ojp.gov/library/publications/list?series_filter=Correctional%20Populations%20in%20the%20United%20States",
+              "href": "https://bjs.ojp.gov/library/publications/list?series_filter=Correctional%20Populations%20in%20the%20United%20States"
+            },
+            {
+              "text": "National Research Council. (2014). The Growth of Incarceration in the United States: Exploring Causes and Consequences. https://doi.org/10.17226/18613",
+              "href": "https://doi.org/10.17226/18613"
+            },
+            {
+              "text": "Vera Institute of Justice. Incarceration Trends. https://trends.vera.org/",
+              "href": "https://trends.vera.org/"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "tuition",
+          "title": "Vermont Led Public Tuition at $13,486 as Medians Rose 56%",
+          "kicker": "Tuition",
+          "href": "/tuition",
+          "updatedThrough": "Updated through April 2, 2018",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2018). TidyTuesday: US Tuition Costs. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-04-02/us_avg_tuition.xlsx",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-04-02/us_avg_tuition.xlsx"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "atlas",
+          "title": "What Does Your Country Sell?",
+          "kicker": "Exports",
+          "href": "/atlas",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [
+            {
+              "id": "creative-exports",
+              "title": "Creative exports pack",
+              "href": "/datasets/creative-exports"
+            }
+          ],
+          "citations": [
+            {
+              "text": "Data note (no linked source on the original page): The source stack includes the OEC API, UN Comtrade, World Bank WDI, OECD, IMF, and national statistics offices. OEC is useful for complexity-minded views of what countries can make and s…",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "playboy",
+          "title": "When the Brand Outlives the House",
+          "kicker": "Playboy",
+          "href": "/playboy",
+          "updatedThrough": "Updated through 2011",
+          "updatedThroughKind": "citation",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "PLBY Group. Investor relations materials, including company descriptions of licensing footprint and brand history.",
+              "href": null
+            },
+            {
+              "text": "Variety. Reporting on Cooper Hefner's rejected bid to reacquire Playboy legacy assets, 2024.",
+              "href": null
+            },
+            {
+              "text": "Hop (2011), Illumination Entertainment. Cast credits, including Russell Brand as E.B. and Hugh Hefner's cameo voice role.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        }
+      ]
+    },
+    {
+      "id": "culture",
+      "title": "Culture",
+      "description": "Travel, food, leisure, environment, and wellness.",
+      "href": "/topics/culture",
+      "issues": [
+        {
+          "slug": "wine",
+          "title": "Austria and Chile, Two Points Apart",
+          "kicker": "Wine",
+          "href": "/wine",
+          "updatedThrough": "Updated through May 28, 2019",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2019). TidyTuesday: Wine Ratings. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-05-28/winemag-data-130k-v2.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-05-28/winemag-data-130k-v2.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "exercise",
+          "title": "Colorado Leads U.S. Exercise Participation at 32%",
+          "kicker": "Fitness",
+          "href": "/exercise",
+          "updatedThrough": "Updated through July 17, 2018",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2018). TidyTuesday: Exercise USA. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-07-17/week16_exercise.xlsx",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-07-17/week16_exercise.xlsx"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "coffee",
+          "title": "Ethiopia Scores Highest on Coffee Quality—With Zero Starbucks Stores",
+          "kicker": "Coffee",
+          "href": "/coffee",
+          "updatedThrough": "Updated through July 7, 2020",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "The Coffee Quality Institute data should be read as a specialty-coffee evaluation archive, not a random sample of all coffee output. CQI Q Graders score submitted samples under standardized protocols, which means the file is strongest fo…",
+              "href": null
+            },
+            {
+              "text": "The broader citation frame comes from coffee-development and value-chain research by Daviron, Ponte, Samper, Quiñones-Ruiz, and the International Coffee Organization. Those sources matter because the charts show a classic commodity-chain…",
+              "href": null
+            },
+            {
+              "text": "TidyTuesday (2020-07-07). Coffee Ratings. R for Data Science Community. github.com/rfordatascience/tidytuesday/…/2020-07-07",
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2020/2020-07-07"
+            },
+            {
+              "text": "TidyTuesday (2018-05-07). Coffee Chains. R for Data Science Community. github.com/rfordatascience/tidytuesday/…/2018-05-07",
+              "href": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2018/2018-05-07"
+            },
+            {
+              "text": "Coffee Quality Institute. (2020). Q Grader Program and Cupping Protocols. Retrieved from coffeeinstitute.org",
+              "href": "https://www.coffeeinstitute.org"
+            },
+            {
+              "text": "Samper, L. F., & Quiñones-Ruiz, X. F. (2017). Towards a balanced sustainability vision for the coffee industry. Resources, 6(2), 17. doi.org/10.3390/resources6020017",
+              "href": "https://doi.org/10.3390/resources6020017"
+            },
+            {
+              "text": "Daviron, B., & Ponte, S. (2005). The Coffee Paradox: Global Markets, Commodity Trade and the Elusive Promise of Development. Zed Books.",
+              "href": null
+            },
+            {
+              "text": "Wintgens, J. N. (Ed.). (2009). Coffee: Growing, Processing, Sustainable Output (2nd ed.). Wiley-VCH.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "calories",
+          "title": "Fast Food's 2,430-Calorie Ceiling",
+          "kicker": "Fast Food",
+          "href": "/calories",
+          "updatedThrough": "Updated through September 4, 2018",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "The source is the TidyTuesday release from 2018-09-04, maintained by the R for Data Science community. The working file contains 515 rows and 17 columns after merging available CSV tables — restaurant name, item, calories, total fat, and…",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "parks",
+          "title": "Golden Gate Draws 94× the Median National Park Visit",
+          "kicker": "Parks",
+          "href": "/parks",
+          "updatedThrough": "Updated through September 17, 2019",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "The source is the TidyTuesday release from 2019-09-17 (R for Data Science community). The working file contains 21,560 rows and 13 columns — park names, regions, years, and visitor totals.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "bikeshare",
+          "title": "How Far Portland Rides Actually Go",
+          "kicker": "Bikeshare",
+          "href": "/bikeshare",
+          "updatedThrough": "Updated through June 5, 2018",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2018). TidyTuesday: Biketown Bikeshare. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-06-05/week10_biketown.zip",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-06-05/week10_biketown.zip"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "airlines",
+          "title": "How Incident Counts Hide Exposure Differences",
+          "kicker": "Airlines",
+          "href": "/airlines",
+          "updatedThrough": "Updated through August 7, 2018",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2018). TidyTuesday: Airline Safety. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-08-07/week19_airline_safety.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-08-07/week19_airline_safety.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "legos",
+          "title": "LEGO Sets Shrank to 60 Pieces as Flagships Hit 11,695",
+          "kicker": "Lego",
+          "href": "/legos",
+          "updatedThrough": "Updated through September 6, 2022",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "The source is the TidyTuesday release from 2022-09-06 (R for Data Science community). The working file contains 19,798 rows across set and parts tables after merging — set names, years, part counts, and quantity fields.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "ramen",
+          "title": "Malaysia Leads Global Ramen Ratings by Half a Star",
+          "kicker": "Ramen",
+          "href": "/ramen",
+          "updatedThrough": "Updated through June 4, 2019",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "The source is the TidyTuesday release from 2019-06-04, maintained by the R for Data Science community. The working file contains 3,180 rows and six columns after cleaning: brand, variety, style, country, stars, and review number.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "hurricanes",
+          "title": "Maria's 2017 Peak Hammered Puerto Rico in a Three-State Season",
+          "kicker": "Hurricanes",
+          "href": "/hurricanes",
+          "updatedThrough": "Updated through June 19, 2018",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "TidyTuesday release from 2018-06-19, published by the R for Data Science community. The working file contains 153 rows and 4 columns after cleaning—a narrow table built for cross-state comparison in the 2017 window.",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "restaurants",
+          "title": "NYC Inspection Scores Hit 156—Eleven Times the Median",
+          "kicker": "Restaurants",
+          "href": "/restaurants",
+          "updatedThrough": "Updated through: not yet checked",
+          "updatedThroughKind": "unchecked",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "The source is the TidyTuesday release built from NYC restaurant inspection open data via the R for Data Science community. The working file contains 100,000 rows sampled from the full dataset, with fields including DBA names, boroughs, s…",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "plastic",
+          "title": "Plastic Mismanagement Stayed Uneven as GDP Doubled Since 1700",
+          "kicker": "Plastic",
+          "href": "/plastic",
+          "updatedThrough": "Updated through May 21, 2019",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "The source is the TidyTuesday release from 2019-05-21 (R for Data Science community). The working file contains 22,204 rows and 7 columns after assembling the week's tables — including GDP per capita (PPP) and per-capita mismanaged plast…",
+              "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "heritage",
+          "title": "Sweden's UNESCO Sites vs. Denmark",
+          "kicker": "Heritage",
+          "href": "/heritage",
+          "updatedThrough": "Updated through February 6, 2024",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2024). TidyTuesday: World Heritage Sites. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-02-06/heritage.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-02-06/heritage.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "pizza",
+          "title": "Two Economies in 10,000 Menu Rows",
+          "kicker": "Pizza",
+          "href": "/pizza",
+          "updatedThrough": "Updated through October 1, 2019",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2019). TidyTuesday: All The Pizza. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-10-01/pizza_datafiniti.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-10-01/pizza_datafiniti.csv"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "breweries",
+          "title": "U.S. Craft Beer Peaks at 12.8% ABV While the Median Stays at 6%",
+          "kicker": "Beer",
+          "href": "/breweries",
+          "updatedThrough": "Updated through July 10, 2018",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2018). TidyTuesday: Craft Beer USA. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-07-10/week15_beers.xlsx",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-07-10/week15_beers.xlsx"
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "alcohol",
+          "title": "Who Drinks the Most Per Capita?",
+          "kicker": "Alcohol",
+          "href": "/alcohol",
+          "updatedThrough": "Updated through June 26, 2018",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "Data Science Learning Community. (2018). TidyTuesday: Alcohol Consumption. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-06-26/week13_alcohol_global.csv",
+              "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2018/2018-06-26/week13_alcohol_global.csv"
+            },
+            {
+              "text": "World Health Organization. (2018). Global status report on alcohol and health 2018. https://www.who.int/publications/i/item/9789241565639",
+              "href": "https://www.who.int/publications/i/item/9789241565639"
+            },
+            {
+              "text": "World Health Organization. (2024). Global status report on alcohol and health and treatment of substance use disorders. https://www.who.int/publications/i/item/9789240096745",
+              "href": "https://www.who.int/publications/i/item/9789240096745"
+            },
+            {
+              "text": "OECD. (2021). Preventing Harmful Alcohol Use. https://doi.org/10.1787/6e4b4ffb-en",
+              "href": "https://doi.org/10.1787/6e4b4ffb-en"
+            },
+            {
+              "text": "Rehm, J., et al. (2009). Global burden of disease and injury and economic cost attributable to alcohol use and alcohol-use disorders. The Lancet, 373(9682), 2223–2233. https://doi.org/10.1016/S0140-6736(09)60746-7",
+              "href": "https://doi.org/10.1016/S0140-6736(09)60746-7"
+            }
+          ],
+          "fixes": []
+        }
+      ]
+    }
+  ],
+  "orphanFixes": []
+}

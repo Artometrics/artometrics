@@ -4,6 +4,7 @@
  * Also copies author/thumbnail images from src/images → public/images.
  */
 import { mkdirSync, readdirSync, readFileSync, writeFileSync, cpSync, existsSync } from "node:fs";
+import { writeSourcesCatalog } from "./lib/sources-catalog.mjs";
 import { BLOG_SUBJECT_BY_SLUG } from "./blog-subjects.mjs";
 import { join, dirname, extname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -371,6 +372,8 @@ if (existsSync(calendarPath)) {
   const calendar = parseCalendarCsv(readFileSync(calendarPath, "utf8"));
   writeFileSync(join(OUT, "content-calendar.json"), JSON.stringify(calendar, null, 2));
 }
+
+writeSourcesCatalog(ROOT);
 
 console.log(
   `Content built → src/generated/ (${blog.length} blog, ${podcast.length} podcast, ${authors.length} authors, ${legal.length} legal)`,
