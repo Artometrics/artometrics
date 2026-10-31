@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import { SiteCoverImage } from "@/components/SiteCoverImage";
 import { useLocalSearchParams, Link } from "expo-router";
 import { assetUrl } from "@/lib/assets";
@@ -27,6 +27,8 @@ import { paramString } from "@/lib/params";
 import { trackEvent } from "@/lib/analytics/ga";
 import {
   issueJsonLd,
+  isMagazineViewParam,
+  magazineEditionHref,
   magazineImg,
   magazineIssue,
   magazineIssues,
@@ -57,25 +59,26 @@ const NARRATION_META: Record<string, { runtimeSeconds: number; label: string }> 
 };
 
 export default function ReportScreen() {
-  const params = useLocalSearchParams<{ slug: string | string[] }>();
+  const params = useLocalSearchParams<{ slug: string | string[]; view?: string | string[] }>();
   const slug = paramString(params.slug);
+  const magazineView = isMagazineViewParam(params.view);
   const issue = magazineIssue(slug);
   const post = getBlogPost(slug);
 
   useEffect(() => {
-    const viewed = issue?.slug || post?.slug;
+    const viewed = post?.slug || issue?.slug;
     if (!viewed) return;
-    trackEvent("report_view", { slug: viewed });
-  }, [issue?.slug, post?.slug]);
+    trackEvent("report_view", { slug: viewed, view: magazineView ? "magazine" : "site" });
+  }, [issue?.slug, post?.slug, magazineView]);
 
-  if (issue) {
+  if (issue && magazineView) {
     const image = magazineImg(issue.hero);
     return (
       <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
         <PageSeo
           title={`${issue.title} — Artometrics`}
           description={issue.dek}
-          path={`/${issue.slug}`}
+          path={`/${issue.slug}?view=magazine`}
           image={image || undefined}
           type="article"
         />
@@ -182,6 +185,19 @@ export default function ReportScreen() {
           <Text className="house-kicker self-start" style={{ fontFamily: "DM Mono" }}>
             {label}
           </Text>
+        ) : null}
+
+        {issue ? (
+          <Link href={magazineEditionHref(post.slug)} asChild>
+            <Pressable
+              accessibilityRole="button"
+              className="self-start rounded border border-border px-3 py-1.5 active:opacity-80"
+            >
+              <Text className="font-mono text-[11px] uppercase tracking-[0.12em] text-accent">
+                Read the magazine edition
+              </Text>
+            </Pressable>
+          </Link>
         ) : null}
 
         <Text

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Slot, usePathname } from "expo-router";
+import { Slot, useGlobalSearchParams, usePathname } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import {
   NativeScrollEvent,
@@ -23,12 +23,13 @@ import { isMagazinePath } from "@/lib/magazine";
 
 function SiteChrome() {
   const pathname = usePathname();
+  const searchParams = useGlobalSearchParams<{ view?: string | string[] }>();
   const { setScrollY, setIsArticle } = useChrome();
   const { mode } = useTheme();
   const scrollRef = useRef<ScrollView>(null);
   const bareChrome =
     pathname === "/welcome" || pathname === "/welcome/" || pathname.startsWith("/welcome?");
-  const magazine = isMagazinePath(pathname);
+  const magazine = isMagazinePath(pathname, searchParams);
 
   useEffect(() => {
     const slug = pathname.replace(/^\//, "").replace(/\/$/, "");

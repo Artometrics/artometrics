@@ -192,7 +192,10 @@ export default function Root({ children }: PropsWithChildren) {
                   var MAG = ${JSON.stringify(MAGAZINE_SLUGS)};
                   var path = (location.pathname || "/").replace(/\\/$/, "") || "/";
                   var seg = path === "/" ? "" : path.slice(1);
-                  var isMag = path === "/" || (seg && seg.indexOf("/") === -1 && MAG.indexOf(seg) !== -1);
+                  var viewMag = /(?:^|[?&])view=magazine(?:&|$)/.test(location.search || "");
+                  var isMag =
+                    path === "/" ||
+                    (seg && seg.indexOf("/") === -1 && MAG.indexOf(seg) !== -1 && viewMag);
                   if (isMag) {
                     var rootEl = document.documentElement;
                     rootEl.classList.add("mag-mode");
