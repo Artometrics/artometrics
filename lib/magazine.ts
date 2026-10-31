@@ -1,6 +1,7 @@
 import issuesData from "@/magazine/issues.json";
 import type { MagSkin } from "@/lib/magazine-skins";
 import { decorateIssueHtml } from "@/lib/magazine-skins";
+import { paramString } from "@/lib/params";
 
 export type MagSource = { href: string | null; text: string };
 export type MagFigure = { src: string; cap?: string | null };
@@ -71,13 +72,41 @@ export function magazineIssue(slug: string | undefined): MagIssue | undefined {
   return BY_SLUG.get(key);
 }
 
-/** Home and single-segment report URLs that render the page-flip edition. */
-export function isMagazinePath(pathname: string | undefined): boolean {
+export function isMagazineViewParam(view: string | string[] | undefined | null): boolean {
+  return paramString(view) === "magazine";
+}
+
+/** Opt-in page-flip reader URL for a report (default site view stays the dark report page). */
+export function magazineEditionHref(slug: string, skin?: string): string {
+  const q = new URLSearchParams({ view: "magazine" });
+  if (skin) q.set("skin", skin);
+  const query = q.toString();
+  return slug ? `/${slug}?${query}` : `/?${query}`;
+}
+
+function readViewMagazine(
+  search?: Record<string, string | string[] | undefined> | URLSearchParams | null,
+): boolean {
+  if (search instanceof URLSearchParams) {
+    return search.get("view") === "magazine";
+  }
+  if (search) {
+    return isMagazineViewParam(search.view);
+  }
+  return false;
+}
+
+/** Home (contents flip) and report URLs with `?view=magazine` use bare magazine chrome. */
+export function isMagazinePath(
+  pathname: string | undefined,
+  search?: Record<string, string | string[] | undefined> | URLSearchParams | null,
+): boolean {
   const path = (pathname || "/").split("?")[0].split("#")[0].replace(/\/$/, "") || "/";
   if (path === "/") return true;
   const slug = path.startsWith("/") ? path.slice(1) : path;
   if (!slug || slug.includes("/")) return false;
-  return BY_SLUG.has(slug);
+  if (!BY_SLUG.has(slug)) return false;
+  return readViewMagazine(search);
 }
 
 function esc(value: string | number | null | undefined): string {
@@ -155,13 +184,13 @@ export function renderContentsBody(issues: MagIssue[] = magazineIssues()): strin
 <ul class="toc">${desk.items
         .map(
           (issue) =>
-            `<li><a href="/${esc(issue.slug)}"><img src="${esc(magazineImg(issue.hero))}" alt="" loading="lazy"><span><small>${esc(issue.kicker)}</small><b>${esc(issue.title)}</b><em>${magazineMins(issue.words)} min</em></span></a></li>`,
+            `<li><a href="${esc(magazineEditionHref(issue.slug))}"><img src="${esc(magazineImg(issue.hero))}" alt="" loading="lazy"><span><small>${esc(issue.kicker)}</small><b>${esc(issue.title)}</b><em>${magazineMins(issue.words)} min</em></span></a></li>`,
         )
         .join("")}</ul>`,
     )
     .join("");
   return `<p class="cv-mast">ARTOMETRICS</p><p class="cv-sub">Magazine · ${issues.length} issues · 5-minute reads</p>
-<a class="cv-feat" href="/${esc(featured.slug)}"><img src="${esc(magazineImg(featured.hero))}" alt=""><p class="kick" style="margin-top:12px">${esc(featured.kicker)}</p><h3>${esc(featured.title)}</h3><p class="dek">${esc(featured.dek)}</p></a>
+<a class="cv-feat" href="${esc(magazineEditionHref(featured.slug))}"><img src="${esc(magazineImg(featured.hero))}" alt=""><p class="kick" style="margin-top:12px">${esc(featured.kicker)}</p><h3>${esc(featured.title)}</h3><p class="dek">${esc(featured.dek)}</p></a>
 ${lists}`;
 }
 

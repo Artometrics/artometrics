@@ -1,12 +1,14 @@
-import { Linking, Pressable, Text, View } from "react-native";
+import { Link } from "expo-router";
+import { Text, View } from "react-native";
 import { Wrapper } from "@/components/Wrapper";
 import { PageSeo } from "@/components/PageSeo";
+import { magazineEditionHref } from "@/lib/magazine";
 
 const steps = ["🔎 Find data", "🧪 Audit", "🗄️ SQL", "📊 Charts", "✍️ Story"];
 const issues = [
-  { href: "/downloads/magazine/artometrics-data-minimal.pdf", label: "📄 Data Minimal" },
-  { href: "/downloads/magazine/artometrics-glossy-editorial.pdf", label: "📄 Glossy Editorial" },
-  { href: "/downloads/magazine/artometrics-indie-zine.pdf", label: "📄 Indie Zine" },
+  { href: magazineEditionHref("", "ledger"), label: "📄 Data Minimal" },
+  { href: magazineEditionHref("", "box"), label: "📄 Glossy Editorial" },
+  { href: magazineEditionHref("", "trade"), label: "📄 Indie Zine" },
 ];
 const log = [
   ["2026-10-23", "Lab log + magazine PDFs"],
@@ -33,9 +35,9 @@ export default function LabLogScreen() {
       <Text className="mt-3 font-serif text-[22px] font-bold text-fg">📰 Issues</Text>
       <View className="gap-2">
         {issues.map((a) => (
-          <Pressable key={a.href} onPress={() => Linking.openURL(a.href)}>
+          <Link key={a.href} href={a.href}>
             <Text className="font-serif text-base text-accent">{a.label}</Text>
-          </Pressable>
+          </Link>
         ))}
       </View>
       <Text className="mt-3 font-serif text-[22px] font-bold text-fg">🗓️ Log</Text>
