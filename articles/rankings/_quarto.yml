@@ -4,7 +4,7 @@ project:
   type: default
   output-dir: .
   render:
-    - rankings.qmd
+    - billboard-top-100.qmd
 
 execute:
   echo: false
