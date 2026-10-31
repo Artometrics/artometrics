@@ -327,16 +327,20 @@
         },
         {
           "slug": "rankings",
-          "title": "How the Chart Top Got Crowded",
+          "title": "How the Top of the Hot 100 Slowed Down, Then Sped Up Again",
           "kicker": "Billboard",
           "href": "/rankings",
-          "updatedThrough": "Updated through September 14, 2021",
+          "updatedThrough": "Updated through October 31, 2026",
           "updatedThroughKind": "coverage",
           "datasets": [],
           "citations": [
             {
-              "text": "Data Science Learning Community. (2021). TidyTuesday: Billboard Top 100. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-09-14/billboard.csv",
+              "text": "Previous version's source. Data Science Learning Community. (2021). TidyTuesday: Billboard Top 100. https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-09-14/billboard.csv",
               "href": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-09-14/billboard.csv"
+            },
+            {
+              "text": "Billboard Hot 100 chart data, via utdata/rwd-billboard-data (MIT), commit ff86f04, through the chart dated Oct 31, 2026. Coverage through October 31, 2026. Billboard is the original data owner.",
+              "href": "https://github.com/utdata/rwd-billboard-data/blob/ff86f0456f55f8174ea5e91c0872a00df21b8603/data-out/hot-100-current.csv"
             }
           ],
           "fixes": []
