@@ -126,6 +126,35 @@ function SkinIcon({ id }: { id: string }) {
       </svg>
     );
   }
+  if (id === "filing") {
+    return (
+      <svg viewBox="0 0 18 18" aria-hidden="true">
+        <path d="M2 3.2h14M2 5.2h14" fill="none" stroke="currentColor" strokeWidth="1.1" />
+        <rect x="2" y="7.4" width="14" height="7" fill="none" stroke="currentColor" strokeWidth="1.2" />
+        <path d="M4 11h5.5" stroke="currentColor" strokeWidth="1.2" />
+        <path d="M11.2 9.6v3.2M13.6 9.6v3.2" stroke="#B42318" strokeWidth="1.3" />
+      </svg>
+    );
+  }
+  if (id === "gauge") {
+    return (
+      <svg viewBox="0 0 18 18" aria-hidden="true">
+        <rect x="2" y="2.5" width="14" height="9" rx="2" fill="none" stroke="currentColor" strokeWidth="1.3" />
+        <rect x="2" y="13.6" width="14" height="2.2" fill="none" stroke="currentColor" strokeWidth="1.1" />
+        <rect x="2" y="13.6" width="2.2" height="2.2" fill="#2F9E44" />
+      </svg>
+    );
+  }
+  if (id === "onair") {
+    return (
+      <svg viewBox="0 0 18 18" aria-hidden="true">
+        <rect x="1.8" y="2.4" width="14.4" height="6.4" fill="none" stroke="currentColor" strokeWidth="1.2" />
+        <circle cx="4.6" cy="5.6" r="1.35" fill="#E8590C" />
+        <path d="M7.4 4.6h6.2M7.4 6.6h4" stroke="currentColor" strokeWidth="1.1" />
+        <path d="M2 12.2v2.4M5 11v4.2M8 13v1.6M11 10.4v5.2M14 12.4v2.2M16.4 11.6v3.2" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+      </svg>
+    );
+  }
   return (
     <svg viewBox="0 0 18 18" aria-hidden="true">
       <path d="M3 5h12M3 9h12M3 13h12" fill="none" stroke="currentColor" strokeWidth="1" />

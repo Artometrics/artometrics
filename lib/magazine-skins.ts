@@ -35,11 +35,11 @@ const FONT_STACK: Record<string, string> = {
   "JetBrains Mono": '"JetBrains Mono", ui-monospace, monospace',
 };
 
-/** Skins Billboard and Streaming used before they had their own sets. A saved or shared link for one of these resolves to that issue's first skin. */
+/** Skins Billboard, Streaming, and YouTube used before they had their own sets. A saved or shared link for one of these resolves to that issue's first skin. */
 const RETIRED_SHARED_SKINS = new Set(["ledger", "box", "trade"]);
 
 function retiredSharedSkin(slug: string, id: string): boolean {
-  return (slug === "billboard" || slug === "streaming") && RETIRED_SHARED_SKINS.has(id);
+  return (slug === "billboard" || slug === "streaming" || slug === "youtube") && RETIRED_SHARED_SKINS.has(id);
 }
 
 export function resolveSkinId(
@@ -156,6 +156,18 @@ function ornaments(): string {
 <svg data-orn="chapter-ticks" viewBox="0 0 24 24"><path d="M4 17V9M8 17v-5M12 17V7M16 17v-6M20 17v-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
 <svg data-orn="play-triangle" viewBox="0 0 24 24"><path d="M8 6.2v11.6l10-5.8z" fill="currentColor"/></svg>
 <svg data-orn="film-frame" viewBox="0 0 24 24"><path d="M5 9V5h4M15 5h4v4M19 15v4h-4M9 19H5v-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+<svg data-orn="double-rules" viewBox="0 0 24 24"><path d="M3 8h18M3 11h18M3 16h18" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+<svg data-orn="dagger" viewBox="0 0 24 24"><path d="M12 3.5v13M8.2 7.2h7.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 16.2l-2.4 4.3h4.8z" fill="var(--accent2)"/></svg>
+<svg data-orn="brackets" viewBox="0 0 24 24"><path d="M8 4.5H4.5v15H8M16 4.5h3.5v15H16" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 12h2" stroke="var(--accent2)" stroke-width="2.2" stroke-linecap="round"/></svg>
+<svg data-orn="page-tab" viewBox="0 0 24 24"><path d="M5 20V7h8l4 4v9z" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M13 7v4h4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 15h6" stroke="var(--accent2)" stroke-width="1.6"/></svg>
+<svg data-orn="share-bar" viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="4" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="3" y="10" width="2.8" height="4" fill="var(--accent2)"/></svg>
+<svg data-orn="screen-frame" viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9 20h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+<svg data-orn="scan-line" viewBox="0 0 24 24"><path d="M3 6h18M3 10h18M3 14h18M3 18h18" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+<svg data-orn="channel-tag" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3 9.2h18" stroke="var(--accent2)" stroke-width="2"/><path d="M7 14.5h5" stroke="currentColor" stroke-width="1.4"/></svg>
+<svg data-orn="lamp" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="9" cy="12" r="2.2" fill="var(--accent2)"/><path d="M13 10.5h5M13 13.5h3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+<svg data-orn="grille" viewBox="0 0 24 24"><circle cx="4" cy="8" r="1.05" fill="currentColor"/><circle cx="8.5" cy="8" r="1.05" fill="currentColor"/><circle cx="13" cy="8" r="1.05" fill="currentColor"/><circle cx="17.5" cy="8" r="1.05" fill="currentColor"/><circle cx="4" cy="12.5" r="1.05" fill="currentColor"/><circle cx="8.5" cy="12.5" r="1.05" fill="currentColor"/><circle cx="13" cy="12.5" r="1.05" fill="currentColor"/><circle cx="17.5" cy="12.5" r="1.05" fill="currentColor"/><circle cx="4" cy="17" r="1.05" fill="currentColor"/><circle cx="8.5" cy="17" r="1.05" fill="currentColor"/><circle cx="13" cy="17" r="1.05" fill="currentColor"/><circle cx="17.5" cy="17" r="1.05" fill="currentColor"/></svg>
+<svg data-orn="waveform" viewBox="0 0 24 24"><path d="M3 14V10M6.2 16.5V7.5M9.4 13V11M12.6 18V6M15.8 15V9M19 12.5V11.5M22 14.5V9.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+<svg data-orn="peak-mark" viewBox="0 0 24 24"><path d="M2 16h5.2l3.2-8 3.4 8H22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="10.4" cy="8" r="1.7" fill="var(--accent2)"/></svg>
 </div>`;
 }
 
@@ -268,6 +280,31 @@ function streamingPresentation(html: string): string {
   return html.includes(lead) ? html.replace(lead, stage) : html;
 }
 
+const YOUTUBE_TITLE = "The Platform's $36B Engine and One Podcast's Borrowed Peak";
+
+/** Title chrome only. The headline string stays the published title. */
+function youtubePresentation(html: string): string {
+  const lead = `<p class="kick">YouTube</p>\n<h1 itemprop="headline">${YOUTUBE_TITLE}</h1>`;
+  const peak = `<svg class="yt-peak-line" viewBox="0 0 280 40" aria-hidden="true" focusable="false"><path d="M4 30h36l28-2 24-18 26 18h158" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="92" cy="10" r="3.4" fill="var(--accent2)"/></svg>`;
+  const wave = `<svg class="yt-wave" viewBox="0 0 240 24" aria-hidden="true" focusable="false"><path d="M4 14V10M16 18V6M28 13V11M40 20V4M52 15V9M64 16V8M76 17V7M88 19V5M100 14V10M112 11V13M124 18V6M136 15V9M148 17V7M160 20V4M172 16V8M184 13V11M196 18V6M208 14V10M220 16V8M232 13V11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`;
+  const stage = `<div class="yt-stage"><p class="kick yt-kicker">YouTube</p><span class="yt-lamp"><span class="yt-lamp-dot" aria-hidden="true"></span><span class="yt-lamp-word">ON AIR</span></span><h1 class="skin-title" itemprop="headline">${YOUTUBE_TITLE}</h1><div class="yt-rev"><span class="yt-tab" aria-hidden="true">p.</span><span class="yt-rev-name">YouTube ads, FY2024</span><span class="yt-rev-sep">|</span><span class="yt-rev-amt">$36,147 million</span></div><div class="yt-share"><span class="yt-share-track" role="img" aria-label="15.8 percent"><span class="yt-share-fill"></span></span><span class="yt-share-label">of U.S. TV-screen time, August 2026 (Nielsen Gauge)</span></div><div class="yt-peak">${peak}<span class="yt-peak-label">the borrowed peak</span></div>${wave}</div>`;
+  return html.includes(lead) ? html.replace(lead, stage) : html;
+}
+
+function youtubeClosing(issue: MagIssue): string {
+  const names = skinsForIssue(issue)
+    .map((skin) => `<span data-for="${esc(skin.id)}">${esc(skin.closing.name)}</span>`)
+    .join("");
+  const sources = (issue.src || []).map(billboardSourceItem).join("");
+  return `<section class="closing" id="closing">
+<p class="end">■ END</p>
+<h2 class="closing-name">${names}</h2>
+<ol class="src">${sources}</ol>
+<p class="updated">Updated through: Nielsen Gauge, August 2026 (press release October 22, 2026)</p>
+<p class="by skin-back"><a href="/">← Contents</a></p>
+</section>`;
+}
+
 function streamingClosing(issue: MagIssue): string {
   const names = skinsForIssue(issue)
     .map((skin) => `<span data-for="${esc(skin.id)}">${esc(skin.closing.name)}</span>`)
@@ -300,6 +337,7 @@ function billboardClosing(issue: MagIssue): string {
 function closingSection(issue: MagIssue, publishedInner: string): string {
   if (issue.slug === "billboard") return billboardClosing(issue);
   if (issue.slug === "streaming") return streamingClosing(issue);
+  if (issue.slug === "youtube") return youtubeClosing(issue);
   const names = skinsForIssue(issue)
     .map((skin) => `<span data-for="${esc(skin.id)}">${esc(skin.closing.name)}</span>`)
     .join("");
@@ -355,6 +393,7 @@ export function decorateIssueHtml(issue: MagIssue, html: string): string {
   if (issue.slug === "franchise") body = franchisePresentation(body);
   if (issue.slug === "billboard") body = billboardPresentation(body);
   if (issue.slug === "streaming") body = streamingPresentation(body);
+  if (issue.slug === "youtube") body = youtubePresentation(body);
   const { article, publishedInner } = splitAtEnd(body);
   const stamp =
     issue.slug === "franchise"

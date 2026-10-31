@@ -1,6 +1,7 @@
 /* Reader skins. Scoped to [data-skin] on the magazine shell so the rest of the site stays put.
    Ledger, Back of the Box, Trade Paper, Billboard's Chart, Sleeve, and Stream,
-   and Streaming's Top Shelf, Program Guide, and Late Show.
+   Streaming's Top Shelf, Program Guide, and Late Show,
+   and YouTube's Filing, Living Room, and On Air.
    Fonts are self-hosted SIL OFL (public/fonts/skins). No new font files. */
 
 @font-face {
@@ -186,6 +187,9 @@
 .mag-shell[data-skin="shelf"] { --mute: #3a3a3a; }
 .mag-shell[data-skin="guide"] { --mute: #3a3a3a; }
 .mag-shell[data-skin="late"] { --mute: #c5cad3; color-scheme: dark; }
+.mag-shell[data-skin="filing"] { --mute: #3a3a3a; }
+.mag-shell[data-skin="gauge"] { --mute: #3a3a3a; }
+.mag-shell[data-skin="onair"] { --mute: #c9c2b8; color-scheme: dark; }
 .mag-shell[data-skin] a { color: var(--accent); }
 .mag-shell[data-skin] h1 {
   font-family: var(--skin-display);
@@ -297,7 +301,19 @@
 .mag-shell[data-skin="late"] .skin-ornaments svg[data-orn="scrubber"],
 .mag-shell[data-skin="late"] .skin-ornaments svg[data-orn="chapter-ticks"],
 .mag-shell[data-skin="late"] .skin-ornaments svg[data-orn="play-triangle"],
-.mag-shell[data-skin="late"] .skin-ornaments svg[data-orn="film-frame"] { display: block; }
+.mag-shell[data-skin="late"] .skin-ornaments svg[data-orn="film-frame"],
+.mag-shell[data-skin="filing"] .skin-ornaments svg[data-orn="double-rules"],
+.mag-shell[data-skin="filing"] .skin-ornaments svg[data-orn="dagger"],
+.mag-shell[data-skin="filing"] .skin-ornaments svg[data-orn="brackets"],
+.mag-shell[data-skin="filing"] .skin-ornaments svg[data-orn="page-tab"],
+.mag-shell[data-skin="gauge"] .skin-ornaments svg[data-orn="share-bar"],
+.mag-shell[data-skin="gauge"] .skin-ornaments svg[data-orn="screen-frame"],
+.mag-shell[data-skin="gauge"] .skin-ornaments svg[data-orn="scan-line"],
+.mag-shell[data-skin="gauge"] .skin-ornaments svg[data-orn="channel-tag"],
+.mag-shell[data-skin="onair"] .skin-ornaments svg[data-orn="lamp"],
+.mag-shell[data-skin="onair"] .skin-ornaments svg[data-orn="grille"],
+.mag-shell[data-skin="onair"] .skin-ornaments svg[data-orn="waveform"],
+.mag-shell[data-skin="onair"] .skin-ornaments svg[data-orn="peak-mark"] { display: block; }
 .mag-shell[data-skin="box"] .skin-ornaments svg[data-orn="burst"] { color: var(--accent2); }
 
 .mag-shell .skin-plate {
@@ -330,7 +346,10 @@
 .mag-shell[data-skin="stream"] .closing [data-for="stream"],
 .mag-shell[data-skin="shelf"] .closing [data-for="shelf"],
 .mag-shell[data-skin="guide"] .closing [data-for="guide"],
-.mag-shell[data-skin="late"] .closing [data-for="late"] { display: inline; }
+.mag-shell[data-skin="late"] .closing [data-for="late"],
+.mag-shell[data-skin="filing"] .closing [data-for="filing"],
+.mag-shell[data-skin="gauge"] .closing [data-for="gauge"],
+.mag-shell[data-skin="onair"] .closing [data-for="onair"] { display: inline; }
 .mag-shell .skin-dateline,
 .mag-shell .audit-stamp,
 .mag-shell .collect-140 { display: none; }
@@ -1572,4 +1591,486 @@
 @media (prefers-reduced-motion: reduce) {
   .mag-shell[data-skin="late"] .st-fill { animation: none; width: 67.9%; }
   .mag-shell[data-skin="shelf"] h2::before { transform: none; }
+}
+
+/* YouTube — Filing, Living Room, On Air.
+   Red, green, and orange are fills and markers. Body type, links, and captions stay ink or accent on paper.
+   On Air chart PNGs sit on a light mat; they are not inverted. */
+.mag-shell .yt-lamp,
+.mag-shell .yt-rev,
+.mag-shell .yt-share,
+.mag-shell .yt-peak,
+.mag-shell .yt-wave { display: none; }
+.mag-shell .yt-stage { break-inside: avoid; }
+.mag-shell[data-skin="filing"] .kp p,
+.mag-shell[data-skin="gauge"] .kp p,
+.mag-shell[data-skin="onair"] .kp p,
+.mag-shell[data-skin="filing"] .dek,
+.mag-shell[data-skin="gauge"] .dek,
+.mag-shell[data-skin="onair"] .dek { color: var(--ink); }
+.mag-shell[data-skin="filing"] h1.skin-title,
+.mag-shell[data-skin="gauge"] h1.skin-title,
+.mag-shell[data-skin="onair"] h1.skin-title {
+  overflow-wrap: break-word;
+  min-width: 0;
+  color: var(--ink);
+}
+
+.mag-shell[data-skin="filing"] .yt-kicker,
+.mag-shell[data-skin="gauge"] .yt-kicker,
+.mag-shell[data-skin="onair"] .yt-kicker {
+  margin: 0 0 8px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.mag-shell[data-skin="filing"] .yt-kicker { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+.mag-shell[data-skin="gauge"] .yt-kicker { font-family: "JetBrains Mono", ui-monospace, monospace; }
+.mag-shell[data-skin="onair"] .yt-kicker { font-family: "Space Mono", ui-monospace, monospace; }
+
+.mag-shell[data-skin="filing"] .yt-stage {
+  display: flex;
+  flex-direction: column;
+  margin: 2px 0 16px;
+}
+.mag-shell[data-skin="filing"] h1.skin-title {
+  margin: 0 0 18px;
+  padding: 0 0 10px;
+  border-bottom: 3px double var(--ink);
+  font-family: Archivo, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px, 4.6vw, 54px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+.mag-shell[data-skin="filing"] .yt-rev {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 10px;
+  margin: 0;
+  padding: 12px 12px 11px;
+  border-top: 3px double var(--ink);
+  border-right: 1.5px solid var(--ink);
+  border-bottom: 3px double var(--ink);
+  border-left: 1.5px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+}
+.mag-shell[data-skin="filing"] .yt-tab {
+  position: absolute;
+  top: -16px;
+  right: 16px;
+  height: 16px;
+  padding: 0 7px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.08em;
+}
+.mag-shell[data-skin="filing"] .yt-rev-name,
+.mag-shell[data-skin="filing"] .yt-rev-sep,
+.mag-shell[data-skin="filing"] .yt-rev-amt {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.mag-shell[data-skin="filing"] .yt-rev-amt { margin-left: auto; }
+.mag-shell[data-skin="filing"] .yt-rev-amt::before,
+.mag-shell[data-skin="filing"] .yt-rev-amt::after {
+  color: var(--accent2);
+  font-weight: 600;
+}
+.mag-shell[data-skin="filing"] .yt-rev-amt::before { content: "["; margin-right: 0.35em; }
+.mag-shell[data-skin="filing"] .yt-rev-amt::after { content: "]"; margin-left: 0.35em; }
+.mag-shell[data-skin="filing"] h2 {
+  font-family: Archivo, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.mag-shell[data-skin="filing"] h2::before {
+  content: "†";
+  margin-right: 0.4em;
+  color: var(--accent2);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-weight: 500;
+}
+.mag-shell[data-skin="filing"] .hero-frame {
+  display: block;
+  padding: 8px;
+  border: 1px solid var(--rule);
+  border-top: 3px double var(--ink);
+  background: var(--paper);
+}
+.mag-shell[data-skin="filing"] .hero { border-radius: 0; }
+.mag-shell[data-skin="filing"] figure {
+  border-top: 3px double var(--ink);
+  border-bottom: 1px solid var(--rule);
+  padding-top: 12px;
+}
+.mag-shell[data-skin="filing"] .closing {
+  break-inside: avoid;
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 3px double var(--ink);
+  color: var(--ink);
+}
+.mag-shell[data-skin="filing"] .closing h2 {
+  font-family: Archivo, system-ui, sans-serif;
+  font-size: 26px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--ink);
+}
+.mag-shell[data-skin="filing"] .closing h2::before { content: none; }
+.mag-shell[data-skin="filing"] .closing ol.src {
+  list-style: none;
+  padding-left: 0;
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.mag-shell[data-skin="filing"] .closing ol.src li {
+  position: relative;
+  margin-bottom: 6px;
+  padding-left: 1.15em;
+}
+.mag-shell[data-skin="filing"] .closing ol.src li::before {
+  content: "†";
+  position: absolute;
+  left: 0;
+  color: var(--accent2);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+}
+.mag-shell[data-skin="filing"] .closing .updated,
+.mag-shell[data-skin="filing"] .closing .skin-back {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.mag-shell[data-skin="filing"] .closing .updated {
+  margin-top: 12px;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12.5px;
+}
+.mag-shell[data-skin="filing"] .closing a { color: var(--accent); }
+
+.mag-shell[data-skin="gauge"] { counter-reset: yt-ch; }
+.mag-shell[data-skin="gauge"] .yt-stage {
+  display: flex;
+  flex-direction: column;
+  margin: 2px 0 16px;
+}
+.mag-shell[data-skin="gauge"] h1.skin-title {
+  margin: 0 0 14px;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(28px, 4.8vw, 56px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  text-transform: none;
+}
+.mag-shell[data-skin="gauge"] .yt-share { display: block; }
+.mag-shell[data-skin="gauge"] .yt-share-track {
+  display: block;
+  height: 18px;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  overflow: hidden;
+}
+.mag-shell[data-skin="gauge"] .yt-share-fill {
+  display: block;
+  width: 15.8%;
+  height: 100%;
+  background: var(--accent2);
+  animation: skin-share 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.mag-shell[data-skin="gauge"] .yt-share-label {
+  display: block;
+  max-width: 100%;
+  margin-top: 8px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--ink);
+}
+@keyframes skin-share {
+  from { width: 0; }
+  to { width: 15.8%; }
+}
+.mag-shell[data-skin="gauge"] h2 {
+  margin-top: 22px;
+  padding-top: 12px;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background-image: repeating-linear-gradient(to bottom, var(--rule) 0 1px, transparent 1px 3px);
+  background-size: 100% 8px;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+.mag-shell[data-skin="gauge"] h2::before {
+  counter-increment: yt-ch;
+  content: counter(yt-ch, decimal-leading-zero);
+  display: inline-block;
+  margin-right: 8px;
+  padding: 1px 5px 2px;
+  border: 1px solid var(--ink);
+  border-bottom: 3px solid var(--accent2);
+  background: var(--paper);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  color: var(--ink);
+  vertical-align: 1px;
+}
+.mag-shell[data-skin="gauge"] .hero-frame {
+  display: block;
+  border: 1px solid var(--rule);
+}
+.mag-shell[data-skin="gauge"] .hero { border-radius: 0; }
+.mag-shell[data-skin="gauge"] figure {
+  border: 3px solid var(--ink);
+  border-radius: 22px;
+  padding: 16px 14px 12px;
+  background: var(--paper);
+  box-shadow: inset 0 0 0 7px var(--rule);
+  overflow: hidden;
+}
+.mag-shell[data-skin="gauge"] figure img { border-radius: 10px; }
+.mag-shell[data-skin="gauge"] .closing {
+  break-inside: avoid;
+  margin-top: 18px;
+  padding: 16px 0 8px;
+  border-top: 8px solid var(--ink);
+  box-shadow: inset 0 4px 0 var(--accent2);
+  background: transparent;
+  color: var(--ink);
+}
+.mag-shell[data-skin="gauge"] .closing h2 {
+  margin-top: 0;
+  padding-top: 0;
+  background-image: none;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--ink);
+}
+.mag-shell[data-skin="gauge"] .closing h2::before {
+  content: none;
+  counter-increment: none;
+}
+.mag-shell[data-skin="gauge"] .closing ol.src,
+.mag-shell[data-skin="gauge"] .closing .updated,
+.mag-shell[data-skin="gauge"] .closing .skin-back {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.mag-shell[data-skin="gauge"] .closing .updated {
+  margin-top: 12px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12.5px;
+}
+.mag-shell[data-skin="gauge"] .closing a { color: var(--accent); }
+
+.mag-shell[data-skin="onair"] .yt-stage {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas:
+    "kick kick"
+    "lamp title"
+    "peak peak"
+    "wave wave";
+  column-gap: 14px;
+  row-gap: 10px;
+  align-items: start;
+  margin: 2px 0 16px;
+}
+.mag-shell[data-skin="onair"] .yt-kicker { grid-area: kick; }
+.mag-shell[data-skin="onair"] .yt-lamp {
+  grid-area: lamp;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: start;
+  margin-top: 4px;
+  padding: 8px 10px;
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  white-space: nowrap;
+}
+.mag-shell[data-skin="onair"] .yt-lamp-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--accent2);
+  flex: 0 0 auto;
+}
+.mag-shell[data-skin="onair"] .yt-lamp-word {
+  font-family: Oswald, Impact, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  color: var(--ink);
+}
+.mag-shell[data-skin="onair"] h1.skin-title {
+  grid-area: title;
+  align-self: center;
+  margin: 0;
+  font-family: Oswald, Impact, sans-serif;
+  font-weight: 600;
+  font-size: clamp(22px, 4.6vw, 64px);
+  line-height: 0.94;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.mag-shell[data-skin="onair"] .yt-peak {
+  grid-area: peak;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 6px 14px;
+  max-width: 560px;
+}
+.mag-shell[data-skin="onair"] .yt-peak-line {
+  display: block;
+  flex: 1 1 220px;
+  width: min(100%, 420px);
+  height: 36px;
+  color: var(--ink);
+}
+.mag-shell[data-skin="onair"] .yt-peak-label {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 12.5px;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.mag-shell[data-skin="onair"] .yt-wave {
+  grid-area: wave;
+  display: block;
+  width: min(100%, 420px);
+  height: 22px;
+  color: var(--ink);
+}
+.mag-shell[data-skin="onair"] h2 {
+  font-family: Oswald, Impact, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding-top: 14px;
+  background-image: radial-gradient(circle, var(--ink) 1.15px, transparent 1.35px);
+  background-size: 7px 4px;
+  background-repeat: repeat-x;
+  background-position: left top;
+}
+.mag-shell[data-skin="onair"] .hero-frame {
+  display: block;
+  border: 1px solid var(--rule);
+}
+.mag-shell[data-skin="onair"] .hero { border-radius: 0; filter: none; }
+.mag-shell[data-skin="onair"] figure {
+  border: 0;
+  padding: 16px;
+  color: #15171c;
+  background-color: #F6F3EC;
+  background-image:
+    linear-gradient(var(--accent2), var(--accent2)),
+    linear-gradient(var(--accent2), var(--accent2)),
+    linear-gradient(var(--accent2), var(--accent2)),
+    linear-gradient(var(--accent2), var(--accent2)),
+    linear-gradient(var(--accent2), var(--accent2)),
+    linear-gradient(var(--accent2), var(--accent2)),
+    linear-gradient(var(--accent2), var(--accent2)),
+    linear-gradient(var(--accent2), var(--accent2));
+  background-size: 16px 3px, 3px 16px, 16px 3px, 3px 16px, 16px 3px, 3px 16px, 16px 3px, 3px 16px;
+  background-position: left top, left top, right top, right top, left bottom, left bottom, right bottom, right bottom;
+  background-repeat: no-repeat;
+}
+.mag-shell[data-skin="onair"] figure img { filter: none; background: #F6F3EC; }
+.mag-shell[data-skin="onair"] figure figcaption,
+.mag-shell[data-skin="onair"] figure figcaption a { color: #15171c; }
+.mag-shell[data-skin="onair"] figure a { color: #0047FF; }
+.mag-shell[data-skin="onair"] .closing {
+  break-inside: avoid;
+  margin-top: 22px;
+  padding: 18px 0 8px;
+  border-top: 0;
+  color: var(--ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='168' height='16' viewBox='0 0 168 16'%3E%3Cpath d='M2 9V7M12 13V3M22 10V6M32 14V2M42 11V5M52 11V5M62 12V4M72 14V2M82 9V7M92 13V3M102 11V5M112 12V4M122 12V4M132 14V2M142 10V6M152 13V3M162 9V7' fill='none' stroke='%23EFE9E1' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 168px 14px;
+}
+.mag-shell[data-skin="onair"] .closing h2 {
+  margin-top: 4px;
+  padding-top: 0;
+  background-image: none;
+  font-family: Oswald, Impact, sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.mag-shell[data-skin="onair"] .closing h2::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--accent2);
+  vertical-align: 1px;
+}
+.mag-shell[data-skin="onair"] .closing ol.src,
+.mag-shell[data-skin="onair"] .closing .updated,
+.mag-shell[data-skin="onair"] .closing .skin-back {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.mag-shell[data-skin="onair"] .closing .updated {
+  margin-top: 12px;
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 12px;
+}
+.mag-shell[data-skin="onair"] .closing a { color: var(--accent); }
+.mag-shell[data-skin="onair"] .skin-picker button[aria-checked="true"] {
+  background: rgba(239, 233, 225, 0.14);
+}
+.mag-shell[data-skin="onair"] .prog { background: rgba(239, 233, 225, 0.22); }
+.mag-shell[data-skin="onair"] header.bar .t,
+.mag-shell[data-skin="onair"] footer.bar { color: var(--mute); }
+
+@media (max-width: 520px) {
+  .mag-shell[data-skin="filing"] .yt-rev-amt { margin-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mag-shell[data-skin="gauge"] .yt-share-fill { animation: none; width: 15.8%; }
 }
