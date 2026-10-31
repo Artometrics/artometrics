@@ -398,15 +398,15 @@
             },
             {
               "text": "Wikipedia. List of highest-grossing media franchises — revision 904026364, 2019-06-29 (audit of S001); revision 1379832186, 2026-10-12 (primary ledger, S017). Accessed 2026-10-12.",
-              "href": null
+              "href": "https://en.wikipedia.org/w/index.php?title=List_of_highest-grossing_media_franchises&oldid=1379832186"
             },
             {
               "text": "Wikipedia. 2025 in film (rev. 1378645325) and 2026 in film (rev. 1379926625), citing Box Office Mojo and The Numbers (S091, S092). Accessed 2026-10-12.",
-              "href": null
+              "href": "https://en.wikipedia.org/w/index.php?title=2026_in_film&oldid=1379926625"
             },
             {
               "text": "Federal Reserve Bank of St. Louis. CPI-U, CPIAUCSL (S090). Accessed 2026-10-12.",
-              "href": null
+              "href": "https://fred.stlouisfed.org/series/CPIAUCSL"
             },
             {
               "text": "Robinson, D. (2019). Analyzing Franchise Revenue — TidyTuesday Screencast. youtu.be/1xsbTs9-a50",
@@ -414,11 +414,11 @@
             },
             {
               "text": "Jenkins, H. (2006). Convergence Culture. NYU Press.",
-              "href": null
+              "href": "https://openlibrary.org/works/OL4292067W"
             },
             {
               "text": "Steinberg, M. (2012). Anime's Media Mix. University of Minnesota Press.",
-              "href": null
+              "href": "https://openlibrary.org/works/OL16142176W"
             },
             {
               "text": "Hernández Hernández, Á. D. (2018). Production committees (Arts 7(3): 42). doi:10.3390/arts7030042",
@@ -426,11 +426,11 @@
             },
             {
               "text": "The Walt Disney Company. Form 10-K FY2024; segment revenues exhibit (S004, S081).",
-              "href": null
+              "href": "https://www.sec.gov/Archives/edgar/data/1744489/000174448924000276/dis-20240928.htm"
             },
             {
               "text": "Box Office Mojo yearly domestic charts (2010–2024) — data/box_office_mojo_yearly_urls.csv.",
-              "href": null
+              "href": "https://www.boxofficemojo.com/year/"
             }
           ],
           "fixes": [
