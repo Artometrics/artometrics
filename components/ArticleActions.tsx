@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-import { Pressable, Share, Text, View, Platform } from "react-native";
+import { createElement, useEffect, useMemo, useState, type ReactNode } from "react";
+import { Pressable, ScrollView, Share, Text, View, Platform } from "react-native";
 import { Link } from "expo-router";
 import { useAuth } from "@/lib/auth";
 import { apiFetch } from "@/lib/supabase/client";
@@ -33,6 +33,42 @@ type Props = {
 };
 
 type DownloadItem = { key: string; label: string; href: string };
+
+function ChipScroller({ children, reverse }: { children: ReactNode; reverse?: boolean }) {
+  if (Platform.OS === "web") {
+    return createElement(
+      "div",
+      {
+        className: "art-action-scroller",
+        role: "region",
+        "aria-label": "Report actions",
+        tabIndex: 0,
+      },
+      createElement(
+        "div",
+        { className: reverse ? "art-action-scroller__row is-reverse" : "art-action-scroller__row" },
+        children,
+      ),
+    );
+  }
+  return (
+    <ScrollView
+      horizontal
+      showsHorizontalScrollIndicator
+      nestedScrollEnabled
+      directionalLockEnabled
+      style={{ width: "100%", maxWidth: "100%" }}
+      contentContainerStyle={{
+        flexDirection: reverse ? "row-reverse" : "row",
+        justifyContent: reverse ? "flex-end" : "flex-start",
+        alignItems: "center",
+        gap: 6,
+      }}
+    >
+      {children}
+    </ScrollView>
+  );
+}
 
 function openUrl(url: string) {
   const absolute = assetUrl(url) ?? url;
@@ -233,21 +269,14 @@ export function ArticleActions({
   return (
     <View
       className={[
-        variant === "inline" ? "shrink-0" : "gap-3.5 py-1",
+        variant === "inline" ? "w-full min-w-0 max-w-full overflow-hidden" : "gap-3.5 py-1",
         placement === "bottom" ? "mt-1" : "",
       ]
         .filter(Boolean)
         .join(" ")}
     >
       {showHeader ? (
-        <View
-          className={[
-            "flex-row flex-wrap items-center",
-            variant === "inline"
-              ? "flex-row-reverse justify-end gap-1.5 md:gap-2"
-              : "gap-2 md:gap-3",
-          ].join(" ")}
-        >
+        <ChipScroller reverse={variant === "inline"}>
           <Pressable
             onPress={share}
             accessibilityRole="button"
@@ -312,7 +341,7 @@ export function ArticleActions({
               </Text>
             </Pressable>
           ) : null}
-        </View>
+        </ChipScroller>
       ) : null}
 
       {showTop ? (

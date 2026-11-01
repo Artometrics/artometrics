@@ -57,6 +57,41 @@
   }
 }
 
+/* Report action chips: one row, thumb-scrollable on mobile Safari. */
+.art-action-scroller {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+.art-action-scroller__row {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 6px;
+  width: max-content;
+  min-width: min-content;
+  padding-bottom: 2px;
+}
+.art-action-scroller__row.is-reverse {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.art-action-scroller__row > * {
+  flex: 0 0 auto;
+}
+
+.nav-overlay-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+
 @layer theme {
   :root {
     @variant light {
