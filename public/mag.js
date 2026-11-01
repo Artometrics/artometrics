@@ -37,25 +37,98 @@
     var n = 1;
     var i = 0;
 
-    function layout() {
-      var keep = i / Math.max(1, n - 1);
+    if (!b._magSource || !b.querySelector(".mag-page")) b._magSource = b.innerHTML;
+    var sourceHTML = b._magSource;
+    var layoutPasses = 0;
+
+    function fits(page) {
+      return page.scrollHeight <= page.clientHeight + 1;
+    }
+
+    function paginate() {
       W = v.clientWidth;
-      G = 40;
-      var cs = getComputedStyle(b);
-      var pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
-      b.style.columnWidth = W - pad + "px";
-      b.style.columnGap = G + pad + "px";
-      b.style.width = W + "px";
-      b.classList.add("noanim");
-      var last = b.lastElementChild;
-      if (last) {
-        n = Math.max(
-          1,
-          Math.ceil((last.getBoundingClientRect().right - b.getBoundingClientRect().left + 1) / (W + G)),
-        );
-      } else {
-        n = Math.max(1, Math.round(b.scrollWidth / (W + G)));
+      G = 0;
+      var pageH = v.clientHeight;
+      var nodes = Array.from(b.childNodes).filter(function (node) {
+        return node.nodeType === 1 || (node.nodeType === 3 && node.textContent.trim());
+      });
+      b.textContent = "";
+      b.classList.add("mag-paged");
+      var page = null;
+
+      function makePage() {
+        page = document.createElement("div");
+        page.className = "mag-page";
+        page.style.width = W + "px";
+        page.style.height = pageH + "px";
+        b.appendChild(page);
+        return page;
       }
+
+      function add(node) {
+        page.appendChild(node);
+        if (fits(page)) return;
+        if ((node.tagName === "UL" || node.tagName === "OL") && node.children.length) {
+          var items = Array.from(node.children);
+          items.forEach(function (li) {
+            li.remove();
+          });
+          var list = node;
+          items.forEach(function (li) {
+            list.appendChild(li);
+            if (fits(page)) return;
+            list.removeChild(li);
+            if (!list.children.length) {
+              if (page.childElementCount === 1) {
+                list.appendChild(li);
+                page = makePage();
+                list = node.cloneNode(false);
+                page.appendChild(list);
+                return;
+              }
+              list.remove();
+            }
+            page = makePage();
+            list = node.cloneNode(false);
+            page.appendChild(list);
+            list.appendChild(li);
+          });
+          return;
+        }
+        if (page.childElementCount > 1) {
+          page.removeChild(node);
+          // height is fixed, so scrollHeight never drops below the page.
+          // Measure the lead-in itself and keep a short one with the next block.
+          var fixed = page.style.height;
+          page.style.alignSelf = "flex-start";
+          page.style.height = "auto";
+          var lead = page.scrollHeight;
+          page.style.height = fixed;
+          page.style.alignSelf = "";
+          if (lead < page.clientHeight * 0.72) {
+            page.appendChild(node);
+            return;
+          }
+          page = makePage();
+          add(node);
+        }
+      }
+
+      makePage();
+      nodes.forEach(add);
+      var pages = b.querySelectorAll(".mag-page");
+      if (pages.length > 1) {
+        var last = pages[pages.length - 1];
+        if (!last.textContent.trim() && !last.querySelector("img")) last.remove();
+      }
+      n = Math.max(1, b.querySelectorAll(".mag-page").length);
+    }
+
+    function layout() {
+      var keep = n > 1 ? i / Math.max(1, n - 1) : 0;
+      b.classList.add("noanim");
+      b.innerHTML = sourceHTML;
+      paginate();
       i = Math.min(n - 1, Math.round(keep * (n - 1)) || 0);
       go(i, 0);
       requestAnimationFrame(function () {
@@ -64,11 +137,10 @@
     }
 
     function reveal() {
-      var L = b.getBoundingClientRect().left;
-      b.querySelectorAll("figure,.fade").forEach(function (el) {
-        var x = el.getBoundingClientRect().left - L;
-        var p = Math.floor((x + 1) / (W + G));
-        if (p === i) el.classList.add("on");
+      var page = b.children[i];
+      if (!page) return;
+      page.querySelectorAll("figure,.fade").forEach(function (el) {
+        el.classList.add("on");
       });
     }
 
@@ -107,6 +179,14 @@
     function hide() {
       hint.style.opacity = "0";
     }
+    on(
+      b,
+      "scroll",
+      function (e) {
+        if (e.target && e.target.classList && e.target.classList.contains("mag-page")) hide();
+      },
+      true,
+    );
     hint.style.opacity = "1";
     hintTimer = setTimeout(hide, 3500);
 
@@ -141,7 +221,7 @@
         if (ignoreGesture) return;
         if (!e.target.closest || !e.target.closest(".mag-shell")) return;
         var t = e.touches[0];
-        if (Math.abs(t.clientX - sx) > 10) moved = true;
+        if (Math.abs(t.clientX - sx) > 10 || Math.abs(t.clientY - sy) > 10) moved = true;
         if (Math.abs(t.clientX - sx) > Math.abs(t.clientY - sy)) e.preventDefault();
       },
       { passive: false },
@@ -196,17 +276,27 @@
       resizeTimer = setTimeout(layout, 120);
     });
 
+    function bindImages() {
+      b.querySelectorAll("img").forEach(function (im) {
+        if (im.complete) return;
+        on(im, "load", function () {
+          if (layoutPasses > 6) return;
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(function () {
+            layoutPasses += 1;
+            layout();
+            bindImages();
+          }, 80);
+        });
+      });
+    }
+
     var start = parseInt((location.hash.match(/p(\d+)/) || [])[1] || "1", 10) - 1;
     var ready = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
     ready.then(function () {
       layout();
       go(isNaN(start) ? 0 : start, 0);
-    });
-    b.querySelectorAll("img").forEach(function (im) {
-      on(im, "load", function () {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(layout, 80);
-      });
+      bindImages();
     });
   }
 

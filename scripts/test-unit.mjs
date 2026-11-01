@@ -282,6 +282,8 @@ assert(frame.includes('data-skin'), "reader root carries data-skin");
 assert(frame.includes("localStorage"), "picker remembers the skin");
 const magJs = readFileSync(join(ROOT, "public/mag.js"), "utf8");
 assert(magJs.includes("location.search"), "page turns keep ?skin=");
+assert(magJs.includes("mag-page"), "magazine pages are discrete scroll containers");
+assert(readFileSync(join(ROOT, "public/css/mag.css"), "utf8").includes(".mag-page"), "magazine page scroll css");
 const skinCss = readFileSync(join(ROOT, "public/css/mag-skins.css"), "utf8");
 assert(skinCss.includes('[data-skin="ledger"]'), "ledger skin css");
 assert(skinCss.includes('[data-skin="box"]'), "box skin css");
@@ -409,5 +411,34 @@ for (const issue of listed) {
 assert(sawUnlinked, "at least one citation is unlinked");
 const catalogText = JSON.stringify(freshSources);
 assert(!/sk_live|api_key|BEGIN (RSA |OPENSSH )?PRIVATE/i.test(catalogText), "sources catalog has no secrets");
+
+const funFacts = JSON.parse(readFileSync(join(ROOT, "lib/nav-fun-facts.json"), "utf8"));
+assert(funFacts.length >= 40 && funFacts.length <= 60, `fun facts should be 40–60, got ${funFacts.length}`);
+const factHrefs = new Map();
+for (const topic of committedSources.topics) {
+  for (const issue of topic.issues) {
+    factHrefs.set(
+      issue.slug,
+      new Set((issue.citations || []).map((citation) => citation.href).filter(Boolean)),
+    );
+  }
+}
+const factTexts = new Set();
+for (const fact of funFacts) {
+  assert(fact.text && /[.!?]$/.test(fact.text), `fact needs a sentence: ${fact.slug}`);
+  assert(fact.text.length <= 180, `fact is too long: ${fact.slug}`);
+  assert(!factTexts.has(fact.text), `duplicate fact: ${fact.text}`);
+  factTexts.add(fact.text);
+  const articlePath = join(ROOT, "src/content/blog", `${fact.slug}.md`);
+  assert(existsSync(articlePath), `fact report missing: ${fact.slug}`);
+  const article = readFileSync(articlePath, "utf8");
+  assert(article.includes(fact.anchor), `fact anchor missing in ${fact.slug}: ${fact.anchor}`);
+  const cited = factHrefs.get(fact.slug);
+  assert(
+    (cited && cited.has(fact.sourceHref)) || article.includes(fact.sourceHref),
+    `fact source is not cited by ${fact.slug}`,
+  );
+}
+assert(readFileSync(join(ROOT, "lib/nav-fun-fact.ts"), "utf8").includes("Math.random"), "facts rotate randomly");
 
 console.log("unit OK");

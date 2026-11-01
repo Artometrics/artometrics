@@ -79,6 +79,8 @@ function SiteChrome() {
           scrollEventThrottle={32}
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode="on-drag"
+          directionalLockEnabled
+          nestedScrollEnabled
         >
           <Slot />
           {bareChrome ? null : <SiteFooter />}

@@ -128,8 +128,8 @@ export default function ReportScreen() {
       <SeoJsonLd data={jsonLd} />
 
       <Wrapper variant="measure" className="gap-4 border-b border-border pb-6 pt-3 md:pt-5">
-        <View className="flex-row flex-wrap items-center justify-between gap-x-3 gap-y-2">
-          <View className="min-w-0 shrink">
+        <View className="w-full min-w-0 gap-2">
+          <View className="min-w-0">
             <ReportBreadcrumb tags={post.tags} />
           </View>
           <ArticleActions

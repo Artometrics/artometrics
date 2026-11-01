@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Platform, Pressable, ScrollView, Text, TextInput, View } from "react-native";
+import { Linking, Platform, Pressable, ScrollView, Text, TextInput, View } from "react-native";
 import { Link, usePathname, router } from "expo-router";
 import { Globe } from "@/components/icons";
 import { Wrapper } from "@/components/Wrapper";
@@ -111,14 +111,28 @@ export function SiteNavOverlay() {
     };
   }, [menuOpen]);
 
+  function openSource(url: string) {
+    if (Platform.OS === "web" && typeof window !== "undefined") {
+      window.open(url, "_blank", "noopener,noreferrer");
+      return;
+    }
+    void Linking.openURL(url);
+  }
+
   if (!menuOpen) return null;
 
   return (
     <View
       className="inset-0 z-[2000] bg-bg"
-      style={overlayPosition}
+      style={[overlayPosition, { top: 0, right: 0, bottom: 0, left: 0, overflow: "hidden" }]}
       accessibilityViewIsModal
     >
+      <ScrollView
+        className="nav-overlay-scroll min-h-0 flex-1"
+        contentContainerClassName="pb-16"
+        keyboardShouldPersistTaps="handled"
+        style={{ flex: 1, minHeight: 0 }}
+      >
       <Wrapper className="gap-0 pt-14" variant="narrow">
         <View className="mb-4">
           <View className="flex-row items-center gap-2">
@@ -217,6 +231,9 @@ export function SiteNavOverlay() {
         ))}
         {funFact ? (
           <View className="mt-16 items-center pb-10 pt-4">
+            <Text className="mb-3 text-center font-serif text-[22px] italic leading-snug text-accent md:text-[24px]">
+              Did you know?
+            </Text>
             <Link href={funFact.href} asChild>
               <Pressable
                 onPress={() => setMenuOpen(false)}
@@ -225,9 +242,6 @@ export function SiteNavOverlay() {
                 accessibilityHint="Opens the full data report"
                 className="max-w-md items-center"
               >
-                <Text className="mb-3 text-center font-serif text-[22px] italic leading-snug text-accent md:text-[24px]">
-                  Did you know?
-                </Text>
                 <Text
                   className="text-center font-serif text-[26px] italic leading-[1.35] tracking-tight text-fg md:text-[30px]"
                   style={{ transform: [{ rotate: "-1.25deg" }] }}
@@ -236,9 +250,20 @@ export function SiteNavOverlay() {
                 </Text>
               </Pressable>
             </Link>
+            <Pressable
+              onPress={() => openSource(funFact.sourceHref)}
+              accessibilityRole="link"
+              accessibilityLabel={`Source: ${funFact.sourceLabel}`}
+              className="mt-5 max-w-md items-center px-3 py-2"
+            >
+              <Text className="text-center font-sans text-[11px] uppercase leading-4 tracking-[1.6px] text-muted">
+                Source · {funFact.sourceLabel}
+              </Text>
+            </Pressable>
           </View>
         ) : null}
       </Wrapper>
+      </ScrollView>
     </View>
   );
 }
