@@ -16,6 +16,7 @@ import {
   renderIssueBody,
 } from "@/lib/magazine";
 import { skinsForIssue } from "@/lib/magazine-skins";
+import { House } from "@/constants/Colors";
 
 export async function generateStaticParams() {
   return magazineIssues().map((issue) => ({ slug: issue.slug }));
@@ -48,7 +49,7 @@ export default function MagazineIssueScreen() {
   const magPath = magazineIssueHref(issue.slug);
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
+    <View style={{ flex: 1, backgroundColor: House.groundDeep }}>
       <PageSeo
         title={`${issue.title} — Artometrics Magazine`}
         description={issue.dek}

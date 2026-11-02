@@ -75,13 +75,13 @@ export function magazineIssue(slug: string | undefined): MagIssue | undefined {
 export const MAGAZINE_HOME_PATH = "/mag";
 
 export function magazineContentsHref(skinId?: string | null): string {
-  if (!skinId || skinId === "ledger") return MAGAZINE_HOME_PATH;
+  if (!skinId || skinId === "house") return MAGAZINE_HOME_PATH;
   return `${MAGAZINE_HOME_PATH}?skin=${encodeURIComponent(skinId)}`;
 }
 
 export function magazineIssueHref(slug: string, skinId?: string | null): string {
   const base = `${MAGAZINE_HOME_PATH}/${encodeURIComponent(slug.replace(/^\/+|\/+$/g, ""))}`;
-  if (!skinId || skinId === "ledger") return base;
+  if (!skinId || skinId === "house") return base;
   return `${base}?skin=${encodeURIComponent(skinId)}`;
 }
 

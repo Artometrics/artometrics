@@ -258,6 +258,16 @@ for (const issue of issues) {
 }
 const skinSource = readFileSync(join(ROOT, "lib/magazine-skins.ts"), "utf8");
 assert(skinSource.includes("artometrics-mag-skin:"), "skin choice is stored per issue");
+assert(skinSource.includes('id: "house"'), "house skin is the dark default");
+assert(skinSource.includes("withHouseSkin"), "house skin leads every reader");
+assert(
+  readFileSync(join(ROOT, "components/MagazineEditionCard.tsx"), "utf8").includes("Read as ebook"),
+  "articles offer the page-flip as an ebook",
+);
+assert(
+  readFileSync(join(ROOT, "app/(site)/[slug].tsx"), "utf8").includes("<MagazineEditionCard"),
+  "ebook entry is on the report",
+);
 assert(skinSource.includes("data-for"), "closing names switch with the skin");
 assert(skinSource.includes("resolveSkinId"), "skin ids resolve before they are applied");
 assert(skinSource.includes('new Set(["ledger", "box", "trade"])'), "retired billboard skins are named");

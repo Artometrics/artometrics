@@ -5,10 +5,9 @@ import { magazineImg, magazineIssue, magazineIssueHref, type MagIssue } from "@/
 
 type Props = {
   slug: string;
-  compact?: boolean;
 };
 
-function MagazineEditionCardInner({ issue, compact }: { issue: MagIssue; compact?: boolean }) {
+function EbookCard({ issue }: { issue: MagIssue }) {
   const hero = magazineImg(issue.hero);
   const href = magazineIssueHref(issue.slug);
 
@@ -16,40 +15,35 @@ function MagazineEditionCardInner({ issue, compact }: { issue: MagIssue; compact
     <Link href={href} asChild>
       <Pressable
         accessibilityRole="link"
-        accessibilityLabel={`Read the magazine edition: ${issue.title}`}
-        className={[
-          "overflow-hidden border-2 border-fg bg-bg-elevated",
-          compact ? "flex-row items-stretch gap-0" : "gap-0",
-        ].join(" ")}
-        style={{ shadowColor: "#E60000", shadowOffset: { width: 4, height: 4 }, shadowOpacity: 1, shadowRadius: 0 }}
+        accessibilityLabel={`Read as ebook: ${issue.title}`}
+        className="flex-row items-stretch overflow-hidden border border-[#f4efe4] bg-[#07070a]"
+        style={{ boxShadow: "4px 4px 0 #ff3d8a" }}
       >
         {hero ? (
           <SiteCoverImage
             source={{ uri: hero }}
-            wrapperClassName={compact ? "w-[108px] shrink-0" : "w-full"}
-            wrapperStyle={{ aspectRatio: compact ? 4 / 5 : 16 / 10 }}
+            wrapperClassName="w-[72px] shrink-0 bg-[#111]"
+            wrapperStyle={{ aspectRatio: 4 / 5 }}
             transition={200}
             accessibilityLabel=""
           />
-        ) : null}
-        <View className={compact ? "min-w-0 flex-1 justify-center gap-1.5 p-4" : "gap-2 p-4"}>
-          <Text className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-accent">
-            Magazine edition
+        ) : (
+          <View className="w-[72px] shrink-0 bg-[#111]" style={{ aspectRatio: 4 / 5 }} />
+        )}
+        <View className="min-w-0 flex-1 justify-center gap-1 px-3 py-2.5">
+          <Text
+            className="font-display text-[22px] leading-[1.05] text-[#f3ead7]"
+            style={{ fontFamily: "Anton" }}
+            numberOfLines={2}
+          >
+            Read as ebook
           </Text>
           <Text
-            className="font-display text-[22px] leading-[1.05] text-fg"
-            style={{ fontFamily: "Anton" }}
-            numberOfLines={compact ? 3 : 4}
+            className="font-mono text-[10px] font-medium uppercase tracking-[0.14em]"
+            style={{ color: "#7fded6" }}
+            numberOfLines={1}
           >
-            {issue.title}
-          </Text>
-          {!compact ? (
-            <Text className="font-sans text-[14px] leading-snug text-muted" numberOfLines={2}>
-              {issue.dek}
-            </Text>
-          ) : null}
-          <Text className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-accent pt-1">
-            Open page-flip reader →
+            {issue.kicker} · page-flip edition
           </Text>
         </View>
       </Pressable>
@@ -57,13 +51,9 @@ function MagazineEditionCardInner({ issue, compact }: { issue: MagIssue; compact
   );
 }
 
-/** End-of-article promo for the abbreviated page-flip issue when one exists. */
-export function MagazineEditionCard({ slug, compact = true }: Props) {
+/** Top-of-article entry for the page-flip edition. Hidden when the report has no issue. */
+export function MagazineEditionCard({ slug }: Props) {
   const issue = magazineIssue(slug);
   if (!issue) return null;
-  return (
-    <View className="gap-2 pt-2">
-      <MagazineEditionCardInner issue={issue} compact={compact} />
-    </View>
-  );
+  return <EbookCard issue={issue} />;
 }

@@ -16,7 +16,7 @@ declare global {
 }
 
 function readSkinChoice(slug: string, skins: MagSkin[]): string {
-  const fallback = skins[0]?.id || "ledger";
+  const fallback = skins[0]?.id || "house";
   if (typeof window === "undefined") return fallback;
   const query = new URLSearchParams(window.location.search).get("skin");
   let saved: string | null = null;
@@ -51,6 +51,15 @@ function relayout() {
 }
 
 function SkinIcon({ id }: { id: string }) {
+  if (id === "house") {
+    return (
+      <svg viewBox="0 0 18 18" aria-hidden="true">
+        <rect x="1.5" y="1.5" width="15" height="15" fill="#100e0c" stroke="#f3ead7" strokeWidth="1" />
+        <path d="M4 13.2h10" stroke="#ff3d8a" strokeWidth="1.8" />
+        <path d="M5 11.2 9 4.2l4 7" fill="none" stroke="#7fded6" strokeWidth="1.4" />
+      </svg>
+    );
+  }
   if (id === "box") {
     return (
       <svg viewBox="0 0 18 18" aria-hidden="true">
@@ -191,8 +200,8 @@ export function MagazineFrame({ pageKey, label, bodyHtml, skins }: Props) {
       rootBg: root?.style.backgroundColor,
       rootOverflow: root?.style.overflow,
     };
-    const paper = skin?.tokens.paper || "#ffffff";
-    const ink = skin?.tokens.ink || "#111111";
+    const paper = skin?.tokens.paper || "#100e0c";
+    const ink = skin?.tokens.ink || "#f4f7f6";
     document.body.style.backgroundColor = paper;
     document.body.style.color = ink;
     document.body.style.overflow = "hidden";

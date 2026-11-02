@@ -20,7 +20,39 @@ export type MagSkin = {
 
 export const DEFAULT_SKINS = skinDefaults as MagSkin[];
 
+/** Default reader. Dark ground, Anton, Tiffany, hot-pink rule — the site house, not cream paper. */
+export const HOUSE_SKIN: MagSkin = {
+  id: "house",
+  name: "House",
+  tokens: {
+    paper: "#100e0c",
+    ink: "#f4f7f6",
+    accent: "#7fded6",
+    accent2: "#ff3d8a",
+    rule: "#ff3d8a",
+  },
+  fonts: {
+    display: "Anton",
+    body: "DM Sans",
+    figures: "DM Mono",
+  },
+  ornaments: [],
+  closing: { name: "House Style", style: "house" },
+};
+
+export const DEFAULT_MAG_SKIN_ID = HOUSE_SKIN.id;
+
+/** House is always the first skin, so a fresh open is the dark edition. */
+export function withHouseSkin(skins: MagSkin[]): MagSkin[] {
+  const rest = skins.filter((skin) => skin.id !== HOUSE_SKIN.id);
+  return [HOUSE_SKIN, ...rest];
+}
+
 const FONT_STACK: Record<string, string> = {
+  Anton: '"Anton", Impact, sans-serif',
+  "DM Sans": '"DM Sans", system-ui, sans-serif',
+  "DM Mono": '"DM Mono", ui-monospace, monospace',
+  Chomsky: '"Chomsky", Georgia, serif',
   "Libre Caslon Text": '"Libre Caslon Text", Georgia, "Iowan Old Style", serif',
   "Source Serif 4": '"Source Serif 4", Georgia, "Iowan Old Style", serif',
   "IBM Plex Mono": '"IBM Plex Mono", ui-monospace, monospace',
@@ -49,7 +81,7 @@ export function resolveSkinId(
   saved: string | null | undefined,
 ): string {
   const ids = new Set(skins.map((skin) => skin.id));
-  const fallback = skins[0]?.id || "ledger";
+  const fallback = skins[0]?.id || DEFAULT_MAG_SKIN_ID;
   const asked = (query || "").trim();
   if (retiredSharedSkin(slug, asked)) return fallback;
   if (asked && ids.has(asked)) return asked;
@@ -63,16 +95,16 @@ const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "
 
 export function skinsForIssue(issue: { skins?: MagSkin[] | null }): MagSkin[] {
   const list = issue.skins;
-  if (!Array.isArray(list) || list.length === 0) return DEFAULT_SKINS;
+  if (!Array.isArray(list) || list.length === 0) return withHouseSkin(DEFAULT_SKINS);
   const usable = list.filter(
     (skin) => skin && skin.id && skin.name && skin.tokens?.paper && skin.tokens?.ink && skin.closing?.name,
   );
-  if (usable.length === list.length) return list;
-  return usable.length ? usable : DEFAULT_SKINS;
+  const base = usable.length === list.length ? list : usable.length ? usable : DEFAULT_SKINS;
+  return withHouseSkin(base);
 }
 
 export function skinStorageKey(slug: string): string {
-  return `artometrics-mag-skin:${slug}`;
+  return `artometrics-mag-skin:v2:${slug}`;
 }
 
 export function skinCssVars(skin: MagSkin): Record<string, string> {
@@ -115,7 +147,7 @@ export function formatSkinDate(date: string | undefined): string {
 }
 
 function named(ledger: string, box: string, trade: string): string {
-  return `<span data-for="ledger">${ledger}</span><span data-for="box">${box}</span><span data-for="trade">${trade}</span>`;
+  return `<span data-for="house">${ledger}</span><span data-for="ledger">${ledger}</span><span data-for="box">${box}</span><span data-for="trade">${trade}</span>`;
 }
 
 function ornaments(): string {
