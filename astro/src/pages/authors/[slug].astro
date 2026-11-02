@@ -1,0 +1,26 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getAuthor, getAuthors, getPosts } from "../../lib/content";
+
+export function getStaticPaths() {
+  return getAuthors().map((author) => ({ params: { slug: author.id }, props: { author } }));
+}
+
+const { author } = Astro.props;
+const stories = getPosts().filter((post) => post.author === author.id).slice(0, 12);
+---
+
+<Base title={author.name} description={author.role || author.name} path={`/authors/${author.id}`} image={author.image?.url}>
+  <article class="measure prose">
+    <p class="kicker"><a href="/authors">Authors</a></p>
+    <h1>{author.name}</h1>
+    {author.role ? <p>{author.role}</p> : null}
+    {author.image?.url ? <img src={author.image.url} alt={author.image.alt || author.name} width="240" /> : null}
+    {author.bio ? <p style="white-space:pre-wrap">{author.bio}</p> : null}
+    {stories.length ? (
+      <div class="list">
+        {stories.map((post) => <a href={`/${post.slug}`}><strong>{post.title}</strong></a>)}
+      </div>
+    ) : null}
+  </article>
+</Base>

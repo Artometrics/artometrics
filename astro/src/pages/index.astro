@@ -1,0 +1,196 @@
+---
+import Base from "../layouts/Base.astro";
+import {
+  SITE,
+  deckLine,
+  formatDate,
+  getEditions,
+  getEpisodes,
+  getFacts,
+  getPost,
+  getPosts,
+  imageUrl,
+  issueWeek,
+  sectionLabel,
+} from "../lib/content";
+
+const posts = getPosts();
+const lead = posts[0];
+const rest = posts.slice(1, 4);
+const picks = posts.slice(4, 9);
+const briefs = posts.slice(9, 12);
+const editions = getEditions().slice(0, 8);
+const episodes = getEpisodes().slice(0, 3);
+const facts = getFacts().slice(0, 3);
+const week = issueWeek();
+const hero = lead?.heroImage || "/images/brand/hero-cover.png";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Artometrics",
+    url: SITE.url,
+    logo: `${SITE.url}/images/brand/chomsky-a.png`,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Artometrics",
+    url: SITE.url,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE.url}/search?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  },
+];
+---
+
+<Base
+  title="Artometrics — data reports for creative industries"
+  description={SITE.description}
+  path="/"
+  image={hero}
+  jsonLd={jsonLd}
+>
+  {lead ? (
+    <section class="hero" style={`background-image:url('${hero}')`}>
+      <div class="wrap">
+        <p class="mast-script">Artometrics</p>
+        <p class="kicker">{sectionLabel(lead)}</p>
+        <h1>{lead.title}</h1>
+        <p>{deckLine(lead.description, 32)}</p>
+        <div class="cta-row">
+          <a class="btn btn-pink" href={`/${lead.slug}`}>Read the report</a>
+          <a class="btn btn-blue" href="/editions">Browse editions</a>
+        </div>
+      </div>
+    </section>
+  ) : null}
+
+  <div class="signal" style="background-image:linear-gradient(rgba(0,71,255,.55), rgba(0,71,255,.55)), url('/images/brand/signal-strip.png')">
+    <span>SIGNAL</span>
+  </div>
+
+  <div class="wrap home-grid">
+    <div class="home-main stack">
+      <div class="section-head">
+        <h2>From the magazine</h2>
+        <a href="/blog">All reports</a>
+      </div>
+      {rest.map((post) => (
+        <a class="card" href={`/${post.slug}`}>
+          {post.heroImage ? <img src={post.heroImage} alt="" width="800" height="500" /> : null}
+          <p class="rule-label">{sectionLabel(post)}</p>
+          <h3>{post.title}</h3>
+          <p class="muted">{deckLine(post.description, 22)}</p>
+        </a>
+      ))}
+    </div>
+    <aside class="home-side">
+      <div class="section-head">
+        <p class="rule-label">Editor's picks</p>
+        <a href="/blog">See all</a>
+      </div>
+      <div class="picks">
+        {picks.map((post) => (
+          <a class="pick" href={`/${post.slug}`}>
+            {post.heroImage ? <img src={post.heroImage} alt="" width="84" height="84" /> : <span></span>}
+            <span>
+              <strong>{post.title}</strong>
+              <span class="muted">{sectionLabel(post)}</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </aside>
+
+    <section class="schedule span-2">
+      <p class="rule-label">This week</p>
+      <p class="muted">{week.label}</p>
+      {week.thisWeek.length ? week.thisWeek.map((row) => {
+        const post = getPost(row.slug);
+        return (
+          <a href={`/${row.slug}`}>
+            <span>{post?.title ?? row.title}</span>
+            <time datetime={row.releaseFriday}>{formatDate(row.releaseFriday)}</time>
+          </a>
+        );
+      }) : <p class="muted">No Friday release in this window.</p>}
+      <p class="rule-label" style="margin-top:18px">Coming</p>
+      {week.coming.map((row) => {
+        const post = getPost(row.slug);
+        return (
+          <a href={`/${row.slug}`}>
+            <span>{post?.title ?? row.title}</span>
+            <time datetime={row.releaseFriday}>{formatDate(row.releaseFriday)}</time>
+          </a>
+        );
+      })}
+    </section>
+
+    <section class="span-2">
+      <p class="rule-label">Briefs</p>
+      <div class="stack">
+        {briefs.map((post) => (
+          <a class="card" href={`/${post.slug}`}>
+            <p class="rule-label">{sectionLabel(post)}</p>
+            <h3>{post.title}</h3>
+            <p class="muted">{deckLine(post.description, 24)}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <section class="rail-wrap">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Editions</h2>
+        <a href="/editions">Full archive</a>
+      </div>
+      <div class="rail">
+        {editions.map((edition, index) => (
+          <a href={`/editions/${edition.id}`}>
+            {edition.heroImage ? <img src={edition.heroImage} alt="" /> : null}
+            <span>
+              <small>Vol. {String(index + 1).padStart(2, "0")}</small>
+              {edition.title}
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding:36px 0">
+    <p class="rule-label">Did you know?</p>
+    <div class="facts">
+      {facts.map((fact) => (
+        <article class="fact-card">
+          <p><a href={`/${fact.slug}`}>{fact.text}</a></p>
+          <a href={fact.sourceHref} rel="noreferrer">Source · {fact.sourceLabel}</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  {episodes.length ? (
+    <section class="wrap" style="padding-bottom:12px">
+      <div class="section-head">
+        <h2>Interviews</h2>
+        <a href="/podcast">All episodes</a>
+      </div>
+      <div class="list">
+        {episodes.map((episode) => (
+          <a href={`/podcast/interviews/${episode.id}`}>
+            <span class="rule-label">Ep {episode.episodeNumber} · {episode.duration}</span>
+            <strong>{episode.title}</strong>
+            <span class="muted">{formatDate(episode.pubDate)}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  ) : null}
+</Base>

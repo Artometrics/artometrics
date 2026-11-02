@@ -1,0 +1,24 @@
+---
+import Magazine from "../../layouts/Magazine.astro";
+import { issueJsonLd, magazineIssue, magazineIssues, renderIssueBody } from "../../lib/vendor/magazine";
+import { skinsForIssue } from "../../lib/vendor/magazine-skins";
+
+export function getStaticPaths() {
+  return magazineIssues().map((issue) => ({ params: { slug: issue.slug } }));
+}
+
+const { slug } = Astro.params;
+const issue = magazineIssue(slug);
+if (!issue) throw new Error(`Missing magazine issue ${slug}`);
+const skins = skinsForIssue(issue).map((skin) => ({ id: skin.id, name: skin.name }));
+---
+
+<Magazine
+  title={issue.title}
+  description={issue.dek}
+  path={`/mag/${issue.slug}`}
+  label={issue.kicker}
+  bodyHtml={renderIssueBody(issue)}
+  skins={skins}
+  jsonLd={issueJsonLd(issue)}
+/>

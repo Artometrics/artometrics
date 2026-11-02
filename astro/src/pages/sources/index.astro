@@ -1,0 +1,47 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getSourceTopics } from "../../lib/content";
+
+const topics = getSourceTopics();
+const count = topics.reduce((sum, topic) => sum + topic.issues.length, 0);
+---
+
+<Base
+  title="Sources"
+  description="Citations behind Artometrics reports, grouped by topic, with the date each file runs through."
+  path="/sources"
+>
+  <div class="measure prose">
+    <p class="kicker">Citations</p>
+    <h1>Sources</h1>
+    <p>{count} reports. Each citation keeps the link that was checked for the issue.</p>
+    <p class="chips">
+      {topics.map((topic) => <a class="chip" href={`#${topic.id}`}>{topic.title}</a>)}
+    </p>
+    {topics.map((topic) => (
+      <section id={topic.id}>
+        <h2>{topic.title}</h2>
+        <p>{topic.description}</p>
+        {topic.issues.map((issue) => (
+          <article>
+            <h3><a href={issue.href}>{issue.title}</a></h3>
+            <p class="muted">{issue.kicker} · {issue.updatedThrough}</p>
+            {issue.datasets?.length ? (
+              <p>Dataset {issue.datasets.map((dataset, index) => (
+                <>{index ? ", " : ""}<a href={dataset.href}>{dataset.title}</a></>
+              ))}</p>
+            ) : null}
+            <ul>
+              {issue.citations.map((citation) => (
+                <li>
+                  {citation.href ? <a href={citation.href} rel="noreferrer">{citation.text || citation.href}</a> : citation.text}
+                  {!citation.href ? <span class="chip">no link yet</span> : null}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </section>
+    ))}
+  </div>
+</Base>

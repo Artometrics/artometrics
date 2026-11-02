@@ -1,0 +1,29 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getEdition, getEditions, getPost } from "../../lib/content";
+
+export function getStaticPaths() {
+  return getEditions().map((edition) => ({ params: { id: edition.id }, props: { edition } }));
+}
+
+const { edition } = Astro.props;
+const stories = edition.articleSlugs.map((slug) => getPost(slug)).filter(Boolean);
+---
+
+<Base title={edition.title} description={edition.dek} path={`/editions/${edition.id}`} image={edition.heroImage}>
+  <article class="measure prose">
+    <p class="kicker"><a href="/editions">Editions</a> · {edition.status}</p>
+    <h1>{edition.title}</h1>
+    {edition.heroImage ? <img src={edition.heroImage} alt="" /> : null}
+    <p>{edition.dek}</p>
+    <div class="list">
+      {stories.map((post) => post && (
+        <a href={`/${post.slug}`}>
+          <strong>{post.title}</strong>
+          <span class="muted">{post.description}</span>
+        </a>
+      ))}
+    </div>
+    {edition.glueSlugs?.length ? <p class="muted">Planned glue: {edition.glueSlugs.join(", ")}</p> : null}
+  </article>
+</Base>

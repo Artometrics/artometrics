@@ -1,0 +1,19 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+
+<Base title="Members" description="Public member profiles." path="/u">
+  <div class="measure prose">
+    <p class="kicker">Members</p>
+    <h1 id="handle">Profiles</h1>
+    <p>Public profiles use <code>/u/handle</code>. Profile text is account data, so this static edition shows the address and a link back to the magazine. A direct profile URL is served from this page.</p>
+    <p><a href="/me">Your hub</a> · <a href="/login">Sign in</a></p>
+  </div>
+  <script is:inline>
+    var parts = location.pathname.split("/").filter(Boolean);
+    if (parts[0] === "u" && parts[1]) {
+      var title = document.getElementById("handle");
+      if (title) title.textContent = "@" + parts[1];
+    }
+  </script>
+</Base>

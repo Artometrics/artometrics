@@ -1,0 +1,22 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getDatasets } from "../../lib/content";
+
+const packs = getDatasets();
+---
+
+<Base title="Datasets" description="Public dataset packs behind Artometrics reports." path="/datasets">
+  <div class="measure prose">
+    <p class="kicker">Library</p>
+    <h1>Datasets</h1>
+    <div class="list">
+      {packs.map((pack) => (
+        <a href={`/datasets/${pack.id}`}>
+          <span class="rule-label">{pack.status} · {pack.section}</span>
+          <strong>{pack.title}</strong>
+          <span class="muted">{pack.summary}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

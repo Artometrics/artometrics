@@ -1,7 +1,7 @@
 {
   "hosting": {
     "site": "artometrics-510519",
-    "public": "dist",
+    "public": "astro/dist",
     "ignore": [
       "firebase.json",
       "**/node_modules/**"
@@ -61,19 +61,27 @@
             "value": "public, max-age=86400"
           }
         ]
+      },
+      {
+        "source": "**/*.@(js|css|svg|png|jpg|jpeg|webp|woff2|otf)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "**/*.html",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=300"
+          }
+        ]
       }
     ],
     "redirects": [
-      {
-        "source": "/methodology/",
-        "destination": "/about",
-        "type": 301
-      },
-      {
-        "source": "/methodology",
-        "destination": "/about",
-        "type": 301
-      },
       {
         "source": "/culture",
         "destination": "/topics/culture",
@@ -81,11 +89,6 @@
       },
       {
         "source": "/culture/**",
-        "destination": "/topics/culture",
-        "type": 301
-      },
-      {
-        "source": "/atlas",
         "destination": "/topics/culture",
         "type": 301
       },
@@ -1115,11 +1118,6 @@
         "type": 301
       },
       {
-        "source": "/gutenberg",
-        "destination": "/lcsh",
-        "type": 301
-      },
-      {
         "source": "/gutenberg/**",
         "destination": "/lcsh",
         "type": 301
@@ -1407,8 +1405,20 @@
     ],
     "rewrites": [
       {
-        "source": "**",
-        "destination": "/index.html"
+        "source": "/u/**",
+        "destination": "/u/index.html"
+      },
+      {
+        "source": "/tools/twilda/novels/**",
+        "destination": "/tools/twilda/index.html"
+      },
+      {
+        "source": "/tools/twilda/journal/**",
+        "destination": "/tools/twilda/journal/index.html"
+      },
+      {
+        "source": "/tools/samples/**",
+        "destination": "/tools/samples/index.html"
       }
     ]
   }

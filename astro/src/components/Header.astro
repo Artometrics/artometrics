@@ -1,0 +1,100 @@
+---
+import { DOMAIN_META, DOMAIN_SLUGS, getFacts } from "../lib/content";
+
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const fact = getFacts()[0];
+const desks = DOMAIN_SLUGS.map((slug) => ({
+  href: `/topics/${slug}`,
+  label: DOMAIN_META[slug].title,
+  hint: DOMAIN_META[slug].navDescriptor,
+}));
+const more = [
+  { href: "/blog", label: "Index", hint: "All reports" },
+  { href: "/mag", label: "Magazine", hint: "Page-flip edition" },
+  { href: "/podcast", label: "Podcast", hint: "Interviews" },
+  { href: "/studio", label: "Studio", hint: "Twilda and Aftercare" },
+  { href: "/dispatch", label: "Dispatch", hint: "Tips and corrections" },
+  { href: "/sources", label: "Sources", hint: "Citations" },
+];
+---
+
+<header class="site-header">
+  <div class="dateline-bar">
+    <p class="dateline" data-dateline>ARTOMETRICS · DATA REPORTS</p>
+  </div>
+  <div class="wrap mast">
+    <label class="icon-btn menu-btn" for="nav-toggle">
+      <span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Open menu</span>
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75">
+        <path d="M4 7h16M4 12h16M4 17h16"></path>
+      </svg>
+    </label>
+    <a class="wordmark" href="/">Artometrics</a>
+    <a class="icon-btn" href="/search" aria-label="Search reports">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75">
+        <circle cx="11" cy="11" r="6"></circle>
+        <path d="M16 16l4 4"></path>
+      </svg>
+    </a>
+  </div>
+  <input id="nav-toggle" class="nav-toggle" type="checkbox" />
+  <nav class="desk-nav" aria-label="Desks">
+    <div class="wrap">
+      <ul>
+        {desks.map((item) => (
+          <li><a href={item.href} aria-current={path === item.href ? "page" : undefined}>{item.label}</a></li>
+        ))}
+        <li><a href="/blog" aria-current={path === "/blog" ? "page" : undefined}>Index</a></li>
+        <li><a href="/mag" aria-current={path === "/mag" || path.startsWith("/mag/") ? "page" : undefined}>Magazine</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="overlay">
+    <div class="wrap">
+      {desks.concat(more).map((item) => (
+        <a class="row" href={item.href}>
+          <span>{item.label}</span>
+          <span class="hint">{item.hint}</span>
+        </a>
+      ))}
+      {fact ? (
+        <div class="fact" id="did-you-know">
+          <p class="ask">Did you know?</p>
+          <a class="line" href={`/${fact.slug}`}>{fact.text}</a>
+          <a class="src" href={fact.sourceHref} rel="noreferrer">Source · {fact.sourceLabel}</a>
+          <script type="application/json" id="nav-facts" set:html={JSON.stringify(getFacts())} />
+        </div>
+      ) : null}
+    </div>
+  </div>
+</header>
+<script>
+  const node = document.querySelector("[data-dateline]");
+  if (node) {
+    const date = new Date().toLocaleDateString("en-US", {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+    node.textContent = `ARTOMETRICS · ${date} · DATA REPORTS`;
+  }
+  const box = document.getElementById("did-you-know");
+  const raw = document.getElementById("nav-facts")?.textContent;
+  if (box && raw) {
+    const pool = JSON.parse(raw) as { text: string; slug: string; sourceHref: string; sourceLabel: string }[];
+    if (pool.length > 1) {
+      const fact = pool[Math.floor(Math.random() * pool.length)];
+      const line = box.querySelector("a.line");
+      const src = box.querySelector("a.src");
+      if (line) {
+        line.textContent = fact.text;
+        line.setAttribute("href", `/${fact.slug}`);
+      }
+      if (src) {
+        src.textContent = `Source · ${fact.sourceLabel}`;
+        src.setAttribute("href", fact.sourceHref);
+      }
+    }
+  }
+</script>

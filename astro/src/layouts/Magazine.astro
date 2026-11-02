@@ -1,0 +1,93 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  label: string;
+  bodyHtml: string;
+  skins: { id: string; name: string }[];
+  jsonLd?: unknown;
+}
+
+const { title, description, path, label, bodyHtml, skins, jsonLd } = Astro.props;
+const canonical = `https://artometrics.com${path}`;
+const first = skins[0]?.id || "ledger";
+---
+
+<!doctype html>
+<html lang="en" class="mag-mode" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title} — Artometrics</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={`${title} — Artometrics`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content="https://artometrics.com/images/brand/og-default.png" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono:wght@500;700&family=DM+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/mag.css" />
+    <link rel="stylesheet" href="/css/mag-skins.css" />
+    {jsonLd ? <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} /> : null}
+  </head>
+  <body>
+    <div class="mag-shell" data-magazine={path} data-skin={first}>
+      <header class="bar">
+        <a href="/mag" aria-label="Contents"><img src="/images/brand/chomsky-a-white.png" alt="" width="22" height="22" /></a>
+        <span class="t">{label}</span>
+        <div class="skin-picker" role="radiogroup" aria-label="Magazine skin">
+          {skins.map((skin) => (
+            <button type="button" role="radio" data-skin-id={skin.id} aria-checked={skin.id === first ? "true" : "false"} aria-label={skin.name}>
+              <span class="tip">{skin.name}</span>
+            </button>
+          ))}
+        </div>
+        <a class="site" href="/blog">Site</a>
+        <span id="pg" aria-live="polite">1</span>
+      </header>
+      <div id="view">
+        <div id="fold"></div>
+        <article id="book" itemscope itemtype="https://schema.org/Article" set:html={bodyHtml} />
+      </div>
+      <footer class="bar">
+        <span aria-hidden="true">←</span>
+        <div class="prog"><i id="bar"></i></div>
+        <span aria-hidden="true">→</span>
+        <span id="tot"></span>
+      </footer>
+      <div class="hint" id="hint">Swipe sideways to turn. Scroll to read.</div>
+    </div>
+    <script is:inline>
+      document.querySelectorAll("[data-skin-id]").forEach(function (button) {
+        button.addEventListener("click", function (event) {
+          event.stopPropagation();
+          var id = button.getAttribute("data-skin-id");
+          var shell = document.querySelector(".mag-shell");
+          if (!shell || !id) return;
+          shell.setAttribute("data-skin", id);
+          document.querySelectorAll("[data-skin-id]").forEach(function (other) {
+            other.setAttribute("aria-checked", other === button ? "true" : "false");
+          });
+          var url = new URL(window.location.href);
+          var firstId = document.querySelector("[data-skin-id]").getAttribute("data-skin-id");
+          if (id === firstId) url.searchParams.delete("skin");
+          else url.searchParams.set("skin", id);
+          history.replaceState(null, "", url.pathname + url.search + url.hash);
+        });
+      });
+      var asked = new URLSearchParams(location.search).get("skin");
+      if (asked) {
+        var match = document.querySelector('[data-skin-id="' + CSS.escape(asked) + '"]');
+        if (match) match.click();
+      }
+    </script>
+    <script is:inline src="/mag.js"></script>
+    <script is:inline>
+      if (window.ArtometricsMag) window.ArtometricsMag.boot();
+    </script>
+  </body>
+</html>

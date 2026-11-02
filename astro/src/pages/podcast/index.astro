@@ -1,0 +1,25 @@
+---
+import Base from "../../layouts/Base.astro";
+import { formatDate, getEpisodes, imageUrl } from "../../lib/content";
+
+const episodes = getEpisodes();
+---
+
+<Base title="Podcast" description="Artometrics interviews on culture, data, and the creative economy." path="/podcast">
+  <div class="measure prose">
+    <p class="kicker">Signal</p>
+    <h1>Podcast</h1>
+    <p>Interviews with the desk. Locked episodes are marked for members.</p>
+    <div class="list">
+      {episodes.map((episode) => (
+        <a href={`/podcast/interviews/${episode.id}`}>
+          {imageUrl(episode.image) ? <img src={imageUrl(episode.image)} alt="" width="96" height="96" /> : null}
+          <span class="rule-label">Episode {episode.episodeNumber} · {episode.duration}{episode.isLocked ? " · Members" : ""}</span>
+          <strong>{episode.title}</strong>
+          <span class="muted">{episode.description}</span>
+          <span class="muted">{formatDate(episode.pubDate)}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

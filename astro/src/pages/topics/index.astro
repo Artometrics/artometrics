@@ -1,0 +1,20 @@
+---
+import Base from "../../layouts/Base.astro";
+import { DOMAIN_META, DOMAIN_SLUGS, postsInDomain } from "../../lib/content";
+---
+
+<Base title="Topics" description="Six desks: arts, sports, science, humanities, civics, and culture." path="/topics">
+  <div class="measure prose">
+    <p class="kicker">Desks</p>
+    <h1>Topics</h1>
+    <div class="list">
+      {DOMAIN_SLUGS.map((slug) => (
+        <a href={`/topics/${slug}`}>
+          <strong>{DOMAIN_META[slug].title}</strong>
+          <span class="muted">{DOMAIN_META[slug].description}</span>
+          <span class="muted">{postsInDomain(slug).length} reports</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

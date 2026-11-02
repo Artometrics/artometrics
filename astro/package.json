@@ -1,0 +1,17 @@
+{
+  "name": "artometrics-astro",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build && node scripts/finalize.mjs",
+    "preview": "astro preview --host 127.0.0.1 --port 4321",
+    "check:links": "node scripts/check-links.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.15.1"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.1"
+  }
+}

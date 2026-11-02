@@ -1,0 +1,23 @@
+---
+import Base from "../../layouts/Base.astro";
+import { domainTitle, getEditions } from "../../lib/content";
+
+const editions = getEditions();
+---
+
+<Base title="Editions" description="Special issues collected from the Artometrics desks." path="/editions">
+  <div class="measure prose">
+    <p class="kicker">Special issues</p>
+    <h1>Editions</h1>
+    <div class="list">
+      {editions.map((edition) => (
+        <a href={`/editions/${edition.id}`}>
+          {edition.heroImage ? <img src={edition.heroImage} alt="" width="240" height="140" /> : null}
+          <span class="rule-label">{domainTitle(edition.section)} · {edition.status}</span>
+          <strong>{edition.title}</strong>
+          <span class="muted">{edition.dek}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

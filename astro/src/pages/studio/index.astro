@@ -1,0 +1,27 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const tools = [
+  ["/tools/twilda", "Twilda", "Novels and a private journal. Drafts stay on your profile until you publish."],
+  ["/tools/aftercare", "Aftercare", "A daily check-in, track, and a small set of reflective tools."],
+  ["/tools/samples", "Sample Maker", "Record or upload your own sound. The maker does not reprocess someone else's record."],
+  ["/tools/palette", "Color Kit", "Pull a palette from an image you upload."],
+];
+---
+
+<Base title="Studio" description="Write, plan, record samples, and build color kits — the Artometrics workspace." path="/studio">
+  <div class="measure prose">
+    <p class="kicker">Your workspace</p>
+    <h1>Studio</h1>
+    <p>One profile for Twilda, Aftercare, samples, and color. This static edition keeps every door at the same URL. Signed-in drafts still live with the member profile and are not stored in the public site.</p>
+    <div class="list">
+      {tools.map(([href, title, copy]) => (
+        <a href={href}>
+          <strong>{title}</strong>
+          <span class="muted">{copy}</span>
+        </a>
+      ))}
+    </div>
+    <p><a href="/studio/publish">Publish</a> · <a href="/login">Sign in</a></p>
+  </div>
+</Base>

@@ -1,0 +1,26 @@
+---
+import Base from "../../layouts/Base.astro";
+import { DOMAIN_SLUGS, deckLine, formatDate, getPosts, sectionLabel } from "../../lib/content";
+
+const posts = getPosts();
+---
+
+<Base title="Reports" description="Every Artometrics data report, newest first." path="/blog">
+  <div class="measure prose">
+    <p class="kicker">Index</p>
+    <h1>Reports</h1>
+    <p>{posts.length} investigations. Desks: {DOMAIN_SLUGS.map((slug) => slug).join(", ")}.</p>
+    <p class="chips">
+      {DOMAIN_SLUGS.map((slug) => <a class="chip" href={`/topics/${slug}`}>{slug}</a>)}
+    </p>
+    <div class="list">
+      {posts.map((post) => (
+        <a href={`/${post.slug}`}>
+          <span class="rule-label">{sectionLabel(post)} · {formatDate(post.pubDate)}</span>
+          <strong>{post.title}</strong>
+          <span class="muted">{deckLine(post.description, 26)}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

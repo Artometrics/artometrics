@@ -1,0 +1,88 @@
+---
+import "../styles/site.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE, absoluteUrl } from "../lib/content";
+
+interface Props {
+  title: string;
+  description?: string;
+  path?: string;
+  image?: string;
+  type?: "website" | "article";
+  jsonLd?: unknown;
+  articleCss?: boolean;
+}
+
+const {
+  title,
+  description = SITE.description,
+  path = Astro.url.pathname,
+  image = SITE.og,
+  type = "website",
+  jsonLd,
+  articleCss = false,
+} = Astro.props;
+
+const fullTitle = title.includes("Artometrics") ? title : `${title} — Artometrics`;
+const canonical = absoluteUrl(path);
+const og = absoluteUrl(image);
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:site_name" content="Artometrics" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={og} />
+    <meta property="og:type" content={type} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={og} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/images/brand/favicon-dark-180.png" />
+    <link rel="alternate" type="application/rss+xml" title="Artometrics Reports" href="/rss.xml" />
+    <link rel="preload" href="/fonts/Chomsky.otf" as="font" type="font/otf" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono:wght@400;500;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @font-face {
+        font-family: "Chomsky";
+        src: url("/fonts/Chomsky.otf") format("opentype");
+        font-display: swap;
+      }
+    </style>
+    {articleCss ? <link rel="stylesheet" href="/css/artometrics-article.css" /> : null}
+    {articleCss ? <link rel="stylesheet" href="/css/house-style.css" /> : null}
+    {articleCss ? (
+      <style is:inline>
+        html[data-theme="dark"] .artometrics-article-body a { color: #9db7ff; }
+        html[data-theme="dark"] .artometrics-article-body .chart-still { background: #100e0c; }
+        html[data-theme="dark"] .artometrics-article-body img { max-width: 100%; height: auto; }
+        .artometrics-article-body { overflow-wrap: anywhere; }
+      </style>
+    ) : null}
+    {jsonLd ? <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} /> : null}
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <Header />
+    <main id="content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

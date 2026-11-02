@@ -1,0 +1,175 @@
+---
+import Base from "../layouts/Base.astro";
+import { withChartIslands } from "../lib/charts";
+import {
+  authorName,
+  deckLine,
+  formatDate,
+  getDownloads,
+  getPost,
+  getPosts,
+  readingMinutes,
+  relatedPosts,
+  sectionLabel,
+  splitHeadline,
+  absoluteUrl,
+  publicAssetExists,
+} from "../lib/content";
+import { magazineImg, magazineIssue, magazineIssueHref } from "../lib/vendor/magazine";
+
+export function getStaticPaths() {
+  return getPosts().map((post) => ({ params: { slug: post.slug } }));
+}
+
+const post = getPost(Astro.params.slug || "");
+if (!post) throw new Error(`Missing report ${Astro.params.slug}`);
+const minutes = readingMinutes(post.body);
+const headline = splitHeadline(post.title);
+const label = sectionLabel(post);
+const author = authorName(post.author);
+const issue = magazineIssue(post.slug);
+const pack = getDownloads(post.slug);
+const related = relatedPosts(post);
+const downloads = [
+  ["Dataset", pack?.dataset],
+  ["Quarto", pack?.quarto],
+  ["HTML", pack?.html],
+  ["PDF", pack?.pdf],
+  ["EPUB", pack?.epub],
+  ["Audio", pack?.audio || post.audioSrc],
+  ["Transcript", pack?.transcript],
+  ["GitHub", pack?.github],
+].filter((item): item is [string, string] => Boolean(item[1] && publicAssetExists(item[1])));
+const domain = post.tags?.[0];
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.pubDate,
+    image: [absoluteUrl(post.heroImage || "/images/brand/og-default.png")],
+    author: { "@type": "Person", name: author },
+    publisher: { "@type": "Organization", name: "Artometrics", url: "https://artometrics.com" },
+    mainEntityOfPage: absoluteUrl(`/${post.slug}`),
+  },
+  ...(post.faq?.length
+    ? [{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: post.faq.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: { "@type": "Answer", text: item.answer },
+        })),
+      }]
+    : []),
+];
+const audioCandidate = post.audioSrc || pack?.audio || "";
+const audio = audioCandidate && publicAssetExists(audioCandidate) ? audioCandidate : "";
+---
+
+<Base
+  title={post.title}
+  description={post.description}
+  path={`/${post.slug}`}
+  image={post.heroImage}
+  type="article"
+  jsonLd={jsonLd}
+  articleCss
+>
+  <article>
+    <header class="measure" style="padding-top:28px">
+      <p class="byline">
+        <a href="/">Home</a>
+        {domain ? <> · <a href={`/topics/${domain}`}>{label}</a></> : null}
+      </p>
+      {issue ? (
+        <a class="ebook-entry" href={magazineIssueHref(issue.slug)}>
+          <img src={magazineImg(issue.hero)} alt="" width="84" height="96" />
+          <div>
+            <span class="rule-label">Ebook</span>
+            <strong>Read as ebook</strong>
+            <span class="muted">{issue.kicker} · page-flip</span>
+          </div>
+        </a>
+      ) : null}
+      <p class="kicker">{label}</p>
+      <h1 class="headline">
+        {headline ? <><em>{headline.kicker}</em>: {headline.rest}</> : post.title}
+      </h1>
+      <p>{deckLine(post.description, 40)}</p>
+      <p class="byline">{author} · {formatDate(post.pubDate)} · {minutes} min</p>
+      {audio ? <audio controls preload="none" src={audio}><a href={audio}>Listen</a></audio> : null}
+      {downloads.length ? (
+        <nav class="downloads" aria-label="Downloads">
+          {downloads.map(([name, href]) => <a href={href}>{name}</a>)}
+        </nav>
+      ) : null}
+    </header>
+    {post.heroImage ? (
+      <div class="report-hero">
+        <img src={post.heroImage} alt="" width="1600" height="900" fetchpriority="high" />
+      </div>
+    ) : null}
+    {post.keyPoints?.length ? (
+      <ul class="key-points measure">
+        {post.keyPoints.map((point) => <li>{point}</li>)}
+      </ul>
+    ) : null}
+    <div class="artometrics-article-body measure" set:html={withChartIslands(post.body)} />
+    {post.faq?.length ? (
+      <section class="measure">
+        <h2 class="display">Questions</h2>
+        {post.faq.map((item) => (
+          <details>
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))}
+      </section>
+    ) : null}
+    {related.length ? (
+      <section class="measure">
+        <h2 class="display">Related</h2>
+        <div class="list">
+          {related.map((item) => (
+            <a href={`/${item.slug}`}><strong>{item.title}</strong><span class="muted">{item.description}</span></a>
+          ))}
+        </div>
+      </section>
+    ) : null}
+  </article>
+  <script is:inline>
+    document.querySelectorAll(".chart-open").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var root = button.closest(".chart-island");
+        var url = root && root.getAttribute("data-chart");
+        var plot = root && root.querySelector(".chart-plot");
+        if (!url || !plot || plot.dataset.ready === "1") return;
+        button.disabled = true;
+        button.textContent = "Loading chart…";
+        function draw() {
+          fetch(url).then(function (res) { return res.json(); }).then(function (fig) {
+            plot.hidden = false;
+            var layout = Object.assign({ paper_bgcolor: "#0e1110", plot_bgcolor: "#0e1110", font: { color: "#f3ead7" } }, fig.layout || {});
+            layout.width = root.clientWidth;
+            window.Plotly.newPlot(plot, fig.data || [], layout, { responsive: true, displayModeBar: false });
+            plot.dataset.ready = "1";
+            button.remove();
+          }).catch(function () {
+            button.disabled = false;
+            button.textContent = "Chart failed to load";
+          });
+        }
+        if (window.Plotly) draw();
+        else {
+          var script = document.createElement("script");
+          script.src = "https://cdn.plot.ly/plotly-2.35.2.min.js";
+          script.onload = draw;
+          document.body.appendChild(script);
+        }
+      });
+    });
+  </script>
+</Base>

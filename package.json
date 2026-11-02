@@ -16,6 +16,7 @@
     "web": "expo start --web",
     "dev": "expo start --web",
     "build": "npm run content:ensure && npm run sync:chart-r-sidecars && npm run cos:aeo && expo export -p web",
+    "build:astro": "npm --prefix astro install && npm --prefix astro run build",
     "eas-build-post-install": "npm run content:ensure",
     "sync:episodes": "node scripts/sync-member-episodes.mjs",
     "audit:articles": "node scripts/audit-articles.mjs",

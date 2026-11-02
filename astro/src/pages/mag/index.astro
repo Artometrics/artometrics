@@ -1,0 +1,19 @@
+---
+import Magazine from "../../layouts/Magazine.astro";
+import { renderContentsBody, magazineIssues } from "../../lib/vendor/magazine";
+import { skinsForIssue } from "../../lib/vendor/magazine-skins";
+
+const issues = magazineIssues();
+const body = renderContentsBody(issues);
+const featured = issues[0];
+const skins = (featured ? skinsForIssue(featured) : []).map((skin) => ({ id: skin.id, name: skin.name }));
+---
+
+<Magazine
+  title="Artometrics Magazine"
+  description="Five-minute data stories in the page-flip reader. Swipe sideways to turn pages."
+  path="/mag"
+  label="Contents"
+  bodyHtml={body}
+  skins={skins}
+/>

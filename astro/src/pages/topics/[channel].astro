@@ -1,0 +1,30 @@
+---
+import Base from "../../layouts/Base.astro";
+import { DOMAIN_META, DOMAIN_SLUGS, deckLine, postsInDomain, sectionLabel } from "../../lib/content";
+
+export function getStaticPaths() {
+  return DOMAIN_SLUGS.map((channel) => ({ params: { channel } }));
+}
+
+const { channel } = Astro.params;
+const meta = DOMAIN_META[channel as keyof typeof DOMAIN_META];
+const posts = postsInDomain(channel || "");
+---
+
+<Base title={meta.title} description={meta.description} path={`/topics/${channel}`}>
+  <div class="measure prose">
+    <p class="kicker"><a href="/topics">Topics</a></p>
+    <h1>{meta.title}</h1>
+    <p>{meta.description}</p>
+    <p>{meta.navDescriptor}</p>
+    <div class="list">
+      {posts.map((post) => (
+        <a href={`/${post.slug}`}>
+          <span class="rule-label">{sectionLabel(post)}</span>
+          <strong>{post.title}</strong>
+          <span class="muted">{deckLine(post.description, 24)}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

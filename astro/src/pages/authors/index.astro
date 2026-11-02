@@ -1,0 +1,22 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getAuthors } from "../../lib/content";
+
+const authors = getAuthors();
+---
+
+<Base title="Authors" description="The Artometrics editorial desk." path="/authors">
+  <div class="measure prose">
+    <p class="kicker">Masthead</p>
+    <h1>Authors</h1>
+    <div class="list">
+      {authors.map((author) => (
+        <a href={`/authors/${author.id}`}>
+          {author.image?.url ? <img src={author.image.url} alt="" width="72" height="72" /> : null}
+          <strong>{author.name}</strong>
+          <span class="muted">{author.role}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

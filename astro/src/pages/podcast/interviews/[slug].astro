@@ -1,0 +1,27 @@
+---
+import Base from "../../../layouts/Base.astro";
+import { formatDate, getEpisode, getEpisodes, imageUrl } from "../../../lib/content";
+
+export function getStaticPaths() {
+  return getEpisodes().map((episode) => ({ params: { slug: episode.id }, props: { episode } }));
+}
+
+const { episode } = Astro.props;
+const image = imageUrl(episode.image);
+---
+
+<Base title={episode.title} description={episode.description} path={`/podcast/interviews/${episode.id}`} image={image || undefined} type="article">
+  <article class="measure prose">
+    <p class="kicker"><a href="/podcast">Podcast</a> · Episode {episode.episodeNumber}</p>
+    <h1>{episode.title}</h1>
+    <p class="byline">{formatDate(episode.pubDate)} · {episode.duration}</p>
+    {image ? <img src={image} alt="" /> : null}
+    <p>{episode.description}</p>
+    {episode.isLocked ? (
+      <p>This episode is part of the member library. Plans are on <a href="/pricing">pricing</a>.</p>
+    ) : episode.audioSrc ? (
+      <audio controls preload="none" src={episode.audioSrc}><a href={episode.audioSrc}>Listen</a></audio>
+    ) : null}
+    {episode.body ? <div set:html={episode.body} /> : null}
+  </article>
+</Base>
