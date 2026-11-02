@@ -29,25 +29,25 @@ function htmlToText(html: string) {
 export function MagazineFrame({ label, bodyHtml }: Props) {
   return (
     <ScrollView
-      style={{ flex: 1, backgroundColor: "#ffffff" }}
+      style={{ flex: 1, backgroundColor: "#0e1110" }}
       contentContainerStyle={{ paddingHorizontal: 22, paddingTop: 28, paddingBottom: 48 }}
     >
       <View style={{ flexDirection: "row", justifyContent: "space-between", marginBottom: 16 }}>
         <Link href="/mag">
-          <Text style={{ color: "#0047FF", fontSize: 12, letterSpacing: 1.4, fontWeight: "700" }}>
+          <Text style={{ color: "#7fded6", fontSize: 12, letterSpacing: 1.4, fontWeight: "700" }}>
             CONTENTS
           </Text>
         </Link>
         <Link href="/blog">
-          <Text style={{ color: "#0047FF", fontSize: 12, letterSpacing: 1.4, fontWeight: "700" }}>
+          <Text style={{ color: "#7fded6", fontSize: 12, letterSpacing: 1.4, fontWeight: "700" }}>
             SITE
           </Text>
         </Link>
       </View>
-      <Text style={{ color: "#6b6b6b", fontSize: 12, letterSpacing: 1.6, marginBottom: 12 }}>
+      <Text style={{ color: "#b7d0cb", fontSize: 12, letterSpacing: 1.6, marginBottom: 12 }}>
         {label.toUpperCase()}
       </Text>
-      <Text style={{ color: "#111111", fontSize: 18, lineHeight: 28 }}>{htmlToText(bodyHtml)}</Text>
+      <Text style={{ color: "#f3ead7", fontSize: 18, lineHeight: 28 }}>{htmlToText(bodyHtml)}</Text>
     </ScrollView>
   );
 }

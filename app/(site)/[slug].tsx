@@ -142,6 +142,8 @@ export default function ReportScreen() {
           />
         </View>
 
+        <MagazineEditionCard slug={post.slug} />
+
         {label ? (
           <Text className="house-kicker self-start" style={{ fontFamily: "DM Mono" }}>
             {label}
@@ -223,7 +225,6 @@ export default function ReportScreen() {
       </Wrapper>
 
       <Wrapper variant="measure" className="pb-10 gap-8">
-        <MagazineEditionCard slug={post.slug} />
         <ReportRelatedReads slug={post.slug} limit={4} />
       </Wrapper>
     </View>

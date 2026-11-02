@@ -1,6 +1,6 @@
 import { createElement, useEffect, useLayoutEffect, useState } from "react";
 import type { CSSProperties } from "react";
-import { resolveSkinId, skinCssVars, skinStorageKey, type MagSkin } from "@/lib/magazine-skins";
+import { READER_INK, READER_PAPER, resolveSkinId, skinCssVars, skinStorageKey, type MagSkin } from "@/lib/magazine-skins";
 
 type Props = {
   pageKey: string;
@@ -191,8 +191,8 @@ export function MagazineFrame({ pageKey, label, bodyHtml, skins }: Props) {
       rootBg: root?.style.backgroundColor,
       rootOverflow: root?.style.overflow,
     };
-    const paper = skin?.tokens.paper || "#ffffff";
-    const ink = skin?.tokens.ink || "#111111";
+    const paper = READER_PAPER;
+    const ink = READER_INK;
     document.body.style.backgroundColor = paper;
     document.body.style.color = ink;
     document.body.style.overflow = "hidden";
@@ -235,10 +235,10 @@ export function MagazineFrame({ pageKey, label, bodyHtml, skins }: Props) {
 
   useEffect(() => {
     if (!skin) return;
-    document.body.style.backgroundColor = skin.tokens.paper;
-    document.body.style.color = skin.tokens.ink;
+    document.body.style.backgroundColor = READER_PAPER;
+    document.body.style.color = READER_INK;
     const root = document.getElementById("root");
-    if (root) root.style.backgroundColor = skin.tokens.paper;
+    if (root) root.style.backgroundColor = READER_PAPER;
     const fonts = document.fonts;
     if (fonts?.ready) {
       void fonts.ready.then(relayout);
@@ -271,7 +271,7 @@ export function MagazineFrame({ pageKey, label, bodyHtml, skins }: Props) {
       createElement(
         "a",
         { href: "/mag", "aria-label": "Contents" },
-        createElement("img", { src: "/logo.png", alt: "Artometrics" }),
+        createElement("img", { src: "/images/brand/chomsky-a-white.png", alt: "Artometrics" }),
       ),
       createElement("span", { className: "t" }, label),
       palette

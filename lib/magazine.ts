@@ -175,7 +175,7 @@ export function renderContentsBody(issues: MagIssue[] = magazineIssues()): strin
         .join("")}</ul>`,
     )
     .join("");
-  return `<p class="cv-mast">ARTOMETRICS</p><p class="cv-sub">Magazine · ${issues.length} issues · 5-minute reads</p>
+  return `<p class="cv-mast">Artometrics</p><p class="cv-sub">Magazine · ${issues.length} issues · 5-minute reads</p>
 <a class="cv-feat" href="${esc(magazineIssueHref(featured.slug))}"><img src="${esc(magazineImg(featured.hero))}" alt=""><p class="kick" style="margin-top:12px">${esc(featured.kicker)}</p><h3>${esc(featured.title)}</h3><p class="dek">${esc(featured.dek)}</p></a>
 ${lists}`;
 }

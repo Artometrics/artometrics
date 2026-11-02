@@ -336,6 +336,18 @@ assert(existsSync(join(ROOT, "public/sitemap.xml")), "sitemap.xml present");
 assert(existsSync(join(ROOT, "public/llms.txt")), "llms.txt present");
 assert(existsSync(join(ROOT, "public/rss.xml")), "rss.xml present");
 assert(readFileSync(join(ROOT, "public/css/mag.css"), "utf8").includes("#0047ff"), "house blue");
+assert(readFileSync(join(ROOT, "public/css/mag.css"), "utf8").includes("#0e1110"), "magazine ground is the dark house");
+assert(readFileSync(join(ROOT, "public/css/mag.css"), "utf8").includes(".mag-page"), "magazine page scroll css stays");
+const ebookCard = readFileSync(join(ROOT, "components/MagazineEditionCard.tsx"), "utf8");
+assert(ebookCard.includes("Read as ebook"), "ebook entry is labeled Read as ebook");
+assert(ebookCard.includes("magazineIssueHref"), "ebook entry opens the page-flip issue");
+const reportScreen = readFileSync(join(ROOT, "app/(site)/[slug].tsx"), "utf8");
+const ebookAt = reportScreen.indexOf("<MagazineEditionCard");
+const bodyAt = reportScreen.indexOf("<ArticleBody");
+assert(ebookAt > 0 && bodyAt > ebookAt, "ebook entry sits above the report body");
+assert(!reportScreen.includes("view=magazine"), "articles have no magazine view toggle");
+assert(!reportScreen.includes("MagazineFrame"), "articles render the report, not the page-flip");
+assert(readFileSync(join(ROOT, "lib/magazine-skins.ts"), "utf8").includes('READER_PAPER = "#0e1110"'), "reader surface is dark");
 assert(existsSync(join(ROOT, "public/mag.js")), "mag.js present");
 assert(existsSync(join(ROOT, "public/logo.png")), "magazine logo present");
 

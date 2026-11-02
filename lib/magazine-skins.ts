@@ -20,21 +20,6 @@ export type MagSkin = {
 
 export const DEFAULT_SKINS = skinDefaults as MagSkin[];
 
-const FONT_STACK: Record<string, string> = {
-  "Libre Caslon Text": '"Libre Caslon Text", Georgia, "Iowan Old Style", serif',
-  "Source Serif 4": '"Source Serif 4", Georgia, "Iowan Old Style", serif',
-  "IBM Plex Mono": '"IBM Plex Mono", ui-monospace, monospace',
-  "Dela Gothic One": '"Dela Gothic One", "Hiragino Sans", "Yu Gothic", sans-serif',
-  Inter: "Inter, system-ui, sans-serif",
-  "Space Mono": '"Space Mono", ui-monospace, monospace',
-  Oswald: "Oswald, Impact, sans-serif",
-  "Old Standard TT": '"Old Standard TT", Georgia, serif',
-  Archivo: "Archivo, system-ui, sans-serif",
-  Bungee: "Bungee, system-ui, sans-serif",
-  "Space Grotesk": '"Space Grotesk", system-ui, sans-serif',
-  "JetBrains Mono": '"JetBrains Mono", ui-monospace, monospace',
-};
-
 /** Skins Billboard, Streaming, and YouTube used before they had their own sets. A saved or shared link for one of these resolves to that issue's first skin. */
 const RETIRED_SHARED_SKINS = new Set(["ledger", "box", "trade"]);
 
@@ -75,19 +60,26 @@ export function skinStorageKey(slug: string): string {
   return `artometrics-mag-skin:${slug}`;
 }
 
+/** Reader ground. Skins still switch ornaments; the page itself stays the dark house. */
+export const READER_PAPER = "#0e1110";
+export const READER_INK = "#f3ead7";
+
 export function skinCssVars(skin: MagSkin): Record<string, string> {
   return {
-    "--paper": skin.tokens.paper,
-    "--ink": skin.tokens.ink,
-    "--accent": skin.tokens.accent,
-    "--accent2": skin.tokens.accent2,
-    "--rule": skin.tokens.rule,
-    "--blue": skin.tokens.accent,
-    "--skin-display": FONT_STACK[skin.fonts.display] || `"${skin.fonts.display}", Georgia, serif`,
-    "--skin-body": FONT_STACK[skin.fonts.body] || `"${skin.fonts.body}", Georgia, serif`,
-    "--skin-figures": FONT_STACK[skin.fonts.figures] || `"${skin.fonts.figures}", ui-monospace, monospace`,
-    backgroundColor: skin.tokens.paper,
-    color: skin.tokens.ink,
+    "--paper": READER_PAPER,
+    "--ink": READER_INK,
+    "--accent": "#7fded6",
+    "--accent2": "#ff3d8a",
+    "--rule": "#ff3d8a",
+    "--blue": "#0047ff",
+    "--red": "#ff3d8a",
+    "--mute": "#b7d0cb",
+    "--skin-id": skin.id,
+    "--skin-display": '"Anton", "Arial Narrow", Impact, sans-serif',
+    "--skin-body": '"DM Sans", system-ui, sans-serif',
+    "--skin-figures": '"DM Mono", ui-monospace, monospace',
+    backgroundColor: READER_PAPER,
+    color: READER_INK,
   };
 }
 
@@ -301,7 +293,7 @@ function youtubeClosing(issue: MagIssue): string {
 <h2 class="closing-name">${names}</h2>
 <ol class="src">${sources}</ol>
 <p class="updated">Updated through: Nielsen Gauge, August 2026 (press release October 22, 2026)</p>
-<p class="by skin-back"><a href="/">← Contents</a></p>
+<p class="by skin-back"><a href="/mag">← Contents</a></p>
 </section>`;
 }
 
@@ -315,7 +307,7 @@ function streamingClosing(issue: MagIssue): string {
 <h2 class="closing-name">${names}</h2>
 <ol class="src">${sources}</ol>
 <p class="updated">Updated through: weeks ending June 28, 2026</p>
-<p class="by skin-back"><a href="/">← Contents</a></p>
+<p class="by skin-back"><a href="/mag">← Contents</a></p>
 </section>`;
 }
 
@@ -330,7 +322,7 @@ function billboardClosing(issue: MagIssue): string {
 <ol class="src">${sources}</ol>
 <p class="updated">Updated through: chart dated Oct 31, 2026</p>
 <p class="hero-credit">Artometrics Billboard report illustration.</p>
-<p class="by skin-back"><a href="/">← Contents</a></p>
+<p class="by skin-back"><a href="/mag">← Contents</a></p>
 </section>`;
 }
 
@@ -349,7 +341,7 @@ function closingSection(issue: MagIssue, publishedInner: string): string {
 <div class="close-method"><h3>${named("Method", "Assembly", "Method")}</h3><p class="method">${method(issue)}</p></div>
 <div class="close-credit"><h3>${named("Plates", "Made by", "Image credits")}</h3><ul class="credits">${credits(issue)}</ul></div>
 <p class="updated">Updated through ${esc(formatSkinDate(issue.date))}.</p>
-<p class="by skin-back"><a href="/">← Contents</a></p>
+<p class="by skin-back"><a href="/mag">← Contents</a></p>
 </section>`;
 }
 
