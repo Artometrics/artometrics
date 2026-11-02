@@ -34,12 +34,12 @@ export function MagazineFrame({ label, bodyHtml }: Props) {
     >
       <View style={{ flexDirection: "row", justifyContent: "space-between", marginBottom: 16 }}>
         <Link href="/mag">
-          <Text style={{ color: "#7fded6", fontSize: 12, letterSpacing: 1.4, fontWeight: "700" }}>
+          <Text style={{ color: "#0047ff", fontSize: 12, letterSpacing: 1.4, fontWeight: "700" }}>
             CONTENTS
           </Text>
         </Link>
         <Link href="/blog">
-          <Text style={{ color: "#7fded6", fontSize: 12, letterSpacing: 1.4, fontWeight: "700" }}>
+          <Text style={{ color: "#0047ff", fontSize: 12, letterSpacing: 1.4, fontWeight: "700" }}>
             SITE
           </Text>
         </Link>

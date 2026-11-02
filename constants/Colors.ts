@@ -15,7 +15,9 @@ export const House = {
   muted: "#b7d0cb",
   subtle: "#8fb8b2",
   red: "#e60000",
-  tiffany: "#7fded6",
+  /** Small-type blue. #0047ff is the fill; this tint clears 4.5:1 on the dark ground. */
+  tiffany: "#5080ff",
+  blue: "#0047ff",
   pink: "#ff3d8a",
   cyan: "#21e4ff",
   splitRed: "#ff2a2a",
@@ -188,9 +190,9 @@ const MagazineThemes: Record<ThemeMode, ThemeColors> = {
     textMuted: House.muted,
     textSubtle: House.subtle,
     border: "#2a3330",
-    accent: House.tiffany,
-    accentSoft: "#143532",
-    secondary: House.red,
+    accent: "#5080ff",
+    accentSoft: "#10245c",
+    secondary: House.pink,
     inverse: House.groundDeep,
     headerBg: House.groundDeep,
     overlayBg: House.offset,
@@ -210,7 +212,7 @@ export function resolveBrandFonts(brand: BrandStyle): BrandFonts {
 
 export const BRAND_STYLE_LABELS: Record<BrandStyle, string> = {
   swiss: "Swiss Modern",
-  magazine: "Magazine (Anton / Tiffany)",
+  magazine: "Magazine (Anton / blue)",
 };
 
 export const DEFAULT_BRAND_STYLE: BrandStyle = "magazine";

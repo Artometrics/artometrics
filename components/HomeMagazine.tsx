@@ -86,7 +86,7 @@ function HomeMainStory({ post }: { post: BlogPost }) {
             <Pressable accessibilityRole="link" className="self-start pt-1">
               <Text
                 className="font-mono text-[11px] font-medium uppercase tracking-[0.14em]"
-                style={{ color: "#7fded6" }}
+                style={{ color: "#0047ff" }}
               >
                 Read investigation →
               </Text>

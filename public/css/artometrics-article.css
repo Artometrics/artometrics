@@ -271,8 +271,8 @@ html[data-theme="dark"] .artometrics-article-body{
   --art-bg:        transparent;
   --art-dark:      #f4f7f6;
   --art-mid:       #b7d0cb;
-  --art-highlight: #7fded6;
-  --art-secondary: #7fded6;
+  --art-highlight: #0047ff;
+  --art-secondary: #0047ff;
   --art-chart-red: #e60000;
   --art-chart-blue: #7fded6;
   --art-muted:     #2a3330;

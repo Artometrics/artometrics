@@ -1,4 +1,4 @@
-import { Pressable, Text, View } from "react-native";
+import { Platform, Pressable, Text, View } from "react-native";
 import { Link, usePathname } from "expo-router";
 import { Globe, Menu, Search } from "@/components/icons";
 import { Logo } from "@/components/Logo";
@@ -23,13 +23,23 @@ export function SiteHeader() {
     >
       <View className="border-b" style={{ borderBottomColor: "#2a3330" }}>
         <Wrapper className="py-1.5">
-          <Text
-            className="text-center font-mono text-[10px] font-medium uppercase tracking-[0.14em]"
-            style={{ color: House.muted }}
-            accessibilityRole="text"
-          >
-            {dateline}
-          </Text>
+          {Platform.OS === "web" ? (
+            <div
+              suppressHydrationWarning
+              className="text-center font-mono text-[10px] font-medium uppercase tracking-[0.14em]"
+              style={{ color: House.muted }}
+            >
+              {dateline}
+            </div>
+          ) : (
+            <Text
+              className="text-center font-mono text-[10px] font-medium uppercase tracking-[0.14em]"
+              style={{ color: House.muted }}
+              accessibilityRole="text"
+            >
+              {dateline}
+            </Text>
+          )}
         </Wrapper>
       </View>
       <Wrapper className="py-4">

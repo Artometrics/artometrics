@@ -239,6 +239,10 @@ export function ArticleActions({
     return items;
   }, [pack, audioHref]);
 
+  const primaryDownloads = downloads.filter((item) =>
+    item.key === "pdf" || item.key === "epub" || item.key === "data" || item.key === "audio",
+  );
+
   const chipBtn =
     variant === "inline"
       ? "bg-accent px-2 py-1.5 active:opacity-90 hover:opacity-90 md:px-2.5 md:py-1.5"
@@ -280,7 +284,6 @@ export function ArticleActions({
           <Pressable
             onPress={share}
             accessibilityRole="button"
-            accessibilityLabel="Share this report"
             className={chipBtn}
           >
             <Text className={chipBtnText}>Share</Text>
@@ -290,7 +293,6 @@ export function ArticleActions({
               <Pressable
                 onPress={shareOnX}
                 accessibilityRole="button"
-                accessibilityLabel="Share on X"
                 className={chipBtn}
               >
                 <Text className={chipBtnText}>X</Text>
@@ -298,7 +300,6 @@ export function ArticleActions({
               <Pressable
                 onPress={shareOnLinkedIn}
                 accessibilityRole="button"
-                accessibilityLabel="Share on LinkedIn"
                 className={chipBtn}
               >
                 <Text className={chipBtnText}>LinkedIn</Text>
@@ -306,7 +307,6 @@ export function ArticleActions({
               <Pressable
                 onPress={() => void copyReportLink()}
                 accessibilityRole="button"
-                accessibilityLabel="Copy report link"
                 className={chipBtn}
               >
                 <Text className={chipBtnText}>Copy link</Text>
@@ -321,7 +321,6 @@ export function ArticleActions({
                 openUrl(item.href);
               }}
               accessibilityRole="button"
-              accessibilityLabel={item.label}
               className={chipBtn}
             >
               <Text className={chipBtnText}>{downloadChipLabel(item)}</Text>
@@ -331,9 +330,6 @@ export function ArticleActions({
             <Pressable
               onPress={() => void downloadAll(downloads)}
               accessibilityRole="button"
-              accessibilityLabel={
-                Platform.OS === "web" ? "Download all files" : "Share all download links"
-              }
               className={chipBtn}
             >
               <Text className={chipBtnText}>
@@ -349,7 +345,6 @@ export function ArticleActions({
           <Pressable
             onPress={share}
             accessibilityRole="button"
-            accessibilityLabel="Share this report"
             className={chipBtnLg}
           >
             <Text className={chipBtnTextLg}>Share</Text>

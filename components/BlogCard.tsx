@@ -34,7 +34,6 @@ export function BlogCard({
       <Link href={`/${post.slug}`} asChild>
         <Pressable
           accessibilityRole="link"
-          accessibilityLabel={post.title}
           className="house-card mt-3 flex-row items-start gap-4 p-3"
           style={{
             backgroundColor: "#07070a",

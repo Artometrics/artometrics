@@ -18,7 +18,6 @@ export function MagazineEditionCard({ slug }: Props) {
     <Link href={href} asChild>
       <Pressable
         accessibilityRole="link"
-        accessibilityLabel={`Read as ebook: ${issue.title}`}
         className="ebook-entry"
       >
         {hero ? (
