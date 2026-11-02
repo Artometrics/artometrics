@@ -65,20 +65,6 @@ export default function Root({ children }: PropsWithChildren) {
           dangerouslySetInnerHTML={{
             __html: `
               @font-face {
-                font-family: "Piazzolla";
-                src: url("/fonts/Piazzolla.woff2") format("woff2");
-                font-weight: 100 900;
-                font-style: normal;
-                font-display: swap;
-              }
-              @font-face {
-                font-family: "Piazzolla";
-                src: url("/fonts/Piazzolla-Italic.woff2") format("woff2");
-                font-weight: 100 900;
-                font-style: italic;
-                font-display: swap;
-              }
-              @font-face {
                 font-family: "Archivo";
                 src: url("/fonts/Archivo.woff2") format("woff2");
                 font-weight: 100 900;
@@ -130,6 +116,42 @@ export default function Root({ children }: PropsWithChildren) {
               html, body, #root {
                 min-height: 100%;
               }
+              html.site-document-scroll,
+              html.site-document-scroll body {
+                height: auto !important;
+                min-height: 100%;
+                max-width: 100%;
+                overflow-x: hidden !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch;
+              }
+              html.site-document-scroll #root {
+                height: auto !important;
+                min-height: 100%;
+                max-width: 100%;
+                overflow: visible !important;
+              }
+              html.site-document-scroll #root div:has(.site-document) {
+                position: relative !important;
+                top: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                left: auto !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                height: auto !important;
+                max-height: none !important;
+                overflow: visible !important;
+                transform: none !important;
+                flex: none !important;
+                min-height: 0 !important;
+                background-color: transparent !important;
+              }
+              html.site-menu-open,
+              html.site-menu-open body {
+                overflow: hidden !important;
+              }
               ::selection {
                 background: rgba(230, 0, 0, 0.18);
                 color: inherit;
@@ -140,36 +162,16 @@ export default function Root({ children }: PropsWithChildren) {
                 font-family: "DM Sans", system-ui, sans-serif;
                 color: #f4f7f6;
               }
-              /* Prefer explicit site theme over OS preference alone */
-              html[data-theme="light"] {
-                color-scheme: light only;
-              }
-              html[data-theme="light"] body,
-              html[data-theme="light"] #root {
-                background: #f3ead7 !important;
-                color: #14110e !important;
-              }
-              html[data-theme="dark"] {
+              html[data-theme="dark"],
+              html.site-document-scroll {
                 color-scheme: dark;
               }
               html[data-theme="dark"] body,
-              html[data-theme="dark"] #root {
+              html[data-theme="dark"] #root,
+              html.site-document-scroll body,
+              html.site-document-scroll #root {
                 background: #0e1110 !important;
                 color: #f4f7f6 !important;
-              }
-              @media (prefers-color-scheme: dark) {
-                html:not([data-theme]) body,
-                html:not([data-theme]) #root,
-                html[data-theme="dark"] body,
-                html[data-theme="dark"] #root {
-                  background: #0e1110;
-                  color: #f4f7f6;
-                }
-                html[data-theme="light"] body,
-                html[data-theme="light"] #root {
-                  background: #f3ead7 !important;
-                  color: #14110e !important;
-                }
               }
               a { color: inherit; text-decoration: none; }
               /* KSM-style breakpoint helpers (Uniwind may also emit these) */
@@ -194,48 +196,36 @@ export default function Root({ children }: PropsWithChildren) {
                     path === MAG_ROOT ||
                     (path.indexOf(MAG_ROOT + "/") === 0 &&
                       path.slice(MAG_ROOT.length + 1).indexOf("/") === -1);
+                  var rootEl = document.documentElement;
                   if (isMag) {
-                    var rootEl = document.documentElement;
                     rootEl.classList.add("mag-mode");
+                    rootEl.classList.remove("site-document-scroll");
+                    rootEl.setAttribute("data-theme", "dark");
                     rootEl.style.backgroundColor = "#0e1110";
                     rootEl.style.color = "#f3ead7";
                     document.addEventListener("DOMContentLoaded", function () {
                       document.body.style.backgroundColor = "#0e1110";
                       document.body.style.color = "#f3ead7";
-                      document.body.style.overflow = "hidden";
                       var app = document.getElementById("root");
                       if (app) {
                         app.style.backgroundColor = "#0e1110";
                         app.style.color = "#f3ead7";
-                        app.style.overflow = "hidden";
                       }
                     });
                     return;
                   }
-                  var key = "artometrics-theme";
-                  var saved = localStorage.getItem(key);
-                  // Default dark (KSM-energy magazine) unless user saved light/system.
-                  var mode = "dark";
-                  if (saved === "light") mode = "light";
-                  else if (saved === "system") {
-                    mode = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)
-                      ? "dark"
-                      : "light";
-                  } else if (saved === "dark") mode = "dark";
-                  var bg = mode === "dark" ? "#0e1110" : "#f3ead7";
-                  var fg = mode === "dark" ? "#f4f7f6" : "#14110e";
-                  var root = document.documentElement;
-                  root.setAttribute("data-theme", mode);
-                  root.style.setProperty("color-scheme", mode === "dark" ? "dark" : "light only");
-                  root.style.colorScheme = mode;
-                  root.style.backgroundColor = bg;
+                  rootEl.classList.add("site-document-scroll");
+                  rootEl.classList.remove("mag-mode");
+                  rootEl.setAttribute("data-theme", "dark");
+                  rootEl.style.colorScheme = "dark";
+                  rootEl.style.backgroundColor = "#0e1110";
                   document.addEventListener("DOMContentLoaded", function () {
-                    document.body.style.backgroundColor = bg;
-                    document.body.style.color = fg;
+                    document.body.style.backgroundColor = "#0e1110";
+                    document.body.style.color = "#f4f7f6";
                     var app = document.getElementById("root");
                     if (app) {
-                      app.style.backgroundColor = bg;
-                      app.style.color = fg;
+                      app.style.backgroundColor = "#0e1110";
+                      app.style.color = "#f4f7f6";
                     }
                   });
                 } catch (e) {}

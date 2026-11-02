@@ -71,7 +71,7 @@ export function SiteFooter() {
                 </Text>
               </Pressable>
             </Link>
-            <Link href="/legal" asChild>
+            <Link href="/legal/ethics-statement" asChild>
               <Pressable>
                 <Text
                   className="font-sans text-xs uppercase tracking-[0.14em] hover:underline"

@@ -154,6 +154,7 @@ export function ArticleNarrationPlayer({ audioSrc, title, runtimeSeconds, label 
         }}
         accessibilityRole="adjustable"
         accessibilityLabel="Seek narration"
+        accessibilityValue={{ min: 0, max: 100, now: Math.round(progress * 100) }}
       >
         <View
           className="h-full bg-accent"

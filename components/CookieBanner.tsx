@@ -5,8 +5,9 @@ import { trackPageView } from "@/lib/analytics/ga";
 
 const KEY = "artometrics-cookie-pref";
 
-const overlayPosition =
-  Platform.OS === "web" ? ({ position: "fixed" as const }) : ({ position: "absolute" as const });
+const overlayPosition = (
+  Platform.OS === "web" ? { position: "fixed" } : { position: "absolute" }
+) as { position: "absolute" };
 
 export function CookieBanner() {
   const [visible, setVisible] = useState(false);
@@ -34,7 +35,7 @@ export function CookieBanner() {
   return (
     <View
       className="left-3 right-3 bottom-3 z-[1500] self-center max-w-[480px] gap-3 border border-border bg-bg-elevated p-3.5"
-      style={overlayPosition}
+      style={overlayPosition as object}
     >
       <Text className="text-[13px] leading-5 font-serif text-fg">
         We use essential cookies for membership and optional analytics when configured.{" "}

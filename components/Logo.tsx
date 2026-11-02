@@ -69,6 +69,7 @@ export function Logo({
             source={{ uri: mark }}
             style={{ width: markSize, height: markSize }}
             contentFit="contain"
+            accessibilityLabel=""
           />
         ) : (
           <Text
@@ -104,6 +105,7 @@ export function Logo({
           style={{ width: Math.round(size * 0.85), height: Math.round(size * 0.85) }}
           contentFit="contain"
           accessibilityElementsHidden
+          accessibilityLabel=""
         />
       ) : null}
       {showWordmark ? (

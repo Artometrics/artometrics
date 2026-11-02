@@ -178,6 +178,13 @@
     }
     function hide() {
       hint.style.opacity = "0";
+      hint.style.visibility = "hidden";
+      hint.setAttribute("aria-hidden", "true");
+    }
+    function showHint() {
+      hint.style.visibility = "visible";
+      hint.style.opacity = "1";
+      hint.removeAttribute("aria-hidden");
     }
     on(
       b,
@@ -187,18 +194,19 @@
       },
       true,
     );
-    hint.style.opacity = "1";
+    showHint();
     hintTimer = setTimeout(hide, 3500);
 
     var sx = 0;
     var sy = 0;
     var moved = false;
     var ignoreGesture = false;
+    var shell = v.closest(".mag-shell") || v;
     function fromChrome(target) {
-      return target && target.closest && target.closest("a, button, .skin-picker, input, textarea");
+      return target && target.closest && target.closest("a, button, .skin-picker, input, textarea, .mag-page a");
     }
     on(
-      document,
+      shell,
       "touchstart",
       function (e) {
         if (!e.target.closest || !e.target.closest(".mag-shell")) return;
@@ -215,7 +223,7 @@
       { passive: true },
     );
     on(
-      document,
+      shell,
       "touchmove",
       function (e) {
         if (ignoreGesture) return;
@@ -227,7 +235,7 @@
       { passive: false },
     );
     on(
-      document,
+      shell,
       "touchend",
       function (e) {
         if (ignoreGesture || fromChrome(e.target)) return;

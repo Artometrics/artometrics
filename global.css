@@ -35,7 +35,7 @@
 
   --color-paper: #f3ead7;
   --color-paper-elevated: #fffef8;
-  --color-magazine-accent: #7fded6;
+  --color-magazine-accent: #0047ff;
   --color-magazine-accent-soft: #143532;
   --color-secondary: #e60000;
 
@@ -65,7 +65,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  touch-action: pan-x;
+  touch-action: pan-x pan-y;
   overscroll-behavior-x: contain;
   scrollbar-width: thin;
 }
@@ -131,9 +131,9 @@
       --color-muted: #b7d0cb;
       --color-subtle: #8fb8b2;
       --color-border: #2a3330;
-      --color-accent: #7fded6;
-      --color-accent-soft: #143532;
-      --color-secondary: #e60000;
+      --color-accent: #5080ff;
+      --color-accent-soft: #10245c;
+      --color-secondary: #ff3d8a;
       --color-inverse: #100e0c;
       --color-header: #100e0c;
       --color-overlay: #121014;
@@ -148,10 +148,75 @@
       --art-ink: #f4f7f6;
       --art-ink-muted: #b7d0cb;
       --art-rule: #2a3330;
-      --art-red: #e60000;
-      --art-blue: #7fded6;
-      --art-ui-accent: #7fded6;
-      --art-ui-counter: #e60000;
+      --art-red: #ff3d8a;
+      --art-blue: #0047ff;
+      --art-ui-accent: #0047ff;
+      --art-ui-counter: #ff3d8a;
     }
   }
+}
+
+/*
+  iOS Safari will not pan a page whose document is overflow:hidden and whose
+  only scroller is a transformed flex child (RN ScrollView + absoluteFill screen).
+  Outside the page-flip reader, the document itself scrolls.
+*/
+html.site-document-scroll,
+html.site-document-scroll body {
+  height: auto !important;
+  min-height: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: auto;
+}
+html.site-document-scroll #root {
+  height: auto !important;
+  min-height: 100%;
+  max-width: 100%;
+  overflow: visible !important;
+}
+html.site-document-scroll #root div:has(.site-document) {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  transform: none !important;
+  flex: none !important;
+  min-height: 0 !important;
+  background-color: transparent !important;
+}
+html.site-menu-open,
+html.site-menu-open body {
+  overflow: hidden !important;
+}
+/* #0047ff is the fill. Small type uses #5080ff so it clears 4.5:1 on the dark ground. */
+.bg-accent {
+  background-color: #0047ff !important;
+}
+.site-document {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 100%;
+}
+.site-nav-overlay {
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+.site-header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  padding-top: env(safe-area-inset-top);
 }

@@ -13,7 +13,7 @@
   --house-muted: #b7d0cb;
   --house-subtle: #8fb8b2;
   --house-red: #e60000;
-  --house-tiffany: #7fded6;
+  --house-tiffany: #0047ff;
   --house-pink: #ff3d8a;
   --house-cyan: #21e4ff;
   --house-split-red: #ff2a2a;
@@ -72,7 +72,7 @@
   bottom: 0;
   height: 46%;
   pointer-events: none;
-  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 90' preserveAspectRatio='none'><path d='M0 72 C28 70 48 58 70 50 S120 28 150 34 S210 18 280 12' fill='none' stroke='%237fded6' stroke-width='3'/></svg>")
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 90' preserveAspectRatio='none'><path d='M0 72 C28 70 48 58 70 50 S120 28 150 34 S210 18 280 12' fill='none' stroke='%230047ff' stroke-width='3'/></svg>")
     center / 100% 100% no-repeat;
 }
 
@@ -165,7 +165,7 @@ html[data-theme="light"] .art-floating-box {
 
 .art-floating-box:nth-child(even),
 html[data-theme="dark"] .art-floating-box:nth-child(even) {
-  border-top-color: #7fded6 !important;
+  border-top-color: #0047ff !important;
 }
 
 .art-floating-box:hover,
@@ -192,9 +192,9 @@ html[data-theme="dark"] .art-stat-body {
 .art-stat-pill--red,
 html[data-theme="dark"] .art-stat-pill,
 html[data-theme="dark"] .art-stat-pill--red {
-  color: #7fded6 !important;
+  color: #0047ff !important;
   background: transparent !important;
-  border-color: #7fded6 !important;
+  border-color: #0047ff !important;
   border-radius: 0 !important;
 }
 
@@ -257,7 +257,7 @@ html[data-theme="light"] .artometrics-article-body main.art-article-main > h2 {
 
 .artometrics-article-body main.art-article-main > h2:not(#toc-title)::before,
 html[data-theme="dark"] .artometrics-article-body main.art-article-main > h2:not(#toc-title)::before {
-  background-color: #7fded6 !important;
+  background-color: #0047ff !important;
 }
 
 html[data-theme="light"] .artometrics-article-body main.art-article-main > h2:not(#toc-title)::before {
@@ -288,7 +288,7 @@ html[data-theme="light"] .artometrics-article-body main.art-article-main > h3.an
 
 .artometrics-article-body main.art-article-main > p.art-p:first-of-type::first-letter {
   color: #f3ead7 !important;
-  border-color: #7fded6 !important;
+  border-color: #0047ff !important;
   background: #0e1110 !important;
 }
 
@@ -382,12 +382,12 @@ html[data-theme="light"] .artometrics-article-body .art-chart-live {
   background: #100e0c !important;
   color: #f4f7f6 !important;
   border-color: #2a3330 !important;
-  border-left-color: #7fded6 !important;
+  border-left-color: #0047ff !important;
 }
 
 .artometrics-article-body .art-chart-insight strong,
 .artometrics-article-body .art-report-summary__label {
-  color: #7fded6 !important;
+  color: #0047ff !important;
 }
 
 /* Ebook entry on a report: the red-to-teal home card, shrunk to a cover row. */
@@ -447,7 +447,7 @@ html[data-theme="light"] .artometrics-article-body .art-chart-live {
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #7fded6;
+  color: #0047ff;
 }
 .ebook-entry__title {
   font-family: "Anton", "Arial Narrow", Impact, sans-serif;
@@ -465,7 +465,7 @@ html[data-theme="light"] .artometrics-article-body .art-chart-live {
   color: #f4f7f6;
 }
 .ebook-entry:focus-visible {
-  outline: 2px solid #7fded6;
+  outline: 2px solid #0047ff;
   outline-offset: 2px;
 }
 

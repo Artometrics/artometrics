@@ -15,10 +15,11 @@ import {
 } from "@/lib/search";
 import { getNavFunFact } from "@/lib/nav-fun-fact";
 
-const overlayPosition =
+const overlayPosition = (
   Platform.OS === "web"
-    ? ({ position: "fixed" as const })
-    : ({ position: "absolute" as const });
+    ? { position: "fixed" }
+    : { position: "absolute" }
+) as { position: "absolute" };
 
 function NavSearchRow({
   hit,
@@ -104,10 +105,9 @@ export function SiteNavOverlay() {
 
   useEffect(() => {
     if (Platform.OS !== "web" || typeof document === "undefined") return;
-    const prev = document.body.style.overflow;
-    if (menuOpen) document.body.style.overflow = "hidden";
+    document.documentElement.classList.toggle("site-menu-open", menuOpen);
     return () => {
-      document.body.style.overflow = prev;
+      document.documentElement.classList.remove("site-menu-open");
     };
   }, [menuOpen]);
 
@@ -123,15 +123,16 @@ export function SiteNavOverlay() {
 
   return (
     <View
-      className="inset-0 z-[2000] bg-bg"
-      style={[overlayPosition, { top: 0, right: 0, bottom: 0, left: 0, overflow: "hidden" }]}
+      className="site-nav-overlay inset-0 z-[2000] bg-bg"
+      style={[
+        overlayPosition,
+        { top: 0, right: 0, bottom: 0, left: 0, overflow: "hidden" },
+      ]}
       accessibilityViewIsModal
     >
-      <ScrollView
-        className="nav-overlay-scroll min-h-0 flex-1"
-        contentContainerClassName="pb-16"
-        keyboardShouldPersistTaps="handled"
-        style={{ flex: 1, minHeight: 0 }}
+      <View
+        className="nav-overlay-scroll"
+        style={Platform.OS === "web" ? undefined : { flex: 1, minHeight: 0 }}
       >
       <Wrapper className="gap-0 pt-14" variant="narrow">
         <View className="mb-4">
@@ -263,7 +264,7 @@ export function SiteNavOverlay() {
           </View>
         ) : null}
       </Wrapper>
-      </ScrollView>
+      </View>
     </View>
   );
 }

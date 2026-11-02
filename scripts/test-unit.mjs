@@ -73,8 +73,14 @@ assert(colorsTs.includes('BrandStyle'), "brand style type present");
 assert(colorsTs.includes("magazine"), "magazine brand tokens present");
 
 const themeTs = readFileSync(join(ROOT, "lib/theme.tsx"), "utf8");
-assert(themeTs.includes("artometrics-brand-style"), "brand style persistence key");
-assert(themeTs.includes("toggleBrandStyle"), "brand style toggle");
+assert(themeTs.includes('const mode: ThemeMode = "dark"'), "site theme is locked dark");
+assert(themeTs.includes("DEFAULT_BRAND_STYLE"), "magazine brand is the only applied brand");
+const settingsTs = readFileSync(join(ROOT, "app/(site)/settings.tsx"), "utf8");
+assert(!settingsTs.includes("Light mode"), "settings has no light-mode toggle");
+assert(!settingsTs.includes("Swiss"), "settings has no swiss style toggle");
+const layoutTs = readFileSync(join(ROOT, "app/(site)/_layout.tsx"), "utf8");
+assert(layoutTs.includes("site-document-scroll"), "document scroll is enabled outside the reader");
+assert(layoutTs.includes('className="site-document"'), "web pages opt into document scroll");
 
 const issues = JSON.parse(readFileSync(join(ROOT, "magazine/issues.json"), "utf8"));
 const blog = JSON.parse(readFileSync(join(ROOT, "src/generated/blog.json"), "utf8")).filter(

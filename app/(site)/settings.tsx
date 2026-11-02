@@ -4,8 +4,6 @@ import { Link, router } from "expo-router";
 import { Wrapper } from "@/components/Wrapper";
 import { PrimaryButton } from "@/components/PrimaryButton";
 import { PageSeo } from "@/components/PageSeo";
-import { BRAND_STYLE_LABELS, type BrandStyle } from "@/constants/Colors";
-import { useTheme } from "@/lib/theme";
 import { useAuth } from "@/lib/auth";
 import { apiFetch } from "@/lib/supabase/client";
 import { PLANS, type PlanTier } from "@/lib/product/plans";
@@ -27,7 +25,6 @@ function formatPlanLabel(planTier: string | null, status: string | null) {
 }
 
 export default function SettingsScreen() {
-  const { mode, toggle, setPreference, brandStyle, setBrandStyle } = useTheme();
   const { user, loading, signOut } = useAuth();
   const [planLabel, setPlanLabel] = useState<string | null>(null);
   const [active, setActive] = useState(false);
@@ -135,45 +132,6 @@ export default function SettingsScreen() {
         </Text>
       )}
       {actionError ? <Text className="font-serif text-base leading-7 text-accent">{actionError}</Text> : null}
-
-      <View className="mt-3 gap-2.5">
-        <Text className="font-serif text-[22px] font-bold text-fg">Appearance</Text>
-        <Pressable
-          onPress={toggle}
-          className="border border-border p-3.5 flex-row justify-between items-center"
-        >
-          <Text className="font-serif text-base leading-7 text-fg">
-            {mode === "dark" ? "Dark mode" : "Light mode"}
-          </Text>
-          <Text className="text-accent font-bold">Switch</Text>
-        </Pressable>
-        <Pressable onPress={() => setPreference("system")} className="mt-2">
-          <Text className="text-muted text-sm">Use system setting</Text>
-        </Pressable>
-
-        <Text className="font-serif text-[22px] font-bold mt-5 text-fg">Brand style</Text>
-        <Text className="font-serif text-base leading-7 text-muted mb-2">
-          Magazine (Anton display, DM Sans body) is the default. Swiss is an alternate condensed chrome.
-        </Text>
-        {(["swiss", "magazine"] as BrandStyle[]).map((style) => {
-          const isSelected = brandStyle === style;
-          return (
-            <Pressable
-              key={style}
-              onPress={() => setBrandStyle(style)}
-              className={[
-                "border p-3.5 flex-row justify-between items-center mt-2",
-                isSelected ? "border-accent bg-accent-soft" : "border-border bg-transparent",
-              ].join(" ")}
-            >
-              <Text className="font-serif text-base leading-7 text-fg">
-                {BRAND_STYLE_LABELS[style]}
-              </Text>
-              <Text className="text-accent font-bold">{isSelected ? "Selected" : "Use"}</Text>
-            </Pressable>
-          );
-        })}
-      </View>
 
       <View className="mt-3 gap-2.5">
         <Text className="font-serif text-[22px] font-bold text-fg">Analytics</Text>

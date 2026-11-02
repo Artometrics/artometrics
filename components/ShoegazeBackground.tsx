@@ -37,8 +37,8 @@ export function ShoegazeBackground() {
       style={{
         position: "fixed",
         inset: 0,
-        width: "100vw",
-        height: "100vh",
+        width: "100%",
+        height: "100%",
         pointerEvents: "none",
         zIndex: 0,
         overflow: "hidden",
@@ -62,7 +62,7 @@ export function ShoegazeBackground() {
 
 const styles = StyleSheet.create({
   nativeContainer: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     zIndex: 0,
   },
 });

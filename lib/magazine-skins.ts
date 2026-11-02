@@ -68,7 +68,7 @@ export function skinCssVars(skin: MagSkin): Record<string, string> {
   return {
     "--paper": READER_PAPER,
     "--ink": READER_INK,
-    "--accent": "#7fded6",
+    "--accent": "#0047ff",
     "--accent2": "#ff3d8a",
     "--rule": "#ff3d8a",
     "--blue": "#0047ff",
