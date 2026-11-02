@@ -1,30 +1,57 @@
 ---
 import Base from "../layouts/Base.astro";
 import {
-  deckLine,
-  formatDate,
   getBlogPost,
   getBlogPosts,
-  getPodcastEpisodes,
+  reportHeadlineRest,
+  reportKicker,
   sectionLabel,
 } from "@/lib/content";
-import {
-  formatIssueWeekLabel,
-  getComingInvestigations,
-  getThisWeekInvestigations,
-} from "@/lib/contentCalendar";
-import { EDITIONS } from "@/data/editions";
-import { mediaUrl } from "../lib/static-charts";
+import { DOMAIN_META, DOMAIN_SLUGS, primaryDomain } from "@/data/sections";
+import { magazineImg, magazineIssues } from "@/lib/magazine";
 
 const posts = getBlogPosts();
 const lead = posts[0];
-const briefs = posts.slice(1, 5);
-const picks = posts.slice(5, 10);
-const trending = posts.slice(10, 18);
-const thisWeek = getThisWeekInvestigations(undefined, 3);
-const coming = getComingInvestigations(undefined, 3);
-const editions = EDITIONS.slice(0, 8);
-const episodes = getPodcastEpisodes().slice(0, 3);
+const mastDate = new Date()
+  .toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  })
+  .toUpperCase();
+
+const issueCards = magazineIssues().slice(0, 3).flatMap((issue) => {
+  const post = getBlogPost(issue.slug);
+  if (!post) return [];
+  return [{
+    slug: post.slug,
+    href: `/${post.slug}`,
+    img: post.heroImage || magazineImg(issue.hero),
+    label: reportKicker(post.title, issue.kicker || post.subject).toUpperCase(),
+    title: post.title,
+  }];
+});
+
+const reserved = new Set<string>([
+  ...(lead ? [lead.slug] : []),
+  ...issueCards.map((card) => card.slug),
+]);
+
+const topics = DOMAIN_SLUGS.map((slug) => {
+  const seen = new Set<string>();
+  const items = posts
+    .filter((post) => primaryDomain(post.tags || []) === slug && !reserved.has(post.slug))
+    .slice(0, 3)
+    .map((post) => {
+      let label = reportKicker(post.title, post.subject).toUpperCase();
+      if (seen.has(label)) label = post.slug.replace(/-/g, " ").toUpperCase();
+      seen.add(label);
+      return { href: `/${post.slug}`, label, title: post.title };
+    });
+  return { slug, title: DOMAIN_META[slug].title, items };
+}).filter((row) => row.items.length);
+
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -53,150 +80,109 @@ const jsonLd = [
   description="Investigative data stories on arts, sports, science, humanities, civics, and culture."
   path="/"
   jsonLd={jsonLd}
+  footer="home"
 >
-  {lead ? (
-    <section class="bleed-hero house-hero" aria-label="Lead story">
-      {lead.heroImage ? <img class="bleed-hero__photo" src={lead.heroImage} alt="" /> : null}
-      <div class="house-hero__drift" aria-hidden="true"></div>
-      <div class="house-hero__benday" aria-hidden="true"></div>
-      <div class="bleed-hero__shade" aria-hidden="true"></div>
-      <div class="house-hero__line" aria-hidden="true"></div>
-      <div class="wrap bleed-hero__copy">
-        <p class="brand-script">Artometrics</p>
-        {sectionLabel(lead.tags, lead.subject) ? <p class="house-kicker">{sectionLabel(lead.tags, lead.subject)}</p> : null}
-        <h1><a href={`/${lead.slug}`}>{lead.title}</a></h1>
-        <p class="dek">{deckLine(lead.description, 36)}</p>
-        <p class="actions">
-          <a class="btn" href={`/${lead.slug}`}>Read the report</a>
-          <a class="btn btn--ghost" href="/editions">Browse editions</a>
-        </p>
-      </div>
-    </section>
-  ) : null}
+  <div class="home-c">
+    <header class="home-mast">
+      <p class="home-mast__date">{mastDate}</p>
+      <h1>Artometrics</h1>
+      <p class="home-mast__dek">Visual culture, measured.</p>
+    </header>
 
-  <section class="signal" aria-label="Signal">
-    <p>Signal</p>
-  </section>
+    <nav class="home-tabs" aria-label="Three entry points">
+      <a href="#latest">Latest</a>
+      <a href="#issues">Issues</a>
+      <a href="#topics">Topics</a>
+    </nav>
 
-  <section class="rail-block">
-    <div class="wrap">
-      <div class="rail-head">
-        <h2>Editions</h2>
-        <a href="/editions">Full archive →</a>
-      </div>
-      <div class="rail">
-        {editions.map((edition, index) => (
-          <a class="edition" href={`/editions/${edition.id}`}>
-            {edition.heroImage ? <img src={edition.heroImage} alt="" /> : null}
-            <div>
-              <span class="kicker">Vol. {String(index + 1).padStart(2, "0")}</span>
-              <strong>{edition.title}</strong>
-              <span class="kicker">{edition.dek}</span>
-            </div>
+    <section class="home-lead" id="latest" aria-label="Lead story">
+      {lead ? (
+        <>
+          <p class="pill">Lead story</p>
+          <a class="home-lead__hit" href={`/${lead.slug}`}>
+            <h2>
+              <span class="report-kicker">{reportKicker(lead.title, lead.subject)}:</span>
+              {" "}{reportHeadlineRest(lead.title)}
+            </h2>
+            {lead.heroImage ? (
+              <img src={lead.heroImage} alt="" />
+            ) : null}
           </a>
-        ))}
-      </div>
-    </div>
-  </section>
+          <p class="home-lead__dek">{lead.description}</p>
+          <p class="home-lead__meta">{sectionLabel(lead.tags, lead.subject) || "Report"}</p>
+        </>
+      ) : <p class="home-lead__dek">No report is published yet.</p>}
+    </section>
 
-  <div class="wrap home-grid">
-    <div>
-      {briefs.map((post) => (
-        <article class="brief">
-          {sectionLabel(post.tags, post.subject) ? <p class="kicker">{sectionLabel(post.tags, post.subject)}</p> : null}
-          <h3><a href={`/${post.slug}`}>{post.title}</a></h3>
-          <p class="lede">{deckLine(post.description, 22)}</p>
-        </article>
-      ))}
-    </div>
-    <aside class="picks">
-      <div class="section-rule">
-        <h2>Editor's picks</h2>
-        <a href="/blog">See all →</a>
-      </div>
-      {picks.map((post) => (
-        <a class="pick" href={`/${post.slug}`}>
-          <span>
-            <span class="kicker">{post.pubDate ? formatDate(post.pubDate) : sectionLabel(post.tags, post.subject)}</span>
-            <h3>{post.title}</h3>
-            {sectionLabel(post.tags, post.subject) ? <span class="kicker">{sectionLabel(post.tags, post.subject)}</span> : null}
-          </span>
-          {post.heroImage ? <img src={post.heroImage} alt="" /> : <span></span>}
-        </a>
-      ))}
-    </aside>
-  </div>
-
-  <section class="wrap week">
-    <h2>This week</h2>
-    <p class="kicker">{formatIssueWeekLabel()}</p>
-    {thisWeek.length ? (
-      <ul>
-        {thisWeek.map((row) => {
-          const post = getBlogPost(row.slug);
-          return (
-            <li>
-              <a href={`/${row.slug}`}>
-                <span>{post?.title ?? row.title}</span>
-                <time datetime={row.releaseFriday}>{formatDate(row.releaseFriday)}</time>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    ) : <p class="lede">No Friday release in this window.</p>}
-    {coming.length ? (
-      <div class="coming">
-        <h2>Coming</h2>
-        <ul>
-          {coming.map((row) => {
-            const post = getBlogPost(row.slug);
-            return (
-              <li>
-                <a href={`/${row.slug}`}>
-                  <span>{post?.title ?? row.title}</span>
-                  <time datetime={row.releaseFriday}>{formatDate(row.releaseFriday)}</time>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+    {issueCards.length ? (
+      <section class="home-issues" id="issues" aria-label="Magazine issues">
+        <h2 class="section-label">Magazine issues</h2>
+        <div class="issue-rail">
+          {issueCards.map((card) => (
+            <a class="issue-card" href={card.href}>
+              {card.img ? <img src={card.img} alt="" /> : <span class="issue-card__fallback" aria-hidden="true"></span>}
+              <span class="issue-card__name">{card.label}</span>
+            </a>
+          ))}
+        </div>
+      </section>
     ) : null}
-  </section>
 
-  <section class="rail-block">
-    <div class="wrap">
-      <div class="rail-head">
-        <h2>Briefs</h2>
-        <a href="/blog">All reports →</a>
-      </div>
-      <div class="rail">
-        {trending.map((post) => (
-          <a class="trend" href={`/${post.slug}`}>
-            <span class="kicker">{sectionLabel(post.tags, post.subject)}</span>
-            <strong>{post.title}</strong>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
+    {topics.length ? (
+      <section class="home-topics" id="topics" aria-label="Topics">
+        <h2 class="section-label">Topics</h2>
+        <div class="topic-grid">
+          {topics.map((row) => (
+            <div class="topic-row">
+              <a class="topic-row__name" href={`/topics/${row.slug}`}>{row.title}</a>
+              <p class="topic-row__pieces">
+                {row.items.map((item, index) => (
+                  <>
+                    {index > 0 ? <span aria-hidden="true"> · </span> : null}
+                    <a href={item.href} title={item.title}>{item.label}</a>
+                  </>
+                ))}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+    ) : null}
+  </div>
+  <script>
+    const tabs = Array.from(document.querySelectorAll(".home-tabs a"));
+    const sections = ["latest", "issues", "topics"]
+      .map((id) => document.getElementById(id))
+      .filter((node): node is HTMLElement => Boolean(node));
 
-  {episodes.length ? (
-    <section class="wrap page">
-      <div class="section-rule">
-        <h2>Interviews</h2>
-        <a href="/podcast">All episodes →</a>
-      </div>
-      <div class="stack">
-        {episodes.map((episode) => (
-          <a class="card" href={`/podcast/interviews/${episode.id}`}>
-            <span class="kicker">Ep {episode.episodeNumber || ""} · {episode.duration || "Listen"}</span>
-            <h2>{episode.title}</h2>
-            <span class="meta">{formatDate(episode.pubDate)}</span>
-          </a>
-        ))}
-      </div>
-    </section>
-  ) : null}
+    function setCurrent(id: string) {
+      for (const tab of tabs) {
+        const on = tab.getAttribute("href") === `#${id}`;
+        if (on) tab.setAttribute("aria-current", "true");
+        else tab.removeAttribute("aria-current");
+      }
+    }
+
+    setCurrent("latest");
+    for (const tab of tabs) {
+      tab.addEventListener("click", () => {
+        const id = (tab.getAttribute("href") || "").replace("#", "");
+        if (id) setCurrent(id);
+      });
+    }
+
+    if ("IntersectionObserver" in window && sections.length) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          const id = visible?.target?.id;
+          if (id) setCurrent(id);
+        },
+        { rootMargin: "-45% 0px -45% 0px", threshold: [0.15, 0.4] },
+      );
+      for (const section of sections) observer.observe(section);
+    }
+  </script>
 </Base>

@@ -34,6 +34,50 @@ export function splitReportHeadline(title: string): { slug: string; subtitle: st
   return { slug, subtitle };
 }
 
+/** Acronyms and stylized names that title case would flatten. */
+const KICKER_CASE: Record<string, string> = {
+  sf: "SF",
+  lcsh: "LCSH",
+  phds: "PhDs",
+  youtube: "YouTube",
+  mac: "Mac",
+};
+
+/** One-word topic token in title case, e.g. "Franchise" from "FRANCHISE: Merchandise Owns the Ledger". */
+export function reportKicker(title: string, subject?: string | null): string {
+  const split = splitReportHeadline(title);
+  const raw = (split?.slug || subject || title).trim();
+  const word = (raw.split(/\s+/)[0] || "Report").replace(/:+$/, "");
+  if (!word) return "Report";
+  const known = KICKER_CASE[word.toLowerCase()];
+  if (known) return known;
+  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+}
+
+/** Headline after the one-word kicker. */
+export function reportHeadlineRest(title: string): string {
+  const split = splitReportHeadline(title);
+  if (!split) return title;
+  const extra = split.slug.trim().split(/\s+/).slice(1).join(" ");
+  return [extra, split.subtitle].filter(Boolean).join(" ");
+}
+
+/** Split a published key point into the figure and its label. No new numbers. */
+export function parseKeyPoint(point: string): { value: string; label: string } {
+  const text = point.trim();
+  for (const sep of [" — ", " – "]) {
+    const idx = text.indexOf(sep);
+    if (idx !== -1) {
+      return { value: text.slice(0, idx).trim(), label: text.slice(idx + sep.length).trim() };
+    }
+  }
+  const hyphen = text.indexOf(" - ");
+  if (hyphen > 0 && hyphen < 48) {
+    return { value: text.slice(0, hyphen).trim(), label: text.slice(hyphen + 3).trim() };
+  }
+  return { value: text, label: "" };
+}
+
 const CARD_DECK_MIN_WORDS = 5;
 
 /** Short hook for grid/stack cards (~5–8 words). Full `description` stays in SEO. */

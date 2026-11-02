@@ -1,16 +1,17 @@
 ---
 import Base from "../layouts/Base.astro";
 import {
-  deckLine,
   formatAuthorName,
   formatDate,
   getBlogPosts,
   getRelatedPosts,
+  parseKeyPoint,
+  reportHeadlineRest,
+  reportKicker,
   sectionLabel,
-  splitReportHeadline,
 } from "@/lib/content";
 import { DOMAIN_META, SUBDOMAIN_META, primaryDomain, primarySubdomain } from "@/data/sections";
-import { magazineImg, magazineIssue, magazineIssueHref } from "@/lib/magazine";
+import { magazineIssue, magazineIssueHref } from "@/lib/magazine";
 import downloads from "@/src/generated/downloads.json";
 import { existsSync } from "node:fs";
 import { readingMinutes, withStaticCharts } from "../lib/static-charts";
@@ -21,7 +22,8 @@ export function getStaticPaths() {
 
 const { post } = Astro.props;
 const label = sectionLabel(post.tags, post.subject);
-const headline = splitReportHeadline(post.title);
+const kicker = reportKicker(post.title, post.subject);
+const headlineRest = reportHeadlineRest(post.title);
 const minutes = readingMinutes(post.body || "");
 const author = post.author ? formatAuthorName(String(post.author)) : "Kyle McAuliffe";
 const domain = primaryDomain(post.tags || []);
@@ -49,9 +51,17 @@ const files = [
   pack?.html ? ["HTML", pack.html] : null,
   audioFile && post.audioSrc ? ["Narration", post.audioSrc] : null,
 ].filter(Boolean) as [string, string][];
-const related = getRelatedPosts(post.slug, 4);
+const related = getRelatedPosts(post.slug, 3);
 const faq = (post.faq || []) as { question: string; answer: string }[];
 const image = post.heroImage || "/images/brand/og-default.png";
+const body = post.body || "";
+const embeddedFacts = body.includes('class="facts-grid"');
+const points = embeddedFacts ? [] : ((post.keyPoints || []) as string[]);
+const facts = points.map((point) => parseKeyPoint(String(point))).filter((fact) => fact.value);
+const factSource = /data-source="([^"]+)"/.exec(body)?.[1]
+  ?.replace(/\s+[—-]\s+ARTOMETRICS\s*$/i, "")
+  .trim() || "";
+const tones = ["", "fast-fact--pink", "fast-fact--blue"];
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -77,7 +87,6 @@ const jsonLd = [
       }]
     : []),
 ];
-const points = (post.keyPoints || []) as string[];
 ---
 
 <Base
@@ -87,11 +96,12 @@ const points = (post.keyPoints || []) as string[];
   image={image}
   type="article"
   jsonLd={jsonLd}
+  footer="article"
 >
   <link slot="head" rel="stylesheet" href="/css/artometrics-article.css" />
   <link slot="head" rel="stylesheet" href="/css/astro-contrast.css" />
-  <article class="wrap wrap--measure page">
-    <p class="crumbs">
+  <article class="report">
+    <p class="report-crumb">
       <a href="/blog">Reports</a>
       {" · "}
       <a href={`/topics/${domain}`}>{DOMAIN_META[domain].title}</a>
@@ -102,57 +112,69 @@ const points = (post.keyPoints || []) as string[];
         </>
       ) : null}
     </p>
-    {issue ? (
-      <a class="ebook-entry" href={magazineIssueHref(issue.slug)}>
-        {issue.hero ? <img class="ebook-entry__cover" src={magazineImg(issue.hero)} alt="" /> : <span class="ebook-entry__cover"></span>}
-        <span class="ebook-entry__copy">
-          <span class="ebook-entry__kicker">Ebook</span>
-          <span class="ebook-entry__title">Read as ebook</span>
-          <span class="ebook-entry__meta">{issue.kicker} · page-flip</span>
-        </span>
-      </a>
-    ) : null}
-    {label ? <p class="house-kicker">{label}</p> : null}
-    <h1 class="headline">
-      {headline ? <><span class="slug">{headline.slug}</span>: {headline.subtitle}</> : post.title}
-    </h1>
-    <p class="lede">{deckLine(post.description, 28)}</p>
-    {post.heroImage ? (
-      <figure class="hero-bleed">
-        <img src={post.heroImage} alt={post.title} />
-      </figure>
-    ) : null}
-    <p class="byline">By {author}{post.pubDate ? ` · ${formatDate(post.pubDate)}` : ""} · {minutes} min read</p>
-    {audioFile && post.audioSrc ? (
-      <p>
+
+    <header class="report-head">
+      {label ? <p class="pill">{label}</p> : null}
+      <h1>
+        <span class="report-kicker">{kicker}:</span>
+        {" "}{headlineRest}
+      </h1>
+      <p class="report-dek">{post.description}</p>
+      <p class="report-byline">
+        By {author}{post.pubDate ? ` · ${formatDate(post.pubDate)}` : ""} · {minutes} min
+      </p>
+      {issue ? (
+        <p class="report-ebook"><a href={magazineIssueHref(issue.slug)}>Read as ebook</a></p>
+      ) : null}
+      {audioFile && post.audioSrc ? (
         <audio controls preload="none" src={post.audioSrc}>
           <a href={post.audioSrc}>Listen</a>
         </audio>
-      </p>
+      ) : null}
+    </header>
+
+    {post.heroImage ? (
+      <figure class="report-hero">
+        <img src={post.heroImage} alt={post.title} />
+      </figure>
     ) : null}
-    {points.length ? (
-      <div class="stat-grid">
-        {points.map((point) => {
-          const [value, ...rest] = point.split(" — ");
-          return (
-            <div class="stat">
-              <strong>{value}</strong>
-              {rest.length ? <span>{rest.join(" — ")}</span> : null}
-            </div>
-          );
-        })}
-      </div>
+
+    {facts.length ? (
+      <section class="fast-facts" aria-label="Fast facts">
+        <h2>Fast facts</h2>
+        <div class="fast-facts__grid">
+          {facts.map((fact, index) => {
+            const wide = facts.length % 2 === 1 && index === facts.length - 1;
+            const long = fact.value.length > 18;
+            return (
+              <div class:list={["fast-fact", tones[index % 3], wide && "fast-fact--wide", long && "fast-fact--long"]}>
+                <p class="fast-fact__num">{fact.value}</p>
+                {fact.label ? <p class="fast-fact__lbl">{fact.label}</p> : null}
+              </div>
+            );
+          })}
+        </div>
+        {factSource ? <p class="fast-facts__src">Source: {factSource}</p> : null}
+      </section>
     ) : null}
+
     {files.length ? (
-      <p class="downloads">
+      <p class="report-files">
         {files.map(([name, href]) => <a href={href}>{name}</a>)}
       </p>
     ) : null}
-    <div class="artometrics-article-body" set:html={withStaticCharts(post.body || "")} />
+
+    <div class="artometrics-article-body" set:html={withStaticCharts(body)} />
+
     {related.length ? (
-      <section class="related">
+      <section class="report-related">
         <h2>Related</h2>
-        {related.map((item) => <a href={`/${item.slug}`}>{item.title}</a>)}
+        {related.map((item) => (
+          <a href={`/${item.slug}`}>
+            <span class="report-kicker">{reportKicker(item.title, item.subject)}:</span>
+            {" "}{reportHeadlineRest(item.title)}
+          </a>
+        ))}
       </section>
     ) : null}
   </article>
