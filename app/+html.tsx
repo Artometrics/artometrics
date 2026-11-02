@@ -197,16 +197,16 @@ export default function Root({ children }: PropsWithChildren) {
                   if (isMag) {
                     var rootEl = document.documentElement;
                     rootEl.classList.add("mag-mode");
-                    rootEl.style.backgroundColor = "#ffffff";
-                    rootEl.style.color = "#111111";
+                    rootEl.style.backgroundColor = "#0e1110";
+                    rootEl.style.color = "#f3ead7";
                     document.addEventListener("DOMContentLoaded", function () {
-                      document.body.style.backgroundColor = "#ffffff";
-                      document.body.style.color = "#111111";
+                      document.body.style.backgroundColor = "#0e1110";
+                      document.body.style.color = "#f3ead7";
                       document.body.style.overflow = "hidden";
                       var app = document.getElementById("root");
                       if (app) {
-                        app.style.backgroundColor = "#ffffff";
-                        app.style.color = "#111111";
+                        app.style.backgroundColor = "#0e1110";
+                        app.style.color = "#f3ead7";
                         app.style.overflow = "hidden";
                       }
                     });

@@ -48,7 +48,7 @@ export default function MagazineIssueScreen() {
   const magPath = magazineIssueHref(issue.slug);
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
+    <View style={{ flex: 1, backgroundColor: "#0e1110" }}>
       <PageSeo
         title={`${issue.title} — Artometrics Magazine`}
         description={issue.dek}

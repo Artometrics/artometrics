@@ -1,14 +1,16 @@
 import { Pressable, Text, View } from "react-native";
 import { Link } from "expo-router";
 import { SiteCoverImage } from "@/components/SiteCoverImage";
-import { magazineImg, magazineIssue, magazineIssueHref, type MagIssue } from "@/lib/magazine";
+import { magazineImg, magazineIssue, magazineIssueHref } from "@/lib/magazine";
 
 type Props = {
   slug: string;
-  compact?: boolean;
 };
 
-function MagazineEditionCardInner({ issue, compact }: { issue: MagIssue; compact?: boolean }) {
+/** Cover-thumbnail entry for the page-flip edition. Renders nothing when the slug has no issue. */
+export function MagazineEditionCard({ slug }: Props) {
+  const issue = magazineIssue(slug);
+  if (!issue) return null;
   const hero = magazineImg(issue.hero);
   const href = magazineIssueHref(issue.slug);
 
@@ -16,54 +18,32 @@ function MagazineEditionCardInner({ issue, compact }: { issue: MagIssue; compact
     <Link href={href} asChild>
       <Pressable
         accessibilityRole="link"
-        accessibilityLabel={`Read the magazine edition: ${issue.title}`}
-        className={[
-          "overflow-hidden border-2 border-fg bg-bg-elevated",
-          compact ? "flex-row items-stretch gap-0" : "gap-0",
-        ].join(" ")}
-        style={{ shadowColor: "#E60000", shadowOffset: { width: 4, height: 4 }, shadowOpacity: 1, shadowRadius: 0 }}
+        accessibilityLabel={`Read as ebook: ${issue.title}`}
+        className="ebook-entry"
       >
         {hero ? (
           <SiteCoverImage
             source={{ uri: hero }}
-            wrapperClassName={compact ? "w-[108px] shrink-0" : "w-full"}
-            wrapperStyle={{ aspectRatio: compact ? 4 / 5 : 16 / 10 }}
+            wrapperClassName="ebook-entry__cover"
+            wrapperStyle={{ width: 84, height: 96 }}
             transition={200}
             accessibilityLabel=""
           />
-        ) : null}
-        <View className={compact ? "min-w-0 flex-1 justify-center gap-1.5 p-4" : "gap-2 p-4"}>
-          <Text className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-accent">
-            Magazine edition
+        ) : (
+          <View className="ebook-entry__cover" />
+        )}
+        <View className="ebook-entry__copy">
+          <Text className="ebook-entry__kicker" style={{ fontFamily: "DM Mono" }}>
+            Ebook
           </Text>
-          <Text
-            className="font-display text-[22px] leading-[1.05] text-fg"
-            style={{ fontFamily: "Anton" }}
-            numberOfLines={compact ? 3 : 4}
-          >
-            {issue.title}
+          <Text className="ebook-entry__title" style={{ fontFamily: "Anton" }}>
+            Read as ebook
           </Text>
-          {!compact ? (
-            <Text className="font-sans text-[14px] leading-snug text-muted" numberOfLines={2}>
-              {issue.dek}
-            </Text>
-          ) : null}
-          <Text className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-accent pt-1">
-            Open page-flip reader →
+          <Text className="ebook-entry__meta" style={{ fontFamily: "DM Mono" }} numberOfLines={1}>
+            {issue.kicker} · page-flip
           </Text>
         </View>
       </Pressable>
     </Link>
-  );
-}
-
-/** End-of-article promo for the abbreviated page-flip issue when one exists. */
-export function MagazineEditionCard({ slug, compact = true }: Props) {
-  const issue = magazineIssue(slug);
-  if (!issue) return null;
-  return (
-    <View className="gap-2 pt-2">
-      <MagazineEditionCardInner issue={issue} compact={compact} />
-    </View>
   );
 }

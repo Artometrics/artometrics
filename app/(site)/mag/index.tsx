@@ -11,7 +11,7 @@ const defaultSkins = skinDefaults as MagSkin[];
 
 export default function MagazineContentsScreen() {
   return (
-    <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
+    <View style={{ flex: 1, backgroundColor: "#0e1110" }}>
       <PageSeo
         title="Artometrics Magazine — page-flip edition"
         description="Five-minute data stories in the October 2026 page-flip reader. Choose a skin and swipe through the issue."
