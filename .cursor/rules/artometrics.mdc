@@ -8,7 +8,7 @@ alwaysApply: true
 - **Imports:** Use the `@/` alias for the project root (e.g. `@/components/SiteHeader`, `@/lib/content`, `@/constants/Colors`). Match existing patterns in this repo.
 - **Scope:** Keep changes minimal and localized. No drive-by refactors or unrelated files.
 - **Dependencies:** Do not add packages or features not requested; only use what appears in `package.json` unless the user explicitly asks to add one.
-- **Stack:** Expo + Expo Router only — do not reintroduce Astro.
+- **Stack:** The public website is Astro (`site/`, `astro build` → `dist/`, Firebase Hosting). Expo Router remains for the native app. Do not point Firebase back at an Expo web export.
 - **Content:** Edit markdown under `src/content/`; run `npm run content` (or rely on prestart/prebuild) so `src/generated/` stays in sync.
 - **Layouts:** Site chrome lives in `app/(site)/_layout.tsx` (`SiteHeader` + `SiteFooter`).
 - **Branding:** Public-facing copy, legal pages, and project docs should use **Artometrics** — not Lexington/Hemingway theme demo text.

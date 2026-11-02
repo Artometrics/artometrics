@@ -1,0 +1,36 @@
+---
+import Base from "../layouts/Base.astro";
+import downloads from "@/src/generated/downloads.json";
+import { getBlogPost } from "@/lib/content";
+
+const packs = Object.values(downloads).sort((a, b) => a.slug.localeCompare(b.slug));
+---
+
+<Base title="Downloads" description="CSV, transcript, PDF, and EPUB files published with Artometrics reports." path="/downloads">
+  <div class="wrap page">
+    <p class="kicker">Exports</p>
+    <h1>Downloads</h1>
+    <p class="lede">Files that already exist for each report. Empty cells mean that export has not been packed yet.</p>
+    <div class="stack">
+      {packs.map((pack) => {
+        const post = getBlogPost(pack.slug);
+        const files = [
+          pack.dataset ? ["CSV", pack.dataset] : null,
+          pack.pdf ? ["PDF", pack.pdf] : null,
+          pack.epub ? ["EPUB", pack.epub] : null,
+          pack.audio ? ["Audio", pack.audio] : null,
+          pack.transcript ? ["Transcript", pack.transcript] : null,
+          pack.html ? ["HTML", pack.html] : null,
+        ].filter(Boolean) as [string, string][];
+        return (
+          <article class="card">
+            <h2><a href={`/${pack.slug}`}>{post?.title || pack.slug}</a></h2>
+            {files.length ? (
+              <p class="downloads">{files.map(([label, href]) => <a href={href}>{label}</a>)}</p>
+            ) : <p class="meta">No packed files yet</p>}
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</Base>

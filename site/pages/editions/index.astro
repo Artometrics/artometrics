@@ -1,0 +1,23 @@
+---
+import Base from "../../layouts/Base.astro";
+import { EDITIONS } from "@/data/editions";
+import { SECTION_META } from "@/data/sections";
+---
+
+<Base title="Editions" description="Special issues of Artometrics — music, movies, games, power, and more." path="/editions">
+  <div class="wrap page">
+    <p class="kicker">Special issues</p>
+    <h1>Editions</h1>
+    <div class="rail" style="margin-top:16px">
+      {EDITIONS.map((edition) => (
+        <a class="edition" href={`/editions/${edition.id}`}>
+          {edition.heroImage ? <img src={edition.heroImage} alt="" /> : null}
+          <div>
+            <span class="kicker">{SECTION_META[edition.section].title} · {edition.status}</span>
+            <strong>{edition.title}</strong>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

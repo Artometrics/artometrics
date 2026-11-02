@@ -1,0 +1,83 @@
+---
+import Base from "../layouts/Base.astro";
+import { getAuthors, getBlogPosts, getPodcastEpisodes, sectionLabel } from "@/lib/content";
+import { jsonForScript } from "../lib/static-charts";
+
+const index = [
+  ...getBlogPosts().map((post) => ({
+    type: "report",
+    title: post.title,
+    description: post.description,
+    href: `/${post.slug}`,
+    meta: sectionLabel(post.tags, post.subject) || "Report",
+  })),
+  ...getPodcastEpisodes().map((episode) => ({
+    type: "podcast",
+    title: episode.title,
+    description: episode.description,
+    href: `/podcast/interviews/${episode.id}`,
+    meta: "Podcast",
+  })),
+  ...getAuthors().map((author) => ({
+    type: "author",
+    title: author.name,
+    description: author.role || author.bio || "",
+    href: `/authors/${author.id}`,
+    meta: "Author",
+  })),
+];
+---
+
+<Base title="Search" description="Search Artometrics reports, podcasts, and authors." path="/search">
+  <div class="wrap wrap--narrow page">
+    <p class="kicker">Search</p>
+    <h1>Find a report</h1>
+    <form class="stack" action="/search" method="get" role="search">
+      <label class="kicker" for="q">Keywords</label>
+      <input id="q" name="q" type="search" placeholder="Keywords, sections, topics…" />
+      <button class="btn" type="submit">Search</button>
+    </form>
+    <div class="stack" id="hits"></div>
+  </div>
+  <script type="application/json" id="search-index" set:html={jsonForScript(index)} />
+  <script>
+    const records = JSON.parse(document.getElementById("search-index")?.textContent || "[]");
+    const input = document.getElementById("q");
+    const hits = document.getElementById("hits");
+    const params = new URLSearchParams(location.search);
+    if (params.get("q") && input) input.value = params.get("q");
+    function render() {
+      const q = (input?.value || "").trim().toLowerCase();
+      hits.replaceChildren();
+      if (q.length < 2) return;
+      const tokens = q.split(/\s+/).filter(Boolean);
+      const matched = records.filter((row) => {
+        const blob = `${row.title} ${row.description} ${row.meta}`.toLowerCase();
+        return tokens.every((token) => blob.includes(token));
+      }).slice(0, 40);
+      if (!matched.length) {
+        const p = document.createElement("p");
+        p.textContent = "No matches.";
+        hits.append(p);
+        return;
+      }
+      for (const row of matched) {
+        const a = document.createElement("a");
+        a.className = "card";
+        a.href = row.href;
+        const k = document.createElement("span");
+        k.className = "kicker";
+        k.textContent = row.meta;
+        const h = document.createElement("h2");
+        h.textContent = row.title;
+        const d = document.createElement("span");
+        d.className = "lede";
+        d.textContent = row.description;
+        a.append(k, h, d);
+        hits.append(a);
+      }
+    }
+    input?.addEventListener("input", render);
+    render();
+  </script>
+</Base>

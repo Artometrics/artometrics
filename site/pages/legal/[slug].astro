@@ -1,0 +1,18 @@
+---
+import Base from "../../layouts/Base.astro";
+import { formatDate, getLegalPages } from "@/lib/content";
+
+export function getStaticPaths() {
+  return getLegalPages().map((page) => ({ params: { slug: page.id }, props: { page } }));
+}
+
+const { page } = Astro.props;
+---
+
+<Base title={page.page} description={`${page.page} — Artometrics`} path={`/legal/${page.id}`}>
+  <article class="wrap wrap--measure page prose">
+    <p class="kicker">Legal · {formatDate(page.pubDate)}</p>
+    <h1>{page.page}</h1>
+    <div set:html={page.body} />
+  </article>
+</Base>

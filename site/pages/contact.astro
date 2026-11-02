@@ -1,0 +1,40 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Dispatch" description="Send a tip or correction to the Artometrics desk." path="/contact">
+  <div class="wrap wrap--narrow page">
+    <p class="kicker">Contact</p>
+    <h1>Direct dispatch & tips</h1>
+    <p class="lede">Corrections, dataset leads, and story tips go to the desk. This static edition opens your mail app. The member CRM is not bundled here.</p>
+    <form class="stack" id="tip-form">
+      <label class="kicker" for="name">Name</label>
+      <input id="name" name="name" autocomplete="name" />
+      <label class="kicker" for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="email" required />
+      <label class="kicker" for="message">Message</label>
+      <textarea id="message" name="message" rows="6"></textarea>
+      <button class="btn" type="submit">Transmit dispatch</button>
+      <p id="tip-status" role="status"></p>
+    </form>
+    <p><a href="mailto:hello@artometrics.com">hello@artometrics.com</a></p>
+  </div>
+  <script>
+    const form = document.getElementById("tip-form");
+    const status = document.getElementById("tip-status");
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const email = String(data.get("email") || "").trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        status.textContent = "Please provide a valid email address.";
+        return;
+      }
+      const name = String(data.get("name") || "").trim();
+      const message = String(data.get("message") || "").trim();
+      const body = encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`);
+      location.href = `mailto:hello@artometrics.com?subject=${encodeURIComponent("Artometrics dispatch")}&body=${body}`;
+      status.textContent = "Opening your mail app.";
+    });
+  </script>
+</Base>

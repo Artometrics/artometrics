@@ -1,0 +1,22 @@
+---
+import Base from "../layouts/Base.astro";
+const log = [
+  ["2026-11-02", "Static Astro edition of the public site"],
+  ["2026-10-23", "Lab log and magazine PDFs"],
+  ["2026-10-21", "Style Lab house style"],
+  ["2026-10-14", "Editor's picks, accessibility"],
+  ["2026-10-12", "Franchise narration and anime charts"],
+];
+---
+
+<Base title="Lab log" description="What the Artometrics desk shipped." path="/lab-log">
+  <div class="wrap wrap--narrow page">
+    <p class="kicker">Lab</p>
+    <h1>Lab log</h1>
+    <p class="meta">Find data · Audit · SQL · Charts · Story</p>
+    <ul>
+      {log.map(([date, note]) => <li><span class="meta">{date}</span> — {note}</li>)}
+    </ul>
+    <p><a href="/mag">Open the magazine</a></p>
+  </div>
+</Base>

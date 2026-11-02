@@ -1,0 +1,35 @@
+---
+import Base from "../../layouts/Base.astro";
+import gutenberg from "../../../public/data/reference/gutenberg/catalog.json";
+import wikiart from "../../../public/data/reference/wikiart/catalog.json";
+import wikipedia from "../../../public/data/reference/wikipedia/catalog.json";
+
+const groups = [
+  ["Gutenberg", gutenberg],
+  ["WikiArt", wikiart],
+  ["Wikipedia", wikipedia],
+] as const;
+---
+
+<Base title="Reference" description="Gutenberg, WikiArt, and Wikipedia specimen cards used by the Artometrics library." path="/library/reference">
+  <div class="wrap page">
+    <p class="crumbs"><a href="/library">Library</a></p>
+    <h1>Reference</h1>
+    <p class="lede">Open catalogs the desk cites. Pins and member shelves stay on the signed-in Studio profile.</p>
+    {groups.map(([name, catalog]) => (
+      <section class="source-block">
+        <h2>{name}</h2>
+        <p class="meta">{catalog.license || catalog.source}</p>
+        <ul>
+          {catalog.items.slice(0, 24).map((item) => (
+            <li>
+              {item.url ? <a href={item.url}>{item.title}</a> : item.title}
+              {item.artist ? ` — ${item.artist}` : ""}
+              {item.authors?.length ? ` — ${item.authors.slice(0, 2).join(", ")}` : ""}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</Base>

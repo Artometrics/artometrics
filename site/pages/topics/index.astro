@@ -1,0 +1,27 @@
+---
+import Base from "../../layouts/Base.astro";
+import { DOMAIN_META, DOMAIN_SLUGS } from "@/data/sections";
+import { getBlogPosts, primarySection } from "@/lib/content";
+
+const counts = Object.fromEntries(DOMAIN_SLUGS.map((slug) => [slug, 0])) as Record<string, number>;
+for (const post of getBlogPosts()) {
+  const domain = primarySection(post.tags);
+  if (domain) counts[domain] += 1;
+}
+---
+
+<Base title="Topics" description="Six desks: arts, sports, science, humanities, civics, and culture." path="/topics">
+  <div class="wrap page">
+    <p class="kicker">Desks</p>
+    <h1>Topics</h1>
+    <div class="stack">
+      {DOMAIN_SLUGS.map((slug) => (
+        <a class="card" href={`/topics/${slug}`}>
+          <span class="kicker">{counts[slug]} reports</span>
+          <h2>{DOMAIN_META[slug].title}</h2>
+          <span class="lede">{DOMAIN_META[slug].description}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

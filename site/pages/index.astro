@@ -1,0 +1,202 @@
+---
+import Base from "../layouts/Base.astro";
+import {
+  deckLine,
+  formatDate,
+  getBlogPost,
+  getBlogPosts,
+  getPodcastEpisodes,
+  sectionLabel,
+} from "@/lib/content";
+import {
+  formatIssueWeekLabel,
+  getComingInvestigations,
+  getThisWeekInvestigations,
+} from "@/lib/contentCalendar";
+import { EDITIONS } from "@/data/editions";
+import { mediaUrl } from "../lib/static-charts";
+
+const posts = getBlogPosts();
+const lead = posts[0];
+const briefs = posts.slice(1, 5);
+const picks = posts.slice(5, 10);
+const trending = posts.slice(10, 18);
+const thisWeek = getThisWeekInvestigations(undefined, 3);
+const coming = getComingInvestigations(undefined, 3);
+const editions = EDITIONS.slice(0, 8);
+const episodes = getPodcastEpisodes().slice(0, 3);
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Artometrics",
+    url: "https://artometrics.com",
+    logo: "https://artometrics.com/images/brand/chomsky-a.png",
+    sameAs: ["https://github.com/Artometrics"],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Artometrics",
+    url: "https://artometrics.com",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://artometrics.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
+  },
+];
+---
+
+<Base
+  title="Artometrics — data reports for creative industries"
+  description="Investigative data stories on arts, sports, science, humanities, civics, and culture."
+  path="/"
+  jsonLd={jsonLd}
+>
+  {lead ? (
+    <section class="bleed-hero house-hero" aria-label="Lead story">
+      {lead.heroImage ? <img class="bleed-hero__photo" src={lead.heroImage} alt="" /> : null}
+      <div class="house-hero__drift" aria-hidden="true"></div>
+      <div class="house-hero__benday" aria-hidden="true"></div>
+      <div class="bleed-hero__shade" aria-hidden="true"></div>
+      <div class="house-hero__line" aria-hidden="true"></div>
+      <div class="wrap bleed-hero__copy">
+        <p class="brand-script">Artometrics</p>
+        {sectionLabel(lead.tags, lead.subject) ? <p class="house-kicker">{sectionLabel(lead.tags, lead.subject)}</p> : null}
+        <h1><a href={`/${lead.slug}`}>{lead.title}</a></h1>
+        <p class="dek">{deckLine(lead.description, 36)}</p>
+        <p class="actions">
+          <a class="btn" href={`/${lead.slug}`}>Read the report</a>
+          <a class="btn btn--ghost" href="/editions">Browse editions</a>
+        </p>
+      </div>
+    </section>
+  ) : null}
+
+  <section class="signal" aria-label="Signal">
+    <p>Signal</p>
+  </section>
+
+  <section class="rail-block">
+    <div class="wrap">
+      <div class="rail-head">
+        <h2>Editions</h2>
+        <a href="/editions">Full archive →</a>
+      </div>
+      <div class="rail">
+        {editions.map((edition, index) => (
+          <a class="edition" href={`/editions/${edition.id}`}>
+            {edition.heroImage ? <img src={edition.heroImage} alt="" /> : null}
+            <div>
+              <span class="kicker">Vol. {String(index + 1).padStart(2, "0")}</span>
+              <strong>{edition.title}</strong>
+              <span class="kicker">{edition.dek}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap home-grid">
+    <div>
+      {briefs.map((post) => (
+        <article class="brief">
+          {sectionLabel(post.tags, post.subject) ? <p class="kicker">{sectionLabel(post.tags, post.subject)}</p> : null}
+          <h3><a href={`/${post.slug}`}>{post.title}</a></h3>
+          <p class="lede">{deckLine(post.description, 22)}</p>
+        </article>
+      ))}
+    </div>
+    <aside class="picks">
+      <div class="section-rule">
+        <h2>Editor's picks</h2>
+        <a href="/blog">See all →</a>
+      </div>
+      {picks.map((post) => (
+        <a class="pick" href={`/${post.slug}`}>
+          <span>
+            <span class="kicker">{post.pubDate ? formatDate(post.pubDate) : sectionLabel(post.tags, post.subject)}</span>
+            <h3>{post.title}</h3>
+            {sectionLabel(post.tags, post.subject) ? <span class="kicker">{sectionLabel(post.tags, post.subject)}</span> : null}
+          </span>
+          {post.heroImage ? <img src={post.heroImage} alt="" /> : <span></span>}
+        </a>
+      ))}
+    </aside>
+  </div>
+
+  <section class="wrap week">
+    <h2>This week</h2>
+    <p class="kicker">{formatIssueWeekLabel()}</p>
+    {thisWeek.length ? (
+      <ul>
+        {thisWeek.map((row) => {
+          const post = getBlogPost(row.slug);
+          return (
+            <li>
+              <a href={`/${row.slug}`}>
+                <span>{post?.title ?? row.title}</span>
+                <time datetime={row.releaseFriday}>{formatDate(row.releaseFriday)}</time>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    ) : <p class="lede">No Friday release in this window.</p>}
+    {coming.length ? (
+      <div class="coming">
+        <h2>Coming</h2>
+        <ul>
+          {coming.map((row) => {
+            const post = getBlogPost(row.slug);
+            return (
+              <li>
+                <a href={`/${row.slug}`}>
+                  <span>{post?.title ?? row.title}</span>
+                  <time datetime={row.releaseFriday}>{formatDate(row.releaseFriday)}</time>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    ) : null}
+  </section>
+
+  <section class="rail-block">
+    <div class="wrap">
+      <div class="rail-head">
+        <h2>Briefs</h2>
+        <a href="/blog">All reports →</a>
+      </div>
+      <div class="rail">
+        {trending.map((post) => (
+          <a class="trend" href={`/${post.slug}`}>
+            <span class="kicker">{sectionLabel(post.tags, post.subject)}</span>
+            <strong>{post.title}</strong>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {episodes.length ? (
+    <section class="wrap page">
+      <div class="section-rule">
+        <h2>Interviews</h2>
+        <a href="/podcast">All episodes →</a>
+      </div>
+      <div class="stack">
+        {episodes.map((episode) => (
+          <a class="card" href={`/podcast/interviews/${episode.id}`}>
+            <span class="kicker">Ep {episode.episodeNumber || ""} · {episode.duration || "Listen"}</span>
+            <h2>{episode.title}</h2>
+            <span class="meta">{formatDate(episode.pubDate)}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  ) : null}
+</Base>

@@ -1,0 +1,30 @@
+---
+import Base from "../../layouts/Base.astro";
+import { formatDate, getPodcastEpisodes } from "@/lib/content";
+import { mediaUrl } from "../../lib/static-charts";
+
+const episodes = getPodcastEpisodes();
+---
+
+<Base title="Podcast" description="Conversations extending Artometrics reporting." path="/podcast">
+  <div class="wrap page">
+    <p class="kicker">Podcast</p>
+    <h1>Interviews</h1>
+    <p class="lede">Conversations with analysts, founders, and historians extending Artometrics reporting.</p>
+    <div class="stack">
+      {episodes.map((episode) => {
+        const image = mediaUrl(episode.image);
+        return (
+          <a class="card" href={`/podcast/interviews/${episode.id}`}>
+            {image ? <img src={image} alt="" style="width:100%;aspect-ratio:16/9;object-fit:cover" /> : null}
+            <span class="kicker">Episode {episode.episodeNumber} · {episode.duration}</span>
+            <h2>{episode.title}</h2>
+            <span class="lede">{episode.description}</span>
+            <span class="meta">{formatDate(episode.pubDate)}{episode.isLocked ? " · Subscriber" : ""}</span>
+          </a>
+        );
+      })}
+    </div>
+    <p><a href="/podcast.xml">Podcast RSS</a></p>
+  </div>
+</Base>

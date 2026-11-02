@@ -1,0 +1,28 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getAuthors, getBlogPosts, formatAuthorName } from "@/lib/content";
+import { mediaUrl } from "../../lib/static-charts";
+
+export function getStaticPaths() {
+  return getAuthors().map((author) => ({ params: { slug: author.id }, props: { author } }));
+}
+
+const { author } = Astro.props;
+const image = mediaUrl(author.image);
+const posts = getBlogPosts().filter((post) => String(post.author) === author.id || formatAuthorName(String(post.author || "")) === author.name);
+---
+
+<Base title={author.name} description={author.role || author.bio || author.name} path={`/authors/${author.id}`} image={image}>
+  <article class="wrap wrap--measure page">
+    <p class="crumbs"><a href="/authors">Authors</a></p>
+    {image ? <img src={image} alt={author.image?.alt || author.name} style="width:160px;height:160px;object-fit:cover" /> : null}
+    <h1>{author.name}</h1>
+    {author.role ? <p class="kicker">{author.role}</p> : null}
+    {author.bio ? <div class="prose" style="white-space:pre-wrap">{author.bio}</div> : null}
+    {posts.length ? (
+      <div class="stack">
+        {posts.map((post) => <a class="card" href={`/${post.slug}`}><h2>{post.title}</h2></a>)}
+      </div>
+    ) : null}
+  </article>
+</Base>

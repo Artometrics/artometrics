@@ -1,0 +1,37 @@
+---
+import Base from "../../../layouts/Base.astro";
+import { formatDate, getPodcastEpisodes } from "@/lib/content";
+import { mediaUrl } from "../../../lib/static-charts";
+
+export function getStaticPaths() {
+  return getPodcastEpisodes().map((episode) => ({
+    params: { slug: String(episode.id) },
+    props: { episode },
+  }));
+}
+
+const { episode } = Astro.props;
+const image = mediaUrl(episode.image);
+---
+
+<Base
+  title={episode.title}
+  description={episode.description}
+  path={`/podcast/interviews/${episode.id}`}
+  image={image}
+  type="article"
+>
+  <article class="wrap wrap--measure page">
+    <p class="crumbs"><a href="/podcast">Podcast</a></p>
+    <p class="kicker">Episode {episode.episodeNumber} · {episode.duration}</p>
+    <h1>{episode.title}</h1>
+    <p class="lede">{episode.description}</p>
+    {image ? <img src={image} alt={episode.title} /> : null}
+    <p class="byline">{episode.author || "Artometrics"} · {formatDate(episode.pubDate)}</p>
+    {episode.audioSrc ? (
+      <audio controls preload="none" src={episode.audioSrc}><a href={episode.audioSrc}>Listen</a></audio>
+    ) : null}
+    {episode.body ? <div class="prose" set:html={episode.body} /> : null}
+    {episode.isLocked ? <p class="lede">This episode is marked for subscribers. The audio file above is what the archive currently publishes.</p> : null}
+  </article>
+</Base>

@@ -1,0 +1,33 @@
+---
+import Base from "../../layouts/Base.astro";
+import { EDITIONS } from "@/data/editions";
+import { getBlogPost } from "@/lib/content";
+import { SECTION_META } from "@/data/sections";
+
+export function getStaticPaths() {
+  return EDITIONS.map((edition) => ({ params: { id: edition.id }, props: { edition } }));
+}
+
+const { edition } = Astro.props;
+---
+
+<Base title={edition.title} description={edition.dek} path={`/editions/${edition.id}`} image={edition.heroImage}>
+  <article class="wrap page">
+    <p class="crumbs"><a href="/editions">Editions</a></p>
+    <p class="kicker">{SECTION_META[edition.section].title} · {edition.status}</p>
+    <h1>{edition.title}</h1>
+    <p class="lede">{edition.dek}</p>
+    {edition.heroImage ? <img src={edition.heroImage} alt="" /> : null}
+    <div class="stack">
+      {edition.articleSlugs.map((slug) => {
+        const post = getBlogPost(slug);
+        return (
+          <a class="card" href={`/${slug}`}>
+            <h2>{post?.title || slug}</h2>
+            {post ? <span class="lede">{post.description}</span> : <span class="kicker">Listed in this edition</span>}
+          </a>
+        );
+      })}
+    </div>
+  </article>
+</Base>
