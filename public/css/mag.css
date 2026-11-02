@@ -6,8 +6,8 @@ html.mag-mode #root {
   height: 100% !important;
   min-height: 100% !important;
   overflow: hidden !important;
-  background: #fff !important;
-  color: #111 !important;
+  background: #100e0c !important;
+  color: #f4f7f6 !important;
 }
 
 .mag-shell {

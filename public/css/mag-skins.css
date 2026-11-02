@@ -178,6 +178,7 @@
 .mag-shell[data-skin] p { color: var(--ink); }
 .mag-shell[data-skin] .by,
 .mag-shell[data-skin] figcaption { color: var(--mute, #3a3a3a); }
+.mag-shell[data-skin="house"] { --mute: #b7d0cb; color-scheme: dark; }
 .mag-shell[data-skin="ledger"] { --mute: #3c4654; }
 .mag-shell[data-skin="box"] { --mute: #2c2c2c; }
 .mag-shell[data-skin="trade"] { --mute: #2e2e2e; }
@@ -349,7 +350,9 @@
 .mag-shell[data-skin="late"] .closing [data-for="late"],
 .mag-shell[data-skin="filing"] .closing [data-for="filing"],
 .mag-shell[data-skin="gauge"] .closing [data-for="gauge"],
-.mag-shell[data-skin="onair"] .closing [data-for="onair"] { display: inline; }
+.mag-shell[data-skin="onair"] .closing [data-for="onair"],
+.mag-shell[data-skin="house"] .closing [data-for="house"],
+.mag-shell[data-skin="house"] .credits [data-for="house"] { display: inline; }
 .mag-shell .skin-dateline,
 .mag-shell .audit-stamp,
 .mag-shell .collect-140 { display: none; }
@@ -2073,4 +2076,208 @@
 
 @media (prefers-reduced-motion: reduce) {
   .mag-shell[data-skin="gauge"] .yt-share-fill { animation: none; width: 15.8%; }
+}
+
+/* House — the original Artometrics reader. Dark ground, Anton, Tiffany, hot-pink rule.
+   Cream skins stay opt-in. Does not change page scroll or swipe. */
+.mag-shell[data-skin="house"] {
+  --red: #ff3d8a;
+  --blue: #7fded6;
+  --paper: #100e0c;
+  --ink: #f4f7f6;
+  --mute: #b7d0cb;
+  --accent: #7fded6;
+  --accent2: #ff3d8a;
+  --rule: #ff3d8a;
+  background: #100e0c;
+  color: #f4f7f6;
+  color-scheme: dark;
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+.mag-shell[data-skin="house"] ::selection {
+  background: rgba(255, 61, 138, 0.35);
+  color: #f4f7f6;
+}
+.mag-shell[data-skin="house"] header.bar,
+.mag-shell[data-skin="house"] footer.bar,
+.mag-shell[data-skin="house"] #view {
+  background: #100e0c;
+}
+.mag-shell[data-skin="house"] header.bar,
+.mag-shell[data-skin="house"] footer.bar {
+  font-family: "DM Mono", ui-monospace, monospace;
+  color: #b7d0cb;
+}
+.mag-shell[data-skin="house"] header.bar a.site { color: #7fded6; }
+.mag-shell[data-skin="house"] .skin-ornaments,
+.mag-shell[data-skin="house"] .skin-plate { display: none; }
+.mag-shell[data-skin="house"] .skin-dateline {
+  display: block;
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b7d0cb;
+  margin: 0 0 10px;
+}
+.mag-shell[data-skin="house"] .kick {
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: #7fded6;
+  border-bottom: 3px solid #ff3d8a;
+  display: inline-block;
+  padding: 0 0 4px;
+  margin: 0 0 10px;
+}
+.mag-shell[data-skin="house"] h1,
+.mag-shell[data-skin="house"] h1.skin-title {
+  font-family: Anton, Impact, sans-serif;
+  font-weight: 400;
+  font-size: clamp(34px, 9vw, 52px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: #f3ead7;
+  background: none;
+  border: 0;
+  text-transform: none;
+}
+.mag-shell[data-skin="house"] h1 em {
+  font-style: normal;
+  font-weight: 400;
+  color: #7fded6;
+}
+.mag-shell[data-skin="house"] h1 .deck { display: inline; }
+.mag-shell[data-skin="house"] .dek { color: #f4f7f6; font-size: 17px; }
+.mag-shell[data-skin="house"] .by,
+.mag-shell[data-skin="house"] figcaption { color: #b7d0cb; }
+.mag-shell[data-skin="house"] h2 {
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ff3d8a;
+}
+.mag-shell[data-skin="house"] h3 {
+  font-family: Anton, Impact, sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: #f3ead7;
+}
+.mag-shell[data-skin="house"] .big,
+.mag-shell[data-skin="house"] .kp .big {
+  font-family: Anton, Impact, sans-serif;
+  color: #7fded6;
+}
+.mag-shell[data-skin="house"] .kp p { color: #b7d0cb; }
+.mag-shell[data-skin="house"] .hero,
+.mag-shell[data-skin="house"] .cv-feat img,
+.mag-shell[data-skin="house"] .toc img { border-radius: 0; }
+.mag-shell[data-skin="house"] figure {
+  border-top-color: #ff3d8a;
+  border-bottom-color: #2a3330;
+}
+.mag-shell[data-skin="house"] .row.hl b { background: #ff3d8a; }
+.mag-shell[data-skin="house"] .row b { background: #7fded6; }
+.mag-shell[data-skin="house"] a { color: #7fded6; }
+.mag-shell[data-skin="house"] .toc a { color: inherit; }
+.mag-shell[data-skin="house"] .toc li { border-top-color: #2a3330; }
+.mag-shell[data-skin="house"] .toc b {
+  font-family: Anton, Impact, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  color: #f3ead7;
+}
+.mag-shell[data-skin="house"] .toc small {
+  font-family: "DM Mono", ui-monospace, monospace;
+  color: #7fded6;
+}
+.mag-shell[data-skin="house"] .toc em { color: #b7d0cb; }
+.mag-shell[data-skin="house"] .toc-sec {
+  border-top: 2px solid #ff3d8a;
+  color: #ff3d8a;
+  font-family: "DM Mono", ui-monospace, monospace;
+}
+.mag-shell[data-skin="house"] .cv-mast {
+  font-family: Chomsky, Georgia, serif;
+  font-weight: 400;
+  font-size: 46px;
+  line-height: 0.9;
+  letter-spacing: 0;
+  color: #f3ead7;
+  text-transform: none;
+}
+.mag-shell[data-skin="house"] .cv-sub {
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: #7fded6;
+  border-bottom: 3px solid #ff3d8a;
+  display: inline-block;
+  padding-bottom: 4px;
+  margin-bottom: 14px;
+}
+.mag-shell[data-skin="house"] .cv-feat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 16px 14px 14px;
+  overflow: hidden;
+  color: #f3ead7;
+  text-decoration: none;
+  background: #14080b;
+}
+.mag-shell[data-skin="house"] .cv-feat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, #14080b, #6d1020 36%, #08343a 72%, #149e96);
+  pointer-events: none;
+}
+.mag-shell[data-skin="house"] .cv-feat::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, #ff2a2a 1.05px, transparent 1.25px),
+    radial-gradient(circle, #21e4ff 1.05px, transparent 1.25px);
+  background-size: 8px 8px, 8px 8px;
+  background-position: 2px 1px, -2px -1px;
+  opacity: 0.42;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+.mag-shell[data-skin="house"] .cv-feat > * { position: relative; z-index: 1; }
+.mag-shell[data-skin="house"] .cv-feat img { order: 4; margin: 0; }
+.mag-shell[data-skin="house"] .cv-feat .kick { order: 1; }
+.mag-shell[data-skin="house"] .cv-feat h3 { order: 2; margin: 0; font-size: clamp(28px, 8vw, 40px); }
+.mag-shell[data-skin="house"] .cv-feat .dek { order: 3; color: #f4f7f6; margin: 0; }
+.mag-shell[data-skin="house"] .hint {
+  background: #ff3d8a;
+  color: #100e0c;
+  border-radius: 0;
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.mag-shell[data-skin="house"] .prog { background: #2a3330; }
+.mag-shell[data-skin="house"] .prog i { background: #7fded6; }
+.mag-shell[data-skin="house"] .mag-page { scrollbar-color: #7fded6 #100e0c; }
+.mag-shell[data-skin="house"] .skin-picker button[aria-checked="true"] {
+  background: rgba(127, 222, 214, 0.16);
+  box-shadow: inset 0 -2px 0 #ff3d8a;
+}
+.mag-shell[data-skin="house"] .end { color: #ff3d8a; font-family: "DM Mono", ui-monospace, monospace; }
+.mag-shell[data-skin="house"] .closing-name {
+  font-family: Anton, Impact, sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: #f3ead7;
 }
