@@ -1,20 +1,43 @@
 ---
+interface Props {
+  variant?: "home" | "article" | "site";
+}
+
+const { variant = "site" } = Astro.props;
 const year = new Date().getFullYear();
-const links = [
-  ["/blog", "Reports"],
-  ["/podcast", "Podcast"],
+const primary =
+  variant === "home"
+    ? [
+        ["#latest", "Latest"],
+        ["#issues", "Issues"],
+        ["#topics", "Topics"],
+      ]
+    : [
+        ["/blog", "Reports"],
+        ["/sources", "Sources"],
+        ["/rss.xml", "RSS"],
+      ];
+const quiet = [
   ["/about", "About"],
-  ["/sources", "Sources"],
-  ["/rss.xml", "RSS"],
   ["/legal/ethics-statement", "Legal"],
+  ["/podcast", "Podcast"],
 ];
 ---
 
 <footer class="site-footer">
   <div class="wrap">
+    <a class="site-footer__mark" href="/">Artometrics</a>
     <nav class="site-footer__links" aria-label="Footer">
-      {links.map(([href, label]) => <a href={href}>{label}</a>)}
+      {primary.map(([href, label]) => <a href={href}>{label}</a>)}
     </nav>
-    <p class="site-footer__base">© {year} Artometrics</p>
+    <p class="site-footer__base">
+      © {year} Artometrics
+      {quiet.map(([href, label]) => (
+        <>
+          <span aria-hidden="true"> · </span>
+          <a href={href}>{label}</a>
+        </>
+      ))}
+    </p>
   </div>
 </footer>

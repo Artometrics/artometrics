@@ -10,7 +10,7 @@ const fact = facts[0];
 ---
 
 <header class="mast">
-  <div class="dateline">{dateline}</div>
+  {path !== "/" ? <div class="dateline">{dateline}</div> : null}
   <div class="wrap mast-row">
     <button class="icon-btn" id="open-menu" type="button" aria-expanded="false" aria-controls="nav-overlay">
       <span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Open menu</span>

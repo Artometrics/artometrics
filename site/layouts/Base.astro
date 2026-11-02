@@ -13,6 +13,7 @@ interface Props {
   image?: string;
   type?: "website" | "article";
   jsonLd?: unknown;
+  footer?: "home" | "article" | "site";
 }
 
 const {
@@ -22,6 +23,7 @@ const {
   image = "/images/brand/og-default.png",
   type = "website",
   jsonLd,
+  footer = "site",
 } = Astro.props;
 
 const SITE = "https://artometrics.com";
@@ -89,7 +91,7 @@ const navIndex = [
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    <Footer variant={footer} />
     <script type="application/json" id="nav-index" set:html={jsonForScript(navIndex)} />
     <script>
       const indexNode = document.getElementById("nav-index");

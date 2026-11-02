@@ -32,3 +32,153 @@
   height: auto !important;
   max-height: none !important;
 }
+
+/* Article A — flat Bauhaus charts and a left-aligned reading column.
+   Published PNG posters stay; the filter only remaps the white paper
+   onto the black ground. Series stay distinct. Numbers are untouched. */
+html[data-theme="dark"] .artometrics-article-body .art-chart {
+  background:
+    radial-gradient(rgba(239, 227, 200, 0.45) 0.6px, transparent 0.75px) 0 0 / 4px 4px,
+    #000 !important;
+  border: 1px solid rgba(239, 227, 200, 0.55) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 12px 12px 8px !important;
+  overflow: hidden !important;
+}
+html[data-theme="dark"] .artometrics-article-body .art-chart:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+html[data-theme="dark"] .artometrics-article-body .art-chart-live {
+  position: relative;
+  background: #000 !important;
+}
+/* Remap the published white-paper poster onto the black ground.
+   Hue stays with the series so the figures are not recolored into new values. */
+html[data-theme="dark"] .artometrics-article-body .art-chart-fallback,
+html[data-theme="dark"] .artometrics-article-body .art-chart-live > img {
+  filter: invert(1) hue-rotate(180deg);
+  background: #000 !important;
+}
+html[data-theme="dark"] .artometrics-article-body .art-chart figcaption.art-chart-caption.art-chart-caption--visible,
+html[data-theme="dark"] .artometrics-article-body .art-chart-caption {
+  color: #cfc3ad !important;
+  text-align: left !important;
+  margin: 10px 0 4px !important;
+}
+
+html[data-theme="dark"] .artometrics-article-body main.art-article-main {
+  text-align: left !important;
+  max-width: 100% !important;
+}
+html[data-theme="dark"] .artometrics-article-body .art-p,
+html[data-theme="dark"] .artometrics-article-body main.art-article-main p,
+html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-p:first-of-type,
+html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-p:nth-of-type(2) {
+  font-size: 15px !important;
+  line-height: 1.58 !important;
+  font-weight: 400 !important;
+  text-align: left !important;
+  color: #efe3c8 !important;
+  max-width: 100% !important;
+  margin: 0 0 12px !important;
+}
+html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-p:first-of-type::first-letter {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  float: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: inherit !important;
+}
+html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-p:first-of-type strong {
+  font-size: inherit !important;
+}
+html[data-theme="dark"] .artometrics-article-body main.art-article-main > h2,
+html[data-theme="dark"] .artometrics-article-body h2#fast-facts {
+  font-family: "DM Sans", system-ui, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  text-align: left !important;
+  color: #9db7ff !important;
+  margin: 18px 0 10px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  display: block !important;
+  line-height: 1.35 !important;
+}
+html[data-theme="dark"] .artometrics-article-body main.art-article-main > h2:not(#toc-title)::before {
+  display: none !important;
+}
+html[data-theme="dark"] .artometrics-article-body main.art-article-main > h3,
+html[data-theme="dark"] .artometrics-article-body h3,
+html[data-theme="dark"] .artometrics-article-body main.art-article-main > h3:not(.art-back-matter__subhead),
+html[data-theme="dark"] .artometrics-article-body h3:not(.art-back-matter__subhead) {
+  text-align: left !important;
+  font-size: 15px !important;
+  letter-spacing: 0.04em !important;
+  text-transform: none !important;
+  color: #efe3c8 !important;
+  margin: 12px 0 8px !important;
+}
+html[data-theme="dark"] .artometrics-article-body strong,
+html[data-theme="dark"] .artometrics-article-body b {
+  color: #efe3c8 !important;
+}
+html[data-theme="dark"] .artometrics-article-body .fact-box {
+  background: #000 !important;
+  border: 1px solid rgba(239, 227, 200, 0.55) !important;
+  border-left-width: 1px !important;
+  border-radius: 0 !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  box-shadow: none !important;
+}
+html[data-theme="dark"] .artometrics-article-body .fact-number,
+html[data-theme="dark"] .artometrics-article-body .fact-label {
+  text-align: left !important;
+}
+html[data-theme="dark"] .artometrics-article-body .fact-number {
+  font-size: 1.25rem !important;
+  line-height: 1.25 !important;
+  color: #efe3c8 !important;
+}
+html[data-theme="dark"] .artometrics-article-body .fact-label {
+  font-size: 15px !important;
+  line-height: 1.45 !important;
+  color: #efe3c8 !important;
+}
+html[data-theme="dark"] .artometrics-article-body blockquote,
+html[data-theme="dark"] .artometrics-article-body main.art-article-main blockquote p {
+  text-align: left !important;
+  font-size: 15px !important;
+  line-height: 1.58 !important;
+  color: #efe3c8 !important;
+  background: transparent !important;
+  border-left: 1px solid #ff3d8a !important;
+  border-radius: 0 !important;
+}
+html[data-theme="dark"] .artometrics-article-body a {
+  color: #9db7ff;
+}
+html[data-theme="dark"] .artometrics-article-body .art-table-wrap,
+html[data-theme="dark"] .artometrics-article-body .art-table-wrapper,
+html[data-theme="dark"] .artometrics-article-body .table-scroll,
+html[data-theme="dark"] .artometrics-article-body pre,
+html[data-theme="dark"] .artometrics-article-body .table-wrapper {
+  display: block;
+  max-width: 100% !important;
+  min-width: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+}

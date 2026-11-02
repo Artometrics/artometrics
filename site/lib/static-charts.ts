@@ -1,6 +1,6 @@
 /** Bake each Plotly mount into the PNG already rendered for that chart. */
 export function withStaticCharts(html: string): string {
-  return html.replace(
+  const withCharts = html.replace(
     /<div\s+class="art-chart-live"([^>]*)>\s*<\/div>/g,
     (full, attrs: string) => {
       const fallback = /data-fallback="([^"]+)"/.exec(attrs)?.[1];
@@ -13,6 +13,11 @@ export function withStaticCharts(html: string): string {
       return `<div class="art-chart-live"${attrs}><img class="art-chart-fallback" src="${fallback}" alt="${alt}" loading="lazy" decoding="async" /></div>`;
     },
   );
+  return withCharts.replace(/<table\b[^>]*>[\s\S]*?<\/table>/gi, (table, offset) => {
+    const before = withCharts.slice(Math.max(0, offset - 120), offset);
+    if (/art-table-wrap|table-scroll/.test(before)) return table;
+    return `<div class="table-scroll">${table}</div>`;
+  });
 }
 
 export function jsonForScript(value: unknown): string {
