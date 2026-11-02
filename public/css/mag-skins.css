@@ -220,10 +220,11 @@
 }
 .mag-shell .skin-picker button {
   position: relative;
-  width: 36px;
-  height: 44px;
-  padding: 0;
-  border: 0;
+  width: auto;
+  min-width: 44px;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid transparent;
   border-radius: 6px;
   background: transparent;
   color: var(--ink);
@@ -231,7 +232,11 @@
   place-items: center;
   touch-action: manipulation;
   -webkit-touch-callout: none;
+  font: 600 10px/1 "DM Mono", ui-monospace, monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
+.mag-shell .skin-picker button .skin-label { pointer-events: none; }
 .mag-shell .skin-picker button svg { width: 18px; height: 18px; display: block; }
 .mag-shell .skin-picker button[aria-checked="true"] {
   background: rgba(20, 20, 20, 0.08);
@@ -410,16 +415,7 @@
   font-size: 12px;
   color: var(--accent);
 }
-.mag-shell[data-skin="ledger"] .big::before {
-  content: "";
-  display: inline-block;
-  width: 0.42em;
-  height: 0.42em;
-  margin-right: 0.12em;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #f4e7b2, #a07d32 62%, #5c4816);
-  vertical-align: 0.08em;
-}
+.mag-shell[data-skin="ledger"] .big::before { content: none; }
 .mag-shell[data-skin="ledger"] p.means::before { content: "☞ "; color: var(--accent2); }
 .mag-shell[data-skin="ledger"] figure.skin-accounts,
 .mag-shell[data-skin="ledger"] .donut {
@@ -451,18 +447,12 @@
   border-bottom: 1px solid var(--ink);
 }
 .mag-shell[data-skin="ledger"] footer.bar {
-  background-image: radial-gradient(circle at 8px 0, var(--rule) 3px, transparent 3.5px);
-  background-size: 16px 10px;
-  background-repeat: repeat-x;
-  border-top: 1px dashed var(--rule);
+  border-top: 1px solid var(--rule);
 }
 .mag-shell[data-skin="ledger"] .closing {
   margin-top: 8px;
   padding-top: 12px;
-  background-image: radial-gradient(circle at 8px 0, transparent 5px, var(--paper) 6px);
-  background-size: 16px 12px;
-  background-repeat: repeat-x;
-  border-top: 2px dashed var(--rule);
+  border-top: 2px solid var(--rule);
 }
 
 /* Back of the Box — blister header, yellow sticker, card frames. */
@@ -497,11 +487,6 @@
   padding: 0 8px 2px;
   transform: rotate(-8deg);
   box-shadow: 2px 3px 0 var(--ink);
-  animation: skin-peel 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-}
-@keyframes skin-peel {
-  from { transform: rotate(-18deg) translateY(-4px); }
-  to { transform: rotate(-8deg); }
 }
 .mag-shell[data-skin="box"] h2 {
   font-size: 16px;
@@ -583,18 +568,8 @@
 .mag-shell[data-skin="box"] .end { color: var(--ink); }
 
 /* Trade Paper — condensed decks, ticket numbers, sprocket edge, halftone plate. */
-.mag-shell[data-skin="trade"] #view::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 16px;
-  z-index: 4;
-  pointer-events: none;
-  background: radial-gradient(circle at 8px 11px, var(--ink) 3.5px, transparent 4px) 0 0 / 16px 22px;
-}
-.mag-shell[data-skin="trade"] #book { padding-left: 28px; }
+.mag-shell[data-skin="trade"] #view::before { content: none; }
+.mag-shell[data-skin="trade"] #book { padding-left: 0; }
 .mag-shell[data-skin="trade"] h1 {
   font-weight: 600;
   font-size: clamp(40px, 11vw, 72px);
@@ -629,13 +604,7 @@
   letter-spacing: 0.08em;
   break-inside: avoid;
 }
-.mag-shell[data-skin="trade"] h2::before {
-  content: "";
-  display: block;
-  height: 8px;
-  margin-bottom: 6px;
-  background: radial-gradient(circle, var(--accent) 2px, transparent 2.6px) 0 50% / 10px 8px;
-}
+.mag-shell[data-skin="trade"] h2::before { content: none; display: none; }
 .mag-shell[data-skin="trade"] .hero-frame { display: block; position: relative; }
 .mag-shell[data-skin="trade"] .hero {
   border-radius: 0;
@@ -643,28 +612,13 @@
   max-height: 32vh;
 }
 .mag-shell[data-skin="trade"] .hero-frame::after,
-.mag-shell[data-skin="trade"] .skin-plate::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 78px;
-  background: radial-gradient(#141414 0.55px, transparent 0.7px);
-  background-size: 3px 3px;
-  mix-blend-mode: multiply;
-  opacity: 0.45;
-  pointer-events: none;
-}
-.mag-shell[data-skin="trade"] .hero-frame::after { height: 100%; opacity: 0.35; }
+.mag-shell[data-skin="trade"] .skin-plate::after { content: none; display: none; }
 .mag-shell[data-skin="trade"] .skin-plate { position: relative; width: 120px; }
 .mag-shell[data-skin="trade"] .skin-plate img { height: 78px; filter: grayscale(1) contrast(1.15); }
 .mag-shell[data-skin="trade"] .kp {
   border: 1px dashed var(--ink);
   padding: 8px 14px;
-  background:
-    radial-gradient(circle at 0 18px, transparent 8px, #f7f4ec 9px) left / 14px 100% no-repeat,
-    radial-gradient(circle at 100% 18px, transparent 8px, #f7f4ec 9px) right / 14px 100% no-repeat;
+  background: transparent;
 }
 .mag-shell[data-skin="trade"] .skin-tally {
   font-family: Oswald, Impact, sans-serif;
@@ -710,7 +664,7 @@
     column-gap: 28px;
     text-align: left;
   }
-  .mag-shell[data-skin="trade"] #book { padding-left: 56px; }
+  .mag-shell[data-skin="trade"] #book { padding-left: 0; }
 }
 
 /* Charts stay full-width and heavy. No banner treatment. */
@@ -2076,35 +2030,35 @@
 }
 
 /* House reader. Skins keep their ornaments in the picker; the page is the dark Artometrics ground. */
-.mag-shell[data-skin] {
+.mag-shell[data-skin="ledger"] {
   color-scheme: dark;
   background: #0e1110;
   color: #f3ead7;
 }
-.mag-shell[data-skin] header.bar,
-.mag-shell[data-skin] footer.bar,
-.mag-shell[data-skin] #view,
-.mag-shell[data-skin] .mag-page {
+.mag-shell[data-skin="ledger"] header.bar,
+.mag-shell[data-skin="ledger"] footer.bar,
+.mag-shell[data-skin="ledger"] #view,
+.mag-shell[data-skin="ledger"] .mag-page {
   background: #0e1110;
   color: #f3ead7;
 }
-.mag-shell[data-skin] header.bar {
+.mag-shell[data-skin="ledger"] header.bar {
   border-bottom: 3px solid #ff3d8a;
   font-family: "DM Mono", ui-monospace, monospace;
 }
-.mag-shell[data-skin] header.bar a.site { color: #0047ff; }
-.mag-shell[data-skin] .skin-plate,
-.mag-shell[data-skin] .audit-stamp,
-.mag-shell[data-skin] .collect-140,
-.mag-shell[data-skin] .skin-ornaments {
+.mag-shell[data-skin="ledger"] header.bar a.site { color: #0047ff; }
+.mag-shell[data-skin="ledger"] .skin-plate,
+.mag-shell[data-skin="ledger"] .audit-stamp,
+.mag-shell[data-skin="ledger"] .collect-140,
+.mag-shell[data-skin="ledger"] .skin-ornaments {
   display: none !important;
 }
-.mag-shell[data-skin] .skin-dateline {
+.mag-shell[data-skin="ledger"] .skin-dateline {
   font-family: "DM Mono", ui-monospace, monospace;
   color: #0047ff;
   letter-spacing: 0.14em;
 }
-.mag-shell[data-skin] .kick {
+.mag-shell[data-skin="ledger"] .kick {
   display: inline-block;
   font-family: "DM Mono", ui-monospace, monospace;
   font-weight: 500;
@@ -2115,9 +2069,9 @@
   padding-bottom: 4px;
   margin: 0 0 10px;
 }
-.mag-shell[data-skin] h1,
 .mag-shell[data-skin="ledger"] h1,
-.mag-shell[data-skin] h1.skin-title {
+.mag-shell[data-skin="ledger"] h1,
+.mag-shell[data-skin="ledger"] h1.skin-title {
   font-family: "Anton", "Arial Narrow", Impact, sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -2128,20 +2082,20 @@
   border-bottom: 3px solid #ff3d8a;
   padding-bottom: 8px;
 }
-.mag-shell[data-skin] h1 em,
+.mag-shell[data-skin="ledger"] h1 em,
 .mag-shell[data-skin="ledger"] h1 em {
   font-style: normal;
   font-weight: 400;
   color: #0047ff;
 }
-.mag-shell[data-skin] h3 {
+.mag-shell[data-skin="ledger"] h3 {
   font-family: "Anton", "Arial Narrow", Impact, sans-serif;
   font-weight: 400;
   letter-spacing: -0.03em;
   line-height: 0.98;
   color: #f3ead7;
 }
-.mag-shell[data-skin] h2,
+.mag-shell[data-skin="ledger"] h2,
 .mag-shell[data-skin="ledger"] h2 {
   font-family: "Anton", "Arial Narrow", Impact, sans-serif;
   font-weight: 400;
@@ -2152,77 +2106,84 @@
   color: #f3ead7;
   margin: 18px 0 8px;
 }
-.mag-shell[data-skin] .dek,
-.mag-shell[data-skin] p,
-.mag-shell[data-skin] .by {
+.mag-shell[data-skin="ledger"] .dek,
+.mag-shell[data-skin="ledger"] p,
+.mag-shell[data-skin="ledger"] .by {
   font-family: "DM Sans", system-ui, sans-serif;
 }
-.mag-shell[data-skin] .dek { color: #b7d0cb; }
-.mag-shell[data-skin] .by,
-.mag-shell[data-skin] figcaption { color: #8fb8b2; }
-.mag-shell[data-skin] a { color: #0047ff; }
-.mag-shell[data-skin] .hero-frame {
+.mag-shell[data-skin="ledger"] .dek { color: #b7d0cb; }
+.mag-shell[data-skin="ledger"] .by,
+.mag-shell[data-skin="ledger"] figcaption { color: #8fb8b2; }
+.mag-shell[data-skin="ledger"] a { color: #0047ff; }
+.mag-shell[data-skin="ledger"] .hero-frame {
   display: block;
   background: transparent;
   border: 0;
   box-shadow: none;
   padding: 0;
 }
-.mag-shell[data-skin] .hero,
+.mag-shell[data-skin="ledger"] .hero,
 .mag-shell[data-skin="ledger"] .hero {
   width: 100%;
   max-height: 42vh;
   object-fit: cover;
   border-radius: 0;
 }
-.mag-shell[data-skin] .big,
-.mag-shell[data-skin] .kp .big {
+.mag-shell[data-skin="ledger"] .big,
+.mag-shell[data-skin="ledger"] .kp .big {
   font-family: "Anton", Impact, sans-serif;
   color: #0047ff;
 }
-.mag-shell[data-skin] .row b { background: #0047ff; }
-.mag-shell[data-skin] .row.hl b { background: #ff3d8a; }
-.mag-shell[data-skin] .prog { background: #2a3330; }
-.mag-shell[data-skin] .prog i { background: #0047ff; }
-.mag-shell[data-skin] figure {
+.mag-shell[data-skin="ledger"] .row b { background: #0047ff; }
+.mag-shell[data-skin="ledger"] .row.hl b { background: #ff3d8a; }
+.mag-shell[data-skin="ledger"] .prog { background: #2a3330; }
+.mag-shell[data-skin="ledger"] .prog i { background: #0047ff; }
+.mag-shell[data-skin="ledger"] figure {
   border-top-color: #ff3d8a;
   border-bottom-color: #2a3330;
 }
-.mag-shell[data-skin] .toc li { border-top-color: #2a3330; }
-.mag-shell[data-skin] .toc b {
+.mag-shell[data-skin="ledger"] .toc li { border-top-color: #2a3330; }
+.mag-shell[data-skin="ledger"] .toc b {
   font-family: "Anton", Impact, sans-serif;
   font-weight: 400;
   color: #f3ead7;
 }
-.mag-shell[data-skin] .toc small { color: #0047ff; }
-.mag-shell[data-skin] .cv-mast {
+.mag-shell[data-skin="ledger"] .toc small { color: #0047ff; }
+.mag-shell[data-skin="ledger"] .cv-mast {
   font-family: "Chomsky", Georgia, serif;
   color: #f3ead7;
 }
-.mag-shell[data-skin] .cv-sub { color: #0047ff; }
-.mag-shell[data-skin] .skin-picker button { color: #f3ead7; }
-.mag-shell[data-skin] .skin-picker button[aria-checked="true"] {
+.mag-shell[data-skin="ledger"] .cv-sub { color: #0047ff; }
+.mag-shell[data-skin="ledger"] .skin-picker button { color: #f3ead7; }
+.mag-shell[data-skin="ledger"] .skin-picker button[aria-checked="true"] {
   background: rgba(127, 222, 214, 0.16);
   box-shadow: inset 0 -3px 0 #ff3d8a;
 }
-.mag-shell[data-skin] .skin-picker button .tip {
+.mag-shell[data-skin="ledger"] .skin-picker button .tip {
   background: #f3ead7;
   color: #100e0c;
   font-family: "DM Sans", system-ui, sans-serif;
 }
-.mag-shell[data-skin] .mag-page {
+.mag-shell[data-skin="ledger"] .mag-page {
   scrollbar-color: #0047ff #0e1110;
 }
-.mag-shell[data-skin] .mag-page::-webkit-scrollbar { width: 8px; }
-.mag-shell[data-skin] .mag-page::-webkit-scrollbar-thumb {
+.mag-shell[data-skin="ledger"] .mag-page::-webkit-scrollbar { width: 8px; }
+.mag-shell[data-skin="ledger"] .mag-page::-webkit-scrollbar-thumb {
   background: #ff3d8a;
 }
-.mag-shell[data-skin] ::selection {
+.mag-shell[data-skin="ledger"] ::selection {
   background: #ff3d8a;
   color: #100e0c;
 }
-.mag-shell[data-skin] a:focus-visible,
-.mag-shell[data-skin] button:focus-visible {
+.mag-shell[data-skin="ledger"] a:focus-visible,
+.mag-shell[data-skin="ledger"] button:focus-visible {
   outline: 2px solid #0047ff;
   outline-offset: 2px;
 }
+
+/* Decorative icon row and dot gutters stay off on every skin. */
+.mag-shell .skin-ornaments { display: none !important; }
+.mag-shell[data-skin="trade"] #view::before,
+.mag-shell[data-skin="trade"] h2::before,
+.mag-shell[data-skin="trade"] .hero-frame::after,
+.mag-shell[data-skin="trade"] .skin-plate::after { content: none !important; display: none !important; }

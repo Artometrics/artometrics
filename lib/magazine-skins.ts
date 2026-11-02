@@ -60,26 +60,53 @@ export function skinStorageKey(slug: string): string {
   return `artometrics-mag-skin:${slug}`;
 }
 
-/** Reader ground. Skins still switch ornaments; the page itself stays the dark house. */
+/** Reader ground for the default Ledger skin. Other skins use their own tokens. */
 export const READER_PAPER = "#0e1110";
 export const READER_INK = "#f3ead7";
 
+function quotedFont(name: string): string {
+  return `"${name.replace(/"/g, "")}"`;
+}
+
+function paperIsDark(hex: string): boolean {
+  const raw = hex.replace("#", "");
+  if (raw.length < 6) return false;
+  const r = Number.parseInt(raw.slice(0, 2), 16);
+  const g = Number.parseInt(raw.slice(2, 4), 16);
+  const b = Number.parseInt(raw.slice(4, 6), 16);
+  return (r * 299 + g * 587 + b * 114) / 1000 < 140;
+}
+
 export function skinCssVars(skin: MagSkin): Record<string, string> {
+  // Ledger stays the dark house. Every other skin paints with its own tokens,
+  // so the picker buttons change the page instead of swapping a dead icon.
+  const locked = skin.id === "ledger";
+  const paper = locked ? READER_PAPER : skin.tokens.paper;
+  const ink = locked ? READER_INK : skin.tokens.ink;
+  const accent = locked ? "#0047ff" : skin.tokens.accent;
+  const accent2 = locked ? "#ff3d8a" : skin.tokens.accent2;
+  const rule = locked ? "#ff3d8a" : skin.tokens.rule;
   return {
-    "--paper": READER_PAPER,
-    "--ink": READER_INK,
-    "--accent": "#0047ff",
-    "--accent2": "#ff3d8a",
-    "--rule": "#ff3d8a",
-    "--blue": "#0047ff",
-    "--red": "#ff3d8a",
-    "--mute": "#b7d0cb",
+    "--paper": paper,
+    "--ink": ink,
+    "--accent": accent,
+    "--accent2": accent2,
+    "--rule": rule,
+    "--blue": accent,
+    "--red": accent2,
+    "--mute": locked || paperIsDark(paper) ? "#b7d0cb" : "#3a3a3a",
     "--skin-id": skin.id,
-    "--skin-display": '"Anton", "Arial Narrow", Impact, sans-serif',
-    "--skin-body": '"DM Sans", system-ui, sans-serif',
-    "--skin-figures": '"DM Mono", ui-monospace, monospace',
-    backgroundColor: READER_PAPER,
-    color: READER_INK,
+    "--skin-display": locked
+      ? '"Anton", "Arial Narrow", Impact, sans-serif'
+      : `${quotedFont(skin.fonts.display)}, "Anton", sans-serif`,
+    "--skin-body": locked
+      ? '"DM Sans", system-ui, sans-serif'
+      : `${quotedFont(skin.fonts.body)}, "DM Sans", system-ui, sans-serif`,
+    "--skin-figures": locked
+      ? '"DM Mono", ui-monospace, monospace'
+      : `${quotedFont(skin.fonts.figures)}, "DM Mono", ui-monospace, monospace`,
+    backgroundColor: paper,
+    color: ink,
   };
 }
 

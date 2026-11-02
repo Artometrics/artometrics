@@ -3,29 +3,18 @@ const year = new Date().getFullYear();
 const links = [
   ["/blog", "Reports"],
   ["/podcast", "Podcast"],
-  ["/authors", "Authors"],
-  ["/studio", "Studio"],
-  ["/contact", "Dispatch"],
-  ["/legal/ethics-statement", "Legal"],
+  ["/about", "About"],
   ["/sources", "Sources"],
   ["/rss.xml", "RSS"],
+  ["/legal/ethics-statement", "Legal"],
 ];
 ---
 
 <footer class="site-footer">
   <div class="wrap">
-    <div class="site-footer__row">
-      <div>
-        <em>Scientia potentia est. Data-science reports for the creative industries.</em>
-        <p class="fine">Artometrics Magazine — Independent Investigative Desk</p>
-      </div>
-      <nav aria-label="Footer">
-        {links.map(([href, label]) => <a href={href}>{label}</a>)}
-      </nav>
-    </div>
-    <div class="site-footer__base">
-      <span>© {year} Artometrics. All rights reserved.</span>
-      <span>artometrics.com</span>
-    </div>
+    <nav class="site-footer__links" aria-label="Footer">
+      {links.map(([href, label]) => <a href={href}>{label}</a>)}
+    </nav>
+    <p class="site-footer__base">© {year} Artometrics</p>
   </div>
 </footer>
