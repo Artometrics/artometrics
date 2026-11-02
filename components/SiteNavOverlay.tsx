@@ -104,10 +104,9 @@ export function SiteNavOverlay() {
 
   useEffect(() => {
     if (Platform.OS !== "web" || typeof document === "undefined") return;
-    const prev = document.body.style.overflow;
-    if (menuOpen) document.body.style.overflow = "hidden";
+    document.documentElement.classList.toggle("scroll-lock", menuOpen);
     return () => {
-      document.body.style.overflow = prev;
+      document.documentElement.classList.remove("scroll-lock");
     };
   }, [menuOpen]);
 

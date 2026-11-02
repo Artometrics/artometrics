@@ -128,8 +128,11 @@ html.mag-mode #root {
   box-sizing: border-box;
   flex: 0 0 auto;
   height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
+  /* Both axes auto. overflow-x:hidden (and clip paired with auto, which
+     WebKit turns back into hidden) stops iOS from panning the page.
+     touch-action:pan-y keeps that pan vertical; mag.js still turns on a
+     horizontal swipe. */
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
   touch-action: pan-y;

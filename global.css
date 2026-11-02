@@ -57,17 +57,22 @@
   }
 }
 
-/* Report action chips: one row, thumb-scrollable on mobile Safari. */
+/* Report action chips: one row, thumb-scrollable on mobile Safari.
+   pan-x pan-y (not pan-x alone) so a vertical finger still scrolls the page. */
 .art-action-scroller {
   width: 100%;
   max-width: 100%;
   min-width: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
+  /* Both axes auto. iOS Safari will not pan an axis whose pair is overflow:hidden. */
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
-  touch-action: pan-x;
+  touch-action: pan-x pan-y;
   overscroll-behavior-x: contain;
   scrollbar-width: thin;
+}
+.art-action-scroller,
+.art-action-scroller * {
+  touch-action: pan-x pan-y;
 }
 .art-action-scroller__row {
   display: flex;
@@ -90,6 +95,103 @@
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
   touch-action: pan-y;
+  /* Same value on both axes. overflow-x:hidden next to overflow-y:auto
+     is the iOS Safari bug that drops the pan. translateZ(0) from RN Web
+     makes that worse, so the transform comes off too. */
+  overflow: auto !important;
+  transform: none !important;
+  min-height: 0;
+}
+
+/*
+  Document scroll for every route except the page-flip reader.
+
+  Expo's ScrollViewStyleReset sets html/body/#root to height:100% and
+  body to overflow:hidden, then the site ScrollView scrolls inside that.
+  React Native Web paints that scroller as overflow-x:hidden, overflow-y:auto,
+  and transform:translateZ(0). iOS Safari does not pan that combination
+  with a finger (Chromium and a desktop wheel still do). The document
+  itself is the scroller on iOS, so these rules undo the lock outside
+  html.mag-mode. Ancestors of .site-frame are the absolute-fill screen
+  shells; they have to grow with the page or the document never gets taller
+  than the viewport.
+*/
+html:not(.mag-mode):not(.scroll-lock),
+html:not(.mag-mode):not(.scroll-lock) body {
+  height: auto !important;
+  min-height: 100%;
+  /* visible/visible, not hidden/auto. Mixing overflow-x:hidden with
+     overflow-y:auto is what makes iOS Safari ignore a vertical pan.
+     overflow-x:clip paired with overflow-y:auto collapses back to hidden
+     in WebKit, so the document stays overflow:visible and the page column
+     clips sideways instead. */
+  overflow: visible !important;
+}
+html:not(.mag-mode) #root {
+  display: block !important;
+  height: auto !important;
+  min-height: 100%;
+  overflow: visible !important;
+}
+html:not(.mag-mode) #root :has(.site-frame) {
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+  transform: none !important;
+  flex: none !important;
+}
+.site-frame,
+.site-column,
+.site-page-scroll {
+  width: 100%;
+  height: auto !important;
+  max-height: none !important;
+  transform: none !important;
+  flex: none !important;
+}
+.site-frame,
+.site-column {
+  overflow: visible !important;
+}
+/* Clip wide code and chip rows without becoming a vertical scroll container.
+   clip + visible stays clip in WebKit. clip + auto becomes hidden/auto. */
+.site-page-scroll {
+  overflow-x: clip !important;
+  overflow-y: visible !important;
+  max-width: 100%;
+}
+.site-frame {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+html.scroll-lock,
+html.scroll-lock body {
+  overflow: hidden !important;
+}
+
+/* Horizontal rails. Both axes auto so iOS will pan the row; a vertical
+   finger chains to the page because the row is only one line tall. */
+.site-hscroll {
+  overflow: auto !important;
+  transform: none !important;
+  touch-action: pan-x pan-y;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: auto;
 }
 
 @layer theme {

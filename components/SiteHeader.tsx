@@ -18,7 +18,7 @@ export function SiteHeader() {
 
   return (
     <View
-      className="z-40 border-b"
+      className="site-header z-40 border-b"
       style={{ backgroundColor: House.groundDeep, borderBottomColor: "#2a3330" }}
     >
       <View className="border-b" style={{ borderBottomColor: "#2a3330" }}>

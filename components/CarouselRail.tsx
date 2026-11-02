@@ -48,7 +48,7 @@ export function CarouselRail({
           },
           Platform.OS === "web" ? ({ scrollSnapType: "x mandatory" } as object) : null,
         ]}
-        className="w-full"
+        className="site-hscroll w-full"
       >
         {children}
       </ScrollView>

@@ -48,6 +48,16 @@ function SiteChrome() {
     setScrollY(e.nativeEvent.contentOffset.y);
   };
 
+  useEffect(() => {
+    if (Platform.OS !== "web" || magazine || typeof window === "undefined") return;
+    const onWindowScroll = () => {
+      setScrollY(window.scrollY || document.documentElement.scrollTop || 0);
+    };
+    onWindowScroll();
+    window.addEventListener("scroll", onWindowScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onWindowScroll);
+  }, [magazine, setScrollY]);
+
   if (magazine) {
     return (
       <View style={{ flex: 1, backgroundColor: "#ffffff", overflow: "hidden" }}>
@@ -60,31 +70,38 @@ function SiteChrome() {
 
   return (
     <SafeAreaView
-      className={bareChrome ? "flex-1 bg-black" : "flex-1"}
+      className={bareChrome ? "site-frame flex-1 bg-black" : "site-frame flex-1"}
       edges={["top"]}
       style={bareChrome ? { backgroundColor: "#000000" } : { backgroundColor: "transparent" }}
     >
       <ShoegazeBackground />
       <StatusBar style={bareChrome || mode === "dark" ? "light" : "dark"} />
       <View
-        className={bareChrome ? "relative flex-1 bg-black" : "relative flex-1"}
+        className={bareChrome ? "site-column relative flex-1 bg-black" : "site-column relative flex-1"}
         style={bareChrome ? undefined : { backgroundColor: "transparent" }}
       >
         {bareChrome ? null : <SiteHeader />}
-        <ScrollView
-          ref={scrollRef}
-          className="flex-1"
-          contentContainerClassName={bareChrome ? "grow" : "grow pb-6"}
-          onScroll={onScroll}
-          scrollEventThrottle={32}
-          keyboardShouldPersistTaps="handled"
-          keyboardDismissMode="on-drag"
-          directionalLockEnabled
-          nestedScrollEnabled
-        >
-          <Slot />
-          {bareChrome ? null : <SiteFooter />}
-        </ScrollView>
+        {Platform.OS === "web" ? (
+          <View className={bareChrome ? "site-page-scroll" : "site-page-scroll pb-6"}>
+            <Slot />
+            {bareChrome ? null : <SiteFooter />}
+          </View>
+        ) : (
+          <ScrollView
+            ref={scrollRef}
+            className="flex-1"
+            contentContainerClassName={bareChrome ? "grow" : "grow pb-6"}
+            onScroll={onScroll}
+            scrollEventThrottle={32}
+            keyboardShouldPersistTaps="handled"
+            keyboardDismissMode="on-drag"
+            directionalLockEnabled
+            nestedScrollEnabled
+          >
+            <Slot />
+            {bareChrome ? null : <SiteFooter />}
+          </ScrollView>
+        )}
         {bareChrome ? null : <SiteNavOverlay />}
         <Analytics />
       </View>
