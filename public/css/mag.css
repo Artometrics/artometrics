@@ -54,6 +54,7 @@ html.mag-mode #root {
 .mag-shell header.bar img { width: 22px; height: 22px; }
 .mag-shell header.bar .t {
   flex: 1;
+  min-width: 0;
   color: var(--mute);
   white-space: nowrap;
   overflow: hidden;
@@ -61,9 +62,16 @@ html.mag-mode #root {
 }
 .mag-shell header.bar a { display: flex; color: inherit; text-decoration: none; }
 .mag-shell header.bar a.site {
+  flex: 0 0 auto;
   color: var(--teal);
   text-decoration: none;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.02em;
+  font-size: 10px;
+  white-space: nowrap;
+}
+@media (max-width: 520px) {
+  .mag-shell header.bar { gap: 6px; padding-left: 10px; padding-right: 10px; }
+  .mag-shell header.bar .t { display: none; }
 }
 .mag-shell footer.bar {
   position: fixed;
@@ -214,37 +222,28 @@ html.mag-mode #root {
 }
 .mag-shell figcaption a { color: var(--mute); }
 .mag-shell .bars { display: grid; gap: 7px; font: 600 12px/1 -apple-system, system-ui, sans-serif; }
-.mag-shell .row { display: grid; grid-template-columns: 92px 1fr 52px; align-items: center; gap: 8px; }
+.mag-shell .row { display: grid; grid-template-columns: minmax(0, 34%) minmax(0, 1fr) auto; align-items: center; gap: 8px; max-width: 100%; }
+.mag-shell .row span { min-width: 0; overflow-wrap: anywhere; }
 .mag-shell .row b {
   display: block;
   height: 14px;
   background: var(--blue);
   border-radius: 2px;
-  width: 0;
-  transition: width 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  width: var(--w, 0%);
+  max-width: 100%;
 }
 .mag-shell .row.hl b { background: var(--red); }
-.mag-shell .row span:last-child { text-align: right; opacity: 0; transition: opacity 0.4s 0.7s; }
-.mag-shell figure.on .row b { width: var(--w); }
-.mag-shell figure.on .row span:last-child { opacity: 1; }
-.mag-shell .row:nth-child(2) b { transition-delay: 0.08s; }
-.mag-shell .row:nth-child(3) b { transition-delay: 0.16s; }
-.mag-shell .row:nth-child(4) b { transition-delay: 0.24s; }
-.mag-shell .row:nth-child(5) b { transition-delay: 0.32s; }
-.mag-shell .row:nth-child(6) b { transition-delay: 0.4s; }
-.mag-shell .donut { display: flex; gap: 16px; align-items: center; }
-.mag-shell .donut svg { width: 110px; height: 110px; transform: rotate(-90deg); }
+.mag-shell .row span:last-child { text-align: right; opacity: 1; }
+.mag-shell .donut { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; max-width: 100%; }
+.mag-shell .donut svg { width: 110px; height: 110px; max-width: 100%; transform: rotate(-90deg); }
 .mag-shell .donut circle { fill: none; stroke-width: 16; }
 .mag-shell .donut .arc {
-  stroke-dasharray: 0 100;
+  stroke-dasharray: var(--p, 0) 100;
   stroke-dashoffset: var(--o, 0);
-  transition: stroke-dasharray 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.mag-shell figure.on .donut .arc { stroke-dasharray: var(--p) 100; }
 .mag-shell .donut ul { list-style: none; font: 600 12px/1.6 -apple-system, system-ui, sans-serif; padding: 0; margin: 0; }
 .mag-shell .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
-.mag-shell .fade { opacity: 0; transform: translateY(8px); transition: opacity 0.6s, transform 0.6s; }
-.mag-shell .fade.on { opacity: 1; transform: none; }
+.mag-shell .fade { opacity: 1; transform: none; }
 .mag-shell ol.src { font: 13px/1.45 -apple-system, system-ui, sans-serif; padding-left: 18px; }
 .mag-shell ol.src li { margin-bottom: 6px; }
 .mag-shell a { color: var(--blue); }
@@ -278,17 +277,30 @@ html.mag-mode #root {
   .mag-shell .donut .arc { transition: none !important; }
   .mag-shell #fold { display: none; }
 }
-.mag-shell .fig img {
+.mag-shell figure,
+.mag-shell .fig,
+.mag-shell .bars,
+.mag-shell .kp,
+.mag-shell .mag-page > * {
+  max-width: 100%;
+  min-width: 0;
+}
+.mag-shell .fig img,
+.mag-shell figure img {
   width: 100%;
+  max-width: 100%;
   height: auto;
   display: block;
-  max-height: 46vh;
+  max-height: min(52vh, 420px);
   object-fit: contain;
-  opacity: 0;
-  transform: translateY(10px) scale(0.98);
-  transition: opacity 0.7s, transform 0.7s;
+  object-position: center top;
 }
-.mag-shell figure.on.fig img { opacity: 1; transform: none; }
+.mag-shell .hero {
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center top;
+  max-height: min(42vh, 360px);
+}
 .mag-shell .kp { break-inside: avoid; margin: 6px 0 14px; }
 .mag-shell .kp .big { font-size: 44px; }
 .mag-shell .kp p { font: 600 13px/1.35 "DM Sans", system-ui, sans-serif; color: var(--mute); }
