@@ -1,0 +1,27 @@
+---
+import Base from "../layouts/Base.astro";
+import { PLANS } from "@/lib/product/plans";
+---
+
+<Base title="Pricing" description="Artometrics membership — annual and monthly, with a one-week trial." path="/pricing">
+  <div class="wrap page">
+    <p class="kicker">Membership</p>
+    <h1>Unlimited access</h1>
+    <p class="lede">Checkout stays on the member API. The plans below are the published prices. Sign-in on this static host is not wired to Stripe.</p>
+    <div class="plans">
+      {PLANS.map((plan) => (
+        <article class="plan">
+          {plan.badge ? <p class="kicker">{plan.badge}</p> : null}
+          <h2>{plan.title}</h2>
+          <p class="price">{plan.price}</p>
+          <p class="meta">{plan.period}</p>
+          <p>{plan.trialLabel}</p>
+          <ul>
+            {plan.features.map((feature) => <li>{feature}</li>)}
+          </ul>
+          <p><a class="btn" href="/login?next=%2Fpricing">Sign in to subscribe</a></p>
+        </article>
+      ))}
+    </div>
+  </div>
+</Base>

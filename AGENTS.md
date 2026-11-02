@@ -14,8 +14,8 @@ Platform UX plan: `docs/PLATFORM_UX_PLAN.md`.
 
 From `package.json` and `app.json`:
 
-- **Expo** `~57` + **Expo Router** (file-based routes in `app/`)
-- **React Native** / **React Native Web** (static web export via `expo export -p web`)
+- **Public site:** Astro 5 (`site/`, `npm run build` → `dist/`) deployed to Firebase Hosting (`artometrics-510519`). Native app source remains Expo Router in `app/`.
+- **Expo** `~57` + **Expo Router** for iOS and Android (`npm run dev:expo`)
 - **Content:** markdown in `src/content/*` → `scripts/build-content.mjs` → `src/generated/*.json` (Sanity is the target editorial CMS — see `sanity/` + `docs/SANITY_SETUP.md`)
 - **Charts:** Plotly on web (`components/ArticleBody.web.tsx`); PNG fallbacks on native WebView
 - **Membership / social:** `@supabase/supabase-js`, Stripe via Netlify functions; private tools + member posts + comments/follows in Supabase
@@ -105,9 +105,9 @@ Vision / phases: `docs/00_ARTOMETRICS_MASTER_VISION.md`, `docs/01_BUILD_PHASES_A
 | `npm run doctor` | Green/red toolchain inventory |
 | `npm run content` | Rebuild `src/generated/*` (includes the sources catalog) |
 | `npm run sources` | Rebuild `src/generated/sources.json` from `magazine/issues.json` |
-| `npm run dev` | Expo web |
-| `npm start` | Expo CLI |
-| `npm run build` | Static web export → `dist/` |
+| `npm run dev` | Astro dev server for the public site |
+| `npm run dev:expo` | Expo CLI (native / legacy web) |
+| `npm run build` | Astro static export → `dist/` (Firebase) |
 | `npm run sync:articles` | Sync Quarto repos → blog markdown + chart assets (legacy path) |
 | `npm run materialize:articles` | Create/update all `articles/<slug>/` from blog + public assets |
 | `npm run articles:html-to-qmd` | Bulk-convert blog HTML bodies → Quarto `.qmd` (skips Tier A unless `--force`) |
@@ -165,7 +165,7 @@ Ops plan: `docs/MEDIA_COMPANY_PLAN.md`. Vision: `docs/MEDIA_EMPIRE_VISION.md`. H
 
 - Prefer **minimal diffs** and `@/` imports from the project root.
 - Keep public-facing copy **Artometrics-branded**.
-- Do **not** reintroduce Astro; this product is Expo-only.
-- Verify `npm run build` after changing routes or the content builder.
+- The public website is Astro. Keep Expo for the native app; do not deploy an Expo web export over `dist/`.
+- Verify `npm run build` (`astro build`) after changing routes or the content builder.
 - Netlify API redirects (`/api/*`) must stay above the SPA fallback in `netlify.toml`.
 - New reports should start from a Content OS brief when possible.

@@ -1,0 +1,20 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Security" description="Artometrics security practices and vulnerability disclosure." path="/security">
+  <article class="wrap wrap--narrow page prose">
+    <p class="kicker">Trust</p>
+    <h1>Security</h1>
+    <p>Membership data, billing webhooks, and editorial assets stay off the public bundle. This static host has no service-role keys and no secrets in the repository.</p>
+    <h2>Practices</h2>
+    <ul>
+      <li>TLS on the hosting edge</li>
+      <li>Supabase Auth for saved reports and member audio, when the member API is attached</li>
+      <li>Stripe webhook signature verification on the server, not in the page</li>
+      <li>No service-role keys in the browser bundle</li>
+    </ul>
+    <h2>Disclosure</h2>
+    <p>Report vulnerabilities to <a href="mailto:security@artometrics.com">security@artometrics.com</a>. See also <a href="/legal/privacy">Privacy</a> and <a href="/legal/dpa">DPA</a>.</p>
+  </article>
+</Base>

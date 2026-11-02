@@ -1,0 +1,23 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getAuthors } from "@/lib/content";
+import { mediaUrl } from "../../lib/static-charts";
+
+const authors = getAuthors();
+---
+
+<Base title="Authors" description="The Artometrics editorial desk." path="/authors">
+  <div class="wrap page">
+    <p class="kicker">Masthead</p>
+    <h1>Authors</h1>
+    <div class="stack">
+      {authors.map((author) => (
+        <a class="card" href={`/authors/${author.id}`}>
+          {mediaUrl(author.image) ? <img src={mediaUrl(author.image)} alt="" style="width:96px;height:96px;object-fit:cover" /> : null}
+          <h2>{author.name}</h2>
+          {author.role ? <span class="kicker">{author.role}</span> : null}
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

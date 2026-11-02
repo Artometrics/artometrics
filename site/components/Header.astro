@@ -1,0 +1,76 @@
+---
+import { SITE_PRIMARY_NAV } from "@/lib/site-nav";
+import { formatHeaderDateline } from "@/lib/headerDateline";
+import facts from "@/lib/nav-fun-facts.json";
+import { jsonForScript } from "../lib/static-charts";
+
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const dateline = formatHeaderDateline();
+const fact = facts[0];
+---
+
+<header class="mast">
+  <div class="dateline">{dateline}</div>
+  <div class="wrap mast-row">
+    <button class="icon-btn" id="open-menu" type="button" aria-expanded="false" aria-controls="nav-overlay">
+      <span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Open menu</span>
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75">
+        <path d="M4 7h16M4 12h16M4 17h16"></path>
+      </svg>
+    </button>
+    <a class="wordmark" href="/" aria-label="Artometrics home">Artometrics</a>
+    <a class="icon-btn" href="/search" aria-label="Search reports">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75">
+        <circle cx="11" cy="11" r="7"></circle>
+        <path d="M20 20l-3.5-3.5"></path>
+      </svg>
+    </a>
+  </div>
+  <nav class="desk-nav" aria-label="Sections">
+    <div class="wrap">
+      <ul>
+        {SITE_PRIMARY_NAV.map((item) => (
+          <li>
+            <a href={item.href} aria-current={item.isActive(path) ? "page" : undefined}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="nav-overlay" id="nav-overlay" hidden>
+  <div class="wrap">
+    <div class="nav-overlay__bar">
+      <input id="nav-search" type="search" placeholder="Search reports & topics…" aria-label="Search reports and topics" autocomplete="off" />
+      <button class="icon-btn" id="close-menu" type="button">Close</button>
+    </div>
+    <ul class="suggest" id="nav-suggest"></ul>
+    <ul class="nav-list">
+      {SITE_PRIMARY_NAV.map((item) => (
+        <li>
+          <a href={item.href}>
+            {item.label}
+            {item.descriptor ? <span>{item.descriptor}</span> : null}
+          </a>
+        </li>
+      ))}
+      <li><a href="/podcast">Podcast <span>Interviews</span></a></li>
+      <li><a href="/mag">Magazine <span>Page-flip edition</span></a></li>
+      <li><a href="/studio">Studio</a></li>
+      <li><a href="/contact">Dispatch</a></li>
+    </ul>
+    <div class="fact">
+      <p class="fact__label">Did you know?</p>
+      <a class="fact__text" id="fact-link" href={fact ? `/${fact.slug}` : "/blog"} aria-label={fact ? `${fact.text}. ${fact.title}` : "Reports"}>
+        {fact?.text}
+      </a>
+      <p>
+        <a class="fact__source" id="fact-source" href={fact?.sourceHref || "/sources"}>
+          {fact ? `Source · ${fact.sourceLabel}` : "Sources"}
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+<script type="application/json" id="nav-facts" set:html={jsonForScript(facts)} />

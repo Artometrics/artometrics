@@ -1,0 +1,11 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Your profile" description="Private member hub." path="/me">
+  <div class="wrap wrap--narrow page">
+    <h1>Your profile</h1>
+    <p class="lede">The private hub is available after sign-in. Public profiles stay at /u/handle when the member API is connected.</p>
+    <p><a href="/login?next=%2Fme">Log in</a></p>
+  </div>
+</Base>

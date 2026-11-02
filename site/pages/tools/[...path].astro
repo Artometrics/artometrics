@@ -1,0 +1,21 @@
+---
+import Base from "../../layouts/Base.astro";
+import { TOOL_PAGES } from "../../lib/tool-pages";
+
+export function getStaticPaths() {
+  return Object.keys(TOOL_PAGES).map((path) => ({ params: { path } }));
+}
+
+const key = Astro.params.path || "";
+const page = TOOL_PAGES[key];
+---
+
+<Base title={page.title} description={page.body} path={`/tools/${key}`}>
+  <div class="wrap wrap--narrow page">
+    <p class="crumbs"><a href="/studio">Studio</a> · <a href="/tools">Tools</a></p>
+    <h1>{page.title}</h1>
+    <p class="lede">{page.body}</p>
+    {key === "twilda/reference" ? <p><a href="/library/reference">Public reference catalog</a></p> : null}
+    <p><a class="btn" href={`/login?next=${encodeURIComponent(`/tools/${key}`)}`}>Sign in</a></p>
+  </div>
+</Base>

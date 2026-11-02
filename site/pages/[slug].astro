@@ -1,0 +1,159 @@
+---
+import Base from "../layouts/Base.astro";
+import {
+  deckLine,
+  formatAuthorName,
+  formatDate,
+  getBlogPosts,
+  getRelatedPosts,
+  sectionLabel,
+  splitReportHeadline,
+} from "@/lib/content";
+import { DOMAIN_META, SUBDOMAIN_META, primaryDomain, primarySubdomain } from "@/data/sections";
+import { magazineImg, magazineIssue, magazineIssueHref } from "@/lib/magazine";
+import downloads from "@/src/generated/downloads.json";
+import { existsSync } from "node:fs";
+import { readingMinutes, withStaticCharts } from "../lib/static-charts";
+
+export function getStaticPaths() {
+  return getBlogPosts().map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const label = sectionLabel(post.tags, post.subject);
+const headline = splitReportHeadline(post.title);
+const minutes = readingMinutes(post.body || "");
+const author = post.author ? formatAuthorName(String(post.author)) : "Kyle McAuliffe";
+const domain = primaryDomain(post.tags || []);
+const sub = primarySubdomain(post.tags || []);
+const issue = magazineIssue(post.slug);
+const audioFile = post.audioSrc && !String(post.audioSrc).startsWith("http")
+  ? existsSync(new URL(`../../public${post.audioSrc}`, import.meta.url))
+  : Boolean(post.audioSrc);
+const pack = downloads[post.slug as keyof typeof downloads] as
+  | {
+      dataset?: string | null;
+      pdf?: string | null;
+      epub?: string | null;
+      audio?: string | null;
+      transcript?: string | null;
+      html?: string | null;
+    }
+  | undefined;
+const files = [
+  pack?.dataset ? ["Dataset", pack.dataset] : null,
+  pack?.pdf ? ["PDF", pack.pdf] : null,
+  pack?.epub ? ["EPUB", pack.epub] : null,
+  pack?.audio ? ["Audio", pack.audio] : null,
+  pack?.transcript ? ["Transcript", pack.transcript] : null,
+  pack?.html ? ["HTML", pack.html] : null,
+  audioFile && post.audioSrc ? ["Narration", post.audioSrc] : null,
+].filter(Boolean) as [string, string][];
+const related = getRelatedPosts(post.slug, 4);
+const faq = (post.faq || []) as { question: string; answer: string }[];
+const image = post.heroImage || "/images/brand/og-default.png";
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.pubDate,
+    image: [image.startsWith("http") ? image : `https://artometrics.com${image}`],
+    author: { "@type": "Person", name: author },
+    publisher: { "@type": "Organization", name: "Artometrics", url: "https://artometrics.com" },
+    mainEntityOfPage: `https://artometrics.com/${post.slug}`,
+    articleSection: label || DOMAIN_META[domain].title,
+  },
+  ...(faq.length
+    ? [{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faq.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: { "@type": "Answer", text: item.answer },
+        })),
+      }]
+    : []),
+];
+const points = (post.keyPoints || []) as string[];
+---
+
+<Base
+  title={post.title}
+  description={post.description}
+  path={`/${post.slug}`}
+  image={image}
+  type="article"
+  jsonLd={jsonLd}
+>
+  <link slot="head" rel="stylesheet" href="/css/artometrics-article.css" />
+  <link slot="head" rel="stylesheet" href="/css/astro-contrast.css" />
+  <article class="wrap wrap--measure page">
+    <p class="crumbs">
+      <a href="/blog">Reports</a>
+      {" · "}
+      <a href={`/topics/${domain}`}>{DOMAIN_META[domain].title}</a>
+      {sub && SUBDOMAIN_META[sub] ? (
+        <>
+          {" · "}
+          <a href={`/blog?subdomain=${sub}`}>{SUBDOMAIN_META[sub].title}</a>
+        </>
+      ) : null}
+    </p>
+    {issue ? (
+      <a class="ebook-entry" href={magazineIssueHref(issue.slug)}>
+        {issue.hero ? <img class="ebook-entry__cover" src={magazineImg(issue.hero)} alt="" /> : <span class="ebook-entry__cover"></span>}
+        <span class="ebook-entry__copy">
+          <span class="ebook-entry__kicker">Ebook</span>
+          <span class="ebook-entry__title">Read as ebook</span>
+          <span class="ebook-entry__meta">{issue.kicker} · page-flip</span>
+        </span>
+      </a>
+    ) : null}
+    {label ? <p class="house-kicker">{label}</p> : null}
+    <h1 class="headline">
+      {headline ? <><span class="slug">{headline.slug}</span>: {headline.subtitle}</> : post.title}
+    </h1>
+    <p class="lede">{deckLine(post.description, 28)}</p>
+    {post.heroImage ? (
+      <figure class="hero-bleed">
+        <img src={post.heroImage} alt={post.title} />
+      </figure>
+    ) : null}
+    <p class="byline">By {author}{post.pubDate ? ` · ${formatDate(post.pubDate)}` : ""} · {minutes} min read</p>
+    {audioFile && post.audioSrc ? (
+      <p>
+        <audio controls preload="none" src={post.audioSrc}>
+          <a href={post.audioSrc}>Listen</a>
+        </audio>
+      </p>
+    ) : null}
+    {points.length ? (
+      <div class="stat-grid">
+        {points.map((point) => {
+          const [value, ...rest] = point.split(" — ");
+          return (
+            <div class="stat">
+              <strong>{value}</strong>
+              {rest.length ? <span>{rest.join(" — ")}</span> : null}
+            </div>
+          );
+        })}
+      </div>
+    ) : null}
+    {files.length ? (
+      <p class="downloads">
+        {files.map(([name, href]) => <a href={href}>{name}</a>)}
+      </p>
+    ) : null}
+    <div class="artometrics-article-body" set:html={withStaticCharts(post.body || "")} />
+    {related.length ? (
+      <section class="related">
+        <h2>Related</h2>
+        {related.map((item) => <a href={`/${item.slug}`}>{item.title}</a>)}
+      </section>
+    ) : null}
+  </article>
+</Base>

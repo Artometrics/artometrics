@@ -1,0 +1,23 @@
+---
+import {
+  DOMAIN_SLUGS,
+  LEGACY_DESK_TO_SECTION,
+  LEGACY_SECTION_TO_DOMAIN,
+  type DomainSlug,
+} from "@/data/sections";
+
+export function getStaticPaths() {
+  const keys = new Set([
+    ...DOMAIN_SLUGS,
+    ...Object.keys(LEGACY_DESK_TO_SECTION),
+    ...Object.keys(LEGACY_SECTION_TO_DOMAIN),
+  ]);
+  return [...keys].map((desk) => ({ params: { desk } }));
+}
+
+const raw = Astro.params.desk || "";
+const mapped = (DOMAIN_SLUGS.includes(raw as DomainSlug)
+  ? raw
+  : LEGACY_SECTION_TO_DOMAIN[raw] || LEGACY_DESK_TO_SECTION[raw] || "culture") as string;
+return Astro.redirect(`/topics/${mapped}`, 301);
+---

@@ -1,0 +1,23 @@
+---
+import Base from "../layouts/Base.astro";
+import { DOMAIN_META, DOMAIN_SLUGS } from "@/data/sections";
+---
+
+<Base title="About" description="Artometrics — data-science magazine for culture. Masthead, method, and desks." path="/about">
+  <article class="wrap wrap--narrow page prose">
+    <p class="kicker">Masthead</p>
+    <h1>Art for data scientists. Data science for artists.</h1>
+    <p>Artometrics is an independent magazine that treats culture like data — anime catalogs, franchise economics, civilizational cycles, and the institutions that shape creative markets. Every report pairs editorial judgment with reproducible charts and public datasets.</p>
+    <h2>Bio</h2>
+    <p>Founded and edited by Kyle McAuliffe. Desk reports are written under human editorial control with named sources, dated facts, and open method notes. Studio tools hang off one shared member profile.</p>
+    <h2>Method</h2>
+    <p>Prefer public datasets and the reader's own inputs. Separate observed data, derived metrics, editorial indices, and context literature. Publish exports (HTML, PDF, EPUB, CSV) on artometrics.com. Do not invent statistics.</p>
+    <h2>Desks</h2>
+    <ul>
+      {DOMAIN_SLUGS.map((slug) => (
+        <li><a href={`/topics/${slug}`}>{DOMAIN_META[slug].title}</a> — {DOMAIN_META[slug].description}</li>
+      ))}
+    </ul>
+    <p><a href="/methodology">Methodology</a> · <a href="/legal/ethics-statement">Ethics</a></p>
+  </article>
+</Base>

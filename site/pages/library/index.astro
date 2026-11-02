@@ -1,0 +1,37 @@
+---
+import Base from "../../layouts/Base.astro";
+import { EDITIONS } from "@/data/editions";
+
+const hubs = [
+  ["/editions", "Editions", "Special issues — Music, Movies, Games, Power, and more."],
+  ["/datasets", "Datasets", "CSV packs from published stories."],
+  ["/library/reference", "Reference", "Gutenberg, WikiArt, and Wikipedia specimen cards."],
+  ["/blog", "Archive", "Every published article."],
+  ["/podcast", "Podcasts", "Interviews and conversations."],
+  ["/downloads", "Downloads", "Exports packed beside each report."],
+];
+---
+
+<Base title="Library" description="Datasets and archives from Artometrics reporting." path="/library">
+  <div class="wrap page">
+    <p class="kicker">Archive</p>
+    <h1>Library</h1>
+    <p class="lede">Genres, desks, and open-reference specimens for research and remix.</p>
+    <div class="rail">
+      {EDITIONS.slice(0, 8).map((edition) => (
+        <a class="edition" href={`/editions/${edition.id}`}>
+          {edition.heroImage ? <img src={edition.heroImage} alt="" /> : null}
+          <div><strong>{edition.title}</strong></div>
+        </a>
+      ))}
+    </div>
+    <div class="stack">
+      {hubs.map(([href, title, body]) => (
+        <a class="card" href={href}>
+          <h2>{title}</h2>
+          <span class="lede">{body}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

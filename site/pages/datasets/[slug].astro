@@ -1,0 +1,33 @@
+---
+import Base from "../../layouts/Base.astro";
+import { DATASET_PACKS } from "@/data/datasets";
+import { getBlogPost } from "@/lib/content";
+import { SECTION_META } from "@/data/sections";
+
+export function getStaticPaths() {
+  return DATASET_PACKS.map((pack) => ({ params: { slug: pack.id }, props: { pack } }));
+}
+
+const { pack } = Astro.props;
+---
+
+<Base title={pack.title} description={pack.summary} path={`/datasets/${pack.id}`}>
+  <article class="wrap wrap--measure page">
+    <p class="crumbs"><a href="/datasets">Datasets</a></p>
+    <p class="kicker">{pack.status} · {SECTION_META[pack.section].title}</p>
+    <h1>{pack.title}</h1>
+    <p class="lede">{pack.summary}</p>
+    {pack.downloadPath ? <p><a href={pack.downloadPath}>Download</a></p> : null}
+    <h2>Sources</h2>
+    <ul>
+      {pack.sources.map((source) => <li><a href={source.url}>{source.name}</a></li>)}
+    </ul>
+    <h2>Reports</h2>
+    <div class="stack">
+      {pack.relatedReports.map((slug) => {
+        const post = getBlogPost(slug);
+        return <a class="card" href={`/${slug}`}><h2>{post?.title || slug}</h2></a>;
+      })}
+    </div>
+  </article>
+</Base>

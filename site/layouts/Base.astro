@@ -1,0 +1,178 @@
+---
+import "../styles/site.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { jsonForScript } from "../lib/static-charts";
+import { getBlogPosts, sectionLabel } from "@/lib/content";
+import { DOMAIN_META, DOMAIN_SLUGS, SUBDOMAIN_META, SUBDOMAIN_SLUGS } from "@/data/sections";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  image?: string;
+  type?: "website" | "article";
+  jsonLd?: unknown;
+}
+
+const {
+  title,
+  description,
+  path,
+  image = "/images/brand/og-default.png",
+  type = "website",
+  jsonLd,
+} = Astro.props;
+
+const SITE = "https://artometrics.com";
+const fullTitle = title.includes("Artometrics") ? title : `${title} · Artometrics`;
+const url = `${SITE}${path.startsWith("/") ? path : `/${path}`}`;
+const img = image.startsWith("http") ? image : `${SITE}${image}`;
+const navIndex = [
+  ...DOMAIN_SLUGS.map((slug) => ({
+    kind: "topic",
+    title: DOMAIN_META[slug].title,
+    href: `/topics/${slug}`,
+    meta: "Section",
+    blob: `${DOMAIN_META[slug].title} ${slug} ${DOMAIN_META[slug].description}`.toLowerCase(),
+  })),
+  ...SUBDOMAIN_SLUGS.map((slug) => ({
+    kind: "topic",
+    title: SUBDOMAIN_META[slug].title,
+    href: `/blog?subdomain=${slug}`,
+    meta: "Topic",
+    blob: `${SUBDOMAIN_META[slug].title} ${slug}`.toLowerCase(),
+  })),
+  ...getBlogPosts().map((post) => ({
+    kind: "report",
+    title: post.title,
+    href: `/${post.slug}`,
+    meta: sectionLabel(post.tags, post.subject) || "Report",
+    blob: `${post.title} ${post.slug} ${(post.tags || []).join(" ")}`.toLowerCase(),
+  })),
+];
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={url} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:type" content={type} />
+    <meta property="og:image" content={img} />
+    <meta property="og:site_name" content="Artometrics" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@artometrics" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={img} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="Artometrics reports" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Artometrics podcast" href="/podcast.xml" />
+    <link rel="stylesheet" href="/css/house-style.css" />
+    <slot name="head" />
+    {jsonLd ? <script type="application/ld+json" set:html={jsonForScript(jsonLd)} /> : null}
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <script type="application/json" id="nav-index" set:html={jsonForScript(navIndex)} />
+    <script>
+      const indexNode = document.getElementById("nav-index");
+      const index = indexNode ? JSON.parse(indexNode.textContent || "[]") : [];
+      const overlay = document.getElementById("nav-overlay");
+      const openBtn = document.getElementById("open-menu");
+      const closeBtn = document.getElementById("close-menu");
+      const search = document.getElementById("nav-search");
+      const suggest = document.getElementById("nav-suggest");
+      const factLink = document.getElementById("fact-link");
+      const factText = document.getElementById("fact-text");
+      const factSource = document.getElementById("fact-source");
+      const factsNode = document.getElementById("nav-facts");
+      const facts = factsNode ? JSON.parse(factsNode.textContent || "[]") : [];
+      let lastFact = -1;
+
+      function showFact() {
+        if (!facts.length || !factLink || !factText || !factSource) return;
+        let idx = Math.floor(Math.random() * facts.length);
+        if (facts.length > 1 && idx === lastFact) idx = (idx + 1) % facts.length;
+        lastFact = idx;
+        const fact = facts[idx];
+        factText.textContent = fact.text;
+        factLink.href = `/${fact.slug}`;
+        factLink.setAttribute("aria-label", `${fact.text}. ${fact.title}`);
+        factSource.href = fact.sourceHref;
+        factSource.textContent = `Source · ${fact.sourceLabel}`;
+      }
+
+      function openMenu() {
+        if (!overlay) return;
+        overlay.hidden = false;
+        document.body.style.overflow = "hidden";
+        showFact();
+        search?.focus();
+      }
+      function closeMenu() {
+        if (!overlay) return;
+        overlay.hidden = true;
+        document.body.style.overflow = "";
+        openBtn?.focus();
+      }
+      openBtn?.addEventListener("click", openMenu);
+      closeBtn?.addEventListener("click", closeMenu);
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && overlay && !overlay.hidden) closeMenu();
+      });
+
+      function renderSuggest(query) {
+        if (!suggest) return;
+        const q = query.trim().toLowerCase();
+        suggest.replaceChildren();
+        if (q.length < 1) return;
+        const tokens = q.split(/\s+/).filter(Boolean);
+        const hits = index
+          .map((item) => {
+            const blob = item.blob || "";
+            let score = 0;
+            for (const token of tokens) if (blob.includes(token)) score += 1;
+            if (item.title.toLowerCase().startsWith(q)) score += 2;
+            return { item, score };
+          })
+          .filter((row) => row.score > 0)
+          .sort((a, b) => b.score - a.score)
+          .slice(0, 8);
+        for (const { item } of hits) {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = item.href;
+          const small = document.createElement("small");
+          small.textContent = item.meta || item.kind;
+          const strong = document.createElement("strong");
+          strong.textContent = item.title;
+          a.append(small, strong);
+          li.append(a);
+          suggest.append(li);
+        }
+      }
+      search?.addEventListener("input", () => renderSuggest(search.value));
+      search?.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter") return;
+        const q = search.value.trim();
+        if (q.length < 2) return;
+        location.href = `/search?q=${encodeURIComponent(q)}`;
+      });
+    </script>
+  </body>
+</html>

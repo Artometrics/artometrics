@@ -1,0 +1,27 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const guides = [
+  ["How to read an Artometrics report", "Start with the TL;DR and chart captions. Separate observed data, derived metrics, and editorial indices. Check limitations before quoting a number."],
+  ["Evidence labels", "Observed, derived, editorial index, and context literature — the four labels so artists and analysts can argue about the same claim."],
+  ["Mission and method", "Quantify culture without reducing it to vibes. Named and dated facts only. Prefer public datasets and the reader's own inputs."],
+];
+const files = ["/llms.txt", "/llms-full.txt", "/rss.xml", "/podcast.xml", "/sitemap.xml"];
+---
+
+<Base title="Resources" description="Guides and discovery files for Artometrics readers, journalists, and language models." path="/resources">
+  <div class="wrap wrap--measure page">
+    <p class="kicker">Library</p>
+    <h1>Resources</h1>
+    {guides.map(([title, body]) => (
+      <article>
+        <h2>{title}</h2>
+        <p class="lede">{body}</p>
+      </article>
+    ))}
+    <ul>
+      {files.map((href) => <li><a href={href}>{href}</a></li>)}
+      <li><a href="/sources">Sources catalog</a></li>
+    </ul>
+  </div>
+</Base>

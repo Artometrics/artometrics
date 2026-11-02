@@ -1,0 +1,53 @@
+---
+import Base from "../../layouts/Base.astro";
+import { deckLine, formatDate, getBlogPosts, primarySection, primarySubdomain, sectionLabel } from "@/lib/content";
+import { DOMAIN_META, DOMAIN_SLUGS } from "@/data/sections";
+
+const posts = getBlogPosts();
+---
+
+<Base
+  title="Reports"
+  description="Every Artometrics data report — cover stories, charts, and downloadable sources."
+  path="/blog"
+>
+  <div class="wrap page">
+    <p class="kicker">Index</p>
+    <h1>All investigations</h1>
+    <p class="lede">Every published report. Section filters keep the same URL.</p>
+    <nav class="filters" aria-label="Sections">
+      <a href="/blog" data-filter="all">All</a>
+      {DOMAIN_SLUGS.map((slug) => (
+        <a href={`/topics/${slug}`} data-domain={slug}>{DOMAIN_META[slug].title}</a>
+      ))}
+    </nav>
+    <div class="stack" id="report-index">
+      {posts.map((post) => (
+        <a
+          class="card"
+          href={`/${post.slug}`}
+          data-domain={primarySection(post.tags) || ""}
+          data-subdomain={primarySubdomain(post.tags) || ""}
+        >
+          <span class="kicker">{sectionLabel(post.tags, post.subject)} · {formatDate(post.pubDate)}</span>
+          <h2>{post.title}</h2>
+          <span class="lede">{deckLine(post.description, 28)}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const domain = params.get("section") || params.get("desk");
+    const sub = params.get("subdomain");
+    if (domain || sub) {
+      const title = document.querySelector("h1");
+      if (title && sub) title.textContent = sub.replace(/-/g, " ");
+      document.querySelectorAll("#report-index .card").forEach((card) => {
+        const okDomain = !domain || card.getAttribute("data-domain") === domain;
+        const okSub = !sub || card.getAttribute("data-subdomain") === sub;
+        if (!okDomain || !okSub) card.remove();
+      });
+    }
+  </script>
+</Base>

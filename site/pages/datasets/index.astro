@@ -1,0 +1,22 @@
+---
+import Base from "../../layouts/Base.astro";
+import { DATASET_PACKS } from "@/data/datasets";
+import { SECTION_META } from "@/data/sections";
+---
+
+<Base title="Datasets" description="Dataset packs for Artometrics reports — schema, citations, and related stories." path="/datasets">
+  <div class="wrap page">
+    <p class="kicker">Library</p>
+    <h1>Datasets</h1>
+    <p class="lede">Packs for Artometrics sections — one schema, citations, and links to the reports that use them.</p>
+    <div class="stack">
+      {DATASET_PACKS.map((pack) => (
+        <a class="card" href={`/datasets/${pack.id}`}>
+          <span class="kicker">{pack.status} · {SECTION_META[pack.section].title}</span>
+          <h2>{pack.title}</h2>
+          <span class="lede">{pack.summary}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,30 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const tools = [
+  ["/tools/twilda", "Twilda", "Novels, journal, and a reference shelf on one profile."],
+  ["/tools/aftercare", "Aftercare", "Notes, tarot, tracking, and the tool drawer."],
+  ["/tools/samples", "Sample Maker", "Record a sound and keep the take."],
+  ["/tools/palette", "Color Kit", "Pull a palette from your own image."],
+];
+---
+
+<Base title="Studio" description="Write, plan, record samples, and build color kits — the Artometrics workspace." path="/studio">
+  <div class="wrap page">
+    <p class="kicker">Your workspace</p>
+    <h1>Studio</h1>
+    <p class="lede">
+      Studio tools share one member profile. This static site publishes the routes and the public magazine.
+      Live drafts, recordings, and saved palettes stay in the signed-in app, which needs Supabase and is not part of this host.
+    </p>
+    <div class="stack">
+      {tools.map(([href, title, body]) => (
+        <a class="card" href={href}>
+          <h2>{title}</h2>
+          <span class="lede">{body}</span>
+        </a>
+      ))}
+    </div>
+    <p><a class="btn" href="/login?next=%2Fstudio">Sign in</a></p>
+  </div>
+</Base>

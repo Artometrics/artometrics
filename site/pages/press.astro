@@ -1,0 +1,25 @@
+---
+import Base from "../layouts/Base.astro";
+const assets = [
+  ["/images/brand/og-default.png", "OG banner (1200×630)"],
+  ["/images/brand/chomsky-a.png", "Chomsky A monogram"],
+  ["/images/brand/svg/wordmark-white.svg", "Wordmark SVG"],
+  ["/favicon.svg", "Favicon SVG"],
+  ["/apple-touch-icon.png", "Apple touch icon"],
+];
+---
+
+<Base title="Press" description="Artometrics boilerplate, brand assets, and press contact." path="/press">
+  <article class="wrap wrap--narrow page">
+    <p class="kicker">Press</p>
+    <h1>Brand & press</h1>
+    <p class="lede">Artometrics is an independent data-science magazine for the creative industries and culture. The public site is black, blue, and pink, with a Chomsky wordmark.</p>
+    <h2>Boilerplate</h2>
+    <p>We publish editorial data reports with reproducible charts and public datasets, a podcast, Studio creative tools on one member profile, and site-hosted downloads.</p>
+    <h2>Assets</h2>
+    <ul>
+      {assets.map(([href, label]) => <li><a href={href}>{label}</a></li>)}
+    </ul>
+    <p>Press inquiries via <a href="/contact">dispatch</a> or <a href="mailto:hello@artometrics.com">hello@artometrics.com</a>.</p>
+  </article>
+</Base>
