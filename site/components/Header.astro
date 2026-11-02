@@ -2,6 +2,7 @@
 import { SITE_PRIMARY_NAV } from "@/lib/site-nav";
 import { formatHeaderDateline } from "@/lib/headerDateline";
 import facts from "@/lib/nav-fun-facts.json";
+import { WORDMARKS } from "@/lib/wordmarks";
 import { jsonForScript } from "../lib/static-charts";
 
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
@@ -12,19 +13,75 @@ const fact = facts[0];
 <header class="mast">
   {path !== "/" ? <div class="dateline">{dateline}</div> : null}
   <div class="wrap mast-row">
-    <button class="icon-btn" id="open-menu" type="button" aria-expanded="false" aria-controls="nav-overlay">
-      <span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Open menu</span>
-      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75">
-        <path d="M4 7h16M4 12h16M4 17h16"></path>
-      </svg>
-    </button>
-    <a class="wordmark" href="/" aria-label="Artometrics home">Artometrics</a>
-    <a class="icon-btn" href="/search" aria-label="Search reports">
-      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75">
-        <circle cx="11" cy="11" r="7"></circle>
-        <path d="M20 20l-3.5-3.5"></path>
-      </svg>
+    <div class="mast-side">
+      <button class="icon-btn" id="open-menu" type="button" aria-expanded="false" aria-controls="nav-overlay">
+        <span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Open menu</span>
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75">
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </button>
+    </div>
+    <a class="wordmark" href="/" aria-label="Artometrics home">
+      <span class="wordmark__plate">
+        <img id="site-wordmark" alt="" width="600" height="139" decoding="async" fetchpriority="high" />
+      </span>
     </a>
+    <div class="mast-side mast-side--end">
+      <button
+        class="icon-btn"
+        id="appearance-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="appearance-panel"
+        aria-label="Appearance"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19zm0 2a7.5 7.5 0 0 1 0 15V4.5z"></path>
+        </svg>
+      </button>
+      <a class="icon-btn" href="/search" aria-label="Search reports">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="M20 20l-3.5-3.5"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <script type="application/json" id="wordmark-catalog" set:html={jsonForScript(WORDMARKS)} />
+  <script is:inline>
+    (function () {
+      var node = document.getElementById("wordmark-catalog");
+      var catalog = node ? JSON.parse(node.textContent || "[]") : [];
+      var key = document.documentElement.getAttribute("data-logo") || "white";
+      var hit = catalog[0];
+      for (var i = 0; i < catalog.length; i++) if (catalog[i].id === key) hit = catalog[i];
+      var img = document.getElementById("site-wordmark");
+      if (img && hit) img.src = hit.src;
+    })();
+  </script>
+  <div class="appearance" id="appearance-panel" hidden>
+    <div class="wrap">
+      <p class="appearance__label" id="appearance-mode-label">Color</p>
+      <div class="appearance__modes" role="radiogroup" aria-labelledby="appearance-mode-label">
+        <button type="button" role="radio" data-theme-choice="dark" aria-checked="true">Night</button>
+        <button type="button" role="radio" data-theme-choice="light" aria-checked="false">Day</button>
+      </div>
+      <p class="appearance__label" id="appearance-logo-label">Wordmark</p>
+      <div class="appearance__logos" role="radiogroup" aria-labelledby="appearance-logo-label">
+        {WORDMARKS.map((mark) => (
+          <button
+            type="button"
+            role="radio"
+            data-logo-choice={mark.id}
+            aria-checked={mark.id === "white" ? "true" : "false"}
+            aria-label={mark.label}
+            title={mark.label}
+          >
+            <img src={mark.src} alt="" width="120" height="28" loading="lazy" />
+          </button>
+        ))}
+      </div>
+    </div>
   </div>
   <nav class="desk-nav" aria-label="Sections">
     <div class="wrap">
@@ -74,3 +131,100 @@ const fact = facts[0];
   </div>
 </div>
 <script type="application/json" id="nav-facts" set:html={jsonForScript(facts)} />
+<script is:inline>
+  (function () {
+    var root = document.documentElement;
+    var toggle = document.getElementById("appearance-toggle");
+    var panel = document.getElementById("appearance-panel");
+    var img = document.getElementById("site-wordmark");
+    var catalogNode = document.getElementById("wordmark-catalog");
+    var catalog = catalogNode ? JSON.parse(catalogNode.textContent || "[]") : [];
+
+    function logoSrc(id) {
+      for (var i = 0; i < catalog.length; i++) if (catalog[i].id === id) return catalog[i].src;
+      return catalog[0] && catalog[0].src;
+    }
+    function paintLogo(id, persist) {
+      var src = logoSrc(id);
+      if (!src) id = "white";
+      src = logoSrc(id);
+      root.setAttribute("data-logo", id);
+      if (img && src && img.getAttribute("src") !== src) img.setAttribute("src", src);
+      if (persist) {
+        try { localStorage.setItem("artometrics-logo", id); } catch (e) {}
+      }
+      var logos = document.querySelectorAll("[data-logo-choice]");
+      for (var i = 0; i < logos.length; i++) {
+        logos[i].setAttribute("aria-checked", logos[i].getAttribute("data-logo-choice") === id ? "true" : "false");
+      }
+    }
+    function paintTheme(theme, persist) {
+      if (theme !== "light") theme = "dark";
+      root.setAttribute("data-theme", theme);
+      root.style.colorScheme = theme === "light" ? "light" : "dark";
+      if (persist) {
+        try { localStorage.setItem("artometrics-theme", theme); } catch (e) {}
+      }
+      var modes = document.querySelectorAll("[data-theme-choice]");
+      for (var i = 0; i < modes.length; i++) {
+        modes[i].setAttribute("aria-checked", modes[i].getAttribute("data-theme-choice") === theme ? "true" : "false");
+      }
+    }
+    function openPanel() {
+      if (!panel || !toggle) return;
+      panel.hidden = false;
+      toggle.setAttribute("aria-expanded", "true");
+    }
+    function closePanel() {
+      if (!panel || !toggle) return;
+      panel.hidden = true;
+      toggle.setAttribute("aria-expanded", "false");
+    }
+    paintTheme(root.getAttribute("data-theme") || "dark", false);
+    paintLogo(root.getAttribute("data-logo") || "white", false);
+
+    toggle && toggle.addEventListener("click", function () {
+      if (!panel) return;
+      if (panel.hidden) openPanel();
+      else closePanel();
+    });
+    var modes = document.querySelectorAll("[data-theme-choice]");
+    for (var i = 0; i < modes.length; i++) {
+      modes[i].addEventListener("click", function (event) {
+        paintTheme(event.currentTarget.getAttribute("data-theme-choice"), true);
+      });
+    }
+    var logos = document.querySelectorAll("[data-logo-choice]");
+    for (var j = 0; j < logos.length; j++) {
+      logos[j].addEventListener("click", function (event) {
+        paintLogo(event.currentTarget.getAttribute("data-logo-choice"), true);
+      });
+    }
+    document.addEventListener("click", function (event) {
+      if (!panel || panel.hidden) return;
+      var target = event.target;
+      if (panel.contains(target) || (toggle && toggle.contains(target))) return;
+      closePanel();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && panel && !panel.hidden) {
+        closePanel();
+        toggle && toggle.focus();
+        return;
+      }
+      var target = event.target;
+      if (!target || !target.getAttribute) return;
+      var kind = target.hasAttribute("data-theme-choice") ? "theme" : target.hasAttribute("data-logo-choice") ? "logo" : "";
+      if (!kind) return;
+      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft" && event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+      var items = Array.prototype.slice.call(document.querySelectorAll(kind === "theme" ? "[data-theme-choice]" : "[data-logo-choice]"));
+      var index = items.indexOf(target);
+      if (index < 0) return;
+      event.preventDefault();
+      var delta = event.key === "ArrowRight" || event.key === "ArrowDown" ? 1 : -1;
+      var next = items[(index + delta + items.length) % items.length];
+      next.focus();
+      next.click();
+    });
+  })();
+</script>

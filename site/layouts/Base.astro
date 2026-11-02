@@ -56,9 +56,24 @@ const navIndex = [
 ---
 
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-logo="white">
   <head>
     <meta charset="utf-8" />
+    <script is:inline>
+      (function () {
+        try {
+          var theme = localStorage.getItem("artometrics-theme");
+          var logo = localStorage.getItem("artometrics-logo");
+          var allowed = { white: 1, svg: 1, halftone: 1, d01: 1, d02: 1, d03: 1, d04: 1, d05: 1, d06: 1, d07: 1, d08: 1 };
+          if (theme !== "light") theme = "dark";
+          if (!allowed[logo]) logo = "white";
+          var root = document.documentElement;
+          root.setAttribute("data-theme", theme);
+          root.setAttribute("data-logo", logo);
+          root.style.colorScheme = theme === "light" ? "light" : "dark";
+        } catch (e) {}
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />

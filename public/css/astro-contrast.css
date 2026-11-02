@@ -1,16 +1,16 @@
 /* Small type on the dark ground. Brand blue #0047ff stays on rules and buttons;
    inline code uses a lighter blue that clears 4.5:1. */
-.artometrics-article-body code,
-.artometrics-article-body .art-code-summary {
+html[data-theme="dark"] .artometrics-article-body code,
+html[data-theme="dark"] .artometrics-article-body .art-code-summary {
   color: #c5d4ff !important;
 }
-.artometrics-article-body .art-chart figcaption.art-chart-caption.art-chart-caption--visible,
-.artometrics-article-body figure.art-exhibit figcaption.art-chart-caption--visible,
-.artometrics-article-body .art-chart-caption {
+html[data-theme="dark"] .artometrics-article-body .art-chart figcaption.art-chart-caption.art-chart-caption--visible,
+html[data-theme="dark"] .artometrics-article-body figure.art-exhibit figcaption.art-chart-caption--visible,
+html[data-theme="dark"] .artometrics-article-body .art-chart-caption {
   color: #b7d0cb !important;
 }
-.artometrics-article-body .art-github-btn,
-.artometrics-article-body .art-github-btn:hover {
+html[data-theme="dark"] .artometrics-article-body .art-github-btn,
+html[data-theme="dark"] .artometrics-article-body .art-github-btn:hover {
   color: #f3ead7 !important;
   border-color: #b7d0cb !important;
   background: transparent !important;
@@ -21,10 +21,15 @@
   max-height: none !important;
   object-fit: contain;
 }
-.artometrics-article-body .art-chart-live {
+html[data-theme="dark"] .artometrics-article-body .art-chart-live {
   aspect-ratio: auto !important;
   height: auto !important;
   background: #0e1110 !important;
+}
+html[data-theme="light"] .artometrics-article-body .art-chart-live {
+  aspect-ratio: auto !important;
+  height: auto !important;
+  background: #fffdf8 !important;
 }
 .artometrics-article-body .art-chart-live > img,
 .artometrics-article-body .art-chart-fallback {
@@ -70,14 +75,14 @@ html[data-theme="dark"] .artometrics-article-body .art-chart-caption {
   margin: 10px 0 4px !important;
 }
 
-html[data-theme="dark"] .artometrics-article-body main.art-article-main {
+html[data-theme] .artometrics-article-body main.art-article-main {
   text-align: left !important;
   max-width: 100% !important;
 }
-html[data-theme="dark"] .artometrics-article-body .art-p,
-html[data-theme="dark"] .artometrics-article-body main.art-article-main p,
-html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-p:first-of-type,
-html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-p:nth-of-type(2) {
+html[data-theme] .artometrics-article-body .art-p,
+html[data-theme] .artometrics-article-body main.art-article-main p,
+html[data-theme] .artometrics-article-body main.art-article-main > p.art-p:first-of-type,
+html[data-theme] .artometrics-article-body main.art-article-main > p.art-p:nth-of-type(2) {
   font-size: 15px !important;
   line-height: 1.58 !important;
   font-weight: 400 !important;
@@ -86,7 +91,7 @@ html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-
   max-width: 100% !important;
   margin: 0 0 12px !important;
 }
-html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-p:first-of-type::first-letter {
+html[data-theme] .artometrics-article-body main.art-article-main > p.art-p:first-of-type::first-letter {
   font-family: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
@@ -97,11 +102,11 @@ html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-
   background: transparent !important;
   color: inherit !important;
 }
-html[data-theme="dark"] .artometrics-article-body main.art-article-main > p.art-p:first-of-type strong {
+html[data-theme] .artometrics-article-body main.art-article-main > p.art-p:first-of-type strong {
   font-size: inherit !important;
 }
-html[data-theme="dark"] .artometrics-article-body main.art-article-main > h2,
-html[data-theme="dark"] .artometrics-article-body h2#fast-facts {
+html[data-theme] .artometrics-article-body main.art-article-main > h2,
+html[data-theme] .artometrics-article-body h2#fast-facts {
   font-family: "DM Sans", system-ui, sans-serif !important;
   font-size: 13px !important;
   font-weight: 700 !important;
@@ -115,13 +120,13 @@ html[data-theme="dark"] .artometrics-article-body h2#fast-facts {
   display: block !important;
   line-height: 1.35 !important;
 }
-html[data-theme="dark"] .artometrics-article-body main.art-article-main > h2:not(#toc-title)::before {
+html[data-theme] .artometrics-article-body main.art-article-main > h2:not(#toc-title)::before {
   display: none !important;
 }
-html[data-theme="dark"] .artometrics-article-body main.art-article-main > h3,
-html[data-theme="dark"] .artometrics-article-body h3,
-html[data-theme="dark"] .artometrics-article-body main.art-article-main > h3:not(.art-back-matter__subhead),
-html[data-theme="dark"] .artometrics-article-body h3:not(.art-back-matter__subhead) {
+html[data-theme] .artometrics-article-body main.art-article-main > h3,
+html[data-theme] .artometrics-article-body h3,
+html[data-theme] .artometrics-article-body main.art-article-main > h3:not(.art-back-matter__subhead),
+html[data-theme] .artometrics-article-body h3:not(.art-back-matter__subhead) {
   text-align: left !important;
   font-size: 15px !important;
   letter-spacing: 0.04em !important;
@@ -129,11 +134,11 @@ html[data-theme="dark"] .artometrics-article-body h3:not(.art-back-matter__subhe
   color: #efe3c8 !important;
   margin: 12px 0 8px !important;
 }
-html[data-theme="dark"] .artometrics-article-body strong,
-html[data-theme="dark"] .artometrics-article-body b {
+html[data-theme] .artometrics-article-body strong,
+html[data-theme] .artometrics-article-body b {
   color: #efe3c8 !important;
 }
-html[data-theme="dark"] .artometrics-article-body .fact-box {
+html[data-theme] .artometrics-article-body .fact-box {
   background: #000 !important;
   border: 1px solid rgba(239, 227, 200, 0.55) !important;
   border-left-width: 1px !important;
@@ -142,22 +147,22 @@ html[data-theme="dark"] .artometrics-article-body .fact-box {
   text-align: left !important;
   box-shadow: none !important;
 }
-html[data-theme="dark"] .artometrics-article-body .fact-number,
-html[data-theme="dark"] .artometrics-article-body .fact-label {
+html[data-theme] .artometrics-article-body .fact-number,
+html[data-theme] .artometrics-article-body .fact-label {
   text-align: left !important;
 }
-html[data-theme="dark"] .artometrics-article-body .fact-number {
+html[data-theme] .artometrics-article-body .fact-number {
   font-size: 1.25rem !important;
   line-height: 1.25 !important;
   color: #efe3c8 !important;
 }
-html[data-theme="dark"] .artometrics-article-body .fact-label {
+html[data-theme] .artometrics-article-body .fact-label {
   font-size: 15px !important;
   line-height: 1.45 !important;
   color: #efe3c8 !important;
 }
-html[data-theme="dark"] .artometrics-article-body blockquote,
-html[data-theme="dark"] .artometrics-article-body main.art-article-main blockquote p {
+html[data-theme] .artometrics-article-body blockquote,
+html[data-theme] .artometrics-article-body main.art-article-main blockquote p {
   text-align: left !important;
   font-size: 15px !important;
   line-height: 1.58 !important;
@@ -169,11 +174,11 @@ html[data-theme="dark"] .artometrics-article-body main.art-article-main blockquo
 html[data-theme="dark"] .artometrics-article-body a {
   color: #9db7ff;
 }
-html[data-theme="dark"] .artometrics-article-body .art-table-wrap,
-html[data-theme="dark"] .artometrics-article-body .art-table-wrapper,
-html[data-theme="dark"] .artometrics-article-body .table-scroll,
-html[data-theme="dark"] .artometrics-article-body pre,
-html[data-theme="dark"] .artometrics-article-body .table-wrapper {
+html[data-theme] .artometrics-article-body .art-table-wrap,
+html[data-theme] .artometrics-article-body .art-table-wrapper,
+html[data-theme] .artometrics-article-body .table-scroll,
+html[data-theme] .artometrics-article-body pre,
+html[data-theme] .artometrics-article-body .table-wrapper {
   display: block;
   max-width: 100% !important;
   min-width: 0;
@@ -181,4 +186,60 @@ html[data-theme="dark"] .artometrics-article-body .table-wrapper {
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x pan-y;
+}
+
+/* Day mode keeps the Article A column. Ink on cream; charts stay on their paper. */
+html[data-theme="light"] .artometrics-article-body .art-p,
+html[data-theme="light"] .artometrics-article-body main.art-article-main p,
+html[data-theme="light"] .artometrics-article-body main.art-article-main > p.art-p:first-of-type,
+html[data-theme="light"] .artometrics-article-body main.art-article-main > p.art-p:nth-of-type(2),
+html[data-theme="light"] .artometrics-article-body main.art-article-main > h3,
+html[data-theme="light"] .artometrics-article-body h3,
+html[data-theme="light"] .artometrics-article-body li,
+html[data-theme="light"] .artometrics-article-body blockquote,
+html[data-theme="light"] .artometrics-article-body main.art-article-main blockquote p {
+  color: #14110e !important;
+}
+html[data-theme="light"] .artometrics-article-body main.art-article-main > h2,
+html[data-theme="light"] .artometrics-article-body h2#fast-facts {
+  color: #0047ff !important;
+}
+html[data-theme="light"] .artometrics-article-body strong,
+html[data-theme="light"] .artometrics-article-body b {
+  color: #14110e !important;
+}
+html[data-theme="light"] .artometrics-article-body .fact-box,
+html[data-theme="light"] .artometrics-article-body .fact-box p,
+html[data-theme="light"] .artometrics-article-body .fact-box strong,
+html[data-theme="light"] .artometrics-article-body .fact-number,
+html[data-theme="light"] .artometrics-article-body .fact-label {
+  color: #efe3c8 !important;
+}
+html[data-theme="light"] .artometrics-article-body a {
+  color: #0047ff !important;
+}
+html[data-theme="light"] .artometrics-article-body code,
+html[data-theme="light"] .artometrics-article-body .art-code-summary {
+  color: #14110e !important;
+}
+html[data-theme="light"] .artometrics-article-body .art-chart {
+  background: #fffdf8 !important;
+  border: 1px solid rgba(20, 17, 14, 0.28) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 12px 12px 8px !important;
+}
+html[data-theme="light"] .artometrics-article-body .art-chart:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+html[data-theme="light"] .artometrics-article-body .art-chart-fallback,
+html[data-theme="light"] .artometrics-article-body .art-chart-live > img {
+  filter: none !important;
+  background: #fff !important;
+}
+html[data-theme="light"] .artometrics-article-body .art-chart figcaption.art-chart-caption.art-chart-caption--visible,
+html[data-theme="light"] .artometrics-article-body .art-chart-caption {
+  color: #3e362e !important;
+  text-align: left !important;
 }

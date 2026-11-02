@@ -34,12 +34,24 @@ export function splitReportHeadline(title: string): { slug: string; subtitle: st
   return { slug, subtitle };
 }
 
-/** One-word topic token, e.g. "FRANCHISE" from "FRANCHISE: Merchandise Owns the Ledger". */
+/** Acronyms and stylized names that title case would flatten. */
+const KICKER_CASE: Record<string, string> = {
+  sf: "SF",
+  lcsh: "LCSH",
+  phds: "PhDs",
+  youtube: "YouTube",
+  mac: "Mac",
+};
+
+/** One-word topic token in title case, e.g. "Franchise" from "FRANCHISE: Merchandise Owns the Ledger". */
 export function reportKicker(title: string, subject?: string | null): string {
   const split = splitReportHeadline(title);
   const raw = (split?.slug || subject || title).trim();
-  const word = raw.split(/\s+/)[0] || "Report";
-  return word.replace(/:+$/, "");
+  const word = (raw.split(/\s+/)[0] || "Report").replace(/:+$/, "");
+  if (!word) return "Report";
+  const known = KICKER_CASE[word.toLowerCase()];
+  if (known) return known;
+  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 }
 
 /** Headline after the one-word kicker. */
