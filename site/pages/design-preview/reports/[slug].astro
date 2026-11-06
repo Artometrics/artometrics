@@ -1,0 +1,126 @@
+---
+import Preview from "../../../layouts/Preview.astro";
+import ArtBarChart from "../../../components/preview/ArtBarChart.astro";
+import { DOMAIN_META, SUBDOMAIN_META, primaryDomain, primarySubdomain } from "@/data/sections";
+import {
+  formatAuthorName,
+  formatDate,
+  getBlogPosts,
+  getRelatedPosts,
+  parseKeyPoint,
+  reportHeadlineRest,
+  reportKicker,
+  sectionLabel,
+} from "@/lib/content";
+import { readingMinutes } from "../../../lib/static-charts";
+import { previewFiles, toPreviewRow } from "../../../lib/preview-reports";
+
+export function getStaticPaths() {
+  return getBlogPosts().map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const domain = primaryDomain(post.tags || []);
+const sub = primarySubdomain(post.tags || []);
+const kicker = reportKicker(post.title, post.subject);
+const rest = reportHeadlineRest(post.title);
+const author = post.author ? formatAuthorName(String(post.author)) : "Kyle McAuliffe";
+const minutes = readingMinutes(post.body || "");
+const files = previewFiles(post.slug);
+const points = ((post.keyPoints || []) as string[]).map((point) => parseKeyPoint(String(point)));
+const related = getRelatedPosts(post.slug, 6).map(toPreviewRow);
+const isLongevity = post.slug === "longevity";
+---
+
+<Preview title={post.title} description={post.description} path={`/design-preview/reports/${post.slug}`}>
+  <div class="preview-frame preview-report">
+    <p class="preview-status">Design preview. Not the published report.</p>
+    <p class="preview-crumb">
+      <a href="/design-preview#reports">Reports</a>
+      <span aria-hidden="true"> · </span>
+      <a href={`/design-preview/topics/${domain}`}>{DOMAIN_META[domain].title}</a>
+      {sub && SUBDOMAIN_META[sub] ? (
+        <>
+          <span aria-hidden="true"> · </span>
+          <a href={`/design-preview/topics/${domain}?sub=${sub}`}>{SUBDOMAIN_META[sub].title}</a>
+        </>
+      ) : null}
+    </p>
+
+    <div class="preview-report-top">
+      <div>
+        <h1>
+          <span class="report-kicker">{kicker}:</span>
+          {" "}{rest}
+        </h1>
+        <p class="preview-dek">{post.description}</p>
+        <ul class="preview-meta">
+          <li>{sectionLabel(post.tags, post.subject) || DOMAIN_META[domain].title}</li>
+          <li>By {author}</li>
+          {post.pubDate ? <li>{formatDate(post.pubDate)}</li> : null}
+          <li>{minutes} min</li>
+        </ul>
+        {files.length ? (
+          <ul class="preview-files">
+            {files.map((file) => (
+              <li><a href={file.href}>{file.label}</a></li>
+            ))}
+          </ul>
+        ) : <p class="preview-missing">No dataset or transcript is filed for this report.</p>}
+      </div>
+
+      {points.length ? (
+        <table class="preview-facts">
+          <caption>Published figures from this report.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Figure</th>
+              <th scope="col">As published</th>
+            </tr>
+          </thead>
+          <tbody>
+            {points.map((point) => (
+              <tr>
+                <th scope="row">{point.value}</th>
+                <td>{point.label}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : null}
+    </div>
+
+    {isLongevity ? (
+      <section class="preview-panel" aria-labelledby="leaders-title">
+        <h2 id="leaders-title">Top 12 countries by average life expectancy across all years</h2>
+        <ArtBarChart labelledBy="leaders-title" />
+      </section>
+    ) : (
+      <p class="preview-dek">The branded chart sample is mounted on the longevity report, which holds the published leaders series.</p>
+    )}
+
+    {related.length ? (
+      <section class="preview-panel" aria-labelledby="related-title">
+        <h2 id="related-title">Related reports</h2>
+        <table class="preview-table">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Desk</th>
+              <th scope="col">Report</th>
+            </tr>
+          </thead>
+          <tbody>
+            {related.map((row) => (
+              <tr>
+                <td data-label="Date">{row.dateLabel}</td>
+                <td data-label="Desk"><a href={row.deskHref}>{row.desk}</a></td>
+                <td data-label="Report"><a class="preview-title-link" href={row.href}>{row.title}</a></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    ) : null}
+  </div>
+</Preview>

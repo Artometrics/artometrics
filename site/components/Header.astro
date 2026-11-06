@@ -1,17 +1,41 @@
 ---
 import { SITE_PRIMARY_NAV } from "@/lib/site-nav";
-import { formatHeaderDateline } from "@/lib/headerDateline";
+import { formatHeaderDate, formatHeaderDateline } from "@/lib/headerDateline";
 import facts from "@/lib/nav-fun-facts.json";
 import { WORDMARKS } from "@/lib/wordmarks";
 import { jsonForScript } from "../lib/static-charts";
 
-const path = Astro.url.pathname.replace(/\/$/, "") || "/";
-const dateline = formatHeaderDateline();
+interface Props {
+  variant?: "site" | "preview";
+}
+
+const { variant = "site" } = Astro.props;
+const preview = variant === "preview";
+const path = Astro.url.pathname.replace(/\.html$/, "").replace(/\/$/, "") || "/";
+const dateline = preview ? formatHeaderDate() : formatHeaderDateline();
 const fact = facts[0];
+const homeHref = preview ? "/design-preview" : "/";
+
+function navHref(href: string) {
+  if (!preview) return href;
+  if (href === "/blog") return "/design-preview#reports";
+  if (href.startsWith("/topics/")) return `/design-preview${href}`;
+  return href;
+}
+
+function navCurrent(href: string) {
+  if (!preview) return SITE_PRIMARY_NAV.find((item) => item.href === href)?.isActive(path) ?? false;
+  if (href === "/blog") return path === "/design-preview";
+  if (href.startsWith("/topics/")) {
+    const target = `/design-preview${href}`;
+    return path === target || path.startsWith(`${target}/`);
+  }
+  return false;
+}
 ---
 
 <header class="mast">
-  {path !== "/" ? <div class="dateline">{dateline}</div> : null}
+  {preview || path !== "/" ? <div class="dateline">{dateline}</div> : null}
   <div class="wrap mast-row">
     <div class="mast-side">
       <button class="icon-btn" id="open-menu" type="button" aria-expanded="false" aria-controls="nav-overlay">
@@ -21,7 +45,7 @@ const fact = facts[0];
         </svg>
       </button>
     </div>
-    <a class="wordmark" href="/" aria-label="Artometrics home">
+    <a class="wordmark" href={homeHref} aria-label="Artometrics home">
       <span class="wordmark__plate">
         <img id="site-wordmark" alt="" width="600" height="139" decoding="async" fetchpriority="high" />
       </span>
@@ -39,7 +63,7 @@ const fact = facts[0];
           <path fill="currentColor" d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19zm0 2a7.5 7.5 0 0 1 0 15V4.5z"></path>
         </svg>
       </button>
-      <a class="icon-btn" href="/search" aria-label="Search reports">
+      <a class="icon-btn" href={preview ? "/design-preview#report-filter" : "/search"} aria-label="Search reports">
         <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75">
           <circle cx="11" cy="11" r="7"></circle>
           <path d="M20 20l-3.5-3.5"></path>
@@ -88,7 +112,7 @@ const fact = facts[0];
       <ul>
         {SITE_PRIMARY_NAV.map((item) => (
           <li>
-            <a href={item.href} aria-current={item.isActive(path) ? "page" : undefined}>{item.label}</a>
+            <a href={navHref(item.href)} aria-current={navCurrent(item.href) ? "page" : undefined}>{item.label}</a>
           </li>
         ))}
       </ul>
@@ -106,7 +130,7 @@ const fact = facts[0];
     <ul class="nav-list">
       {SITE_PRIMARY_NAV.map((item) => (
         <li>
-          <a href={item.href}>
+          <a href={navHref(item.href)}>
             {item.label}
             {item.descriptor ? <span>{item.descriptor}</span> : null}
           </a>

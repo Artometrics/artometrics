@@ -1,12 +1,20 @@
 ---
+import { CONFIGURED_SOCIAL, UNCONFIGURED_SOCIAL } from "@/lib/social-links";
+
 interface Props {
   variant?: "home" | "article" | "site";
+  showSocial?: boolean;
 }
 
-const { variant = "site" } = Astro.props;
+const { variant = "site", showSocial = false } = Astro.props;
 const year = new Date().getFullYear();
-const primary =
-  variant === "home"
+const primary = showSocial
+  ? [
+      ["/design-preview#reports", "Reports"],
+      ["/sources", "Sources"],
+      ["/rss.xml", "RSS"],
+    ]
+  : variant === "home"
     ? [
         ["#latest", "Latest"],
         ["#issues", "Issues"],
@@ -26,10 +34,27 @@ const quiet = [
 
 <footer class="site-footer">
   <div class="wrap">
-    <a class="site-footer__mark" href="/">Artometrics</a>
+    <a class="site-footer__mark" href={showSocial ? "/design-preview" : "/"}>Artometrics</a>
     <nav class="site-footer__links" aria-label="Footer">
       {primary.map(([href, label]) => <a href={href}>{label}</a>)}
     </nav>
+    {showSocial ? (
+      <nav class="site-footer__social" aria-label="Social">
+        <ul>
+          {CONFIGURED_SOCIAL.map((item) => (
+            <li><a href={item.href} rel="noreferrer">{item.label}</a></li>
+          ))}
+          {UNCONFIGURED_SOCIAL.map((label) => (
+            <li>
+              <span aria-disabled="true">{label} <span class="site-footer__unconfigured">not configured</span></span>
+            </li>
+          ))}
+        </ul>
+        <p class="site-footer__social-note">
+          GitHub is the organization URL already published on the home page. X, Instagram, YouTube, and LinkedIn have no official URL in this repository.
+        </p>
+      </nav>
+    ) : null}
     <p class="site-footer__base">
       © {year} Artometrics
       {quiet.map(([href, label]) => (

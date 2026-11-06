@@ -1,0 +1,105 @@
+---
+import { formatChartYears, longevityLeadersForDisplay } from "../../lib/plotly-bars";
+
+interface Props {
+  labelledBy: string;
+  id?: string;
+}
+
+const { labelledBy, id = "longevity-leaders" } = Astro.props;
+const rows = longevityLeadersForDisplay();
+const axisMax = 80;
+const ticks = [0, 20, 40, 60, 80];
+const lead = rows[0];
+const selectId = `${id}-emphasize`;
+const sourceNote = "TidyTuesday / R for Data Science community";
+---
+
+<figure class="am-chart" data-am-chart aria-labelledby={labelledBy}>
+  <div class="am-controls">
+    <label for={selectId}>Emphasize</label>
+    <select id={selectId}>
+      {rows.map((row) => (
+        <option value={row.label} selected={row.label === lead?.label}>{row.label}</option>
+      ))}
+    </select>
+    <p class="am-controls__note">Pink marks the emphasized row. Every other row uses one color.</p>
+  </div>
+
+  <div class="am-plot">
+    {rows.map((row) => {
+      const width = Math.max(0, Math.min(100, (row.value / axisMax) * 100));
+      const hi = row.label === lead?.label;
+      return (
+        <div class="am-row">
+          <div class="am-label" data-row={row.label}>{row.label}</div>
+          <div class="am-track">
+            {ticks.map((tick) => (
+              <span class="am-gridline" style={`left:${tick === axisMax ? "calc(100% - 1px)" : `${(tick / axisMax) * 100}%`}`}></span>
+            ))}
+            <div
+              class="am-bar"
+              data-row={row.label}
+              data-hi={hi ? "true" : "false"}
+              style={`width:${width}%`}
+            ></div>
+          </div>
+          <div class="am-value" data-row={row.label} data-hi={hi ? "true" : "false"}>{formatChartYears(row.value)}</div>
+        </div>
+      );
+    })}
+    <div class="am-axis-row">
+      <div class="am-axis" aria-hidden="true">
+        {ticks.map((tick) => <span>{tick}</span>)}
+      </div>
+      <div class="am-unit">Years</div>
+    </div>
+  </div>
+
+  <figcaption>
+    <p>Shown to 1 decimal, the precision used for the published Hong Kong figure of 75.6. Unrounded values stay in the Plotly file.</p>
+    <p>Report source note: {sourceNote}.</p>
+    <p class="am-files">
+      <a href="/data/articles/longevity/charts/chart2_leaders.plotly.json">Plotly series</a>
+      <a href="/data/articles/longevity/dataset.csv">Dataset CSV</a>
+    </p>
+  </figcaption>
+
+  <table class="am-table">
+    <caption>Same figures as the chart, in years.</caption>
+    <thead>
+      <tr>
+        <th scope="col">Category</th>
+        <th scope="col">Years</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr data-row={row.label} data-hi={row.label === lead?.label ? "true" : "false"}>
+          <th scope="row">{row.label}</th>
+          <td class="am-num">{formatChartYears(row.value)}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  <ul class="am-notes">
+    <li>Axis runs from 0 to 80 in steps of 20 so bar length stays comparable. The value column carries the smaller gaps.</li>
+    <li>Category names stay horizontal. Type size does not shrink with the viewport.</li>
+    <li>Gridlines are solid. Pink is only the emphasis, not a second measure.</li>
+  </ul>
+</figure>
+
+<script>
+  document.querySelectorAll("[data-am-chart]").forEach((root) => {
+    const select = root.querySelector("select");
+    if (!(select instanceof HTMLSelectElement)) return;
+    const apply = () => {
+      const name = select.value;
+      root.querySelectorAll("[data-row]").forEach((node) => {
+        node.setAttribute("data-hi", node.getAttribute("data-row") === name ? "true" : "false");
+      });
+    };
+    select.addEventListener("change", apply);
+  });
+</script>
