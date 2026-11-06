@@ -11,10 +11,11 @@ import {
   sectionLabel,
 } from "@/lib/content";
 import { DOMAIN_META, SUBDOMAIN_META, primaryDomain, primarySubdomain } from "@/data/sections";
-import { magazineIssue, magazineIssueHref } from "@/lib/magazine";
 import downloads from "@/src/generated/downloads.json";
 import { existsSync } from "node:fs";
 import { readingMinutes, withStaticCharts } from "../lib/static-charts";
+import ArtBarChart from "../components/preview/ArtBarChart.astro";
+import { previewFiles } from "../lib/preview-reports";
 
 export function getStaticPaths() {
   return getBlogPosts().map((post) => ({ params: { slug: post.slug }, props: { post } }));
@@ -28,7 +29,6 @@ const minutes = readingMinutes(post.body || "");
 const author = post.author ? formatAuthorName(String(post.author)) : "Kyle McAuliffe";
 const domain = primaryDomain(post.tags || []);
 const sub = primarySubdomain(post.tags || []);
-const issue = magazineIssue(post.slug);
 const audioFile = post.audioSrc && !String(post.audioSrc).startsWith("http")
   ? existsSync(new URL(`../../public${post.audioSrc}`, import.meta.url))
   : Boolean(post.audioSrc);
@@ -43,14 +43,9 @@ const pack = downloads[post.slug as keyof typeof downloads] as
     }
   | undefined;
 const files = [
-  pack?.dataset ? ["Dataset", pack.dataset] : null,
-  pack?.pdf ? ["PDF", pack.pdf] : null,
-  pack?.epub ? ["EPUB", pack.epub] : null,
-  pack?.audio ? ["Audio", pack.audio] : null,
-  pack?.transcript ? ["Transcript", pack.transcript] : null,
-  pack?.html ? ["HTML", pack.html] : null,
-  audioFile && post.audioSrc ? ["Narration", post.audioSrc] : null,
-].filter(Boolean) as [string, string][];
+  ...previewFiles(post.slug),
+  audioFile && post.audioSrc && !pack?.audio ? { label: "Narration", href: post.audioSrc } : null,
+].filter((file): file is { label: string; href: string } => Boolean(file));
 const related = getRelatedPosts(post.slug, 3);
 const faq = (post.faq || []) as { question: string; answer: string }[];
 const image = post.heroImage || "/images/brand/og-default.png";
@@ -61,7 +56,6 @@ const facts = points.map((point) => parseKeyPoint(String(point))).filter((fact) 
 const factSource = /data-source="([^"]+)"/.exec(body)?.[1]
   ?.replace(/\s+[—-]\s+ARTOMETRICS\s*$/i, "")
   .trim() || "";
-const tones = ["", "fast-fact--pink", "fast-fact--blue"];
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -97,71 +91,75 @@ const jsonLd = [
   type="article"
   jsonLd={jsonLd}
   footer="article"
+  bodyClass="dash"
 >
   <link slot="head" rel="stylesheet" href="/css/artometrics-article.css" />
   <link slot="head" rel="stylesheet" href="/css/astro-contrast.css" />
-  <article class="report">
-    <p class="report-crumb">
-      <a href="/blog">Reports</a>
-      {" · "}
+  <article class="preview-frame preview-report">
+    <p class="preview-crumb">
+      <a href="/#reports">Reports</a>
+      <span aria-hidden="true"> · </span>
       <a href={`/topics/${domain}`}>{DOMAIN_META[domain].title}</a>
       {sub && SUBDOMAIN_META[sub] ? (
         <>
-          {" · "}
-          <a href={`/blog?subdomain=${sub}`}>{SUBDOMAIN_META[sub].title}</a>
+          <span aria-hidden="true"> · </span>
+          <a href={`/topics/${domain}?sub=${sub}`}>{SUBDOMAIN_META[sub].title}</a>
         </>
       ) : null}
     </p>
 
-    <header class="report-head">
-      {label ? <p class="pill">{label}</p> : null}
-      <h1>
-        <span class="report-kicker">{kicker}:</span>
-        {" "}{headlineRest}
-      </h1>
-      <p class="report-dek">{post.description}</p>
-      <p class="report-byline">
-        By {author}{post.pubDate ? ` · ${formatDate(post.pubDate)}` : ""} · {minutes} min
-      </p>
-      {issue ? (
-        <p class="report-ebook"><a href={magazineIssueHref(issue.slug)}>Read as ebook</a></p>
+    <div class="preview-report-top">
+      <div>
+        <h1>
+          <span class="report-kicker">{kicker}:</span>
+          {" "}{headlineRest}
+        </h1>
+        <p class="preview-dek">{post.description}</p>
+        <ul class="preview-meta">
+          {label ? <li>{label}</li> : null}
+          <li>By {author}</li>
+          {post.pubDate ? <li>{formatDate(post.pubDate)}</li> : null}
+          <li>{minutes} min</li>
+        </ul>
+        {files.length ? (
+          <ul class="preview-files">
+            {files.map((file) => (
+              <li><a href={file.href}>{file.label}</a></li>
+            ))}
+          </ul>
+        ) : null}
+        {audioFile && post.audioSrc ? (
+          <audio controls preload="none" src={post.audioSrc}>
+            <a href={post.audioSrc}>Listen</a>
+          </audio>
+        ) : null}
+      </div>
+      {facts.length ? (
+        <table class="preview-facts">
+          <caption>Published figures from this report.{factSource ? ` Source: ${factSource}` : ""}</caption>
+          <thead>
+            <tr>
+              <th scope="col">Figure</th>
+              <th scope="col">As published</th>
+            </tr>
+          </thead>
+          <tbody>
+            {facts.map((fact) => (
+              <tr>
+                <th scope="row">{fact.value}</th>
+                <td>{fact.label}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       ) : null}
-      {audioFile && post.audioSrc ? (
-        <audio controls preload="none" src={post.audioSrc}>
-          <a href={post.audioSrc}>Listen</a>
-        </audio>
-      ) : null}
-    </header>
+    </div>
 
-    {post.heroImage ? (
-      <figure class="report-hero">
-        <img src={post.heroImage} alt={post.title} />
-      </figure>
-    ) : null}
-
-    {facts.length ? (
-      <section class="fast-facts" aria-label="Fast facts">
-        <h2>Fast facts</h2>
-        <div class="fast-facts__grid">
-          {facts.map((fact, index) => {
-            const wide = facts.length % 2 === 1 && index === facts.length - 1;
-            const long = fact.value.length > 18;
-            return (
-              <div class:list={["fast-fact", tones[index % 3], wide && "fast-fact--wide", long && "fast-fact--long"]}>
-                <p class="fast-fact__num">{fact.value}</p>
-                {fact.label ? <p class="fast-fact__lbl">{fact.label}</p> : null}
-              </div>
-            );
-          })}
-        </div>
-        {factSource ? <p class="fast-facts__src">Source: {factSource}</p> : null}
+    {post.slug === "longevity" ? (
+      <section class="preview-panel" aria-labelledby="leaders-title">
+        <h2 id="leaders-title">Top 12 countries by average life expectancy across all years</h2>
+        <ArtBarChart labelledBy="leaders-title" />
       </section>
-    ) : null}
-
-    {files.length ? (
-      <p class="report-files">
-        {files.map(([name, href]) => <a href={href}>{name}</a>)}
-      </p>
     ) : null}
 
     <div class="artometrics-article-body" set:html={withStaticCharts(body)} />

@@ -40,6 +40,17 @@ export type PreviewReportRow = {
   haystack: string;
 };
 
+export type ReportScope = "site" | "preview";
+
+export function reportPath(slug: string, scope: ReportScope = "preview") {
+  return scope === "site" ? `/${slug}` : `/design-preview/reports/${slug}`;
+}
+
+export function deskPath(slug: string, scope: ReportScope = "preview") {
+  if (!slug) return scope === "site" ? "/" : "/design-preview";
+  return scope === "site" ? `/topics/${slug}` : `/design-preview/topics/${slug}`;
+}
+
 export type PreviewFile = { label: string; href: string };
 
 export function previewFiles(slug: string): PreviewFile[] {
@@ -54,7 +65,7 @@ export function previewFiles(slug: string): PreviewFile[] {
   return files;
 }
 
-export function toPreviewRow(post: BlogPost): PreviewReportRow {
+export function toPreviewRow(post: BlogPost, scope: ReportScope = "preview"): PreviewReportRow {
   const deskSlug = primarySection(post.tags) || "";
   const subSlug = primarySubdomain(post.tags) || "";
   const desk = deskSlug && deskSlug in DOMAIN_META ? DOMAIN_META[deskSlug as DomainSlug].title : "Report";
@@ -65,10 +76,10 @@ export function toPreviewRow(post: BlogPost): PreviewReportRow {
   return {
     slug: post.slug,
     title,
-    href: `/design-preview/reports/${post.slug}`,
+    href: reportPath(post.slug, scope),
     desk,
     deskSlug,
-    deskHref: deskSlug ? `/design-preview/topics/${deskSlug}` : "/design-preview",
+    deskHref: deskPath(deskSlug, scope),
     subdomain,
     subSlug,
     dateLabel: formatDate(post.pubDate),
@@ -78,8 +89,8 @@ export function toPreviewRow(post: BlogPost): PreviewReportRow {
   };
 }
 
-export function previewReportRows(posts = getBlogPosts()): PreviewReportRow[] {
-  return posts.map(toPreviewRow);
+export function previewReportRows(posts = getBlogPosts(), scope: ReportScope = "preview"): PreviewReportRow[] {
+  return posts.map((post) => toPreviewRow(post, scope));
 }
 
 export function deskFilters() {

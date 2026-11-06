@@ -1,6 +1,6 @@
 ---
 import { SITE_PRIMARY_NAV } from "@/lib/site-nav";
-import { formatHeaderDate, formatHeaderDateline } from "@/lib/headerDateline";
+import { formatHeaderDate } from "@/lib/headerDateline";
 import facts from "@/lib/nav-fun-facts.json";
 import { WORDMARKS } from "@/lib/wordmarks";
 import { jsonForScript } from "../lib/static-charts";
@@ -12,7 +12,7 @@ interface Props {
 const { variant = "site" } = Astro.props;
 const preview = variant === "preview";
 const path = Astro.url.pathname.replace(/\.html$/, "").replace(/\/$/, "") || "/";
-const dateline = preview ? formatHeaderDate() : formatHeaderDateline();
+const dateline = formatHeaderDate();
 const fact = facts[0];
 const homeHref = preview ? "/design-preview" : "/";
 
@@ -35,7 +35,7 @@ function navCurrent(href: string) {
 ---
 
 <header class="mast">
-  {preview || path !== "/" ? <div class="dateline">{dateline}</div> : null}
+  <div class="dateline">{dateline}</div>
   <div class="wrap mast-row">
     <div class="mast-side">
       <button class="icon-btn" id="open-menu" type="button" aria-expanded="false" aria-controls="nav-overlay">

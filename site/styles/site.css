@@ -137,6 +137,7 @@ button,
 
 .mast {
   background: var(--bg-deep);
+  border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
   position: sticky;
   top: 0;
@@ -204,7 +205,7 @@ html[data-theme="light"] .wordmark__plate {
   padding: 6px 10px 7px;
 }
 .desk-nav {
-  display: none;
+  display: block;
   border-top: 1px solid var(--rule);
   padding: 8px 0 10px;
 }

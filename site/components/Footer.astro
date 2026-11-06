@@ -38,23 +38,23 @@ const quiet = [
     <nav class="site-footer__links" aria-label="Footer">
       {primary.map(([href, label]) => <a href={href}>{label}</a>)}
     </nav>
-    {showSocial ? (
-      <nav class="site-footer__social" aria-label="Social">
-        <ul>
-          {CONFIGURED_SOCIAL.map((item) => (
-            <li><a href={item.href} rel="noreferrer">{item.label}</a></li>
-          ))}
-          {UNCONFIGURED_SOCIAL.map((label) => (
-            <li>
-              <span aria-disabled="true">{label} <span class="site-footer__unconfigured">not configured</span></span>
-            </li>
-          ))}
-        </ul>
+    <nav class="site-footer__social" aria-label="Social">
+      <ul>
+        {CONFIGURED_SOCIAL.map((item) => (
+          <li><a href={item.href} rel="noreferrer">{item.label}</a></li>
+        ))}
+        {showSocial ? UNCONFIGURED_SOCIAL.map((label) => (
+          <li>
+            <span aria-disabled="true">{label} <span class="site-footer__unconfigured">not configured</span></span>
+          </li>
+        )) : null}
+      </ul>
+      {showSocial ? (
         <p class="site-footer__social-note">
           GitHub is the organization URL already published on the home page. X, Instagram, YouTube, and LinkedIn have no official URL in this repository.
         </p>
-      </nav>
-    ) : null}
+      ) : null}
+    </nav>
     <p class="site-footer__base">
       © {year} Artometrics
       {quiet.map(([href, label]) => (
