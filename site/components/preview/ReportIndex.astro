@@ -1,0 +1,140 @@
+---
+import type { PreviewReportRow } from "../../lib/preview-reports";
+
+interface Props {
+  rows: PreviewReportRow[];
+  filters: { id: string; label: string }[];
+  filterAttr: "deskSlug" | "subSlug";
+  heading?: string;
+  headingId?: string;
+  level?: "h1" | "h2";
+}
+
+const { rows, filters, filterAttr, heading = "Reports", headingId = "reports-heading", level = "h2" } = Astro.props;
+---
+
+<section class="preview-index" id="reports" aria-labelledby={headingId} data-filter-attr={filterAttr}>
+  <div class="preview-toolbar">
+    {level === "h1" ? <h1 id={headingId}>{heading}</h1> : <h2 id={headingId}>{heading}</h2>}
+    <p class="preview-count"><span data-count>{rows.length}</span><span>shown</span></p>
+    <label class="preview-search">
+      Filter
+      <input id="report-filter" type="search" autocomplete="off" spellcheck="false" />
+    </label>
+    <label class="preview-search">
+      Sort
+      <select data-sort-select>
+        <option value="date-desc" selected>Date, newest</option>
+        <option value="date-asc">Date, oldest</option>
+        <option value="title-asc">Title A–Z</option>
+        <option value="title-desc">Title Z–A</option>
+        <option value="desk-asc">Desk A–Z</option>
+      </select>
+    </label>
+  </div>
+  {filters.length ? (
+    <div class="preview-filters" role="group" aria-label="Filter the table">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      {filters.map((filter) => (
+        <button type="button" data-filter={filter.id} aria-pressed="false">{filter.label}</button>
+      ))}
+    </div>
+  ) : null}
+  <div class="preview-table-wrap">
+    <table class="preview-table">
+      <caption class="sr-only">{heading}</caption>
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Desk</th>
+          <th scope="col">Report</th>
+          <th scope="col">Dataset</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row) => (
+          <tr
+            data-date={row.dateValue}
+            data-title={row.title}
+            data-desk={row.desk}
+            data-filter-value={filterAttr === "deskSlug" ? row.deskSlug : row.subSlug}
+            data-hay={row.haystack}
+          >
+            <td data-label="Date">{row.dateLabel}</td>
+            <td data-label="Desk"><a href={row.deskHref}>{row.desk}{row.subdomain ? ` · ${row.subdomain}` : ""}</a></td>
+            <td data-label="Report"><a class="preview-title-link" href={row.href}>{row.title}</a></td>
+            <td data-label="Dataset">
+              {row.dataset ? <a href={row.dataset}>CSV</a> : <span class="preview-missing">None filed</span>}
+            </td>
+          </tr>
+        ))}
+        <tr data-empty hidden>
+          <td colspan="4">No reports match this filter.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll(".preview-index").forEach((root) => {
+    const tbody = root.querySelector("tbody");
+    const rows = [...root.querySelectorAll("tr[data-title]")];
+    const empty = root.querySelector("[data-empty]");
+    const search = root.querySelector("input[type='search']");
+    const sort = root.querySelector("[data-sort-select]");
+    const count = root.querySelector("[data-count]");
+    const buttons = [...root.querySelectorAll("[data-filter]")];
+    let filter = "all";
+    const params = new URLSearchParams(location.search);
+    const requested = params.get("sub") || params.get("desk") || "";
+    if (requested && buttons.some((button) => button.getAttribute("data-filter") === requested)) {
+      filter = requested;
+      for (const button of buttons) {
+        button.setAttribute("aria-pressed", button.getAttribute("data-filter") === filter ? "true" : "false");
+      }
+    }
+
+    const apply = () => {
+      const query = (search instanceof HTMLInputElement ? search.value : "").trim().toLowerCase();
+      const mode = sort instanceof HTMLSelectElement ? sort.value : "date-desc";
+      const [key, dir] = mode.split("-");
+      const sign = dir === "asc" ? 1 : -1;
+      const visible = rows.filter((row) => {
+        const value = row.getAttribute("data-filter-value") || "";
+        const hay = row.getAttribute("data-hay") || "";
+        const okFilter = filter === "all" || value === filter;
+        const okQuery = !query || hay.includes(query);
+        const show = okFilter && okQuery;
+        row.hidden = !show;
+        return show;
+      });
+      visible.sort((a, b) => {
+        const attr = key === "title" ? "data-title" : key === "desk" ? "data-desk" : "data-date";
+        const av = a.getAttribute(attr) || "";
+        const bv = b.getAttribute(attr) || "";
+        return av.localeCompare(bv, "en", { numeric: true, sensitivity: "base" }) * sign;
+      });
+      if (!tbody) return;
+      for (const row of visible) tbody.append(row);
+      if (empty) {
+        empty.hidden = visible.length !== 0;
+        tbody.append(empty);
+      }
+      if (count) count.textContent = String(visible.length);
+    };
+
+    search?.addEventListener("input", apply);
+    sort?.addEventListener("change", apply);
+    for (const button of buttons) {
+      button.addEventListener("click", () => {
+        filter = button.getAttribute("data-filter") || "all";
+        for (const peer of buttons) {
+          peer.setAttribute("aria-pressed", peer === button ? "true" : "false");
+        }
+        apply();
+      });
+    }
+    apply();
+  });
+</script>

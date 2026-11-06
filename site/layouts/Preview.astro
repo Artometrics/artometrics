@@ -1,0 +1,25 @@
+---
+import "../styles/preview.css";
+import Base from "./Base.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+}
+
+const { title, description, path } = Astro.props;
+---
+
+<Base
+  title={title}
+  description={description}
+  path={path}
+  robots="noindex, nofollow"
+  headerVariant="preview"
+  showSocial
+  bodyClass="preview-shell"
+  footer="site"
+>
+  <slot />
+</Base>

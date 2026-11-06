@@ -1,0 +1,55 @@
+---
+import Preview from "../../../layouts/Preview.astro";
+import ReportIndex from "../../../components/preview/ReportIndex.astro";
+import {
+  DOMAIN_META,
+  DOMAIN_SLUGS,
+  SUBDOMAIN_META,
+  type DomainSlug,
+  type SubdomainSlug,
+} from "@/data/sections";
+import { getBlogPosts, primarySection, primarySubdomain } from "@/lib/content";
+import { previewReportRows } from "../../../lib/preview-reports";
+
+export function getStaticPaths() {
+  return DOMAIN_SLUGS.map((channel) => ({ params: { channel } }));
+}
+
+const channel = Astro.params.channel as DomainSlug;
+const meta = DOMAIN_META[channel];
+const posts = getBlogPosts().filter((post) => primarySection(post.tags) === channel);
+const rows = previewReportRows(posts);
+const subCounts = new Map<string, number>();
+for (const post of posts) {
+  const sub = primarySubdomain(post.tags);
+  if (sub) subCounts.set(sub, (subCounts.get(sub) || 0) + 1);
+}
+const filters = [...subCounts.keys()].map((slug) => ({
+  id: slug,
+  label: SUBDOMAIN_META[slug as SubdomainSlug]?.title || slug,
+}));
+---
+
+<Preview
+  title={meta.title}
+  description={meta.description}
+  path={`/design-preview/topics/${channel}`}
+>
+  <div class="preview-frame">
+    <p class="preview-status">Design preview. Not the published topic page.</p>
+    <p class="preview-crumb">
+      <a href="/design-preview">Reports</a>
+      <span aria-hidden="true"> · </span>
+      <span>{meta.title}</span>
+    </p>
+    <h1 class="preview-page-title">{meta.title}</h1>
+    <p class="preview-scope">{meta.description}</p>
+    <ReportIndex
+      rows={rows}
+      filters={filters}
+      filterAttr="subSlug"
+      heading={`${meta.title} reports`}
+      headingId="topic-reports"
+    />
+  </div>
+</Preview>
