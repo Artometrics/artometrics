@@ -1,56 +1,26 @@
 ---
 import Base from "../layouts/Base.astro";
-import {
-  getBlogPost,
-  getBlogPosts,
-  reportHeadlineRest,
-  reportKicker,
-  sectionLabel,
-} from "@/lib/content";
-import { DOMAIN_META, DOMAIN_SLUGS, primaryDomain } from "@/data/sections";
-import { magazineImg, magazineIssues } from "@/lib/magazine";
+import ArtBarChart from "../components/preview/ArtBarChart.astro";
+import ReportIndex from "../components/preview/ReportIndex.astro";
+import { DATASET_PACKS } from "@/data/datasets";
+import { DOMAIN_META, type DomainSlug } from "@/data/sections";
+import { getBlogPost } from "@/lib/content";
+import { magazineIssues } from "@/lib/magazine";
+import { deskFilters, previewReportRows, reportPath } from "../lib/preview-reports";
 
-const posts = getBlogPosts();
-const lead = posts[0];
-const mastDate = new Date()
-  .toLocaleDateString("en-US", {
-    weekday: "long",
-    month: "short",
-    day: "numeric",
-    year: "numeric",
+const rows = previewReportRows(undefined, "site");
+const issues = magazineIssues()
+  .flatMap((issue) => {
+    const post = getBlogPost(issue.slug);
+    if (!post) return [];
+    return [{
+      href: reportPath(post.slug, "site"),
+      kicker: issue.kicker,
+      title: issue.title,
+      date: issue.date,
+    }];
   })
-  .toUpperCase();
-
-const issueCards = magazineIssues().slice(0, 3).flatMap((issue) => {
-  const post = getBlogPost(issue.slug);
-  if (!post) return [];
-  return [{
-    slug: post.slug,
-    href: `/${post.slug}`,
-    img: post.heroImage || magazineImg(issue.hero),
-    label: reportKicker(post.title, issue.kicker || post.subject).toUpperCase(),
-    title: post.title,
-  }];
-});
-
-const reserved = new Set<string>([
-  ...(lead ? [lead.slug] : []),
-  ...issueCards.map((card) => card.slug),
-]);
-
-const topics = DOMAIN_SLUGS.map((slug) => {
-  const seen = new Set<string>();
-  const items = posts
-    .filter((post) => primaryDomain(post.tags || []) === slug && !reserved.has(post.slug))
-    .slice(0, 3)
-    .map((post) => {
-      let label = reportKicker(post.title, post.subject).toUpperCase();
-      if (seen.has(label)) label = post.slug.replace(/-/g, " ").toUpperCase();
-      seen.add(label);
-      return { href: `/${post.slug}`, label, title: post.title };
-    });
-  return { slug, title: DOMAIN_META[slug].title, items };
-}).filter((row) => row.items.length);
+  .slice(0, 8);
 
 const jsonLd = [
   {
@@ -80,109 +50,56 @@ const jsonLd = [
   description="Investigative data stories on arts, sports, science, humanities, civics, and culture."
   path="/"
   jsonLd={jsonLd}
-  footer="home"
+  footer="site"
+  bodyClass="dash"
 >
-  <div class="home-c">
-    <header class="home-mast">
-      <p class="home-mast__date">{mastDate}</p>
-      <h1>Artometrics</h1>
-      <p class="home-mast__dek">Visual culture, measured.</p>
-    </header>
+  <div class="preview-frame">
+    <h1 class="preview-page-title">Reports</h1>
 
-    <nav class="home-tabs" aria-label="Three entry points">
-      <a href="#latest">Latest</a>
-      <a href="#issues">Issues</a>
-      <a href="#topics">Topics</a>
-    </nav>
-
-    <section class="home-lead" id="latest" aria-label="Lead story">
-      {lead ? (
-        <>
-          <p class="pill">Lead story</p>
-          <a class="home-lead__hit" href={`/${lead.slug}`}>
-            <h2>
-              <span class="report-kicker">{reportKicker(lead.title, lead.subject)}:</span>
-              {" "}{reportHeadlineRest(lead.title)}
-            </h2>
-            {lead.heroImage ? (
-              <img src={lead.heroImage} alt="" />
-            ) : null}
-          </a>
-          <p class="home-lead__dek">{lead.description}</p>
-          <p class="home-lead__meta">{sectionLabel(lead.tags, lead.subject) || "Report"}</p>
-        </>
-      ) : <p class="home-lead__dek">No report is published yet.</p>}
+    <section class="preview-panel" aria-labelledby="leaders-title">
+      <h2 id="leaders-title">Top 12 countries by average life expectancy across all years</h2>
+      <p class="preview-panel__link"><a href="/longevity">Longevity report</a></p>
+      <ArtBarChart labelledBy="leaders-title" />
     </section>
 
-    {issueCards.length ? (
-      <section class="home-issues" id="issues" aria-label="Magazine issues">
-        <h2 class="section-label">Magazine issues</h2>
-        <div class="issue-rail">
-          {issueCards.map((card) => (
-            <a class="issue-card" href={card.href}>
-              {card.img ? <img src={card.img} alt="" /> : <span class="issue-card__fallback" aria-hidden="true"></span>}
-              <span class="issue-card__name">{card.label}</span>
-            </a>
-          ))}
-        </div>
-      </section>
-    ) : null}
+    <ReportIndex rows={rows} filters={deskFilters()} filterAttr="deskSlug" heading="All reports" />
 
-    {topics.length ? (
-      <section class="home-topics" id="topics" aria-label="Topics">
-        <h2 class="section-label">Topics</h2>
-        <div class="topic-grid">
-          {topics.map((row) => (
-            <div class="topic-row">
-              <a class="topic-row__name" href={`/topics/${row.slug}`}>{row.title}</a>
-              <p class="topic-row__pieces">
-                {row.items.map((item, index) => (
-                  <>
-                    {index > 0 ? <span aria-hidden="true"> · </span> : null}
-                    <a href={item.href} title={item.title}>{item.label}</a>
-                  </>
-                ))}
-              </p>
-            </div>
+    <div class="preview-lower">
+      <section class="preview-panel" aria-labelledby="issues-title">
+        <h2 id="issues-title">Issues</h2>
+        <ol class="issue-type">
+          {issues.map((issue) => (
+            <li>
+              <a href={issue.href}>
+                <span class="issue-type__kicker">{issue.kicker}</span>
+                <span class="issue-type__title">{issue.title}</span>
+                {issue.date ? <span class="issue-type__date">{issue.date}</span> : null}
+              </a>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
-    ) : null}
+      <section class="preview-panel" aria-labelledby="packs-title">
+        <h2 id="packs-title">Dataset packs</h2>
+        <table class="preview-table">
+          <thead>
+            <tr>
+              <th scope="col">Pack</th>
+              <th scope="col">Desk</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DATASET_PACKS.map((pack) => (
+              <tr>
+                <td data-label="Pack"><a href={`/datasets/${pack.id}`}>{pack.title}</a></td>
+                <td data-label="Desk">{DOMAIN_META[pack.section as DomainSlug]?.title || pack.section}</td>
+                <td data-label="Status">{pack.status}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    </div>
   </div>
-  <script>
-    const tabs = Array.from(document.querySelectorAll(".home-tabs a"));
-    const sections = ["latest", "issues", "topics"]
-      .map((id) => document.getElementById(id))
-      .filter((node): node is HTMLElement => Boolean(node));
-
-    function setCurrent(id: string) {
-      for (const tab of tabs) {
-        const on = tab.getAttribute("href") === `#${id}`;
-        if (on) tab.setAttribute("aria-current", "true");
-        else tab.removeAttribute("aria-current");
-      }
-    }
-
-    setCurrent("latest");
-    for (const tab of tabs) {
-      tab.addEventListener("click", () => {
-        const id = (tab.getAttribute("href") || "").replace("#", "");
-        if (id) setCurrent(id);
-      });
-    }
-
-    if ("IntersectionObserver" in window && sections.length) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const visible = entries
-            .filter((entry) => entry.isIntersecting)
-            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-          const id = visible?.target?.id;
-          if (id) setCurrent(id);
-        },
-        { rootMargin: "-45% 0px -45% 0px", threshold: [0.15, 0.4] },
-      );
-      for (const section of sections) observer.observe(section);
-    }
-  </script>
 </Base>

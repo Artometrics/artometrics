@@ -1,4 +1,4 @@
-/* Design preview only. Every rule hangs off .preview-shell. */
+/* Design preview only. Every rule hangs off .dash. */
 
 .sr-only {
   position: absolute;
@@ -12,7 +12,7 @@
   border: 0;
 }
 
-html[data-theme="dark"] body.preview-shell {
+html[data-theme="dark"] body.dash {
   --ink: #efe3c8;
   --cream: #efe3c8;
   --muted: #cfc3ad;
@@ -21,53 +21,53 @@ html[data-theme="dark"] body.preview-shell {
   background: #000;
 }
 
-html[data-theme="light"] body.preview-shell {
+html[data-theme="light"] body.dash {
   --preview-rule: rgba(20, 17, 14, 0.22);
   --preview-hi: #8e1148;
   background: #f3ead7;
 }
 
-body.preview-shell {
+body.dash {
   --preview-rule: rgba(239, 227, 200, 0.28);
   --preview-hi: #ff3d8a;
 }
 
-body.preview-shell,
-body.preview-shell *,
-body.preview-shell *::before,
-body.preview-shell *::after {
+body.dash,
+body.dash *,
+body.dash *::before,
+body.dash *::after {
   animation: none !important;
   transition: none !important;
 }
 
-body.preview-shell ::selection {
+body.dash ::selection {
   background: var(--preview-hi);
   color: #fff;
 }
 
-html[data-theme="dark"] body.preview-shell ::selection {
+html[data-theme="dark"] body.dash ::selection {
   color: #000;
 }
 
-body.preview-shell {
+body.dash {
   scrollbar-color: var(--preview-rule) var(--bg);
 }
 
 /* One full-bleed rule weight for the header bumper and the footer bumper. */
-body.preview-shell .wrap {
+body.dash .wrap {
   width: auto;
   max-width: none;
   margin-inline: 0;
   padding-inline: 20px;
 }
 
-body.preview-shell .mast {
+body.dash .mast {
   border-top: 1px solid var(--preview-rule);
   border-bottom: 1px solid var(--preview-rule);
   background: var(--bg);
 }
 
-body.preview-shell .dateline {
+body.dash .dateline {
   border-bottom: 1px solid var(--preview-rule);
   font-size: 13px;
   letter-spacing: 0.12em;
@@ -75,30 +75,30 @@ body.preview-shell .dateline {
   padding: 8px 20px;
 }
 
-body.preview-shell .desk-nav {
+body.dash .desk-nav {
   display: block;
   border-top: 1px solid var(--preview-rule);
   border-bottom: 0;
 }
 
-body.preview-shell .desk-nav a {
+body.dash .desk-nav a {
   font-size: 13px;
 }
 
-body.preview-shell .site-footer {
+body.dash .site-footer {
   margin-top: 0;
   border-top: 1px solid var(--preview-rule);
   background: var(--bg);
 }
 
-body.preview-shell .site-footer__links a,
-body.preview-shell .site-footer__base,
-body.preview-shell .site-footer__social a,
-body.preview-shell .site-footer__social span {
+body.dash .site-footer__links a,
+body.dash .site-footer__base,
+body.dash .site-footer__social a,
+body.dash .site-footer__social span {
   font-size: 13px;
 }
 
-body.preview-shell .site-footer__social ul {
+body.dash .site-footer__social ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -108,8 +108,8 @@ body.preview-shell .site-footer__social ul {
   padding: 0;
 }
 
-body.preview-shell .site-footer__social a,
-body.preview-shell .site-footer__social li > span {
+body.dash .site-footer__social a,
+body.dash .site-footer__social li > span {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
@@ -120,17 +120,17 @@ body.preview-shell .site-footer__social li > span {
   text-decoration: none;
 }
 
-body.preview-shell .site-footer__social li > span {
+body.dash .site-footer__social li > span {
   color: var(--muted);
 }
 
-body.preview-shell .site-footer__unconfigured {
+body.dash .site-footer__unconfigured {
   text-transform: none;
   letter-spacing: 0;
   font-size: 12px;
 }
 
-body.preview-shell .site-footer__social-note {
+body.dash .site-footer__social-note {
   margin: 4px auto 0;
   max-width: 68ch;
   text-align: center;
@@ -147,7 +147,7 @@ body.preview-shell .site-footer__social-note {
 }
 
 @media (min-width: 1200px) {
-  body.preview-shell .wrap,
+  body.dash .wrap,
   .preview-frame {
     padding-inline: 28px;
   }
@@ -740,3 +740,35 @@ html[data-theme="light"] .am-chart {
     color: var(--ink);
   }
 }
+
+/* Production dashboard: the research narrative stays, the shell uses the viewport. */
+body.dash .report,
+body.dash .artometrics-article-body,
+body.dash .artometrics-article-body .art-article-main,
+body.dash .artometrics-article-body figure,
+body.dash .artometrics-article-body .art-chart,
+body.dash .artometrics-article-body img,
+body.dash .artometrics-article-body .art-chart-fallback {
+  width: 100%;
+  max-width: 100% !important;
+}
+
+body.dash .artometrics-article-body .art-p {
+  max-width: 72ch;
+}
+
+body.dash .artometrics-article-body #art-progress-bar,
+body.dash .artometrics-article-body #art-sidebar-btn {
+  display: none;
+}
+
+body.dash .artometrics-article-body nav#TOC {
+  position: static;
+  width: auto;
+  max-width: none;
+}
+
+body.dash figure.art-chart:has([data-chart*="chart2_leaders.plotly.json"]) {
+  display: none;
+}
+
