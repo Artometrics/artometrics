@@ -96,6 +96,16 @@ const jsonLd = [
   <link slot="head" rel="stylesheet" href="/css/artometrics-article.css" />
   <link slot="head" rel="stylesheet" href="/css/astro-contrast.css" />
   <article class="preview-frame preview-report">
+    {post.slug === "franchise" ? (
+      <figure class="franchise-banner">
+        <img
+          src="/images/content/articles/franchise/banner.png"
+          alt="Franchise"
+          width="2560"
+          height="1440"
+        />
+      </figure>
+    ) : null}
     <p class="preview-crumb">
       <a href="/#reports">Reports</a>
       <span aria-hidden="true"> · </span>
@@ -133,17 +143,6 @@ const jsonLd = [
             <a href={post.audioSrc}>Listen</a>
           </audio>
         ) : null}
-        {post.slug === "franchise" ? (
-          <a class="franchise-cover" href="/mag/franchise">
-            <img
-              src="/images/content/articles/franchise/cover.png"
-              alt="Franchise magazine cover"
-              width="1600"
-              height="2133"
-            />
-            <span>Magazine issue</span>
-          </a>
-        ) : null}
       </div>
       {facts.length ? (
         <table class="preview-facts">
@@ -166,17 +165,6 @@ const jsonLd = [
       ) : null}
     </div>
 
-    {post.slug === "franchise" ? (
-      <figure class="franchise-banner">
-        <img
-          src="/images/content/articles/franchise/banner.png"
-          alt="Franchise"
-          width="2560"
-          height="1440"
-        />
-      </figure>
-    ) : null}
-
     {post.slug === "longevity" ? (
       <section class="preview-panel" aria-labelledby="leaders-title">
         <h2 id="leaders-title">Top 12 countries by average life expectancy across all years</h2>
@@ -196,6 +184,17 @@ const jsonLd = [
           </a>
         ))}
       </section>
+    ) : null}
+    {post.slug === "franchise" ? (
+      <a class="franchise-cover" href="/mag/franchise">
+        <img
+          src="/images/content/articles/franchise/cover.png"
+          alt="Franchise magazine cover"
+          width="1600"
+          height="2133"
+        />
+        <span>Magazine issue</span>
+      </a>
     ) : null}
   </article>
 </Base>

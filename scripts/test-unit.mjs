@@ -356,6 +356,14 @@ assert(!reportPage.includes("Read as ebook"), "report pages do not show the eboo
 assert(!reportPage.includes("report-hero"), "report pages do not render the hero figure");
 assert(reportPage.includes('class="franchise-banner"'), "franchise article shows the wide banner once");
 assert(reportPage.includes("/images/content/articles/franchise/cover.png"), "franchise article shows the portrait cover");
+const bannerAt = reportPage.indexOf('class="franchise-banner"');
+const titleAt = reportPage.indexOf("<h1>");
+const articleBodyAt = reportPage.indexOf('class="artometrics-article-body"');
+const coverAt = reportPage.indexOf('class="franchise-cover"');
+assert(bannerAt >= 0 && titleAt > bannerAt, "banner precedes the article title");
+assert(coverAt > articleBodyAt, "magazine cover follows the article body");
+assert(reportPage.indexOf("franchise-banner", bannerAt + "franchise-banner".length) < 0, "banner appears once");
+assert(reportPage.indexOf("franchise-cover", coverAt + "franchise-cover".length) < 0, "cover appears once");
 assert(
   readFileSync(join(ROOT, "src/content/blog/franchise.md"), "utf8").includes(
     "heroImage: /images/content/articles/franchise/banner.png",

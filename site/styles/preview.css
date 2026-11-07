@@ -800,7 +800,7 @@ body.dash figure.art-chart:has([data-chart*="chart2_leaders.plotly.json"]) {
 .franchise-cover {
   display: block;
   width: min(240px, 100%);
-  margin-top: 16px;
+  margin-top: 36px;
   color: var(--muted);
   text-decoration: none;
 }
