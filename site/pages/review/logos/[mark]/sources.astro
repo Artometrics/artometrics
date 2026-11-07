@@ -1,0 +1,24 @@
+---
+import Base from "../../../../layouts/Base.astro";
+import LogoReviewNote from "../../../../components/LogoReviewNote.astro";
+import SourcesList from "../../../../components/SourcesList.astro";
+import { LOGO_REVIEW, type LogoReviewMark } from "@/lib/wordmarks";
+
+export function getStaticPaths() {
+  return (Object.keys(LOGO_REVIEW) as LogoReviewMark[]).map((mark) => ({
+    params: { mark },
+  }));
+}
+
+const mark = Astro.params.mark as LogoReviewMark;
+---
+
+<Base
+  title="Sources"
+  description="Logo review of the sources page. Not the live default."
+  path={`/review/logos/${mark}/sources`}
+  logoReview={mark}
+>
+  <LogoReviewNote mark={mark} page="sources" />
+  <SourcesList />
+</Base>
