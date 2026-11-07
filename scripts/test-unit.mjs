@@ -3,9 +3,9 @@
  * Lightweight unit checks (no Jest) for Aftercare calculators / planets.
  */
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
-import { execFileSync } from "node:child_process";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { formatHeaderDate } from "../lib/headerDateline.mjs";
 import { buildSourcesCatalog, loadSourcesInputs } from "./lib/sources-catalog.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -367,15 +367,12 @@ assert(existsSync(join(ROOT, "site/pages/design-preview/files.astro")), "filed-f
 assert(existsSync(join(ROOT, "site/pages/design-preview/citations.astro")), "citation preview exists");
 assert(existsSync(join(ROOT, "site/pages/design-preview/reference.astro")), "reference preview exists");
 assert(readFileSync(join(ROOT, "site/pages/datasets/index.astro"), "utf8").includes("DATASET_PACKS"), "live datasets page is unchanged in role");
-assert(readFileSync(join(ROOT, "lib/headerDateline.ts"), "utf8").includes('timeZone: "America/Los_Angeles"'), "masthead date uses Pacific time");
-const dateProbe = execFileSync(process.execPath, ["--experimental-strip-types", "-e", `
-import { formatHeaderDate } from "./lib/headerDateline.ts";
-const before = formatHeaderDate(new Date("2026-11-07T07:30:00.000Z"));
-const after = formatHeaderDate(new Date("2026-11-07T08:30:00.000Z"));
-if (!before.includes("Nov 6") || !before.includes("Fri")) process.exit(2);
-if (!after.includes("Nov 7") || !after.includes("Sat")) process.exit(3);
-`], { cwd: ROOT, encoding: "utf8" });
-assert(dateProbe === "", "Pacific date boundary runs");
+assert(readFileSync(join(ROOT, "lib/headerDateline.mjs"), "utf8").includes('timeZone: "America/Los_Angeles"'), "masthead date uses Pacific time");
+assert(readFileSync(join(ROOT, "lib/headerDateline.ts"), "utf8").includes('from "./headerDateline.mjs"'), "TypeScript dateline re-exports the tested module");
+const beforePacific = formatHeaderDate(new Date("2026-11-07T07:30:00.000Z"));
+const afterPacific = formatHeaderDate(new Date("2026-11-07T08:30:00.000Z"));
+assert(beforePacific.includes("Fri") && beforePacific.includes("Nov 6"), `7:30 UTC is still Nov 6 in Los Angeles, got ${beforePacific}`);
+assert(afterPacific.includes("Sat") && afterPacific.includes("Nov 7"), `8:30 UTC is Nov 7 in Los Angeles, got ${afterPacific}`);
 assert(readFileSync(join(ROOT, "site/layouts/Preview.astro"), "utf8").includes('robots="noindex, nofollow"'), "catalog previews stay noindex");
 assert(readFileSync(join(ROOT, "site/pages/design-preview/files.astro"), "utf8").includes("Filter reports"), "file filter names the records");
 assert(readFileSync(join(ROOT, "site/lib/preview-catalog.ts"), "utf8").includes("120px-"), "reference thumbs use a Commons 120px size");
