@@ -1,0 +1,26 @@
+---
+import Base from "../../../../layouts/Base.astro";
+import LogoReviewNote from "../../../../components/LogoReviewNote.astro";
+import ReportsHome from "../../../../components/ReportsHome.astro";
+import { LOGO_REVIEW, type LogoReviewMark } from "@/lib/wordmarks";
+
+export function getStaticPaths() {
+  return (Object.keys(LOGO_REVIEW) as LogoReviewMark[]).map((mark) => ({
+    params: { mark },
+  }));
+}
+
+const mark = Astro.params.mark as LogoReviewMark;
+---
+
+<Base
+  title="Artometrics — data reports for creative industries"
+  description="Logo review of the home page. Not the live default."
+  path={`/review/logos/${mark}`}
+  footer="site"
+  bodyClass="dash"
+  logoReview={mark}
+>
+  <LogoReviewNote mark={mark} page="home" />
+  <ReportsHome />
+</Base>

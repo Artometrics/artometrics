@@ -1,0 +1,39 @@
+---
+import Base from "../../../../layouts/Base.astro";
+import LogoReviewNote from "../../../../components/LogoReviewNote.astro";
+import { LOGO_REVIEW, type LogoReviewMark } from "@/lib/wordmarks";
+
+export function getStaticPaths() {
+  return (Object.keys(LOGO_REVIEW) as LogoReviewMark[]).map((mark) => ({
+    params: { mark },
+  }));
+}
+
+const mark = Astro.params.mark as LogoReviewMark;
+const review = LOGO_REVIEW[mark];
+---
+
+<Base
+  title="Magazine"
+  description="Logo review of the Franchise magazine cover on the site. Not the live default."
+  path={`/review/logos/${mark}/mag`}
+  logoReview={mark}
+>
+  <LogoReviewNote mark={mark} page="mag" />
+  <div class="wrap page">
+    <p class="kicker">Magazine · Franchise</p>
+    <h1>Merchandise owns the ledger</h1>
+    <p class="lede">
+      The page-flip issue stays at <a href="/mag/franchise">/mag/franchise</a>. This preview only swaps the cover file that matches the header wordmark.
+    </p>
+    <figure class="logo-review-cover">
+      <img
+        src={review.cover}
+        alt="Franchise magazine cover"
+        width={review.coverWidth}
+        height={review.coverHeight}
+      />
+      <figcaption>{review.coverFile}</figcaption>
+    </figure>
+  </div>
+</Base>
