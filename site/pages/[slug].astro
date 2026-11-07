@@ -96,6 +96,16 @@ const jsonLd = [
   <link slot="head" rel="stylesheet" href="/css/artometrics-article.css" />
   <link slot="head" rel="stylesheet" href="/css/astro-contrast.css" />
   <article class="preview-frame preview-report">
+    {post.slug === "franchise" ? (
+      <figure class="franchise-banner">
+        <img
+          src="/images/content/articles/franchise/banner.png"
+          alt="Franchise"
+          width="2560"
+          height="1440"
+        />
+      </figure>
+    ) : null}
     <p class="preview-crumb">
       <a href="/#reports">Reports</a>
       <span aria-hidden="true"> · </span>
@@ -174,6 +184,69 @@ const jsonLd = [
           </a>
         ))}
       </section>
+    ) : null}
+    {post.slug === "franchise" ? (
+      <figure class="franchise-cover">
+        <video
+          class="franchise-cover__motion"
+          poster="/images/content/articles/franchise/cover.png"
+          width="720"
+          height="960"
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-label="Franchise magazine cover, animated"
+        >
+          <source src="/videos/franchise-cover.mp4" type="video/mp4" />
+        </video>
+        <img
+          class="franchise-cover__still"
+          src="/images/content/articles/franchise/cover.png"
+          alt="Franchise magazine cover"
+          width="1600"
+          height="2133"
+        />
+        <button type="button" class="franchise-cover__pause" aria-pressed="false">Pause</button>
+      </figure>
+      <p class="franchise-cover__link"><a href="/mag/franchise">Magazine issue</a></p>
+      <script is:inline>
+        (function () {
+          var root = document.querySelector(".franchise-cover");
+          var video = root && root.querySelector("video");
+          var button = root && root.querySelector(".franchise-cover__pause");
+          if (!root || !video || !button) return;
+          var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+          function paint() {
+            video.muted = true;
+            if (reduce.matches) {
+              video.pause();
+              root.setAttribute("data-motion", "reduce");
+              return;
+            }
+            root.setAttribute("data-motion", "play");
+            var pending = video.play();
+            if (pending && pending.catch) pending.catch(function () {});
+            button.textContent = "Pause";
+            button.setAttribute("aria-pressed", "false");
+          }
+          paint();
+          if (reduce.addEventListener) reduce.addEventListener("change", paint);
+          button.addEventListener("click", function () {
+            if (reduce.matches) return;
+            if (video.paused) {
+              var pending = video.play();
+              if (pending && pending.catch) pending.catch(function () {});
+              button.textContent = "Pause";
+              button.setAttribute("aria-pressed", "false");
+            } else {
+              video.pause();
+              button.textContent = "Play";
+              button.setAttribute("aria-pressed", "true");
+            }
+          });
+        })();
+      </script>
     ) : null}
   </article>
 </Base>

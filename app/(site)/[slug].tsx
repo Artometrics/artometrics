@@ -176,7 +176,7 @@ export default function ReportScreen() {
           <SiteCoverImage
             source={{ uri: hero }}
             wrapperClassName="w-full overflow-hidden"
-            wrapperStyle={{ aspectRatio: post.slug === "anime" ? 16 / 9 : 16 / 10 }}
+            wrapperStyle={{ aspectRatio: post.slug === "anime" || post.slug === "franchise" ? 16 / 9 : 16 / 10 }}
             transition={200}
             accessibilityLabel={
               post.slug === "anime"
