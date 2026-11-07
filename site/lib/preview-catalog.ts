@@ -168,6 +168,16 @@ function text(value: unknown): string {
   return typeof value === "string" ? value : "";
 }
 
+/** Full Commons originals can be tens or hundreds of megabytes and do not paint in a 72px cell. 120px is a width Wikimedia documents for hotlinked thumbnails. */
+export function commonsDisplayUrl(url: string): string {
+  if (!url.includes("upload.wikimedia.org/wikipedia/commons/")) return url;
+  if (url.includes("/thumb/")) return url;
+  const match = url.match(/\/wikipedia\/commons\/([0-9a-f])\/([0-9a-f]{2})\/([^/?#]+)$/i);
+  if (!match) return url;
+  const [, bucket, prefix, file] = match;
+  return `https://upload.wikimedia.org/wikipedia/commons/thumb/${bucket}/${prefix}/${file}/120px-${file}`;
+}
+
 export function referenceRows(): { generatedAt: string; source: string; license: string; catalog: CatalogName; rows: CatalogRow[] }[] {
   const groups = [
     ["WikiArt", wikiart],
@@ -187,7 +197,7 @@ export function referenceRows(): { generatedAt: string; source: string; license:
           title,
           detail: [artist, year, style, text(item.license)].filter(Boolean).join(" · "),
           href: null,
-          image: text(item.imageUrl) || null,
+          image: commonsDisplayUrl(text(item.imageUrl)) || null,
           imageAlt: artist ? `${title} by ${artist}` : title,
           license,
           haystack: `${catalog} ${title} ${artist} ${style}`.toLowerCase(),
@@ -200,7 +210,7 @@ export function referenceRows(): { generatedAt: string; source: string; license:
           title,
           detail: text(item.description),
           href: text(item.url) || null,
-          image: text(item.thumbnail) || null,
+          image: text(item.thumbnail) ? commonsDisplayUrl(text(item.thumbnail)) : null,
           imageAlt: title,
           license,
           haystack: `${catalog} ${title} ${text(item.description)}`.toLowerCase(),

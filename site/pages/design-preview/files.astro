@@ -13,20 +13,19 @@ const filters = DOMAIN_SLUGS.map((slug) => ({ id: slug, label: DOMAIN_META[slug]
   title="Filed files"
   description="Design preview of the reports that already have a CSV, transcript, or other packed file."
   path="/design-preview/files"
+  catalog
 >
   <div class="preview-frame">
     <p class="preview-status">Design preview. Live page stays /downloads and /datasets.</p>
     <CatalogNav current="files" />
     <h1 class="preview-page-title">Filed files</h1>
-    <p class="preview-scope">
-      {totals.csv} of {totals.reports} reports have a CSV in the downloads manifest. {totals.transcript} have a transcript. {totals.pdf} have a PDF. {totals.epub} have an EPUB. {totals.audio} have audio. {totals.missingCsv} have no CSV.
-    </p>
+    <p class="preview-scope">{totals.csv} of {totals.reports} reports have a CSV. {totals.transcript} have a transcript. {totals.missingCsv} have no CSV.</p>
     <div class="preview-index" id="files">
       <div class="preview-toolbar">
         <h2>Downloads manifest</h2>
         <p class="preview-count"><span data-count>{rows.length}</span><span>shown</span></p>
-        <label class="preview-search">
-          Filter
+        <label class="preview-search" for="file-filter">
+          Filter reports
           <input id="file-filter" type="search" autocomplete="off" />
         </label>
       </div>
@@ -145,12 +144,22 @@ const filters = DOMAIN_SLUGS.map((slug) => ({ id: slug, label: DOMAIN_META[slug]
         for (const peer of desks) peer.setAttribute("aria-pressed", peer === button ? "true" : "false");
         apply();
       });
+      button.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        button.click();
+      });
     }
     for (const button of kinds) {
       button.addEventListener("click", () => {
         kind = button.getAttribute("data-kind") || "all";
         for (const peer of kinds) peer.setAttribute("aria-pressed", peer === button ? "true" : "false");
         apply();
+      });
+      button.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        button.click();
       });
     }
   }

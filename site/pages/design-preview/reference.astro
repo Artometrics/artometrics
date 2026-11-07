@@ -11,13 +11,14 @@ const rows = groups.flatMap((group) => group.rows);
   title="Reference catalogs"
   description="Design preview of the Gutenberg, WikiArt, and Wikipedia records already stored in the repository."
   path="/design-preview/reference"
+  catalog
 >
   <div class="preview-frame">
     <p class="preview-status">Design preview. Live list stays /library/reference, which shows 24 items from each catalog.</p>
     <CatalogNav current="reference" />
     <h1 class="preview-page-title">Reference catalogs</h1>
     <p class="preview-scope">
-      {groups.map((group) => `${group.rows.length} ${group.catalog}`).join(" · ")}. Images are the URLs stored on WikiArt and Wikipedia records.
+      {groups.map((group) => `${group.rows.length} ${group.catalog}`).join(" · ")}. WikiArt cells use the stored Commons file at 120px. The Last Supper file is 42,764,118 bytes and The Birth of Venus file is 221,461,466 bytes; those full files did not paint in the thumbnail cell. If a 120px file also fails, the cell says “Not loaded.”
     </p>
     {groups.map((group) => (
       <p class="preview-scope">{group.catalog}: {group.license} {group.source ? `Source note: ${group.source}.` : ""} {group.generatedAt ? `File date: ${group.generatedAt}.` : ""}</p>
@@ -26,8 +27,8 @@ const rows = groups.flatMap((group) => group.rows);
       <div class="preview-toolbar">
         <h2>Records</h2>
         <p class="preview-count"><span data-count>{rows.length}</span><span>shown</span></p>
-        <label class="preview-search">
-          Filter
+        <label class="preview-search" for="reference-filter">
+          Filter records
           <input id="reference-filter" type="search" autocomplete="off" />
         </label>
       </div>
@@ -53,7 +54,20 @@ const rows = groups.flatMap((group) => group.rows);
                 <td data-label="Catalog">{row.catalog}</td>
                 <td data-label="Record">
                   <span class="catalog-record">
-                    {row.image ? <img class="catalog-thumb" src={row.image} alt={row.imageAlt} width="72" height="72" loading="lazy" /> : null}
+                    {row.image ? (
+                      <>
+                        <img
+                          class="catalog-thumb"
+                          src={row.image}
+                          alt={row.imageAlt}
+                          width="72"
+                          height="72"
+                          loading="lazy"
+                          onerror="this.hidden=true;var next=this.nextElementSibling;if(next)next.hidden=false;"
+                        />
+                        <span class="catalog-fallback" hidden>Not loaded</span>
+                      </>
+                    ) : null}
                     {row.href ? <a class="preview-title-link" href={row.href}>{row.title}</a> : <span class="preview-title-link">{row.title}</span>}
                   </span>
                 </td>
@@ -100,6 +114,11 @@ const rows = groups.flatMap((group) => group.rows);
         catalog = button.getAttribute("data-filter") || "all";
         for (const peer of buttons) peer.setAttribute("aria-pressed", peer === button ? "true" : "false");
         apply();
+      });
+      button.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        button.click();
       });
     }
   }

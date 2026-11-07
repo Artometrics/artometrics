@@ -11,6 +11,7 @@ const desks = [...new Map(coverage.unlinked.map((row) => [row.deskId, row.desk])
   title="Citation coverage"
   description="Design preview of which published citations have a link and which do not."
   path="/design-preview/citations"
+  catalog
 >
   <div class="preview-frame">
     <p class="preview-status">Design preview. Live citations stay on /sources.</p>
@@ -49,8 +50,8 @@ const desks = [...new Map(coverage.unlinked.map((row) => [row.deskId, row.desk])
       <div class="preview-toolbar">
         <h2 id="unlinked-title">Citations with no href</h2>
         <p class="preview-count"><span data-count>{coverage.unlinked.length}</span><span>shown</span></p>
-        <label class="preview-search">
-          Filter
+        <label class="preview-search" for="citation-filter">
+          Filter citations
           <input id="citation-filter" type="search" autocomplete="off" />
         </label>
       </div>
@@ -118,6 +119,11 @@ const desks = [...new Map(coverage.unlinked.map((row) => [row.deskId, row.desk])
         desk = button.getAttribute("data-filter") || "all";
         for (const peer of buttons) peer.setAttribute("aria-pressed", peer === button ? "true" : "false");
         apply();
+      });
+      button.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        button.click();
       });
     }
   }
