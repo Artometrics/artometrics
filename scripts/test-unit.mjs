@@ -355,6 +355,46 @@ assert(!home.includes("heroImage"), "home dashboard does not render hero art");
 const reportPage = readFileSync(join(ROOT, "site/pages/[slug].astro"), "utf8");
 assert(!reportPage.includes("Read as ebook"), "report pages do not show the ebook link");
 assert(!reportPage.includes("report-hero"), "report pages do not render the hero figure");
+assert(reportPage.includes('class="franchise-banner"'), "franchise article shows the wide banner once");
+assert(reportPage.includes("/images/content/articles/franchise/cover.png"), "franchise article keeps the still cover");
+assert(reportPage.includes('src="/videos/franchise-cover.mp4"'), "franchise article plays the approved cover video");
+assert(reportPage.includes("muted") && reportPage.includes("playsinline") && reportPage.includes("loop"), "cover video is a silent inline loop");
+assert(reportPage.includes('href="/mag/franchise"'), "magazine link stays separate from the video");
+assert(!reportPage.includes('<a class="franchise-cover"'), "the cover video is not wrapped in the magazine link");
+const bannerAt = reportPage.indexOf('class="franchise-banner"');
+const titleAt = reportPage.indexOf("<h1>");
+const articleBodyAt = reportPage.indexOf('class="artometrics-article-body"');
+const coverAt = reportPage.indexOf('class="franchise-cover"');
+assert(bannerAt >= 0 && titleAt > bannerAt, "banner precedes the article title");
+assert(coverAt > articleBodyAt, "magazine cover follows the article body");
+assert((reportPage.match(/<figure class="franchise-banner">/g) || []).length === 1, "banner appears once");
+assert((reportPage.match(/<figure class="franchise-cover">/g) || []).length === 1, "cover appears once");
+const previewCss = readFileSync(join(ROOT, "site/styles/preview.css"), "utf8");
+assert(previewCss.includes("prefers-reduced-motion: reduce"), "reduced motion shows the still cover");
+assert(
+  readFileSync(join(ROOT, "src/content/blog/franchise.md"), "utf8").includes(
+    "heroImage: /images/content/articles/franchise/banner.png",
+  ),
+  "franchise hero is the approved wide banner",
+);
+function sha256(file) {
+  return createHash("sha256").update(readFileSync(file)).digest("hex");
+}
+assert(
+  sha256(join(ROOT, "public/images/content/articles/franchise/banner.png")) ===
+    "a9b0daafcc33fe8ccf77f3b1e62d3c07402823c4056240ca8702bda76030dbd0",
+  "franchise banner bytes match the supplied PNG",
+);
+assert(
+  sha256(join(ROOT, "public/images/content/articles/franchise/cover.png")) ===
+    "db805d90be71dbfeb3962cc23feab879e7cc3f5317fc9fd28b847bceeb935386",
+  "franchise cover bytes match the supplied PNG",
+);
+assert(
+  sha256(join(ROOT, "public/videos/franchise-cover.mp4")) ===
+    "d10f9d323d290a7e29e58b40a37defc57d7a12d1604e36b659207d4d7e68e731",
+  "franchise cover video bytes match the supplied MP4",
+);
 assert(reportPage.includes("withStaticCharts"), "report pages keep the chart pipeline");
 assert(reportPage.includes('post.slug === "longevity"'), "only longevity mounts the branded chart");
 const header = readFileSync(join(ROOT, "site/components/Header.astro"), "utf8");
@@ -368,9 +408,6 @@ assert(logoReview.includes('src: "/images/brand/wordmarks/wordmark-03-pink-blue-
 assert(!logoReview.includes("wordmark-halftone.webp"), "review does not use the misnamed halftone file");
 assert(logoReview.includes('cover: "/images/brand/review/franchise-stripes.png"'), "stripe review points at the striped cover file");
 assert(logoReview.includes('cover: "/images/brand/review/franchise-halftone.png"'), "halftone review points at the pink-halftone cover file");
-function sha256(file) {
-  return createHash("sha256").update(readFileSync(file)).digest("hex");
-}
 assert(
   sha256(join(ROOT, "public/images/brand/review/franchise-stripes.png")) ===
     "e0402f0716c6f40d931c8acc00ceb659ae2fd58bd3417b3eb4871eadfef79712",
