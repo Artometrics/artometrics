@@ -1,0 +1,124 @@
+---
+import Preview from "../../layouts/Preview.astro";
+import CatalogNav from "../../components/preview/CatalogNav.astro";
+import { citationCoverage } from "../../lib/preview-catalog";
+
+const coverage = citationCoverage();
+const desks = [...new Map(coverage.unlinked.map((row) => [row.deskId, row.desk])).entries()];
+---
+
+<Preview
+  title="Citation coverage"
+  description="Design preview of which published citations have a link and which do not."
+  path="/design-preview/citations"
+>
+  <div class="preview-frame">
+    <p class="preview-status">Design preview. Live citations stay on /sources.</p>
+    <CatalogNav current="citations" />
+    <h1 class="preview-page-title">Citation coverage</h1>
+    <p class="preview-scope">
+      The sources catalog lists {coverage.citations} citations across {coverage.issues} issues. {coverage.linked} have an href. {coverage.unlinkedCount} do not. {coverage.withDataset} issues list a dataset pack. The downloads manifest is a separate file.
+    </p>
+    <table class="preview-table">
+      <caption>Counts from src/generated/sources.json. No citations were added or rewritten.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Desk</th>
+          <th scope="col">Issues</th>
+          <th scope="col">Citations</th>
+          <th scope="col">Linked</th>
+          <th scope="col">No link</th>
+          <th scope="col">Issues with a dataset pack</th>
+        </tr>
+      </thead>
+      <tbody>
+        {coverage.desks.map((desk) => (
+          <tr>
+            <td data-label="Desk"><a href={desk.href}>{desk.title}</a></td>
+            <td data-label="Issues">{desk.issues}</td>
+            <td data-label="Citations">{desk.citations}</td>
+            <td data-label="Linked">{desk.linked}</td>
+            <td data-label="No link">{desk.unlinked}</td>
+            <td data-label="Dataset pack">{desk.withDataset}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+
+    <section class="preview-index" id="unlinked" aria-labelledby="unlinked-title">
+      <div class="preview-toolbar">
+        <h2 id="unlinked-title">Citations with no href</h2>
+        <p class="preview-count"><span data-count>{coverage.unlinked.length}</span><span>shown</span></p>
+        <label class="preview-search">
+          Filter
+          <input id="citation-filter" type="search" autocomplete="off" />
+        </label>
+      </div>
+      <div class="preview-filters" role="group" aria-label="Desk">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        {desks.map(([id, label]) => (
+          <button type="button" data-filter={id} aria-pressed="false">{label}</button>
+        ))}
+      </div>
+      <div class="preview-table-wrap">
+        <table class="preview-table">
+          <caption>Citation text is the string stored on the issue. Rows with an href are not in this table.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Desk</th>
+              <th scope="col">Report</th>
+              <th scope="col">Citation text</th>
+            </tr>
+          </thead>
+          <tbody>
+            {coverage.unlinked.map((row) => (
+              <tr data-desk={row.deskId} data-hay={row.haystack}>
+                <td data-label="Desk">{row.desk}</td>
+                <td data-label="Report"><a class="preview-title-link" href={row.href}>{row.title}</a></td>
+                <td data-label="Citation">{row.text}</td>
+              </tr>
+            ))}
+            <tr data-empty hidden><td colspan="3">No citations match this filter.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</Preview>
+
+<script>
+  const root = document.querySelector("#unlinked");
+  if (root) {
+    const rows = [...root.querySelectorAll("tr[data-hay]")];
+    const empty = root.querySelector("[data-empty]");
+    const tbody = root.querySelector("tbody");
+    const search = root.querySelector("input");
+    const count = root.querySelector("[data-count]");
+    const buttons = [...root.querySelectorAll("[data-filter]")];
+    let desk = "all";
+    const apply = () => {
+      const query = search instanceof HTMLInputElement ? search.value.trim().toLowerCase() : "";
+      const visible = rows.filter((row) => {
+        const okDesk = desk === "all" || row.getAttribute("data-desk") === desk;
+        const okQuery = !query || (row.getAttribute("data-hay") || "").includes(query);
+        const show = okDesk && okQuery;
+        row.hidden = !show;
+        return show;
+      });
+      if (tbody) for (const row of visible) tbody.append(row);
+      if (empty) {
+        empty.hidden = visible.length !== 0;
+        tbody?.append(empty);
+      }
+      if (count) count.textContent = String(visible.length);
+    };
+    search?.addEventListener("input", apply);
+    for (const button of buttons) {
+      button.addEventListener("click", () => {
+        desk = button.getAttribute("data-filter") || "all";
+        for (const peer of buttons) peer.setAttribute("aria-pressed", peer === button ? "true" : "false");
+        apply();
+      });
+    }
+  }
+</script>

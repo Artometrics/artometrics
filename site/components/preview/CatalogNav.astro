@@ -1,0 +1,18 @@
+---
+interface Props {
+  current: "files" | "citations" | "reference";
+}
+
+const { current } = Astro.props;
+const links = [
+  ["/design-preview/files", "Filed files", "files"],
+  ["/design-preview/citations", "Citations", "citations"],
+  ["/design-preview/reference", "Reference", "reference"],
+] as const;
+---
+
+<nav class="preview-subnav" aria-label="Catalog previews">
+  {links.map(([href, label, id]) => (
+    <a href={href} aria-current={current === id ? "page" : undefined}>{label}</a>
+  ))}
+</nav>

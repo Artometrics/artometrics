@@ -144,6 +144,14 @@ body.dash .site-footer__social-note {
 .preview-frame {
   width: 100%;
   padding: 16px 20px 32px;
+  overflow-wrap: anywhere;
+}
+
+.preview-scope,
+.preview-status,
+.preview-table td,
+.preview-table a {
+  overflow-wrap: anywhere;
 }
 
 @media (min-width: 1200px) {
@@ -738,6 +746,7 @@ html[data-theme="light"] .am-chart {
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--ink);
+    overflow-wrap: anywhere;
   }
 }
 
@@ -771,4 +780,49 @@ body.dash .artometrics-article-body nav#TOC {
 body.dash figure.art-chart:has([data-chart*="chart2_leaders.plotly.json"]) {
   display: none;
 }
+
+.preview-subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.preview-subnav a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid var(--preview-rule);
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.preview-subnav a[aria-current="page"] {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.catalog-record {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.catalog-thumb {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  flex: 0 0 auto;
+  background: #111;
+}
+
+.preview-table td a + a {
+  margin-left: 10px;
+}
+
 
