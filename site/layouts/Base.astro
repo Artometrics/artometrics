@@ -5,6 +5,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { jsonForScript } from "../lib/static-charts";
 import { getBlogPosts, sectionLabel } from "@/lib/content";
+import { LOGO_REVIEW, type LogoReviewMark } from "@/lib/wordmarks";
 import { DOMAIN_META, DOMAIN_SLUGS, SUBDOMAIN_META, SUBDOMAIN_SLUGS } from "@/data/sections";
 
 interface Props {
@@ -19,6 +20,8 @@ interface Props {
   headerVariant?: "site" | "preview";
   showSocial?: boolean;
   bodyClass?: string;
+  /** Review routes only. Live pages leave this unset and keep the white default. */
+  logoReview?: LogoReviewMark;
 }
 
 const {
@@ -33,7 +36,11 @@ const {
   headerVariant = "site",
   showSocial = false,
   bodyClass = "",
+  logoReview,
 } = Astro.props;
+
+const review = logoReview ? LOGO_REVIEW[logoReview] : null;
+const robotsOut = review ? "noindex, nofollow" : robots;
 
 const SITE = "https://artometrics.com";
 const fullTitle = title.includes("Artometrics") ? title : `${title} · Artometrics`;
@@ -65,18 +72,28 @@ const navIndex = [
 ---
 
 <!doctype html>
-<html lang="en" data-theme="dark" data-logo="white">
+<html
+    lang="en"
+    data-theme="dark"
+    data-logo={review?.catalogId ?? "white"}
+    {...(review ? { "data-logo-review": review.id } : {})}
+  >
   <head>
     <meta charset="utf-8" />
     <script is:inline>
       (function () {
         try {
+          var root = document.documentElement;
+          if (root.getAttribute("data-logo-review")) {
+            root.setAttribute("data-theme", "dark");
+            root.style.colorScheme = "dark";
+            return;
+          }
           var theme = localStorage.getItem("artometrics-theme");
           var logo = localStorage.getItem("artometrics-logo");
           var allowed = { white: 1, svg: 1, halftone: 1, d01: 1, d02: 1, d03: 1, d04: 1, d05: 1, d06: 1, d07: 1, d08: 1 };
           if (theme !== "light") theme = "dark";
           if (!allowed[logo]) logo = "white";
-          var root = document.documentElement;
           root.setAttribute("data-theme", theme);
           root.setAttribute("data-logo", logo);
           root.style.colorScheme = theme === "light" ? "light" : "dark";
@@ -86,7 +103,7 @@ const navIndex = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content={robots} />
+    <meta name="robots" content={robotsOut} />
     <link rel="canonical" href={url} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
@@ -111,7 +128,7 @@ const navIndex = [
   </head>
   <body class={bodyClass}>
     <a class="skip" href="#main">Skip to content</a>
-    <Header variant={headerVariant} />
+    <Header variant={headerVariant} logoReview={logoReview} />
     <main id="main">
       <slot />
     </main>

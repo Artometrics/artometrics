@@ -1,26 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import ArtBarChart from "../components/preview/ArtBarChart.astro";
-import ReportIndex from "../components/preview/ReportIndex.astro";
-import { DATASET_PACKS } from "@/data/datasets";
-import { DOMAIN_META, type DomainSlug } from "@/data/sections";
-import { getBlogPost } from "@/lib/content";
-import { magazineIssues } from "@/lib/magazine";
-import { deskFilters, previewReportRows, reportPath } from "../lib/preview-reports";
-
-const rows = previewReportRows(undefined, "site");
-const issues = magazineIssues()
-  .flatMap((issue) => {
-    const post = getBlogPost(issue.slug);
-    if (!post) return [];
-    return [{
-      href: reportPath(post.slug, "site"),
-      kicker: issue.kicker,
-      title: issue.title,
-      date: issue.date,
-    }];
-  })
-  .slice(0, 8);
+import ReportsHome from "../components/ReportsHome.astro";
 
 const jsonLd = [
   {
@@ -53,53 +33,5 @@ const jsonLd = [
   footer="site"
   bodyClass="dash"
 >
-  <div class="preview-frame">
-    <h1 class="preview-page-title">Reports</h1>
-
-    <section class="preview-panel" aria-labelledby="leaders-title">
-      <h2 id="leaders-title">Top 12 countries by average life expectancy across all years</h2>
-      <p class="preview-panel__link"><a href="/longevity">Longevity report</a></p>
-      <ArtBarChart labelledBy="leaders-title" />
-    </section>
-
-    <ReportIndex rows={rows} filters={deskFilters()} filterAttr="deskSlug" heading="All reports" />
-
-    <div class="preview-lower">
-      <section class="preview-panel" aria-labelledby="issues-title">
-        <h2 id="issues-title">Issues</h2>
-        <ol class="issue-type">
-          {issues.map((issue) => (
-            <li>
-              <a href={issue.href}>
-                <span class="issue-type__kicker">{issue.kicker}</span>
-                <span class="issue-type__title">{issue.title}</span>
-                {issue.date ? <span class="issue-type__date">{issue.date}</span> : null}
-              </a>
-            </li>
-          ))}
-        </ol>
-      </section>
-      <section class="preview-panel" aria-labelledby="packs-title">
-        <h2 id="packs-title">Dataset packs</h2>
-        <table class="preview-table">
-          <thead>
-            <tr>
-              <th scope="col">Pack</th>
-              <th scope="col">Desk</th>
-              <th scope="col">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {DATASET_PACKS.map((pack) => (
-              <tr>
-                <td data-label="Pack"><a href={`/datasets/${pack.id}`}>{pack.title}</a></td>
-                <td data-label="Desk">{DOMAIN_META[pack.section as DomainSlug]?.title || pack.section}</td>
-                <td data-label="Status">{pack.status}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
-    </div>
-  </div>
+  <ReportsHome />
 </Base>
