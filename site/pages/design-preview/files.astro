@@ -1,0 +1,166 @@
+---
+import Preview from "../../layouts/Preview.astro";
+import CatalogNav from "../../components/preview/CatalogNav.astro";
+import { DOMAIN_META, DOMAIN_SLUGS } from "@/data/sections";
+import { datasetPacks, fileTotals, filedReports, formatBytes } from "../../lib/preview-catalog";
+
+const rows = filedReports();
+const totals = fileTotals(rows);
+const filters = DOMAIN_SLUGS.map((slug) => ({ id: slug, label: DOMAIN_META[slug].title }));
+---
+
+<Preview
+  title="Filed files"
+  description="Design preview of the reports that already have a CSV, transcript, or other packed file."
+  path="/design-preview/files"
+  catalog
+>
+  <div class="preview-frame">
+    <p class="preview-status">Design preview. Live page stays /downloads and /datasets.</p>
+    <CatalogNav current="files" />
+    <h1 class="preview-page-title">Filed files</h1>
+    <p class="preview-scope">{totals.csv} of {totals.reports} reports have a CSV. {totals.transcript} have a transcript. {totals.missingCsv} have no CSV.</p>
+    <div class="preview-index" id="files">
+      <div class="preview-toolbar">
+        <h2>Downloads manifest</h2>
+        <p class="preview-count"><span data-count>{rows.length}</span><span>shown</span></p>
+        <label class="preview-search" for="file-filter">
+          Filter reports
+          <input id="file-filter" type="search" autocomplete="off" />
+        </label>
+      </div>
+      <div class="preview-filters" role="group" aria-label="Desk">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        {filters.map((filter) => (
+          <button type="button" data-filter={filter.id} aria-pressed="false">{filter.label}</button>
+        ))}
+      </div>
+      <div class="preview-filters" role="group" aria-label="File">
+        <button type="button" data-kind="all" aria-pressed="true">Any file</button>
+        <button type="button" data-kind="csv" aria-pressed="false">Has CSV</button>
+        <button type="button" data-kind="nocsv" aria-pressed="false">No CSV</button>
+        <button type="button" data-kind="transcript" aria-pressed="false">Transcript</button>
+      </div>
+      <div class="preview-table-wrap">
+        <table class="preview-table">
+          <caption>Packed files for each report.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Report</th>
+              <th scope="col">Desk</th>
+              <th scope="col">CSV</th>
+              <th scope="col">Size</th>
+              <th scope="col">Transcript</th>
+              <th scope="col">Other packed files</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr
+                data-desk={row.deskSlug}
+                data-csv={row.dataset ? "1" : ""}
+                data-transcript={row.transcript ? "1" : ""}
+                data-hay={row.haystack}
+              >
+                <td data-label="Report"><a class="preview-title-link" href={row.href}>{row.title}</a></td>
+                <td data-label="Desk">{row.desk}</td>
+                <td data-label="CSV">{row.dataset ? <a href={row.dataset}>CSV</a> : <span class="preview-missing">None filed</span>}</td>
+                <td data-label="Size">{row.bytes != null ? formatBytes(row.bytes) : <span class="preview-missing">—</span>}</td>
+                <td data-label="Transcript">{row.transcript ? <a href={row.transcript}>Transcript</a> : <span class="preview-missing">None filed</span>}</td>
+                <td data-label="Other">
+                  {row.extras.length ? row.extras.map((file) => <a href={file.href}>{file.label}</a>) : <span class="preview-missing">None filed</span>}
+                  {row.github ? <> <a href={row.github}>GitHub</a></> : null}
+                </td>
+              </tr>
+            ))}
+            <tr data-empty hidden><td colspan="6">No reports match this filter.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <section class="preview-panel" aria-labelledby="packs-title">
+      <h2 id="packs-title">Dataset packs</h2>
+      <p class="preview-scope">These six records are the live /datasets catalog. Status is the value stored on each pack. It is not the same list as the CSV manifest above.</p>
+      <table class="preview-table">
+        <thead>
+          <tr>
+            <th scope="col">Pack</th>
+            <th scope="col">Desk</th>
+            <th scope="col">Status</th>
+            <th scope="col">Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          {datasetPacks.map((pack) => (
+            <tr>
+              <td data-label="Pack"><a href={`/datasets/${pack.id}`}>{pack.title}</a></td>
+              <td data-label="Desk">{DOMAIN_META[pack.section].title}</td>
+              <td data-label="Status">{pack.status}</td>
+              <td data-label="Download">{pack.downloadPath ? <a href={pack.downloadPath}>File</a> : <span class="preview-missing">None filed</span>}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  </div>
+</Preview>
+
+<script>
+  const root = document.querySelector("#files");
+  if (root) {
+    const rows = [...root.querySelectorAll("tr[data-hay]")];
+    const empty = root.querySelector("[data-empty]");
+    const tbody = root.querySelector("tbody");
+    const search = root.querySelector("input");
+    const count = root.querySelector("[data-count]");
+    const desks = [...root.querySelectorAll("[data-filter]")];
+    const kinds = [...root.querySelectorAll("[data-kind]")];
+    let desk = "all";
+    let kind = "all";
+    const apply = () => {
+      const query = search instanceof HTMLInputElement ? search.value.trim().toLowerCase() : "";
+      const visible = rows.filter((row) => {
+        const okDesk = desk === "all" || row.getAttribute("data-desk") === desk;
+        const hasCsv = Boolean(row.getAttribute("data-csv"));
+        const hasTranscript = Boolean(row.getAttribute("data-transcript"));
+        const okKind = kind === "all" || (kind === "csv" && hasCsv) || (kind === "nocsv" && !hasCsv) || (kind === "transcript" && hasTranscript);
+        const okQuery = !query || (row.getAttribute("data-hay") || "").includes(query);
+        const show = okDesk && okKind && okQuery;
+        row.hidden = !show;
+        return show;
+      });
+      if (tbody) for (const row of visible) tbody.append(row);
+      if (empty) {
+        empty.hidden = visible.length !== 0;
+        tbody?.append(empty);
+      }
+      if (count) count.textContent = String(visible.length);
+    };
+    search?.addEventListener("input", apply);
+    for (const button of desks) {
+      button.addEventListener("click", () => {
+        desk = button.getAttribute("data-filter") || "all";
+        for (const peer of desks) peer.setAttribute("aria-pressed", peer === button ? "true" : "false");
+        apply();
+      });
+      button.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        button.click();
+      });
+    }
+    for (const button of kinds) {
+      button.addEventListener("click", () => {
+        kind = button.getAttribute("data-kind") || "all";
+        for (const peer of kinds) peer.setAttribute("aria-pressed", peer === button ? "true" : "false");
+        apply();
+      });
+      button.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        button.click();
+      });
+    }
+  }
+</script>
