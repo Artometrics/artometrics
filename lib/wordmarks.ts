@@ -20,3 +20,42 @@ export const WORDMARKS: WordmarkOption[] = [
 ];
 
 export const DEFAULT_WORDMARK_ID = "white";
+
+/**
+ * Review-only pair. Filenames do not describe the artwork.
+ * Confirmed by looking at the pixels, not the names:
+ * - stripes: wordmark-white.webp — long diagonal pink/blue extrusion, white face.
+ * - halftone: wordmark-03-pink-blue-bands.webp — bright-pink dotted extrusion, blue accents.
+ * wordmark-halftone.webp is a short blue-rim bevel. It is neither of these.
+ * catalogId is the existing picker id that already points at that file.
+ */
+export const LOGO_REVIEW = {
+  stripes: {
+    id: "stripes",
+    catalogId: "white",
+    label: "Stripes",
+    src: "/images/brand/wordmarks/wordmark-white.webp",
+    file: "wordmark-white.webp",
+    width: 600,
+    height: 139,
+    cover: "/images/brand/review/franchise-stripes.png",
+    coverFile: "franchise-ebook-v5-logo-STRIPED-even-border-nowhite.png",
+    coverWidth: 1600,
+    coverHeight: 2133,
+  },
+  halftone: {
+    id: "halftone",
+    catalogId: "d03",
+    label: "Pink halftone",
+    src: "/images/brand/wordmarks/wordmark-03-pink-blue-bands.webp",
+    file: "wordmark-03-pink-blue-bands.webp",
+    width: 600,
+    height: 140,
+    cover: "/images/brand/review/franchise-halftone.png",
+    coverFile: "franchise-ebook-v5-logo-PINK-HALFTONE-even-border-nowhite.png",
+    coverWidth: 1600,
+    coverHeight: 2133,
+  },
+} as const;
+
+export type LogoReviewMark = keyof typeof LOGO_REVIEW;
