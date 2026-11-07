@@ -133,6 +133,17 @@ const jsonLd = [
             <a href={post.audioSrc}>Listen</a>
           </audio>
         ) : null}
+        {post.slug === "franchise" ? (
+          <a class="franchise-cover" href="/mag/franchise">
+            <img
+              src="/images/content/articles/franchise/cover.png"
+              alt="Franchise magazine cover"
+              width="1600"
+              height="2133"
+            />
+            <span>Magazine issue</span>
+          </a>
+        ) : null}
       </div>
       {facts.length ? (
         <table class="preview-facts">
@@ -154,6 +165,17 @@ const jsonLd = [
         </table>
       ) : null}
     </div>
+
+    {post.slug === "franchise" ? (
+      <figure class="franchise-banner">
+        <img
+          src="/images/content/articles/franchise/banner.png"
+          alt="Franchise"
+          width="2560"
+          height="1440"
+        />
+      </figure>
+    ) : null}
 
     {post.slug === "longevity" ? (
       <section class="preview-panel" aria-labelledby="leaders-title">

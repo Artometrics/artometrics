@@ -2,6 +2,7 @@
 /**
  * Lightweight unit checks (no Jest) for Aftercare calculators / planets.
  */
+import { createHash } from "node:crypto";
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -353,6 +354,27 @@ assert(!home.includes("heroImage"), "home dashboard does not render hero art");
 const reportPage = readFileSync(join(ROOT, "site/pages/[slug].astro"), "utf8");
 assert(!reportPage.includes("Read as ebook"), "report pages do not show the ebook link");
 assert(!reportPage.includes("report-hero"), "report pages do not render the hero figure");
+assert(reportPage.includes('class="franchise-banner"'), "franchise article shows the wide banner once");
+assert(reportPage.includes("/images/content/articles/franchise/cover.png"), "franchise article shows the portrait cover");
+assert(
+  readFileSync(join(ROOT, "src/content/blog/franchise.md"), "utf8").includes(
+    "heroImage: /images/content/articles/franchise/banner.png",
+  ),
+  "franchise hero is the approved wide banner",
+);
+function sha256(file) {
+  return createHash("sha256").update(readFileSync(file)).digest("hex");
+}
+assert(
+  sha256(join(ROOT, "public/images/content/articles/franchise/banner.png")) ===
+    "a9b0daafcc33fe8ccf77f3b1e62d3c07402823c4056240ca8702bda76030dbd0",
+  "franchise banner bytes match the supplied PNG",
+);
+assert(
+  sha256(join(ROOT, "public/images/content/articles/franchise/cover.png")) ===
+    "db805d90be71dbfeb3962cc23feab879e7cc3f5317fc9fd28b847bceeb935386",
+  "franchise cover bytes match the supplied PNG",
+);
 assert(reportPage.includes("withStaticCharts"), "report pages keep the chart pipeline");
 assert(reportPage.includes('post.slug === "longevity"'), "only longevity mounts the branded chart");
 const header = readFileSync(join(ROOT, "site/components/Header.astro"), "utf8");

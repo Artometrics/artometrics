@@ -11,7 +11,10 @@ type Props = {
 export function MagazineEditionCard({ slug }: Props) {
   const issue = magazineIssue(slug);
   if (!issue) return null;
-  const hero = magazineImg(issue.hero);
+  const franchiseCover = slug === "franchise";
+  const hero = franchiseCover
+    ? "/images/content/articles/franchise/cover.png"
+    : magazineImg(issue.hero);
   const href = magazineIssueHref(issue.slug);
 
   return (
@@ -24,7 +27,7 @@ export function MagazineEditionCard({ slug }: Props) {
           <SiteCoverImage
             source={{ uri: hero }}
             wrapperClassName="ebook-entry__cover"
-            wrapperStyle={{ width: 84, height: 96 }}
+            wrapperStyle={{ width: 84, height: franchiseCover ? 112 : 96 }}
             transition={200}
             accessibilityLabel=""
           />
