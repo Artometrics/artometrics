@@ -1,0 +1,135 @@
+---
+import Preview from "../../layouts/Preview.astro";
+import CatalogNav from "../../components/preview/CatalogNav.astro";
+import { referenceRows } from "../../lib/preview-catalog";
+
+const groups = referenceRows();
+const rows = groups.flatMap((group) => group.rows);
+---
+
+<Preview
+  title="Reference catalogs"
+  description="Design preview of the Gutenberg, WikiArt, and Wikipedia records already stored in the repository."
+  path="/design-preview/reference"
+  catalog
+>
+  <div class="preview-frame">
+    <p class="preview-status">Design preview. Live list stays /library/reference, which shows 24 items from each catalog.</p>
+    <CatalogNav current="reference" />
+    <h1 class="preview-page-title">Reference catalogs</h1>
+    <p class="preview-scope">Browse artworks, reference articles, and books. {groups.map((group) => `${group.rows.length} ${group.catalog === "WikiArt" ? "artworks" : group.catalog === "Wikipedia" ? "reference articles" : "books"}`).join(" · ")}.</p>
+    <div class="catalog-notes">
+      {groups.map((group) => {
+        const sourceUrl = /^https?:\/\//.test(group.source) ? group.source : null;
+        const licenseUrl = group.license.match(/https?:\/\/[^\s)]+/)?.[0] || null;
+        return (
+          <details>
+            <summary>{group.catalog} license and source</summary>
+            <p>{group.license}</p>
+            {sourceUrl ? null : <p>{group.source}</p>}
+            {sourceUrl ? <p><a href={sourceUrl}>Open source</a></p> : null}
+            {licenseUrl ? <p><a href={licenseUrl}>License terms</a></p> : null}
+          </details>
+        );
+      })}
+    </div>
+    <div class="preview-index" id="reference">
+      <div class="preview-toolbar">
+        <h2>Records</h2>
+        <p class="preview-count"><span data-count>{rows.length}</span><span>shown</span></p>
+        <label class="preview-search" for="reference-filter">
+          Filter records
+          <input id="reference-filter" type="search" autocomplete="off" />
+        </label>
+      </div>
+      <div class="preview-filters" role="group" aria-label="Catalog">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        {groups.map((group) => (
+          <button type="button" data-filter={group.catalog} aria-pressed="false">{group.catalog}</button>
+        ))}
+      </div>
+      <div class="preview-table-wrap">
+        <table class="preview-table">
+          <caption>Records in the three catalogs.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Catalog</th>
+              <th scope="col">Record</th>
+              <th scope="col">Detail</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr data-catalog={row.catalog} data-hay={row.haystack}>
+                <td data-label="Catalog">{row.catalog}</td>
+                <td data-label="Record">
+                  <span class="catalog-record">
+                    {row.image ? (
+                      <>
+                        <img
+                          class="catalog-thumb"
+                          src={row.image}
+                          alt={row.imageAlt}
+                          width="72"
+                          height="72"
+                          loading="lazy"
+                          onerror="this.hidden=true;var next=this.nextElementSibling;if(next)next.hidden=false;"
+                        />
+                        <span class="catalog-fallback" hidden>Not loaded</span>
+                      </>
+                    ) : null}
+                    {row.href ? <a class="preview-title-link" href={row.href}>{row.title}</a> : <span class="preview-title-link">{row.title}</span>}
+                  </span>
+                </td>
+                <td data-label="Detail">{row.detail}</td>
+              </tr>
+            ))}
+            <tr data-empty hidden><td colspan="3">No records match this filter.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</Preview>
+
+<script>
+  const root = document.querySelector("#reference");
+  if (root) {
+    const rows = [...root.querySelectorAll("tr[data-hay]")];
+    const empty = root.querySelector("[data-empty]");
+    const tbody = root.querySelector("tbody");
+    const search = root.querySelector("input");
+    const count = root.querySelector("[data-count]");
+    const buttons = [...root.querySelectorAll("[data-filter]")];
+    let catalog = "all";
+    const apply = () => {
+      const query = search instanceof HTMLInputElement ? search.value.trim().toLowerCase() : "";
+      const visible = rows.filter((row) => {
+        const okCatalog = catalog === "all" || row.getAttribute("data-catalog") === catalog;
+        const okQuery = !query || (row.getAttribute("data-hay") || "").includes(query);
+        const show = okCatalog && okQuery;
+        row.hidden = !show;
+        return show;
+      });
+      if (tbody) for (const row of visible) tbody.append(row);
+      if (empty) {
+        empty.hidden = visible.length !== 0;
+        tbody?.append(empty);
+      }
+      if (count) count.textContent = String(visible.length);
+    };
+    search?.addEventListener("input", apply);
+    for (const button of buttons) {
+      button.addEventListener("click", () => {
+        catalog = button.getAttribute("data-filter") || "all";
+        for (const peer of buttons) peer.setAttribute("aria-pressed", peer === button ? "true" : "false");
+        apply();
+      });
+      button.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        button.click();
+      });
+    }
+  }
+</script>

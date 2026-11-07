@@ -144,6 +144,14 @@ body.dash .site-footer__social-note {
 .preview-frame {
   width: 100%;
   padding: 16px 20px 32px;
+  overflow-wrap: anywhere;
+}
+
+.preview-scope,
+.preview-status,
+.preview-table td,
+.preview-table a {
+  overflow-wrap: anywhere;
 }
 
 @media (min-width: 1200px) {
@@ -221,8 +229,8 @@ body.dash .site-footer__social-note {
   margin-left: auto;
   font-family: var(--mono);
   font-size: 13px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-transform: none;
   color: var(--ink);
 }
 
@@ -731,6 +739,13 @@ html[data-theme="light"] .am-chart {
     border: 0;
   }
 
+  .preview-table caption {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 8px;
+  }
+
   .preview-table td::before {
     content: attr(data-label);
     font-family: var(--mono);
@@ -738,6 +753,7 @@ html[data-theme="light"] .am-chart {
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--ink);
+    overflow-wrap: anywhere;
   }
 }
 
@@ -770,6 +786,159 @@ body.dash .artometrics-article-body nav#TOC {
 
 body.dash figure.art-chart:has([data-chart*="chart2_leaders.plotly.json"]) {
   display: none;
+}
+
+.preview-subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.preview-subnav a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid var(--preview-rule);
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.preview-subnav a[aria-current="page"] {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.catalog-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: 0 0 12px;
+}
+
+.catalog-notes details {
+  max-width: 40rem;
+}
+
+.catalog-notes summary {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.catalog-notes p {
+  margin: 0 0 8px;
+  max-width: 62ch;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.catalog-record {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.catalog-thumb {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  flex: 0 0 auto;
+  background: transparent;
+}
+
+.catalog-fallback {
+  width: 72px;
+  height: 72px;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border: 1px solid var(--preview-rule);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.catalog-fallback[hidden] {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  body.catalog-preview .dateline {
+    padding: 4px 12px;
+  }
+
+  body.catalog-preview .wordmark img {
+    max-height: 40px;
+  }
+
+  body.catalog-preview .mast-row {
+    padding: 2px 0;
+  }
+
+  body.catalog-preview .desk-nav {
+    padding: 2px 0 4px;
+  }
+
+  body.catalog-preview .desk-nav a,
+  body.catalog-preview .preview-subnav a,
+  body.catalog-preview .preview-filters button {
+    min-height: 36px;
+  }
+
+  body.catalog-preview .preview-frame {
+    padding: 8px 16px 20px;
+  }
+
+  body.catalog-preview .preview-status,
+  body.catalog-preview .preview-subnav,
+  body.catalog-preview .preview-page-title,
+  body.catalog-preview .preview-scope {
+    margin-bottom: 6px;
+  }
+
+  body.catalog-preview .preview-page-title {
+    font-size: 1.45rem;
+  }
+
+  body.catalog-preview .preview-scope {
+    font-size: 15px;
+  }
+
+  body.catalog-preview .preview-toolbar {
+    margin-bottom: 6px;
+    gap: 6px 12px;
+  }
+
+  body.catalog-preview .preview-toolbar h2 {
+    font-size: 1.05rem;
+  }
+
+  body.catalog-preview .preview-filters {
+    margin-bottom: 6px;
+  }
+
+  body.catalog-preview .preview-search input,
+  body.catalog-preview .preview-search select {
+    min-height: 40px;
+  }
+}
+
+.preview-table td a + a {
+  margin-left: 10px;
 }
 
 /* Logo review routes only. Live pages do not set data-logo-review. */
@@ -958,4 +1127,3 @@ html[data-logo-review] .logo-review-cover figcaption {
   .franchise-cover .franchise-cover__pause { display: none; }
   .franchise-cover .franchise-cover__still { display: block; }
 }
-
