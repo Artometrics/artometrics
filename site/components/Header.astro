@@ -2,19 +2,26 @@
 import { SITE_PRIMARY_NAV } from "@/lib/site-nav";
 import { formatHeaderDate } from "@/lib/headerDateline";
 import facts from "@/lib/nav-fun-facts.json";
-import { WORDMARKS } from "@/lib/wordmarks";
+import { LOGO_REVIEW, type LogoReviewMark, WORDMARKS } from "@/lib/wordmarks";
 import { jsonForScript } from "../lib/static-charts";
 
 interface Props {
   variant?: "site" | "preview";
+  logoReview?: LogoReviewMark;
 }
 
-const { variant = "site" } = Astro.props;
+const { variant = "site", logoReview } = Astro.props;
 const preview = variant === "preview";
+const review = logoReview ? LOGO_REVIEW[logoReview] : null;
 const path = Astro.url.pathname.replace(/\.html$/, "").replace(/\/$/, "") || "/";
+const reviewSection = /\/sources$/.test(path) ? "sources" : /\/mag$/.test(path) ? "mag" : "";
 const dateline = formatHeaderDate();
 const fact = facts[0];
-const homeHref = preview ? "/design-preview" : "/";
+const homeHref = review ? `/review/logos/${review.id}` : preview ? "/design-preview" : "/";
+
+function reviewHref(id: LogoReviewMark) {
+  return reviewSection ? `/review/logos/${id}/${reviewSection}` : `/review/logos/${id}`;
+}
 
 function navHref(href: string) {
   if (!preview) return href;
@@ -47,7 +54,15 @@ function navCurrent(href: string) {
     </div>
     <a class="wordmark" href={homeHref} aria-label="Artometrics home">
       <span class="wordmark__plate">
-        <img id="site-wordmark" alt="" width="600" height="139" decoding="async" fetchpriority="high" />
+        <img
+          id="site-wordmark"
+          alt=""
+          src={review?.src}
+          width={review?.width ?? 600}
+          height={review?.height ?? 139}
+          decoding="async"
+          fetchpriority="high"
+        />
       </span>
     </a>
     <div class="mast-side mast-side--end">
@@ -91,20 +106,30 @@ function navCurrent(href: string) {
         <button type="button" role="radio" data-theme-choice="light" aria-checked="false">Day</button>
       </div>
       <p class="appearance__label" id="appearance-logo-label">Wordmark</p>
-      <div class="appearance__logos" role="radiogroup" aria-labelledby="appearance-logo-label">
-        {WORDMARKS.map((mark) => (
-          <button
-            type="button"
-            role="radio"
-            data-logo-choice={mark.id}
-            aria-checked={mark.id === "white" ? "true" : "false"}
-            aria-label={mark.label}
-            title={mark.label}
-          >
-            <img src={mark.src} alt="" width="120" height="28" loading="lazy" />
-          </button>
-        ))}
-      </div>
+      {review ? (
+        <div class="appearance__logos" role="navigation" aria-labelledby="appearance-logo-label">
+          {(Object.keys(LOGO_REVIEW) as LogoReviewMark[]).map((id) => (
+            <a href={reviewHref(id)} aria-current={id === review.id ? "true" : undefined} title={LOGO_REVIEW[id].file}>
+              <img src={LOGO_REVIEW[id].src} alt={LOGO_REVIEW[id].label} width="120" height="28" />
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="appearance__logos" role="radiogroup" aria-labelledby="appearance-logo-label">
+          {WORDMARKS.map((mark) => (
+            <button
+              type="button"
+              role="radio"
+              data-logo-choice={mark.id}
+              aria-checked={mark.id === "white" ? "true" : "false"}
+              aria-label={mark.label}
+              title={mark.label}
+            >
+              <img src={mark.src} alt="" width="120" height="28" loading="lazy" />
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   </div>
   <nav class="desk-nav" aria-label="Sections">
@@ -169,6 +194,10 @@ function navCurrent(href: string) {
       return catalog[0] && catalog[0].src;
     }
     function paintLogo(id, persist) {
+      if (root.getAttribute("data-logo-review")) {
+        id = root.getAttribute("data-logo") || id;
+        persist = false;
+      }
       var src = logoSrc(id);
       if (!src) id = "white";
       src = logoSrc(id);

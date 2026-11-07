@@ -1,0 +1,30 @@
+---
+import { LOGO_REVIEW, type LogoReviewMark } from "@/lib/wordmarks";
+
+interface Props {
+  mark: LogoReviewMark;
+  page: "home" | "sources" | "mag";
+}
+
+const { mark, page } = Astro.props;
+
+function href(id: LogoReviewMark, target: "home" | "sources" | "mag" = page) {
+  if (target === "home") return `/review/logos/${id}`;
+  return `/review/logos/${id}/${target}`;
+}
+---
+
+<p class="logo-review-note">
+  <span>Logo review. Not the live default.</span>
+  <a href={href("stripes")} aria-current={mark === "stripes" ? "true" : undefined}>
+    A Stripes
+    <span class="logo-review-note__file">{LOGO_REVIEW.stripes.file}</span>
+  </a>
+  <a href={href("halftone")} aria-current={mark === "halftone" ? "true" : undefined}>
+    B Pink halftone
+    <span class="logo-review-note__file">{LOGO_REVIEW.halftone.file}</span>
+  </a>
+  <a href={href(mark, "home")} aria-current={page === "home" ? "page" : undefined}>Home</a>
+  <a href={href(mark, "sources")} aria-current={page === "sources" ? "page" : undefined}>Sources</a>
+  <a href={href(mark, "mag")} aria-current={page === "mag" ? "page" : undefined}>Magazine</a>
+</p>

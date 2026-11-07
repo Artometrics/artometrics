@@ -399,6 +399,27 @@ assert(reportPage.includes('post.slug === "longevity"'), "only longevity mounts 
 const header = readFileSync(join(ROOT, "site/components/Header.astro"), "utf8");
 assert(header.includes("formatHeaderDate()"), "dateline is the date only");
 assert(!header.includes("formatHeaderDateline"), "production header does not repeat the old dateline");
+const wordmarks = readFileSync(join(ROOT, "lib/wordmarks.ts"), "utf8");
+assert(wordmarks.includes('DEFAULT_WORDMARK_ID = "white"'), "live wordmark default stays the white catalog id");
+const logoReview = wordmarks.slice(wordmarks.indexOf("export const LOGO_REVIEW"));
+assert(logoReview.includes('src: "/images/brand/wordmarks/wordmark-white.webp"'), "stripe review uses the diagonal pink/blue file");
+assert(logoReview.includes('src: "/images/brand/wordmarks/wordmark-03-pink-blue-bands.webp"'), "halftone review uses the pink dotted file");
+assert(!logoReview.includes("wordmark-halftone.webp"), "review does not use the misnamed halftone file");
+assert(logoReview.includes('cover: "/images/brand/review/franchise-stripes.png"'), "stripe review points at the striped cover file");
+assert(logoReview.includes('cover: "/images/brand/review/franchise-halftone.png"'), "halftone review points at the pink-halftone cover file");
+assert(
+  sha256(join(ROOT, "public/images/brand/review/franchise-stripes.png")) ===
+    "e0402f0716c6f40d931c8acc00ceb659ae2fd58bd3417b3eb4871eadfef79712",
+  "striped cover bytes match the supplied PNG",
+);
+assert(
+  sha256(join(ROOT, "public/images/brand/review/franchise-halftone.png")) ===
+    "279171ebcfd949c46068d54b8d0e9fc564194d05c1c9a2b921d060962a3c3d10",
+  "pink halftone cover bytes match the supplied PNG",
+);
+const baseLayout = readFileSync(join(ROOT, "site/layouts/Base.astro"), "utf8");
+assert(baseLayout.includes('review?.catalogId ?? "white"'), "pages without a review lock stay on the white default");
+assert(baseLayout.includes('review ? "noindex, nofollow"'), "logo review routes stay out of the index");
 const footer = readFileSync(join(ROOT, "site/components/Footer.astro"), "utf8");
 assert(footer.includes("CONFIGURED_SOCIAL"), "footer can link the published GitHub URL");
 assert(footer.includes("showSocial ? UNCONFIGURED_SOCIAL"), "unconfigured social labels stay off production");
