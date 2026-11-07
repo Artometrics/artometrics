@@ -17,12 +17,22 @@ const rows = groups.flatMap((group) => group.rows);
     <p class="preview-status">Design preview. Live list stays /library/reference, which shows 24 items from each catalog.</p>
     <CatalogNav current="reference" />
     <h1 class="preview-page-title">Reference catalogs</h1>
-    <p class="preview-scope">
-      {groups.map((group) => `${group.rows.length} ${group.catalog}`).join(" · ")}. WikiArt cells use the stored Commons file at 120px. The Last Supper file is 42,764,118 bytes and The Birth of Venus file is 221,461,466 bytes; those full files did not paint in the thumbnail cell. If a 120px file also fails, the cell says “Not loaded.”
-    </p>
-    {groups.map((group) => (
-      <p class="preview-scope">{group.catalog}: {group.license} {group.source ? `Source note: ${group.source}.` : ""} {group.generatedAt ? `File date: ${group.generatedAt}.` : ""}</p>
-    ))}
+    <p class="preview-scope">Browse artworks, reference articles, and books. {groups.map((group) => `${group.rows.length} ${group.catalog === "WikiArt" ? "artworks" : group.catalog === "Wikipedia" ? "reference articles" : "books"}`).join(" · ")}.</p>
+    <div class="catalog-notes">
+      {groups.map((group) => {
+        const sourceUrl = /^https?:\/\//.test(group.source) ? group.source : null;
+        const licenseUrl = group.license.match(/https?:\/\/[^\s)]+/)?.[0] || null;
+        return (
+          <details>
+            <summary>{group.catalog} license and source</summary>
+            <p>{group.license}</p>
+            {sourceUrl ? null : <p>{group.source}</p>}
+            {sourceUrl ? <p><a href={sourceUrl}>Open source</a></p> : null}
+            {licenseUrl ? <p><a href={licenseUrl}>License terms</a></p> : null}
+          </details>
+        );
+      })}
+    </div>
     <div class="preview-index" id="reference">
       <div class="preview-toolbar">
         <h2>Records</h2>
@@ -40,7 +50,7 @@ const rows = groups.flatMap((group) => group.rows);
       </div>
       <div class="preview-table-wrap">
         <table class="preview-table">
-          <caption>Every item in the three catalog JSON files. Nothing was added.</caption>
+          <caption>Records in the three catalogs.</caption>
           <thead>
             <tr>
               <th scope="col">Catalog</th>

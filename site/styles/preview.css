@@ -814,6 +814,32 @@ body.dash figure.art-chart:has([data-chart*="chart2_leaders.plotly.json"]) {
   color: var(--bg);
 }
 
+.catalog-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: 0 0 12px;
+}
+
+.catalog-notes details {
+  max-width: 40rem;
+}
+
+.catalog-notes summary {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.catalog-notes p {
+  margin: 0 0 8px;
+  max-width: 62ch;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
 .catalog-record {
   display: flex;
   align-items: center;

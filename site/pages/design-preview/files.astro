@@ -43,7 +43,7 @@ const filters = DOMAIN_SLUGS.map((slug) => ({ id: slug, label: DOMAIN_META[slug]
       </div>
       <div class="preview-table-wrap">
         <table class="preview-table">
-          <caption>Each row is one report in src/generated/downloads.json. Sizes are the file bytes on disk.</caption>
+          <caption>Packed files for each report.</caption>
           <thead>
             <tr>
               <th scope="col">Report</th>
@@ -65,7 +65,7 @@ const filters = DOMAIN_SLUGS.map((slug) => ({ id: slug, label: DOMAIN_META[slug]
                 <td data-label="Report"><a class="preview-title-link" href={row.href}>{row.title}</a></td>
                 <td data-label="Desk">{row.desk}</td>
                 <td data-label="CSV">{row.dataset ? <a href={row.dataset}>CSV</a> : <span class="preview-missing">None filed</span>}</td>
-                <td data-label="Size">{row.bytes != null ? <span title={`${row.bytes} bytes`}>{formatBytes(row.bytes)}</span> : <span class="preview-missing">—</span>}</td>
+                <td data-label="Size">{row.bytes != null ? formatBytes(row.bytes) : <span class="preview-missing">—</span>}</td>
                 <td data-label="Transcript">{row.transcript ? <a href={row.transcript}>Transcript</a> : <span class="preview-missing">None filed</span>}</td>
                 <td data-label="Other">
                   {row.extras.length ? row.extras.map((file) => <a href={file.href}>{file.label}</a>) : <span class="preview-missing">None filed</span>}

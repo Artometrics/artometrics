@@ -18,10 +18,10 @@ const desks = [...new Map(coverage.unlinked.map((row) => [row.deskId, row.desk])
     <CatalogNav current="citations" />
     <h1 class="preview-page-title">Citation coverage</h1>
     <p class="preview-scope">
-      The sources catalog lists {coverage.citations} citations across {coverage.issues} issues. {coverage.linked} have an href. {coverage.unlinkedCount} do not. {coverage.withDataset} issues list a dataset pack. The downloads manifest is a separate file.
+      {coverage.citations} citations across {coverage.issues} reports. {coverage.linked} include a link. {coverage.unlinkedCount} do not.
     </p>
     <table class="preview-table">
-      <caption>Counts from src/generated/sources.json. No citations were added or rewritten.</caption>
+      <caption>Citations grouped by desk.</caption>
       <thead>
         <tr>
           <th scope="col">Desk</th>
@@ -63,7 +63,7 @@ const desks = [...new Map(coverage.unlinked.map((row) => [row.deskId, row.desk])
       </div>
       <div class="preview-table-wrap">
         <table class="preview-table">
-          <caption>Citation text is the string stored on the issue. Rows with an href are not in this table.</caption>
+          <caption>Citations that do not include a link.</caption>
           <thead>
             <tr>
               <th scope="col">Desk</th>
