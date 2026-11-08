@@ -112,16 +112,6 @@
         "type": 301
       },
       {
-        "source": "/atlas",
-        "destination": "/topics/culture",
-        "type": 301
-      },
-      {
-        "source": "/atlas/**",
-        "destination": "/topics/culture",
-        "type": 301
-      },
-      {
         "source": "/history",
         "destination": "/topics/humanities",
         "type": 301

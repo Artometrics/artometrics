@@ -359,7 +359,30 @@ assert(!deskHome.includes("All reports"), "the All reports heading is gone from 
 assert(readFileSync(join(ROOT, "lib/site-nav.ts"), "utf8").includes('href: "/blog"'), "the report index stays in the menu");
 assert(deskHome.includes('["pixar", "anime", "franchise"]'), "Arts is a column of three reports");
 assert(!deskHome.includes('"steam"'), "Steam stays off the three-story sports column");
-assert(!deskHome.includes("longevity"), "Longevity is not on the homepage");
+assert(!deskHome.includes('"longevity"'), "Longevity is not a homepage story");
+assert(deskHome.includes('"atlas"'), "Atlas stays a homepage story");
+const hosting = JSON.parse(readFileSync(join(ROOT, "firebase.json"), "utf8"));
+const steal = hosting.hosting.redirects.filter((rule) => rule.source === "/atlas" || rule.source === "/atlas/**");
+assert(steal.length === 0, "the Atlas article path is not sent to a topic");
+assert(
+  hosting.hosting.redirects.some((rule) => rule.source === "/culture" && rule.destination === "/topics/culture"),
+  "the culture topic redirect stays",
+);
+assert(
+  hosting.hosting.redirects.some((rule) => rule.source === "/desks/atlas" && rule.destination === "/topics/culture"),
+  "the old desk path /desks/atlas still opens Culture",
+);
+assert(
+  hosting.hosting.redirects.some((rule) => rule.source === "/national-export-identity-atlas" && rule.destination === "/atlas"),
+  "the long Atlas alias still points at the article",
+);
+assert(
+  hosting.hosting.redirects.some((rule) => rule.source === "/export-atlas" && rule.destination === "/atlas"),
+  "the export-atlas alias still points at the article",
+);
+assert(!netlify.includes('from = "/atlas"\n'), "Netlify does not redirect the Atlas article to a topic");
+assert(netlify.includes('from = "/desks/atlas"'), "Netlify still redirects the old desk path");
+assert(readFileSync(join(ROOT, "src/content/blog/atlas.md"), "utf8").includes("slug: atlas"), "Atlas is a real article");
 assert(deskHome.includes('["dodgers", "padres", "celtics"]'), "Sports keeps Dodgers, Padres, and Celtics");
 assert(deskHome.includes("desk-column"), "stories are category columns");
 assert(deskHome.includes(">Week<"), "the period label is Week");

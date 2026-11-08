@@ -65,16 +65,6 @@
   status = 301
 
 [[redirects]]
-  from = "/atlas"
-  to = "/topics/culture"
-  status = 301
-
-[[redirects]]
-  from = "/atlas/*"
-  to = "/topics/culture"
-  status = 301
-
-[[redirects]]
   from = "/history"
   to = "/topics/humanities"
   status = 301
