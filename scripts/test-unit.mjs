@@ -359,16 +359,14 @@ assert(deskHome.includes('href="/blog"'), "the full report archive stays linked"
 assert(deskHome.includes('["pixar", "anime", "franchise", "steam"]'), "Steam is shown with Arts");
 assert(deskHome.includes('["dodgers", "padres"]'), "Sports keeps Dodgers and Padres");
 assert(!deskHome.includes('["dodgers", "padres", "steam"]'), "Steam is not shown under Sports");
-assert(deskHome.includes('class="desk-dial"'), "phones get the shortcut dial");
-for (const href of ["/blog", "/search", "/mag", "/podcast", "/sources", "/datasets", "/library", "/editions", "/topics"]) {
-  assert(deskHome.includes(`href: "${href}"`), `home shortcut points at ${href}`);
+assert(!deskHome.includes("desk-dial"), "the nine-shortcut grid is gone from the home page");
+assert(!deskHome.includes("Home shortcuts"), "the phone shortcut nav is gone");
+for (const label of ["Magazine", "Podcast", "Library", "Editions"]) {
+  assert(!deskHome.includes(`label: "${label}"`), `${label} is not a home shortcut`);
 }
-const shortcutBlock = deskHome.slice(deskHome.indexOf("const shortcuts"), deskHome.indexOf("const desks"));
-assert((shortcutBlock.match(/href: "\//g) || []).length === 9, "the phone dial has nine shortcuts");
 assert(!deskHome.includes("OPTION 2"), "the mockup caption is not part of the page");
 const deskCss = readFileSync(join(ROOT, "site/styles/site.css"), "utf8");
-assert(deskCss.includes(".desk-dial { display: none; }"), "the dial stays off the desktop front page");
-assert(/\.desk-dial a \{[\s\S]*min-height: 44px/.test(deskCss), "dial controls keep a 44px target");
+assert(!deskCss.includes("desk-dial"), "shortcut-grid styles are gone");
 const reportPage = readFileSync(join(ROOT, "site/pages/[slug].astro"), "utf8");
 assert(!reportPage.includes("Read as ebook"), "report pages do not show the ebook link");
 assert(!reportPage.includes("report-hero"), "report pages do not render the hero figure");
@@ -418,6 +416,8 @@ const header = readFileSync(join(ROOT, "site/components/Header.astro"), "utf8");
 assert(header.includes("formatHeaderDate()"), "dateline is the date only");
 assert(!header.includes("formatHeaderDateline"), "production header does not repeat the old dateline");
 assert(!header.includes('class="desk-nav"'), "section buttons stay in the menu, not a second strip");
+assert(header.includes('aria-label="Search reports"'), "header search stays");
+assert(header.includes("nav-overlay"), "the main menu stays");
 const siteCss = readFileSync(join(ROOT, "site/styles/site.css"), "utf8");
 assert(!/html\[data-theme="light"\] \.wordmark__plate\s*\{[^}]*background/.test(siteCss), "day mode does not put a black plate behind the wordmark");
 assert(!siteCss.includes(".appearance__logos button {\n  height: 44px;\n  padding: 4px 6px;\n  border: 1px solid transparent;\n  background: #000;"), "wordmark choices are not painted on black squares");
