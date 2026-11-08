@@ -183,19 +183,34 @@ const navIndex = [
         factSource.textContent = `Source · ${fact.sourceLabel}`;
       }
 
+      function placeOverlay() {
+        if (!overlay || overlay.hidden) return;
+        const viewport = window.visualViewport;
+        if (!viewport) return;
+        const keyboard = window.innerHeight - viewport.height > 120;
+        overlay.classList.toggle("nav-overlay--keyboard", keyboard);
+        overlay.style.top = `${viewport.offsetTop}px`;
+        overlay.style.height = `${viewport.height}px`;
+      }
       function openMenu() {
         if (!overlay) return;
         overlay.hidden = false;
         document.body.style.overflow = "hidden";
         showFact();
+        placeOverlay();
         search?.focus();
       }
       function closeMenu() {
         if (!overlay) return;
         overlay.hidden = true;
+        overlay.classList.remove("nav-overlay--keyboard");
+        overlay.style.top = "";
+        overlay.style.height = "";
         document.body.style.overflow = "";
         openBtn?.focus();
       }
+      window.visualViewport?.addEventListener("resize", placeOverlay);
+      window.visualViewport?.addEventListener("scroll", placeOverlay);
       openBtn?.addEventListener("click", openMenu);
       closeBtn?.addEventListener("click", closeMenu);
       document.addEventListener("keydown", (event) => {
@@ -233,6 +248,12 @@ const navIndex = [
         }
       }
       search?.addEventListener("input", () => renderSuggest(search.value));
+      document.getElementById("nav-clear")?.addEventListener("click", () => {
+        if (!search) return;
+        search.value = "";
+        renderSuggest("");
+        search.focus();
+      });
       search?.addEventListener("keydown", (event) => {
         if (event.key !== "Enter") return;
         const q = search.value.trim();
