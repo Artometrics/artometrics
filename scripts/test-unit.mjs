@@ -400,6 +400,14 @@ assert(reportPage.includes('post.slug === "longevity"'), "only longevity mounts 
 const header = readFileSync(join(ROOT, "site/components/Header.astro"), "utf8");
 assert(header.includes("formatHeaderDate()"), "dateline is the date only");
 assert(!header.includes("formatHeaderDateline"), "production header does not repeat the old dateline");
+assert(!header.includes('class="desk-nav"'), "section buttons stay in the menu, not a second strip");
+const siteCss = readFileSync(join(ROOT, "site/styles/site.css"), "utf8");
+assert(!/html\[data-theme="light"\] \.wordmark__plate\s*\{[^}]*background/.test(siteCss), "day mode does not put a black plate behind the wordmark");
+assert(!siteCss.includes(".appearance__logos button {\n  height: 44px;\n  padding: 4px 6px;\n  border: 1px solid transparent;\n  background: #000;"), "wordmark choices are not painted on black squares");
+const baseLayout = readFileSync(join(ROOT, "site/layouts/Base.astro"), "utf8");
+assert(baseLayout.includes("/images/brand/favicon-dark-32.png"), "dark tab icon is the transparent Chomsky A");
+assert(baseLayout.includes("/images/brand/favicon-light-32.png"), "light tab icon is the transparent Chomsky A");
+assert(!baseLayout.includes('href="/favicon.svg"'), "tab icon is not the black-backed svg");
 const wordmarks = readFileSync(join(ROOT, "lib/wordmarks.ts"), "utf8");
 assert(wordmarks.includes('DEFAULT_WORDMARK_ID = "white"'), "live wordmark default stays the white catalog id");
 const logoReview = wordmarks.slice(wordmarks.indexOf("export const LOGO_REVIEW"));
@@ -418,7 +426,6 @@ assert(
     "279171ebcfd949c46068d54b8d0e9fc564194d05c1c9a2b921d060962a3c3d10",
   "pink halftone cover bytes match the supplied PNG",
 );
-const baseLayout = readFileSync(join(ROOT, "site/layouts/Base.astro"), "utf8");
 assert(baseLayout.includes('review?.catalogId ?? "white"'), "pages without a review lock stay on the white default");
 assert(baseLayout.includes('review ? "noindex, nofollow"'), "logo review routes stay out of the index");
 const footer = readFileSync(join(ROOT, "site/components/Footer.astro"), "utf8");

@@ -1031,7 +1031,7 @@ html[data-logo-review] .logo-review-note__file {
 html[data-logo-review] .appearance__logos a {
   height: 44px;
   padding: 4px 6px;
-  background: #000;
+  background: transparent;
   line-height: 0;
   display: block;
 }

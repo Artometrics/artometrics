@@ -199,10 +199,9 @@ button,
 @media (min-width: 800px) {
   .wordmark img { max-height: 84px; }
 }
-/* White faces are drawn for black. Day mode sits them on a dark plate. */
-html[data-theme="light"] .wordmark__plate {
-  background: #100e0c;
-  padding: 6px 10px 7px;
+.wordmark__plate {
+  background: transparent;
+  padding: 0;
 }
 .desk-nav {
   display: block;
@@ -1164,7 +1163,7 @@ html:has(.report) { overflow-x: clip; }
   height: 44px;
   padding: 4px 6px;
   border: 1px solid transparent;
-  background: #000;
+  background: transparent;
   line-height: 0;
 }
 .appearance__logos button[aria-checked="true"] {

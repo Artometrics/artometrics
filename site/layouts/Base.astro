@@ -116,9 +116,17 @@ const navIndex = [
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={img} />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link id="site-favicon" rel="icon" type="image/png" sizes="32x32" href="/images/brand/favicon-dark-32.png" />
+    <link id="site-apple" rel="apple-touch-icon" href="/images/brand/favicon-dark-180.png" />
+    <script is:inline>
+      (function () {
+        var dark = document.documentElement.getAttribute("data-theme") !== "light";
+        var icon = document.getElementById("site-favicon");
+        var apple = document.getElementById("site-apple");
+        if (icon) icon.href = dark ? "/images/brand/favicon-dark-32.png" : "/images/brand/favicon-light-32.png";
+        if (apple) apple.href = dark ? "/images/brand/favicon-dark-180.png" : "/images/brand/favicon-light-180.png";
+      })();
+    </script>
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="alternate" type="application/rss+xml" title="Artometrics reports" href="/rss.xml" />
     <link rel="alternate" type="application/rss+xml" title="Artometrics podcast" href="/podcast.xml" />

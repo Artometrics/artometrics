@@ -30,15 +30,6 @@ function navHref(href: string) {
   return href;
 }
 
-function navCurrent(href: string) {
-  if (!preview) return SITE_PRIMARY_NAV.find((item) => item.href === href)?.isActive(path) ?? false;
-  if (href === "/blog") return path === "/design-preview";
-  if (href.startsWith("/topics/")) {
-    const target = `/design-preview${href}`;
-    return path === target || path.startsWith(`${target}/`);
-  }
-  return false;
-}
 ---
 
 <header class="mast">
@@ -132,17 +123,6 @@ function navCurrent(href: string) {
       )}
     </div>
   </div>
-  <nav class="desk-nav" aria-label="Sections">
-    <div class="wrap">
-      <ul>
-        {SITE_PRIMARY_NAV.map((item) => (
-          <li>
-            <a href={navHref(item.href)} aria-current={navCurrent(item.href) ? "page" : undefined}>{item.label}</a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </nav>
 </header>
 
 <div class="nav-overlay" id="nav-overlay" hidden>
@@ -222,6 +202,11 @@ function navCurrent(href: string) {
       for (var i = 0; i < modes.length; i++) {
         modes[i].setAttribute("aria-checked", modes[i].getAttribute("data-theme-choice") === theme ? "true" : "false");
       }
+      var icon = document.getElementById("site-favicon");
+      var apple = document.getElementById("site-apple");
+      var dark = theme !== "light";
+      if (icon) icon.href = dark ? "/images/brand/favicon-dark-32.png" : "/images/brand/favicon-light-32.png";
+      if (apple) apple.href = dark ? "/images/brand/favicon-dark-180.png" : "/images/brand/favicon-light-180.png";
     }
     function openPanel() {
       if (!panel || !toggle) return;
