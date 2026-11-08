@@ -30,15 +30,6 @@ function navHref(href: string) {
   return href;
 }
 
-function navCurrent(href: string) {
-  if (!preview) return SITE_PRIMARY_NAV.find((item) => item.href === href)?.isActive(path) ?? false;
-  if (href === "/blog") return path === "/design-preview";
-  if (href.startsWith("/topics/")) {
-    const target = `/design-preview${href}`;
-    return path === target || path.startsWith(`${target}/`);
-  }
-  return false;
-}
 ---
 
 <header class="mast">
@@ -125,24 +116,15 @@ function navCurrent(href: string) {
               aria-label={mark.label}
               title={mark.label}
             >
-              <img src={mark.src} alt="" width="120" height="28" loading="lazy" />
+              <img class="appearance__mono appearance__mono--night" src={mark.monoNight} alt="" width="28" height="28" />
+              <img class="appearance__mono appearance__mono--day" src={mark.monoDay} alt="" width="28" height="28" />
+              <img class="appearance__mark" src={mark.src} alt="" width="120" height="28" loading="lazy" />
             </button>
           ))}
         </div>
       )}
     </div>
   </div>
-  <nav class="desk-nav" aria-label="Sections">
-    <div class="wrap">
-      <ul>
-        {SITE_PRIMARY_NAV.map((item) => (
-          <li>
-            <a href={navHref(item.href)} aria-current={navCurrent(item.href) ? "page" : undefined}>{item.label}</a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </nav>
 </header>
 
 <div class="nav-overlay" id="nav-overlay" hidden>
@@ -210,6 +192,18 @@ function navCurrent(href: string) {
       for (var i = 0; i < logos.length; i++) {
         logos[i].setAttribute("aria-checked", logos[i].getAttribute("data-logo-choice") === id ? "true" : "false");
       }
+      paintIcon();
+    }
+    function paintIcon() {
+      var id = root.getAttribute("data-logo") || "white";
+      var hit = catalog[0];
+      for (var i = 0; i < catalog.length; i++) if (catalog[i].id === id) hit = catalog[i];
+      if (!hit) return;
+      var dark = root.getAttribute("data-theme") !== "light";
+      var icon = document.getElementById("site-favicon");
+      var apple = document.getElementById("site-apple");
+      if (icon) icon.href = dark ? hit.monoNight : hit.monoDay;
+      if (apple) apple.href = dark ? hit.appleNight : hit.appleDay;
     }
     function paintTheme(theme, persist) {
       if (theme !== "light") theme = "dark";
@@ -222,6 +216,7 @@ function navCurrent(href: string) {
       for (var i = 0; i < modes.length; i++) {
         modes[i].setAttribute("aria-checked", modes[i].getAttribute("data-theme-choice") === theme ? "true" : "false");
       }
+      paintIcon();
     }
     function openPanel() {
       if (!panel || !toggle) return;
