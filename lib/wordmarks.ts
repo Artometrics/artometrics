@@ -34,7 +34,8 @@ export const WORDMARKS: WordmarkOption[] = [
   { id: "d08", label: "Riso misregister", src: "/images/brand/wordmarks/wordmark-08-riso.webp", ...monogram("d08") },
 ];
 
-export const DEFAULT_WORDMARK_ID = "white";
+/** Pink and purple extruded A. Matches wordmark-halftone.webp; the file is the approved 180px monogram. */
+export const DEFAULT_WORDMARK_ID = "halftone";
 
 /**
  * Review-only pair. Filenames do not describe the artwork.

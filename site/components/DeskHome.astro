@@ -1,28 +1,45 @@
 ---
-import { deckLine, formatDate, getBlogPost, reportKicker, sectionLabel } from "@/lib/content";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import { deckLine, formatDate, getBlogPost, sectionLabel } from "@/lib/content";
 
-/** Curated front page. Steam is shown with Arts on this page. */
+/** Four category columns are visible; swipe for Humanities and Civics.
+ * Each column is three real reports. Longevity is not on this page.
+ * Steam is sports and already the fourth sports report with new art, so the sports column keeps Dodgers, Padres, and Celtics.
+ * New square-text files are missing for Readmitted, Caesar, Beyoncé, Emperors, Atlas, and Exporters. Those tiles use the existing article hero.
+ */
 const desks = [
-  { label: "Arts", href: "/topics/arts", slugs: ["pixar", "anime", "franchise", "steam"] },
+  { label: "Arts", href: "/topics/arts", slugs: ["pixar", "anime", "franchise"] },
   { label: "Sports", href: "/topics/sports", slugs: ["dodgers", "padres", "celtics"] },
+  { label: "Science", href: "/topics/science", slugs: ["nuclear", "cetaceans", "readmitted"] },
   { label: "Culture", href: "/topics/culture", slugs: ["wine", "coffee", "ramen"] },
-  { label: "Science", href: "/topics/science", slugs: ["nuclear", "cetaceans", "longevity"] },
+  { label: "Humanities", href: "/topics/humanities", slugs: ["caesar", "beyonce", "emperors"] },
+  { label: "Civics", href: "/topics/civics", slugs: ["geopolitics", "atlas", "exporters"] },
 ];
 
+function tileSrc(slug: string, heroImage?: string) {
+  const square = join(process.cwd(), "public/images/content/articles", slug, "square-text.webp");
+  if (existsSync(square)) return { src: `/images/content/articles/${slug}/square-text.webp`, kind: "square-text" };
+  return { src: heroImage || "", kind: "hero" };
+}
+
 const lead = getBlogPost("geopolitics");
-const stories = desks.flatMap((desk) =>
-  desk.slugs.flatMap((slug) => {
+const columns = desks.map((desk) => ({
+  ...desk,
+  stories: desk.slugs.flatMap((slug) => {
     const post = getBlogPost(slug);
-    return post ? [post] : [];
+    if (!post) return [];
+    const art = tileSrc(slug, post.heroImage);
+    return art.src ? [{ post, art }] : [];
   }),
-);
+}));
 ---
 
 <div class="desk-home">
   {lead ? (
     <article class="desk-lead">
       <a class="desk-lead__hit" href={`/${lead.slug}`}>
-        {lead.heroImage ? <img src={lead.heroImage} alt="" width="1200" height="360" /> : null}
+        <img src={`/images/content/articles/${lead.slug}/banner-art.webp`} alt="" width="1600" height="900" />
         <div class="desk-lead__copy">
           <p class="desk-lead__kicker">{sectionLabel(lead.tags, lead.subject) || "Report"}</p>
           <h1>{lead.title}</h1>
@@ -33,40 +50,42 @@ const stories = desks.flatMap((desk) =>
     </article>
   ) : null}
 
-  <div class="desk-periods" role="radiogroup" aria-label="Front-page view. Editorial selection, not a live engagement ranking.">
-    <button type="button" data-front-view="week" aria-checked="true">
-      <svg class="desk-fire" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 2s1.8 2.6 1.8 4.6A2.7 2.7 0 0 1 12 9.2c1.7.1 3.4 1.6 3.4 4.1A5.4 5.4 0 1 1 6.4 12c.2-1.6 1.2-3.2 2.6-4.1.1 1.6 1.1 2.6 2.1 2.6C10.2 7.6 12 4.4 12 2z"></path></svg>
-      This week
-    </button>
-    <button type="button" data-front-view="month" aria-checked="false">
-      <svg class="desk-fire" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 2s1.8 2.6 1.8 4.6A2.7 2.7 0 0 1 12 9.2c1.7.1 3.4 1.6 3.4 4.1A5.4 5.4 0 1 1 6.4 12c.2-1.6 1.2-3.2 2.6-4.1.1 1.6 1.1 2.6 2.1 2.6C10.2 7.6 12 4.4 12 2z"></path></svg>
-      This month
-    </button>
-    <button type="button" data-front-view="all" aria-checked="false">
-      <svg class="desk-fire" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 2s1.8 2.6 1.8 4.6A2.7 2.7 0 0 1 12 9.2c1.7.1 3.4 1.6 3.4 4.1A5.4 5.4 0 1 1 6.4 12c.2-1.6 1.2-3.2 2.6-4.1.1 1.6 1.1 2.6 2.1 2.6C10.2 7.6 12 4.4 12 2z"></path></svg>
-      All time
-    </button>
-    <button type="button" data-front-view="hot" aria-checked="false" aria-label="Hot. Editorial selection, not live popularity.">
-      <svg class="desk-fire" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 2s1.8 2.6 1.8 4.6A2.7 2.7 0 0 1 12 9.2c1.7.1 3.4 1.6 3.4 4.1A5.4 5.4 0 1 1 6.4 12c.2-1.6 1.2-3.2 2.6-4.1.1 1.6 1.1 2.6 2.1 2.6C10.2 7.6 12 4.4 12 2z"></path></svg>
-      Hot
-    </button>
-    <button type="button" data-front-view="trending" aria-checked="false" aria-label="Trending. Editorial selection, not live popularity.">
-      <svg class="desk-trend" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 16l5-5 3 3 7-8"></path><path d="M14 6h6v6"></path></svg>
-      Trending
-    </button>
+  <div class="desk-periods" role="radiogroup" aria-label="Period">
+    <button type="button" data-front-view="week" aria-checked="true">Week</button>
+    <button type="button" data-front-view="month" aria-checked="false">Month</button>
+    <button type="button" data-front-view="all" aria-checked="false">All time</button>
   </div>
-  <p class="desk-period-note">Editorial selection. Not a live ranking.</p>
-  <div class="story-grid">
-    {stories.map((post) => (
-      <a class="story-tile" href={`/${post.slug}`}>
-        {post.heroImage ? <img src={post.heroImage} alt="" width="240" height="240" /> : <span class="story-tile__fallback" aria-hidden="true"></span>}
-        <span>{reportKicker(post.title, post.subject)}</span>
-      </a>
+  <div class="desk-rail" id="desk-rail" tabindex="0" aria-label="Category columns">
+    {columns.map((desk) => (
+      <section class="desk-column" aria-labelledby={`desk-${desk.label}`}>
+        <h2 id={`desk-${desk.label}`}><a href={desk.href}>{desk.label}</a></h2>
+        {desk.stories.map(({ post, art }) => (
+          <a class="story-tile" href={`/${post.slug}`}>
+            <img src={art.src} alt={post.title} width="800" height="800" data-art={art.kind} />
+          </a>
+        ))}
+      </section>
     ))}
   </div>
 </div>
 <script is:inline>
   (function () {
+    var rail = document.getElementById("desk-rail");
+    if (rail) {
+      rail.addEventListener("keydown", function (event) {
+        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+        var columns = rail.querySelectorAll(".desk-column");
+        var active = document.activeElement;
+        var index = 0;
+        for (var i = 0; i < columns.length; i++) if (columns[i].contains(active)) index = i;
+        var next = columns[index + (event.key === "ArrowRight" ? 1 : -1)];
+        if (!next) return;
+        event.preventDefault();
+        var link = next.querySelector("h2 a");
+        if (link) link.focus();
+        next.scrollIntoView({ inline: "start", block: "nearest" });
+      });
+    }
     var buttons = document.querySelectorAll("[data-front-view]");
     for (var i = 0; i < buttons.length; i++) {
       buttons[i].addEventListener("click", function (event) {

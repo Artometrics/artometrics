@@ -3,6 +3,8 @@ import "../styles/site.css";
 import "../styles/preview.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { jsonForScript } from "../lib/static-charts";
 import { getBlogPosts, sectionLabel } from "@/lib/content";
 import { LOGO_REVIEW, WORDMARKS, type LogoReviewMark } from "@/lib/wordmarks";
@@ -52,6 +54,13 @@ const SITE = "https://artometrics.com";
 const fullTitle = title.includes("Artometrics") ? title : `${title} · Artometrics`;
 const url = `${SITE}${path.startsWith("/") ? path : `/${path}`}`;
 const img = image.startsWith("http") ? image : `${SITE}${image}`;
+function reportThumb(slug: string) {
+  const square = join(process.cwd(), "public/images/content/articles", slug, "square-art.webp");
+  if (existsSync(square)) return `/images/content/articles/${slug}/square-art.webp`;
+  const banner = join(process.cwd(), "public/images/content/articles", slug, "banner-art.webp");
+  if (existsSync(banner)) return `/images/content/articles/${slug}/banner-art.webp`;
+  return "";
+}
 const navIndex = [
   ...DOMAIN_SLUGS.map((slug) => ({
     kind: "topic",
@@ -72,6 +81,7 @@ const navIndex = [
     title: post.title,
     href: `/${post.slug}`,
     meta: sectionLabel(post.tags, post.subject) || "Report",
+    image: reportThumb(post.slug) || post.heroImage || "",
     blob: `${post.title} ${post.slug} ${(post.tags || []).join(" ")}`.toLowerCase(),
   })),
 ];
@@ -81,7 +91,8 @@ const navIndex = [
 <html
     lang="en"
     data-theme="dark"
-    data-logo={review?.catalogId ?? "white"}
+    data-logo={review?.catalogId ?? "halftone"}
+    data-logo-form={review ? "wordmark" : "single"}
     {...(review ? { "data-logo-review": review.id } : {})}
   >
   <head>
@@ -97,11 +108,14 @@ const navIndex = [
           }
           var theme = localStorage.getItem("artometrics-theme");
           var logo = localStorage.getItem("artometrics-logo");
+          var form = localStorage.getItem("artometrics-logo-form");
           var allowed = { white: 1, svg: 1, halftone: 1, d01: 1, d02: 1, d03: 1, d04: 1, d05: 1, d06: 1, d07: 1, d08: 1 };
           if (theme !== "light") theme = "dark";
-          if (!allowed[logo]) logo = "white";
+          if (!allowed[logo]) logo = "halftone";
+          if (form !== "wordmark") form = "single";
           root.setAttribute("data-theme", theme);
           root.setAttribute("data-logo", logo);
+          root.setAttribute("data-logo-form", form);
           root.style.colorScheme = theme === "light" ? "light" : "dark";
         } catch (e) {}
       })();
@@ -122,15 +136,15 @@ const navIndex = [
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={img} />
-    <link id="site-favicon" rel="icon" type="image/png" sizes="32x32" href={monograms.white.night} />
-    <link id="site-apple" rel="apple-touch-icon" href={monograms.white.appleNight} />
+    <link id="site-favicon" rel="icon" type="image/png" sizes="32x32" href={monograms.halftone.night} />
+    <link id="site-apple" rel="apple-touch-icon" href={monograms.halftone.appleNight} />
     <script type="application/json" id="mono-map" set:html={jsonForScript(monograms)} />
     <script is:inline>
       (function () {
         var node = document.getElementById("mono-map");
         var map = node ? JSON.parse(node.textContent || "{}") : {};
         var root = document.documentElement;
-        var id = root.getAttribute("data-logo") || "white";
+        var id = root.getAttribute("data-logo") || "halftone";
         var hit = map[id] || map.white;
         if (!hit) return;
         var dark = root.getAttribute("data-theme") !== "light";
@@ -242,7 +256,17 @@ const navIndex = [
           small.textContent = item.meta || item.kind;
           const strong = document.createElement("strong");
           strong.textContent = item.title;
-          a.append(small, strong);
+          if (item.kind === "report" && item.image) {
+            const img = document.createElement("img");
+            img.src = item.image;
+            img.alt = "";
+            img.width = 64;
+            img.height = 64;
+            a.append(img);
+          }
+          const copy = document.createElement("span");
+          copy.append(small, strong);
+          a.append(copy);
           li.append(a);
           suggest.append(li);
         }
