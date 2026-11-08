@@ -350,8 +350,25 @@ const ebookCard = readFileSync(join(ROOT, "components/MagazineEditionCard.tsx"),
 assert(ebookCard.includes("Read as ebook"), "ebook entry is labeled Read as ebook");
 assert(ebookCard.includes("magazineIssueHref"), "ebook entry opens the page-flip issue");
 const home = readFileSync(join(ROOT, "site/pages/index.astro"), "utf8");
-assert(!home.includes("home-c"), "home dashboard is not the narrow home column");
-assert(!home.includes("heroImage"), "home dashboard does not render hero art");
+assert(!home.includes("home-c"), "home is not the narrow home column");
+assert(!home.includes("desk-nav"), "home does not put the section strip back");
+assert(home.includes("DeskHome"), "home is the desk-sections front page");
+const deskHome = readFileSync(join(ROOT, "site/components/DeskHome.astro"), "utf8");
+assert(deskHome.includes('getBlogPost("geopolitics")'), "the lead is the geopolitics report");
+assert(deskHome.includes('href="/blog"'), "the full report archive stays linked");
+assert(deskHome.includes('["pixar", "anime", "franchise", "steam"]'), "Steam is shown with Arts");
+assert(deskHome.includes('["dodgers", "padres"]'), "Sports keeps Dodgers and Padres");
+assert(!deskHome.includes('["dodgers", "padres", "steam"]'), "Steam is not shown under Sports");
+assert(deskHome.includes('class="desk-dial"'), "phones get the shortcut dial");
+for (const href of ["/blog", "/search", "/mag", "/podcast", "/sources", "/datasets", "/library", "/editions", "/topics"]) {
+  assert(deskHome.includes(`href: "${href}"`), `home shortcut points at ${href}`);
+}
+const shortcutBlock = deskHome.slice(deskHome.indexOf("const shortcuts"), deskHome.indexOf("const desks"));
+assert((shortcutBlock.match(/href: "\//g) || []).length === 9, "the phone dial has nine shortcuts");
+assert(!deskHome.includes("OPTION 2"), "the mockup caption is not part of the page");
+const deskCss = readFileSync(join(ROOT, "site/styles/site.css"), "utf8");
+assert(deskCss.includes(".desk-dial { display: none; }"), "the dial stays off the desktop front page");
+assert(/\.desk-dial a \{[\s\S]*min-height: 44px/.test(deskCss), "dial controls keep a 44px target");
 const reportPage = readFileSync(join(ROOT, "site/pages/[slug].astro"), "utf8");
 assert(!reportPage.includes("Read as ebook"), "report pages do not show the ebook link");
 assert(!reportPage.includes("report-hero"), "report pages do not render the hero figure");
