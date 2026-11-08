@@ -1,7 +1,10 @@
 ---
-import { deckLine, formatDate, getBlogPost, reportKicker, sectionLabel } from "@/lib/content";
+import { deckLine, formatDate, getBlogPost, sectionLabel } from "@/lib/content";
 
-/** Curated front page. Steam is shown with Arts on this page. */
+/** Curated front page. Steam is shown with Arts on this page.
+ * Anime uses the city/film-strip collage family (live hero.png), not the notebook hero.webp.
+ * The notebook file stays at anime/hero.webp and anime/alternates/notebook-light-table.webp.
+ */
 const desks = [
   { label: "Arts", href: "/topics/arts", slugs: ["pixar", "anime", "franchise", "steam"] },
   { label: "Sports", href: "/topics/sports", slugs: ["dodgers", "padres", "celtics"] },
@@ -22,7 +25,7 @@ const stories = desks.flatMap((desk) =>
   {lead ? (
     <article class="desk-lead">
       <a class="desk-lead__hit" href={`/${lead.slug}`}>
-        {lead.heroImage ? <img src={lead.heroImage} alt="" width="1200" height="360" /> : null}
+        <img src={`/images/content/articles/${lead.slug}/banner-art.webp`} alt="" width="1600" height="900" />
         <div class="desk-lead__copy">
           <p class="desk-lead__kicker">{sectionLabel(lead.tags, lead.subject) || "Report"}</p>
           <h1>{lead.title}</h1>
@@ -59,8 +62,7 @@ const stories = desks.flatMap((desk) =>
   <div class="story-grid">
     {stories.map((post) => (
       <a class="story-tile" href={`/${post.slug}`}>
-        {post.heroImage ? <img src={post.heroImage} alt="" width="240" height="240" /> : <span class="story-tile__fallback" aria-hidden="true"></span>}
-        <span>{reportKicker(post.title, post.subject)}</span>
+        <img src={`/images/content/articles/${post.slug}/square-text.webp`} alt={post.title} width="800" height="800" />
       </a>
     ))}
   </div>

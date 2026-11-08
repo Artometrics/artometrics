@@ -422,6 +422,17 @@ assert(!header.includes('aria-label="Search reports"'), "the header search icon 
 assert(header.includes("nav-catalogue"), "the menu can show catalogue covers");
 assert(header.includes("PDF not packed"), "a cover without a PDF says so");
 assert(header.includes('href="/exports/anime.pdf"'), "anime catalogue links its PDF");
+assert(header.includes("/images/content/articles/franchise/cover.webp"), "catalogue uses the Franchise portrait cover");
+assert(header.includes("/images/content/articles/anime/cover.webp"), "catalogue uses the Anime city-collage cover");
+assert(deskHome.includes("square-text.webp"), "story tiles use the square image that already includes its title");
+assert(!deskHome.includes("reportKicker"), "tiles do not paint a second title over the square");
+assert(deskHome.includes("banner-art.webp"), "the lead uses banner art behind the headline");
+assert(existsSync(join(ROOT, "public/images/content/articles/anime/hero.webp")), "the notebook Anime image is kept");
+assert(existsSync(join(ROOT, "public/images/content/articles/anime/alternates/notebook-light-table.webp")), "the notebook Anime alternate is kept");
+assert(readFileSync(join(ROOT, "firebase.json"), "utf8").includes("max-age=0, must-revalidate"), "HTML revalidates instead of staying fresh for an hour");
+const assetManifest = readFileSync(join(ROOT, "docs/report-assets/manifest-all.csv"), "utf8");
+assert(assetManifest.includes("UPSCALED"), "the asset manifest marks upscaled files");
+assert(!/UPSCALED[^\n]*native hi-res/i.test(assetManifest), "upscaled assets are not described as native hi-res");
 assert(deskHome.includes("story-tile"), "front page uses story cover buttons");
 assert(deskHome.includes("Not a live ranking"), "view switches do not claim a live engagement rank");
 assert(deskHome.includes('data-front-view="week"'), "week view switch is present");
