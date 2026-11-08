@@ -4,7 +4,7 @@ import { deckLine, formatDate, getBlogPost, reportKicker, sectionLabel } from "@
 /** Curated front page. Steam is shown with Arts on this page. */
 const desks = [
   { label: "Arts", href: "/topics/arts", slugs: ["pixar", "anime", "franchise", "steam"] },
-  { label: "Sports", href: "/topics/sports", slugs: ["dodgers", "padres"] },
+  { label: "Sports", href: "/topics/sports", slugs: ["dodgers", "padres", "celtics"] },
   { label: "Culture", href: "/topics/culture", slugs: ["wine", "coffee", "ramen"] },
   { label: "Science", href: "/topics/science", slugs: ["nuclear", "cetaceans", "longevity"] },
 ];
@@ -19,22 +19,6 @@ const stories = desks.flatMap((desk) =>
 ---
 
 <div class="desk-home">
-  <div class="desk-periods" role="radiogroup" aria-label="Period">
-    <button type="button" data-front-period="week" aria-checked="true">
-      <svg class="desk-fire" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 2s1.8 2.6 1.8 4.6A2.7 2.7 0 0 1 12 9.2c1.7.1 3.4 1.6 3.4 4.1A5.4 5.4 0 1 1 6.4 12c.2-1.6 1.2-3.2 2.6-4.1.1 1.6 1.1 2.6 2.1 2.6C10.2 7.6 12 4.4 12 2z"></path></svg>
-      This week
-    </button>
-    <button type="button" data-front-period="month" aria-checked="false">
-      <svg class="desk-fire" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 2s1.8 2.6 1.8 4.6A2.7 2.7 0 0 1 12 9.2c1.7.1 3.4 1.6 3.4 4.1A5.4 5.4 0 1 1 6.4 12c.2-1.6 1.2-3.2 2.6-4.1.1 1.6 1.1 2.6 2.1 2.6C10.2 7.6 12 4.4 12 2z"></path></svg>
-      This month
-    </button>
-    <button type="button" data-front-period="all" aria-checked="false">
-      <svg class="desk-fire" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 2s1.8 2.6 1.8 4.6A2.7 2.7 0 0 1 12 9.2c1.7.1 3.4 1.6 3.4 4.1A5.4 5.4 0 1 1 6.4 12c.2-1.6 1.2-3.2 2.6-4.1.1 1.6 1.1 2.6 2.1 2.6C10.2 7.6 12 4.4 12 2z"></path></svg>
-      All time
-    </button>
-  </div>
-  <p class="desk-period-note">Front-page selection. Not an engagement ranking.</p>
-
   {lead ? (
     <article class="desk-lead">
       <a class="desk-lead__hit" href={`/${lead.slug}`}>
@@ -49,7 +33,29 @@ const stories = desks.flatMap((desk) =>
     </article>
   ) : null}
 
-  <p class="desk-home__jumps"><a href="/blog">All reports</a></p>
+  <div class="desk-periods" role="radiogroup" aria-label="Front-page view. Editorial selection, not a live engagement ranking.">
+    <button type="button" data-front-view="week" aria-checked="true">
+      <svg class="desk-fire" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 2s1.8 2.6 1.8 4.6A2.7 2.7 0 0 1 12 9.2c1.7.1 3.4 1.6 3.4 4.1A5.4 5.4 0 1 1 6.4 12c.2-1.6 1.2-3.2 2.6-4.1.1 1.6 1.1 2.6 2.1 2.6C10.2 7.6 12 4.4 12 2z"></path></svg>
+      This week
+    </button>
+    <button type="button" data-front-view="month" aria-checked="false">
+      <svg class="desk-fire" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 2s1.8 2.6 1.8 4.6A2.7 2.7 0 0 1 12 9.2c1.7.1 3.4 1.6 3.4 4.1A5.4 5.4 0 1 1 6.4 12c.2-1.6 1.2-3.2 2.6-4.1.1 1.6 1.1 2.6 2.1 2.6C10.2 7.6 12 4.4 12 2z"></path></svg>
+      This month
+    </button>
+    <button type="button" data-front-view="all" aria-checked="false">
+      <svg class="desk-fire" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 2s1.8 2.6 1.8 4.6A2.7 2.7 0 0 1 12 9.2c1.7.1 3.4 1.6 3.4 4.1A5.4 5.4 0 1 1 6.4 12c.2-1.6 1.2-3.2 2.6-4.1.1 1.6 1.1 2.6 2.1 2.6C10.2 7.6 12 4.4 12 2z"></path></svg>
+      All time
+    </button>
+    <button type="button" data-front-view="hot" aria-checked="false" aria-label="Hot. Editorial selection, not live popularity.">
+      <svg class="desk-fire" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 2s1.8 2.6 1.8 4.6A2.7 2.7 0 0 1 12 9.2c1.7.1 3.4 1.6 3.4 4.1A5.4 5.4 0 1 1 6.4 12c.2-1.6 1.2-3.2 2.6-4.1.1 1.6 1.1 2.6 2.1 2.6C10.2 7.6 12 4.4 12 2z"></path></svg>
+      Hot
+    </button>
+    <button type="button" data-front-view="trending" aria-checked="false" aria-label="Trending. Editorial selection, not live popularity.">
+      <svg class="desk-trend" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 16l5-5 3 3 7-8"></path><path d="M14 6h6v6"></path></svg>
+      Trending
+    </button>
+  </div>
+  <p class="desk-period-note">Editorial selection. Not a live ranking.</p>
   <div class="story-grid">
     {stories.map((post) => (
       <a class="story-tile" href={`/${post.slug}`}>
@@ -61,7 +67,7 @@ const stories = desks.flatMap((desk) =>
 </div>
 <script is:inline>
   (function () {
-    var buttons = document.querySelectorAll("[data-front-period]");
+    var buttons = document.querySelectorAll("[data-front-view]");
     for (var i = 0; i < buttons.length; i++) {
       buttons[i].addEventListener("click", function (event) {
         var chosen = event.currentTarget;

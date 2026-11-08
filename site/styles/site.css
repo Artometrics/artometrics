@@ -1358,7 +1358,7 @@ html:has(.desk-home) { overflow-x: clip; }
   --line: rgba(243, 234, 215, 0.38);
   width: min(1180px, 100%);
   margin: 0 auto;
-  padding: 18px 20px 56px;
+  padding: 12px 20px 12px;
   min-width: 0;
 }
 .desk-periods {
@@ -1382,7 +1382,7 @@ html:has(.desk-home) { overflow-x: clip; }
   text-transform: uppercase;
 }
 .desk-periods button[aria-checked="true"] { border-color: var(--pink); color: var(--pink); }
-.desk-fire { display: block; }
+.desk-fire, .desk-trend { display: block; flex: 0 0 auto; }
 .desk-period-note {
   margin: 0 0 8px;
   color: var(--muted);
@@ -1571,8 +1571,8 @@ html:has(.desk-home) { overflow-x: clip; }
   .desk-lead__hit { height: 200px; max-height: 220px; }
 }
 @media (max-width: 800px) {
-  .desk-home { padding: 8px 12px 24px; }
-  .desk-lead__hit { height: 148px; max-height: 160px; }
+  .desk-home { padding: 8px 12px 12px; }
+  .desk-lead__hit { height: 132px; max-height: 148px; min-height: 0; }
   .desk-lead h1 { font-size: clamp(1.15rem, 5vw, 1.55rem); }
   .story-grid { gap: 6px; }
 }
