@@ -15,7 +15,7 @@ interface Props {
   image?: string;
   type?: "website" | "article";
   jsonLd?: unknown;
-  footer?: "home" | "article" | "site";
+  footer?: "home" | "article" | "site" | "none";
   robots?: string;
   headerVariant?: "site" | "preview";
   showSocial?: boolean;
@@ -153,7 +153,7 @@ const navIndex = [
     <main id="main">
       <slot />
     </main>
-    <Footer variant={footer} showSocial={showSocial} />
+    {footer === "none" ? null : <Footer variant={footer} showSocial={showSocial} />}
     <script type="application/json" id="nav-index" set:html={jsonForScript(navIndex)} />
     <script>
       const indexNode = document.getElementById("nav-index");
