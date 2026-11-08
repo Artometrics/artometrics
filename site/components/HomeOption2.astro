@@ -1,0 +1,97 @@
+---
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import sharp from "sharp";
+import { deckLine, formatDate, getBlogPosts, reportHeadlineRest, reportKicker, sectionLabel } from "@/lib/content";
+
+/** Near-blank hero plates (cream document stubs) do not read as thumbnails. */
+async function heroReads(src: string | null | undefined) {
+  if (!src || !src.startsWith("/images/")) return false;
+  const file = join(process.cwd(), "public", src);
+  if (!existsSync(file)) return false;
+  const { data, info } = await sharp(file).resize(24, 16, { fit: "fill" }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  const n = info.width * info.height;
+  let sum = 0;
+  let sum2 = 0;
+  for (let i = 0; i < n; i += 1) {
+    const y = 0.2126 * data[i * 3] + 0.7152 * data[i * 3 + 1] + 0.0722 * data[i * 3 + 2];
+    sum += y;
+    sum2 += y * y;
+  }
+  const mean = sum / n;
+  const sd = Math.sqrt(Math.max(0, sum2 / n - mean * mean));
+  return sd > 18;
+}
+
+/** Homepage-only shortcuts. Real routes. Not the global section strip. */
+const shortcuts = [
+  { href: "/blog", label: "Reports", name: "Reports, all investigations" },
+  { href: "/search", label: "Search", name: "Search reports" },
+  { href: "/mag", label: "Magazine", name: "Magazine edition" },
+  { href: "/podcast", label: "Podcast", name: "Podcast interviews" },
+  { href: "/sources", label: "Sources", name: "Sources catalog" },
+  { href: "/datasets", label: "Datasets", name: "Dataset packs" },
+  { href: "/library", label: "Library", name: "Library and archives" },
+  { href: "/editions", label: "Editions", name: "Special editions" },
+  { href: "/topics", label: "Topics", name: "Topic desks" },
+];
+
+const posts = getBlogPosts();
+const lead = posts[0];
+const leadImage = lead && (await heroReads(lead.heroImage)) ? lead.heroImage : "";
+const stories = await Promise.all(
+  posts.slice(1, 13).map(async (post) => ({
+    ...post,
+    image: (await heroReads(post.heroImage)) ? post.heroImage : "",
+  })),
+);
+---
+
+<div class="home-paper">
+  {lead ? (
+    <article class="home-banner">
+      <a class="home-banner__hit" href={`/${lead.slug}`}>
+        {leadImage ? (
+          <img src={leadImage} alt="" width="1600" height="900" />
+        ) : (
+          <span class="home-banner__fallback" aria-hidden="true"></span>
+        )}
+        <p class="home-banner__kicker">{sectionLabel(lead.tags, lead.subject) || "Report"}</p>
+        <h1>
+          <span class="report-kicker">{reportKicker(lead.title, lead.subject)}</span>
+          {" "}
+          {reportHeadlineRest(lead.title)}
+        </h1>
+        <p class="home-banner__dek">{deckLine(lead.description, 32)}</p>
+        {lead.pubDate ? <p class="home-banner__meta">{formatDate(lead.pubDate)}</p> : null}
+      </a>
+    </article>
+  ) : null}
+
+  <nav class="home-dial" aria-label="Home shortcuts">
+    {shortcuts.map((item) => (
+      <a href={item.href} aria-label={item.name}>{item.label}</a>
+    ))}
+  </nav>
+
+  {stories.length ? (
+    <section class="home-latest" aria-labelledby="home-latest-title">
+      <h2 id="home-latest-title">Latest</h2>
+      <div class="home-stories">
+        {stories.map((post) => (
+          <a href={`/${post.slug}`}>
+            {post.image ? (
+              <img src={post.image} alt="" width="640" height="480" />
+            ) : (
+              <span class="home-stories__fallback" aria-hidden="true"></span>
+            )}
+            <span class="home-stories__copy">
+              <span class="home-stories__kicker">{sectionLabel(post.tags, post.subject) || "Report"}</span>
+              <span class="home-stories__title">{post.title}</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+  ) : null}
+</div>

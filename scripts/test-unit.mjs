@@ -350,8 +350,22 @@ const ebookCard = readFileSync(join(ROOT, "components/MagazineEditionCard.tsx"),
 assert(ebookCard.includes("Read as ebook"), "ebook entry is labeled Read as ebook");
 assert(ebookCard.includes("magazineIssueHref"), "ebook entry opens the page-flip issue");
 const home = readFileSync(join(ROOT, "site/pages/index.astro"), "utf8");
-assert(!home.includes("home-c"), "home dashboard is not the narrow home column");
-assert(!home.includes("heroImage"), "home dashboard does not render hero art");
+assert(!home.includes("home-c"), "home is not the narrow home column");
+assert(!home.includes("desk-nav"), "home page does not put the section strip back");
+assert(home.includes("HomeOption2"), "home renders the option 2 front page");
+const option2 = readFileSync(join(ROOT, "site/components/HomeOption2.astro"), "utf8");
+assert(option2.includes('class="home-banner"'), "home keeps the lead banner");
+assert(option2.includes('class="home-dial"'), "home has the mobile shortcut dial");
+assert(option2.includes('class="home-stories"'), "home lists the latest stories");
+for (const href of ["/blog", "/search", "/mag", "/podcast", "/sources", "/datasets", "/library", "/editions", "/topics"]) {
+  assert(option2.includes(`href: "${href}"`), `home shortcut points at ${href}`);
+}
+assert((option2.match(/href: "\//g) || []).length === 9, "home dial has nine shortcuts");
+const homeCss = readFileSync(join(ROOT, "site/styles/site.css"), "utf8");
+assert(homeCss.includes("repeat(4, minmax(0, 1fr))"), "desktop stories stay four columns");
+assert(homeCss.includes("repeat(3, minmax(0, 1fr))"), "phone dial is a three-column grid");
+assert(homeCss.includes("body:has(.home-paper) .desk-nav { display: none; }"), "section strip stays off this front page");
+assert(/\.home-dial a \{[\s\S]*min-height: 44px/.test(homeCss), "dial controls keep a 44px target");
 const reportPage = readFileSync(join(ROOT, "site/pages/[slug].astro"), "utf8");
 assert(!reportPage.includes("Read as ebook"), "report pages do not show the ebook link");
 assert(!reportPage.includes("report-hero"), "report pages do not render the hero figure");

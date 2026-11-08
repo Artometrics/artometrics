@@ -1275,3 +1275,209 @@ html[data-theme="light"] .report-related h2 {
 html[data-theme="light"] .home-tabs a[aria-current="true"] {
   border-bottom-color: #ff3d8a;
 }
+
+/* Option 2 front page. Desktop is a wide lead plus a four-column paper.
+   Phones keep that lead, then a 3×3 shortcut dial and horizontal story rows.
+   The dial is this page only. The shared section strip stays off this page. */
+body:has(.home-paper) .desk-nav { display: none; }
+html:has(.home-paper) { overflow-x: clip; }
+
+.home-paper {
+  --line: rgba(243, 234, 215, 0.28);
+  width: min(1240px, 100%);
+  margin-inline: auto;
+  padding: 18px 20px 56px;
+  min-width: 0;
+  max-width: 100%;
+}
+.home-banner__hit {
+  display: block;
+  min-width: 0;
+  color: var(--ink);
+  text-decoration: none;
+}
+.home-banner__hit:hover { color: var(--ink); }
+.home-banner img,
+.home-banner__fallback {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background:
+    radial-gradient(rgba(243, 234, 215, 0.28) 0.6px, transparent 0.7px) 0 0 / 4px 4px,
+    #100e0c;
+  border: 1px solid var(--line);
+}
+.home-banner__kicker,
+.home-stories__kicker {
+  margin: 12px 0 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pink);
+}
+.home-banner h1 {
+  margin: 8px 0 0;
+  max-width: 18ch;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 6vw, 5.25rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  color: var(--ink);
+}
+.home-banner h1 .report-kicker { font-size: 1.05em; }
+.home-banner__dek {
+  margin: 12px 0 0;
+  max-width: 62ch;
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.home-banner__meta {
+  margin: 10px 0 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.home-dial {
+  display: none;
+}
+
+.home-latest { margin-top: 28px; min-width: 0; }
+.home-latest h2 {
+  margin: 0 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pink);
+}
+.home-stories {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px 18px;
+  min-width: 0;
+}
+.home-stories a {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  min-height: 44px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.home-stories a:hover { color: var(--ink); }
+.home-stories img,
+.home-stories__fallback {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background:
+    radial-gradient(rgba(243, 234, 215, 0.28) 0.6px, transparent 0.7px) 0 0 / 4px 4px,
+    #100e0c;
+  border: 1px solid var(--line);
+}
+.home-stories__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.home-stories__kicker { margin: 0; font-size: 10px; }
+.home-stories__title {
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 719px) {
+  .home-paper { padding: 12px 16px 40px; }
+  .home-banner h1 {
+    max-width: none;
+    font-size: clamp(2rem, 11vw, 2.75rem);
+  }
+  .home-dial {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .home-dial a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 44px;
+    padding: 8px 4px;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+  }
+  .home-dial a:hover { color: var(--ink); border-color: var(--pink); }
+  .home-stories {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .home-stories a {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .home-stories img,
+  .home-stories__fallback {
+    width: 84px;
+    height: 64px;
+    flex: 0 0 84px;
+    aspect-ratio: auto;
+  }
+  .home-stories__title { font-size: 15px; }
+}
+
+html[data-theme="light"] .home-paper { --line: rgba(20, 17, 14, 0.22); }
+html[data-theme="light"] .home-banner__fallback,
+html[data-theme="light"] .home-stories__fallback {
+  background:
+    radial-gradient(rgba(20, 17, 14, 0.35) 0.6px, transparent 0.7px) 0 0 / 4px 4px,
+    #e7dcc4;
+}
+html[data-theme="light"] .home-banner h1,
+html[data-theme="light"] .home-banner__hit,
+html[data-theme="light"] .home-banner__hit:hover,
+html[data-theme="light"] .home-stories a,
+html[data-theme="light"] .home-stories a:hover,
+html[data-theme="light"] .home-dial a,
+html[data-theme="light"] .home-dial a:hover {
+  color: #14110e;
+}
+html[data-theme="light"] .home-banner__kicker,
+html[data-theme="light"] .home-stories__kicker,
+html[data-theme="light"] .home-latest h2 {
+  color: #c2185b;
+}
