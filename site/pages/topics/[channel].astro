@@ -1,17 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
-import ReportIndex from "../../components/preview/ReportIndex.astro";
+import DeskBoard from "../../components/DeskBoard.astro";
 import {
   DOMAIN_META,
   DOMAIN_SLUGS,
   LEGACY_DESK_TO_SECTION,
   LEGACY_SECTION_TO_DOMAIN,
-  SUBDOMAIN_META,
   type DomainSlug,
-  type SubdomainSlug,
 } from "@/data/sections";
-import { getBlogPosts, primarySection, primarySubdomain } from "@/lib/content";
-import { previewReportRows } from "../../lib/preview-reports";
 
 export function getStaticPaths() {
   const legacy = [
@@ -26,48 +22,19 @@ const mapped = (DOMAIN_SLUGS.includes(raw as DomainSlug)
   ? raw
   : LEGACY_SECTION_TO_DOMAIN[raw] || LEGACY_DESK_TO_SECTION[raw]) as DomainSlug | undefined;
 const meta = mapped ? DOMAIN_META[mapped] : null;
-const posts = meta ? getBlogPosts().filter((post) => primarySection(post.tags) === mapped) : [];
-const rows = previewReportRows(posts, "site");
-const subCounts = new Map<string, number>();
-for (const post of posts) {
-  const sub = primarySubdomain(post.tags);
-  if (sub) subCounts.set(sub, (subCounts.get(sub) || 0) + 1);
-}
-const filters = [...subCounts.keys()].map((slug) => ({
-  id: slug,
-  label: SUBDOMAIN_META[slug as SubdomainSlug]?.title || slug,
-}));
 ---
 
 <Base
   title={meta?.title || "Topic"}
   description={meta?.description || "Section"}
   path={mapped ? `/topics/${mapped}` : `/topics/${raw}`}
-  bodyClass="dash"
 >
-  <div class="preview-frame">
-    {meta && mapped ? (
-      <>
-        <p class="preview-crumb">
-          <a href="/#reports">Reports</a>
-          <span aria-hidden="true"> · </span>
-          <span>{meta.title}</span>
-        </p>
-        <h1 class="preview-page-title">{meta.title}</h1>
-        <p class="preview-scope">{meta.description}</p>
-        <ReportIndex
-          rows={rows}
-          filters={filters}
-          filterAttr="subSlug"
-          heading={`${meta.title} reports`}
-          headingId="topic-reports"
-        />
-      </>
-    ) : (
-      <>
-        <h1 class="preview-page-title">Section not found</h1>
-        <p><a href="/topics">All topics</a></p>
-      </>
-    )}
-  </div>
+  {meta && mapped ? (
+    <DeskBoard desk={mapped} />
+  ) : (
+    <div class="wrap page">
+      <h1>Section not found</h1>
+      <p><a href="/topics">All topics</a></p>
+    </div>
+  )}
 </Base>

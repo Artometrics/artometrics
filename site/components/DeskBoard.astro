@@ -1,0 +1,277 @@
+---
+import engagementFile from "@/data/page-engagement.json";
+import { DOMAIN_META, type DomainSlug } from "@/data/sections";
+import { deckLine, formatDate, getBlogPosts, primarySection, sectionLabel } from "@/lib/content";
+import { PERIOD_LABELS, PERIODS, pickLead, rankDesk } from "@/lib/engagement-rank.mjs";
+import { jsonForScript } from "../lib/static-charts";
+
+interface Props {
+  desk?: DomainSlug;
+}
+
+const { desk } = Astro.props;
+const displayDesks = ["arts", "sports", "civics", "culture", "science", "humanities"] as DomainSlug[];
+const shownDesks = desk ? displayDesks.filter((slug) => slug === desk) : displayDesks;
+const posts = getBlogPosts().flatMap((post) => {
+  const section = primarySection(post.tags);
+  if (!section || !displayDesks.includes(section)) return [];
+  return [{
+    slug: post.slug,
+    title: post.title,
+    pubDate: post.pubDate,
+    href: `/${post.slug}`,
+    image: post.heroImage || "",
+    kicker: sectionLabel(post.tags, post.subject) || DOMAIN_META[section].title,
+    dek: deckLine(post.description, 18),
+    date: post.pubDate ? formatDate(post.pubDate) : "",
+    desk: section,
+  }];
+});
+
+const now = new Date();
+const available = engagementFile.available === true;
+const rows = available ? engagementFile.rows : [];
+const periods = Object.fromEntries(PERIODS.map((period) => {
+  const desks = Object.fromEntries(shownDesks.map((slug) => [
+    slug,
+    rankDesk({
+      posts: posts.filter((post) => post.desk === slug),
+      rows,
+      period,
+      now,
+    }),
+  ]));
+  return [period, { lead: available ? pickLead(Object.values(desks)) : null, desks }];
+}));
+const payload = {
+  available,
+  order: PERIODS,
+  labels: PERIOD_LABELS,
+  intervalMs: 8000,
+  desks: shownDesks.map((slug) => ({ slug, title: DOMAIN_META[slug].title })),
+  periods,
+};
+const initialLabel = PERIOD_LABELS.week;
+---
+
+<div class="desk-home" data-desk-board data-period="week" data-available={available ? "true" : "false"}>
+  <nav class="desk-cats" aria-label="Sections">
+    {displayDesks.map((slug) => (
+      <a href={`/topics/${slug}`} aria-current={desk === slug ? "page" : undefined}>{DOMAIN_META[slug].title}</a>
+    ))}
+    <a href="/datasets">Datasets</a>
+  </nav>
+
+  <div class="desk-lead">
+    <a class="desk-lead__hit" id="desk-lead">
+      <div class="desk-lead__copy">
+        <p class="desk-lead__kicker" id="desk-lead-kicker">{initialLabel}</p>
+        <h1 id="desk-lead-title">No engagement lead for this period</h1>
+        <p class="desk-lead__dek" id="desk-lead-dek">Page ranks use engaged sessions. None are connected for this period.</p>
+        <p class="desk-lead__meta" id="desk-lead-meta"></p>
+      </div>
+      <span class="desk-lead__art" id="desk-lead-art" aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div class="desk-controls">
+    <div class="desk-periods" role="radiogroup" aria-label="Engagement period" id="desk-periods">
+      <button type="button" role="radio" data-period-choice="week" aria-checked="true">This week</button>
+      <button type="button" role="radio" data-period-choice="month" aria-checked="false">This month</button>
+      <button type="button" role="radio" data-period-choice="all" aria-checked="false">All time</button>
+    </div>
+    <div class="desk-transport">
+      <button type="button" id="desk-prev" aria-label="Previous period">Prev</button>
+      <button type="button" id="desk-next" aria-label="Next period">Next</button>
+      <button type="button" id="desk-pause" aria-pressed="false">Pause</button>
+    </div>
+  </div>
+  {available ? null : (
+    <p class="desk-note" id="desk-note">Engaged-session counts are not connected, so these lists are not ranked.</p>
+  )}
+
+  <div class="desk-cols" id="desk-cols">
+    {shownDesks.map((slug) => (
+      <section class="desk-col" aria-labelledby={`desk-${slug}`} data-desk={slug}>
+        <h2 id={`desk-${slug}`}><a href={`/topics/${slug}`}>{DOMAIN_META[slug].title}</a></h2>
+        <div class="desk-list" data-desk-list={slug}>
+          <p class="desk-empty">No engaged-session counts for this period.</p>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <p class="desk-home__jumps">
+    <a href="/blog">All reports</a>
+    <a href="/search">Search</a>
+  </p>
+</div>
+
+<script type="application/json" id="desk-board-data" set:html={jsonForScript(payload)} />
+<script is:inline>
+  (function () {
+    var root = document.querySelector("[data-desk-board]");
+    var node = document.getElementById("desk-board-data");
+    if (!root || !node || root.dataset.bound === "true") return;
+    root.dataset.bound = "true";
+    var data = JSON.parse(node.textContent || "{}");
+    var order = data.order || ["week", "month", "all"];
+    var labels = data.labels || {};
+    var period = "week";
+    var paused = false;
+    var timer = 0;
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var kicker = document.getElementById("desk-lead-kicker");
+    var title = document.getElementById("desk-lead-title");
+    var dek = document.getElementById("desk-lead-dek");
+    var meta = document.getElementById("desk-lead-meta");
+    var art = document.getElementById("desk-lead-art");
+    var leadLink = document.getElementById("desk-lead");
+    var pauseBtn = document.getElementById("desk-pause");
+
+    function step(current, direction) {
+      var index = order.indexOf(current);
+      if (index < 0) index = 0;
+      return order[(index + direction + order.length) % order.length];
+    }
+    function focusedInside() {
+      var active = document.activeElement;
+      return !!(active && root.contains(active));
+    }
+    function clearArt() {
+      art.replaceChildren();
+    }
+    function showLead(lead) {
+      if (!lead) {
+        leadLink.removeAttribute("href");
+        kicker.textContent = labels[period] || period;
+        title.textContent = "No engagement lead for this period";
+        dek.textContent = "Page ranks use engaged sessions. None are connected for this period.";
+        meta.textContent = "";
+        clearArt();
+        return;
+      }
+      leadLink.href = lead.href;
+      kicker.textContent = (labels[period] || period) + " · Rank " + lead.rank;
+      title.textContent = lead.title;
+      dek.textContent = lead.dek || "";
+      meta.textContent = lead.date || "";
+      clearArt();
+      if (lead.image) {
+        var img = document.createElement("img");
+        img.src = lead.image;
+        img.alt = "";
+        art.appendChild(img);
+      }
+    }
+    function showList(slug, items) {
+      var list = root.querySelector('[data-desk-list="' + slug + '"]');
+      if (!list) return;
+      list.replaceChildren();
+      if (!items || !items.length) {
+        var empty = document.createElement("p");
+        empty.className = "desk-empty";
+        empty.textContent = "No engaged-session counts for this period.";
+        list.appendChild(empty);
+        return;
+      }
+      items.forEach(function (item) {
+        var link = document.createElement("a");
+        link.className = "desk-row";
+        link.href = item.href;
+        link.style.setProperty("--rank", String(item.rank));
+        var num = document.createElement("span");
+        num.className = "desk-rank";
+        num.textContent = String(item.rank);
+        var thumb = document.createElement("span");
+        thumb.className = "desk-row__thumb";
+        if (item.image) {
+          var img = document.createElement("img");
+          img.src = item.image;
+          img.alt = "";
+          thumb.appendChild(img);
+        }
+        var copy = document.createElement("span");
+        copy.className = "desk-row__copy";
+        var heading = document.createElement("span");
+        heading.className = "desk-row__title";
+        heading.textContent = item.title;
+        copy.appendChild(heading);
+        if (item.date) {
+          var date = document.createElement("span");
+          date.className = "desk-row__date";
+          date.textContent = item.date;
+          copy.appendChild(date);
+        }
+        link.append(num, thumb, copy);
+        list.appendChild(link);
+      });
+    }
+    function show(next, animate) {
+      period = next;
+      root.setAttribute("data-period", period);
+      var pack = (data.periods && data.periods[period]) || { lead: null, desks: {} };
+      var choices = root.querySelectorAll("[data-period-choice]");
+      for (var i = 0; i < choices.length; i++) {
+        choices[i].setAttribute("aria-checked", choices[i].getAttribute("data-period-choice") === period ? "true" : "false");
+      }
+      showLead(pack.lead);
+      (data.desks || []).forEach(function (desk) {
+        showList(desk.slug, pack.desks ? pack.desks[desk.slug] : []);
+      });
+      if (animate && !reduce) {
+        root.classList.remove("is-animating");
+        void root.offsetWidth;
+        root.classList.add("is-animating");
+      }
+    }
+    function tick() {
+      if (paused || reduce || focusedInside()) return;
+      show(step(period, 1), true);
+    }
+    function play() {
+      if (timer) window.clearInterval(timer);
+      timer = 0;
+      if (paused || reduce) return;
+      timer = window.setInterval(tick, data.intervalMs || 8000);
+    }
+    function setPaused(nextPaused) {
+      paused = nextPaused;
+      if (pauseBtn) pauseBtn.setAttribute("aria-pressed", paused ? "true" : "false");
+      if (pauseBtn) pauseBtn.textContent = paused ? "Play" : "Pause";
+      play();
+    }
+    root.querySelectorAll("[data-period-choice]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        show(button.getAttribute("data-period-choice"), true);
+        setPaused(true);
+      });
+    });
+    var periods = document.getElementById("desk-periods");
+    periods && periods.addEventListener("keydown", function (event) {
+      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+      event.preventDefault();
+      var direction = event.key === "ArrowRight" ? 1 : -1;
+      show(step(period, direction), true);
+      setPaused(true);
+      var current = root.querySelector('[data-period-choice="' + period + '"]');
+      if (current) current.focus();
+    });
+    var prev = document.getElementById("desk-prev");
+    var next = document.getElementById("desk-next");
+    prev && prev.addEventListener("click", function () {
+      show(step(period, -1), true);
+      setPaused(true);
+    });
+    next && next.addEventListener("click", function () {
+      show(step(period, 1), true);
+      setPaused(true);
+    });
+    pauseBtn && pauseBtn.addEventListener("click", function () {
+      setPaused(!paused);
+    });
+    if (reduce && pauseBtn) pauseBtn.hidden = true;
+    show("week", !reduce);
+    play();
+  })();
+</script>

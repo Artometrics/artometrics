@@ -1,0 +1,6 @@
+{
+  "metric": "engagedSessions",
+  "available": false,
+  "note": "No page-engagement export is connected. Leave rows empty until a real engaged-sessions feed exists. Do not add guessed counts.",
+  "rows": []
+}

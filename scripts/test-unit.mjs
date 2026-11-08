@@ -7,6 +7,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { formatHeaderDate } from "../lib/headerDateline.mjs";
+import { nextPeriod, pickLead, prevPeriod, rankDesk, staggerDelayMs } from "../lib/engagement-rank.mjs";
 import { buildSourcesCatalog, loadSourcesInputs } from "./lib/sources-catalog.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -354,21 +355,23 @@ assert(!home.includes("home-c"), "home is not the narrow home column");
 assert(!home.includes("desk-nav"), "home does not put the section strip back");
 assert(home.includes("DeskHome"), "home is the desk-sections front page");
 const deskHome = readFileSync(join(ROOT, "site/components/DeskHome.astro"), "utf8");
-assert(deskHome.includes('getBlogPost("geopolitics")'), "the lead is the geopolitics report");
-assert(deskHome.includes('href="/blog"'), "the full report archive stays linked");
-assert(deskHome.includes('["pixar", "anime", "franchise", "steam"]'), "Steam is shown with Arts");
-assert(deskHome.includes('["dodgers", "padres"]'), "Sports keeps Dodgers and Padres");
-assert(!deskHome.includes('["dodgers", "padres", "steam"]'), "Steam is not shown under Sports");
-assert(deskHome.includes('class="desk-dial"'), "phones get the shortcut dial");
-for (const href of ["/blog", "/search", "/mag", "/podcast", "/sources", "/datasets", "/library", "/editions", "/topics"]) {
-  assert(deskHome.includes(`href: "${href}"`), `home shortcut points at ${href}`);
-}
-const shortcutBlock = deskHome.slice(deskHome.indexOf("const shortcuts"), deskHome.indexOf("const desks"));
-assert((shortcutBlock.match(/href: "\//g) || []).length === 9, "the phone dial has nine shortcuts");
-assert(!deskHome.includes("OPTION 2"), "the mockup caption is not part of the page");
+assert(deskHome.includes("DeskBoard"), "home uses the compact desk board");
+assert(deskHome.includes('href="/blog"') || readFileSync(join(ROOT, "site/components/DeskBoard.astro"), "utf8").includes('href="/blog"'), "the full report archive stays linked");
+assert(!deskHome.includes("desk-dial"), "the nine-shortcut grid is gone");
+assert(!deskHome.includes("Home shortcuts"), "the phone shortcut dial is gone");
+const deskBoard = readFileSync(join(ROOT, "site/components/DeskBoard.astro"), "utf8");
+assert(deskBoard.includes("This week") && deskBoard.includes("This month") && deskBoard.includes("All time"), "period controls name the three windows");
+assert(deskBoard.includes("desk-pause"), "the period cycle can be paused");
+assert(deskBoard.includes("prefers-reduced-motion"), "autoplay checks reduced motion");
+assert(!deskBoard.includes("OPTION 2"), "the mockup caption is not part of the page");
+const engagementFile = JSON.parse(readFileSync(join(ROOT, "data/page-engagement.json"), "utf8"));
+assert(engagementFile.available === false, "shipped engagement file is not marked ready");
+assert(Array.isArray(engagementFile.rows) && engagementFile.rows.length === 0, "shipped engagement file has no invented counts");
+assert(engagementFile.metric === "engagedSessions", "the ranking metric is engaged sessions");
 const deskCss = readFileSync(join(ROOT, "site/styles/site.css"), "utf8");
-assert(deskCss.includes(".desk-dial { display: none; }"), "the dial stays off the desktop front page");
-assert(/\.desk-dial a \{[\s\S]*min-height: 44px/.test(deskCss), "dial controls keep a 44px target");
+assert(!deskCss.includes("desk-dial"), "shortcut-grid styles are gone");
+assert(deskCss.includes("prefers-reduced-motion: reduce"), "rank motion is disabled when reduced motion is requested");
+assert(readFileSync(join(ROOT, "site/pages/topics/[channel].astro"), "utf8").includes("DeskBoard"), "category pages use the same board");
 const reportPage = readFileSync(join(ROOT, "site/pages/[slug].astro"), "utf8");
 assert(!reportPage.includes("Read as ebook"), "report pages do not show the ebook link");
 assert(!reportPage.includes("report-hero"), "report pages do not render the hero figure");
@@ -415,6 +418,8 @@ assert(
 assert(reportPage.includes("withStaticCharts"), "report pages keep the chart pipeline");
 assert(reportPage.includes('post.slug === "longevity"'), "only longevity mounts the branded chart");
 const header = readFileSync(join(ROOT, "site/components/Header.astro"), "utf8");
+assert(header.includes('aria-label="Search reports"'), "header search stays");
+assert(header.includes("nav-overlay"), "the main menu stays");
 assert(header.includes("formatHeaderDate()"), "dateline is the date only");
 assert(!header.includes("formatHeaderDateline"), "production header does not repeat the old dateline");
 assert(!header.includes('class="desk-nav"'), "section buttons stay in the menu, not a second strip");
@@ -579,5 +584,34 @@ for (const fact of funFacts) {
   );
 }
 assert(readFileSync(join(ROOT, "lib/nav-fun-fact.ts"), "utf8").includes("Math.random"), "facts rotate randomly");
+
+const now = new Date("2026-11-08T12:00:00Z");
+const samplePosts = [
+  { slug: "older", pubDate: "2026-01-01T00:00:00Z", title: "Older" },
+  { slug: "newer", pubDate: "2026-06-01T00:00:00Z", title: "Newer" },
+  { slug: "quiet", pubDate: "2026-07-01T00:00:00Z", title: "Quiet" },
+];
+const sampleRows = [
+  { slug: "older", engagedSessions: 10, day: "2026-11-02" },
+  { slug: "newer", engagedSessions: 10, day: "2026-11-03" },
+  { slug: "older", engagedSessions: 5, day: "2026-10-01" },
+  { slug: "quiet", engagedSessions: 4, day: "2026-08-01" },
+];
+const weekRanks = rankDesk({ posts: samplePosts, rows: sampleRows, period: "week", now });
+assert(weekRanks.map((row) => row.slug).join() === "newer,older", `week order ${weekRanks.map((row) => row.slug).join()}`);
+assert(weekRanks[0].rank === 1 && weekRanks[1].rank === 2, "tied engagement gives the newer story rank 1");
+assert(!weekRanks.some((row) => row.slug === "quiet"), "stories outside the week window are omitted");
+const monthRanks = rankDesk({ posts: samplePosts, rows: sampleRows, period: "month", now });
+assert(monthRanks.map((row) => row.slug).join() === "newer,older", `month order ${monthRanks.map((row) => row.slug).join()}`);
+assert(monthRanks[0].engagedSessions === 10 && monthRanks[1].engagedSessions === 10, "this month drops the October sessions");
+const allRanks = rankDesk({ posts: samplePosts, rows: sampleRows, period: "all", now });
+assert(allRanks[0].slug === "older" && allRanks[0].engagedSessions === 15, "all time sums every session for a story");
+assert(allRanks.at(-1).slug === "quiet", "all time keeps the August count");
+assert(nextPeriod("week") === "month" && nextPeriod("month") === "all" && nextPeriod("all") === "week", "period loop is week, month, all");
+assert(prevPeriod("week") === "all" && prevPeriod("all") === "month", "previous period walks the loop backward");
+assert(staggerDelayMs(1) === 0 && staggerDelayMs(2) === 80 && staggerDelayMs(3) === 160, "rank entrances stagger by 80ms");
+const lead = pickLead([weekRanks, [{ slug: "other", engagedSessions: 10, pubDate: "2026-03-01T00:00:00Z", rank: 1 }]]);
+assert(lead.slug === "newer", `banner lead was ${lead && lead.slug}`);
+assert(rankDesk({ posts: samplePosts, rows: [], period: "all", now }).length === 0, "missing counts are not treated as zero");
 
 console.log("unit OK");
