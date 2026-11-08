@@ -405,9 +405,15 @@ const siteCss = readFileSync(join(ROOT, "site/styles/site.css"), "utf8");
 assert(!/html\[data-theme="light"\] \.wordmark__plate\s*\{[^}]*background/.test(siteCss), "day mode does not put a black plate behind the wordmark");
 assert(!siteCss.includes(".appearance__logos button {\n  height: 44px;\n  padding: 4px 6px;\n  border: 1px solid transparent;\n  background: #000;"), "wordmark choices are not painted on black squares");
 const baseLayout = readFileSync(join(ROOT, "site/layouts/Base.astro"), "utf8");
-assert(baseLayout.includes("/images/brand/favicon-dark-32.png"), "dark tab icon is the transparent Chomsky A");
-assert(baseLayout.includes("/images/brand/favicon-light-32.png"), "light tab icon is the transparent Chomsky A");
+assert(baseLayout.includes("monograms.white.night"), "default tab icon is the white wordmark A");
+assert(baseLayout.includes('id="mono-map"'), "tab icon follows the stored wordmark");
 assert(!baseLayout.includes('href="/favicon.svg"'), "tab icon is not the black-backed svg");
+assert(header.includes("appearance__mono"), "each wordmark shows its matching A");
+assert(header.includes("paintIcon"), "choosing a wordmark updates the tab icon");
+for (const id of ["white", "svg", "halftone", "d01", "d02", "d03", "d04", "d05", "d06", "d07", "d08"]) {
+  assert(existsSync(join(ROOT, `public/images/brand/monograms/${id}-night-32.png`)), `${id} night A exists`);
+  assert(existsSync(join(ROOT, `public/images/brand/monograms/${id}-day-32.png`)), `${id} day A exists`);
+}
 const wordmarks = readFileSync(join(ROOT, "lib/wordmarks.ts"), "utf8");
 assert(wordmarks.includes('DEFAULT_WORDMARK_ID = "white"'), "live wordmark default stays the white catalog id");
 const logoReview = wordmarks.slice(wordmarks.indexOf("export const LOGO_REVIEW"));

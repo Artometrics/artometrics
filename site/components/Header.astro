@@ -116,7 +116,9 @@ function navHref(href: string) {
               aria-label={mark.label}
               title={mark.label}
             >
-              <img src={mark.src} alt="" width="120" height="28" loading="lazy" />
+              <img class="appearance__mono appearance__mono--night" src={mark.monoNight} alt="" width="28" height="28" />
+              <img class="appearance__mono appearance__mono--day" src={mark.monoDay} alt="" width="28" height="28" />
+              <img class="appearance__mark" src={mark.src} alt="" width="120" height="28" loading="lazy" />
             </button>
           ))}
         </div>
@@ -190,6 +192,18 @@ function navHref(href: string) {
       for (var i = 0; i < logos.length; i++) {
         logos[i].setAttribute("aria-checked", logos[i].getAttribute("data-logo-choice") === id ? "true" : "false");
       }
+      paintIcon();
+    }
+    function paintIcon() {
+      var id = root.getAttribute("data-logo") || "white";
+      var hit = catalog[0];
+      for (var i = 0; i < catalog.length; i++) if (catalog[i].id === id) hit = catalog[i];
+      if (!hit) return;
+      var dark = root.getAttribute("data-theme") !== "light";
+      var icon = document.getElementById("site-favicon");
+      var apple = document.getElementById("site-apple");
+      if (icon) icon.href = dark ? hit.monoNight : hit.monoDay;
+      if (apple) apple.href = dark ? hit.appleNight : hit.appleDay;
     }
     function paintTheme(theme, persist) {
       if (theme !== "light") theme = "dark";
@@ -202,11 +216,7 @@ function navHref(href: string) {
       for (var i = 0; i < modes.length; i++) {
         modes[i].setAttribute("aria-checked", modes[i].getAttribute("data-theme-choice") === theme ? "true" : "false");
       }
-      var icon = document.getElementById("site-favicon");
-      var apple = document.getElementById("site-apple");
-      var dark = theme !== "light";
-      if (icon) icon.href = dark ? "/images/brand/favicon-dark-32.png" : "/images/brand/favicon-light-32.png";
-      if (apple) apple.href = dark ? "/images/brand/favicon-dark-180.png" : "/images/brand/favicon-light-180.png";
+      paintIcon();
     }
     function openPanel() {
       if (!panel || !toggle) return;

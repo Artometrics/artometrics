@@ -1156,11 +1156,15 @@ html:has(.report) { overflow-x: clip; }
 }
 .appearance__logos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
   gap: 8px;
 }
 .appearance__logos button {
-  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  min-width: 0;
   padding: 4px 6px;
   border: 1px solid transparent;
   background: transparent;
@@ -1170,12 +1174,23 @@ html:has(.report) { overflow-x: clip; }
   border-color: var(--pink);
   box-shadow: inset 0 0 0 1px var(--pink);
 }
-.appearance__logos img {
+.appearance__logos .appearance__mono {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
   object-fit: contain;
 }
+.appearance__logos .appearance__mark {
+  display: block;
+  width: auto;
+  height: 28px;
+  flex: 1 1 auto;
+  min-width: 0;
+  object-fit: contain;
+}
+html[data-theme="light"] .appearance__mono--night { display: none; }
+html:not([data-theme="light"]) .appearance__mono--day { display: none; }
 
 /* Day mode. Cream paper, ink type, the same blue and pink. */
 html[data-theme="light"] {

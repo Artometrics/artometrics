@@ -5,7 +5,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { jsonForScript } from "../lib/static-charts";
 import { getBlogPosts, sectionLabel } from "@/lib/content";
-import { LOGO_REVIEW, type LogoReviewMark } from "@/lib/wordmarks";
+import { LOGO_REVIEW, WORDMARKS, type LogoReviewMark } from "@/lib/wordmarks";
 import { DOMAIN_META, DOMAIN_SLUGS, SUBDOMAIN_META, SUBDOMAIN_SLUGS } from "@/data/sections";
 
 interface Props {
@@ -40,6 +40,12 @@ const {
 } = Astro.props;
 
 const review = logoReview ? LOGO_REVIEW[logoReview] : null;
+const monograms = Object.fromEntries(
+  WORDMARKS.map((mark) => [
+    mark.id,
+    { night: mark.monoNight, day: mark.monoDay, appleNight: mark.appleNight, appleDay: mark.appleDay },
+  ]),
+);
 const robotsOut = review ? "noindex, nofollow" : robots;
 
 const SITE = "https://artometrics.com";
@@ -116,15 +122,22 @@ const navIndex = [
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={img} />
-    <link id="site-favicon" rel="icon" type="image/png" sizes="32x32" href="/images/brand/favicon-dark-32.png" />
-    <link id="site-apple" rel="apple-touch-icon" href="/images/brand/favicon-dark-180.png" />
+    <link id="site-favicon" rel="icon" type="image/png" sizes="32x32" href={monograms.white.night} />
+    <link id="site-apple" rel="apple-touch-icon" href={monograms.white.appleNight} />
+    <script type="application/json" id="mono-map" set:html={jsonForScript(monograms)} />
     <script is:inline>
       (function () {
-        var dark = document.documentElement.getAttribute("data-theme") !== "light";
+        var node = document.getElementById("mono-map");
+        var map = node ? JSON.parse(node.textContent || "{}") : {};
+        var root = document.documentElement;
+        var id = root.getAttribute("data-logo") || "white";
+        var hit = map[id] || map.white;
+        if (!hit) return;
+        var dark = root.getAttribute("data-theme") !== "light";
         var icon = document.getElementById("site-favicon");
         var apple = document.getElementById("site-apple");
-        if (icon) icon.href = dark ? "/images/brand/favicon-dark-32.png" : "/images/brand/favicon-light-32.png";
-        if (apple) apple.href = dark ? "/images/brand/favicon-dark-180.png" : "/images/brand/favicon-light-180.png";
+        if (icon) icon.href = dark ? hit.night : hit.day;
+        if (apple) apple.href = dark ? hit.appleNight : hit.appleDay;
       })();
     </script>
     <link rel="manifest" href="/manifest.webmanifest" />
