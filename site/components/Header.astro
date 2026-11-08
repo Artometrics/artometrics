@@ -69,12 +69,6 @@ function navHref(href: string) {
           <path fill="currentColor" d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19zm0 2a7.5 7.5 0 0 1 0 15V4.5z"></path>
         </svg>
       </button>
-      <a class="icon-btn" href={preview ? "/design-preview#report-filter" : "/search"} aria-label="Search reports">
-        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75">
-          <circle cx="11" cy="11" r="7"></circle>
-          <path d="M20 20l-3.5-3.5"></path>
-        </svg>
-      </a>
     </div>
   </div>
   <script type="application/json" id="wordmark-catalog" set:html={jsonForScript(WORDMARKS)} />
@@ -131,8 +125,10 @@ function navHref(href: string) {
   <div class="wrap">
     <div class="nav-overlay__bar">
       <input id="nav-search" type="search" placeholder="Search reports & topics…" aria-label="Search reports and topics" autocomplete="off" />
+      <button class="icon-btn" id="nav-clear" type="button">Clear</button>
       <button class="icon-btn" id="close-menu" type="button">Close</button>
     </div>
+    <div class="nav-overlay__scroll">
     <ul class="suggest" id="nav-suggest"></ul>
     <ul class="nav-list">
       {SITE_PRIMARY_NAV.map((item) => (
@@ -148,6 +144,33 @@ function navHref(href: string) {
       <li><a href="/studio">Studio</a></li>
       <li><a href="/contact">Dispatch</a></li>
     </ul>
+    </div>
+    <div class="nav-catalogue" aria-label="Catalogue">
+      <p class="nav-catalogue__label">Catalogue</p>
+      <div class="nav-catalogue__row">
+        <div class="nav-catalogue__card">
+          <a href="/franchise">
+            <img src="/images/content/articles/franchise/cover.png" alt="" width="160" height="213" />
+            <span>Franchise</span>
+          </a>
+          <span class="nav-catalogue__pdf">PDF not packed</span>
+        </div>
+        <div class="nav-catalogue__card">
+          <a href="/anime">
+            <img src="/images/content/articles/anime/hero.webp" alt="" width="160" height="160" />
+            <span>Anime</span>
+          </a>
+          <a class="nav-catalogue__pdf" href="/exports/anime.pdf">PDF</a>
+        </div>
+        <div class="nav-catalogue__card">
+          <a href="/readmitted">
+            <img src="/images/content/articles/readmitted/hero.png" alt="" width="160" height="160" />
+            <span>Readmitted</span>
+          </a>
+          <a class="nav-catalogue__pdf" href="/exports/readmitted.pdf">PDF</a>
+        </div>
+      </div>
+    </div>
     <div class="fact">
       <p class="fact__label">Did you know?</p>
       <a class="fact__text" id="fact-link" href={fact ? `/${fact.slug}` : "/blog"} aria-label={fact ? `${fact.text}. ${fact.title}` : "Reports"}>
