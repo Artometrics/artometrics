@@ -92,7 +92,7 @@ const navIndex = [
     lang="en"
     data-theme="dark"
     data-logo={review?.catalogId ?? "halftone"}
-    data-logo-form={review ? "wordmark" : "single"}
+    data-logo-form="wordmark"
     {...(review ? { "data-logo-review": review.id } : {})}
   >
   <head>
@@ -112,7 +112,7 @@ const navIndex = [
           var allowed = { white: 1, svg: 1, halftone: 1, d01: 1, d02: 1, d03: 1, d04: 1, d05: 1, d06: 1, d07: 1, d08: 1 };
           if (theme !== "light") theme = "dark";
           if (!allowed[logo]) logo = "halftone";
-          if (form !== "wordmark") form = "single";
+          if (form !== "single") form = "wordmark";
           root.setAttribute("data-theme", theme);
           root.setAttribute("data-logo", logo);
           root.setAttribute("data-logo-form", form);

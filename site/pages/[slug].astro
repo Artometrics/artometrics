@@ -145,6 +145,7 @@ const jsonLd = [
         ) : null}
       </div>
       {facts.length ? (
+        <div class="preview-facts-wrap">
         <table class="preview-facts">
           <caption>Published figures from this report.{factSource ? ` Source: ${factSource}` : ""}</caption>
           <thead>
@@ -162,6 +163,7 @@ const jsonLd = [
             ))}
           </tbody>
         </table>
+        </div>
       ) : null}
     </div>
 

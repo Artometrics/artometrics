@@ -67,9 +67,9 @@ const singles = [WORDMARKS.find((mark) => mark.id === "halftone")!, ...WORDMARKS
         <img
           id="site-wordmark"
           alt=""
-          src={review?.src ?? "/images/brand/monograms/halftone-night-180.png"}
-          width={review?.width ?? 180}
-          height={review?.height ?? 180}
+          src={review?.src ?? "/images/brand/wordmarks/wordmark-halftone.webp"}
+          width={review?.width ?? 600}
+          height={review?.height ?? 124}
           decoding="async"
           fetchpriority="high"
         />
@@ -169,9 +169,9 @@ const singles = [WORDMARKS.find((mark) => mark.id === "halftone")!, ...WORDMARKS
 <div class="nav-overlay" id="nav-overlay" hidden>
   <div class="wrap">
     <div class="nav-overlay__bar">
-      <input id="nav-search" type="search" placeholder="Search reports & topics…" aria-label="Search reports and topics" autocomplete="off" />
-      <button class="icon-btn" id="nav-clear" type="button">Clear</button>
-      <button class="icon-btn" id="close-menu" type="button">Close</button>
+      <button class="nav-overlay__side" id="close-menu" type="button">Close</button>
+      <input id="nav-search" type="search" placeholder="Search" aria-label="Search reports and topics" autocomplete="off" />
+      <button class="nav-overlay__side" id="nav-clear" type="button">Clear</button>
     </div>
     <div class="nav-overlay__scroll">
     <ul class="suggest" id="nav-suggest"></ul>

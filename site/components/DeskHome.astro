@@ -9,10 +9,10 @@ import { deckLine, formatDate, getBlogPost, sectionLabel } from "@/lib/content";
  * New square-text files are missing for Readmitted, Caesar, Beyoncé, Emperors, Atlas, and Exporters. Those tiles use the existing article hero.
  */
 const desks = [
-  { label: "Arts", href: "/topics/arts", slugs: ["pixar", "anime", "franchise"] },
-  { label: "Sports", href: "/topics/sports", slugs: ["dodgers", "padres", "celtics"] },
-  { label: "Science", href: "/topics/science", slugs: ["nuclear", "cetaceans", "readmitted"] },
-  { label: "Culture", href: "/topics/culture", slugs: ["wine", "coffee", "ramen"] },
+  { label: "Arts", href: "/topics/arts", slugs: ["pixar", "anime", "franchise", "simpsons"] },
+  { label: "Sports", href: "/topics/sports", slugs: ["dodgers", "padres", "celtics", "steam"] },
+  { label: "Science", href: "/topics/science", slugs: ["nuclear", "cetaceans", "readmitted", "wastewater"] },
+  { label: "Culture", href: "/topics/culture", slugs: ["wine", "coffee", "ramen", "pizza"] },
   { label: "Humanities", href: "/topics/humanities", slugs: ["caesar", "beyonce", "emperors"] },
   { label: "Civics", href: "/topics/civics", slugs: ["geopolitics", "atlas", "exporters"] },
 ];
@@ -50,11 +50,6 @@ const columns = desks.map((desk) => ({
     </article>
   ) : null}
 
-  <div class="desk-periods" role="radiogroup" aria-label="Period">
-    <button type="button" data-front-view="week" aria-checked="true">Week</button>
-    <button type="button" data-front-view="month" aria-checked="false">Month</button>
-    <button type="button" data-front-view="all" aria-checked="false">All time</button>
-  </div>
   <div class="desk-rail" id="desk-rail" tabindex="0" aria-label="Category columns">
     {columns.map((desk) => (
       <section class="desk-column" aria-labelledby={`desk-${desk.label}`}>
@@ -84,15 +79,6 @@ const columns = desks.map((desk) => ({
         var link = next.querySelector("h2 a");
         if (link) link.focus();
         next.scrollIntoView({ inline: "start", block: "nearest" });
-      });
-    }
-    var buttons = document.querySelectorAll("[data-front-view]");
-    for (var i = 0; i < buttons.length; i++) {
-      buttons[i].addEventListener("click", function (event) {
-        var chosen = event.currentTarget;
-        for (var j = 0; j < buttons.length; j++) {
-          buttons[j].setAttribute("aria-checked", buttons[j] === chosen ? "true" : "false");
-        }
       });
     }
   })();
