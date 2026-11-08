@@ -357,8 +357,15 @@ const deskHome = readFileSync(join(ROOT, "site/components/DeskHome.astro"), "utf
 assert(deskHome.includes('getBlogPost("geopolitics")'), "the lead is the geopolitics report");
 assert(!deskHome.includes("All reports"), "the All reports heading is gone from the front page");
 assert(readFileSync(join(ROOT, "lib/site-nav.ts"), "utf8").includes('href: "/blog"'), "the report index stays in the menu");
-assert(deskHome.includes('["pixar", "anime", "franchise", "steam"]'), "Steam is shown with Arts");
+assert(deskHome.includes('["pixar", "anime", "franchise"]'), "Arts is a column of three reports");
+assert(!deskHome.includes('"steam"'), "Steam stays off the three-story sports column");
+assert(!deskHome.includes("longevity"), "Longevity is not on the homepage");
 assert(deskHome.includes('["dodgers", "padres", "celtics"]'), "Sports keeps Dodgers, Padres, and Celtics");
+assert(deskHome.includes("desk-column"), "stories are category columns");
+assert(deskHome.includes(">Week<"), "the period label is Week");
+assert(deskHome.includes(">Month<"), "the period label is Month");
+assert(deskHome.includes(">All time<"), "the period label is All time");
+assert(!deskHome.includes("Editorial selection"), "the editorial line is not on the page");
 assert(!deskHome.includes('["dodgers", "padres", "steam"]'), "Steam is not shown under Sports");
 assert(!deskHome.includes("desk-dial"), "the nine-shortcut grid is gone from the home page");
 assert(!deskHome.includes("Home shortcuts"), "the phone shortcut nav is gone");
@@ -420,10 +427,13 @@ assert(!header.includes('class="desk-nav"'), "section buttons stay in the menu, 
 assert(header.includes('id="nav-search"'), "search stays inside the menu");
 assert(!header.includes('aria-label="Search reports"'), "the header search icon is gone");
 assert(header.includes("nav-catalogue"), "the menu can show catalogue covers");
-assert(header.includes("PDF not packed"), "a cover without a PDF says so");
-assert(header.includes('href="/exports/anime.pdf"'), "anime catalogue links its PDF");
-assert(header.includes("/images/content/articles/franchise/cover.webp"), "catalogue uses the Franchise portrait cover");
-assert(header.includes("/images/content/articles/anime/cover.webp"), "catalogue uses the Anime city-collage cover");
+assert(!header.includes("PDF not packed"), "missing PDFs are not labeled as packed");
+assert(header.includes('anime: "/exports/anime.pdf"'), "anime catalogue links its PDF");
+assert(header.includes('data-logo-form-choice="single"'), "the logo picker can show singles");
+assert(header.includes(">Wordmarks<"), "the logo picker can show wordmarks");
+assert(header.includes('["franchise", "Franchise"]'), "catalogue includes the Franchise cover");
+assert(header.includes('["anime", "Anime"]'), "catalogue includes the Anime city-collage cover");
+assert(header.includes("cover.webp"), "catalogue covers use the portrait role files");
 assert(deskHome.includes("square-text.webp"), "story tiles use the square image that already includes its title");
 assert(!deskHome.includes("reportKicker"), "tiles do not paint a second title over the square");
 assert(deskHome.includes("banner-art.webp"), "the lead uses banner art behind the headline");
@@ -434,11 +444,10 @@ const assetManifest = readFileSync(join(ROOT, "docs/report-assets/manifest-all.c
 assert(assetManifest.includes("UPSCALED"), "the asset manifest marks upscaled files");
 assert(!/UPSCALED[^\n]*native hi-res/i.test(assetManifest), "upscaled assets are not described as native hi-res");
 assert(deskHome.includes("story-tile"), "front page uses story cover buttons");
-assert(deskHome.includes("Not a live ranking"), "view switches do not claim a live engagement rank");
+assert(!deskHome.includes("Hot"), "Hot is not a homepage control");
+assert(!deskHome.includes("Trending"), "Trending is not a homepage control");
 assert(deskHome.includes('data-front-view="week"'), "week view switch is present");
-assert(deskHome.includes('data-front-view="hot"'), "Hot is in the same front-page control row");
-assert(deskHome.includes('data-front-view="trending"'), "Trending is in the same front-page control row");
-assert((deskHome.match(/role="radiogroup"/g) || []).length === 1, "period, Hot, and Trending share one control row");
+assert((deskHome.match(/data-front-view=/g) || []).length === 3, "only three period buttons");
 assert(home.includes('footer="none"'), "the front page does not render the footer bumper");
 assert(reportPage.includes('footer="article"'), "report pages keep their footer");
 assert(header.includes('href="/about"'), "About stays in the menu");
@@ -449,7 +458,7 @@ const siteCss = readFileSync(join(ROOT, "site/styles/site.css"), "utf8");
 assert(!/html\[data-theme="light"\] \.wordmark__plate\s*\{[^}]*background/.test(siteCss), "day mode does not put a black plate behind the wordmark");
 assert(!siteCss.includes(".appearance__logos button {\n  height: 44px;\n  padding: 4px 6px;\n  border: 1px solid transparent;\n  background: #000;"), "wordmark choices are not painted on black squares");
 const baseLayout = readFileSync(join(ROOT, "site/layouts/Base.astro"), "utf8");
-assert(baseLayout.includes("monograms.white.night"), "default tab icon is the white wordmark A");
+assert(baseLayout.includes("monograms.halftone.night"), "default tab icon is the pink-purple single A");
 assert(baseLayout.includes('id="mono-map"'), "tab icon follows the stored wordmark");
 assert(!baseLayout.includes('href="/favicon.svg"'), "tab icon is not the black-backed svg");
 assert(header.includes("appearance__mono"), "each wordmark shows its matching A");
@@ -459,7 +468,7 @@ for (const id of ["white", "svg", "halftone", "d01", "d02", "d03", "d04", "d05",
   assert(existsSync(join(ROOT, `public/images/brand/monograms/${id}-day-32.png`)), `${id} day A exists`);
 }
 const wordmarks = readFileSync(join(ROOT, "lib/wordmarks.ts"), "utf8");
-assert(wordmarks.includes('DEFAULT_WORDMARK_ID = "white"'), "live wordmark default stays the white catalog id");
+assert(wordmarks.includes('DEFAULT_WORDMARK_ID = "halftone"'), "the default mark is the pink-purple single A");
 const logoReview = wordmarks.slice(wordmarks.indexOf("export const LOGO_REVIEW"));
 assert(logoReview.includes('src: "/images/brand/wordmarks/wordmark-white.webp"'), "stripe review uses the diagonal pink/blue file");
 assert(logoReview.includes('src: "/images/brand/wordmarks/wordmark-03-pink-blue-bands.webp"'), "halftone review uses the pink dotted file");
@@ -476,7 +485,8 @@ assert(
     "279171ebcfd949c46068d54b8d0e9fc564194d05c1c9a2b921d060962a3c3d10",
   "pink halftone cover bytes match the supplied PNG",
 );
-assert(baseLayout.includes('review?.catalogId ?? "white"'), "pages without a review lock stay on the white default");
+assert(baseLayout.includes('review?.catalogId ?? "halftone"'), "pages without a review lock use the pink-purple A");
+assert(baseLayout.includes("square-art.webp"), "search results can use report art without a baked title");
 assert(baseLayout.includes('review ? "noindex, nofollow"'), "logo review routes stay out of the index");
 const footer = readFileSync(join(ROOT, "site/components/Footer.astro"), "utf8");
 assert(footer.includes("CONFIGURED_SOCIAL"), "footer can link the published GitHub URL");

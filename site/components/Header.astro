@@ -30,6 +30,25 @@ function navHref(href: string) {
   return href;
 }
 
+const catalogue = [
+  ["pixar", "Pixar"],
+  ["anime", "Anime"],
+  ["franchise", "Franchise"],
+  ["steam", "Steam"],
+  ["dodgers", "Dodgers"],
+  ["padres", "Padres"],
+  ["celtics", "Celtics"],
+  ["wine", "Wine"],
+  ["coffee", "Coffee"],
+  ["ramen", "Ramen"],
+  ["nuclear", "Nuclear"],
+  ["cetaceans", "Cetaceans"],
+  ["longevity", "Longevity"],
+  ["geopolitics", "Geopolitics"],
+] as const;
+const cataloguePdf: Record<string, string> = { anime: "/exports/anime.pdf" };
+const singles = [WORDMARKS.find((mark) => mark.id === "halftone")!, ...WORDMARKS.filter((mark) => mark.id !== "halftone")];
+
 ---
 
 <header class="mast">
@@ -48,9 +67,9 @@ function navHref(href: string) {
         <img
           id="site-wordmark"
           alt=""
-          src={review?.src}
-          width={review?.width ?? 600}
-          height={review?.height ?? 139}
+          src={review?.src ?? "/images/brand/monograms/halftone-night-180.png"}
+          width={review?.width ?? 180}
+          height={review?.height ?? 180}
           decoding="async"
           fetchpriority="high"
         />
@@ -76,11 +95,16 @@ function navHref(href: string) {
     (function () {
       var node = document.getElementById("wordmark-catalog");
       var catalog = node ? JSON.parse(node.textContent || "[]") : [];
-      var key = document.documentElement.getAttribute("data-logo") || "white";
+      var root = document.documentElement;
+      var key = root.getAttribute("data-logo") || "halftone";
       var hit = catalog[0];
       for (var i = 0; i < catalog.length; i++) if (catalog[i].id === key) hit = catalog[i];
       var img = document.getElementById("site-wordmark");
-      if (img && hit) img.src = hit.src;
+      var dark = root.getAttribute("data-theme") !== "light";
+      var form = root.getAttribute("data-logo-form") || "single";
+      if (img && hit && !root.getAttribute("data-logo-review")) {
+        img.src = form === "wordmark" ? hit.src : (dark ? hit.appleNight : hit.appleDay);
+      }
     })();
   </script>
   <div class="appearance" id="appearance-panel" hidden>
@@ -90,7 +114,13 @@ function navHref(href: string) {
         <button type="button" role="radio" data-theme-choice="dark" aria-checked="true">Night</button>
         <button type="button" role="radio" data-theme-choice="light" aria-checked="false">Day</button>
       </div>
-      <p class="appearance__label" id="appearance-logo-label">Wordmark</p>
+      <p class="appearance__label" id="appearance-logo-label">Logo</p>
+      {review ? null : (
+        <div class="appearance__form" role="radiogroup" aria-labelledby="appearance-logo-label">
+          <button type="button" role="radio" data-logo-form-choice="single" aria-checked="true">Singles</button>
+          <button type="button" role="radio" data-logo-form-choice="wordmark" aria-checked="false">Wordmarks</button>
+        </div>
+      )}
       {review ? (
         <div class="appearance__logos" role="navigation" aria-labelledby="appearance-logo-label">
           {(Object.keys(LOGO_REVIEW) as LogoReviewMark[]).map((id) => (
@@ -100,18 +130,33 @@ function navHref(href: string) {
           ))}
         </div>
       ) : (
-        <div class="appearance__logos" role="radiogroup" aria-labelledby="appearance-logo-label">
+        <div class="appearance__singles" role="radiogroup" aria-label="Single A">
+          {singles.map((mark) => (
+            <button
+              type="button"
+              role="radio"
+              data-logo-choice={mark.id}
+              data-logo-kind="single"
+              aria-checked={mark.id === "halftone" ? "true" : "false"}
+              aria-label={mark.label}
+              title={mark.label}
+            >
+              <img class="appearance__mono appearance__mono--night" src={mark.appleNight} alt="" width="180" height="180" />
+              <img class="appearance__mono appearance__mono--day" src={mark.appleDay} alt="" width="180" height="180" />
+            </button>
+          ))}
+        </div>
+        <div class="appearance__wordmarks" role="radiogroup" aria-label="Wordmarks">
           {WORDMARKS.map((mark) => (
             <button
               type="button"
               role="radio"
               data-logo-choice={mark.id}
-              aria-checked={mark.id === "white" ? "true" : "false"}
+              data-logo-kind="wordmark"
+              aria-checked="false"
               aria-label={mark.label}
               title={mark.label}
             >
-              <img class="appearance__mono appearance__mono--night" src={mark.monoNight} alt="" width="28" height="28" />
-              <img class="appearance__mono appearance__mono--day" src={mark.monoDay} alt="" width="28" height="28" />
               <img class="appearance__mark" src={mark.src} alt="" width="120" height="28" loading="lazy" />
             </button>
           ))}
@@ -151,28 +196,16 @@ function navHref(href: string) {
     </div>
     <div class="nav-catalogue" aria-label="Catalogue">
       <p class="nav-catalogue__label">Catalogue</p>
-      <div class="nav-catalogue__row">
-        <div class="nav-catalogue__card">
-          <a href="/franchise">
-            <img src="/images/content/articles/franchise/cover.webp" alt="" width="900" height="1200" />
-            <span>Franchise</span>
-          </a>
-          <span class="nav-catalogue__pdf">PDF not packed</span>
-        </div>
-        <div class="nav-catalogue__card">
-          <a href="/anime">
-            <img src="/images/content/articles/anime/cover.webp" alt="" width="900" height="1200" />
-            <span>Anime</span>
-          </a>
-          <a class="nav-catalogue__pdf" href="/exports/anime.pdf">PDF</a>
-        </div>
-        <div class="nav-catalogue__card">
-          <a href="/readmitted">
-            <img src="/images/content/articles/readmitted/hero.png" alt="" width="160" height="160" />
-            <span>Readmitted</span>
-          </a>
-          <a class="nav-catalogue__pdf" href="/exports/readmitted.pdf">PDF</a>
-        </div>
+      <div class="nav-catalogue__row" id="nav-catalogue-row" tabindex="0">
+        {catalogue.map(([slug, title]) => (
+          <div class="nav-catalogue__card">
+            <a href={`/${slug}`}>
+              <img src={`/images/content/articles/${slug}/cover.webp`} alt="" width="900" height="1200" />
+              <span>{title}</span>
+            </a>
+            {cataloguePdf[slug] ? <a class="nav-catalogue__pdf" href={cataloguePdf[slug]}>PDF</a> : null}
+          </div>
+        ))}
       </div>
     </div>
     <div class="fact">
@@ -198,31 +231,50 @@ function navHref(href: string) {
     var catalogNode = document.getElementById("wordmark-catalog");
     var catalog = catalogNode ? JSON.parse(catalogNode.textContent || "[]") : [];
 
+    function logoHit(id) {
+      for (var i = 0; i < catalog.length; i++) if (catalog[i].id === id) return catalog[i];
+      return null;
+    }
     function logoSrc(id) {
-      for (var i = 0; i < catalog.length; i++) if (catalog[i].id === id) return catalog[i].src;
-      return catalog[0] && catalog[0].src;
+      var hit = logoHit(id);
+      if (!hit) return "";
+      if (root.getAttribute("data-logo-form") === "wordmark") return hit.src;
+      var dark = root.getAttribute("data-theme") !== "light";
+      return dark ? hit.appleNight : hit.appleDay;
+    }
+    function paintForm(form, persist) {
+      if (form !== "wordmark") form = "single";
+      root.setAttribute("data-logo-form", form);
+      var choices = document.querySelectorAll("[data-logo-form-choice]");
+      for (var i = 0; i < choices.length; i++) {
+        choices[i].setAttribute("aria-checked", choices[i].getAttribute("data-logo-form-choice") === form ? "true" : "false");
+      }
+      if (persist) {
+        try { localStorage.setItem("artometrics-logo-form", form); } catch (e) {}
+      }
     }
     function paintLogo(id, persist) {
       if (root.getAttribute("data-logo-review")) {
         id = root.getAttribute("data-logo") || id;
         persist = false;
       }
+      if (!logoHit(id)) id = "halftone";
       var src = logoSrc(id);
-      if (!src) id = "white";
-      src = logoSrc(id);
       root.setAttribute("data-logo", id);
-      if (img && src && img.getAttribute("src") !== src) img.setAttribute("src", src);
+      if (img && src && !root.getAttribute("data-logo-review") && img.getAttribute("src") !== src) img.setAttribute("src", src);
       if (persist) {
         try { localStorage.setItem("artometrics-logo", id); } catch (e) {}
       }
       var logos = document.querySelectorAll("[data-logo-choice]");
+      var form = root.getAttribute("data-logo-form") || "single";
       for (var i = 0; i < logos.length; i++) {
-        logos[i].setAttribute("aria-checked", logos[i].getAttribute("data-logo-choice") === id ? "true" : "false");
+        var same = logos[i].getAttribute("data-logo-choice") === id && logos[i].getAttribute("data-logo-kind") === form;
+        logos[i].setAttribute("aria-checked", same ? "true" : "false");
       }
       paintIcon();
     }
     function paintIcon() {
-      var id = root.getAttribute("data-logo") || "white";
+      var id = root.getAttribute("data-logo") || "halftone";
       var hit = catalog[0];
       for (var i = 0; i < catalog.length; i++) if (catalog[i].id === id) hit = catalog[i];
       if (!hit) return;
@@ -243,7 +295,7 @@ function navHref(href: string) {
       for (var i = 0; i < modes.length; i++) {
         modes[i].setAttribute("aria-checked", modes[i].getAttribute("data-theme-choice") === theme ? "true" : "false");
       }
-      paintIcon();
+      paintLogo(root.getAttribute("data-logo") || "halftone", false);
     }
     function openPanel() {
       if (!panel || !toggle) return;
@@ -256,7 +308,8 @@ function navHref(href: string) {
       toggle.setAttribute("aria-expanded", "false");
     }
     paintTheme(root.getAttribute("data-theme") || "dark", false);
-    paintLogo(root.getAttribute("data-logo") || "white", false);
+    paintForm(root.getAttribute("data-logo-form") || "single", false);
+    paintLogo(root.getAttribute("data-logo") || "halftone", false);
 
     toggle && toggle.addEventListener("click", function () {
       if (!panel) return;
@@ -269,10 +322,33 @@ function navHref(href: string) {
         paintTheme(event.currentTarget.getAttribute("data-theme-choice"), true);
       });
     }
+    var forms = document.querySelectorAll("[data-logo-form-choice]");
+    for (var f = 0; f < forms.length; f++) {
+      forms[f].addEventListener("click", function (event) {
+        paintForm(event.currentTarget.getAttribute("data-logo-form-choice"), true);
+        paintLogo(root.getAttribute("data-logo") || "halftone", false);
+      });
+    }
     var logos = document.querySelectorAll("[data-logo-choice]");
     for (var j = 0; j < logos.length; j++) {
       logos[j].addEventListener("click", function (event) {
-        paintLogo(event.currentTarget.getAttribute("data-logo-choice"), true);
+        var button = event.currentTarget;
+        paintForm(button.getAttribute("data-logo-kind") || "single", true);
+        paintLogo(button.getAttribute("data-logo-choice"), true);
+      });
+    }
+    var shelf = document.getElementById("nav-catalogue-row");
+    if (shelf) {
+      shelf.addEventListener("keydown", function (event) {
+        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+        var links = shelf.querySelectorAll(".nav-catalogue__card > a");
+        var index = 0;
+        for (var i = 0; i < links.length; i++) if (links[i] === document.activeElement || links[i].contains(document.activeElement)) index = i;
+        var next = links[index + (event.key === "ArrowRight" ? 1 : -1)];
+        if (!next) return;
+        event.preventDefault();
+        next.focus();
+        next.scrollIntoView({ inline: "start", block: "nearest" });
       });
     }
     document.addEventListener("click", function (event) {
