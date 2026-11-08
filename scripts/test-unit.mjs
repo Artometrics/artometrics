@@ -350,8 +350,14 @@ const ebookCard = readFileSync(join(ROOT, "components/MagazineEditionCard.tsx"),
 assert(ebookCard.includes("Read as ebook"), "ebook entry is labeled Read as ebook");
 assert(ebookCard.includes("magazineIssueHref"), "ebook entry opens the page-flip issue");
 const home = readFileSync(join(ROOT, "site/pages/index.astro"), "utf8");
-assert(!home.includes("home-c"), "home dashboard is not the narrow home column");
-assert(!home.includes("heroImage"), "home dashboard does not render hero art");
+assert(!home.includes("home-c"), "home is not the narrow home column");
+assert(!home.includes("desk-nav"), "home does not put the section strip back");
+assert(home.includes("DeskHome"), "home is the desk-sections front page");
+const deskHome = readFileSync(join(ROOT, "site/components/DeskHome.astro"), "utf8");
+assert(deskHome.includes('getBlogPost("geopolitics")'), "the lead is the geopolitics report");
+assert(deskHome.includes('href="/blog"'), "the full report archive stays linked");
+assert(deskHome.includes('["dodgers", "padres", "steam"]'), "Steam stays on the sports desk");
+assert(!deskHome.includes("OPTION 2"), "the mockup caption is not part of the page");
 const reportPage = readFileSync(join(ROOT, "site/pages/[slug].astro"), "utf8");
 assert(!reportPage.includes("Read as ebook"), "report pages do not show the ebook link");
 assert(!reportPage.includes("report-hero"), "report pages do not render the hero figure");

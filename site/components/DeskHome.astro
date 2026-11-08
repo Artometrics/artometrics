@@ -1,0 +1,66 @@
+---
+import { deckLine, formatDate, getBlogPost, sectionLabel } from "@/lib/content";
+
+/** Curated front page. Slugs are published reports; desks match their real tags. */
+const desks = [
+  { label: "Arts", href: "/topics/arts", slugs: ["pixar", "anime", "franchise"] },
+  { label: "Sports", href: "/topics/sports", slugs: ["dodgers", "padres", "steam"] },
+  { label: "Culture", href: "/topics/culture", slugs: ["wine", "coffee", "ramen"] },
+  { label: "Science", href: "/topics/science", slugs: ["nuclear", "cetaceans", "longevity"] },
+];
+
+const lead = getBlogPost("geopolitics");
+const columns = desks.map((desk) => ({
+  ...desk,
+  stories: desk.slugs.flatMap((slug) => {
+    const post = getBlogPost(slug);
+    return post ? [post] : [];
+  }),
+}));
+---
+
+<div class="desk-home">
+  {lead ? (
+    <article class="desk-lead">
+      <a class="desk-lead__hit" href={`/${lead.slug}`}>
+        <div class="desk-lead__copy">
+          <p class="desk-lead__kicker">{sectionLabel(lead.tags, lead.subject) || "Report"}</p>
+          <h1>{lead.title}</h1>
+          <p class="desk-lead__dek">{deckLine(lead.description, 36)}</p>
+          {lead.pubDate ? <p class="desk-lead__meta">{formatDate(lead.pubDate)}</p> : null}
+        </div>
+        {lead.heroImage ? (
+          <img src={lead.heroImage} alt="" width="960" height="960" />
+        ) : (
+          <span class="desk-lead__fallback" aria-hidden="true"></span>
+        )}
+      </a>
+    </article>
+  ) : null}
+
+  <p class="desk-home__jumps">
+    <a href="/blog">All reports</a>
+    <a href="/datasets">Datasets</a>
+  </p>
+
+  <div class="desk-cols">
+    {columns.map((desk) => (
+      <section class="desk-col" aria-labelledby={`desk-${desk.label}`}>
+        <h2 id={`desk-${desk.label}`}><a href={desk.href}>{desk.label}</a></h2>
+        {desk.stories.map((post) => (
+          <a class="desk-row" href={`/${post.slug}`}>
+            {post.heroImage ? (
+              <img src={post.heroImage} alt="" width="96" height="96" />
+            ) : (
+              <span class="desk-row__fallback" aria-hidden="true"></span>
+            )}
+            <span class="desk-row__copy">
+              <span class="desk-row__title">{post.title}</span>
+              {post.pubDate ? <span class="desk-row__date">{formatDate(post.pubDate)}</span> : null}
+            </span>
+          </a>
+        ))}
+      </section>
+    ))}
+  </div>
+</div>
