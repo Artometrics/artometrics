@@ -144,7 +144,7 @@ body.dash .site-footer__social-note {
 .preview-frame {
   width: 100%;
   padding: 16px 20px 32px;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .preview-scope,
@@ -204,7 +204,11 @@ body.dash .site-footer__social-note {
 
 .preview-toolbar h1,
 .preview-report h1 {
-  font-size: clamp(1.75rem, 2.2vw, 2.5rem);
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
 }
 
 .preview-toolbar h2,
@@ -329,13 +333,32 @@ body.dash .site-footer__social-note {
 
 .preview-table th,
 .am-table thead th,
-.preview-facts th {
+.preview-facts thead th {
   font-family: var(--mono);
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink);
+}
+.preview-facts tbody th {
+  font-family: var(--sans);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums lining-nums;
+  width: 1%;
+}
+.preview-facts td {
+  overflow-wrap: break-word;
+  word-break: normal;
+  min-width: 10rem;
+}
+.preview-facts-wrap {
+  width: 100%;
+  overflow-x: auto;
 }
 
 .am-table tbody th {

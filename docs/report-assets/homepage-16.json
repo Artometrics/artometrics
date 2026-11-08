@@ -1,0 +1,457 @@
+{
+  "sixteen": [
+    {
+      "category": "arts",
+      "slug": "pixar",
+      "url": "https://artometrics.com/pixar",
+      "title": "PIXAR: Pixar's Critic Scores Broke Only Twice—Cars 2 and Lightyear",
+      "section": "arts",
+      "art": "square-text",
+      "hero": "/images/content/articles/pixar/hero.png",
+      "datasets": [
+        "public/data/articles/pixar/charts",
+        "public/data/articles/pixar/dataset.csv",
+        "public/data/articles/pixar/pixar_merged.csv",
+        "articles/pixar/data/charts",
+        "articles/pixar/data/dataset.csv",
+        "articles/pixar/data/pixar_merged.csv",
+        "public/images/content/articles/pixar/banner-art.webp",
+        "public/images/content/articles/pixar/banner-text.webp",
+        "public/images/content/articles/pixar/charts",
+        "public/images/content/articles/pixar/cover.webp",
+        "public/images/content/articles/pixar/hero.png",
+        "public/images/content/articles/pixar/square-art.webp"
+      ],
+      "charts": 5,
+      "sources": [
+        "Data: TidyTuesday / R for Data Science community - ARTOMETRICS"
+      ],
+      "limit": "cannot tell you</h2> <p class=\"art-p\">Reception scores are snapshots from Wikipedia-curated tables, not live API pulls. Rotten Tomatoes percentages can shift as reviews are added. CinemaScore is ordinal, not interval—tre"
+    },
+    {
+      "category": "arts",
+      "slug": "anime",
+      "url": "https://artometrics.com/anime",
+      "title": "ANIME: Source Sets the Audience Floor",
+      "section": "arts",
+      "art": "square-text",
+      "hero": "/images/content/articles/anime/hero.webp",
+      "datasets": [
+        "public/data/articles/anime/SOURCE.txt",
+        "public/data/articles/anime/anime.csv",
+        "public/data/articles/anime/anime_2026-10-11_clean.csv",
+        "public/data/articles/anime/charts",
+        "public/data/articles/anime/discrepancies.txt",
+        "public/data/articles/anime/format_years.csv",
+        "public/data/articles/anime/genres.csv",
+        "public/data/articles/anime/sessionInfo.txt",
+        "public/data/articles/anime/shortlist.csv",
+        "public/data/articles/anime/source.zip",
+        "public/data/articles/anime/stats_old_vs_raw_vs_clean.csv",
+        "public/data/articles/anime/studios.csv"
+      ],
+      "charts": 7,
+      "sources": [
+        "Data: MyAnimeList via TidyTuesday (Kaggle snapshot, early 2019) — ARTOMETRICS",
+        "Data: MyAnimeList via Tenrai (snapshot 2026-10-11 clean) — ARTOMETRICS",
+        "Data: Tenrai clean TV frame · ARTOMETRICS",
+        "Data: 2019 TidyTuesday deduplicated file (studio section) — ARTOMETRICS",
+        "Data: 2019 TidyTuesday deduplicated file (reach chart) — ARTOMETRICS"
+      ],
+      "limit": ""
+    },
+    {
+      "category": "arts",
+      "slug": "franchise",
+      "url": "https://artometrics.com/franchise",
+      "title": "FRANCHISE: Merchandise Owns the Ledger",
+      "section": "arts",
+      "art": "square-text",
+      "hero": "/images/content/articles/franchise/banner.png",
+      "datasets": [
+        "public/data/articles/franchise/SOURCE.txt",
+        "public/data/articles/franchise/box_office_mojo_yearly_urls.csv",
+        "public/data/articles/franchise/charts",
+        "public/data/articles/franchise/data",
+        "public/data/articles/franchise/disney_acquisitions.csv",
+        "public/data/articles/franchise/disney_segment_revenue_fy2024.csv",
+        "public/data/articles/franchise/disney_segment_revenue_fy2024_real2025usd.csv",
+        "public/data/articles/franchise/entities_budgets_grosses.csv",
+        "public/data/articles/franchise/entities_companies_deals.csv",
+        "public/data/articles/franchise/entities_franchises.csv",
+        "public/data/articles/franchise/entities_people.csv",
+        "public/data/articles/franchise/franchise.csv"
+      ],
+      "charts": 16,
+      "sources": [
+        "Data: Wikipedia franchise list, Oct 12 2026 (S017) — ARTOMETRICS",
+        "Data: TidyTuesday 2019 + Wikipedia 2026 scrape — ARTOMETRICS",
+        "Data: franchise.csv — ARTOMETRICS",
+        "Data: TidyTuesday media franchises (2019-07-02) — ARTOMETRICS",
+        "Data: SEC deal prices + TidyTuesday franchise rows — ARTOMETRICS",
+        "Data: entities_companies_deals.csv — ARTOMETRICS",
+        "Data: Disney Form 10-K FY2024 — ARTOMETRICS",
+        "Data: Box Office Mojo yearly charts — ARTOMETRICS",
+        "Data: Wikipedia 2025/2026 in film (Box Office Mojo, The Numbers) — ARTOMETRICS"
+      ],
+      "limit": ""
+    },
+    {
+      "category": "arts",
+      "slug": "simpsons",
+      "url": "https://artometrics.com/simpsons",
+      "title": "SIMPSONS: Marcia Wallace, 175 Guest Appearances",
+      "section": "arts",
+      "art": "existing-hero",
+      "hero": "/images/content/articles/simpsons/hero.png",
+      "datasets": [
+        "public/data/articles/simpsons/charts",
+        "public/data/articles/simpsons/dataset.csv",
+        "articles/simpsons/data/charts",
+        "articles/simpsons/data/dataset.csv",
+        "public/images/content/articles/simpsons/charts",
+        "public/images/content/articles/simpsons/hero.png"
+      ],
+      "charts": 5,
+      "sources": [
+        "Data: TidyTuesday / R for Data Science community - ARTOMETRICS"
+      ],
+      "limit": "cannot tell you</h2> <p class=\"art-p\">Community-cleaned TidyTuesday snapshots are not live APIs. Missing values, spelling variants, and week-of-export coverage limits apply. Merged tables may fan out or duplicate rows wh"
+    },
+    {
+      "category": "sports",
+      "slug": "dodgers",
+      "url": "https://artometrics.com/dodgers",
+      "title": "DODGERS: 111 Wins Still Wasn't Enough",
+      "section": "sports",
+      "art": "square-text",
+      "hero": "/images/content/articles/dodgers/hero.png",
+      "datasets": [
+        "public/data/articles/dodgers/charts",
+        "articles/dodgers/data/charts",
+        "public/images/content/articles/dodgers/banner-art.webp",
+        "public/images/content/articles/dodgers/banner-text.webp",
+        "public/images/content/articles/dodgers/charts",
+        "public/images/content/articles/dodgers/cover.webp",
+        "public/images/content/articles/dodgers/hero.png",
+        "public/images/content/articles/dodgers/square-art.webp",
+        "public/images/content/articles/dodgers/square-text.webp"
+      ],
+      "charts": 5,
+      "sources": [
+        "Data: Baseball Reference, Lahman, Retrosheet, Forbes - ARTOMETRICS"
+      ],
+      "limit": ""
+    },
+    {
+      "category": "sports",
+      "slug": "padres",
+      "url": "https://artometrics.com/padres",
+      "title": "PADRES: Record Sale, Zero Championships",
+      "section": "sports",
+      "art": "square-text",
+      "hero": "/images/content/articles/padres/hero.png",
+      "datasets": [
+        "public/data/articles/padres/charts",
+        "public/data/articles/padres/data",
+        "articles/padres/data/LAHMAN_CREDIT.txt",
+        "articles/padres/data/SOURCE.txt",
+        "articles/padres/data/audit_summary.json",
+        "articles/padres/data/cbt_payroll.csv",
+        "articles/padres/data/cbt_payroll_real2025usd.csv",
+        "articles/padres/data/charts",
+        "articles/padres/data/expansion_clubs.csv",
+        "articles/padres/data/lahman",
+        "articles/padres/data/mlb_stats_api_padres.json",
+        "articles/padres/data/old_vs_new.csv"
+      ],
+      "charts": 6,
+      "sources": [
+        "Lahman Baseball Database, 2025, CC BY-SA. The 2026 bar is Baseball-Reference.",
+        "Lahman Baseball Database, 2025, CC BY-SA. World Series titles are WSWin seasons.",
+        "Pennant years from Lahman LgWin. The 2026 endpoint is the completed season.",
+        "Attendance and wins: Lahman Baseball Database, 2025, CC BY-SA. 2020 omitted.",
+        "Thresholds: 2022–26 Basic Agreement, p. 117. Payrolls: Spotrac compilation in the July 2026 draft, not cash.",
+        "SeriesPost and Teams, Lahman 2025, CC BY-SA. Better record means a higher regular-season win percentage."
+      ],
+      "limit": ""
+    },
+    {
+      "category": "sports",
+      "slug": "celtics",
+      "url": "https://artometrics.com/celtics",
+      "title": "CELTICS: Eighteen Titles Made the Celtics a Franchise Judged Against Itself",
+      "section": "sports",
+      "art": "square-text",
+      "hero": "/images/content/articles/celtics/hero.png",
+      "datasets": [
+        "public/data/articles/celtics/charts",
+        "articles/celtics/data/charts",
+        "public/images/content/articles/celtics/banner-art.webp",
+        "public/images/content/articles/celtics/banner-text.webp",
+        "public/images/content/articles/celtics/charts",
+        "public/images/content/articles/celtics/cover.webp",
+        "public/images/content/articles/celtics/hero.png",
+        "public/images/content/articles/celtics/square-art.webp",
+        "public/images/content/articles/celtics/square-text.webp"
+      ],
+      "charts": 5,
+      "sources": [
+        "Data: Basketball Reference, NBA.com, Sports Reference - ARTOMETRICS"
+      ],
+      "limit": ""
+    },
+    {
+      "category": "sports",
+      "slug": "steam",
+      "url": "https://artometrics.com/steam",
+      "title": "STEAM: Ten Hours per Dollar Owns the Shelf",
+      "section": "sports",
+      "art": "square-text",
+      "hero": "/images/content/articles/steam/hero.png",
+      "datasets": [
+        "public/data/articles/steam/charts",
+        "public/data/articles/steam/dataset.csv",
+        "articles/steam/data/charts",
+        "articles/steam/data/dataset.csv",
+        "public/images/content/articles/steam/banner-art.webp",
+        "public/images/content/articles/steam/banner-text.webp",
+        "public/images/content/articles/steam/charts",
+        "public/images/content/articles/steam/cover.webp",
+        "public/images/content/articles/steam/hero.png",
+        "public/images/content/articles/steam/square-art.webp",
+        "public/images/content/articles/steam/square-text.webp"
+      ],
+      "charts": 5,
+      "sources": [
+        "Data: TidyTuesday / R for Data Science community - ARTOMETRICS"
+      ],
+      "limit": "cannot tell you</h2> <p class=\"art-p\">TidyTuesday snapshots are not live Steam or Metacritic APIs. Missing Metascores, owner-band binning, price currency assumptions, and 2004–2018 coverage limits apply. Findings describ"
+    },
+    {
+      "category": "science",
+      "slug": "nuclear",
+      "url": "https://artometrics.com/nuclear",
+      "title": "NUCLEAR: Nuclear Test Magnitudes Peaked at 7.40 Across 2,051 Detonations",
+      "section": "science",
+      "art": "square-text",
+      "hero": "/images/content/articles/nuclear/hero.png",
+      "datasets": [
+        "public/data/articles/nuclear/charts",
+        "public/data/articles/nuclear/dataset.csv",
+        "articles/nuclear/data/charts",
+        "articles/nuclear/data/dataset.csv",
+        "public/images/content/articles/nuclear/banner-art.webp",
+        "public/images/content/articles/nuclear/banner-text.webp",
+        "public/images/content/articles/nuclear/charts",
+        "public/images/content/articles/nuclear/cover.webp",
+        "public/images/content/articles/nuclear/hero.png",
+        "public/images/content/articles/nuclear/square-art.webp",
+        "public/images/content/articles/nuclear/square-text.webp"
+      ],
+      "charts": 5,
+      "sources": [
+        "Data: TidyTuesday / R for Data Science community - ARTOMETRICS"
+      ],
+      "limit": "cannot tell you</h2> <p class=\"art-p\">Community-cleaned TidyTuesday snapshots are not live APIs. Missing values, spelling variants, and incomplete yield reporting apply. A median magnitude of 0.00 is a missingness signal"
+    },
+    {
+      "category": "science",
+      "slug": "cetaceans",
+      "url": "https://artometrics.com/cetaceans",
+      "title": "CETACEANS: Captive Cetacean Transfers Peaked in 1972 at 170 U.S. Records",
+      "section": "science",
+      "art": "square-text",
+      "hero": "/images/content/articles/cetaceans/hero.png",
+      "datasets": [
+        "public/data/articles/cetaceans/charts",
+        "public/data/articles/cetaceans/dataset.csv",
+        "articles/cetaceans/data/charts",
+        "articles/cetaceans/data/dataset.csv",
+        "public/images/content/articles/cetaceans/banner-art.webp",
+        "public/images/content/articles/cetaceans/banner-text.webp",
+        "public/images/content/articles/cetaceans/charts",
+        "public/images/content/articles/cetaceans/cover.webp",
+        "public/images/content/articles/cetaceans/hero.png",
+        "public/images/content/articles/cetaceans/square-art.webp",
+        "public/images/content/articles/cetaceans/square-text.webp"
+      ],
+      "charts": 5,
+      "sources": [
+        "Data: TidyTuesday / R for Data Science community - ARTOMETRICS"
+      ],
+      "limit": "cannot tell you</h2> <p class=\"art-p\">US overrepresentation may reflect data compilation, not true global distribution. Species name variants (Beluga vs Beluga Whale; multiple white-sided spellings) fragment counts.</p> "
+    },
+    {
+      "category": "science",
+      "slug": "readmitted",
+      "url": "https://artometrics.com/readmitted",
+      "title": "READMITTED: The 3% Stick Medicare Keeps Swinging",
+      "section": "science",
+      "art": "existing-hero",
+      "hero": "/images/content/articles/readmitted/hero.png",
+      "datasets": [
+        "public/data/articles/readmitted/SOURCE.txt",
+        "public/data/articles/readmitted/charts",
+        "public/data/articles/readmitted/cms_refresh_report.json",
+        "public/data/articles/readmitted/data",
+        "public/data/articles/readmitted/hrrp_condition_err.csv",
+        "public/data/articles/readmitted/hrrp_facility_class_err.csv",
+        "public/data/articles/readmitted/hrrp_national_readmit_trends.csv",
+        "public/data/articles/readmitted/hrrp_ownership_condition.csv",
+        "public/data/articles/readmitted/hrrp_penalty_timeline.csv",
+        "public/data/articles/readmitted/hrrp_safety_net_proxy.csv",
+        "public/data/articles/readmitted/hrrp_state_summary.csv",
+        "public/data/articles/readmitted/raw_hospital_general.csv"
+      ],
+      "charts": 8,
+      "sources": [
+        "Cap: CMS IPPS rules; ≥1% share: Advisory Board analyses of CMS preliminary HRRP files — ARTOMETRICS",
+        "2012–2015: Zuckerman et al. NEJM 2016; 2024: CMS extract mean predicted rates — ARTOMETRICS",
+        "Data: CMS HRRP FY2025 supplemental (9n3s-kdb3) — ARTOMETRICS",
+        "CMS HRRP + Hospital General Information name proxy — ARTOMETRICS",
+        "Data: CMS HRRP + Hospital General Information (xubh-q36u) — ARTOMETRICS"
+      ],
+      "limit": ""
+    },
+    {
+      "category": "science",
+      "slug": "wastewater",
+      "url": "https://artometrics.com/wastewater",
+      "title": "WASTEWATER: Singapore's Wastewater Plants Discharge 200× the Global Norm",
+      "section": "science",
+      "art": "existing-hero",
+      "hero": "/images/content/articles/wastewater/hero.png",
+      "datasets": [
+        "public/data/articles/wastewater/charts",
+        "public/data/articles/wastewater/dataset.csv",
+        "articles/wastewater/data/charts",
+        "articles/wastewater/data/dataset.csv",
+        "public/images/content/articles/wastewater/charts",
+        "public/images/content/articles/wastewater/hero.png"
+      ],
+      "charts": 5,
+      "sources": [
+        "Data: TidyTuesday / R for Data Science community - ARTOMETRICS"
+      ],
+      "limit": "cannot tell you</h2> <p class=\"art-p\">Community-cleaned TidyTuesday snapshots are not live APIs. Missing values, spelling variants, and uneven national reporting apply. Proposed or non-operational plants can sit beside a"
+    },
+    {
+      "category": "culture",
+      "slug": "wine",
+      "url": "https://artometrics.com/wine",
+      "title": "WINE: Austria and Chile, Two Points Apart",
+      "section": "culture",
+      "art": "square-text",
+      "hero": "/images/content/articles/wine/hero.png",
+      "datasets": [
+        "public/data/articles/wine/charts",
+        "public/data/articles/wine/dataset.csv",
+        "articles/wine/data/charts",
+        "articles/wine/data/dataset.csv",
+        "public/images/content/articles/wine/banner-art.webp",
+        "public/images/content/articles/wine/banner-text.webp",
+        "public/images/content/articles/wine/charts",
+        "public/images/content/articles/wine/cover.webp",
+        "public/images/content/articles/wine/hero.png",
+        "public/images/content/articles/wine/square-art.webp",
+        "public/images/content/articles/wine/square-text.webp"
+      ],
+      "charts": 5,
+      "sources": [
+        "Data: TidyTuesday / R for Data Science community - ARTOMETRICS"
+      ],
+      "limit": "cannot tell you</h2> <p class=\"art-p\">Community-cleaned TidyTuesday snapshots are not live Wine Enthusiast APIs. Missing prices, title variants, and coverage limits apply. Critic points reflect the source's scoring pract"
+    },
+    {
+      "category": "culture",
+      "slug": "coffee",
+      "url": "https://artometrics.com/coffee",
+      "title": "COFFEE: Ethiopia Scores Highest on Coffee Quality—With Zero Starbucks Stores",
+      "section": "culture",
+      "art": "square-text",
+      "hero": "/images/content/articles/coffee/hero.png",
+      "datasets": [
+        "public/data/articles/coffee/charts",
+        "public/data/articles/coffee/coffee.csv",
+        "public/data/articles/coffee/data",
+        "articles/coffee/data/charts",
+        "articles/coffee/data/coffee.csv",
+        "articles/coffee/data/data",
+        "public/images/content/articles/coffee/banner-art.webp",
+        "public/images/content/articles/coffee/banner-text.webp",
+        "public/images/content/articles/coffee/charts",
+        "public/images/content/articles/coffee/cover.webp",
+        "public/images/content/articles/coffee/hero.png",
+        "public/images/content/articles/coffee/square-art.webp"
+      ],
+      "charts": 3,
+      "sources": [],
+      "limit": "cannot tell you</h2> <p class=\"art-p\">The CQI dataset reflects what Q Graders evaluate — not a random sample of all coffee produced. Farms that can afford evaluation tend to be larger or already tied into specialty chain"
+    },
+    {
+      "category": "culture",
+      "slug": "ramen",
+      "url": "https://artometrics.com/ramen",
+      "title": "RAMEN: Malaysia Leads Global Ramen Ratings by Half a Star",
+      "section": "culture",
+      "art": "square-text",
+      "hero": "/images/content/articles/ramen/hero.png",
+      "datasets": [
+        "public/data/articles/ramen/charts",
+        "public/data/articles/ramen/dataset.csv",
+        "articles/ramen/data/charts",
+        "articles/ramen/data/dataset.csv",
+        "public/images/content/articles/ramen/banner-art.webp",
+        "public/images/content/articles/ramen/banner-text.webp",
+        "public/images/content/articles/ramen/charts",
+        "public/images/content/articles/ramen/cover.webp",
+        "public/images/content/articles/ramen/hero.png",
+        "public/images/content/articles/ramen/square-art.webp",
+        "public/images/content/articles/ramen/square-text.webp"
+      ],
+      "charts": 5,
+      "sources": [
+        "Data: TidyTuesday / R for Data Science community - ARTOMETRICS"
+      ],
+      "limit": "cannot tell you</h2> <p class=\"art-p\">Community-cleaned TidyTuesday snapshots are not live APIs. Missing values, spelling variants, and brand-name duplicates apply. Stars are not sales, and country labels do not always i"
+    },
+    {
+      "category": "culture",
+      "slug": "pizza",
+      "url": "https://artometrics.com/pizza",
+      "title": "PIZZA: Two Economies in 10,000 Menu Rows",
+      "section": "culture",
+      "art": "existing-hero",
+      "hero": "/images/content/articles/pizza/hero.png",
+      "datasets": [
+        "public/data/articles/pizza/charts",
+        "public/data/articles/pizza/dataset.csv",
+        "articles/pizza/data/charts",
+        "articles/pizza/data/dataset.csv",
+        "public/images/content/articles/pizza/charts",
+        "public/images/content/articles/pizza/hero.png"
+      ],
+      "charts": 5,
+      "sources": [
+        "Data: TidyTuesday / R for Data Science community - ARTOMETRICS"
+      ],
+      "limit": "cannot tell you</h2> <p class=\"art-p\">Datafiniti restaurant scrapes are not audited menus. Zero price-range values may indicate missing data rather than free food. Name collisions and chain-versus-independent ambiguity p"
+    }
+  ],
+  "sherlock": {
+    "slug": "sherlock",
+    "charts": 5,
+    "sources": [
+      "Data: TidyTuesday / R for Data Science community - ARTOMETRICS"
+    ],
+    "limit": "cannot tell you</h2> <p class=\"art-p\">TidyTuesday snapshots are community-cleaned teaching datasets, not live literary APIs. Tokenization choices, spelling variants in titles, and week-of-export coverage limits apply. Wo",
+    "url": "https://artometrics.com/sherlock"
+  },
+  "gaps": [
+    "simpsons",
+    "readmitted",
+    "wastewater",
+    "pizza"
+  ]
+}

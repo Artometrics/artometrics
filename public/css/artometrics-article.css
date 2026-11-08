@@ -2196,4 +2196,37 @@ nav#TOC, #TOC, .sidebar-navigation { display: none !important; }
 .artometrics-article-body .art-chart-live .g-ytitle {
   font-family: "DM Mono", ui-monospace, monospace !important;
 }
+@media (max-width: 800px) {
+  .artometrics-article-body figure.art-chart {
+    overflow-x: auto;
+  }
+  .artometrics-article-body .art-chart-live,
+  .artometrics-article-body .art-chart-live--static {
+    aspect-ratio: auto;
+    height: auto;
+    overflow: visible !important;
+    min-height: 0;
+  }
+  .artometrics-article-body .art-chart-live.art-chart-has-heading .art-chart-fallback {
+    margin-top: 0 !important;
+    clip-path: none !important;
+  }
+  .artometrics-article-body .art-chart-fallback,
+  .artometrics-article-body .art-chart-live > img {
+    width: max(100%, 640px);
+    height: auto;
+    max-height: none;
+    object-fit: unset;
+  }
+  .artometrics-article-body .art-chart-live::after {
+    content: attr(data-source);
+    display: block;
+    width: 100%;
+    padding-top: 8px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #b7d0cb;
+    text-align: left;
+  }
+}
 

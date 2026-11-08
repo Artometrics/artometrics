@@ -357,8 +357,10 @@ const deskHome = readFileSync(join(ROOT, "site/components/DeskHome.astro"), "utf
 assert(deskHome.includes('getBlogPost("geopolitics")'), "the lead is the geopolitics report");
 assert(!deskHome.includes("All reports"), "the All reports heading is gone from the front page");
 assert(readFileSync(join(ROOT, "lib/site-nav.ts"), "utf8").includes('href: "/blog"'), "the report index stays in the menu");
-assert(deskHome.includes('["pixar", "anime", "franchise"]'), "Arts is a column of three reports");
-assert(!deskHome.includes('"steam"'), "Steam stays off the three-story sports column");
+assert(deskHome.includes('["dodgers", "padres", "celtics", "steam"]'), "Sports is four reports, with Steam last");
+assert(deskHome.includes('["pixar", "anime", "franchise", "simpsons"]'), "Arts is four reports");
+assert(deskHome.includes('["nuclear", "cetaceans", "readmitted", "wastewater"]'), "Science is four reports and skips Longevity");
+assert(deskHome.includes('["wine", "coffee", "ramen", "pizza"]'), "Culture is four reports");
 assert(!deskHome.includes('"longevity"'), "Longevity is not a homepage story");
 assert(deskHome.includes('"atlas"'), "Atlas stays a homepage story");
 const hosting = JSON.parse(readFileSync(join(ROOT, "firebase.json"), "utf8"));
@@ -383,13 +385,14 @@ assert(
 assert(!netlify.includes('from = "/atlas"\n'), "Netlify does not redirect the Atlas article to a topic");
 assert(netlify.includes('from = "/desks/atlas"'), "Netlify still redirects the old desk path");
 assert(readFileSync(join(ROOT, "src/content/blog/atlas.md"), "utf8").includes("slug: atlas"), "Atlas is a real article");
-assert(deskHome.includes('["dodgers", "padres", "celtics"]'), "Sports keeps Dodgers, Padres, and Celtics");
+assert(deskHome.includes('["dodgers", "padres", "celtics", "steam"]'), "Sports keeps Dodgers, Padres, Celtics, and Steam");
 assert(deskHome.includes("desk-column"), "stories are category columns");
-assert(deskHome.includes(">Week<"), "the period label is Week");
-assert(deskHome.includes(">Month<"), "the period label is Month");
-assert(deskHome.includes(">All time<"), "the period label is All time");
+assert(!deskHome.includes(">Week<"), "Week is not a homepage control");
+assert(!deskHome.includes(">Month<"), "Month is not a homepage control");
+assert(!deskHome.includes(">All time<"), "All time is not a homepage control");
+assert(!deskHome.includes("data-front-view"), "period switches are gone");
 assert(!deskHome.includes("Editorial selection"), "the editorial line is not on the page");
-assert(!deskHome.includes('["dodgers", "padres", "steam"]'), "Steam is not shown under Sports");
+assert(deskHome.includes("desk-column"), "each category is a boxed column");
 assert(!deskHome.includes("desk-dial"), "the nine-shortcut grid is gone from the home page");
 assert(!deskHome.includes("Home shortcuts"), "the phone shortcut nav is gone");
 for (const label of ["Magazine", "Podcast", "Library", "Editions"]) {
@@ -469,8 +472,9 @@ assert(!/UPSCALED[^\n]*native hi-res/i.test(assetManifest), "upscaled assets are
 assert(deskHome.includes("story-tile"), "front page uses story cover buttons");
 assert(!deskHome.includes("Hot"), "Hot is not a homepage control");
 assert(!deskHome.includes("Trending"), "Trending is not a homepage control");
-assert(deskHome.includes('data-front-view="week"'), "week view switch is present");
-assert((deskHome.match(/data-front-view=/g) || []).length === 3, "only three period buttons");
+assert(header.includes('id="close-menu"'), "Close is in the menu");
+assert(header.indexOf('id="close-menu"') < header.indexOf('id="nav-search"'), "Close comes before the search field");
+assert(header.indexOf('id="nav-search"') < header.indexOf('id="nav-clear"'), "Clear comes after the search field");
 assert(home.includes('footer="none"'), "the front page does not render the footer bumper");
 assert(reportPage.includes('footer="article"'), "report pages keep their footer");
 assert(header.includes('href="/about"'), "About stays in the menu");
@@ -508,7 +512,8 @@ assert(
     "279171ebcfd949c46068d54b8d0e9fc564194d05c1c9a2b921d060962a3c3d10",
   "pink halftone cover bytes match the supplied PNG",
 );
-assert(baseLayout.includes('review?.catalogId ?? "halftone"'), "pages without a review lock use the pink-purple A");
+assert(baseLayout.includes('data-logo-form="wordmark"'), "the header defaults to the full wordmark");
+assert(header.includes("wordmark-halftone.webp"), "the default wordmark is the pink-purple Artometrics");
 assert(baseLayout.includes("square-art.webp"), "search results can use report art without a baked title");
 assert(baseLayout.includes('review ? "noindex, nofollow"'), "logo review routes stay out of the index");
 const footer = readFileSync(join(ROOT, "site/components/Footer.astro"), "utf8");
