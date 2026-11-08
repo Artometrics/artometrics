@@ -1361,6 +1361,7 @@ html:has(.desk-home) { overflow-x: clip; }
     radial-gradient(rgba(243, 234, 215, 0.35) 0.6px, transparent 0.7px) 0 0 / 4px 4px,
     #07111f;
 }
+.desk-dial { display: none; }
 .desk-home__jumps {
   display: flex;
   flex-wrap: wrap;
@@ -1448,6 +1449,33 @@ html:has(.desk-home) { overflow-x: clip; }
   .desk-lead h1 { font-size: clamp(1.85rem, 9vw, 2.6rem); }
   .desk-lead img,
   .desk-lead__fallback { aspect-ratio: 16 / 9; }
+  .desk-home__jumps { display: none; }
+  .desk-dial {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin: 14px 0 8px;
+  }
+  .desk-dial a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 44px;
+    padding: 8px 4px;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+  }
+  .desk-dial a:hover { color: var(--ink); border-color: var(--pink); }
   .desk-cols { grid-template-columns: minmax(0, 1fr); }
   .desk-col { border-right: 0; border-top: 1px solid var(--line); }
   .desk-col:first-child { border-top: 0; }
@@ -1459,7 +1487,9 @@ html[data-theme="light"] .desk-lead__hit,
 html[data-theme="light"] .desk-lead__hit:hover,
 html[data-theme="light"] .desk-row,
 html[data-theme="light"] .desk-row:hover,
-html[data-theme="light"] .desk-home__jumps a {
+html[data-theme="light"] .desk-home__jumps a,
+html[data-theme="light"] .desk-dial a,
+html[data-theme="light"] .desk-dial a:hover {
   color: #14110e;
 }
 html[data-theme="light"] .desk-col h2 a,

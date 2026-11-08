@@ -1,10 +1,23 @@
 ---
 import { deckLine, formatDate, getBlogPost, sectionLabel } from "@/lib/content";
 
-/** Curated front page. Slugs are published reports; desks match their real tags. */
+/** Phone-only shortcuts. Real routes. Hidden on the desktop front page. */
+const shortcuts = [
+  { href: "/blog", label: "Reports", name: "Reports, all investigations" },
+  { href: "/search", label: "Search", name: "Search reports" },
+  { href: "/mag", label: "Magazine", name: "Magazine edition" },
+  { href: "/podcast", label: "Podcast", name: "Podcast interviews" },
+  { href: "/sources", label: "Sources", name: "Sources catalog" },
+  { href: "/datasets", label: "Datasets", name: "Dataset packs" },
+  { href: "/library", label: "Library", name: "Library and archives" },
+  { href: "/editions", label: "Editions", name: "Special editions" },
+  { href: "/topics", label: "Topics", name: "Topic desks" },
+];
+
+/** Curated front page. Steam is shown with Arts on this page. */
 const desks = [
-  { label: "Arts", href: "/topics/arts", slugs: ["pixar", "anime", "franchise"] },
-  { label: "Sports", href: "/topics/sports", slugs: ["dodgers", "padres", "steam"] },
+  { label: "Arts", href: "/topics/arts", slugs: ["pixar", "anime", "franchise", "steam"] },
+  { label: "Sports", href: "/topics/sports", slugs: ["dodgers", "padres"] },
   { label: "Culture", href: "/topics/culture", slugs: ["wine", "coffee", "ramen"] },
   { label: "Science", href: "/topics/science", slugs: ["nuclear", "cetaceans", "longevity"] },
 ];
@@ -37,6 +50,12 @@ const columns = desks.map((desk) => ({
       </a>
     </article>
   ) : null}
+
+  <nav class="desk-dial" aria-label="Home shortcuts">
+    {shortcuts.map((item) => (
+      <a href={item.href} aria-label={item.name}>{item.label}</a>
+    ))}
+  </nav>
 
   <p class="desk-home__jumps">
     <a href="/blog">All reports</a>
