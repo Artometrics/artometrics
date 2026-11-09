@@ -143,9 +143,13 @@ body.dash .site-footer__social-note {
 
 .preview-frame {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   padding: 16px 20px 32px;
   overflow-wrap: break-word;
+  overflow-x: clip;
 }
+html:has(body.dash) { overflow-x: clip; }
 
 .preview-scope,
 .preview-status,
@@ -207,8 +211,15 @@ body.dash .site-footer__social-note {
   font-family: var(--display);
   font-weight: 400;
   font-size: clamp(2rem, 6vw, 3.4rem);
-  line-height: 0.98;
+  line-height: 1.05;
   letter-spacing: -0.02em;
+}
+.preview-report h1 .report-kicker {
+  display: inline-block;
+  font-size: 1.95em;
+  line-height: 0.78;
+  margin: 0 0.08em 0 0;
+  vertical-align: baseline;
 }
 
 .preview-toolbar h2,

@@ -2230,3 +2230,102 @@ nav#TOC, #TOC, .sidebar-navigation { display: none !important; }
   }
 }
 
+/* Figure block: heading, plot, caption, and source share the article column. */
+.artometrics-article-body main.art-article-main > p,
+.artometrics-article-body .art-p {
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.artometrics-article-body figure.art-chart,
+.artometrics-article-body figure.art-exhibit {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 1.5rem 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  overflow: visible !important;
+  text-align: left !important;
+}
+.artometrics-article-body figure.art-chart:hover,
+.artometrics-article-body figure.art-exhibit:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+.artometrics-article-body .art-chart-live,
+.artometrics-article-body .art-chart-live--static {
+  width: 100% !important;
+  aspect-ratio: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+}
+.artometrics-article-body .art-chart-fallback,
+.artometrics-article-body .art-chart-live > img,
+.artometrics-article-body .art-chart-live.art-chart-has-heading .art-chart-fallback {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 0 !important;
+  object-fit: unset !important;
+  clip-path: none !important;
+}
+.artometrics-article-body figure.art-chart figcaption,
+.artometrics-article-body figure.art-chart figcaption.art-chart-caption.art-chart-caption--visible,
+.artometrics-article-body .art-chart-live::after {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  text-align: left !important;
+}
+.artometrics-article-body .table-scroll,
+.artometrics-article-body .art-table-wrapper {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin: 1.25rem 0 !important;
+  overflow-x: auto !important;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+}
+.artometrics-article-body .table-scroll::before,
+.artometrics-article-body .art-table-wrapper::before {
+  content: "Scroll sideways for more columns.";
+  display: block;
+  margin: 0 0 8px;
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8a8a8a;
+}
+@media (min-width: 900px) {
+  .artometrics-article-body .table-scroll::before,
+  .artometrics-article-body .art-table-wrapper::before {
+    content: none;
+  }
+}
+.artometrics-article-body .art-table {
+  width: max-content;
+  min-width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+}
+.artometrics-article-body .art-table th,
+.artometrics-article-body .art-table td {
+  white-space: nowrap;
+  padding: 8px 12px;
+  font-size: 15px;
+  line-height: 1.35;
+  text-align: left;
+  vertical-align: top;
+}
+

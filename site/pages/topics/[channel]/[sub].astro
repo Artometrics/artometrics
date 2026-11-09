@@ -1,0 +1,60 @@
+---
+import Base from "../../../layouts/Base.astro";
+import BannerCarousel from "../../../components/BannerCarousel.astro";
+import StoryTile from "../../../components/StoryTile.astro";
+import {
+  DOMAIN_META,
+  DOMAIN_SLUGS,
+  SUBDOMAIN_META,
+  type DomainSlug,
+  type SubdomainSlug,
+} from "@/data/sections";
+import { storySquare } from "@/lib/article-assets.mjs";
+import { getBlogPosts, primarySection, primarySubdomain } from "@/lib/content";
+
+export function getStaticPaths() {
+  const posts = getBlogPosts();
+  const paths = [];
+  for (const channel of DOMAIN_SLUGS) {
+    for (const sub of DOMAIN_META[channel].subdomains) {
+      const has = posts.some(
+        (post) => primarySection(post.tags) === channel && primarySubdomain(post.tags) === sub,
+      );
+      if (has) paths.push({ params: { channel, sub } });
+    }
+  }
+  return paths;
+}
+
+const channel = Astro.params.channel as DomainSlug;
+const sub = Astro.params.sub as SubdomainSlug;
+const meta = DOMAIN_META[channel];
+const subMeta = SUBDOMAIN_META[sub];
+const posts = getBlogPosts().filter(
+  (post) => primarySection(post.tags) === channel && primarySubdomain(post.tags) === sub,
+);
+
+function tileSrc(slug: string, hero?: string) {
+  return storySquare(slug, hero);
+}
+---
+
+<Base title={subMeta?.title || sub} description={meta.description} path={`/topics/${channel}/${sub}`}>
+  <div class="desk-home">
+    <p class="desk-lead__kicker"><a href={`/topics/${channel}`}>{meta.title}</a></p>
+    <h1 class="desk-page-title">{subMeta?.title || sub}</h1>
+    {posts.length ? <BannerCarousel posts={posts.slice(0, Math.min(5, posts.length))} label={`${subMeta?.title || sub} reports`} /> : null}
+    {posts.length ? (
+      <div class="story-grid">
+        {posts.map((post) => {
+          const art = tileSrc(post.slug, post.heroImage);
+          return (
+            <StoryTile post={post} art={art} />
+          );
+        })}
+      </div>
+    ) : (
+      <p>No reports filed in {subMeta?.title || sub} yet.</p>
+    )}
+  </div>
+</Base>

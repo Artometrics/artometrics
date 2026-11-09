@@ -1,0 +1,43 @@
+---
+import StoryTile from "./StoryTile.astro";
+import { storySquare } from "@/lib/article-assets.mjs";
+import type { BlogPost } from "@/lib/content";
+
+interface Group {
+  label: string;
+  href?: string;
+  posts: BlogPost[];
+}
+
+interface Props {
+  groups: Group[];
+  empty?: string;
+}
+
+const { groups, empty = "No reports filed here yet." } = Astro.props;
+const filled = groups.filter((group) => group.posts.length);
+
+function tileSrc(post: BlogPost) {
+  return storySquare(post.slug, post.heroImage);
+}
+---
+
+{filled.length ? (
+  filled.map((group) => (
+    <section class="desk-section">
+      <h2>{group.href ? <a href={group.href}>{group.label}</a> : group.label}</h2>
+      <div class="story-grid">
+        {group.posts.map((post) => {
+          const art = tileSrc(post);
+          return art.src ? (
+            <StoryTile post={post} art={art} />
+          ) : (
+            <a class="story-tile" href={`/${post.slug}`}>{post.title}</a>
+          );
+        })}
+      </div>
+    </section>
+  ))
+) : (
+  <p>{empty}</p>
+)}

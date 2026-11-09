@@ -1,0 +1,330 @@
+{
+  "batch": "batch01",
+  "status": "batch1_core_24_qa_complete",
+  "canonical_total": 103,
+  "articles": [
+    "pixar",
+    "anime",
+    "franchise",
+    "simpsons",
+    "dodgers",
+    "padres"
+  ],
+  "outputs": 24,
+  "all_qa_pass": true,
+  "qa_counts": {
+    "qa_pass": 24
+  },
+  "records": [
+    {
+      "slug": "pixar",
+      "role": "square-plain",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/squares/pixar-square-plain.png",
+      "master_sha256": "76a09f916caf6eb58e9d58e6be271b6b2c0951f0b2ffc76c65d8e2814373cb57",
+      "web": "/workspace/artometrics-all-article-art/web/squares/pixar-square-plain.webp",
+      "web_sha256": "c5d492c856421ddc6f0fcf14650d2cde052dc93ee9f73d70dbb929e48c916b8c",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/pixar/square-plain.webp",
+      "provenance_method": "GenerateImage_new",
+      "qa_note": "Visual: zero letters/logos; lamp/beam identity; upper dark band open for HTML"
+    },
+    {
+      "slug": "pixar",
+      "role": "cover-title",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/covers/pixar-cover-title.png",
+      "master_sha256": "7cdbad8cdbe8d5847495015fc2405565ce44fde88d983bb0cad715df817da0cc",
+      "web": "/workspace/artometrics-all-article-art/web/covers/pixar-cover-title.webp",
+      "web_sha256": "2f05d17a22479786befd91bce69ba4c92f5a2a05352126eb625478f1d94fdfd4",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/pixar/cover-title.webp",
+      "provenance_method": "derived_from_new_square_plus_deterministic_type",
+      "qa_note": "Visual: Artometrics+PIXAR+exact headline legible; mustard border intact; art lower half"
+    },
+    {
+      "slug": "anime",
+      "role": "square-plain",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/squares/anime-square-plain.png",
+      "master_sha256": "ffd3291f3eeae455ccb888081c8ca488e8262b6a24e2f9c46ff65e6ae921e06a",
+      "web": "/workspace/artometrics-all-article-art/web/squares/anime-square-plain.webp",
+      "web_sha256": "de346da7acee746f35e9c46251be9963ccd76e2f852eb554452a33da9253ac07",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/anime/square-plain.webp",
+      "provenance_method": "GenerateImage_new",
+      "qa_note": "Visual: zero letters/logos; filmstrip/city identity; sky headroom OK"
+    },
+    {
+      "slug": "anime",
+      "role": "cover-title",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/covers/anime-cover-title.png",
+      "master_sha256": "96a97972e9b31839b9da22aa7c144c2ae38b27acffe91875ed6866105c0abf0c",
+      "web": "/workspace/artometrics-all-article-art/web/covers/anime-cover-title.webp",
+      "web_sha256": "cf61bb607baa76411d84374515cbd35befa86b6e9847a327d16a774c42003d06",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/anime/cover-title.webp",
+      "provenance_method": "derived_from_new_square_plus_deterministic_type",
+      "qa_note": "Visual: Artometrics+ANIME+exact headline legible; red border; art not overlapping type"
+    },
+    {
+      "slug": "franchise",
+      "role": "square-plain",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/squares/franchise-square-plain.png",
+      "master_sha256": "e5f49dcbc4177091ae98b9d1a9c80a0d6919bf40d86f5415ade19df40e568fa0",
+      "web": "/workspace/artometrics-all-article-art/web/squares/franchise-square-plain.webp",
+      "web_sha256": "9f3d99d1163575323b71065a18c96727c133805dadc8c012cb8686f4a8244679",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/franchise/square-plain.webp",
+      "provenance_method": "GenerateImage_new",
+      "qa_note": "Visual: zero letters/logos; bi-color merch dump; tags blank"
+    },
+    {
+      "slug": "franchise",
+      "role": "cover-title",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/covers/franchise-cover-title.png",
+      "master_sha256": "37da14ab46912494329be451ff783263461b62b592ab7028ab81eccf656a907c",
+      "web": "/workspace/artometrics-all-article-art/web/covers/franchise-cover-title.webp",
+      "web_sha256": "d2d4b1b1d5371a9b1bbd364c9a5e0299c85bb9250ea10b0694c3ce445e5c4399",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/franchise/cover-title.webp",
+      "provenance_method": "derived_from_new_square_plus_deterministic_type",
+      "qa_note": "Visual: Artometrics+FRANCHISE+exact headline legible; cyan border; merch lower"
+    },
+    {
+      "slug": "simpsons",
+      "role": "square-plain",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/squares/simpsons-square-plain.png",
+      "master_sha256": "8bdada67406bcef696911deaf48707a1ce47448d10f75930a79c20f9fe17bc83",
+      "web": "/workspace/artometrics-all-article-art/web/squares/simpsons-square-plain.webp",
+      "web_sha256": "67d20d6145e43626b9d5b2e17f2f5193608c914a8f91ed5db4bdc6a6e3b2b3a1",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/simpsons/square-plain.webp",
+      "provenance_method": "GenerateImage_new",
+      "qa_note": "Visual: zero letters/logos; badges blank; scribbles non-letter; open V center"
+    },
+    {
+      "slug": "simpsons",
+      "role": "cover-title",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/covers/simpsons-cover-title.png",
+      "master_sha256": "3d9829462ee6f9e24423b623f41bf2b7b0a8562592d5b506a4ee00e19392f0ec",
+      "web": "/workspace/artometrics-all-article-art/web/covers/simpsons-cover-title.webp",
+      "web_sha256": "c7cbb469797f98a061990eb1a9ed7cc09d63583a3fc37a2d43f3adcda0d3d8da",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/simpsons/cover-title.webp",
+      "provenance_method": "derived_from_new_square_plus_deterministic_type",
+      "qa_note": "Visual: Artometrics+SIMPSONS+exact headline legible; mustard border"
+    },
+    {
+      "slug": "dodgers",
+      "role": "square-plain",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/squares/dodgers-square-plain.png",
+      "master_sha256": "1510b3f89521c6414f37b192d9b0509aa488c86ef14c21228e1bc4666f9dfaeb",
+      "web": "/workspace/artometrics-all-article-art/web/squares/dodgers-square-plain.webp",
+      "web_sha256": "167590c34a4bac32094fbe96a4c3630eb9ac2b52d74cc53751364b7996380fc8",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/dodgers/square-plain.webp",
+      "provenance_method": "GenerateImage_new",
+      "qa_note": "Visual: zero letters/logos; baseball machine; sky headroom OK"
+    },
+    {
+      "slug": "dodgers",
+      "role": "cover-title",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/covers/dodgers-cover-title.png",
+      "master_sha256": "bc742026861d0e4541517bc4b793db2da5f49dd9d84194420d47d9d1d76144e5",
+      "web": "/workspace/artometrics-all-article-art/web/covers/dodgers-cover-title.webp",
+      "web_sha256": "ae3b267d0ec005c190b2083f9553e73c676fed6a6e2bd748e043a6d4e25eefe5",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/dodgers/cover-title.webp",
+      "provenance_method": "derived_from_new_square_plus_deterministic_type",
+      "qa_note": "Visual: Artometrics+DODGERS+exact headline legible; red border"
+    },
+    {
+      "slug": "padres",
+      "role": "square-plain",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/squares/padres-square-plain.png",
+      "master_sha256": "6c862f312315be86fea1c2fa586b1d0a4f7952293f03c88cc28bfd0dedee0a5e",
+      "web": "/workspace/artometrics-all-article-art/web/squares/padres-square-plain.webp",
+      "web_sha256": "d429896c5a6426e45d69ae3bd719b61a7df8401f2ee7d2566033c65a85068f9f",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/padres/square-plain.webp",
+      "provenance_method": "GenerateImage_new",
+      "qa_note": "Visual: zero letters/logos; moon clear of center title band"
+    },
+    {
+      "slug": "padres",
+      "role": "cover-title",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/covers/padres-cover-title.png",
+      "master_sha256": "4409cc65d86f937d6913d50f2cc611014ca1283325e61db3829f5ab7f108bc0b",
+      "web": "/workspace/artometrics-all-article-art/web/covers/padres-cover-title.webp",
+      "web_sha256": "5c8ea8ece8c258ca99898ffec58da5cf1b2bebbb1fc4a7191a799f649661fcf5",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/padres/cover-title.webp",
+      "provenance_method": "derived_from_new_square_plus_deterministic_type",
+      "qa_note": "Visual: Artometrics+PADRES+exact headline legible; gold border; moon OK"
+    },
+    {
+      "slug": "pixar",
+      "role": "banner-art",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/banners/pixar-banner-art.png",
+      "master_sha256": "d22008f5aac62ffc5cb632dbd2e81ddf072e5bf81476e2284bb0f5449a27f8d1",
+      "web": "/workspace/artometrics-all-article-art/web/banners/pixar-banner-art.webp",
+      "web_sha256": "0a2e47ce4624b81306499af04babfce8d4181fee7f3b1b5445bedd2b48c564b0",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/pixar/banner-art.webp",
+      "provenance_method": "GenerateImage_new",
+      "qa_note": "Visual: wide intentional 16:9; zero letters; top band open"
+    },
+    {
+      "slug": "pixar",
+      "role": "banner-text",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/banners/pixar-banner-text.png",
+      "master_sha256": "d4f6ec5f845b4735667c60eb3266be6025b237b282dd7acc73117db72ecc5454",
+      "web": "/workspace/artometrics-all-article-art/web/banners/pixar-banner-text.webp",
+      "web_sha256": "711682fd77cc4145f05816aa05e851c2d7248320cf2d87675cef4c403698a274",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/pixar/banner-text.webp",
+      "provenance_method": "derived_from_new_banner_art_plus_deterministic_type",
+      "qa_note": "Visual: PIXAR+exact headline crisp; masthead; type clears art"
+    },
+    {
+      "slug": "anime",
+      "role": "banner-art",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/banners/anime-banner-art.png",
+      "master_sha256": "3d3ef6bfb7581f3168ccdb559377cff30e7e410f44b4482421f9917ed4426ed8",
+      "web": "/workspace/artometrics-all-article-art/web/banners/anime-banner-art.webp",
+      "web_sha256": "3a60ea8c731acb8338a1cbd0293c51c371878e7a4e6903a337280d0a22445c63",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/anime/banner-art.webp",
+      "provenance_method": "GenerateImage_new",
+      "qa_note": "Visual: wide intentional; zero letters; sky crop-safe"
+    },
+    {
+      "slug": "anime",
+      "role": "banner-text",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/banners/anime-banner-text.png",
+      "master_sha256": "17e9a8b5718188ad10e9650af35560f19779c03e6d485bb95086884d885c1a73",
+      "web": "/workspace/artometrics-all-article-art/web/banners/anime-banner-text.webp",
+      "web_sha256": "b4687518615e4fb3626c64886016bf8c58f5b2c9aaa8a48d2051629467f8c384",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/anime/banner-text.webp",
+      "provenance_method": "derived_from_new_banner_art_plus_deterministic_type",
+      "qa_note": "Visual: ANIME+exact headline crisp on light sky (dark type); masthead readable"
+    },
+    {
+      "slug": "franchise",
+      "role": "banner-art",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/banners/franchise-banner-art.png",
+      "master_sha256": "65e238bf931e493985da10b011a24f3ef55e186815f0298091ee6a7355fd4b99",
+      "web": "/workspace/artometrics-all-article-art/web/banners/franchise-banner-art.webp",
+      "web_sha256": "e163da11ee8db6454206aea92d2e1ecb1757fa7c272e5f85943ed3b7d8bff8d8",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/franchise/banner-art.webp",
+      "provenance_method": "GenerateImage_new",
+      "qa_note": "Visual: wide intentional; zero letters; upper dark band open"
+    },
+    {
+      "slug": "franchise",
+      "role": "banner-text",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/banners/franchise-banner-text.png",
+      "master_sha256": "6139cb77f8f7c4289e4587b0324f47e7da31b68eb602ee4c06acad1cd02e3d10",
+      "web": "/workspace/artometrics-all-article-art/web/banners/franchise-banner-text.webp",
+      "web_sha256": "8dc62550261deb90a38b84eeb064fc21227f77b54f22c564936a930475ceb894",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/franchise/banner-text.webp",
+      "provenance_method": "derived_from_new_banner_art_plus_deterministic_type",
+      "qa_note": "Visual: FRANCHISE+exact headline crisp; masthead"
+    },
+    {
+      "slug": "simpsons",
+      "role": "banner-art",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/banners/simpsons-banner-art.png",
+      "master_sha256": "18726cae857b57f5e738adcdaefbd9960f6acbe06c22d6ec4ddcefc2b61b4d5f",
+      "web": "/workspace/artometrics-all-article-art/web/banners/simpsons-banner-art.webp",
+      "web_sha256": "deb196e6f018e4045fc671e3d02e4899580054a26466a609dcf11ad9a1790622",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/simpsons/banner-art.webp",
+      "provenance_method": "GenerateImage_new",
+      "qa_note": "Visual: wide intentional; zero letters; central V open"
+    },
+    {
+      "slug": "simpsons",
+      "role": "banner-text",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/banners/simpsons-banner-text.png",
+      "master_sha256": "10ae3e9b73ea9ada3ad8b12b334246e631471b8ff4672af59cd2ba56dd33219a",
+      "web": "/workspace/artometrics-all-article-art/web/banners/simpsons-banner-text.webp",
+      "web_sha256": "0c608fdb96f365fb7bb4ae19b90cfdc93b0080aa15117a503abf5ace4a047bcf",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/simpsons/banner-text.webp",
+      "provenance_method": "derived_from_new_banner_art_plus_deterministic_type",
+      "qa_note": "Visual: SIMPSONS+exact headline crisp; dark type on light center"
+    },
+    {
+      "slug": "dodgers",
+      "role": "banner-art",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/banners/dodgers-banner-art.png",
+      "master_sha256": "9d84093058292bda4e09327d209b2ae15e0d45eac7766dd68419d71bf363d735",
+      "web": "/workspace/artometrics-all-article-art/web/banners/dodgers-banner-art.webp",
+      "web_sha256": "528c09ea2be11c19b41a2762604dbee8232a98c96f58947d50bd121d9f69284c",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/dodgers/banner-art.webp",
+      "provenance_method": "GenerateImage_new",
+      "qa_note": "Visual: wide intentional; zero letters; side margins crop-safe"
+    },
+    {
+      "slug": "dodgers",
+      "role": "banner-text",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/banners/dodgers-banner-text.png",
+      "master_sha256": "e6a5704bee2f00cc8c76aa78bf57d357390041b36d6528985d8b8576d969e867",
+      "web": "/workspace/artometrics-all-article-art/web/banners/dodgers-banner-text.webp",
+      "web_sha256": "0838848b8fb407e25dc7569136d659071ae76ac160e1a829f55f6dd91086b9ea",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/dodgers/banner-text.webp",
+      "provenance_method": "derived_from_new_banner_art_plus_deterministic_type",
+      "qa_note": "Visual: DODGERS+exact headline crisp"
+    },
+    {
+      "slug": "padres",
+      "role": "banner-art",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/banners/padres-banner-art.png",
+      "master_sha256": "77cc130c7d6a8350be146f75e4faa5814b5143862202cc85f713c302d5746a62",
+      "web": "/workspace/artometrics-all-article-art/web/banners/padres-banner-art.webp",
+      "web_sha256": "ce70ab7294b0d37439e051af5823539ad3089d544fce98fe2c549bd5d2451ae3",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/padres/banner-art.webp",
+      "provenance_method": "GenerateImage_new",
+      "qa_note": "Visual: wide intentional; zero letters; moon left; title band open"
+    },
+    {
+      "slug": "padres",
+      "role": "banner-text",
+      "status": "qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/banners/padres-banner-text.png",
+      "master_sha256": "7f485480700d23cef6c18a40f3e3abd31a1d9dc20a85d9185c29f322926dccbc",
+      "web": "/workspace/artometrics-all-article-art/web/banners/padres-banner-text.webp",
+      "web_sha256": "7efe0f9a2888b9b869af790872099002485d275fe0b608f443d6dc187739ef93",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/padres/banner-text.webp",
+      "provenance_method": "derived_from_new_banner_art_plus_deterministic_type",
+      "qa_note": "Visual: PADRES+exact headline crisp"
+    }
+  ],
+  "checkpoint_path": "/workspace/artometrics-all-article-art/batches/batch01/manifest.json",
+  "handoff_zip": "/workspace/artometrics-all-article-art/handoff/batch01-core-web.zip",
+  "next": {
+    "derivatives_batch1": [
+      "wallpaper-iphone-portrait",
+      "wallpaper-mac-landscape",
+      "sticker-transparent"
+    ],
+    "batch2_core": [
+      "celtics",
+      "steam",
+      "nuclear",
+      "cetaceans",
+      "readmitted",
+      "wastewater"
+    ]
+  },
+  "notes": [
+    "No live/repo changes",
+    "Prior report-assets square-art.webp referenced only; new site set is square-plain/cover-title/banner-*",
+    "Covers/banner-text type is deterministic PIL, not GenerateImage lettering"
+  ]
+}
