@@ -1,6 +1,7 @@
 ---
 import Base from "../../../layouts/Base.astro";
 import BannerCarousel from "../../../components/BannerCarousel.astro";
+import StoryTile from "../../../components/StoryTile.astro";
 import {
   DOMAIN_META,
   DOMAIN_SLUGS,
@@ -48,10 +49,7 @@ function tileSrc(slug: string, hero?: string) {
         {posts.map((post) => {
           const art = tileSrc(post.slug, post.heroImage);
           return (
-            <a class="story-tile" href={`/${post.slug}`} data-text-free={art.htmlTitle ? "true" : "false"}>
-              <img src={art.src} alt={art.htmlTitle ? "" : post.title} width="800" height="800" />
-              {art.htmlTitle ? <span class="story-tile__title">{post.title}</span> : null}
-            </a>
+            <StoryTile post={post} art={art} />
           );
         })}
       </div>

@@ -1,7 +1,8 @@
 ---
 import { existsSync } from "node:fs";
 import { join } from "node:path";
-import { deckLine, formatDate, sectionLabel, type BlogPost } from "@/lib/content";
+import { magazineLines } from "@/lib/article-assets.mjs";
+import type { BlogPost } from "@/lib/content";
 
 interface Props {
   posts: BlogPost[];
@@ -18,32 +19,33 @@ function bannerSrc(post: BlogPost) {
   if (existsSync(file)) return `/images/content/articles/${post.slug}/banner-art.webp`;
   return post.heroImage || "";
 }
-function bannerText(post: BlogPost) {
-  const file = join(process.cwd(), "public/images/content/articles", post.slug, "banner-text.webp");
-  if (existsSync(file)) return `/images/content/articles/${post.slug}/banner-text.webp`;
-  return "";
-}
 
 const slides = posts
-  .map((post) => ({ post, src: bannerSrc(post), textHref: bannerText(post) }))
+  .map((post) => ({ post, src: bannerSrc(post), lines: magazineLines(post.title) }))
   .filter((slide) => slide.src);
 ---
 
 {slides.length ? (
   <section class="banner-carousel" data-banner-carousel aria-roledescription="carousel" aria-label={label}>
     <div class="banner-carousel__viewport">
-      {slides.map(({ post, src, textHref }, index) => (
+      {slides.map(({ post, src, lines }, index) => (
         <article class="desk-lead banner-carousel__slide" data-banner-slide hidden={index > 0}>
           <a class="desk-lead__hit" href={hrefFor(post)}>
             <img src={src} alt="" width="1600" height="900" />
             <div class="desk-lead__copy">
-              <p class="desk-lead__kicker">{sectionLabel(post.tags, post.subject) || "Report"}</p>
-              {pageHeading && index === 0 ? <h1>{post.title}</h1> : <p class="banner-carousel__heading">{post.title}</p>}
-              <p class="desk-lead__dek">{deckLine(post.description, 18)}</p>
-              {post.pubDate ? <p class="desk-lead__meta">{formatDate(post.pubDate)}</p> : null}
+              {pageHeading && index === 0 ? (
+                <h1 class:list={["banner-carousel__word", { "banner-carousel__word--sentence": lines.word.includes(" ") }]}>
+                  <span class="banner-carousel__kicker">{lines.word}</span>
+                  {lines.sub ? <span class="banner-carousel__sub">{lines.sub}</span> : null}
+                </h1>
+              ) : (
+                <p class:list={["banner-carousel__word", { "banner-carousel__word--sentence": lines.word.includes(" ") }]}>
+                  <span class="banner-carousel__kicker">{lines.word}</span>
+                  {lines.sub ? <span class="banner-carousel__sub">{lines.sub}</span> : null}
+                </p>
+              )}
             </div>
           </a>
-          {textHref ? <a class="banner-carousel__download" href={textHref} download>Banner with title</a> : null}
         </article>
       ))}
     </div>

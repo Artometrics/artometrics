@@ -1,4 +1,5 @@
 ---
+import StoryTile from "./StoryTile.astro";
 import { storySquare } from "@/lib/article-assets.mjs";
 import type { BlogPost } from "@/lib/content";
 
@@ -29,10 +30,7 @@ function tileSrc(post: BlogPost) {
         {group.posts.map((post) => {
           const art = tileSrc(post);
           return art.src ? (
-            <a class="story-tile" href={`/${post.slug}`} data-text-free={art.htmlTitle ? "true" : "false"}>
-              <img src={art.src} alt={art.htmlTitle ? "" : post.title} width="800" height="800" />
-              {art.htmlTitle ? <span class="story-tile__title">{post.title}</span> : null}
-            </a>
+            <StoryTile post={post} art={art} />
           ) : (
             <a class="story-tile" href={`/${post.slug}`}>{post.title}</a>
           );

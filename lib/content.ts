@@ -1,3 +1,4 @@
+import { magazineLines } from "@/lib/article-assets.mjs";
 import blogData from "@/src/generated/blog.json";
 import podcastData from "@/src/generated/podcast.json";
 import authorsData from "@/src/generated/authors.json";
@@ -24,14 +25,11 @@ export function deckLine(description: string, maxWords = 18): string {
   return /[.!?]$/.test(line) ? line : `${line.replace(/[.!?]+$/, "")}.`;
 }
 
-/** Split "SLUG: subtitle" report titles for hero styling (red slug + blue deck). */
+/** Split "SLUG: subtitle" report titles. Same split as magazineLines. */
 export function splitReportHeadline(title: string): { slug: string; subtitle: string } | null {
-  const idx = title.indexOf(":");
-  if (idx === -1) return null;
-  const slug = title.slice(0, idx).trim();
-  const subtitle = title.slice(idx + 1).trim();
-  if (!slug || !subtitle) return null;
-  return { slug, subtitle };
+  const lines = magazineLines(title);
+  if (!lines.word || !lines.sub) return null;
+  return { slug: lines.word, subtitle: lines.sub };
 }
 
 /** Acronyms and stylized names that title case would flatten. */

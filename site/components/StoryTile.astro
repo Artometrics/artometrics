@@ -1,0 +1,22 @@
+---
+import { magazineLines } from "@/lib/article-assets.mjs";
+import type { BlogPost } from "@/lib/content";
+
+interface Props {
+  post: BlogPost;
+  art: { src: string; htmlTitle: boolean };
+}
+
+const { post, art } = Astro.props;
+const lines = magazineLines(post.title);
+---
+
+<a class="story-tile" href={`/${post.slug}`} data-text-free={art.htmlTitle ? "true" : "false"}>
+  <img src={art.src} alt={art.htmlTitle ? "" : post.title} width="800" height="800" />
+  {art.htmlTitle ? (
+    <span class="story-tile__title">
+      <span class="story-tile__word">{lines.word}</span>
+      {lines.sub ? <span class="story-tile__sub">{lines.sub}</span> : null}
+    </span>
+  ) : null}
+</a>

@@ -1,5 +1,6 @@
 ---
 import BannerCarousel from "./BannerCarousel.astro";
+import StoryTile from "./StoryTile.astro";
 import { storySquare } from "@/lib/article-assets.mjs";
 import { getBlogPost } from "@/lib/content";
 
@@ -44,10 +45,7 @@ const columns = desks.map((desk) => ({
       <h2 id={`desk-${desk.label}`}><a href={desk.href}>{desk.label}</a></h2>
       <div class="story-grid">
         {desk.stories.map(({ post, art }) => (
-          <a class="story-tile" href={`/${post.slug}`} data-text-free={art.htmlTitle ? "true" : "false"}>
-            <img src={art.src} alt={art.htmlTitle ? "" : post.title} width="800" height="800" />
-            {art.htmlTitle ? <span class="story-tile__title">{post.title}</span> : null}
-          </a>
+          <StoryTile post={post} art={art} />
         ))}
       </div>
     </section>
