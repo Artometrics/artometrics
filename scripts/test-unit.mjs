@@ -390,7 +390,9 @@ assert(deskHome.includes("storySquare"), "story tiles use the text-free square o
 assert(deskHome.includes("htmlTitle"), "a text-free square can carry an HTML title");
 const assets = readFileSync(join(ROOT, "lib/article-assets.mjs"), "utf8");
 assert(assets.includes("square-plain.webp"), "the incoming text-free square has a dedicated filename");
-const { storySquare, coverSrc } = await import("../lib/article-assets.mjs");
+const { storySquare, coverSrc, artworkDownloads } = await import("../lib/article-assets.mjs");
+assert(artworkDownloads("pixar").some((item) => item.label.includes("Not a WhatsApp")), "sticker downloads say they are not a messaging pack");
+assert(artworkDownloads("celtics").length === 0, "articles outside batch 1 have no new artwork downloads");
 assert(storySquare("pixar", "").htmlTitle === true, "Pixar uses the text-free square and an HTML title");
 assert(storySquare("pixar", "").src.endsWith("square-plain.webp"), "Pixar square is the plain file");
 assert(storySquare("celtics", "/images/content/articles/celtics/hero.png").htmlTitle === false, "Celtics keeps its text-bearing square");

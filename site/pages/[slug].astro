@@ -15,6 +15,7 @@ import downloads from "@/src/generated/downloads.json";
 import { existsSync } from "node:fs";
 import { readingMinutes, withStaticCharts } from "../lib/static-charts";
 import ArtBarChart from "../components/preview/ArtBarChart.astro";
+import { artworkDownloads } from "@/lib/article-assets.mjs";
 import { previewFiles } from "../lib/preview-reports";
 
 export function getStaticPaths() {
@@ -46,6 +47,7 @@ const files = [
   ...previewFiles(post.slug),
   audioFile && post.audioSrc && !pack?.audio ? { label: "Narration", href: post.audioSrc } : null,
 ].filter((file): file is { label: string; href: string } => Boolean(file));
+const artwork = artworkDownloads(post.slug);
 const related = getRelatedPosts(post.slug, 3);
 const faq = (post.faq || []) as { question: string; answer: string }[];
 const image = post.heroImage || "/images/brand/og-default.png";
@@ -135,6 +137,13 @@ const jsonLd = [
           <ul class="preview-files">
             {files.map((file) => (
               <li><a href={file.href}>{file.label}</a></li>
+            ))}
+          </ul>
+        ) : null}
+        {artwork.length ? (
+          <ul class="preview-files" aria-label="Artwork downloads">
+            {artwork.map((file) => (
+              <li><a href={file.href} download>{file.label}</a></li>
             ))}
           </ul>
         ) : null}

@@ -1,6 +1,6 @@
 {
   "batch": "batch01",
-  "status": "core_complete_spot_qa_pending",
+  "status": "batch1_core_24_qa_complete",
   "completed_at_local": "2026-11-08 America/Los_Angeles",
   "articles": 6,
   "slugs": [
@@ -35,7 +35,7 @@
     "banner-text"
   ],
   "expected_core_total": 24,
-  "derivatives_status": "not_started (wallpaper-iphone, wallpaper-mac, sticker planned after base spot QA)",
+  "derivatives_status": "batch1_wallpapers_12_and_stickers_12_exported",
   "site_contract_root": "/workspace/artometrics-all-article-art/site-contract",
   "site_contract_paths": {
     "square": "site-contract/{slug}/square-plain.webp",
@@ -112,12 +112,18 @@
         1024
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/pixar-square-art-v1.jpg",
-      "notes": "NO TEXT; for centered HTML overlay; GenerateImage 1:1"
+      "notes": "NO TEXT; for centered HTML overlay; GenerateImage 1:1",
+      "qa_note": "Visual: zero letters/logos; lamp/beam identity; upper dark band open for HTML",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "GenerateImage_new",
+        "note": "Newly generated 1:1 via sanctioned GenerateImage with approved refs; NOT reused prior square-art.webp originals"
+      }
     },
     {
       "slug": "pixar",
       "role": "cover-title",
-      "status": "exported_awaiting_spot_qa",
+      "status": "qa_pass",
       "title": "PIXAR: Pixar's Critic Scores Broke Only Twice\u2014Cars 2 and Lightyear",
       "topic": "arts",
       "master": "/workspace/artometrics-all-article-art/masters/covers/pixar-cover-title.png",
@@ -134,7 +140,13 @@
         1200
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/pixar-square-art-v1.jpg",
-      "notes": "Portrait cover: square art extended (not squashed) + Anton/Oswald deterministic type; exact article title"
+      "notes": "Portrait cover: square art extended (not squashed) + Anton/Oswald deterministic type; exact article title",
+      "qa_note": "Visual: Artometrics+PIXAR+exact headline legible; mustard border intact; art lower half",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "derived_from_new_square_plus_deterministic_type",
+        "note": "Portrait composed by extending newly generated square-plain (not squashed) + Chomsky/Anton/Oswald overlay with exact canonical title; cover bitmap art not a separate GenerateImage"
+      }
     },
     {
       "slug": "anime",
@@ -156,12 +168,18 @@
         1024
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/anime-square-art-v1.jpg",
-      "notes": "NO TEXT; for centered HTML overlay; GenerateImage 1:1"
+      "notes": "NO TEXT; for centered HTML overlay; GenerateImage 1:1",
+      "qa_note": "Visual: zero letters/logos; filmstrip/city identity; sky headroom OK",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "GenerateImage_new",
+        "note": "Newly generated 1:1 via sanctioned GenerateImage with approved refs; NOT reused prior square-art.webp originals"
+      }
     },
     {
       "slug": "anime",
       "role": "cover-title",
-      "status": "exported_awaiting_spot_qa",
+      "status": "qa_pass",
       "title": "ANIME: Source Sets the Audience Floor",
       "topic": "arts",
       "master": "/workspace/artometrics-all-article-art/masters/covers/anime-cover-title.png",
@@ -178,7 +196,13 @@
         1200
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/anime-square-art-v1.jpg",
-      "notes": "Portrait cover: square art extended (not squashed) + Anton/Oswald deterministic type; exact article title"
+      "notes": "Portrait cover: square art extended (not squashed) + Anton/Oswald deterministic type; exact article title",
+      "qa_note": "Visual: Artometrics+ANIME+exact headline legible; red border; art not overlapping type",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "derived_from_new_square_plus_deterministic_type",
+        "note": "Portrait composed by extending newly generated square-plain (not squashed) + Chomsky/Anton/Oswald overlay with exact canonical title; cover bitmap art not a separate GenerateImage"
+      }
     },
     {
       "slug": "franchise",
@@ -200,12 +224,18 @@
         1024
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/franchise-square-art-v1.jpg",
-      "notes": "NO TEXT; for centered HTML overlay; GenerateImage 1:1"
+      "notes": "NO TEXT; for centered HTML overlay; GenerateImage 1:1",
+      "qa_note": "Visual: zero letters/logos; bi-color merch dump; tags blank",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "GenerateImage_new",
+        "note": "Newly generated 1:1 via sanctioned GenerateImage with approved refs; NOT reused prior square-art.webp originals"
+      }
     },
     {
       "slug": "franchise",
       "role": "cover-title",
-      "status": "exported_awaiting_spot_qa",
+      "status": "qa_pass",
       "title": "FRANCHISE: Merchandise Owns the Ledger",
       "topic": "arts",
       "master": "/workspace/artometrics-all-article-art/masters/covers/franchise-cover-title.png",
@@ -222,7 +252,13 @@
         1200
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/franchise-square-art-v1.jpg",
-      "notes": "Portrait cover: square art extended (not squashed) + Anton/Oswald deterministic type; exact article title"
+      "notes": "Portrait cover: square art extended (not squashed) + Anton/Oswald deterministic type; exact article title",
+      "qa_note": "Visual: Artometrics+FRANCHISE+exact headline legible; cyan border; merch lower",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "derived_from_new_square_plus_deterministic_type",
+        "note": "Portrait composed by extending newly generated square-plain (not squashed) + Chomsky/Anton/Oswald overlay with exact canonical title; cover bitmap art not a separate GenerateImage"
+      }
     },
     {
       "slug": "simpsons",
@@ -244,12 +280,18 @@
         1024
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/simpsons-square-art-v1.jpg",
-      "notes": "NO TEXT; for centered HTML overlay; GenerateImage 1:1"
+      "notes": "NO TEXT; for centered HTML overlay; GenerateImage 1:1",
+      "qa_note": "Visual: zero letters/logos; badges blank; scribbles non-letter; open V center",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "GenerateImage_new",
+        "note": "Newly generated 1:1 via sanctioned GenerateImage with approved refs; NOT reused prior square-art.webp originals"
+      }
     },
     {
       "slug": "simpsons",
       "role": "cover-title",
-      "status": "exported_awaiting_spot_qa",
+      "status": "qa_pass",
       "title": "SIMPSONS: Marcia Wallace, 175 Guest Appearances",
       "topic": "arts",
       "master": "/workspace/artometrics-all-article-art/masters/covers/simpsons-cover-title.png",
@@ -266,7 +308,13 @@
         1200
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/simpsons-square-art-v1.jpg",
-      "notes": "Portrait cover: square art extended (not squashed) + Anton/Oswald deterministic type; exact article title"
+      "notes": "Portrait cover: square art extended (not squashed) + Anton/Oswald deterministic type; exact article title",
+      "qa_note": "Visual: Artometrics+SIMPSONS+exact headline legible; mustard border",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "derived_from_new_square_plus_deterministic_type",
+        "note": "Portrait composed by extending newly generated square-plain (not squashed) + Chomsky/Anton/Oswald overlay with exact canonical title; cover bitmap art not a separate GenerateImage"
+      }
     },
     {
       "slug": "dodgers",
@@ -288,12 +336,18 @@
         1024
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/dodgers-square-art-v1.jpg",
-      "notes": "NO TEXT; for centered HTML overlay; GenerateImage 1:1"
+      "notes": "NO TEXT; for centered HTML overlay; GenerateImage 1:1",
+      "qa_note": "Visual: zero letters/logos; baseball machine; sky headroom OK",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "GenerateImage_new",
+        "note": "Newly generated 1:1 via sanctioned GenerateImage with approved refs; NOT reused prior square-art.webp originals"
+      }
     },
     {
       "slug": "dodgers",
       "role": "cover-title",
-      "status": "exported_awaiting_spot_qa",
+      "status": "qa_pass",
       "title": "DODGERS: 111 Wins Still Wasn't Enough",
       "topic": "sports",
       "master": "/workspace/artometrics-all-article-art/masters/covers/dodgers-cover-title.png",
@@ -310,7 +364,13 @@
         1200
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/dodgers-square-art-v1.jpg",
-      "notes": "Portrait cover: square art extended (not squashed) + Anton/Oswald deterministic type; exact article title"
+      "notes": "Portrait cover: square art extended (not squashed) + Anton/Oswald deterministic type; exact article title",
+      "qa_note": "Visual: Artometrics+DODGERS+exact headline legible; red border",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "derived_from_new_square_plus_deterministic_type",
+        "note": "Portrait composed by extending newly generated square-plain (not squashed) + Chomsky/Anton/Oswald overlay with exact canonical title; cover bitmap art not a separate GenerateImage"
+      }
     },
     {
       "slug": "padres",
@@ -332,12 +392,18 @@
         1024
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/padres-square-art-v1.jpg",
-      "notes": "NO TEXT; for centered HTML overlay; GenerateImage 1:1"
+      "notes": "NO TEXT; for centered HTML overlay; GenerateImage 1:1",
+      "qa_note": "Visual: zero letters/logos; moon clear of center title band",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "GenerateImage_new",
+        "note": "Newly generated 1:1 via sanctioned GenerateImage with approved refs; NOT reused prior square-art.webp originals"
+      }
     },
     {
       "slug": "padres",
       "role": "cover-title",
-      "status": "exported_awaiting_spot_qa",
+      "status": "qa_pass",
       "title": "PADRES: Record Sale, Zero Championships",
       "topic": "sports",
       "master": "/workspace/artometrics-all-article-art/masters/covers/padres-cover-title.png",
@@ -354,12 +420,18 @@
         1200
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/padres-square-art-v1.jpg",
-      "notes": "Portrait cover: square art extended (not squashed) + Anton/Oswald deterministic type; exact article title"
+      "notes": "Portrait cover: square art extended (not squashed) + Anton/Oswald deterministic type; exact article title",
+      "qa_note": "Visual: Artometrics+PADRES+exact headline legible; gold border; moon OK",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "derived_from_new_square_plus_deterministic_type",
+        "note": "Portrait composed by extending newly generated square-plain (not squashed) + Chomsky/Anton/Oswald overlay with exact canonical title; cover bitmap art not a separate GenerateImage"
+      }
     },
     {
       "slug": "pixar",
       "role": "banner-art",
-      "status": "exported_awaiting_spot_qa",
+      "status": "qa_pass",
       "title": "PIXAR: Pixar's Critic Scores Broke Only Twice\u2014Cars 2 and Lightyear",
       "topic": "arts",
       "master": "/workspace/artometrics-all-article-art/masters/banners/pixar-banner-art.png",
@@ -376,12 +448,18 @@
         900
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/pixar-banner-art-v1.jpg",
-      "notes": "NO TEXT wide 16:9 intentional composition (not stretched square)"
+      "notes": "NO TEXT wide 16:9 intentional composition (not stretched square)",
+      "qa_note": "Visual: wide intentional 16:9; zero letters; top band open",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "GenerateImage_new",
+        "note": "Newly generated intentional 16:9 via GenerateImage; NOT stretched from square; NOT reused live banner-art"
+      }
     },
     {
       "slug": "pixar",
       "role": "banner-text",
-      "status": "exported_awaiting_spot_qa",
+      "status": "qa_pass",
       "title": "PIXAR: Pixar's Critic Scores Broke Only Twice\u2014Cars 2 and Lightyear",
       "topic": "arts",
       "master": "/workspace/artometrics-all-article-art/masters/banners/pixar-banner-text.png",
@@ -398,12 +476,18 @@
         900
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/pixar-banner-art-v1.jpg",
-      "notes": "Wide banner + deterministic Anton/Oswald/Chomsky typography; exact article title"
+      "notes": "Wide banner + deterministic Anton/Oswald/Chomsky typography; exact article title",
+      "qa_note": "Visual: PIXAR+exact headline crisp; masthead; type clears art",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "derived_from_new_banner_art_plus_deterministic_type",
+        "note": "Typography composited onto newly generated banner-art; exact canonical titles; not AI-generated letters"
+      }
     },
     {
       "slug": "anime",
       "role": "banner-art",
-      "status": "exported_awaiting_spot_qa",
+      "status": "qa_pass",
       "title": "ANIME: Source Sets the Audience Floor",
       "topic": "arts",
       "master": "/workspace/artometrics-all-article-art/masters/banners/anime-banner-art.png",
@@ -420,12 +504,18 @@
         900
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/anime-banner-art-v1.jpg",
-      "notes": "NO TEXT wide 16:9 intentional composition (not stretched square)"
+      "notes": "NO TEXT wide 16:9 intentional composition (not stretched square)",
+      "qa_note": "Visual: wide intentional; zero letters; sky crop-safe",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "GenerateImage_new",
+        "note": "Newly generated intentional 16:9 via GenerateImage; NOT stretched from square; NOT reused live banner-art"
+      }
     },
     {
       "slug": "anime",
       "role": "banner-text",
-      "status": "exported_awaiting_spot_qa",
+      "status": "qa_pass",
       "title": "ANIME: Source Sets the Audience Floor",
       "topic": "arts",
       "master": "/workspace/artometrics-all-article-art/masters/banners/anime-banner-text.png",
@@ -442,12 +532,18 @@
         900
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/anime-banner-art-v1.jpg",
-      "notes": "Wide banner + deterministic Anton/Oswald/Chomsky typography; exact article title"
+      "notes": "Wide banner + deterministic Anton/Oswald/Chomsky typography; exact article title",
+      "qa_note": "Visual: ANIME+exact headline crisp on light sky (dark type); masthead readable",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "derived_from_new_banner_art_plus_deterministic_type",
+        "note": "Typography composited onto newly generated banner-art; exact canonical titles; not AI-generated letters"
+      }
     },
     {
       "slug": "franchise",
       "role": "banner-art",
-      "status": "exported_awaiting_spot_qa",
+      "status": "qa_pass",
       "title": "FRANCHISE: Merchandise Owns the Ledger",
       "topic": "arts",
       "master": "/workspace/artometrics-all-article-art/masters/banners/franchise-banner-art.png",
@@ -464,12 +560,18 @@
         900
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/franchise-banner-art-v1.jpg",
-      "notes": "NO TEXT wide 16:9 intentional composition (not stretched square)"
+      "notes": "NO TEXT wide 16:9 intentional composition (not stretched square)",
+      "qa_note": "Visual: wide intentional; zero letters; upper dark band open",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "GenerateImage_new",
+        "note": "Newly generated intentional 16:9 via GenerateImage; NOT stretched from square; NOT reused live banner-art"
+      }
     },
     {
       "slug": "franchise",
       "role": "banner-text",
-      "status": "exported_awaiting_spot_qa",
+      "status": "qa_pass",
       "title": "FRANCHISE: Merchandise Owns the Ledger",
       "topic": "arts",
       "master": "/workspace/artometrics-all-article-art/masters/banners/franchise-banner-text.png",
@@ -486,12 +588,18 @@
         900
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/franchise-banner-art-v1.jpg",
-      "notes": "Wide banner + deterministic Anton/Oswald/Chomsky typography; exact article title"
+      "notes": "Wide banner + deterministic Anton/Oswald/Chomsky typography; exact article title",
+      "qa_note": "Visual: FRANCHISE+exact headline crisp; masthead",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "derived_from_new_banner_art_plus_deterministic_type",
+        "note": "Typography composited onto newly generated banner-art; exact canonical titles; not AI-generated letters"
+      }
     },
     {
       "slug": "simpsons",
       "role": "banner-art",
-      "status": "exported_awaiting_spot_qa",
+      "status": "qa_pass",
       "title": "SIMPSONS: Marcia Wallace, 175 Guest Appearances",
       "topic": "arts",
       "master": "/workspace/artometrics-all-article-art/masters/banners/simpsons-banner-art.png",
@@ -508,12 +616,18 @@
         900
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/simpsons-banner-art-v1.jpg",
-      "notes": "NO TEXT wide 16:9 intentional composition (not stretched square)"
+      "notes": "NO TEXT wide 16:9 intentional composition (not stretched square)",
+      "qa_note": "Visual: wide intentional; zero letters; central V open",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "GenerateImage_new",
+        "note": "Newly generated intentional 16:9 via GenerateImage; NOT stretched from square; NOT reused live banner-art"
+      }
     },
     {
       "slug": "simpsons",
       "role": "banner-text",
-      "status": "exported_awaiting_spot_qa",
+      "status": "qa_pass",
       "title": "SIMPSONS: Marcia Wallace, 175 Guest Appearances",
       "topic": "arts",
       "master": "/workspace/artometrics-all-article-art/masters/banners/simpsons-banner-text.png",
@@ -530,12 +644,18 @@
         900
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/simpsons-banner-art-v1.jpg",
-      "notes": "Wide banner + deterministic Anton/Oswald/Chomsky typography; exact article title"
+      "notes": "Wide banner + deterministic Anton/Oswald/Chomsky typography; exact article title",
+      "qa_note": "Visual: SIMPSONS+exact headline crisp; dark type on light center",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "derived_from_new_banner_art_plus_deterministic_type",
+        "note": "Typography composited onto newly generated banner-art; exact canonical titles; not AI-generated letters"
+      }
     },
     {
       "slug": "dodgers",
       "role": "banner-art",
-      "status": "exported_awaiting_spot_qa",
+      "status": "qa_pass",
       "title": "DODGERS: 111 Wins Still Wasn't Enough",
       "topic": "sports",
       "master": "/workspace/artometrics-all-article-art/masters/banners/dodgers-banner-art.png",
@@ -552,12 +672,18 @@
         900
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/dodgers-banner-art-v1.jpg",
-      "notes": "NO TEXT wide 16:9 intentional composition (not stretched square)"
+      "notes": "NO TEXT wide 16:9 intentional composition (not stretched square)",
+      "qa_note": "Visual: wide intentional; zero letters; side margins crop-safe",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "GenerateImage_new",
+        "note": "Newly generated intentional 16:9 via GenerateImage; NOT stretched from square; NOT reused live banner-art"
+      }
     },
     {
       "slug": "dodgers",
       "role": "banner-text",
-      "status": "exported_awaiting_spot_qa",
+      "status": "qa_pass",
       "title": "DODGERS: 111 Wins Still Wasn't Enough",
       "topic": "sports",
       "master": "/workspace/artometrics-all-article-art/masters/banners/dodgers-banner-text.png",
@@ -574,12 +700,18 @@
         900
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/dodgers-banner-art-v1.jpg",
-      "notes": "Wide banner + deterministic Anton/Oswald/Chomsky typography; exact article title"
+      "notes": "Wide banner + deterministic Anton/Oswald/Chomsky typography; exact article title",
+      "qa_note": "Visual: DODGERS+exact headline crisp",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "derived_from_new_banner_art_plus_deterministic_type",
+        "note": "Typography composited onto newly generated banner-art; exact canonical titles; not AI-generated letters"
+      }
     },
     {
       "slug": "padres",
       "role": "banner-art",
-      "status": "exported_awaiting_spot_qa",
+      "status": "qa_pass",
       "title": "PADRES: Record Sale, Zero Championships",
       "topic": "sports",
       "master": "/workspace/artometrics-all-article-art/masters/banners/padres-banner-art.png",
@@ -596,12 +728,18 @@
         900
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/padres-banner-art-v1.jpg",
-      "notes": "NO TEXT wide 16:9 intentional composition (not stretched square)"
+      "notes": "NO TEXT wide 16:9 intentional composition (not stretched square)",
+      "qa_note": "Visual: wide intentional; zero letters; moon left; title band open",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "GenerateImage_new",
+        "note": "Newly generated intentional 16:9 via GenerateImage; NOT stretched from square; NOT reused live banner-art"
+      }
     },
     {
       "slug": "padres",
       "role": "banner-text",
-      "status": "exported_awaiting_spot_qa",
+      "status": "qa_pass",
       "title": "PADRES: Record Sale, Zero Championships",
       "topic": "sports",
       "master": "/workspace/artometrics-all-article-art/masters/banners/padres-banner-text.png",
@@ -618,7 +756,529 @@
         900
       ],
       "source_gen": "/workspace/artometrics-all-article-art/batches/batch01/padres-banner-art-v1.jpg",
-      "notes": "Wide banner + deterministic Anton/Oswald/Chomsky typography; exact article title"
+      "notes": "Wide banner + deterministic Anton/Oswald/Chomsky typography; exact article title",
+      "qa_note": "Visual: PADRES+exact headline crisp",
+      "qa_inspected_at": "2026-11-08 America/Los_Angeles",
+      "provenance": {
+        "method": "derived_from_new_banner_art_plus_deterministic_type",
+        "note": "Typography composited onto newly generated banner-art; exact canonical titles; not AI-generated letters"
+      }
+    },
+    {
+      "slug": "pixar",
+      "role": "wallpaper-iphone-portrait",
+      "status": "exported_qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/wallpapers/pixar-wallpaper-iphone.png",
+      "web": "/workspace/artometrics-all-article-art/web/wallpapers/pixar-wallpaper-iphone.webp",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/pixar/wallpaper-iphone.webp",
+      "master_sha256": "3d6764b8f522ed8bfaf7f69d913d1dc0e6f1ef08fd2478326b77faa74bdabce0",
+      "web_sha256": "ccb427e59f3e0da9c4817994914daad1fd4b330fcc7f6f7659cb63b6f1b9de2d",
+      "master_dims": [
+        1179,
+        2556
+      ],
+      "web_dims": [
+        592,
+        1284
+      ],
+      "provenance": {
+        "method": "derived_compose_from_square_plain",
+        "note": "Portrait canvas with blurred top extension + unstretched square art placed lower; NOT GenerateImage; NOT stretch/squash of square to 9:16"
+      },
+      "qa_note": "Export dims OK; art not distorted; upper clock-safe band present; text-free"
+    },
+    {
+      "slug": "pixar",
+      "role": "wallpaper-mac-landscape",
+      "status": "exported_qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/wallpapers/pixar-wallpaper-mac.png",
+      "web": "/workspace/artometrics-all-article-art/web/wallpapers/pixar-wallpaper-mac.webp",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/pixar/wallpaper-mac.webp",
+      "master_sha256": "d22008f5aac62ffc5cb632dbd2e81ddf072e5bf81476e2284bb0f5449a27f8d1",
+      "web_sha256": "695c25dfe9b2f04cc635bb53f4e2f7980802178f34061a14db5bb7b5f7e37c57",
+      "master_dims": [
+        2560,
+        1440
+      ],
+      "web_dims": [
+        1920,
+        1080
+      ],
+      "provenance": {
+        "method": "derived_from_banner_art",
+        "note": "Same intentional wide banner-art master fitted to 2560x1440; not a new GenerateImage; not stretched square"
+      },
+      "qa_note": "Export dims OK; text-free; suitable as desktop background file (not claimed installed)"
+    },
+    {
+      "slug": "anime",
+      "role": "wallpaper-iphone-portrait",
+      "status": "exported_qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/wallpapers/anime-wallpaper-iphone.png",
+      "web": "/workspace/artometrics-all-article-art/web/wallpapers/anime-wallpaper-iphone.webp",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/anime/wallpaper-iphone.webp",
+      "master_sha256": "cdd89a3b6f77d7c9fcee1b238c442717df30e7bfcc2339323fa5c00a90fe3d6c",
+      "web_sha256": "f3278374246583b47340417af1f7e684b1f9095b3f9dc8bb045249a4f14a1fd9",
+      "master_dims": [
+        1179,
+        2556
+      ],
+      "web_dims": [
+        592,
+        1284
+      ],
+      "provenance": {
+        "method": "derived_compose_from_square_plain",
+        "note": "Portrait canvas with blurred top extension + unstretched square art placed lower; NOT GenerateImage; NOT stretch/squash of square to 9:16"
+      },
+      "qa_note": "Export dims OK; art not distorted; upper clock-safe band present; text-free"
+    },
+    {
+      "slug": "anime",
+      "role": "wallpaper-mac-landscape",
+      "status": "exported_qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/wallpapers/anime-wallpaper-mac.png",
+      "web": "/workspace/artometrics-all-article-art/web/wallpapers/anime-wallpaper-mac.webp",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/anime/wallpaper-mac.webp",
+      "master_sha256": "3d3ef6bfb7581f3168ccdb559377cff30e7e410f44b4482421f9917ed4426ed8",
+      "web_sha256": "f6daf7af6ba1de757410c56946d704244d4b855a9b4d823a061edfdea37f4c98",
+      "master_dims": [
+        2560,
+        1440
+      ],
+      "web_dims": [
+        1920,
+        1080
+      ],
+      "provenance": {
+        "method": "derived_from_banner_art",
+        "note": "Same intentional wide banner-art master fitted to 2560x1440; not a new GenerateImage; not stretched square"
+      },
+      "qa_note": "Export dims OK; text-free; suitable as desktop background file (not claimed installed)"
+    },
+    {
+      "slug": "franchise",
+      "role": "wallpaper-iphone-portrait",
+      "status": "exported_qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/wallpapers/franchise-wallpaper-iphone.png",
+      "web": "/workspace/artometrics-all-article-art/web/wallpapers/franchise-wallpaper-iphone.webp",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/franchise/wallpaper-iphone.webp",
+      "master_sha256": "f0106394b3ace49f384135ecd9a4c0663c206508bba50a78e926bc3e4e6bc5b7",
+      "web_sha256": "d0ea29de99a3f3b0e2d9da3396ddc2f50eba9e99c921b1b1883d27525368638b",
+      "master_dims": [
+        1179,
+        2556
+      ],
+      "web_dims": [
+        592,
+        1284
+      ],
+      "provenance": {
+        "method": "derived_compose_from_square_plain",
+        "note": "Portrait canvas with blurred top extension + unstretched square art placed lower; NOT GenerateImage; NOT stretch/squash of square to 9:16"
+      },
+      "qa_note": "Export dims OK; art not distorted; upper clock-safe band present; text-free"
+    },
+    {
+      "slug": "franchise",
+      "role": "wallpaper-mac-landscape",
+      "status": "exported_qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/wallpapers/franchise-wallpaper-mac.png",
+      "web": "/workspace/artometrics-all-article-art/web/wallpapers/franchise-wallpaper-mac.webp",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/franchise/wallpaper-mac.webp",
+      "master_sha256": "65e238bf931e493985da10b011a24f3ef55e186815f0298091ee6a7355fd4b99",
+      "web_sha256": "7d21fbb44b9af12962640eee04d013e984431809e6d73f8b1278ed5fa9db2795",
+      "master_dims": [
+        2560,
+        1440
+      ],
+      "web_dims": [
+        1920,
+        1080
+      ],
+      "provenance": {
+        "method": "derived_from_banner_art",
+        "note": "Same intentional wide banner-art master fitted to 2560x1440; not a new GenerateImage; not stretched square"
+      },
+      "qa_note": "Export dims OK; text-free; suitable as desktop background file (not claimed installed)"
+    },
+    {
+      "slug": "simpsons",
+      "role": "wallpaper-iphone-portrait",
+      "status": "exported_qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/wallpapers/simpsons-wallpaper-iphone.png",
+      "web": "/workspace/artometrics-all-article-art/web/wallpapers/simpsons-wallpaper-iphone.webp",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/simpsons/wallpaper-iphone.webp",
+      "master_sha256": "bc4fa39573b396f24af5b3707169ada1eb18d23ebebddcea7bc748fb4b1367a4",
+      "web_sha256": "b46c1287a40703dbe7b12bfbf39fa72421d79f787d0d5afecc4cd204a883f1cf",
+      "master_dims": [
+        1179,
+        2556
+      ],
+      "web_dims": [
+        592,
+        1284
+      ],
+      "provenance": {
+        "method": "derived_compose_from_square_plain",
+        "note": "Portrait canvas with blurred top extension + unstretched square art placed lower; NOT GenerateImage; NOT stretch/squash of square to 9:16"
+      },
+      "qa_note": "Export dims OK; art not distorted; upper clock-safe band present; text-free"
+    },
+    {
+      "slug": "simpsons",
+      "role": "wallpaper-mac-landscape",
+      "status": "exported_qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/wallpapers/simpsons-wallpaper-mac.png",
+      "web": "/workspace/artometrics-all-article-art/web/wallpapers/simpsons-wallpaper-mac.webp",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/simpsons/wallpaper-mac.webp",
+      "master_sha256": "18726cae857b57f5e738adcdaefbd9960f6acbe06c22d6ec4ddcefc2b61b4d5f",
+      "web_sha256": "a8143426dffb4d44b704bfe2fc776fe8546d8b5200d28b067eb00aebdae24f4c",
+      "master_dims": [
+        2560,
+        1440
+      ],
+      "web_dims": [
+        1920,
+        1080
+      ],
+      "provenance": {
+        "method": "derived_from_banner_art",
+        "note": "Same intentional wide banner-art master fitted to 2560x1440; not a new GenerateImage; not stretched square"
+      },
+      "qa_note": "Export dims OK; text-free; suitable as desktop background file (not claimed installed)"
+    },
+    {
+      "slug": "dodgers",
+      "role": "wallpaper-iphone-portrait",
+      "status": "exported_qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/wallpapers/dodgers-wallpaper-iphone.png",
+      "web": "/workspace/artometrics-all-article-art/web/wallpapers/dodgers-wallpaper-iphone.webp",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/dodgers/wallpaper-iphone.webp",
+      "master_sha256": "2a0d007b724e85f2b972833ccbfe24a29a16a5369b71dbf40ff18f2583f3dcf9",
+      "web_sha256": "3f90bfe3f0acf783b793927050aa2a2f16d40374203967417483834c43fc4eda",
+      "master_dims": [
+        1179,
+        2556
+      ],
+      "web_dims": [
+        592,
+        1284
+      ],
+      "provenance": {
+        "method": "derived_compose_from_square_plain",
+        "note": "Portrait canvas with blurred top extension + unstretched square art placed lower; NOT GenerateImage; NOT stretch/squash of square to 9:16"
+      },
+      "qa_note": "Export dims OK; art not distorted; upper clock-safe band present; text-free"
+    },
+    {
+      "slug": "dodgers",
+      "role": "wallpaper-mac-landscape",
+      "status": "exported_qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/wallpapers/dodgers-wallpaper-mac.png",
+      "web": "/workspace/artometrics-all-article-art/web/wallpapers/dodgers-wallpaper-mac.webp",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/dodgers/wallpaper-mac.webp",
+      "master_sha256": "9d84093058292bda4e09327d209b2ae15e0d45eac7766dd68419d71bf363d735",
+      "web_sha256": "cc8bb02e7bd72cfff956c674df8173da7962e276062f8797a364e2e627aa9b3d",
+      "master_dims": [
+        2560,
+        1440
+      ],
+      "web_dims": [
+        1920,
+        1080
+      ],
+      "provenance": {
+        "method": "derived_from_banner_art",
+        "note": "Same intentional wide banner-art master fitted to 2560x1440; not a new GenerateImage; not stretched square"
+      },
+      "qa_note": "Export dims OK; text-free; suitable as desktop background file (not claimed installed)"
+    },
+    {
+      "slug": "padres",
+      "role": "wallpaper-iphone-portrait",
+      "status": "exported_qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/wallpapers/padres-wallpaper-iphone.png",
+      "web": "/workspace/artometrics-all-article-art/web/wallpapers/padres-wallpaper-iphone.webp",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/padres/wallpaper-iphone.webp",
+      "master_sha256": "c0518b7534b4b4153795661a05c774cafa879f6a3f1622a6c6407843304ce6dc",
+      "web_sha256": "8d8f11184d4e83bdfe98e9eac2ad0c3f317ba1ab3d4a43a7646caaf08c5b17f2",
+      "master_dims": [
+        1179,
+        2556
+      ],
+      "web_dims": [
+        592,
+        1284
+      ],
+      "provenance": {
+        "method": "derived_compose_from_square_plain",
+        "note": "Portrait canvas with blurred top extension + unstretched square art placed lower; NOT GenerateImage; NOT stretch/squash of square to 9:16"
+      },
+      "qa_note": "Export dims OK; art not distorted; upper clock-safe band present; text-free"
+    },
+    {
+      "slug": "padres",
+      "role": "wallpaper-mac-landscape",
+      "status": "exported_qa_pass",
+      "master": "/workspace/artometrics-all-article-art/masters/wallpapers/padres-wallpaper-mac.png",
+      "web": "/workspace/artometrics-all-article-art/web/wallpapers/padres-wallpaper-mac.webp",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/padres/wallpaper-mac.webp",
+      "master_sha256": "77cc130c7d6a8350be146f75e4faa5814b5143862202cc85f713c302d5746a62",
+      "web_sha256": "427dfbf76c39588348afbbae684cfd9d9f3c0c94d1abefe03d6692962646e11f",
+      "master_dims": [
+        2560,
+        1440
+      ],
+      "web_dims": [
+        1920,
+        1080
+      ],
+      "provenance": {
+        "method": "derived_from_banner_art",
+        "note": "Same intentional wide banner-art master fitted to 2560x1440; not a new GenerateImage; not stretched square"
+      },
+      "qa_note": "Export dims OK; text-free; suitable as desktop background file (not claimed installed)"
+    },
+    {
+      "slug": "pixar",
+      "role": "sticker-lamp",
+      "status": "exported_qa_pass_with_limitations",
+      "master": "/workspace/artometrics-all-article-art/masters/stickers/pixar-sticker-lamp.png",
+      "web": "/workspace/artometrics-all-article-art/web/stickers/pixar-sticker-lamp.png",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/pixar/stickers/lamp.png",
+      "master_sha256": "c5f830629e9cbf11ca3df218ac506711d2a9737ff8870c42577aa7bc5498bfce",
+      "master_dims": [
+        377,
+        512
+      ],
+      "provenance": {
+        "method": "corner_flood_alpha_approx",
+        "source": "crop_from_square_plain",
+        "note": "Motif cropped from validated square-plain; alpha via approximate flood or rounded card; not GenerateImage"
+      },
+      "messaging_compatibility": "Approximate transparent PNG cutout; edges may be imperfect; NOT an installed WhatsApp/iMessage sticker pack\u2014user must import PNG manually",
+      "qa_note": "PNG RGBA exists; bg_frac=0.32; not claiming WhatsApp pack install"
+    },
+    {
+      "slug": "pixar",
+      "role": "sticker-rocket",
+      "status": "exported_qa_pass_with_limitations",
+      "master": "/workspace/artometrics-all-article-art/masters/stickers/pixar-sticker-rocket.png",
+      "web": "/workspace/artometrics-all-article-art/web/stickers/pixar-sticker-rocket.png",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/pixar/stickers/rocket.png",
+      "master_sha256": "af91212b58b015c2b6101fe309f752ff0166a2154e85ad4a21c7029f91edcc79",
+      "master_dims": [
+        512,
+        450
+      ],
+      "provenance": {
+        "method": "rounded_card_fallback",
+        "source": "crop_from_square_plain",
+        "note": "Motif cropped from validated square-plain; alpha via approximate flood or rounded card; not GenerateImage"
+      },
+      "messaging_compatibility": "PNG sticker card with transparent outside; not a messaging sticker pack; WhatsApp/iMessage need user import",
+      "qa_note": "PNG RGBA exists; bg_frac=0.93; not claiming WhatsApp pack install"
+    },
+    {
+      "slug": "anime",
+      "role": "sticker-filmstrip",
+      "status": "exported_qa_pass_with_limitations",
+      "master": "/workspace/artometrics-all-article-art/masters/stickers/anime-sticker-filmstrip.png",
+      "web": "/workspace/artometrics-all-article-art/web/stickers/anime-sticker-filmstrip.png",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/anime/stickers/filmstrip.png",
+      "master_sha256": "a993e40d6cbeb448c1dfb05e975eef1d3a6fa7c4f4821a6a41f86f24f85615ef",
+      "master_dims": [
+        282,
+        512
+      ],
+      "provenance": {
+        "method": "corner_flood_alpha_approx",
+        "source": "crop_from_square_plain",
+        "note": "Motif cropped from validated square-plain; alpha via approximate flood or rounded card; not GenerateImage"
+      },
+      "messaging_compatibility": "Approximate transparent PNG cutout; edges may be imperfect; NOT an installed WhatsApp/iMessage sticker pack\u2014user must import PNG manually",
+      "qa_note": "PNG RGBA exists; bg_frac=0.69; not claiming WhatsApp pack install"
+    },
+    {
+      "slug": "anime",
+      "role": "sticker-mecha-sil",
+      "status": "exported_qa_pass_with_limitations",
+      "master": "/workspace/artometrics-all-article-art/masters/stickers/anime-sticker-mecha-sil.png",
+      "web": "/workspace/artometrics-all-article-art/web/stickers/anime-sticker-mecha-sil.png",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/anime/stickers/mecha-sil.png",
+      "master_sha256": "26d459219c57e3627a03fd2e7c5f5e89b7f6f1c11af4d1d365c9cb3ac8c372f2",
+      "master_dims": [
+        459,
+        512
+      ],
+      "provenance": {
+        "method": "corner_flood_alpha_approx",
+        "source": "crop_from_square_plain",
+        "note": "Motif cropped from validated square-plain; alpha via approximate flood or rounded card; not GenerateImage"
+      },
+      "messaging_compatibility": "Approximate transparent PNG cutout; edges may be imperfect; NOT an installed WhatsApp/iMessage sticker pack\u2014user must import PNG manually",
+      "qa_note": "PNG RGBA exists; bg_frac=0.83; not claiming WhatsApp pack install"
+    },
+    {
+      "slug": "franchise",
+      "role": "sticker-controller",
+      "status": "exported_qa_pass_with_limitations",
+      "master": "/workspace/artometrics-all-article-art/masters/stickers/franchise-sticker-controller.png",
+      "web": "/workspace/artometrics-all-article-art/web/stickers/franchise-sticker-controller.png",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/franchise/stickers/controller.png",
+      "master_sha256": "b4946f39616ffef49ad0a76277c034c2be40d29f815625621f2cb962192eb6f6",
+      "master_dims": [
+        512,
+        512
+      ],
+      "provenance": {
+        "method": "corner_flood_alpha_approx",
+        "source": "crop_from_square_plain",
+        "note": "Motif cropped from validated square-plain; alpha via approximate flood or rounded card; not GenerateImage"
+      },
+      "messaging_compatibility": "Approximate transparent PNG cutout; edges may be imperfect; NOT an installed WhatsApp/iMessage sticker pack\u2014user must import PNG manually",
+      "qa_note": "PNG RGBA exists; bg_frac=0.36; not claiming WhatsApp pack install"
+    },
+    {
+      "slug": "franchise",
+      "role": "sticker-bear",
+      "status": "exported_qa_pass_with_limitations",
+      "master": "/workspace/artometrics-all-article-art/masters/stickers/franchise-sticker-bear.png",
+      "web": "/workspace/artometrics-all-article-art/web/stickers/franchise-sticker-bear.png",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/franchise/stickers/bear.png",
+      "master_sha256": "5e3e89b9cd22e05037c5a9d6fd8825308ff430a57163ac1a86552173f5b6bc18",
+      "master_dims": [
+        479,
+        512
+      ],
+      "provenance": {
+        "method": "corner_flood_alpha_approx",
+        "source": "crop_from_square_plain",
+        "note": "Motif cropped from validated square-plain; alpha via approximate flood or rounded card; not GenerateImage"
+      },
+      "messaging_compatibility": "Approximate transparent PNG cutout; edges may be imperfect; NOT an installed WhatsApp/iMessage sticker pack\u2014user must import PNG manually",
+      "qa_note": "PNG RGBA exists; bg_frac=0.31; not claiming WhatsApp pack install"
+    },
+    {
+      "slug": "simpsons",
+      "role": "sticker-couch",
+      "status": "exported_qa_pass_with_limitations",
+      "master": "/workspace/artometrics-all-article-art/masters/stickers/simpsons-sticker-couch.png",
+      "web": "/workspace/artometrics-all-article-art/web/stickers/simpsons-sticker-couch.png",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/simpsons/stickers/couch.png",
+      "master_sha256": "2bfb0e97f90181f8dbc8fe500499399c8a7c78d806e3726279ff0de93418b56a",
+      "master_dims": [
+        512,
+        407
+      ],
+      "provenance": {
+        "method": "corner_flood_alpha_approx",
+        "source": "crop_from_square_plain",
+        "note": "Motif cropped from validated square-plain; alpha via approximate flood or rounded card; not GenerateImage"
+      },
+      "messaging_compatibility": "Approximate transparent PNG cutout; edges may be imperfect; NOT an installed WhatsApp/iMessage sticker pack\u2014user must import PNG manually",
+      "qa_note": "PNG RGBA exists; bg_frac=0.43; not claiming WhatsApp pack install"
+    },
+    {
+      "slug": "simpsons",
+      "role": "sticker-sax",
+      "status": "exported_qa_pass_with_limitations",
+      "master": "/workspace/artometrics-all-article-art/masters/stickers/simpsons-sticker-sax.png",
+      "web": "/workspace/artometrics-all-article-art/web/stickers/simpsons-sticker-sax.png",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/simpsons/stickers/sax.png",
+      "master_sha256": "0abe83a5b4a9d33be684732b9632dfbe5d39f1f7d0b78ff0a15c8dfaa7ca0113",
+      "master_dims": [
+        424,
+        512
+      ],
+      "provenance": {
+        "method": "corner_flood_alpha_approx",
+        "source": "crop_from_square_plain",
+        "note": "Motif cropped from validated square-plain; alpha via approximate flood or rounded card; not GenerateImage"
+      },
+      "messaging_compatibility": "Approximate transparent PNG cutout; edges may be imperfect; NOT an installed WhatsApp/iMessage sticker pack\u2014user must import PNG manually",
+      "qa_note": "PNG RGBA exists; bg_frac=0.44; not claiming WhatsApp pack install"
+    },
+    {
+      "slug": "dodgers",
+      "role": "sticker-baseball-gear",
+      "status": "exported_qa_pass_with_limitations",
+      "master": "/workspace/artometrics-all-article-art/masters/stickers/dodgers-sticker-baseball-gear.png",
+      "web": "/workspace/artometrics-all-article-art/web/stickers/dodgers-sticker-baseball-gear.png",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/dodgers/stickers/baseball-gear.png",
+      "master_sha256": "e6fffea63db2cb8b57f5ccce44ab61c503099478a962b2b5a8b04d58725d1e47",
+      "master_dims": [
+        488,
+        512
+      ],
+      "provenance": {
+        "method": "corner_flood_alpha_approx",
+        "source": "crop_from_square_plain",
+        "note": "Motif cropped from validated square-plain; alpha via approximate flood or rounded card; not GenerateImage"
+      },
+      "messaging_compatibility": "Approximate transparent PNG cutout; edges may be imperfect; NOT an installed WhatsApp/iMessage sticker pack\u2014user must import PNG manually",
+      "qa_note": "PNG RGBA exists; bg_frac=0.24; not claiming WhatsApp pack install"
+    },
+    {
+      "slug": "dodgers",
+      "role": "sticker-palms-hopper",
+      "status": "exported_qa_pass_with_limitations",
+      "master": "/workspace/artometrics-all-article-art/masters/stickers/dodgers-sticker-palms-hopper.png",
+      "web": "/workspace/artometrics-all-article-art/web/stickers/dodgers-sticker-palms-hopper.png",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/dodgers/stickers/palms-hopper.png",
+      "master_sha256": "f0b50c79cbcfe538dfca5cdce0ea058abc3ca790eabbca83c9269f4df2072452",
+      "master_dims": [
+        512,
+        433
+      ],
+      "provenance": {
+        "method": "corner_flood_alpha_approx",
+        "source": "crop_from_square_plain",
+        "note": "Motif cropped from validated square-plain; alpha via approximate flood or rounded card; not GenerateImage"
+      },
+      "messaging_compatibility": "Approximate transparent PNG cutout; edges may be imperfect; NOT an installed WhatsApp/iMessage sticker pack\u2014user must import PNG manually",
+      "qa_note": "PNG RGBA exists; bg_frac=0.78; not claiming WhatsApp pack install"
+    },
+    {
+      "slug": "padres",
+      "role": "sticker-coin-stack",
+      "status": "exported_qa_pass_with_limitations",
+      "master": "/workspace/artometrics-all-article-art/masters/stickers/padres-sticker-coin-stack.png",
+      "web": "/workspace/artometrics-all-article-art/web/stickers/padres-sticker-coin-stack.png",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/padres/stickers/coin-stack.png",
+      "master_sha256": "2113a7e1ab0b1ca099bb69197aff4cdae4051621612465e2caf9b9c0250d363e",
+      "master_dims": [
+        303,
+        512
+      ],
+      "provenance": {
+        "method": "corner_flood_alpha_approx",
+        "source": "crop_from_square_plain",
+        "note": "Motif cropped from validated square-plain; alpha via approximate flood or rounded card; not GenerateImage"
+      },
+      "messaging_compatibility": "Approximate transparent PNG cutout; edges may be imperfect; NOT an installed WhatsApp/iMessage sticker pack\u2014user must import PNG manually",
+      "qa_note": "PNG RGBA exists; bg_frac=0.43; not claiming WhatsApp pack install"
+    },
+    {
+      "slug": "padres",
+      "role": "sticker-crescent",
+      "status": "exported_qa_pass_with_limitations",
+      "master": "/workspace/artometrics-all-article-art/masters/stickers/padres-sticker-crescent.png",
+      "web": "/workspace/artometrics-all-article-art/web/stickers/padres-sticker-crescent.png",
+      "site_contract": "/workspace/artometrics-all-article-art/site-contract/padres/stickers/crescent.png",
+      "master_sha256": "d8fcd78255c10e24a68713337c7f3c5b2044226e9ebeb2b8f2abcebe74d1804a",
+      "master_dims": [
+        512,
+        450
+      ],
+      "provenance": {
+        "method": "rounded_card_fallback",
+        "source": "crop_from_square_plain",
+        "note": "Motif cropped from validated square-plain; alpha via approximate flood or rounded card; not GenerateImage"
+      },
+      "messaging_compatibility": "PNG sticker card with transparent outside; not a messaging sticker pack; WhatsApp/iMessage need user import",
+      "qa_note": "PNG RGBA exists; bg_frac=0.87; not claiming WhatsApp pack install"
     }
   ],
   "notes": [
@@ -628,5 +1288,39 @@
     "Wide banners generated as intentional 16:9 compositions, not stretched squares",
     "Prior square-art.webp files are references only; new sitewide set uses square-plain.webp / cover-title.webp",
     "Wallpaper/sticker derivatives not claimed done"
-  ]
+  ],
+  "spot_qa": {
+    "replaced_by": "full_24_per_output_qa",
+    "prior_franchise_only_spot": "superseded"
+  },
+  "qa_summary": {
+    "inspected": 24,
+    "qa_pass": 24,
+    "qa_fail": 0,
+    "blanket_pass_used": false,
+    "method": "per-output Read visual inspection of all 24 masters"
+  },
+  "provenance_summary": {
+    "square-plain": {
+      "method": "GenerateImage_new",
+      "note": "Newly generated 1:1 via sanctioned GenerateImage with approved refs; NOT reused prior square-art.webp originals"
+    },
+    "banner-art": {
+      "method": "GenerateImage_new",
+      "note": "Newly generated intentional 16:9 via GenerateImage; NOT stretched from square; NOT reused live banner-art"
+    },
+    "cover-title": {
+      "method": "derived_from_new_square_plus_deterministic_type",
+      "note": "Portrait composed by extending newly generated square-plain (not squashed) + Chomsky/Anton/Oswald overlay with exact canonical title; cover bitmap art not a separate GenerateImage"
+    },
+    "banner-text": {
+      "method": "derived_from_new_banner_art_plus_deterministic_type",
+      "note": "Typography composited onto newly generated banner-art; exact canonical titles; not AI-generated letters"
+    }
+  },
+  "derivative_counts": {
+    "wallpapers": 12,
+    "stickers": 12
+  },
+  "messaging_sticker_honesty": "PNG files only; not WhatsApp/iMessage packs; not installed"
 }
