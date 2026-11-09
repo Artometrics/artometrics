@@ -83,10 +83,10 @@ faq:
 <p class="art-p">Pro Football Reference franchise records, NFL postseason archives, and Forbes franchise valuations supply the underlying data. Period groupings are editorial constructs designed to isolate the Brady–Belichick era from pre- and post-dynasty performance.</p>
 <p class="art-p">Analysts debate quarterback versus system; fans debate whether the brand survives the roster. Both hinge on the same question: whether one era was the franchise or merely its peak.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
-<p>Pro Football Reference. <em>New England Patriots Franchise Encyclopedia</em>.</p>
+<p><a href="https://www.pro-football-reference.com/teams/nwe/">Pro Football Reference. <em>New England Patriots Franchise Encyclopedia</em>.</a></p>
 <p>NFL historical postseason records.</p>
-<p>Forbes. <em>NFL Team Valuations</em>, recent estimates.</p>
-<p>Sports Reference team season summaries.</p>
+<p><a href="https://www.forbes.com/nfl-valuations/list/">Forbes. <em>NFL Team Valuations</em>, recent estimates.</a></p>
+<p><a href="https://www.pro-football-reference.com/teams/nwe/">Sports Reference team season summaries.</a></p>
 <p>Related Artometrics reports: <a href="/cowboys">Cowboys</a>.</p>
 <h2 id="editors-note" class="anchored">Editor's note</h2>
 <div class="art-editorial-note"><p><em>Playoff win totals from 2001 through 2019 are approximate franchise summaries. Period buckets are editorial groupings for chart legibility, not official NFL designations.</em></p>
