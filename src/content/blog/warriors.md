@@ -74,7 +74,7 @@ faq:
 <p>Lewis, M. (2004). <em>Moneyball: The art of winning an unfair game.</em> W. W. Norton &amp; Company.</p>
 <p>Oliver, D. (2004). <em>Basketball on paper: Rules and tools for performance analysis.</em> Potomac Books.</p>
 <p>Shea, S., &amp; Baker, C. (2013). <em>Basketball analytics: Objective and efficient strategies for understanding how teams win.</em> Advanced Metrics.</p>
-<p>Silver, N. (2015, June 11). <em>The Warriors' three-point revolution and how it changed basketball.</em> FiveThirtyEight. Retrieved from https://fivethirtyeight.com</p>
+<p>Silver, N. (2015, June 8). <em>'Live by the three, die by the three' is mostly a myth.</em> FiveThirtyEight. Retrieved from https://web.archive.org/web/20150609154156/http://fivethirtyeight.com/features/live-by-the-three-die-by-the-three-is-mostly-a-myth/</p>
 <p>Related Artometrics reports: <a href="/celtics">Celtics</a> · <a href="/lakers">Lakers</a> · <a href="/giants">Giants</a>.</p>
 <h2 id="editors-note" class="anchored">Editor's note</h2>
 <div class="art-editorial-note"><p><em>Win percentages and three-point totals are through the 2023–24 season. Chart 1 and Chart 2 use a manually verified Basketball Reference tibble due to scraper rate limits during bulk collection; replication is safest via nbastatR with single-season calls. Reproducible data and chart code are available via the article Download menu on artometrics.com.</em></p>
