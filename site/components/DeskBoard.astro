@@ -1,0 +1,47 @@
+---
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import type { BlogPost } from "@/lib/content";
+
+interface Group {
+  label: string;
+  href?: string;
+  posts: BlogPost[];
+}
+
+interface Props {
+  groups: Group[];
+  empty?: string;
+}
+
+const { groups, empty = "No reports filed here yet." } = Astro.props;
+const filled = groups.filter((group) => group.posts.length);
+
+function tileSrc(post: BlogPost) {
+  const square = join(process.cwd(), "public/images/content/articles", post.slug, "square-text.webp");
+  if (existsSync(square)) return `/images/content/articles/${post.slug}/square-text.webp`;
+  return post.heroImage || "";
+}
+---
+
+{filled.length ? (
+  filled.map((group) => (
+    <section class="desk-section">
+      <h2>{group.href ? <a href={group.href}>{group.label}</a> : group.label}</h2>
+      <div class="story-grid">
+        {group.posts.map((post) => {
+          const src = tileSrc(post);
+          return src ? (
+            <a class="story-tile" href={`/${post.slug}`}>
+              <img src={src} alt={post.title} width="800" height="800" />
+            </a>
+          ) : (
+            <a class="story-tile" href={`/${post.slug}`}>{post.title}</a>
+          );
+        })}
+      </div>
+    </section>
+  ))
+) : (
+  <p>{empty}</p>
+)}

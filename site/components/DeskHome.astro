@@ -1,7 +1,8 @@
 ---
 import { existsSync } from "node:fs";
 import { join } from "node:path";
-import { deckLine, formatDate, getBlogPost, sectionLabel } from "@/lib/content";
+import BannerCarousel from "./BannerCarousel.astro";
+import { getBlogPost } from "@/lib/content";
 
 /** Four category columns are visible; swipe for Humanities and Civics.
  * Each column is three real reports. Longevity is not on this page.
@@ -23,7 +24,10 @@ function tileSrc(slug: string, heroImage?: string) {
   return { src: heroImage || "", kind: "hero" };
 }
 
-const lead = getBlogPost("geopolitics");
+const leadSlides = ["geopolitics", "franchise", "dodgers"].flatMap((slug) => {
+  const post = getBlogPost(slug);
+  return post ? [post] : [];
+});
 const columns = desks.map((desk) => ({
   ...desk,
   stories: desk.slugs.flatMap((slug) => {
@@ -36,50 +40,18 @@ const columns = desks.map((desk) => ({
 ---
 
 <div class="desk-home">
-  {lead ? (
-    <article class="desk-lead">
-      <a class="desk-lead__hit" href={`/${lead.slug}`}>
-        <img src={`/images/content/articles/${lead.slug}/banner-art.webp`} alt="" width="1600" height="900" />
-        <div class="desk-lead__copy">
-          <p class="desk-lead__kicker">{sectionLabel(lead.tags, lead.subject) || "Report"}</p>
-          <h1>{lead.title}</h1>
-          <p class="desk-lead__dek">{deckLine(lead.description, 18)}</p>
-          {lead.pubDate ? <p class="desk-lead__meta">{formatDate(lead.pubDate)}</p> : null}
-        </div>
-      </a>
-    </article>
-  ) : null}
+  <BannerCarousel posts={leadSlides} pageHeading label="Featured reports" />
 
-  <div class="desk-rail" id="desk-rail" tabindex="0" aria-label="Category columns">
-    {columns.map((desk) => (
-      <section class="desk-column" aria-labelledby={`desk-${desk.label}`}>
-        <h2 id={`desk-${desk.label}`}><a href={desk.href}>{desk.label}</a></h2>
+  {columns.map((desk) => (
+    <section class="desk-section" aria-labelledby={`desk-${desk.label}`}>
+      <h2 id={`desk-${desk.label}`}><a href={desk.href}>{desk.label}</a></h2>
+      <div class="story-grid">
         {desk.stories.map(({ post, art }) => (
           <a class="story-tile" href={`/${post.slug}`}>
             <img src={art.src} alt={post.title} width="800" height="800" data-art={art.kind} />
           </a>
         ))}
-      </section>
-    ))}
-  </div>
+      </div>
+    </section>
+  ))}
 </div>
-<script is:inline>
-  (function () {
-    var rail = document.getElementById("desk-rail");
-    if (rail) {
-      rail.addEventListener("keydown", function (event) {
-        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
-        var columns = rail.querySelectorAll(".desk-column");
-        var active = document.activeElement;
-        var index = 0;
-        for (var i = 0; i < columns.length; i++) if (columns[i].contains(active)) index = i;
-        var next = columns[index + (event.key === "ArrowRight" ? 1 : -1)];
-        if (!next) return;
-        event.preventDefault();
-        var link = next.querySelector("h2 a");
-        if (link) link.focus();
-        next.scrollIntoView({ inline: "start", block: "nearest" });
-      });
-    }
-  })();
-</script>

@@ -1,6 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
-import ReportIndex from "../../components/preview/ReportIndex.astro";
+import BannerCarousel from "../../components/BannerCarousel.astro";
+import DeskBoard from "../../components/DeskBoard.astro";
 import {
   DOMAIN_META,
   DOMAIN_SLUGS,
@@ -10,8 +11,9 @@ import {
   type DomainSlug,
   type SubdomainSlug,
 } from "@/data/sections";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { getBlogPosts, primarySection, primarySubdomain } from "@/lib/content";
-import { previewReportRows } from "../../lib/preview-reports";
 
 export function getStaticPaths() {
   const legacy = [
@@ -27,47 +29,61 @@ const mapped = (DOMAIN_SLUGS.includes(raw as DomainSlug)
   : LEGACY_SECTION_TO_DOMAIN[raw] || LEGACY_DESK_TO_SECTION[raw]) as DomainSlug | undefined;
 const meta = mapped ? DOMAIN_META[mapped] : null;
 const posts = meta ? getBlogPosts().filter((post) => primarySection(post.tags) === mapped) : [];
-const rows = previewReportRows(posts, "site");
-const subCounts = new Map<string, number>();
-for (const post of posts) {
-  const sub = primarySubdomain(post.tags);
-  if (sub) subCounts.set(sub, (subCounts.get(sub) || 0) + 1);
-}
-const filters = [...subCounts.keys()].map((slug) => ({
-  id: slug,
-  label: SUBDOMAIN_META[slug as SubdomainSlug]?.title || slug,
-}));
+const groups = meta
+  ? meta.subdomains.map((sub) => ({
+      label: SUBDOMAIN_META[sub as SubdomainSlug]?.title || sub,
+      href: `/topics/${mapped}/${sub}`,
+      posts: posts.filter((post) => primarySubdomain(post.tags) === sub),
+    }))
+  : [];
+const filed = groups.reduce((sum, group) => sum + group.posts.length, 0);
+const loose = posts.filter((post) => !groups.some((group) => group.posts.includes(post)));
+if (loose.length) groups.push({ label: "Reports", href: "", posts: loose });
+const slides = [
+  ...posts.filter((post) => existsSync(join(process.cwd(), "public/images/content/articles", post.slug, "banner-art.webp"))),
+  ...posts.filter((post) => !existsSync(join(process.cwd(), "public/images/content/articles", post.slug, "banner-art.webp"))),
+].slice(0, Math.min(3, posts.length));
 ---
 
 <Base
   title={meta?.title || "Topic"}
   description={meta?.description || "Section"}
   path={mapped ? `/topics/${mapped}` : `/topics/${raw}`}
-  bodyClass="dash"
 >
-  <div class="preview-frame">
+  <div class="desk-home">
     {meta && mapped ? (
       <>
-        <p class="preview-crumb">
-          <a href="/#reports">Reports</a>
-          <span aria-hidden="true"> · </span>
-          <span>{meta.title}</span>
-        </p>
-        <h1 class="preview-page-title">{meta.title}</h1>
-        <p class="preview-scope">{meta.description}</p>
-        <ReportIndex
-          rows={rows}
-          filters={filters}
-          filterAttr="subSlug"
-          heading={`${meta.title} reports`}
-          headingId="topic-reports"
-        />
+        <p class="desk-lead__kicker"><a href="/">Reports</a> · {meta.title}</p>
+        <h1 class="desk-page-title">{meta.title}</h1>
+        <p class="desk-page-dek">{meta.description}</p>
+        <BannerCarousel posts={slides} label={`${meta.title} reports`} />
+        <DeskBoard groups={groups} empty={`No reports filed in ${meta.title} yet.`} />
+        {filed === 0 && loose.length === 0 ? null : (
+          <details class="desk-filter">
+            <summary>Filter titles</summary>
+            <input id="desk-filter" type="search" aria-label={`Filter ${meta.title} reports`} />
+          </details>
+        )}
       </>
     ) : (
       <>
-        <h1 class="preview-page-title">Section not found</h1>
+        <h1 class="desk-page-title">Section not found</h1>
         <p><a href="/topics">All topics</a></p>
       </>
     )}
   </div>
+  <script is:inline>
+    (function () {
+      var input = document.getElementById("desk-filter");
+      if (!input) return;
+      input.addEventListener("input", function () {
+        var q = input.value.trim().toLowerCase();
+        var tiles = document.querySelectorAll(".story-tile");
+        for (var i = 0; i < tiles.length; i++) {
+          var text = (tiles[i].innerText || tiles[i].getAttribute("href") || "").toLowerCase();
+          tiles[i].hidden = q.length > 0 && !text.includes(q);
+        }
+      });
+    })();
+  </script>
 </Base>
