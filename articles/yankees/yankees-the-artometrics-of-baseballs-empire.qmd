@@ -78,13 +78,13 @@ Baseball professionals measure conversion: money into wins, wins into postseason
 
 ## References {#references}
 
-Baseball Reference. New York Yankees Franchise History.
+[Baseball Reference. New York Yankees Franchise History.](https://www.baseball-reference.com/teams/NYY/)
 
-Lahman, S. Lahman Baseball Database.
+[Lahman, S. Lahman Baseball Database.](https://sabr.org/lahman-database/)
 
-Forbes. MLB Team Valuations, historical rankings.
+[Forbes. MLB Team Valuations, historical rankings.](https://www.forbes.com/mlb-valuations/list/)
 
-Retrosheet and Baseball Almanac championship/pennant records.
+[Retrosheet and Baseball Almanac championship/pennant records.](https://www.baseball-almanac.com/ws/wsmenu.shtml)
 
 Related Artometrics reports: Dodgers · Padres · Giants.
 
