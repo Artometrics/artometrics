@@ -1637,6 +1637,22 @@ html:has(.desk-home) { overflow-x: clip; }
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
+.story-tile[data-text-free="true"] .story-tile__title {
+  inset: 8px;
+  top: 8px;
+  bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  font-family: var(--display);
+  font-size: clamp(0.7rem, 2vw, 1rem);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-transform: none;
+  text-wrap: balance;
+}
 .desk-home__jumps {
   display: flex;
   flex-wrap: wrap;

@@ -1,6 +1,5 @@
 ---
-import { existsSync } from "node:fs";
-import { join } from "node:path";
+import { storySquare } from "@/lib/article-assets.mjs";
 import type { BlogPost } from "@/lib/content";
 
 interface Group {
@@ -18,9 +17,7 @@ const { groups, empty = "No reports filed here yet." } = Astro.props;
 const filled = groups.filter((group) => group.posts.length);
 
 function tileSrc(post: BlogPost) {
-  const square = join(process.cwd(), "public/images/content/articles", post.slug, "square-text.webp");
-  if (existsSync(square)) return `/images/content/articles/${post.slug}/square-text.webp`;
-  return post.heroImage || "";
+  return storySquare(post.slug, post.heroImage);
 }
 ---
 
@@ -30,10 +27,11 @@ function tileSrc(post: BlogPost) {
       <h2>{group.href ? <a href={group.href}>{group.label}</a> : group.label}</h2>
       <div class="story-grid">
         {group.posts.map((post) => {
-          const src = tileSrc(post);
-          return src ? (
-            <a class="story-tile" href={`/${post.slug}`}>
-              <img src={src} alt={post.title} width="800" height="800" />
+          const art = tileSrc(post);
+          return art.src ? (
+            <a class="story-tile" href={`/${post.slug}`} data-text-free={art.htmlTitle ? "true" : "false"}>
+              <img src={art.src} alt={art.htmlTitle ? "" : post.title} width="800" height="800" />
+              {art.htmlTitle ? <span class="story-tile__title">{post.title}</span> : null}
             </a>
           ) : (
             <a class="story-tile" href={`/${post.slug}`}>{post.title}</a>

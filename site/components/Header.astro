@@ -3,6 +3,7 @@ import { SITE_PRIMARY_NAV } from "@/lib/site-nav";
 import { formatHeaderDate } from "@/lib/headerDateline";
 import facts from "@/lib/nav-fun-facts.json";
 import { LOGO_REVIEW, type LogoReviewMark, WORDMARKS } from "@/lib/wordmarks";
+import { coverSrc } from "@/lib/article-assets.mjs";
 import { jsonForScript } from "../lib/static-charts";
 
 interface Props {
@@ -199,7 +200,7 @@ const singles = [WORDMARKS.find((mark) => mark.id === "halftone")!, ...WORDMARKS
         {catalogue.map(([slug, title]) => (
           <div class="nav-catalogue__card">
             <a href={`/${slug}`}>
-              <img src={`/images/content/articles/${slug}/cover.webp`} alt="" width="900" height="1200" />
+              <img src={coverSrc(slug).src || `/images/content/articles/${slug}/cover.webp`} alt="" width="900" height="1200" />
               <span>{title}</span>
             </a>
             {cataloguePdf[slug] ? <a class="nav-catalogue__pdf" href={cataloguePdf[slug]}>PDF</a> : null}

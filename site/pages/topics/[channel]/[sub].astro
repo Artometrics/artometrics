@@ -8,8 +8,7 @@ import {
   type DomainSlug,
   type SubdomainSlug,
 } from "@/data/sections";
-import { existsSync } from "node:fs";
-import { join } from "node:path";
+import { storySquare } from "@/lib/article-assets.mjs";
 import { getBlogPosts, primarySection, primarySubdomain } from "@/lib/content";
 
 export function getStaticPaths() {
@@ -35,9 +34,7 @@ const posts = getBlogPosts().filter(
 );
 
 function tileSrc(slug: string, hero?: string) {
-  const square = join(process.cwd(), "public/images/content/articles", slug, "square-text.webp");
-  if (existsSync(square)) return `/images/content/articles/${slug}/square-text.webp`;
-  return hero || "";
+  return storySquare(slug, hero);
 }
 ---
 
@@ -48,11 +45,15 @@ function tileSrc(slug: string, hero?: string) {
     {posts.length ? <BannerCarousel posts={posts.slice(0, Math.min(3, posts.length))} label={`${subMeta?.title || sub} reports`} /> : null}
     {posts.length ? (
       <div class="story-grid">
-        {posts.map((post) => (
-          <a class="story-tile" href={`/${post.slug}`}>
-            <img src={tileSrc(post.slug, post.heroImage)} alt={post.title} width="800" height="800" />
-          </a>
-        ))}
+        {posts.map((post) => {
+          const art = tileSrc(post.slug, post.heroImage);
+          return (
+            <a class="story-tile" href={`/${post.slug}`} data-text-free={art.htmlTitle ? "true" : "false"}>
+              <img src={art.src} alt={art.htmlTitle ? "" : post.title} width="800" height="800" />
+              {art.htmlTitle ? <span class="story-tile__title">{post.title}</span> : null}
+            </a>
+          );
+        })}
       </div>
     ) : (
       <p>No reports filed in {subMeta?.title || sub} yet.</p>

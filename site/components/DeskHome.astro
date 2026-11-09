@@ -1,7 +1,6 @@
 ---
-import { existsSync } from "node:fs";
-import { join } from "node:path";
 import BannerCarousel from "./BannerCarousel.astro";
+import { storySquare } from "@/lib/article-assets.mjs";
 import { getBlogPost } from "@/lib/content";
 
 /** Four category columns are visible; swipe for Humanities and Civics.
@@ -19,9 +18,7 @@ const desks = [
 ];
 
 function tileSrc(slug: string, heroImage?: string) {
-  const square = join(process.cwd(), "public/images/content/articles", slug, "square-text.webp");
-  if (existsSync(square)) return { src: `/images/content/articles/${slug}/square-text.webp`, kind: "square-text" };
-  return { src: heroImage || "", kind: "hero" };
+  return storySquare(slug, heroImage);
 }
 
 const leadSlides = ["geopolitics", "franchise", "dodgers"].flatMap((slug) => {
@@ -47,8 +44,9 @@ const columns = desks.map((desk) => ({
       <h2 id={`desk-${desk.label}`}><a href={desk.href}>{desk.label}</a></h2>
       <div class="story-grid">
         {desk.stories.map(({ post, art }) => (
-          <a class="story-tile" href={`/${post.slug}`}>
-            <img src={art.src} alt={post.title} width="800" height="800" data-art={art.kind} />
+          <a class="story-tile" href={`/${post.slug}`} data-text-free={art.htmlTitle ? "true" : "false"}>
+            <img src={art.src} alt={art.htmlTitle ? "" : post.title} width="800" height="800" />
+            {art.htmlTitle ? <span class="story-tile__title">{post.title}</span> : null}
           </a>
         ))}
       </div>
