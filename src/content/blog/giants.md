@@ -85,7 +85,7 @@ faq:
 <p>Baseball Reference. (2024). <em>San Francisco Giants franchise history</em>. Sports Reference LLC. Retrieved from https://www.baseball-reference.com/teams/SFG/</p>
 <p>James, B. (2001). <em>The New Bill James Historical Baseball Abstract</em>. Free Press.</p>
 <p>Schwarz, A. (2004). <em>The Numbers Game: Baseball's Lifelong Fascination with Statistics</em>. Thomas Dunne Books.</p>
-<p>Brown, G. (2012). <em>The San Francisco Giants: 50 Years</em>. Arcadia Publishing.</p>
+<p>Murphy, B. (2008). <em>San Francisco Giants: 50 Years</em>. Insight Editions.</p>
 <p>Related Artometrics reports: <a href="/padres">Padres</a> · <a href="/dodgers">Dodgers</a> · <a href="/yankees">Yankees</a>.</p>
 <h2 id="editors-note" class="anchored">Editor's note</h2>
 <div class="art-editorial-note"><p><em>Lahman salary data ends in 2016; post-dynasty payroll analysis requires Spotrac or Baseball Reference updates. Win percentages include the 2020 fanless season unadjusted. Reproducible data and chart code are available via the article Download menu on artometrics.com.</em></p>
