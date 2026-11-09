@@ -80,9 +80,9 @@ faq:
 <p class="art-p">Public Pro Football Reference playoff records, Sports Reference franchise summaries, and Forbes franchise valuation estimates supply the figures. Values are rounded because the argument depends on order of magnitude, not accounting precision. Quarterback win percentages follow conventional starter-record methods—era indicators, not individual value models.</p>
 <p class="art-p">A front-office analyst calls this a conversion problem. A Cowboys fan calls it pain. Both are measurable: the gap between attention and January output.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
-<p>Pro Football Reference. <em>Dallas Cowboys Franchise Encyclopedia</em>.</p>
-<p>Forbes. <em>NFL Team Valuations</em>, recent estimates.</p>
-<p>Sports Reference playoff and quarterback starter records.</p>
+<p><a href="https://www.pro-football-reference.com/teams/dal/">Pro Football Reference. <em>Dallas Cowboys Franchise Encyclopedia</em>.</a></p>
+<p><a href="https://www.forbes.com/nfl-valuations/list/">Forbes. <em>NFL Team Valuations</em>, recent estimates.</a></p>
+<p><a href="https://www.pro-football-reference.com/teams/dal/">Sports Reference playoff and quarterback starter records.</a></p>
 <p>NFL historical postseason records.</p>
 <p>Related Artometrics reports: <a href="/patriots">Patriots</a>.</p>
 <h2 id="editors-note" class="anchored">Editor's note</h2>
