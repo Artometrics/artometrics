@@ -1068,15 +1068,15 @@
           "citations": [
             {
               "text": "Basketball Reference. Boston Celtics Franchise Index.",
-              "href": null
+              "href": "https://www.basketball-reference.com/teams/BOS/"
             },
             {
               "text": "NBA.com historical championship records.",
-              "href": null
+              "href": "https://www.nba.com/news/history-nba-champions"
             },
             {
               "text": "Sports Reference Finals appearance summaries.",
-              "href": null
+              "href": "https://www.basketball-reference.com/playoffs/"
             },
             {
               "text": "Related Artometrics report: Lakers",
@@ -1298,15 +1298,15 @@
           "citations": [
             {
               "text": "Basketball Reference. Los Angeles Lakers Franchise Index.",
-              "href": null
+              "href": "https://www.basketball-reference.com/teams/LAL/"
             },
             {
               "text": "NBA.com historical championship records.",
-              "href": null
+              "href": "https://www.nba.com/news/history-nba-champions"
             },
             {
               "text": "Sports Reference and Basketball Reference Finals appearance summaries.",
-              "href": null
+              "href": "https://www.basketball-reference.com/playoffs/"
             },
             {
               "text": "Related Artometrics report: Celtics",
