@@ -1600,23 +1600,23 @@
           "citations": [
             {
               "text": "Baseball Reference. Franchise history pages.",
-              "href": null
+              "href": "https://www.baseball-reference.com/teams/"
             },
             {
               "text": "Basketball Reference. Team season and playoff records.",
-              "href": null
+              "href": "https://www.basketball-reference.com/teams/"
             },
             {
               "text": "Pro Football Reference. Team franchise records.",
-              "href": null
+              "href": "https://www.pro-football-reference.com/teams/"
             },
             {
               "text": "Hockey Reference. Franchise records.",
-              "href": null
+              "href": "https://www.hockey-reference.com/teams/"
             },
             {
               "text": "Forbes. Professional sports franchise valuations, recent lists.",
-              "href": null
+              "href": "https://www.forbes.com/sites/brettknight/2025/12/18/the-worlds-50-most-valuable-sports-teams-2025/"
             }
           ],
           "fixes": []
