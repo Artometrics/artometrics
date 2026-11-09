@@ -390,6 +390,12 @@ assert(deskHome.includes("storySquare"), "story tiles use the text-free square o
 assert(deskHome.includes("htmlTitle"), "a text-free square can carry an HTML title");
 const assets = readFileSync(join(ROOT, "lib/article-assets.mjs"), "utf8");
 assert(assets.includes("square-plain.webp"), "the incoming text-free square has a dedicated filename");
+const { storySquare, coverSrc } = await import("../lib/article-assets.mjs");
+assert(storySquare("pixar", "").htmlTitle === true, "Pixar uses the text-free square and an HTML title");
+assert(storySquare("pixar", "").src.endsWith("square-plain.webp"), "Pixar square is the plain file");
+assert(storySquare("celtics", "/images/content/articles/celtics/hero.png").htmlTitle === false, "Celtics keeps its text-bearing square");
+assert(coverSrc("pixar").src.endsWith("cover-title.webp"), "Pixar magazine cover keeps its typography");
+assert(coverSrc("steam").src.endsWith("cover.webp") || coverSrc("steam").src === "", "unmapped covers are not given a new file");
 assert(assets.includes('textStatus: "text-bearing"'), "square-text files stay marked text-bearing");
 assert(!assets.includes("hero is text-free"), "legacy heroes are not called text-free");
 assert(!deskHome.includes("desk-rail"), "the story grid does not slide sideways");

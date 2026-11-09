@@ -18,16 +18,21 @@ function bannerSrc(post: BlogPost) {
   if (existsSync(file)) return `/images/content/articles/${post.slug}/banner-art.webp`;
   return post.heroImage || "";
 }
+function bannerText(post: BlogPost) {
+  const file = join(process.cwd(), "public/images/content/articles", post.slug, "banner-text.webp");
+  if (existsSync(file)) return `/images/content/articles/${post.slug}/banner-text.webp`;
+  return "";
+}
 
 const slides = posts
-  .map((post) => ({ post, src: bannerSrc(post) }))
+  .map((post) => ({ post, src: bannerSrc(post), textHref: bannerText(post) }))
   .filter((slide) => slide.src);
 ---
 
 {slides.length ? (
   <section class="banner-carousel" data-banner-carousel aria-roledescription="carousel" aria-label={label}>
     <div class="banner-carousel__viewport">
-      {slides.map(({ post, src }, index) => (
+      {slides.map(({ post, src, textHref }, index) => (
         <article class="desk-lead banner-carousel__slide" data-banner-slide hidden={index > 0}>
           <a class="desk-lead__hit" href={hrefFor(post)}>
             <img src={src} alt="" width="1600" height="900" />
@@ -38,6 +43,7 @@ const slides = posts
               {post.pubDate ? <p class="desk-lead__meta">{formatDate(post.pubDate)}</p> : null}
             </div>
           </a>
+          {textHref ? <a class="banner-carousel__download" href={textHref} download>Banner with title</a> : null}
         </article>
       ))}
     </div>

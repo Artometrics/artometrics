@@ -1644,7 +1644,7 @@ html:has(.desk-home) { overflow-x: clip; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
+  background: rgba(7, 17, 31, 0.55);
   font-family: var(--display);
   font-size: clamp(0.7rem, 2vw, 1rem);
   line-height: 1.05;
