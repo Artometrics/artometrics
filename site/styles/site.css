@@ -201,8 +201,17 @@ button,
 @media (min-width: 800px) {
   .wordmark img { max-height: 46px; }
 }
+html[data-logo-form="single"] .wordmark__plate {
+  padding: 4px 12px;
+}
 html[data-logo-form="single"] .wordmark img {
+  width: 52px;
+  height: 52px;
+  max-width: 52px;
   max-height: 52px;
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
 }
 .wordmark__plate {
   background: transparent;
@@ -369,8 +378,7 @@ html[data-logo-form="single"] .wordmark img {
   object-fit: cover;
   border: 1px solid var(--rule);
 }
-.nav-catalogue__pdf { display: block; margin-top: 4px; font-size: 11px; }
-.nav-catalogue { position: static; }
+.nav-catalogue { position: static; margin-top: 16px; }
 .suggest { max-height: 100%; }
 .suggest { list-style: none; margin: 0 0 12px; padding: 0; border: 1px solid var(--rule); }
 .suggest a { display: flex; gap: 10px; align-items: center; padding: 8px 12px; text-decoration: none; border-bottom: 1px solid var(--rule); }
@@ -1257,7 +1265,10 @@ html:has(.report) { overflow-x: clip; }
   display: grid;
   gap: 6px;
 }
-.appearance__singles { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.appearance__singles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (min-width: 800px) {
+  .appearance__singles { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
 .appearance__wordmarks { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
 html[data-logo-form="single"] .appearance__wordmarks { display: none; }
 html[data-logo-form="wordmark"] .appearance__singles { display: none; }
@@ -1284,6 +1295,14 @@ html[data-logo-form="wordmark"] .appearance__singles { display: none; }
   width: auto;
   max-width: 100%;
   height: 40px;
+  object-fit: contain;
+  object-position: center;
+}
+.appearance__singles img {
+  width: min(72px, 100%);
+  height: auto;
+  max-height: none;
+  aspect-ratio: 1;
   object-fit: contain;
   object-position: center;
 }

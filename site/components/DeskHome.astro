@@ -22,7 +22,7 @@ function tileSrc(slug: string, heroImage?: string) {
   return storySquare(slug, heroImage);
 }
 
-const leadSlides = ["geopolitics", "franchise", "dodgers"].flatMap((slug) => {
+const leadSlides = ["geopolitics", "franchise", "dodgers", "nuclear", "wine"].flatMap((slug) => {
   const post = getBlogPost(slug);
   return post ? [post] : [];
 });

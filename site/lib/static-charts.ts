@@ -13,11 +13,15 @@ export function withStaticCharts(html: string): string {
       return `<div class="art-chart-live"${attrs}><img class="art-chart-fallback" src="${fallback}" alt="${alt}" loading="lazy" decoding="async" /></div>`;
     },
   );
-  return withCharts.replace(/<table\b[^>]*>[\s\S]*?<\/table>/gi, (table, offset) => {
-    const before = withCharts.slice(Math.max(0, offset - 120), offset);
+  const withTables = withCharts.replace(/<table\b[^>]*>[\s\S]*?<\/table>/gi, (table, offset) => {
+    const before = withCharts.slice(Math.max(0, offset - 160), offset);
     if (/art-table-wrap|table-scroll/.test(before)) return table;
     return `<div class="table-scroll">${table}</div>`;
   });
+  return withTables.replace(
+    /<div class="(art-table-wrapper|table-scroll)"(?![^>]*\btabindex=)/g,
+    '<div class="$1" tabindex="0" role="region" aria-label="Data table. Scroll sideways for more columns."',
+  );
 }
 
 export function jsonForScript(value: unknown): string {

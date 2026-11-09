@@ -243,3 +243,23 @@ html[data-theme="light"] .artometrics-article-body .art-chart-caption {
   color: #3e362e !important;
   text-align: left !important;
 }
+
+/* One column for the plot, caption, and source. No dotted frame. */
+html[data-theme="dark"] .artometrics-article-body .art-chart,
+html[data-theme="light"] .artometrics-article-body .art-chart {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+html[data-theme="dark"] .artometrics-article-body .art-chart:hover,
+html[data-theme="light"] .artometrics-article-body .art-chart:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+html[data-theme="dark"] .artometrics-article-body .art-chart-live,
+html[data-theme="light"] .artometrics-article-body .art-chart-live {
+  background: transparent !important;
+}

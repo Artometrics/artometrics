@@ -43,7 +43,7 @@ function tileSrc(slug: string, hero?: string) {
   <div class="desk-home">
     <p class="desk-lead__kicker"><a href={`/topics/${channel}`}>{meta.title}</a></p>
     <h1 class="desk-page-title">{subMeta?.title || sub}</h1>
-    {posts.length ? <BannerCarousel posts={posts.slice(0, Math.min(3, posts.length))} label={`${subMeta?.title || sub} reports`} /> : null}
+    {posts.length ? <BannerCarousel posts={posts.slice(0, Math.min(5, posts.length))} label={`${subMeta?.title || sub} reports`} /> : null}
     {posts.length ? (
       <div class="story-grid">
         {posts.map((post) => {

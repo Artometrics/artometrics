@@ -42,7 +42,7 @@ if (loose.length) groups.push({ label: "Reports", href: "", posts: loose });
 const slides = [
   ...posts.filter((post) => existsSync(join(process.cwd(), "public/images/content/articles", post.slug, "banner-art.webp"))),
   ...posts.filter((post) => !existsSync(join(process.cwd(), "public/images/content/articles", post.slug, "banner-art.webp"))),
-].slice(0, Math.min(3, posts.length));
+].slice(0, Math.min(5, posts.length));
 ---
 
 <Base

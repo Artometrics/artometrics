@@ -47,7 +47,6 @@ const catalogue = [
   ["longevity", "Longevity"],
   ["geopolitics", "Geopolitics"],
 ] as const;
-const cataloguePdf: Record<string, string> = { anime: "/exports/anime.pdf" };
 const singles = [WORDMARKS.find((mark) => mark.id === "halftone")!, ...WORDMARKS.filter((mark) => mark.id !== "halftone")];
 
 ---
@@ -199,11 +198,10 @@ const singles = [WORDMARKS.find((mark) => mark.id === "halftone")!, ...WORDMARKS
       <div class="nav-catalogue__row" id="nav-catalogue-row" tabindex="0">
         {catalogue.map(([slug, title]) => (
           <div class="nav-catalogue__card">
-            <a href={`/${slug}`}>
+            <a href={`/mag/${slug}`}>
               <img src={coverSrc(slug).src || `/images/content/articles/${slug}/cover.webp`} alt="" width="900" height="1200" />
               <span>{title}</span>
             </a>
-            {cataloguePdf[slug] ? <a class="nav-catalogue__pdf" href={cataloguePdf[slug]}>PDF</a> : null}
           </div>
         ))}
       </div>
@@ -262,7 +260,12 @@ const singles = [WORDMARKS.find((mark) => mark.id === "halftone")!, ...WORDMARKS
       if (!logoHit(id)) id = "halftone";
       var src = logoSrc(id);
       root.setAttribute("data-logo", id);
-      if (img && src && !root.getAttribute("data-logo-review") && img.getAttribute("src") !== src) img.setAttribute("src", src);
+      if (img && src && !root.getAttribute("data-logo-review")) {
+        if (img.getAttribute("src") !== src) img.setAttribute("src", src);
+        var single = root.getAttribute("data-logo-form") === "single";
+        img.setAttribute("width", single ? "180" : "600");
+        img.setAttribute("height", single ? "180" : "124");
+      }
       if (persist) {
         try { localStorage.setItem("artometrics-logo", id); } catch (e) {}
       }
