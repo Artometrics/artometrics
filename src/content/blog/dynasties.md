@@ -75,11 +75,11 @@ faq:
 <p class="art-p">This comparative model draws from public franchise records maintained by Baseball Reference, Basketball Reference, Pro Football Reference, and Hockey Reference, plus Forbes franchise valuations published between 2020 and 2025. It is not a win-probability model. Attention indices are editorial constructs labeled as comparative signals, not official league statistics.</p>
 <p class="art-p">Front offices optimize payroll allocation, injury management, and draft capital. This analysis operates one level higher: how do championship count, market value, finishing efficiency, and fan attention interact when placed on the same page?</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
-<p>Baseball Reference. Franchise history pages.</p>
-<p>Basketball Reference. Team season and playoff records.</p>
-<p>Pro Football Reference. Team franchise records.</p>
-<p>Hockey Reference. Franchise records.</p>
-<p>Forbes. Professional sports franchise valuations, recent lists.</p>
+<p><a href="https://www.baseball-reference.com/teams/">Baseball Reference. Franchise history pages.</a></p>
+<p><a href="https://www.basketball-reference.com/teams/">Basketball Reference. Team season and playoff records.</a></p>
+<p><a href="https://www.pro-football-reference.com/teams/">Pro Football Reference. Team franchise records.</a></p>
+<p><a href="https://www.hockey-reference.com/teams/">Hockey Reference. Franchise records.</a></p>
+<p><a href="https://www.forbes.com/sites/brettknight/2025/12/18/the-worlds-50-most-valuable-sports-teams-2025/">Forbes. Professional sports franchise valuations, recent lists.</a></p>
 </section>
 </main>
 </div>

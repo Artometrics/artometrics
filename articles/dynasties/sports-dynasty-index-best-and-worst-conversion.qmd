@@ -86,13 +86,13 @@ Single-franchise profiles can reference this index whenever a team's standing re
 
 ## Sources {#sources}
 
-Baseball Reference. Franchise history pages.
+[Baseball Reference. Franchise history pages.](https://www.baseball-reference.com/teams/)
 
-Basketball Reference. Team season and playoff records.
+[Basketball Reference. Team season and playoff records.](https://www.basketball-reference.com/teams/)
 
-Pro Football Reference. Team franchise records.
+[Pro Football Reference. Team franchise records.](https://www.pro-football-reference.com/teams/)
 
-Hockey Reference. Franchise records.
+[Hockey Reference. Franchise records.](https://www.hockey-reference.com/teams/)
 
-Forbes. Professional sports franchise valuations, recent lists.
+[Forbes. Professional sports franchise valuations, recent lists.](https://www.forbes.com/sites/brettknight/2025/12/18/the-worlds-50-most-valuable-sports-teams-2025/)
 
