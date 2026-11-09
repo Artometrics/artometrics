@@ -104,7 +104,7 @@ faq:
   </div>
   <div class="art-ref-item">
     Wintgens, J. N. (Ed.). (2009). <em>Coffee: Growing, Processing, Sustainable
-    Output</em> (2nd ed.). Wiley-VCH.
+    Production</em> (2nd ed.). Wiley-VCH.
   </div>
 <h2 id="editor-s-note" class="anchored">Editor's note</h2>
 <div class="art-editorial-note"><p class="art-p">
