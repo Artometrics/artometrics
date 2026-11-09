@@ -70,7 +70,7 @@ The defining trait is not one championship. It is repeated access to the conditi
 
 ## Data and method {#dataset-context}
 
-Public Baseball Reference franchise records, Lahman-style season summaries, and widely cited payroll-rank histories feed the charts. The emphasis is franchise identity and era structure rather than player-level WAR modeling. The shortened 2020 season is left unadjusted and read separately in the prose.
+Public Baseball Reference franchise records, Lahman-style season summaries, and opening-day payroll ranks from The Baseball Cube feed the charts. The emphasis is franchise identity and era structure rather than player-level WAR modeling. The shortened 2020 season is left unadjusted and read separately in the prose.
 
 Analysts focus on depth and conversion. Fans feel the distance between six months of excellence and surviving October. The gap between those experiences is the Dodgers' modern story.
 
@@ -80,7 +80,7 @@ Analysts focus on depth and conversion. Fans feel the distance between six month
 
 [Lahman, S. Lahman Baseball Database.](https://sabr.org/lahman-database/)
 
-Forbes and public payroll-rank summaries.
+[The Baseball Cube. MLB Team Payrolls (opening day), 2013–2024.](https://www.thebaseballcube.com/content/payroll/)
 
 [Retrosheet and Baseball Almanac pennant/title records.](https://www.baseball-almanac.com/ws/wsmenu.shtml)
 
@@ -88,5 +88,5 @@ Related Artometrics reports: Yankees · Padres · Giants.
 
 ## Editor's note {#editors-note}
 
-Pennant totals are approximate franchise summaries from public records. The 2020 season is shown unadjusted. Payroll ranks are editorial summaries from public salary tables, not tax-payroll figures.
+Pennant totals are approximate franchise summaries from public records. The 2020 season is shown unadjusted. Payroll ranks are opening-day payrolls from The Baseball Cube, not competitive-balance-tax figures, so deferred salary can lower a team's rank.
 

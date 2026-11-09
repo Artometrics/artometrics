@@ -58,7 +58,7 @@ faq:
 <p class="art-p">Since the early 2010s, the Dodgers have made 90-win baseball look normal. Organizational infrastructure shows up as a line chart—the 111-win 2022 season as the ceiling spike inside a sustained high floor. The shortened 2020 season interrupts the scale, but not the story. The floor stayed high even when the schedule compressed.</p>
 <h2 id="spending-conversion" class="anchored">Spending is structural—October still breaks machines</h2>
 <figure class="art-chart">
-  <div class="art-chart-live" data-chart="/data/articles/dodgers/charts/chart4_spending_conversion.plotly.json" data-source="Data: Baseball Reference, Lahman, Retrosheet, Forbes - ARTOMETRICS" role="img" aria-label="Payroll rank and October outcome markers" data-fallback="/images/content/articles/dodgers/charts/chart4_spending_conversion.png"></div>
+  <div class="art-chart-live" data-chart="/data/articles/dodgers/charts/chart4_spending_conversion.plotly.json" data-source="Data: The Baseball Cube (opening-day payrolls), Baseball Reference - ARTOMETRICS" role="img" aria-label="Payroll rank and October outcome markers" data-fallback="/images/content/articles/dodgers/charts/chart4_spending_conversion.png"></div>
   <figcaption class="art-chart-caption">Payroll rank and October outcome markers</figcaption>
 </figure>
 <p class="art-p">Los Angeles spends structurally: depth, scouting, player development, stars, and injury insurance. Payroll rank and October markers show how often that infrastructure buys access—and how often short series erase it. Postseason baseball can make the best system look fragile in a five-game sample. The modern Dodgers debate lives in that contradiction.</p>
@@ -75,16 +75,16 @@ faq:
 <section class="art-back-matter">
 <h2 id="data-methods-and-sources" class="anchored">Data, methods &amp; sources</h2>
 <h3 id="data-and-method" class="anchored art-back-matter__subhead">Data and method</h3>
-<p class="art-p">Public Baseball Reference franchise records, Lahman-style season summaries, and widely cited payroll-rank histories feed the charts. The emphasis is franchise identity and era structure rather than player-level WAR modeling. The shortened 2020 season is left unadjusted and read separately in the prose.</p>
+<p class="art-p">Public Baseball Reference franchise records, Lahman-style season summaries, and opening-day payroll ranks from The Baseball Cube feed the charts. The emphasis is franchise identity and era structure rather than player-level WAR modeling. The shortened 2020 season is left unadjusted and read separately in the prose.</p>
 <p class="art-p">Analysts focus on depth and conversion. Fans feel the distance between six months of excellence and surviving October. The gap between those experiences is the Dodgers' modern story.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
 <p><a href="https://www.baseball-reference.com/teams/LAD/">Baseball Reference. <em>Los Angeles Dodgers Franchise History</em>.</a></p>
 <p><a href="https://sabr.org/lahman-database/">Lahman, S. <em>Lahman Baseball Database</em>.</a></p>
-<p>Forbes and public payroll-rank summaries.</p>
+<p><a href="https://www.thebaseballcube.com/content/payroll/">The Baseball Cube. <em>MLB Team Payrolls (opening day), 2013–2024</em>.</a></p>
 <p><a href="https://www.baseball-almanac.com/ws/wsmenu.shtml">Retrosheet and Baseball Almanac pennant/title records.</a></p>
 <p>Related Artometrics reports: <a href="/yankees">Yankees</a> · <a href="/padres">Padres</a> · <a href="/giants">Giants</a>.</p>
 <h2 id="editors-note" class="anchored">Editor's note</h2>
-<div class="art-editorial-note"><p><em>Pennant totals are approximate franchise summaries from public records. The 2020 season is shown unadjusted. Payroll ranks are editorial summaries from public salary tables, not tax-payroll figures.</em></p>
+<div class="art-editorial-note"><p><em>Pennant totals are approximate franchise summaries from public records. The 2020 season is shown unadjusted. Payroll ranks are opening-day payrolls from The Baseball Cube, not competitive-balance-tax figures, so deferred salary can lower a team's rank.</em></p>
 </section>
 </main>
 </div>
