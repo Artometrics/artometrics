@@ -76,10 +76,10 @@ faq:
 <p class="art-p">Championship and pennant counts, payroll rankings, and historical season records come from Baseball Reference, Lahman historical tables, Retrosheet summaries, and Forbes valuations. The focus is institutional scale—franchise identity, era structure, and conversion—not play-by-play win modeling.</p>
 <p class="art-p">Baseball professionals measure conversion: money into wins, wins into postseason chances, chances into flags. Fans feel the gap between mythology and the current roster. Both conversations belong on the same page.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
-<p>Baseball Reference. <em>New York Yankees Franchise History</em>.</p>
-<p>Lahman, S. <em>Lahman Baseball Database</em>.</p>
-<p>Forbes. <em>MLB Team Valuations</em>, historical rankings.</p>
-<p>Retrosheet and Baseball Almanac championship/pennant records.</p>
+<p><a href="https://www.baseball-reference.com/teams/NYY/">Baseball Reference. <em>New York Yankees Franchise History</em>.</a></p>
+<p><a href="https://sabr.org/lahman-database/">Lahman, S. <em>Lahman Baseball Database</em>.</a></p>
+<p><a href="https://www.forbes.com/mlb-valuations/list/">Forbes. <em>MLB Team Valuations</em>, historical rankings.</a></p>
+<p><a href="https://www.baseball-almanac.com/ws/wsmenu.shtml">Retrosheet and Baseball Almanac championship/pennant records.</a></p>
 <p>Related Artometrics reports: <a href="/dodgers">Dodgers</a> · <a href="/padres">Padres</a> · <a href="/giants">Giants</a>.</p>
 <h2 id="editors-note" class="anchored">Editor's note</h2>
 <div class="art-editorial-note"><p><em>Championship and pennant counts follow Baseball Reference franchise totals. Payroll ranks are editorial summaries from public salary tables, not competitive-balance-tax payrolls. Era buckets are interpretive groupings for chart legibility.</em></p>

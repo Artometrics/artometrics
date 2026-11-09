@@ -1516,19 +1516,19 @@
           "citations": [
             {
               "text": "Baseball Reference. New York Yankees Franchise History.",
-              "href": null
+              "href": "https://www.baseball-reference.com/teams/NYY/"
             },
             {
               "text": "Lahman, S. Lahman Baseball Database.",
-              "href": null
+              "href": "https://sabr.org/lahman-database/"
             },
             {
               "text": "Forbes. MLB Team Valuations, historical rankings.",
-              "href": null
+              "href": "https://www.forbes.com/mlb-valuations/list/"
             },
             {
               "text": "Retrosheet and Baseball Almanac championship/pennant records.",
-              "href": null
+              "href": "https://www.baseball-almanac.com/ws/wsmenu.shtml"
             },
             {
               "text": "Related Artometrics report: Dodgers",
