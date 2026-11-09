@@ -78,10 +78,10 @@ faq:
 <p class="art-p">Public Baseball Reference franchise records, Lahman-style season summaries, and widely cited payroll-rank histories feed the charts. The emphasis is franchise identity and era structure rather than player-level WAR modeling. The shortened 2020 season is left unadjusted and read separately in the prose.</p>
 <p class="art-p">Analysts focus on depth and conversion. Fans feel the distance between six months of excellence and surviving October. The gap between those experiences is the Dodgers' modern story.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
-<p>Baseball Reference. <em>Los Angeles Dodgers Franchise History</em>.</p>
-<p>Lahman, S. <em>Lahman Baseball Database</em>.</p>
+<p><a href="https://www.baseball-reference.com/teams/LAD/">Baseball Reference. <em>Los Angeles Dodgers Franchise History</em>.</a></p>
+<p><a href="https://sabr.org/lahman-database/">Lahman, S. <em>Lahman Baseball Database</em>.</a></p>
 <p>Forbes and public payroll-rank summaries.</p>
-<p>Retrosheet and Baseball Almanac pennant/title records.</p>
+<p><a href="https://www.baseball-almanac.com/ws/wsmenu.shtml">Retrosheet and Baseball Almanac pennant/title records.</a></p>
 <p>Related Artometrics reports: <a href="/yankees">Yankees</a> · <a href="/padres">Padres</a> · <a href="/giants">Giants</a>.</p>
 <h2 id="editors-note" class="anchored">Editor's note</h2>
 <div class="art-editorial-note"><p><em>Pennant totals are approximate franchise summaries from public records. The 2020 season is shown unadjusted. Payroll ranks are editorial summaries from public salary tables, not tax-payroll figures.</em></p>

@@ -960,11 +960,11 @@
           "citations": [
             {
               "text": "Baseball Reference. Los Angeles Dodgers Franchise History.",
-              "href": null
+              "href": "https://www.baseball-reference.com/teams/LAD/"
             },
             {
               "text": "Lahman, S. Lahman Baseball Database.",
-              "href": null
+              "href": "https://sabr.org/lahman-database/"
             },
             {
               "text": "Forbes and public payroll-rank summaries.",
@@ -972,7 +972,7 @@
             },
             {
               "text": "Retrosheet and Baseball Almanac pennant/title records.",
-              "href": null
+              "href": "https://www.baseball-almanac.com/ws/wsmenu.shtml"
             },
             {
               "text": "Related Artometrics report: Yankees",
