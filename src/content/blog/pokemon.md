@@ -78,8 +78,8 @@ social data project.</em> Week 13, 2025 — Pokémon.
 https://tidytues.day
 </p>
 <p class="art-p">
-Ito, S. (Producer), &amp; Tajiri, S. (Director). (1996). <em>Pocket
-Monsters Red and Green</em> [Video game]. Nintendo / Game Freak.
+Tajiri, S. (Director). (1996). <em>Pocket
+Monsters Red and Green</em> [Video game]. Game Freak; Nintendo.
 </p>
 <p class="art-p">
 PokéAPI. (2025). <em>The RESTful Pokémon API.</em>
