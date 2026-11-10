@@ -1918,7 +1918,7 @@
           "title": "Power at 0.95, Then the Ides",
           "kicker": "Caesar",
           "href": "/caesar",
-          "updatedThrough": "Updated through 2020",
+          "updatedThrough": "Updated through 2022",
           "updatedThroughKind": "citation",
           "datasets": [],
           "citations": [
@@ -1935,8 +1935,20 @@
               "href": "https://www.gutenberg.org/ebooks/9776"
             },
             {
+              "text": "Douglas, D. (2017). Mao Zedong and Xi Jinping: A trait analysis. Master's thesis, Wright State University.",
+              "href": "https://corescholar.libraries.wright.edu/etd_all/1797"
+            },
+            {
               "text": "Dyson, S.B. (2006). Personality and foreign policy: Tony Blair's Iraq decisions. Foreign Policy Analysis, 2(3), 289–306.",
               "href": "https://academic.oup.com/fpa/article/2/3/289/1817609"
+            },
+            {
+              "text": "Dyson, S.B. (2009). Cognitive style and foreign policy: Margaret Thatcher's black-and-white thinking. International Political Science Review, 30(1), 33–48.",
+              "href": "https://doi.org/10.1177/0192512108097055"
+            },
+            {
+              "text": "Fitzgerald, I. (2022). Prime-ministerial power, personality and leadership — comparing Westminsters. Doctoral thesis, University of Canberra.",
+              "href": "https://researchsystem.canberra.edu.au/ws/portalfiles/portal/62540061/Fitzgerald_Ian.pdf"
             },
             {
               "text": "Goldsworthy, A. (2006). Caesar: Life of a Colossus. Yale University Press.",
@@ -1981,10 +1993,6 @@
             {
               "text": "Suetonius. (c. AD 121). The Twelve Caesars: Divus Julius. Trans. Robert Graves. Penguin Classics.",
               "href": "https://openlibrary.org/works/OL15191059W"
-            },
-            {
-              "text": "Wang, X., & Guo, Y. (2019). Leadership trait analysis of Chinese Communist leaders. Journal of Chinese Political Science, 24(3). [Unverified: no article with this title appears in Journal of Chinese Political Science 24(3) or in Crossref/OpenAlex searches as of Nov 9, 2026.]",
-              "href": null
             }
           ],
           "fixes": []

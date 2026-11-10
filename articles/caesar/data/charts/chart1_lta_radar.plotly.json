@@ -3,74 +3,11 @@
     {
       "type": "scatterpolar",
       "r": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "theta": [
-        "B",
-        "CC",
-        "D",
-        "IB",
-        "P",
-        "A",
-        "T",
-        "B"
-      ],
-      "fill": "toself",
-      "fillcolor": "#C0392B33",
-      "line": {
-        "color": "#C0392B",
-        "width": 2
-      },
-      "name": "1",
-      "hovertemplate": "<b>1</b><br>%{theta}: %{r:.2f}<extra></extra>"
-    },
-    {
-      "type": "scatterpolar",
-      "r": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "theta": [
-        "B",
-        "CC",
-        "D",
-        "IB",
-        "P",
-        "A",
-        "T",
-        "B"
-      ],
-      "fill": "toself",
-      "fillcolor": "#b8860b33",
-      "line": {
-        "color": "#b8860b",
-        "width": 2
-      },
-      "name": "2",
-      "hovertemplate": "<b>2</b><br>%{theta}: %{r:.2f}<extra></extra>"
-    },
-    {
-      "type": "scatterpolar",
-      "r": [
         0.92,
         0.78,
         0.31,
         0.44,
         0.95,
-        0.58,
         0.85,
         0.92
       ],
@@ -80,7 +17,6 @@
         "D",
         "IB",
         "P",
-        "A",
         "T",
         "B"
       ],
@@ -90,132 +26,8 @@
         "color": "#5a7a5a",
         "width": 2
       },
-      "name": "3",
-      "hovertemplate": "<b>3</b><br>%{theta}: %{r:.2f}<extra></extra>"
-    },
-    {
-      "type": "scatterpolar",
-      "r": [
-        0.88,
-        0.62,
-        0.74,
-        0.81,
-        0.91,
-        0.44,
-        0.79,
-        0.88
-      ],
-      "theta": [
-        "B",
-        "CC",
-        "D",
-        "IB",
-        "P",
-        "A",
-        "T",
-        "B"
-      ],
-      "fill": "toself",
-      "fillcolor": "#4a608033",
-      "line": {
-        "color": "#4a6080",
-        "width": 2
-      },
-      "name": "4",
-      "hovertemplate": "<b>4</b><br>%{theta}: %{r:.2f}<extra></extra>"
-    },
-    {
-      "type": "scatterpolar",
-      "r": [
-        0.71,
-        0.69,
-        0.61,
-        0.72,
-        0.83,
-        0.52,
-        0.76,
-        0.71
-      ],
-      "theta": [
-        "B",
-        "CC",
-        "D",
-        "IB",
-        "P",
-        "A",
-        "T",
-        "B"
-      ],
-      "fill": "toself",
-      "fillcolor": "#6B6B6B33",
-      "line": {
-        "color": "#6B6B6B",
-        "width": 2
-      },
-      "name": "5",
-      "hovertemplate": "<b>5</b><br>%{theta}: %{r:.2f}<extra></extra>"
-    },
-    {
-      "type": "scatterpolar",
-      "r": [
-        0.85,
-        0.55,
-        0.58,
-        0.69,
-        0.88,
-        0.41,
-        0.88,
-        0.85
-      ],
-      "theta": [
-        "B",
-        "CC",
-        "D",
-        "IB",
-        "P",
-        "A",
-        "T",
-        "B"
-      ],
-      "fill": "toself",
-      "fillcolor": "NA33",
-      "line": {
-        "color": null,
-        "width": 2
-      },
-      "name": "6",
-      "hovertemplate": "<b>6</b><br>%{theta}: %{r:.2f}<extra></extra>"
-    },
-    {
-      "type": "scatterpolar",
-      "r": [
-        0.55,
-        0.58,
-        0.48,
-        0.56,
-        0.61,
-        0.55,
-        0.59,
-        0.55
-      ],
-      "theta": [
-        "B",
-        "CC",
-        "D",
-        "IB",
-        "P",
-        "A",
-        "T",
-        "B"
-      ],
-      "fill": "toself",
-      "fillcolor": "NA33",
-      "line": {
-        "color": null,
-        "width": 2
-      },
-      "name": "7",
-      "hovertemplate": "<b>7</b><br>%{theta}: %{r:.2f}<extra></extra>"
+      "name": "Caesar (author coding)",
+      "hovertemplate": "<b>Caesar (author coding)</b><br>%{theta}: %{r:.2f}<extra></extra>"
     }
   ],
   "layout": {
@@ -242,7 +54,7 @@
       "y": -0.15
     },
     "title": {
-      "text": "Caesar’s LTA profile has a distinctive asymmetric shape that makes the psychonomic argument visible before you read a word<br><span style='font-size:12px;color:#6B6B6B'>Summary View - source cited in report references</span>",
+      "text": "Caesar’s LTA profile has a distinctive asymmetric shape that makes the psychonomic argument visible before you read a word<br><span style='font-size:12px;color:#6B6B6B'>Author coding of Hermann (1999). Mao, Xi, and Thatcher are not plotted.</span>",
       "font": {
         "size": 14,
         "color": "#C0392B"
