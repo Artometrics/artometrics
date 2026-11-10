@@ -81,10 +81,10 @@ faq:
 <p class="art-p">The source stack includes BEA regional GDP, Commerce metro exports, DOSE global subnational output, Census ACS, World Cities Culture Forum, and local Socrata portals such as DataSF or NYC Open Data.</p>
 <p class="art-p">The charts use transparent editorial indices to define the report structure. A output pass should replace each index with a direct API or CSV aggregate.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
-<p>BEA. Regional GDP by county and metropolitan area documentation/API.</p>
-<p>DOSE / PIK. Global subnational economic output dataset.</p>
-<p>World Cities Culture Forum. CREATIVE Data Framework and 5th Edition Data Explorer.</p>
-<p>DataSF and NYC Open Data. Socrata/SODA portal documentation.</p>
+<p><a href="https://www.bea.gov/data/gdp/gdp-by-county">BEA. Regional GDP by county and metropolitan area documentation/API.</a></p>
+<p><a href="https://doi.org/10.1038/s41597-023-02323-8">DOSE / PIK. Global subnational economic output dataset.</a></p>
+<p><a href="https://worldcitiescultureforum.com/data-explorer-cities/">World Cities Culture Forum. CREATIVE Data Framework and 5th Edition Data Explorer.</a></p>
+<p><a href="https://dev.socrata.com/">DataSF and NYC Open Data. Socrata/SODA portal documentation.</a></p>
 <p>U.S. Census ACS and International Trade Administration Metropolitan Export Series.</p>
 <h2 id="editor-s-note" class="anchored">Editor's note</h2>
 

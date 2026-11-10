@@ -86,15 +86,15 @@ The richer comparison is not which city is better, but which system each city is
 
 ## Sources {#sources}
 
-BEA. Metropolitan GDP and regional industry data.
+[BEA. Metropolitan GDP and regional industry data.](https://www.bea.gov/data/gdp/gdp-by-county)
 
 U.S. Census ACS.
 
-BLS metro employment data.
+[BLS metro employment data.](https://www.bls.gov/sae/)
 
 DataSF and NYC Open Data Socrata portals.
 
-World Cities Culture Forum CREATIVE Data Framework.
+[World Cities Culture Forum CREATIVE Data Framework.](https://worldcitiescultureforum.com/data-explorer-cities/)
 
 Transit agency and office-market public summaries.
 

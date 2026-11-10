@@ -90,13 +90,13 @@ Taxes are the entry point; export identity, climate risk, talent compounding, an
 
 ## Sources {#sources}
 
-BEA. State GDP by industry.
+[BEA. State GDP by industry.](https://www.bea.gov/data/gdp/gdp-state)
 
 U.S. Census ACS and population estimates.
 
-IRS migration data summaries.
+[IRS migration data summaries.](https://www.irs.gov/statistics/soi-tax-stats-migration-data)
 
-BLS state employment statistics.
+[BLS state employment statistics.](https://www.bls.gov/sae/)
 
 International Trade Administration and OEC export references.
 

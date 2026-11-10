@@ -75,10 +75,10 @@ faq:
 <p class="art-p">The comparison draws on BEA state GDP by industry, Census ACS population and migration, IRS migration summaries, BLS employment, state tax and budget documents, OEC/ITA export tables, and climate/energy series.</p>
 <p class="art-p">Values in the figures are editorial indices that organize the rivalry into comparable dimensions. They should be read as a structured hypothesis map, then replaced with source aggregates before formal rankings.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
-<p>BEA. State GDP by industry.</p>
+<p><a href="https://www.bea.gov/data/gdp/gdp-state">BEA. State GDP by industry.</a></p>
 <p>U.S. Census ACS and population estimates.</p>
-<p>IRS migration data summaries.</p>
-<p>BLS state employment statistics.</p>
+<p><a href="https://www.irs.gov/statistics/soi-tax-stats-migration-data">IRS migration data summaries.</a></p>
+<p><a href="https://www.bls.gov/sae/">BLS state employment statistics.</a></p>
 <p>International Trade Administration and OEC export references.</p>
 <p>State budget and tax agency documents.</p>
 <h2 id="editor-s-note" class="anchored">Editor's note</h2>

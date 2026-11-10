@@ -79,11 +79,11 @@ faq:
 <p class="art-p">The source stack includes BEA metro GDP, Census ACS, BLS employment, DataSF, NYC Open Data, World Cities Culture Forum, public venture-capital references, transit agencies, and office-market summaries.</p>
 <p class="art-p">The report uses editorial indices to define the comparison frame before direct API ingestion. It also references the San Francisco Data Microscope as the local profile layer.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
-<p>BEA. Metropolitan GDP and regional industry data.</p>
+<p><a href="https://www.bea.gov/data/gdp/gdp-by-county">BEA. Metropolitan GDP and regional industry data.</a></p>
 <p>U.S. Census ACS.</p>
-<p>BLS metro employment data.</p>
+<p><a href="https://www.bls.gov/sae/">BLS metro employment data.</a></p>
 <p>DataSF and NYC Open Data Socrata portals.</p>
-<p>World Cities Culture Forum CREATIVE Data Framework.</p>
+<p><a href="https://worldcitiescultureforum.com/data-explorer-cities/">World Cities Culture Forum CREATIVE Data Framework.</a></p>
 <p>Transit agency and office-market public summaries.</p>
 <h2 id="editor-s-note" class="anchored">Editor's note</h2>
 

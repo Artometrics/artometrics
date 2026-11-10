@@ -86,13 +86,13 @@ This framework gives future city reports a repeatable structure before deeper ci
 
 ## Sources {#sources}
 
-BEA. Regional GDP by county and metropolitan area documentation/API.
+[BEA. Regional GDP by county and metropolitan area documentation/API.](https://www.bea.gov/data/gdp/gdp-by-county)
 
-DOSE / PIK. Global subnational economic output dataset.
+[DOSE / PIK. Global subnational economic output dataset.](https://doi.org/10.1038/s41597-023-02323-8)
 
-World Cities Culture Forum. CREATIVE Data Framework and 5th Edition Data Explorer.
+[World Cities Culture Forum. CREATIVE Data Framework and 5th Edition Data Explorer.](https://worldcitiescultureforum.com/data-explorer-cities/)
 
-DataSF and NYC Open Data. Socrata/SODA portal documentation.
+[DataSF and NYC Open Data. Socrata/SODA portal documentation.](https://dev.socrata.com/)
 
 U.S. Census ACS and International Trade Administration Metropolitan Export Series.
 

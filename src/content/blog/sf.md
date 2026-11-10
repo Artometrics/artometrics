@@ -78,12 +78,12 @@ faq:
 <p class="art-p">DataSF provides Socrata/SODA API access to 1,100+ municipal datasets, including registered businesses, building permits, 311 service requests, public safety incidents, transportation usage, housing permits, and civic operations. Regional identity requires Bureau of Economic Analysis GDP data, Census ACS housing and demographic tables, Bureau of Labor Statistics employment figures, Commerce Department metro export series, and Bay Area transit ridership.</p>
 <p class="art-p">These charts establish a testing framework. The full city report will replace index values with direct API pulls from each source.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
-<p>DataSF / SF.gov. Open Data portal and developer documentation.</p>
-<p>Socrata / SODA API documentation.</p>
-<p>BEA. Metropolitan GDP and regional data.</p>
-<p>U.S. Census ACS. Housing, income, commuting, and demographic tables.</p>
-<p>International Trade Administration. Metropolitan Export Series.</p>
-<p>World Cities Culture Forum. CREATIVE Data Framework.</p>
+<p><a href="https://data.sf.gov/">DataSF / SF.gov. Open Data portal and developer documentation.</a></p>
+<p><a href="https://dev.socrata.com/">Socrata / SODA API documentation.</a></p>
+<p><a href="https://www.bea.gov/data/gdp/gdp-by-county">BEA. Metropolitan GDP and regional data.</a></p>
+<p><a href="https://www.census.gov/programs-surveys/acs">U.S. Census ACS. Housing, income, commuting, and demographic tables.</a></p>
+<p><a href="https://www.trade.gov/ita-metropolitan-export-series">International Trade Administration. Metropolitan Export Series.</a></p>
+<p><a href="https://worldcitiescultureforum.com/data-explorer-cities/">World Cities Culture Forum. CREATIVE Data Framework.</a></p>
 <h2 id="editor-s-note" class="anchored">Editor's note</h2>
 
 <div class="art-editorial-note"><p>Values are editorial indices for a source-backed framework. They should be replaced with direct DataSF, BEA, Census, BLS, and export aggregates in the full city-specific report.</p>
