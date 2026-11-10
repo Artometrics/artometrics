@@ -1492,6 +1492,29 @@ html[data-theme="dark"] .artometrics-article-body .art-chart:hover {
     display: none !important;
   }
 }
+.artometrics-article-body .art-chart-live.art-chart-live--roomy{
+  aspect-ratio: auto;
+  height: auto;
+  overflow: visible;
+  background: #f7f4ee;
+  margin: 1.25rem 0 1.75rem;
+}
+.artometrics-article-body .art-chart-live.art-chart-live--roomy > img,
+.artometrics-article-body .art-chart-live.art-chart-live--roomy .art-chart-fallback{
+  height: auto;
+  max-height: none;
+  width: 100%;
+}
+.art-chart-gallery{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px 16px;
+  margin: 1.5rem 0 2rem;
+}
+.art-chart-gallery figure{ margin: 0; }
+.art-chart-gallery img{ width: 100%; height: auto; background: #f7f4ee; }
+.art-chart-gallery figcaption{ font-size: 0.92rem; margin-top: 0.45rem; }
+.art-chart-gallery a{ margin-right: 0.6rem; }
 .artometrics-article-body .art-chart-live{
   width: 100%;
   aspect-ratio: 3 / 2;

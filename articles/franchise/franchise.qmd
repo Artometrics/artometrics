@@ -1,16 +1,107 @@
 ---
 title: "FRANCHISE: Merchandise Owns the Ledger"
-subtitle: "What 103 Wikipedia-scraped properties say about IP, Disney, and theatrical seriality"
+subtitle: "A factual reading of the November 2026 list"
 author: "Kyle McAuliffe"
 date: 2026-04-08
+date-modified: 2026-11-10
 categories: [arts, film]
 bibliography: references.bib
 ---
 
-The published report is `src/content/blog/franchise.md`. Charts and derived tables are produced by `scripts/build_brief.R`.
+The site page is `src/content/blog/franchise.md`, kept to this reading. Charts are theme A, drawn by `articles/franchise/scripts/build_theme_a_charts.py`. Every number below is a row in `data/verified_numbers.csv`.
 
-```bash
-npm run brief:franchise
-```
+**Narration placeholder.** The published player is `/audios/franchise-kore-v4.mp3`, 27 minutes 3 seconds, Kore, of the October article. This November text has not been re-rendered.
 
-Video package: `video/script-short.md`, `video/script-deepdive.md`, `video/script-vertical.md`, and matching `storyboard-*.json` files.
+## Before the big numbers get comfortable
+
+These are nominal estimates of consumer spending, compiled by Wikipedia's editors from press and trade sources. They are not profit, not a valuation, and not cash paid to the rights holder. Vintage: Wikipedia revision 1384334611, 7 November 2026, read 10 November 2026. Box office is Box Office Mojo that day, with The Numbers beside it. Disney's segments are the fiscal year ended 27 September 2025.
+
+Five findings:
+
+1. Merchandise, licensing and retail are 55.6% of the list (range 43.2–65.8). [S017]
+2. Pokémon, $130.7 billion, is larger than Star Wars and the MCU combined, $84.2 billion. [S017]
+3. Five first-listed parents account for 58.3% (range 52.3–72.7). Disney is 29.5%. [S017]
+4. US-origin rows sum to $825.5 billion and Japan-origin rows to $394.5 billion. Japan's merchandise share is 71.4%; the US share is 51.5%. [S017]
+5. Nine of 2025's ten biggest films worldwide were franchise installments. In unfinished 2026, six of ten are. The denominator is ten films. [S005]
+
+## How does Pokémon end up this large?
+
+Pokémon is $130.7 billion. Star Wars is $46.7 billion and the MCU is $37.5 billion, together $84.2 billion. You can bring a space station and a team of superheroes. On this list the merchandise still needs counting. Mickey Mouse & Friends is $61.2 billion, Winnie-the-Pooh $50.2 billion, Disney Princess $45.4 billion. The small bear did not wait for a cinematic universe. [S017]
+
+The whole list is $1,460.1 billion across 140 names, $12.0 billion more than the 12 October revision, all of it in two rows.
+
+Pokémon began in 1996. Games, animation and cards are different ways to stay with the same characters. That describes a system. It does not prove that every viewer buys a card. Jenkins, Steinberg and Hernández Hernández are the readings for how stories and goods travel together. Disney's other door is parks, resorts, cruises and shops. People can love the story and also want the toy.
+
+## The film ends. The shopping does not.
+
+Merchandise, licensing and retail: $812.4 billion. Video games: $268.2 billion. Box office: $265.3 billion. Another $27.2 billion, about 1.9%, is unitemised. Shares: merchandise 55.6% (43.2–65.8), games 18.3% (11.4–27.0), box office 18.1% (12.7–25.5). The last two ranges overlap. The 5,000 resamples show dependence on which franchises are listed. They do not audit the estimates, and the categories are not economically independent. [S017]
+
+## Did Hello Kitty really lose billions?
+
+No. The 2019 file said $80.0 billion. The November list says $33.5 billion. Mario went from $35.0 billion to $9.74 billion, Gundam from $25.5 billion to $5.0 billion. Those three rows did not move between 12 October and 7 November. The gap is a source revision, not a collapse Sanrio or Nintendo reported. [S001; S017]
+
+The 2019 file is TidyTuesday's 2 July extract, 103 franchises, checked against Wikipedia revision 904026364 (29 June 2019). Eighty-two names have a usable total in both vintages. Pokémon's paired difference is $39.8 billion. Naruto's is about $13.9 billion. Call of Duty's is $23.0 billion, from $17.0 billion to $40.0 billion. Call it growth only where the crosswalk says the scope matches.
+
+The audit sample is still 40 draws, seed 20261012: 39 matched, 28 of 39 within 10% of the June 2019 headline, 5 within 1% of the breakdown. Box office's share moves from 8.9% in the 2019 file to 18.1% now, largely because the basket and the itemisation changed.
+
+## What moved since October?
+
+Same 140 names. Call of Duty from $31 billion to $40 billion. Paw Patrol from $15.4 billion to $18.4 billion. [S017]
+
+IGN, 26 October 2026, reported that Call of Duty had surpassed $40 billion, quoting Xbox. The list rounds that milestone to one video-game line. It is not an itemised audit. [S094]
+
+Deadline, 28 October 2026, states $18 billion of Paw Patrol lifetime retail. The list adds older The Numbers lines for box office ($373.7 million, access date 2024) and home media ($39 million, access date 2023) and prints $18.4 billion. The same Deadline story says one film grossed more than half a billion worldwide, which does not fit under that older box-office line. The list total stays in the sum. The extra $0.4 billion is flagged, not freshly verified. [S095]
+
+## Japan, or the United States?
+
+US-origin rows have the larger total. Japan-origin rows have the higher merchandise share. That is not a contest between two national industries.
+
+| Origin | Franchises | Lifetime on the list | Merchandise share |
+|---|---:|---:|---:|
+| United States | 88 | $825.5B | 51.5% |
+| Japan | 30 | $394.5B | 71.4% |
+| United Kingdom | 9 | $136.1B | 53.9% |
+
+Korea $27.0 billion, Sweden $26.3 billion, Canada $23.1 billion. Canada's increase from $20.1 billion is Paw Patrol, with the caveat above.
+
+In the 2019 file Japan led, $681.5 billion to $622.6 billion, and the merchandise shares ran the other way: Japan 49.1%, United States 64.6%. The basket changed.
+
+An earlier line said 43 additional US-origin properties. The crosswalk counts 45 US-origin rows with no 2019 match. The article uses 45. Five Japan-origin rows are new. Region means where the work began. Separate hero rows beside the MCU would double-count if someone added them to the MCU total. [S001; S017]
+
+## The first format, on the 2019 file only
+
+Game-origin rows in that file sum to $334.9 billion and manga-origin rows to $253.8 billion. The MCU row there is 67.7% box office. Revenue per year of existence is lifetime divided by age, not a growth rate, and Hello Kitty's old $80 billion is not drawn as a current total. Wizarding World does not prove that every novel can carry endless films.
+
+## Disney, as a rule rather than a title search
+
+On the 2019 file the exact owner string "The Walt Disney Company" is $259.0 billion. The roll-up used here is $426.2 billion. Nintendo's standalone label, excluding the Pokémon Company string, is $49.0 billion. [S001]
+
+On the November list the first-listed parent rule puts Disney at $430.7 billion (29.5%, range 18.0–42.9). The top five are 58.3% (range 52.3–72.7): Disney $430.7 billion, Warner Bros. Discovery $133.0 billion, The Pokémon Company $130.7 billion, Microsoft $84.2 billion, Paramount Skydance $72.8 billion. Microsoft's increase is the Call of Duty row. [S017]
+
+DC on the 2026 list, not the 2019 file: Batman $29.9 billion, Superman $8.2 billion, DC Extended Universe $8.0 billion, sum $46.1 billion. The earlier citation of that sum to `franchise.csv` was wrong and is withdrawn. The 2019 sum of the same three names is $44.4 billion. Wizarding World, $35.1 billion, is separate. None of these sums is a legal non-overlap audit. [S017; S001]
+
+## What the filings say Disney paid
+
+Pixar $7.4 billion (2006), Marvel about $4.0 billion (2009), Lucasfilm $4.05 billion (2012), Fox $71.3 billion in cash and stock (exhibit 99.1, 20 June 2018). This reading does not call the Fox figure enterprise value. The Simpsons anchor in the 2019 file is $13.5 billion. A price is not lifetime consumer spending. [S009–S012; S001]
+
+FY2025 segment revenue, year ended 27 September 2025, from the Form 10-K table: Entertainment $42.466 billion, Sports $17.672 billion, Experiences $36.156 billion. The prior-year column matches the old FY2024 figures. FY2026's 10-K was not filed as of 10 November 2026. Experiences is not a gift shop, and Sports is not Mickey Mouse. [S093]
+
+## Familiar films
+
+Domestic top-ten coding, titles not dollars: 60% in 2010, 80% in 2019, 90% in 2024. The line stops at 2024 because 2025 was not recoded. [S005]
+
+2025 worldwide, both trackers, nine of ten franchise installments. Box Office Mojo's share of that top ten is 94.3%; The Numbers is 94.2%. The October figure of 94.4% used Wikipedia and is retired. Ne Zha 2 is $2.318 billion on Wikipedia's 4 November revision, $2.271 billion on Box Office Mojo, and $2.004 billion on The Numbers. Not averaged. [S005; S019; S091]
+
+2026, read 10 November: six of ten, 61.9% of top-ten gross on both trackers, same order. Originals under this coding: The Odyssey, Michael, Project Hail Mary, Obsession. Wikipedia's Mario cell (`$1,013,2447,550`) is malformed and unused. Box Office Mojo has the film at $1.013 billion. The year is not over, and ten films are not the whole market. [S005; S019; S092]
+
+## A familiar name can still miss
+
+The case list — Dark Universe after *The Mummy* (2017), Fantastic Beasts short of Harry Potter's peaks, DC's later reset, *Ghostbusters* (2016), Angry Birds — is a set of examples, not one cause and not a lecture about discipline. A lifetime total does not say the latest release made money. [S013; S015]
+
+## What to keep
+
+Merchandise is most of the list, inside a wide range. Pokémon's row is larger than two famous film worlds added together. Five parents, under a stated rule, sit behind 58.3%. Date the number, name the denominator, and say what it measures. Spending is not profit. An edit is not a collapse. A country label is not an industry. A purchase does not reach backward and earn the past.
+
+## Charts
+
+Theme A. Lead five: `c02_pokemon_vs_two`, `c03_revisions`, `c05_nezha_trackers`, `c01_streams`, `c04_what_moved`. The other nineteen are the gallery under `data/charts/candidates/`, with `scores.csv` and `contact_sheet.png`. The sixteen live chart ids are restyled beside them.

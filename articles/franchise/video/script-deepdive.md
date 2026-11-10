@@ -1,8 +1,10 @@
-# FRANCHISE — deep dive (~11:00)
+# FRANCHISE — deep dive
 
-A cardboard Pikachu changes hands in a playground.
+November 2026: do not record this file as the new article. The unrendered reading is `narration_script_2026-11.md`. The live audio is still the 27:03 October Kore file. When this script is rewritten, keep it warm and precise. No invented scenes, no insults. The playground exchange that used to open this file was an invented detail and has been removed.
 
-In another room, Disney writes a cheque for Twenty-First Century Fox: seventy-one point three billion dollars.
+# Older October brief (archive)
+
+Disney's June 2018 exhibit states a Fox consideration of seventy-one point three billion dollars in cash and stock. That figure is not profit, and it is not the lifetime spending on any one character.
 
 Both bets say a character can be sold again tomorrow.
 

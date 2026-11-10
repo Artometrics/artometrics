@@ -142,7 +142,7 @@
 - [COFFEE: Ethiopia Scores Highest on Coffee Quality—With Zero Starbucks Stores](https://artometrics.com/coffee): Ethiopia's median CQI cup score is 85.3 — the highest of 16 countries with 20+ samples — yet Starbucks operates zero stores in the top three scoring nations. (culture)
 - [IMPERIAL: What Empire Chronicles Leave Out](https://artometrics.com/imperial): A historical-economics lens asks who captured wealth when rulers claimed order. (humanities)
 - [YOUTUBE: The Platform's $36B Engine and One Podcast's Borrowed Peak](https://artometrics.com/youtube): Alphabet reported $36.1B in YouTube ad revenue in FY2024 while Nielsen puts YouTube at 15.8% of U.S. TV-screen usage (Nielsen Gauge, August 2026, before Nielsen's September 2026 method change). Against that scale, H3 Podcast's Frenemies era tripled monthly views—and set a ceiling the show has not touched since. (civics)
-- [FRANCHISE: Merchandise Owns the Ledger](https://artometrics.com/franchise): 140 franchises on the October 2026 Wikipedia ledger sum to $1.45T lifetime revenue. Merchandise is 55.8%; box office 18.3%; Pokémon leads at $130.7B. The US now out-earns Japan ($816B vs $394B), but Japan runs the higher merchandise share (71.4% vs 52.0%). Nine of 2025's ten biggest films were franchise entries. (arts)
+- [FRANCHISE: Merchandise Owns the Ledger](https://artometrics.com/franchise): As of 10 November 2026, Wikipedia's franchise list (revision 7 November) sums 140 properties to $1,460.1 billion. Merchandise is 55.6%. Pokémon, at $130.7 billion, is larger than Star Wars and the MCU combined. Nine of 2025's ten biggest films were franchise installments. (arts)
 - [ANIME: Source Sets the Audience Floor](https://artometrics.com/anime): On the October 2026 MyAnimeList ledger, light-novel TV adaptations still draw 27.5 times the median audience of originals. Source mix and isekai tags trace how committees greenlight shows — with wide uncertainty on any single year. (arts)
 
 ## Podcast
@@ -154,4 +154,4 @@
 
 ## Generated
 
-Updated: 2026-10-30T21:51:00.239Z
+Updated: 2026-11-10T06:33:29.007Z

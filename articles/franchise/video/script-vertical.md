@@ -1,8 +1,10 @@
-# FRANCHISE — 60s vertical (~150 words)
+# FRANCHISE — vertical
 
-Which Pokémon number is on your slide?
+November 2026. Not recorded. The number to say, if you are reading the new article, is one hundred and thirty point seven billion, from the November list, and it is spending, not profit. The October file below is retired for narration.
 
-In the mid-2019 file, the row is ninety point nine billion dollars, the largest name among one hundred and three franchises.
+# Retired October lines
+
+In the mid-2019 file, the row was ninety point nine billion dollars, the largest name among one hundred and three franchises.
 
 Merchandise is most of that file. Theatre is not.
 

@@ -2,6 +2,7 @@
  * Client-side chart hydration: interactive Plotly when data-chart is present,
  * PNG fallback on failure or reduced motion.
  */
+import { applyEconomistALayout, cloneTraces } from "@/lib/charts/economistThemes";
 import { applyHouseLayout, applyHouseTraces } from "@/lib/charts/plotlyTheme";
 
 export type PlotlyLike = {
@@ -157,8 +158,45 @@ async function renderInteractive(live: HTMLElement, Plotly: PlotlyLike) {
     live.clientWidth || live.parentElement?.clientWidth || 640,
     280,
   );
-  const hostHeight = Math.min(Math.max(Math.round(hostWidth * 0.58), 300), 460);
   const rawLayout = payload.layout ?? {};
+  const franchiseChart = chartUrl.includes("/articles/franchise/");
+  if (franchiseChart) {
+    live.classList.add("art-chart-live--roomy");
+    const authored = Number(rawLayout.height);
+    const hostHeight = Number.isFinite(authored) && authored > 0
+      ? authored
+      : Math.max(440, Math.round(hostWidth * 0.72));
+    live.style.aspectRatio = "auto";
+    live.style.height = `${hostHeight}px`;
+    await Plotly.newPlot(
+      live,
+      cloneTraces(payload.data ?? []),
+      {
+        ...applyEconomistALayout(rawLayout),
+        autosize: true,
+        height: hostHeight,
+        width: hostWidth,
+      },
+      {
+        ...(payload.config ?? {}),
+        responsive: true,
+        displayModeBar: false,
+        displaylogo: false,
+        scrollZoom: false,
+        staticPlot: false,
+      },
+    );
+    markChartReady(live, false);
+    requestAnimationFrame(() => {
+      try {
+        Plotly.Plots?.resize?.(live);
+      } catch {
+        /* ignore */
+      }
+    });
+    return;
+  }
+  const hostHeight = Math.min(Math.max(Math.round(hostWidth * 0.58), 300), 460);
   const house = applyHouseTraces(payload.data ?? [], rawLayout);
   live.classList.toggle("house-bars", house.hasBars);
 

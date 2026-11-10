@@ -4,12 +4,12 @@ Mickey Mouse & Friends,Mickey Mouse & Friends,1928,61.2,61.2097,0.0,False,Animat
 Winnie-the-Pooh,Winnie the Pooh,1924,50.2,50.245,0.0,False,Book,The Walt Disney Company,Disney,UK,True
 Star Wars,Star Wars,1977,46.7,46.785,0.0,False,Film,Lucasfilm,Disney,US,True
 Disney Princess,Disney Princess,2000,45.4,45.4827,0.0,False,Animated films,The Walt Disney Company,Disney,US,True
+Call of Duty,Call of Duty,2003,40.0,40.0,0.0,False,Video game,Activision Blizzard,Microsoft,US,True
 Anpanman,Anpanman,1973,38.4,38.4345,0.0,False,Picture book,,Unknown,Japan,True
 Marvel Cinematic Universe (MCU),Marvel Cinematic Universe,2008,37.5,37.486,0.014,False,Film,Walt Disney Studios Sony Pictures,Disney,US,True
 Barbie,Barbie,1987,36.3,36.367,0.0,False,|Television special,Mattel,Mattel,US,True
 Wizarding World (Harry Potter),Wizarding World / Harry Potter,1997,35.1,35.1417,0.0,False,Novel,J. K. Rowling Warner Bros.,Warner Bros. Discovery,UK,True
 Hello Kitty,Hello Kitty,1974,33.5,33.5,0.0,False,Cartoon character,Sanrio,Sanrio,Japan,True
-Call of Duty,Call of Duty,2003,31.0,31.0,0.0,False,Video game,Activision Blizzard,Microsoft,US,True
 Batman,Batman,1939,29.9,29.932,0.0,False,Comic book,DC Entertainment,Warner Bros. Discovery,US,True
 Spider-Man,Spider-Man,1962,26.8,26.86,0.0,False,Comic book,Marvel Entertainment Sony Pictures,Disney,US,True
 Transformers,Transformers,1984,25.0,10.136,14.864,False,Toy line,Takara Tomy Hasbro,Hasbro,US,True
@@ -17,6 +17,7 @@ Naruto,Naruto,1999,22.8,22.8,0.0,False,Manga,Masashi Kishimoto (manga) Shueisha 
 Dungeon Fighter Online (DFO),Dungeon Fighter Online,2005,22.0,22.0,0.0,False,Video game,Nexon Tencent,Tencent,Korea,True
 Cars,Cars,2006,21.5,21.547,0.0,False,Animated film,Pixar,Disney,US,True
 Candy Crush,Candy Crush Saga,2012,20.0,20.0,0.0,False,Video game,Activision Blizzard,Microsoft,Sweden,True
+Paw Patrol,PAW Patrol,2013,18.4,18.4127,0.0,False,Animated series,Spin Master,Spin Master,Canada,True
 Looney Tunes,Looney Tunes,1930,17.46,17.468,0.0,False,Animated cartoon,Warner Bros.,Warner Bros. Discovery,US,True
 Teenage Mutant Ninja Turtles,Teenage Mutant Ninja Turtles,1984,17.4,17.4006,0.0,False,Comic book,Nickelodeon,Paramount Skydance,US,True
 SpongeBob SquarePants,SpongeBob SquarePants,1999,16.6,16.667,0.0,False,Animated series,Nickelodeon,Paramount Skydance,US,True
@@ -24,7 +25,6 @@ Toy Story,Toy Story,1995,16.0,14.813,1.187,False,Animated film,The Walt Disney C
 The Lion King,The Lion King,1994,15.9,15.952,0.0,False,Animated film,The Walt Disney Company,Disney,US,True
 Dora the Explorer,Dora the Explorer,2000,15.8,15.781,0.019,False,Animated series,Nickelodeon,Paramount Skydance,US,True
 Pac-Man,Pac-Man,1980,15.43,15.439,0.0,False,Video game,Bandai Namco Entertainment,Bandai Namco,Japan,True
-Paw Patrol,PAW Patrol,2013,15.4,15.4127,0.0,False,Animated series,Spin Master,Spin Master,Canada,True
 Peanuts,Peanuts,1950,14.4,14.492,0.0,False,Comic strip,Peanuts Holdings,Peanuts Holdings,US,True
 Avengers,Avengers,1963,14.3,14.321,0.0,False,Comic book,Marvel Entertainment,Disney,US,True
 Frozen,Frozen,2013,13.9,13.939,0.0,False,Animated film,The Walt Disney Company,Disney,US,True

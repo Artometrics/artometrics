@@ -288,3 +288,51 @@ art_equal_earth <- function() {
 art_change_colors <- function(change) {
   ifelse(change < 0, ART_SECONDARY, ifelse(change > 0, ART_HIGHLIGHT, ART_MID))
 }
+
+# Economist-inspired pairs for Franchise.
+# A is primary: no note in the repo marks B or C as the template.
+# A light print. B dark ground. C light, blue series, red only for a negative.
+# Live Franchise charts are drawn by articles/franchise/scripts/build_theme_a_charts.py
+# so the page does not depend on an R install.
+
+ART_ECON_PAPER <- "#f7f4ee"
+ART_ECON_INK <- "#14110e"
+ART_ECON_MUTED <- "#5c5148"
+ART_ECON_GRID <- "#e6dfd4"
+ART_ECON_ACCENT <- "#E60000"
+ART_ECON_BLUE <- "#1f4b99"
+
+theme_economist_a <- function(base_size = 12) {
+  theme_minimal(base_size = base_size, base_family = "Helvetica") +
+    theme(
+      plot.background = element_rect(fill = ART_ECON_PAPER, color = NA),
+      panel.background = element_rect(fill = ART_ECON_PAPER, color = NA),
+      panel.grid.major.y = element_line(color = ART_ECON_GRID, linewidth = 0.3),
+      panel.grid.major.x = element_blank(),
+      panel.grid.minor = element_blank(),
+      axis.text = element_text(color = ART_ECON_INK, size = rel(0.85)),
+      axis.title = element_text(color = ART_ECON_MUTED, size = rel(0.8)),
+      plot.title = element_text(color = ART_ECON_INK, face = "bold", size = rel(1.15), margin = margin(b = 4)),
+      plot.subtitle = element_text(color = ART_ECON_MUTED, size = rel(0.9), margin = margin(b = 14)),
+      plot.caption = element_text(color = ART_ECON_MUTED, size = rel(0.72), hjust = 0, margin = margin(t = 16)),
+      plot.margin = margin(18, 28, 18, 18),
+      legend.position = "bottom"
+    )
+}
+
+theme_economist_b <- function(base_size = 12) {
+  theme_economist_a(base_size) +
+    theme(
+      plot.background = element_rect(fill = "#0e1110", color = NA),
+      panel.background = element_rect(fill = "#0e1110", color = NA),
+      panel.grid.major.y = element_line(color = "#2a3330", linewidth = 0.3),
+      axis.text = element_text(color = "#f4f7f6"),
+      plot.title = element_text(color = "#f4f7f6", face = "bold"),
+      plot.subtitle = element_text(color = "#b7d0cb"),
+      plot.caption = element_text(color = "#8fb8b2", hjust = 0)
+    )
+}
+
+theme_economist_c <- function(base_size = 12) {
+  theme_economist_a(base_size)
+}
