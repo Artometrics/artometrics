@@ -79,9 +79,9 @@ faq:
 <p class="art-p">The charts use public franchise histories, rounded valuation summaries, and editorial identity indices. The indices are not official statistics; they are structured prompts for comparing markets.</p>
 <p class="art-p">A cultural economist would ask how facilities, media density, migration, ownership, and league rules shape local identity. This piece is the first map layer for that conversation.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
-<p>Reference franchise histories from Baseball Reference, Basketball Reference, Pro Football Reference, and Hockey Reference.</p>
-<p>Forbes. Professional sports franchise valuation lists.</p>
-<p>U.S. Census regional framing, used only as a broad geography reference.</p>
+<p><a href="https://www.sports-reference.com/">Reference franchise histories from Baseball Reference, Basketball Reference, Pro Football Reference, and Hockey Reference.</a></p>
+<p><a href="https://www.forbes.com/sites/brettknight/2025/12/18/the-worlds-50-most-valuable-sports-teams-2025/">Forbes. Professional sports franchise valuation lists.</a></p>
+<p><a href="https://www.census.gov/geographies/reference-maps/2010/geo/2010-census-regions-and-divisions-of-the-united-states.html">U.S. Census regional framing, used only as a broad geography reference.</a></p>
 <p>Public attendance, championship, and market summaries from league history pages.</p>
 <h2 id="editor-s-note" class="anchored">Editor's note</h2>
 

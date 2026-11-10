@@ -75,9 +75,9 @@ faq:
 <p class="art-p">Figures combine public Forbes valuation summaries, Spotrac salary-cap and payroll snapshots, and reference-record league structures from Basketball Reference, Baseball Reference, Pro Football Reference, and Hockey Reference, plus Premier League and MLS competition records. Editorial indices — including the NBA star-leverage score of 92 — compare systems transparently rather than claim laboratory precision.</p>
 <p class="art-p">The shared layer across commissioners, analysts, and fans: what does the league make easy, what does it make scarce, and what does it make emotionally expensive?</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
-<p>Forbes. Professional sports franchise valuation lists.</p>
-<p>Spotrac. Salary-cap and payroll summaries.</p>
-<p>Basketball Reference, Baseball Reference, Pro Football Reference, Hockey Reference. League and team records.</p>
+<p><a href="https://www.forbes.com/sites/brettknight/2025/12/18/the-worlds-50-most-valuable-sports-teams-2025/">Forbes. Professional sports franchise valuation lists.</a></p>
+<p><a href="https://www.spotrac.com/">Spotrac. Salary-cap and payroll summaries.</a></p>
+<p><a href="https://www.sports-reference.com/">Basketball Reference, Baseball Reference, Pro Football Reference, Hockey Reference. League and team records.</a></p>
 <p>Premier League and MLS public competition records.</p>
 </section>
 </main>
