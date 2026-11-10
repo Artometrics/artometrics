@@ -90,13 +90,13 @@ Screen and music travel fastest on these indices; South Korea, Japan, and India 
 
 ## Sources {#sources}
 
-UNESCO Institute for Statistics and UNESCO cultural trade references.
+[UNESCO Institute for Statistics and UNESCO cultural trade references.](https://www.uis.unesco.org/en/culture)
 
-WIPO creative economy and intellectual property indicators.
+[WIPO creative economy and intellectual property indicators.](https://www.wipo.int/en/web/ip-statistics)
 
-World Cities Culture Forum. CREATIVE Data Framework.
+[World Cities Culture Forum. CREATIVE Data Framework.](https://worldcitiescultureforum.com/data-explorer-cities/)
 
-MusicBrainz / MetaBrainz dumps.
+[MusicBrainz / MetaBrainz dumps.](https://metabrainz.org/datasets)
 
 IMDb/TMDb/Wikidata public metadata references.
 

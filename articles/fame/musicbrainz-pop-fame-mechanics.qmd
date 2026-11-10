@@ -86,11 +86,11 @@ MusicBrainz provides an open metadata spine. The next layer is joining it to cha
 
 ## Sources {#sources}
 
-MusicBrainz. JSON Data Dumps documentation.
+[MusicBrainz. JSON Data Dumps documentation.](https://musicbrainz.org/doc/Development/JSON_Data_Dumps)
 
-MetaBrainz Foundation. Datasets: PostgreSQL and JSON dumps.
+[MetaBrainz Foundation. Datasets: PostgreSQL and JSON dumps.](https://metabrainz.org/datasets)
 
-MusicBrainz Database Download documentation and CC0 license notes.
+[MusicBrainz Database Download documentation and CC0 license notes.](https://musicbrainz.org/doc/MusicBrainz_Database/Download)
 
 Wikidata and public chart-history references for artist-level context.
 

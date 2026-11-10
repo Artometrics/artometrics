@@ -86,11 +86,11 @@ The most useful next step is a true title-level pipeline: join title basics, rat
 
 ## Sources {#sources}
 
-IMDb Developer. IMDb Non-Commercial Datasets.
+[IMDb Developer. IMDb Non-Commercial Datasets.](https://data.imdb.com/non-commercial-datasets/)
 
 IMDb required credit: Information courtesy of IMDb (https://www.imdb.com). Used with permission.
 
-IMDb Help. Required credit statement and non-commercial terms.
+[IMDb Help. Required credit statement and non-commercial terms.](https://help.imdb.com/article/imdb/general-information/can-i-use-imdb-data-in-my-software/G5JTRESSHJBBHTGX)
 
 Box Office Mojo and The Numbers public box-office reference pages.
 

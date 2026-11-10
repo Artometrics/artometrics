@@ -79,9 +79,9 @@ faq:
 <p class="art-p">MetaBrainz publishes MusicBrainz data dumps in PostgreSQL and JSON formats. JSON dumps include artist, recording, release, release-group, work, label, area, event, place, series, and URL entities.</p>
 <p class="art-p">This analysis uses a curated editorial model over that source architecture. A production pipeline would ingest artist, release-group, recording, and tag dumps, then join them to chart, award, and tour datasets. Several artist and genre placements are editorial indices, labeled as framework rather than audited streaming totals.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
-<p>MusicBrainz. <em>JSON Data Dumps</em> documentation.</p>
-<p>MetaBrainz Foundation. <em>Datasets: PostgreSQL and JSON dumps</em>.</p>
-<p>MusicBrainz Database Download documentation and CC0 license notes.</p>
+<p><a href="https://musicbrainz.org/doc/Development/JSON_Data_Dumps">MusicBrainz. <em>JSON Data Dumps</em> documentation.</a></p>
+<p><a href="https://metabrainz.org/datasets">MetaBrainz Foundation. <em>Datasets: PostgreSQL and JSON dumps</em>.</a></p>
+<p><a href="https://musicbrainz.org/doc/MusicBrainz_Database/Download">MusicBrainz Database Download documentation and CC0 license notes.</a></p>
 <p>Wikidata and public chart-history references for artist-level context.</p>
 <h2 id="editor-s-note" class="anchored">Editor's note</h2>
 
