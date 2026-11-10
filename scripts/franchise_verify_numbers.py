@@ -23,7 +23,7 @@ REPO = _SCRIPT_DIR.parent
 ARTICLE = REPO / "articles" / "franchise"
 DATA = ARTICLE / "data"
 RAW = DATA / "raw"
-ACCESS_DATE = "2026-10-11"
+ACCESS_DATE = "2026-11-10"
 UA = "ArtometricsResearch/1.0 (contact@artometrics.com)"
 
 
@@ -472,6 +472,139 @@ def build_crosswalk_csv(wiki: dict[str, dict], totals: dict) -> list[dict]:
             }
         )
     return rows
+
+
+def november_2026_headlines() -> list[tuple]:
+    """Headlines from the November 2026 clean ledger and the Nov 10 box-office snapshot.
+
+    Every figure the article states should be able to point at one of these rows.
+    """
+    clean = DATA / "clean" / "franchise_entities_2026-10.csv"
+    shares = DATA / "clean" / "category_shares_bootstrap.csv"
+    regions = DATA / "clean" / "region_summary_2026-10.csv"
+    owners = DATA / "clean" / "owner_concentration_bootstrap.csv"
+    box = DATA / "raw" / "box_office_top10_snapshot_2026-11-10.csv"
+    segs = DATA / "disney_segment_revenue_fy2025.csv"
+    if not clean.exists():
+        return []
+
+    def rows(path: Path) -> list[dict[str, str]]:
+        with path.open(newline="", encoding="utf-8") as f:
+            return list(csv.DictReader(f))
+
+    ent = rows(clean)
+    by_name = {r["franchise"]: r for r in ent}
+    total = sum(float(r["total_usd_b"]) for r in ent)
+
+    def ent_total(*names: str) -> float:
+        return round(sum(float(by_name[n]["total_usd_b"]) for n in names), 3)
+
+    long_path = DATA / "clean" / "franchise_revenue_long_2026-10.csv"
+    cat_dollars: dict[str, float] = defaultdict(float)
+    if long_path.exists():
+        for r in rows(long_path):
+            cat_dollars[r["category"]] += float(r["revenue_usd_b"])
+    share_rows = rows(shares) if shares.exists() else []
+    share_2026 = {
+        r["category"]: r for r in share_rows if r.get("vintage") == "2026"
+    }
+
+    def share_fmt(cat: str) -> str:
+        r = share_2026[cat]
+        return f"{r['share_pct']} [{r['ci95_lo']}–{r['ci95_hi']}]"
+
+    reg = {r["region_origin"]: r for r in rows(regions)} if regions.exists() else {}
+    own = [r for r in rows(owners) if r.get("ledger") == "2026 ledger"] if owners.exists() else []
+    own_by_k = {r["top_k"]: r for r in own}
+    parent_totals: dict[str, float] = defaultdict(float)
+    for r in ent:
+        parent_totals[r["owner_parent_2026"]] += float(r["total_usd_b"])
+    out: list[tuple] = [
+        ("2026 ledger franchise count", len(ent), "count", "clean parse of Wikipedia rev 1384334611", "data/clean/franchise_entities_2026-10.csv", "S017"),
+        ("2026 ledger lifetime total", round(total, 3), "USD billions", "sum of stated Wikipedia totals, rev 1384334611, accessed 2026-11-10", "data/clean/franchise_entities_2026-10.csv", "S017"),
+        ("2026 merchandise share with bootstrap", share_fmt("Merchandise, Licensing & Retail"), "percent [95% range]", "category sum / ledger total; 5,000 franchise resamples", "data/clean/category_shares_bootstrap.csv", "S017"),
+        ("2026 video games share with bootstrap", share_fmt("Video Games/Games"), "percent [95% range]", "category sum / ledger total; 5,000 franchise resamples", "data/clean/category_shares_bootstrap.csv", "S017"),
+        ("2026 box office share with bootstrap", share_fmt("Box Office"), "percent [95% range]", "category sum / ledger total; 5,000 franchise resamples", "data/clean/category_shares_bootstrap.csv", "S017"),
+        ("2026 merchandise dollars", round(cat_dollars.get("Merchandise, Licensing & Retail", 0.0), 3), "USD billions", "Merchandise, Licensing & Retail category sum on rev 1384334611", "data/clean/franchise_revenue_long_2026-10.csv", "S017"),
+        ("2026 video game dollars", round(cat_dollars.get("Video Games/Games", 0.0), 3), "USD billions", "Video Games/Games category sum on rev 1384334611", "data/clean/franchise_revenue_long_2026-10.csv", "S017"),
+        ("2026 box office dollars", round(cat_dollars.get("Box Office", 0.0), 3), "USD billions", "Box Office category sum on rev 1384334611", "data/clean/franchise_revenue_long_2026-10.csv", "S017"),
+        ("2026 unallocated dollars", round(cat_dollars.get("Unallocated", 0.0), 3), "USD billions", "Unallocated remainder on rev 1384334611", "data/clean/franchise_revenue_long_2026-10.csv", "S017"),
+        ("Pokemon 2026 ledger lifetime", ent_total("Pokémon"), "USD billions", "stated row total", "data/clean/franchise_entities_2026-10.csv", "S017"),
+        ("Star Wars 2026 ledger lifetime", ent_total("Star Wars"), "USD billions", "stated row total", "data/clean/franchise_entities_2026-10.csv", "S017"),
+        ("MCU 2026 ledger lifetime", ent_total("Marvel Cinematic Universe (MCU)"), "USD billions", "stated row total", "data/clean/franchise_entities_2026-10.csv", "S017"),
+        ("Star Wars plus MCU 2026", round(ent_total("Star Wars") + ent_total("Marvel Cinematic Universe (MCU)"), 3), "USD billions", "sum of the two stated rows; not a combined corporate account", "data/clean/franchise_entities_2026-10.csv", "S017"),
+        ("Call of Duty 2026 ledger lifetime", ent_total("Call of Duty"), "USD billions", "Wikipedia row, rounded company milestone reported by IGN on 2026-10-26; not an itemised audit", "data/clean/franchise_entities_2026-10.csv", "S017;S094"),
+        ("Paw Patrol 2026 ledger lifetime", ent_total("Paw Patrol"), "USD billions", "Wikipedia stated total. Retail line of $18 billion confirmed at Deadline 2026-10-28. Remaining box-office and home-media lines cite older The Numbers pages.", "data/clean/franchise_entities_2026-10.csv", "S017;S095"),
+        ("Hello Kitty 2026 ledger lifetime", ent_total("Hello Kitty"), "USD billions", "stated row; lower than the 2019 file because the Wikipedia sourcing changed", "data/clean/franchise_entities_2026-10.csv", "S017"),
+        ("Mario 2026 ledger lifetime", ent_total("Mario"), "USD billions", "stated row; lower than the 2019 file because the Wikipedia sourcing changed", "data/clean/franchise_entities_2026-10.csv", "S017"),
+        ("Batman 2026 ledger lifetime", ent_total("Batman"), "USD billions", "stated row on the 2026 list, not the 2019 franchise.csv sum", "data/clean/franchise_entities_2026-10.csv", "S017"),
+        ("Superman 2026 ledger lifetime", ent_total("Superman"), "USD billions", "stated row on the 2026 list", "data/clean/franchise_entities_2026-10.csv", "S017"),
+        ("DCEU 2026 ledger lifetime", ent_total("DC Extended Universe (DCEU)"), "USD billions", "stated row on the 2026 list", "data/clean/franchise_entities_2026-10.csv", "S017"),
+        ("DC grouped rows 2026", round(ent_total("Batman", "Superman", "DC Extended Universe (DCEU)"), 3), "USD billions", "sum of three separate rows; not a legal non-overlap audit", "data/clean/franchise_entities_2026-10.csv", "S017"),
+        ("Wizarding World 2026 ledger lifetime", ent_total("Wizarding World (Harry Potter)"), "USD billions", "separate Warner row, not inside the DC sum", "data/clean/franchise_entities_2026-10.csv", "S017"),
+        ("Disney parent total 2026 ledger", round(parent_totals.get("Disney", 0.0), 3), "USD billions", "first-listed parent rule, not a legal ownership audit", "data/clean/franchise_entities_2026-10.csv", "S017"),
+        ("Microsoft parent total 2026 ledger", round(parent_totals.get("Microsoft", 0.0), 3), "USD billions", "includes the Call of Duty row via Activision / Xbox", "data/clean/franchise_entities_2026-10.csv", "S017"),
+        ("Warner parent total 2026 ledger", round(parent_totals.get("Warner Bros. Discovery", 0.0), 3), "USD billions", "first-listed parent rule", "data/clean/franchise_entities_2026-10.csv", "S017"),
+        ("Pokemon Company parent total 2026 ledger", round(parent_totals.get("The Pokémon Company", 0.0), 3), "USD billions", "first-listed parent rule", "data/clean/franchise_entities_2026-10.csv", "S017"),
+        ("Paramount parent total 2026 ledger", round(parent_totals.get("Paramount Skydance", 0.0), 3), "USD billions", "first-listed parent rule", "data/clean/franchise_entities_2026-10.csv", "S017"),
+        ("US origin total 2026 ledger", reg.get("US", {}).get("total", ""), "USD billions", "region_origin on the clean ledger", "data/clean/region_summary_2026-10.csv", "S017"),
+        ("US origin merchandise share 2026", reg.get("US", {}).get("merch_share_pct", ""), "percent", "merchandise category / region total", "data/clean/region_summary_2026-10.csv", "S017"),
+        ("US origin franchise count 2026", reg.get("US", {}).get("n", ""), "franchises", "count", "data/clean/region_summary_2026-10.csv", "S017"),
+        ("Japan origin total 2026 ledger", reg.get("Japan", {}).get("total", ""), "USD billions", "region_origin on the clean ledger", "data/clean/region_summary_2026-10.csv", "S017"),
+        ("Japan origin merchandise share 2026", reg.get("Japan", {}).get("merch_share_pct", ""), "percent", "merchandise category / region total", "data/clean/region_summary_2026-10.csv", "S017"),
+        ("Japan origin franchise count 2026", reg.get("Japan", {}).get("n", ""), "franchises", "count", "data/clean/region_summary_2026-10.csv", "S017"),
+        ("UK origin total 2026 ledger", reg.get("UK", {}).get("total", ""), "USD billions", "region_origin on the clean ledger", "data/clean/region_summary_2026-10.csv", "S017"),
+        ("UK origin merchandise share 2026", reg.get("UK", {}).get("merch_share_pct", ""), "percent", "merchandise category / region total", "data/clean/region_summary_2026-10.csv", "S017"),
+        ("Canada origin total 2026 ledger", reg.get("Canada", {}).get("total", ""), "USD billions", "includes Paw Patrol at the list's stated total", "data/clean/region_summary_2026-10.csv", "S017"),
+        ("Korea origin total 2026 ledger", reg.get("Korea", {}).get("total", ""), "USD billions", "region sum", "data/clean/region_summary_2026-10.csv", "S017"),
+        ("Sweden origin total 2026 ledger", reg.get("Sweden", {}).get("total", ""), "USD billions", "region sum", "data/clean/region_summary_2026-10.csv", "S017"),
+        ("2026 top-parent share with bootstrap", f"{own_by_k['1']['share_pct']} [{own_by_k['1']['ci95_lo']}–{own_by_k['1']['ci95_hi']}]", "percent [95% range]", "Disney share of the 2026 ledger", "data/clean/owner_concentration_bootstrap.csv", "S017"),
+        ("2026 top-five parent share with bootstrap", f"{own_by_k['5']['share_pct']} [{own_by_k['5']['ci95_lo']}–{own_by_k['5']['ci95_hi']}]", "percent [95% range]", "top five first-listed parents", "data/clean/owner_concentration_bootstrap.csv", "S017"),
+        ("US-origin rows on the 2026 list with no 2019 row", sum(1 for r in ent if r["region_origin"] == "US" and r["in_2019_ledger"] not in ("True", "true", "1")), "count", "Earlier copy said 43. This crosswalk counts 45. The article uses 45.", "data/clean/franchise_entities_2026-10.csv", "S017;S001"),
+        ("2019 verification sample matched", 39, "count", "40 drawn, seed 20261012; 39 matched rev 904026364", "data/clean/verification_sample_2019.csv", "S001;S007"),
+        ("2019 verification headline within 10 percent", 28, "count", "28 of 39 matched rows within 10% of the June 2019 Wikipedia headline", "data/clean/verification_sample_2019.csv", "S001;S007"),
+    ]
+    if segs.exists():
+        for r in rows(segs):
+            out.append((f"{r['segment']} FY2025", r["revenue_usd_b"], "USD billions", "Form 10-K FY2025 operating-segment revenue table, year ended 2025-09-27", "data/disney_segment_revenue_fy2025.csv", "S093"))
+    if box.exists():
+        films = rows(box)
+        for year in ("2025", "2026"):
+            subset = [r for r in films if r["release_year"] == year]
+            gross = [int(r["worldwide_gross_usd"]) for r in subset]
+            flags = [r["is_franchise_film"].lower() in ("true", "1", "yes") for r in subset]
+            tot = sum(gross)
+            fr = sum(g for g, f in zip(gross, flags) if f)
+            out.append((
+                f"Franchise count in worldwide top 10, {year} releases",
+                sum(flags),
+                "films",
+                "Box Office Mojo year page, read 2026-11-10; coding in the snapshot notes",
+                "data/raw/box_office_top10_snapshot_2026-11-10.csv",
+                "S005;S091" if year == "2025" else "S005;S092",
+            ))
+            out.append((
+                f"Franchise share of worldwide top-10 gross, {year} releases, Box Office Mojo",
+                round(fr / tot * 100, 1),
+                "percent",
+                "sum of coded franchise films / top-ten sum; not a share of all worldwide box office",
+                "data/raw/box_office_top10_snapshot_2026-11-10.csv",
+                "S005",
+            ))
+            tn = [int(r["thenumbers_worldwide_usd"]) for r in subset]
+            tn_fr = sum(g for g, f in zip(tn, flags) if f)
+            out.append((
+                f"Franchise share of worldwide top-10 gross, {year} releases, The Numbers",
+                round(tn_fr / sum(tn) * 100, 1),
+                "percent",
+                "same coding, The Numbers dollars, read 2026-11-10",
+                "data/raw/box_office_top10_snapshot_2026-11-10.csv",
+                "S019",
+            ))
+    out.append(("Fox acquisition consideration", 71.3, "USD billions", "Disney exhibit 99.1, 20 June 2018: $71.3 billion in cash and stock. Not relabelled enterprise value.", "data/entities_companies_deals.csv", "S012"))
+    out.append(("Wikipedia franchise list revision", "1384334611", "revision id", "timestamp 2026-11-07T19:52:45Z; accessed 2026-11-10", "data/raw/wiki_franchises_rev1384334611_2026-11-07.wikitext", "S017"))
+    out.append(("Prior Wikipedia franchise list revision", "1379832186", "revision id", "timestamp 2026-10-12T04:29:48Z. The October scrape constant was dated 2026-10-11.", "data/raw/wiki_franchises_rev1379832186_2026-10-12.wikitext", "S017"))
+    return out
 
 
 def main() -> None:
@@ -945,7 +1078,7 @@ def main() -> None:
         ("Pixar acquisition price", 7.4, "USD billions", "deal table", "data/entities_companies_deals.csv", "S009"),
         ("Marvel acquisition price", 4.0, "USD billions", "deal table", "data/entities_companies_deals.csv", "S010"),
         ("Lucasfilm acquisition price", 4.05, "USD billions", "deal table", "data/entities_companies_deals.csv", "S011"),
-        ("Fox enterprise value", 71.3, "USD billions", "deal table", "data/entities_companies_deals.csv", "S012"),
+        ("Fox cash and stock consideration", 71.3, "USD billions", "Disney exhibit 99.1, 20 June 2018: $71.3 billion in cash and stock", "data/entities_companies_deals.csv", "S012"),
         ("Disney Entertainment FY2024", 41.186, "USD billions", "segment exhibit", "data/disney_segment_revenue_fy2024.csv", "S081"),
         ("Disney Sports FY2024", 17.619, "USD billions", "segment exhibit", "data/disney_segment_revenue_fy2024.csv", "S081"),
         ("Disney Experiences FY2024", 34.151, "USD billions", "segment exhibit", "data/disney_segment_revenue_fy2024.csv", "S081"),
@@ -956,6 +1089,7 @@ def main() -> None:
         ("Toy Story 2019 lifetime", round(fr_total("Toy Story"), 3), "USD billions", "sum of rows", "data/franchise.csv", "S001"),
     ]
     verified.extend(extra)
+    verified.extend(november_2026_headlines())
     _ = disney_raw
     write_csv(
         DATA / "verified_numbers.csv",

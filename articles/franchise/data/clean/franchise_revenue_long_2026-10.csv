@@ -18,6 +18,7 @@ Star Wars,Book sales,Book sales,1.82
 Star Wars,TV revenue,TV,0.28
 Disney Princess,Retail sales,"Merchandise, Licensing & Retail",45.468
 Disney Princess,Home entertainment,Home Video/Entertainment,0.0147
+Call of Duty,Video games,Video Games/Games,40.0
 Anpanman,Retail sales,"Merchandise, Licensing & Retail",38.42
 Anpanman,Museum,Live & Other,0.0145
 Marvel Cinematic Universe (MCU),Box office,Box Office,34.7
@@ -35,7 +36,6 @@ Wizarding World (Harry Potter),TV revenue,TV,1.0
 Wizarding World (Harry Potter),Studio tour,Live & Other,1.2
 Wizarding World (Harry Potter),Stage play,Live & Other,0.566
 Hello Kitty,Merchandise sales,"Merchandise, Licensing & Retail",33.5
-Call of Duty,Video games,Video Games/Games,31.0
 Batman,Retail sales,"Merchandise, Licensing & Retail",21.329
 Batman,Home video,Home Video/Entertainment,1.212
 Batman,Box office,Box Office,7.051
@@ -56,6 +56,9 @@ Cars,Merchandise sales,"Merchandise, Licensing & Retail",19.114
 Cars,Box office,Box Office,1.799
 Cars,DVD & Blu-ray sales,Home Video/Entertainment,0.634
 Candy Crush,Video games,Video Games/Games,20.0
+Paw Patrol,Retail sales,"Merchandise, Licensing & Retail",18.0
+Paw Patrol,Box office,Box Office,0.3737
+Paw Patrol,Home media,Home Video/Entertainment,0.039
 Looney Tunes,Retail sales,"Merchandise, Licensing & Retail",16.777
 Looney Tunes,Box office,Box Office,0.482
 Looney Tunes,Home video sales,Home Video/Entertainment,0.209
@@ -83,9 +86,6 @@ Dora the Explorer,(total minus itemised),Unallocated,0.019
 Pac-Man,Video games,Video Games/Games,14.407
 Pac-Man,Merchandise & licensing,"Merchandise, Licensing & Retail",1.0
 Pac-Man,Music sales,Music,0.032
-Paw Patrol,Retail sales,"Merchandise, Licensing & Retail",15.0
-Paw Patrol,Box office,Box Office,0.3737
-Paw Patrol,Home media,Home Video/Entertainment,0.039
 Peanuts,Retail sales,"Merchandise, Licensing & Retail",14.19
 Peanuts,Box office,Box Office,0.267
 Peanuts,DVD & Blu-ray sales,Home Video/Entertainment,0.035

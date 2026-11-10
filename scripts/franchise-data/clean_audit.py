@@ -4,8 +4,9 @@
 Inputs (all committed under articles/franchise/data/):
   franchise.csv                       TidyTuesday 2019-07-02 ledger (S001), unchanged raw
   raw/wiki_franchises_rev904026364_2019-06-29.wikitext   Wikipedia revision underlying S001
-  raw/wiki_franchises_rev1379832186_2026-10-12.wikitext  current Wikipedia list (S017)
-  raw/wiki_2025_in_film_rev1378645325.wikitext, raw/wiki_2026_in_film_rev1379926625.wikitext
+  raw/wiki_franchises_rev1384334611_2026-11-07.wikitext  current Wikipedia list (S017; accessed 2026-11-10)
+  raw/wiki_2025_in_film_rev1383769082.wikitext, raw/wiki_2026_in_film_rev1384822773.wikitext
+  raw/box_office_top10_snapshot_2026-11-10.csv  Box Office Mojo + The Numbers (chart uses Mojo)
   raw/fred_CPIAUCSL_2026-10-12.csv    FRED CPI-U (S090)
 Outputs: data/clean/*.csv and data/clean/old_vs_new.csv
 Run: python3 scripts/franchise-data/clean_audit.py
@@ -117,7 +118,7 @@ c19["region_origin"] = [infer_region_fields(f, o, c)[0] for f, o, c in zip(raw.f
 c19.to_csv(OUT / "franchise_2019_clean.csv", index=False)
 
 # ---------- 4. Build Oct-2026 ledger (long format) ----------
-rows26 = wp.parse((RAW / "wiki_franchises_rev1379832186_2026-10-12.wikitext").read_text())
+rows26 = wp.parse((RAW / "wiki_franchises_rev1384334611_2026-11-07.wikitext").read_text())
 xw = {v[0]: k for k, v in CROSSWALK.items() if v[0]}
 reg19 = dict(zip(c19.franchise, c19.region_origin))
 long, ent, flow = [], [], {"wiki_rows_parsed": len(rows26)}
@@ -147,33 +148,12 @@ flow.update({"dropped_no_total": len(dropped), "dropped_duplicate_names": int(du
              "matched_to_2019": int(e26.in_2019_ledger.sum()), "new_since_2019": int((~e26.in_2019_ledger).sum())})
 e26.to_csv(OUT / "franchise_entities_2026-10.csv", index=False); l26.to_csv(OUT / "franchise_revenue_long_2026-10.csv", index=False)
 
-# ---------- 5. 2025/2026 worldwide box office top-10 (new field) ----------
-FR_KEYS = {"Ne Zha": "Ne Zha (Fengshen)", "Zootopia": "Zootopia", "Avatar": "Avatar", "Lilo & Stitch": "Lilo & Stitch",
-           "Minecraft": "Minecraft", "Jurassic": "Jurassic Park", "Demon Slayer": "Demon Slayer", "Superman": "Superman",
-           "Mission: Impossible": "Mission: Impossible", "F1": "", "Spider-Man": "Spider-Man", "Toy Story": "Toy Story",
-           "Mario": "Mario", "Minions": "Despicable Me (Minions)", "Devil Wears Prada": "The Devil Wears Prada",
-           "Pegasus": "Pegasus", "Fantastic Four": "Marvel Cinematic Universe", "Conjuring": "The Conjuring Universe",
-           "Wicked": "Wicked", "How to Train Your Dragon": "How to Train Your Dragon", "Thunderbolts": "Marvel Cinematic Universe",
-           "Captain America": "Marvel Cinematic Universe", "Final Destination": "Final Destination", "Chainsaw Man": "Chainsaw Man",
-           "Detective Chinatown": "Detective Chinatown", "Five Nights": "Five Nights at Freddy's"}
-bo = []
-for yr_, fn in [(2025, "wiki_2025_in_film_rev1378645325.wikitext"), (2026, "wiki_2026_in_film_rev1379926625.wikitext")]:
-    w = (RAW / fn).read_text(); i = w.find("==Highest-grossing films=="); tbl = w[i:w.find("|}", i)]
-    for blk in re.split(r"\n\|-", tbl)[2:]:
-        cells = [x for x in re.split(r"\n[|!]", blk) if x.strip()]
-        if len(cells) < 4: continue
-        title = re.sub(r"\s+", " ", wp.clean(re.sub(r"^\s*style=\"[^\"]*\"\s*\|", "", cells[1]))).strip()
-        title = re.sub(r"\{\{sort\|[^|]*\|", "", title).strip(" }")
-        g = cells[3]
-        if "#expr" in g:
-            gross = sum(int(x) for x in re.findall(r"\d{6,}", g))
-        else:
-            gross = int(re.sub(r"[^0-9]", "", wp.clean(g).split("\n")[0]) or 0)
-        fr = next((v for k, v in FR_KEYS.items() if k.lower() in title.lower()), "")
-        bo.append({"release_year": yr_, "rank": int(re.sub(r"\D", "", cells[0]) or 0), "title": title,
-                   "distributor": re.sub(r"\s+", " ", wp.clean(cells[2])).strip(), "worldwide_gross_usd": gross,
-                   "franchise_tag": fr, "is_franchise_film": bool(fr), "gross_as_of": "2026-10-12" if yr_ == 2026 else "final"})
-bo = pd.DataFrame(bo); bo.to_csv(OUT / "worldwide_top10_box_office_2025_2026.csv", index=False)
+# ---------- 5. 2025/2026 worldwide box office top-10 ----------
+# Chart dollars are Box Office Mojo, fetched 2026-11-10. The Numbers is stored
+# beside them. Wikipedia's 2026 Mario cell is malformed and is not used.
+bo = pd.read_csv(RAW / "box_office_top10_snapshot_2026-11-10.csv")
+bo["is_franchise_film"] = bo["is_franchise_film"].astype(str).str.lower().isin(["true", "1", "yes"])
+bo.to_csv(OUT / "worldwide_top10_box_office_2025_2026.csv", index=False)
 
 # ---------- 6. CPI (FRED CPIAUCSL) ----------
 cpi = pd.read_csv(RAW / "fred_CPIAUCSL_2026-10-12.csv"); cpi.columns = ["date", "cpi"]
@@ -275,7 +255,7 @@ for _, r in vn.iterrows():
     rn, cn = M.get(r.figure, (None, None))
     out.append({"figure": r.figure, "old_published": str(r.value).split(" (")[0], "raw_new": rn if rn is not None else "", "clean_new_oct2026": "" if cn is None else cn, "unit": r.unit})
 out += [{"figure": "NEW: franchise share of worldwide top-10 gross, 2025 releases", "old_published": "", "raw_new": "", "clean_new_oct2026": fs(bo25), "unit": "percent"},
-        {"figure": "NEW: franchise share of worldwide top-10 gross, 2026 releases (to Oct 12)", "old_published": "", "raw_new": "", "clean_new_oct2026": fs(bo26), "unit": "percent"},
+        {"figure": "NEW: franchise share of worldwide top-10 gross, 2026 releases (to Nov 10)", "old_published": "", "raw_new": "", "clean_new_oct2026": fs(bo26), "unit": "percent"},
         {"figure": "NEW: franchises on Oct-2026 list not in 2019 ledger", "old_published": "", "raw_new": "", "clean_new_oct2026": flow["new_since_2019"], "unit": "count"}]
 pd.DataFrame(out).to_csv(OUT / "old_vs_new.csv", index=False)
 json.dump({"profile": prof, "verification": agree, "flow": flow, "dropped": dropped, "cpi": cpi_note,

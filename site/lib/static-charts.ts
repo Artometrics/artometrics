@@ -1,8 +1,8 @@
 /** Bake each Plotly mount into the PNG already rendered for that chart. */
 export function withStaticCharts(html: string): string {
   const withCharts = html.replace(
-    /<div\s+class="art-chart-live"([^>]*)>\s*<\/div>/g,
-    (full, attrs: string) => {
+    /<div\s+class="(art-chart-live(?:\s[^"]*)?)"([^>]*)>\s*<\/div>/g,
+    (full, className: string, attrs: string) => {
       const fallback = /data-fallback="([^"]+)"/.exec(attrs)?.[1];
       if (!fallback) return full;
       const label = /aria-label="([^"]*)"/.exec(attrs)?.[1] || "Chart";
@@ -10,7 +10,7 @@ export function withStaticCharts(html: string): string {
         .replace(/&/g, "&amp;")
         .replace(/"/g, "&quot;")
         .replace(/</g, "&lt;");
-      return `<div class="art-chart-live"${attrs}><img class="art-chart-fallback" src="${fallback}" alt="${alt}" loading="lazy" decoding="async" /></div>`;
+      return `<div class="${className}"${attrs}><img class="art-chart-fallback" src="${fallback}" alt="${alt}" loading="lazy" decoding="async" /></div>`;
     },
   );
   const withTables = withCharts.replace(/<table\b[^>]*>[\s\S]*?<\/table>/gi, (table, offset) => {
