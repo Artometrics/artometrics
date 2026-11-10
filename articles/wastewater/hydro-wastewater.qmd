@@ -24,7 +24,7 @@ Scale without treatment tier is incomplete: a large plant with advanced filtrati
 
 ## Data and method {#data-and-method}
 
-The source is the TidyTuesday release from 2022-09-20 (R for Data Science community). The working file contains 58,502 rows and 25 columns after merging country, treatment level, discharge, and quality fields.
+[The source is the TidyTuesday release from 2022-09-20 (R for Data Science community). The working file contains 58,502 rows and 25 columns after merging country, treatment level, discharge, and quality fields.](https://github.com/rfordatascience/tidytuesday/tree/main/data/2022/2022-09-20)
 
 Medians handle skew from a handful of enormous plants. Charts export as Plotly JSON with PNG fallbacks. Status labels—operational, proposed, decommissioned—matter: not every row is an active facility.
 

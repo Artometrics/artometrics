@@ -70,7 +70,7 @@ faq:
 <section class="art-back-matter">
 <h2 id="data-methods-and-sources" class="anchored">Data, methods &amp; sources</h2>
 <h3 id="data-and-method" class="anchored art-back-matter__subhead">Data and method</h3>
-<p class="art-p">The source is the TidyTuesday release from 2019-05-21 (R for Data Science community). The working file contains 22,204 rows and 7 columns after assembling the week's tables — including GDP per capita (PPP) and per-capita mismanaged plastic waste in kilograms per person per day.</p>
+<p class="art-p"><a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-05-21">The source is the TidyTuesday release from 2019-05-21 (R for Data Science community). The working file contains 22,204 rows and 7 columns after assembling the week's tables — including GDP per capita (PPP) and per-capita mismanaged plastic waste in kilograms per person per day.</a></p>
 <p class="art-p">Medians are used where distributions skew. Charts export as Plotly JSON with PNG fallbacks. Country names, missing years, and sparse early coverage mean the long historical span is denser for income than for waste metrics; early centuries provide context for prosperity, not a continuous waste census.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
 </section>

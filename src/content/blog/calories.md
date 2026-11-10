@@ -72,7 +72,7 @@ faq:
 <section class="art-back-matter">
 <h2 id="data-methods-and-sources" class="anchored">Data, methods &amp; sources</h2>
 <h3 id="data-and-method" class="anchored art-back-matter__subhead">Data and method</h3>
-<p class="art-p">The source is the TidyTuesday release from 2018-09-04, maintained by the R for Data Science community. The working file contains 515 rows and 17 columns after merging available CSV tables — restaurant name, item, calories, total fat, and related nutrition fields.</p>
+<p class="art-p"><a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2018/2018-09-04">The source is the TidyTuesday release from 2018-09-04, maintained by the R for Data Science community. The working file contains 515 rows and 17 columns after merging available CSV tables — restaurant name, item, calories, total fat, and related nutrition fields.</a></p>
 <p class="art-p">Medians are preferred where distributions skew. Index-style fields and sequential IDs are excluded from metric selection. Charts ship as Plotly JSON with PNG fallbacks. The snapshot is a menu catalog for a fixed release window, not a live API.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
 </section>

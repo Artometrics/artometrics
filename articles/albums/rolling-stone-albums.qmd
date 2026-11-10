@@ -24,7 +24,7 @@ Rank numbers run inverse to prestige — lower is better — but the charts belo
 
 ## Data and method {#data-and-method}
 
-The source is the TidyTuesday Rolling Stone albums release from the R for Data Science community. The working file contains 691 rows — album titles, artists, release years, types, genre labels, and 2003 rank fields.
+[The source is the TidyTuesday Rolling Stone albums release from the R for Data Science community. The working file contains 691 rows — album titles, artists, release years, types, genre labels, and 2003 rank fields.](https://github.com/rfordatascience/tidytuesday/tree/main/data/2024/2024-05-07)
 
 Medians summarize a curated elite, not a random sample of recorded music. Charts export as Plotly JSON with PNG fallbacks. A magazine canon is an editorial object; treating it as market data misreads the politics of taste.
 

@@ -24,7 +24,7 @@ Part count is an industrial signal, not a quality measure. It tracks how much pl
 
 ## Data and method {#data-and-method}
 
-The source is the TidyTuesday release from 2022-09-06 (R for Data Science community). The working file contains 19,798 rows across set and parts tables after merging — set names, years, part counts, and quantity fields.
+[The source is the TidyTuesday release from 2022-09-06 (R for Data Science community). The working file contains 19,798 rows across set and parts tables after merging — set names, years, part counts, and quantity fields.](https://github.com/rfordatascience/tidytuesday/tree/main/data/2022/2022-09-06)
 
 Medians are reported because a few architectural and mosaic sets pull means upward. Charts export as Plotly JSON with PNG fallbacks. Part counts describe inventory complexity, not retail price or build time.
 

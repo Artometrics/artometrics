@@ -70,7 +70,7 @@ faq:
 <section class="art-back-matter">
 <h2 id="data-methods-and-sources" class="anchored">Data, methods &amp; sources</h2>
 <h3 id="data-and-method" class="anchored art-back-matter__subhead">Data and method</h3>
-<p class="art-p">The source is the TidyTuesday release from 2022-09-20 (R for Data Science community). The working file contains 58,502 rows and 25 columns after merging country, treatment level, discharge, and quality fields.</p>
+<p class="art-p"><a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2022/2022-09-20">The source is the TidyTuesday release from 2022-09-20 (R for Data Science community). The working file contains 58,502 rows and 25 columns after merging country, treatment level, discharge, and quality fields.</a></p>
 <p class="art-p">Medians handle skew from a handful of enormous plants. Charts export as Plotly JSON with PNG fallbacks. Status labels—operational, proposed, decommissioned—matter: not every row is an active facility.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
 </section>

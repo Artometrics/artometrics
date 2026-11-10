@@ -24,7 +24,7 @@ When perfect scores are common, the useful story lives below the ceiling: which 
 
 ## Data and method {#data-and-method}
 
-The source is the TidyTuesday release from 2019-06-04, maintained by the R for Data Science community. The working file contains 3,180 rows and six columns after cleaning: brand, variety, style, country, stars, and review number.
+[The source is the TidyTuesday release from 2019-06-04, maintained by the R for Data Science community. The working file contains 3,180 rows and six columns after cleaning: brand, variety, style, country, stars, and review number.](https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-06-04)
 
 Medians handle a distribution piled against the 5.00 ceiling. Charts export as Plotly JSON with PNG fallbacks. Stars are community review scores, not laboratory nutrition assays.
 

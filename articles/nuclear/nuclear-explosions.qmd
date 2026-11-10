@@ -24,7 +24,7 @@ Zeros in the magnitude field mark measurement gaps, non-detections, or unfilled 
 
 ## Data and method {#data-and-method}
 
-The source is the TidyTuesday nuclear explosions release maintained by the R for Data Science community. The working file assembles event-level rows with country labels, purpose codes, body-wave magnitude, depth, and related fields after cleaning.
+[The source is the TidyTuesday nuclear explosions release maintained by the R for Data Science community. The working file assembles event-level rows with country labels, purpose codes, body-wave magnitude, depth, and related fields after cleaning.](https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-08-20)
 
 Medians anchor the analysis because missing and zero magnitudes dominate the center of the distribution. Charts export as Plotly JSON with PNG fallbacks. Public test catalogs are incomplete by design—secrecy and uneven seismology limit coverage.
 
