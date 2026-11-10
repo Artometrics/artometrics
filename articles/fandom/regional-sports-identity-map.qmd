@@ -86,11 +86,11 @@ This gives the next batch a new tool: every team profile can now ask not only ho
 
 ## Sources {#sources}
 
-Reference franchise histories from Baseball Reference, Basketball Reference, Pro Football Reference, and Hockey Reference.
+[Reference franchise histories from Baseball Reference, Basketball Reference, Pro Football Reference, and Hockey Reference.](https://www.sports-reference.com/)
 
-Forbes. Professional sports franchise valuation lists.
+[Forbes. Professional sports franchise valuation lists.](https://www.forbes.com/sites/brettknight/2025/12/18/the-worlds-50-most-valuable-sports-teams-2025/)
 
-U.S. Census regional framing, used only as a broad geography reference.
+[U.S. Census regional framing, used only as a broad geography reference.](https://www.census.gov/geographies/reference-maps/2010/geo/2010-census-regions-and-divisions-of-the-united-states.html)
 
 Public attendance, championship, and market summaries from league history pages.
 
