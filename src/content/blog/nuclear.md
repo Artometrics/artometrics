@@ -73,7 +73,7 @@ faq:
 <section class="art-back-matter">
 <h2 id="data-methods-and-sources" class="anchored">Data, methods &amp; sources</h2>
 <h3 id="data-and-method" class="anchored art-back-matter__subhead">Data and method</h3>
-<p class="art-p">The source is the TidyTuesday nuclear explosions release maintained by the R for Data Science community. The working file assembles event-level rows with country labels, purpose codes, body-wave magnitude, depth, and related fields after cleaning.</p>
+<p class="art-p"><a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-08-20">The source is the TidyTuesday nuclear explosions release maintained by the R for Data Science community. The working file assembles event-level rows with country labels, purpose codes, body-wave magnitude, depth, and related fields after cleaning.</a></p>
 <p class="art-p">Medians anchor the analysis because missing and zero magnitudes dominate the center of the distribution. Charts export as Plotly JSON with PNG fallbacks. Public test catalogs are incomplete by design—secrecy and uneven seismology limit coverage.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
 </section>

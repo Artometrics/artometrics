@@ -72,7 +72,7 @@ faq:
 <section class="art-back-matter">
 <h2 id="data-methods-and-sources" class="anchored">Data, methods &amp; sources</h2>
 <h3 id="data-and-method" class="anchored art-back-matter__subhead">Data and method</h3>
-<p class="art-p">The source is the TidyTuesday Rolling Stone albums release from the R for Data Science community. The working file contains 691 rows — album titles, artists, release years, types, genre labels, and 2003 rank fields.</p>
+<p class="art-p"><a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2024/2024-05-07">The source is the TidyTuesday Rolling Stone albums release from the R for Data Science community. The working file contains 691 rows — album titles, artists, release years, types, genre labels, and 2003 rank fields.</a></p>
 <p class="art-p">Medians summarize a curated elite, not a random sample of recorded music. Charts export as Plotly JSON with PNG fallbacks. A magazine canon is an editorial object; treating it as market data misreads the politics of taste.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
 </section>

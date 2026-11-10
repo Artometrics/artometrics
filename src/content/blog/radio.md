@@ -70,7 +70,7 @@ faq:
 <section class="art-back-matter">
 <h2 id="data-methods-and-sources" class="anchored">Data, methods &amp; sources</h2>
 <h3 id="data-and-method" class="anchored art-back-matter__subhead">Data and method</h3>
-<p class="art-p">The source is the TidyTuesday release from 2022-11-08, maintained by the R for Data Science community. The working file contains 17,186 rows and 11 columns after cleaning — call signs, frequencies, formats, and license status fields.</p>
+<p class="art-p"><a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2022/2022-11-08">The source is the TidyTuesday release from 2022-11-08, maintained by the R for Data Science community. The working file contains 17,186 rows and 11 columns after cleaning — call signs, frequencies, formats, and license status fields.</a></p>
 <p class="art-p">Medians stabilize a dial that mixes FM-looking centers with AM extremes. Charts export as Plotly JSON with PNG fallbacks. Each license row represents permission to exist on the dial, not a measure of listening.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
 </section>

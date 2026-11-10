@@ -24,7 +24,7 @@ Frequency and format answer different questions: one measures where stations sit
 
 ## Data and method {#data-and-method}
 
-The source is the TidyTuesday release from 2022-11-08, maintained by the R for Data Science community. The working file contains 17,186 rows and 11 columns after cleaning — call signs, frequencies, formats, and license status fields.
+[The source is the TidyTuesday release from 2022-11-08, maintained by the R for Data Science community. The working file contains 17,186 rows and 11 columns after cleaning — call signs, frequencies, formats, and license status fields.](https://github.com/rfordatascience/tidytuesday/tree/main/data/2022/2022-11-08)
 
 Medians stabilize a dial that mixes FM-looking centers with AM extremes. Charts export as Plotly JSON with PNG fallbacks. Each license row represents permission to exist on the dial, not a measure of listening.
 

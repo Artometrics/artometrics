@@ -72,7 +72,7 @@ faq:
 <section class="art-back-matter">
 <h2 id="data-methods-and-sources" class="anchored">Data, methods &amp; sources</h2>
 <h3 id="data-and-method" class="anchored art-back-matter__subhead">Data and method</h3>
-<p class="art-p">The source is the TidyTuesday release from 2019-09-17 (R for Data Science community). The working file contains 21,560 rows and 13 columns — park names, regions, years, and visitor totals.</p>
+<p class="art-p"><a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-09-17">The source is the TidyTuesday release from 2019-09-17 (R for Data Science community). The working file contains 21,560 rows and 13 columns — park names, regions, years, and visitor totals.</a></p>
 <p class="art-p">Medians handle skew from hyper-visited units. Charts export as Plotly JSON with PNG fallbacks. Visitor totals are administrative counts; definition changes over a century mean long-run levels are directional, not exact.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
 </section>

@@ -72,7 +72,7 @@ faq:
 <section class="art-back-matter">
 <h2 id="data-methods-and-sources" class="anchored">Data, methods &amp; sources</h2>
 <h3 id="data-and-method" class="anchored art-back-matter__subhead">Data and method</h3>
-<p class="art-p">The source is the TidyTuesday release from 2019-06-04, maintained by the R for Data Science community. The working file contains 3,180 rows and six columns after cleaning: brand, variety, style, country, stars, and review number.</p>
+<p class="art-p"><a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-06-04">The source is the TidyTuesday release from 2019-06-04, maintained by the R for Data Science community. The working file contains 3,180 rows and six columns after cleaning: brand, variety, style, country, stars, and review number.</a></p>
 <p class="art-p">Medians handle a distribution piled against the 5.00 ceiling. Charts export as Plotly JSON with PNG fallbacks. Stars are community review scores, not laboratory nutrition assays.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
 </section>

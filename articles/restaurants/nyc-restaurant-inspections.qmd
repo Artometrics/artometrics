@@ -24,7 +24,7 @@ Higher scores mean more violations, not better food — an inversion easy to for
 
 ## Data and method {#data-and-method}
 
-The source is the TidyTuesday release built from NYC restaurant inspection open data via the R for Data Science community. The working file contains 100,000 rows sampled from the full dataset, with fields including DBA names, boroughs, scores, grades, and inspection dates.
+[The source is the TidyTuesday release built from NYC restaurant inspection open data via the R for Data Science community. The working file contains 100,000 rows sampled from the full dataset, with fields including DBA names, boroughs, scores, grades, and inspection dates.](https://github.com/rfordatascience/tidytuesday/tree/main/data/2018/2018-12-11)
 
 Medians matter because a thin tail of high-violation restaurants pulls means upward. Charts export as Plotly JSON with PNG fallbacks. Grades derive from scores under city rules; treating them as independent categories misses the underlying point system.
 

@@ -73,7 +73,7 @@ faq:
 <section class="art-back-matter">
 <h2 id="data-methods-and-sources" class="anchored">Data, methods &amp; sources</h2>
 <h3 id="data-and-method" class="anchored art-back-matter__subhead">Data and method</h3>
-<p class="art-p">The source is the TidyTuesday release from 2018-12-04 (R for Data Science community). The working file contains 78,388 rows and 22 columns after assembly — titles, publications, reading time, claps, and related metadata.</p>
+<p class="art-p"><a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2018/2018-12-04">The source is the TidyTuesday release from 2018-12-04 (R for Data Science community). The working file contains 78,388 rows and 22 columns after assembly — titles, publications, reading time, claps, and related metadata.</a></p>
 <p class="art-p">Medians stabilize a distribution with a long right tail of mega-posts. Charts export as Plotly JSON with PNG fallbacks. Reading time is a platform estimate, not a stopwatch on every reader.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
 </section>

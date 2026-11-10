@@ -71,7 +71,7 @@ faq:
 <section class="art-back-matter">
 <h2 id="data-methods-and-sources" class="anchored">Data, methods &amp; sources</h2>
 <h3 id="data-and-method" class="anchored art-back-matter__subhead">Data and method</h3>
-<p class="art-p">Source: TidyTuesday release from 2018-06-19, published by the R for Data Science community. The working file contains 153 rows and 4 columns after cleaning—a narrow table built for cross-state comparison in the 2017 window.</p>
+<p class="art-p"><a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2018/2018-06-19">Source: TidyTuesday release from 2018-06-19, published by the R for Data Science community. The working file contains 153 rows and 4 columns after cleaning—a narrow table built for cross-state comparison in the 2017 window.</a></p>
 <p class="art-p">Medians are preferred for robustness. Charts ship as Plotly JSON with PNG fallbacks. Because the year span collapses to 2017, conclusions are about that season's comparative geography, not multi-decade hurricane climatology.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
 </section>

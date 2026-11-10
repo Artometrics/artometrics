@@ -528,7 +528,7 @@
           "citations": [
             {
               "text": "The source is the TidyTuesday release from 2022-11-08, maintained by the R for Data Science community. The working file contains 17,186 rows and 11 columns after cleaning — call signs, frequencies, formats, and license status fields.",
-              "href": null
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2022/2022-11-08"
             }
           ],
           "fixes": []
@@ -576,7 +576,7 @@
           "citations": [
             {
               "text": "The source is the TidyTuesday Rolling Stone albums release from the R for Data Science community. The working file contains 691 rows — album titles, artists, release years, types, genre labels, and 2003 rank fields.",
-              "href": null
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2024/2024-05-07"
             }
           ],
           "fixes": []
@@ -1684,7 +1684,7 @@
           "citations": [
             {
               "text": "The source is the TidyTuesday release from 2018-12-04 (R for Data Science community). The working file contains 78,388 rows and 22 columns after assembly — titles, publications, reading time, claps, and related metadata.",
-              "href": null
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2018/2018-12-04"
             }
           ],
           "fixes": []
@@ -1716,7 +1716,7 @@
           "citations": [
             {
               "text": "The source is the TidyTuesday nuclear explosions release maintained by the R for Data Science community. The working file assembles event-level rows with country labels, purpose codes, body-wave magnitude, depth, and related fields after…",
-              "href": null
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-08-20"
             }
           ],
           "fixes": []
@@ -1748,7 +1748,7 @@
           "citations": [
             {
               "text": "The source is the TidyTuesday release from 2022-09-20 (R for Data Science community). The working file contains 58,502 rows and 25 columns after merging country, treatment level, discharge, and quality fields.",
-              "href": null
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2022/2022-09-20"
             }
           ],
           "fixes": []
@@ -2868,7 +2868,7 @@
           "citations": [
             {
               "text": "The source is the TidyTuesday release from 2018-09-04, maintained by the R for Data Science community. The working file contains 515 rows and 17 columns after merging available CSV tables — restaurant name, item, calories, total fat, and…",
-              "href": null
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2018/2018-09-04"
             }
           ],
           "fixes": []
@@ -2884,7 +2884,7 @@
           "citations": [
             {
               "text": "The source is the TidyTuesday release from 2019-09-17 (R for Data Science community). The working file contains 21,560 rows and 13 columns — park names, regions, years, and visitor totals.",
-              "href": null
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-09-17"
             }
           ],
           "fixes": []
@@ -2932,7 +2932,7 @@
           "citations": [
             {
               "text": "The source is the TidyTuesday release from 2022-09-06 (R for Data Science community). The working file contains 19,798 rows across set and parts tables after merging — set names, years, part counts, and quantity fields.",
-              "href": null
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2022/2022-09-06"
             }
           ],
           "fixes": []
@@ -2948,7 +2948,7 @@
           "citations": [
             {
               "text": "The source is the TidyTuesday release from 2019-06-04, maintained by the R for Data Science community. The working file contains 3,180 rows and six columns after cleaning: brand, variety, style, country, stars, and review number.",
-              "href": null
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-06-04"
             }
           ],
           "fixes": []
@@ -2964,7 +2964,7 @@
           "citations": [
             {
               "text": "TidyTuesday release from 2018-06-19, published by the R for Data Science community. The working file contains 153 rows and 4 columns after cleaning—a narrow table built for cross-state comparison in the 2017 window.",
-              "href": null
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2018/2018-06-19"
             }
           ],
           "fixes": []
@@ -2980,7 +2980,7 @@
           "citations": [
             {
               "text": "The source is the TidyTuesday release built from NYC restaurant inspection open data via the R for Data Science community. The working file contains 100,000 rows sampled from the full dataset, with fields including DBA names, boroughs, s…",
-              "href": null
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2018/2018-12-11"
             }
           ],
           "fixes": []
@@ -2996,7 +2996,7 @@
           "citations": [
             {
               "text": "The source is the TidyTuesday release from 2019-05-21 (R for Data Science community). The working file contains 22,204 rows and 7 columns after assembling the week's tables — including GDP per capita (PPP) and per-capita mismanaged plast…",
-              "href": null
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-05-21"
             }
           ],
           "fixes": []

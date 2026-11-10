@@ -24,7 +24,7 @@ The metadata trail — reading time, claps, publication tags — lets that promi
 
 ## Data and method {#data-and-method}
 
-The source is the TidyTuesday release from 2018-12-04 (R for Data Science community). The working file contains 78,388 rows and 22 columns after assembly — titles, publications, reading time, claps, and related metadata.
+[The source is the TidyTuesday release from 2018-12-04 (R for Data Science community). The working file contains 78,388 rows and 22 columns after assembly — titles, publications, reading time, claps, and related metadata.](https://github.com/rfordatascience/tidytuesday/tree/main/data/2018/2018-12-04)
 
 Medians stabilize a distribution with a long right tail of mega-posts. Charts export as Plotly JSON with PNG fallbacks. Reading time is a platform estimate, not a stopwatch on every reader.
 
