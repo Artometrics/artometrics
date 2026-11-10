@@ -2200,19 +2200,19 @@
           "citations": [
             {
               "text": "BEA. Regional GDP by county and metropolitan area documentation/API.",
-              "href": null
+              "href": "https://www.bea.gov/data/gdp/gdp-by-county"
             },
             {
               "text": "DOSE / PIK. Global subnational economic output dataset.",
-              "href": null
+              "href": "https://doi.org/10.1038/s41597-023-02323-8"
             },
             {
               "text": "World Cities Culture Forum. CREATIVE Data Framework and 5th Edition Data Explorer.",
-              "href": null
+              "href": "https://worldcitiescultureforum.com/data-explorer-cities/"
             },
             {
               "text": "DataSF and NYC Open Data. Socrata/SODA portal documentation.",
-              "href": null
+              "href": "https://dev.socrata.com/"
             },
             {
               "text": "U.S. Census ACS and International Trade Administration Metropolitan Export Series.",
@@ -2268,7 +2268,7 @@
           "citations": [
             {
               "text": "BEA. State GDP by industry.",
-              "href": null
+              "href": "https://www.bea.gov/data/gdp/gdp-state"
             },
             {
               "text": "U.S. Census ACS and population estimates.",
@@ -2276,11 +2276,11 @@
             },
             {
               "text": "IRS migration data summaries.",
-              "href": null
+              "href": "https://www.irs.gov/statistics/soi-tax-stats-migration-data"
             },
             {
               "text": "BLS state employment statistics.",
-              "href": null
+              "href": "https://www.bls.gov/sae/"
             },
             {
               "text": "International Trade Administration and OEC export references.",
@@ -2304,27 +2304,27 @@
           "citations": [
             {
               "text": "DataSF / SF.gov. Open Data portal and developer documentation.",
-              "href": null
+              "href": "https://data.sf.gov/"
             },
             {
               "text": "Socrata / SODA API documentation.",
-              "href": null
+              "href": "https://dev.socrata.com/"
             },
             {
               "text": "BEA. Metropolitan GDP and regional data.",
-              "href": null
+              "href": "https://www.bea.gov/data/gdp/gdp-by-county"
             },
             {
               "text": "U.S. Census ACS. Housing, income, commuting, and demographic tables.",
-              "href": null
+              "href": "https://www.census.gov/programs-surveys/acs"
             },
             {
               "text": "International Trade Administration. Metropolitan Export Series.",
-              "href": null
+              "href": "https://www.trade.gov/ita-metropolitan-export-series"
             },
             {
               "text": "World Cities Culture Forum. CREATIVE Data Framework.",
-              "href": null
+              "href": "https://worldcitiescultureforum.com/data-explorer-cities/"
             }
           ],
           "fixes": []
@@ -2462,11 +2462,11 @@
           "citations": [
             {
               "text": "BEA. Metropolitan GDP and regional industry data.",
-              "href": null
+              "href": "https://www.bea.gov/data/gdp/gdp-by-county"
             },
             {
               "text": "BLS metro employment data.",
-              "href": null
+              "href": "https://www.bls.gov/sae/"
             },
             {
               "text": "DataSF and NYC Open Data Socrata portals.",
@@ -2474,7 +2474,7 @@
             },
             {
               "text": "World Cities Culture Forum CREATIVE Data Framework.",
-              "href": null
+              "href": "https://worldcitiescultureforum.com/data-explorer-cities/"
             },
             {
               "text": "Transit agency and office-market public summaries.",

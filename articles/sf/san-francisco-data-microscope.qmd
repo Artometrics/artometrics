@@ -86,17 +86,17 @@ This claim can be tested against DataSF building permits, business registration 
 
 ## Sources {#sources}
 
-DataSF / SF.gov. Open Data portal and developer documentation.
+[DataSF / SF.gov. Open Data portal and developer documentation.](https://data.sf.gov/)
 
-Socrata / SODA API documentation.
+[Socrata / SODA API documentation.](https://dev.socrata.com/)
 
-BEA. Metropolitan GDP and regional data.
+[BEA. Metropolitan GDP and regional data.](https://www.bea.gov/data/gdp/gdp-by-county)
 
-U.S. Census ACS. Housing, income, commuting, and demographic tables.
+[U.S. Census ACS. Housing, income, commuting, and demographic tables.](https://www.census.gov/programs-surveys/acs)
 
-International Trade Administration. Metropolitan Export Series.
+[International Trade Administration. Metropolitan Export Series.](https://www.trade.gov/ita-metropolitan-export-series)
 
-World Cities Culture Forum. CREATIVE Data Framework.
+[World Cities Culture Forum. CREATIVE Data Framework.](https://worldcitiescultureforum.com/data-explorer-cities/)
 
 ## Editor's note {#editor-s-note}
 
