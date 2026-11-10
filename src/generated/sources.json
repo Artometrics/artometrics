@@ -112,15 +112,15 @@
           "citations": [
             {
               "text": "MusicBrainz. JSON Data Dumps documentation.",
-              "href": null
+              "href": "https://musicbrainz.org/doc/Development/JSON_Data_Dumps"
             },
             {
               "text": "MetaBrainz Foundation. Datasets: PostgreSQL and JSON dumps.",
-              "href": null
+              "href": "https://metabrainz.org/datasets"
             },
             {
               "text": "MusicBrainz Database Download documentation and CC0 license notes.",
-              "href": null
+              "href": "https://musicbrainz.org/doc/MusicBrainz_Database/Download"
             },
             {
               "text": "Wikidata and public chart-history references for artist-level context.",
@@ -304,7 +304,7 @@
           "citations": [
             {
               "text": "IMDb Developer. IMDb Non-Commercial Datasets.",
-              "href": null
+              "href": "https://data.imdb.com/non-commercial-datasets/"
             },
             {
               "text": "IMDb required credit: Information courtesy of IMDb (https://www.imdb.com). Used with permission.",
@@ -312,7 +312,7 @@
             },
             {
               "text": "IMDb Help. Required credit statement and non-commercial terms.",
-              "href": null
+              "href": "https://help.imdb.com/article/imdb/general-information/can-i-use-imdb-data-in-my-software/G5JTRESSHJBBHTGX"
             },
             {
               "text": "Box Office Mojo and The Numbers public box-office reference pages.",
@@ -2362,19 +2362,19 @@
           "citations": [
             {
               "text": "UNESCO Institute for Statistics and UNESCO cultural trade references.",
-              "href": null
+              "href": "https://www.uis.unesco.org/en/culture"
             },
             {
               "text": "WIPO creative economy and intellectual property indicators.",
-              "href": null
+              "href": "https://www.wipo.int/en/web/ip-statistics"
             },
             {
               "text": "World Cities Culture Forum. CREATIVE Data Framework.",
-              "href": null
+              "href": "https://worldcitiescultureforum.com/data-explorer-cities/"
             },
             {
               "text": "MusicBrainz / MetaBrainz dumps.",
-              "href": null
+              "href": "https://metabrainz.org/datasets"
             },
             {
               "text": "IMDb/TMDb/Wikidata public metadata references.",

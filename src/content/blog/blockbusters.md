@@ -86,9 +86,9 @@ faq:
 <p class="art-p">IMDb publishes non-commercial TSV datasets including title basics, ratings, crew, principals, episodes, and names. The fields make it possible to join titles, genres, years, runtimes, ratings, and vote counts.</p>
 <p class="art-p">Because IMDb licensing has specific terms, This piece uses IMDb as a source architecture and includes a commercial-use caution. A output version should verify licensing or swap in fully open TMDb/Wikidata/Box Office Mojo-compatible sources.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
-<p>IMDb Developer. <em>IMDb Non-Commercial Datasets</em>.</p>
+<p><a href="https://data.imdb.com/non-commercial-datasets/">IMDb Developer. <em>IMDb Non-Commercial Datasets</em>.</a></p>
 <p>IMDb required credit: Information courtesy of IMDb (https://www.imdb.com). Used with permission.</p>
-<p>IMDb Help. Required credit statement and non-commercial terms.</p>
+<p><a href="https://help.imdb.com/article/imdb/general-information/can-i-use-imdb-data-in-my-software/G5JTRESSHJBBHTGX">IMDb Help. Required credit statement and non-commercial terms.</a></p>
 <p>Box Office Mojo and The Numbers public box-office reference pages.</p>
 <p>The Movie Database and Wikidata documentation for alternate open film metadata paths.</p>
 <h2 id="editor-s-note" class="anchored">Editor’s note</h2>

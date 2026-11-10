@@ -75,10 +75,10 @@ faq:
 <p class="art-p">The source stack includes UNESCO cultural statistics, WIPO creative-industry indicators, World Bank and OECD services data, MusicBrainz, IMDb/TMDb-style film metadata, Wikidata, and World Cities Culture Forum materials.</p>
 <p class="art-p">Values in the figures are editorial indices that structure the argument. Direct ingestion should replace them with cultural trade, platform, awards, tourism, and city infrastructure aggregates.</p>
 <h3 id="sources" class="anchored art-back-matter__subhead">Sources</h3>
-<p>UNESCO Institute for Statistics and UNESCO cultural trade references.</p>
-<p>WIPO creative economy and intellectual property indicators.</p>
-<p>World Cities Culture Forum. CREATIVE Data Framework.</p>
-<p>MusicBrainz / MetaBrainz dumps.</p>
+<p><a href="https://www.uis.unesco.org/en/culture">UNESCO Institute for Statistics and UNESCO cultural trade references.</a></p>
+<p><a href="https://www.wipo.int/en/web/ip-statistics">WIPO creative economy and intellectual property indicators.</a></p>
+<p><a href="https://worldcitiescultureforum.com/data-explorer-cities/">World Cities Culture Forum. CREATIVE Data Framework.</a></p>
+<p><a href="https://metabrainz.org/datasets">MusicBrainz / MetaBrainz dumps.</a></p>
 <p>IMDb/TMDb/Wikidata public metadata references.</p>
 <p>World Bank and OECD services and export datasets.</p>
 <h2 id="editor-s-note" class="anchored">Editor's note</h2>
