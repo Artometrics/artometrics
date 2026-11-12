@@ -28,6 +28,13 @@
   --sys-mono: "DM Mono", ui-monospace, monospace;
   --sys-h2: clamp(1.75rem, 5vw, 2.5rem);
   --sys-h3: clamp(1.25rem, 3.6vw, 1.6rem);
+  /* Sticky header (.mast) height. anchor-jump.js replaces this with the measured value. */
+  --mast-height: 112px;
+  --anchor-offset: calc(var(--mast-height) + 16px);
+}
+
+[id] {
+  scroll-margin-top: var(--anchor-offset);
 }
 
 html[data-theme="light"] {
@@ -41,6 +48,7 @@ html[data-theme="light"] {
 
 @media (min-width: 900px) {
   :root {
+    --mast-height: 125px;
     --sys-gap: 20px;
     --sys-section: 56px;
     --sys-pad: 16px;

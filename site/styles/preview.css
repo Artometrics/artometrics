@@ -1246,7 +1246,7 @@ html[data-theme="dark"] .chartcar__img { background: #0e1110; }
 .chartcar__text b { font-family: var(--mono); margin-right: 4px; }
 @media (min-width: 720px) { .chartcar__slide { flex-basis: 300px; } }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-.artometrics-article-body .art-chart { scroll-margin-top: 80px; }
+.artometrics-article-body .art-chart { scroll-margin-top: var(--anchor-offset, 96px); }
 
 /* Downloads gallery. */
 .dl { margin: 36px 0 8px; min-width: 0; }

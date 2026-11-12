@@ -19,8 +19,24 @@
     }
   }
 
+  var header = document.querySelector(".mast");
+
+  function headerBottom() {
+    if (!header || getComputedStyle(header).position !== "sticky") return 0;
+    return Math.max(0, header.getBoundingClientRect().bottom);
+  }
+
+  function measureHeader() {
+    if (!header) return;
+    document.documentElement.style.setProperty("--mast-height", Math.ceil(header.getBoundingClientRect().height) + "px");
+  }
+
+  measureHeader();
+  window.addEventListener("resize", measureHeader);
+  if (header && window.ResizeObserver) new ResizeObserver(measureHeader).observe(header);
+
   function align(el) {
-    var margin = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+    var margin = Math.max(parseFloat(getComputedStyle(el).scrollMarginTop) || 0, headerBottom() + 16);
     var delta = el.getBoundingClientRect().top - margin;
     if (Math.abs(delta) > 1) window.scrollBy({ top: delta, left: 0, behavior: "instant" });
   }
