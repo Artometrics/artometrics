@@ -36,11 +36,15 @@ export function collectContrastFailures() {
     const layers = [];
     let node = el;
     let overImage = false;
+    let source = "";
     while (node && node.nodeType === 1) {
       const cs = getComputedStyle(node);
       if (cs.backgroundImage && cs.backgroundImage !== "none") overImage = true;
       const bg = parse(cs.backgroundColor);
-      if (bg && bg.a > 0) layers.push(bg);
+      if (bg && bg.a > 0) {
+        layers.push(bg);
+        if (!source) source = `${node.tagName.toLowerCase()}${typeof node.className === "string" && node.className ? "." + node.className.split(" ")[0] : ""}`;
+      }
       if (bg && bg.a >= 1) break;
       node = node.parentElement;
     }
@@ -48,7 +52,7 @@ export function collectContrastFailures() {
     const rootBg = parse(getComputedStyle(document.documentElement).backgroundColor);
     if (rootBg && rootBg.a > 0) base = rootBg;
     for (let i = layers.length - 1; i >= 0; i--) base = over(layers[i], base);
-    return { color: base, overImage };
+    return { color: base, overImage, source };
   }
   function visible(el) {
     const r = el.getBoundingClientRect();
@@ -105,6 +109,7 @@ export function collectContrastFailures() {
         fg: cs.color,
         bg: `rgb(${Math.round(bd.color.r)}, ${Math.round(bd.color.g)}, ${Math.round(bd.color.b)})`,
         size,
+        bgFrom: bd.source,
       });
     }
   }

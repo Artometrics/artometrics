@@ -263,3 +263,68 @@ html[data-theme="dark"] .artometrics-article-body .art-chart-live,
 html[data-theme="light"] .artometrics-article-body .art-chart-live {
   background: transparent !important;
 }
+
+/* Day mode headings. The dark-ground h3 rule above wins on specificity, so repeat it here. */
+html[data-theme="light"] .artometrics-article-body h3:not(.art-back-matter__subhead),
+html[data-theme="light"] .artometrics-article-body main.art-article-main > h3:not(.art-back-matter__subhead),
+html[data-theme="light"] .artometrics-article-body h3.art-files__heading,
+html[data-theme="light"] .artometrics-article-body .art-h3,
+html[data-theme="light"] .artometrics-article-body h3.art-back-matter__subhead {
+  color: #14110e !important;
+}
+
+/* WCAG AA surfaces. A component that paints its own background owns its text colour in each theme. */
+html[data-theme="light"] .artometrics-article-body .art-table td {
+  background: #fffdf8 !important;
+  color: #14110e !important;
+}
+html[data-theme="light"] .artometrics-article-body .art-table td strong,
+html[data-theme="light"] .artometrics-article-body .art-table td a {
+  color: inherit !important;
+}
+html[data-theme="light"] .artometrics-article-body main.art-article-main .art-title-card,
+html[data-theme="light"] .artometrics-article-body main.art-article-main .art-title-card p,
+html[data-theme="light"] .artometrics-article-body main.art-article-main .art-title-card a {
+  color: #fff !important;
+}
+html[data-theme="light"] .artometrics-article-body .fact-box {
+  background: #fffdf8 !important;
+  border: 1px solid #14110e !important;
+}
+html[data-theme="light"] .artometrics-article-body .fact-box,
+html[data-theme="light"] .artometrics-article-body .fact-box p,
+html[data-theme="light"] .artometrics-article-body .fact-box strong,
+html[data-theme="light"] .artometrics-article-body .fact-box em,
+html[data-theme="light"] .artometrics-article-body .fact-box h2,
+html[data-theme="light"] .artometrics-article-body .fact-box h3,
+html[data-theme="light"] .artometrics-article-body .fact-box figcaption,
+html[data-theme="light"] .artometrics-article-body .fact-box .fact-number,
+html[data-theme="light"] .artometrics-article-body .fact-box .fact-label {
+  color: #14110e !important;
+}
+html[data-theme="light"] .artometrics-article-body .fact-box a {
+  color: #0047ff !important;
+}
+html[data-theme="light"] .artometrics-article-body .fact-box h2.anchored {
+  color: #0035c4 !important;
+}
+html[data-theme="light"] .artometrics-article-body figcaption.figure-caption {
+  color: #3e362e !important;
+}
+html[data-theme="dark"] .artometrics-article-body .art-method-box,
+html[data-theme="dark"] .artometrics-article-body .art-back-matter[style*="background"] {
+  background: #14110e !important;
+  border-color: rgba(243, 234, 215, 0.55) !important;
+}
+html[data-theme="dark"] .artometrics-article-body .art-studio-card span,
+html[data-theme="dark"] .artometrics-article-body .art-studio-card li {
+  color: #cfc3ad !important;
+}
+html[data-theme="dark"] .artometrics-article-body .art-files__link {
+  color: #f3ead7 !important;
+  border-color: rgba(243, 234, 215, 0.5) !important;
+}
+html[data-theme="dark"] .artometrics-article-body .art-files__link:hover {
+  background: transparent !important;
+  color: #9db7ff !important;
+}

@@ -51,6 +51,7 @@
   --blue: #0047ff;
   --blue-text: #9db7ff;
   --pink: #ff3d8a;
+  --pink-text: #ff3d8a;
   --rule: #2a3330;
   --measure: 42rem;
   --wrap: 1120px;
@@ -348,7 +349,7 @@ html[data-logo-form="single"] .wordmark img {
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--pink);
+  color: var(--pink-text);
 }
 .nav-catalogue__row {
   display: flex;
@@ -385,7 +386,7 @@ html[data-logo-form="single"] .wordmark img {
 .suggest { list-style: none; margin: 0 0 12px; padding: 0; border: 1px solid var(--rule); }
 .suggest a { display: flex; gap: 10px; align-items: center; padding: 8px 12px; text-decoration: none; border-bottom: 1px solid var(--rule); }
 .suggest img { width: 56px; height: 56px; object-fit: cover; object-position: center; flex: 0 0 56px; }
-.suggest small { display: block; color: var(--pink); letter-spacing: 0.12em; text-transform: uppercase; font-size: 10px; }
+.suggest small { display: block; color: var(--pink-text); letter-spacing: 0.12em; text-transform: uppercase; font-size: 10px; }
 .suggest strong { color: var(--cream); font-weight: 500; }
 .fact {
   margin: 64px auto 40px;
@@ -396,7 +397,7 @@ html[data-logo-form="single"] .wordmark img {
 .fact__label {
   font-family: var(--word);
   font-size: 28px;
-  color: var(--pink);
+  color: var(--pink-text);
   font-style: italic;
 }
 .fact__text {
@@ -511,7 +512,7 @@ html[data-logo-form="single"] .wordmark img {
   font-size: min(72px, 11vw);
   margin: 0 0 8px;
   padding-top: 0.28em;
-  color: var(--pink);
+  color: var(--pink-text);
   line-height: 0.9;
   max-width: 100%;
   overflow-wrap: anywhere;
@@ -739,7 +740,7 @@ html[data-logo-form="single"] .wordmark img {
 .prose a { color: var(--blue-text); }
 .crumbs { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
 .crumbs a { text-decoration: none; font-weight: 700; }
-.headline .slug { color: var(--pink); }
+.headline .slug { color: var(--pink-text); }
 .stat-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -930,7 +931,7 @@ html:has(.report) { overflow-x: clip; }
   margin: 0 0 10px;
   padding: 4px 8px;
   border: 1px solid var(--pink);
-  color: var(--pink);
+  color: var(--pink-text);
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: 0.14em;
@@ -940,7 +941,7 @@ html:has(.report) { overflow-x: clip; }
   font-family: var(--word);
   font-weight: 400;
   font-style: normal;
-  color: var(--pink);
+  color: var(--pink-text);
   letter-spacing: 0;
   line-height: 0.85;
   text-transform: none;
@@ -993,7 +994,7 @@ html:has(.report) { overflow-x: clip; }
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--pink);
+  color: var(--pink-text);
 }
 .issue-rail {
   display: grid;
@@ -1142,7 +1143,7 @@ html:has(.report) { overflow-x: clip; }
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--pink);
+  color: var(--pink-text);
 }
 .fast-facts__grid {
   display: grid;
@@ -1167,7 +1168,7 @@ html:has(.report) { overflow-x: clip; }
   line-height: 1.25;
   color: var(--cream);
 }
-.fast-fact--pink .fast-fact__num { color: var(--pink); }
+.fast-fact--pink .fast-fact__num { color: var(--pink-text); }
 .fast-fact--blue .fast-fact__num { color: var(--blue-text); }
 .fast-fact--long .fast-fact__num { font-size: 1.05rem; }
 .fast-fact__lbl {
@@ -1356,6 +1357,7 @@ html[data-theme="light"] {
   --muted: #3e362e;
   --subtle: #5c5348;
   --blue-text: #0047ff;
+  --pink-text: #b0124f;
   --rule: rgba(20, 17, 14, 0.22);
 }
 html[data-theme="light"] body:has(.home-c),
@@ -1515,7 +1517,7 @@ html:has(.desk-home) { overflow-x: clip; }
   text-transform: uppercase;
 }
 .desk-section h2 a,
-.desk-column h2 a { color: var(--pink); text-decoration: none; }
+.desk-column h2 a { color: var(--pink-text); text-decoration: none; }
 @media (max-width: 340px) {
   .desk-column { flex-basis: calc((100% - 8px) / 2); }
 }
@@ -1533,7 +1535,7 @@ html:has(.desk-home) { overflow-x: clip; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.desk-periods button[aria-checked="true"] { border-color: var(--pink); color: var(--pink); }
+.desk-periods button[aria-checked="true"] { border-color: var(--pink); color: var(--pink-text); }
 .desk-fire, .desk-trend { display: block; flex: 0 0 auto; }
 .desk-period-note {
   margin: 0 0 8px;
@@ -1575,7 +1577,7 @@ html:has(.desk-home) { overflow-x: clip; }
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--pink);
+  color: var(--pink-text);
 }
 .banner-carousel {
   touch-action: pan-y;
@@ -1705,7 +1707,7 @@ html:has(.desk-home) { overflow-x: clip; }
   text-decoration: none;
   color: var(--ink);
 }
-.desk-home__jumps a:hover { color: var(--pink); }
+.desk-home__jumps a:hover { color: var(--pink-text); }
 .desk-cols {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1726,10 +1728,10 @@ html:has(.desk-home) { overflow-x: clip; }
   text-transform: uppercase;
 }
 .desk-col h2 a {
-  color: var(--pink);
+  color: var(--pink-text);
   text-decoration: none;
 }
-.desk-col h2 a:hover { color: var(--pink); }
+.desk-col h2 a:hover { color: var(--pink-text); }
 .desk-row {
   display: grid;
   grid-template-columns: 48px minmax(0, 1fr);
@@ -1816,4 +1818,27 @@ html[data-theme="light"] .desk-lead h1 { color: #14110e; }
 html[data-theme="light"] .banner-carousel__word {
   color: #14110e;
   text-shadow: 0 0 12px rgba(243, 234, 215, 0.95), 0 0 3px rgba(243, 234, 215, 0.9);
+}
+
+/* Cards that carry their own surface follow the theme. */
+html[data-theme="light"] .plan,
+html[data-theme="light"] .edition,
+html[data-theme="light"] .trend {
+  background: #fffdf8;
+  color: #14110e;
+  border-color: #14110e;
+}
+html[data-theme="light"] .plan *,
+html[data-theme="light"] .edition *,
+html[data-theme="light"] .trend * {
+  color: #14110e;
+}
+html[data-theme="light"] .plan .kicker,
+html[data-theme="light"] .plan .meta,
+html[data-theme="light"] .edition .kicker {
+  color: #3e362e;
+}
+html[data-theme="light"] .plan .btn,
+html[data-theme="light"] .plan .btn * {
+  color: #fff;
 }
