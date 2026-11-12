@@ -63,11 +63,16 @@ html[data-theme="dark"] .artometrics-article-body .art-chart-live {
 }
 /* Remap the published white-paper poster onto the black ground.
    Hue stays with the series so the figures are not recolored into new values. */
-html[data-theme="dark"] .artometrics-article-body .art-chart-fallback,
-html[data-theme="dark"] .artometrics-article-body .art-chart-live > img {
+html[data-theme="dark"] .artometrics-article-body .art-chart-fallback:not(.art-chart-fallback--light):not(.art-chart-fallback--dark),
+html[data-theme="dark"] .artometrics-article-body .art-chart-live:not(.art-chart-live--themed) > img {
   filter: invert(1) hue-rotate(180deg);
   background: #000 !important;
 }
+/* Themed charts ship two renders from scripts/charts/art-chart-style.json. */
+.artometrics-article-body .art-chart-live.art-chart-live--themed .art-chart-fallback--dark { display: none !important; }
+html[data-theme="dark"] .artometrics-article-body .art-chart-live.art-chart-live--themed .art-chart-fallback--light { display: none !important; }
+html[data-theme="dark"] .artometrics-article-body .art-chart-live.art-chart-live--themed .art-chart-fallback--dark { display: block !important; filter: none; }
+html[data-theme="dark"] .artometrics-article-body .art-chart-live--themed { background: #0e1110 !important; }
 html[data-theme="dark"] .artometrics-article-body .art-chart figcaption.art-chart-caption.art-chart-caption--visible,
 html[data-theme="dark"] .artometrics-article-body .art-chart-caption {
   color: #cfc3ad !important;

@@ -32,20 +32,34 @@ CAND_DIRS = [
     REPO / "public" / "data" / "articles" / "franchise" / "charts" / "candidates",
     REPO / "articles" / "franchise" / "data" / "charts" / "candidates",
 ]
-PAPER, INK, MUTED, GRID = "#f7f4ee", "#14110e", "#5c5148", "#e6dfd4"
-RED, BLUE, OTHER = "#E60000", "#1f4b99", "#8a8178"
+STYLE = json.loads((REPO / "scripts" / "charts" / "art-chart-style.json").read_text(encoding="utf-8"))
+MODES = ("light", "dark")
+SUFFIX = {"light": "", "dark": "-dark"}
+PALETTES = {mode: STYLE[mode] for mode in MODES}
+PAPER, INK, MUTED, GRID = (PALETTES["light"][k] for k in ("paper", "ink", "muted", "grid"))
+RED, BLUE, OTHER = (PALETTES["light"][k] for k in ("red", "blue", "other"))
+ROLE_OF = {PALETTES["light"][k].lower(): k for k in ("ink", "red", "blue", "other")}
 
-plt.rcParams.update({
-    "font.family": "DejaVu Sans",
-    "axes.edgecolor": GRID,
-    "axes.labelcolor": MUTED,
-    "xtick.color": INK,
-    "ytick.color": INK,
-    "text.color": INK,
-    "figure.facecolor": PAPER,
-    "axes.facecolor": PAPER,
-    "savefig.facecolor": PAPER,
-})
+
+def tone(color: str, mode: str) -> str:
+    """Map a light-mode series colour onto the same role in another mode."""
+    role = ROLE_OF.get(color.lower())
+    return PALETTES[mode][role] if role else color
+
+
+def mode_rc(mode: str) -> dict:
+    p = PALETTES[mode]
+    return {
+        "font.family": "DejaVu Sans",
+        "axes.edgecolor": p["grid"],
+        "axes.labelcolor": p["muted"],
+        "xtick.color": p["ink"],
+        "ytick.color": p["ink"],
+        "text.color": p["ink"],
+        "figure.facecolor": p["paper"],
+        "axes.facecolor": p["paper"],
+        "savefig.facecolor": p["paper"],
+    }
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -99,25 +113,31 @@ def save_hbar(stem: str, labels: list[str], values: list[float], title: str, sub
     n = len(labels)
     subtitle_lines = textwrap.wrap(subtitle, 86) or [""]
     fig_h = max(4.8, 0.46 * n + 1.6 + 0.28 * len(subtitle_lines))
-    fig, ax = plt.subplots(figsize=(10.4, fig_h))
-    y = list(range(n))
-    bar_colors = colors or [color] * n
-    ax.barh(y, values, color=bar_colors, height=0.62)
-    ax.set_yticks(y, labels)
-    ax.invert_yaxis()
     ceiling = max(values) if values else 1
-    ax.set_xlim(0, ceiling * 1.32)
-    ax.grid(axis="x", color=GRID, linewidth=0.6)
-    ax.tick_params(axis="y", length=0, pad=6)
-    ax.spines[["top", "right", "left"]].set_visible(False)
-    for i, v in enumerate(values):
-        ax.text(v + ceiling * 0.025, i, fmt(v), va="center", ha="left", fontsize=9, color=INK)
-    header_top = 0.985
-    fig.text(0.012, header_top, title, fontsize=14, fontweight="bold", color=INK, ha="left", va="top")
-    fig.text(0.012, header_top - 0.045, "\n".join(subtitle_lines), fontsize=9.5, color=MUTED, ha="left", va="top", linespacing=1.35)
-    fig.text(0.012, 0.012, "\n".join(textwrap.wrap(source, 110)), fontsize=8, color=MUTED, ha="left", va="bottom")
-    top_pad = 0.86 - 0.035 * max(0, len(subtitle_lines) - 1)
-    fig.subplots_adjust(left=0.34, right=0.97, top=max(0.72, top_pad), bottom=0.12)
+    bar_colors = colors or [color] * n
+    for mode in MODES:
+        P = PALETTES[mode]
+        with plt.rc_context(mode_rc(mode)):
+            fig, ax = plt.subplots(figsize=(10.4, fig_h))
+            y = list(range(n))
+            ax.barh(y, values, color=[tone(c, mode) for c in bar_colors], height=0.62)
+            ax.set_yticks(y, labels)
+            ax.invert_yaxis()
+            ax.set_xlim(0, ceiling * 1.32)
+            ax.grid(axis="x", color=P["grid"], linewidth=0.6)
+            ax.tick_params(axis="y", length=0, pad=6)
+            ax.spines[["top", "right", "left"]].set_visible(False)
+            for i, v in enumerate(values):
+                ax.text(v + ceiling * 0.025, i, fmt(v), va="center", ha="left", fontsize=9, color=P["ink"])
+            header_top = 0.985
+            fig.text(0.012, header_top, title, fontsize=14, fontweight="bold", color=P["ink"], ha="left", va="top")
+            fig.text(0.012, header_top - 0.045, "\n".join(subtitle_lines), fontsize=9.5, color=P["muted"], ha="left", va="top", linespacing=1.35)
+            fig.text(0.012, 0.012, "\n".join(textwrap.wrap(source, 110)), fontsize=8, color=P["muted"], ha="left", va="bottom")
+            top_pad = 0.86 - 0.035 * max(0, len(subtitle_lines) - 1)
+            fig.subplots_adjust(left=0.34, right=0.97, top=max(0.72, top_pad), bottom=0.12)
+            for folder in dirs:
+                fig.savefig(folder / f"{stem}{SUFFIX[mode]}.png", dpi=140)
+            plt.close(fig)
     height = int(fig_h * 78)
     layout = base_layout(title, subtitle, source, height, {"l": 168, "r": 72, "t": 88, "b": 72})
     layout["yaxis"]["autorange"] = "reversed"
@@ -134,25 +154,29 @@ def save_hbar(stem: str, labels: list[str], values: list[float], title: str, sub
         "hovertemplate": "%{y}: %{x}<extra></extra>",
     }]
     for folder in dirs:
-        fig.savefig(folder / f"{stem}.png", dpi=140)
         write_plotly(folder / f"{stem}.plotly.json", traces, layout)
-    plt.close(fig)
 
 
 def save_line(stem: str, xs, ys, title, subtitle, source, dirs=None) -> None:
     dirs = dirs or LIVE_DIRS
-    fig, ax = plt.subplots(figsize=(10.4, 5.6))
-    ax.plot(xs, ys, color=RED, linewidth=2.2, marker="o", markersize=7)
     span = max(ys) - min(ys) or 1
-    ax.set_ylim(min(ys) - span * 0.45, max(ys) + span * 0.55)
-    for x, y in zip(xs, ys):
-        ax.text(x, y + span * 0.1, f"{y:.0f}%", ha="center", va="bottom", fontsize=9, color=INK)
-    ax.grid(axis="y", color=GRID)
-    ax.spines[["top", "right"]].set_visible(False)
-    fig.text(0.012, 0.985, title, fontsize=14, fontweight="bold", color=INK, ha="left", va="top")
-    fig.text(0.012, 0.92, "\n".join(textwrap.wrap(subtitle, 90)), fontsize=9.5, color=MUTED, ha="left", va="top")
-    fig.text(0.012, 0.012, "\n".join(textwrap.wrap(source, 110)), fontsize=8, color=MUTED, ha="left", va="bottom")
-    fig.subplots_adjust(left=0.08, right=0.97, top=0.74, bottom=0.16)
+    for mode in MODES:
+        P = PALETTES[mode]
+        with plt.rc_context(mode_rc(mode)):
+            fig, ax = plt.subplots(figsize=(10.4, 5.6))
+            ax.plot(xs, ys, color=tone(RED, mode), linewidth=2.2, marker="o", markersize=7)
+            ax.set_ylim(min(ys) - span * 0.45, max(ys) + span * 0.55)
+            for x, y in zip(xs, ys):
+                ax.text(x, y + span * 0.1, f"{y:.0f}%", ha="center", va="bottom", fontsize=9, color=P["ink"])
+            ax.grid(axis="y", color=P["grid"])
+            ax.spines[["top", "right"]].set_visible(False)
+            fig.text(0.012, 0.985, title, fontsize=14, fontweight="bold", color=P["ink"], ha="left", va="top")
+            fig.text(0.012, 0.92, "\n".join(textwrap.wrap(subtitle, 90)), fontsize=9.5, color=P["muted"], ha="left", va="top")
+            fig.text(0.012, 0.012, "\n".join(textwrap.wrap(source, 110)), fontsize=8, color=P["muted"], ha="left", va="bottom")
+            fig.subplots_adjust(left=0.08, right=0.97, top=0.74, bottom=0.16)
+            for folder in dirs:
+                fig.savefig(folder / f"{stem}{SUFFIX[mode]}.png", dpi=140)
+            plt.close(fig)
     layout = base_layout(title, subtitle, source, 460, {"l": 64, "r": 36, "t": 88, "b": 72})
     traces = [{
         "type": "scatter",
@@ -166,9 +190,7 @@ def save_line(stem: str, xs, ys, title, subtitle, source, dirs=None) -> None:
         "marker": {"color": RED, "size": 8},
     }]
     for folder in dirs:
-        fig.savefig(folder / f"{stem}.png", dpi=140)
         write_plotly(folder / f"{stem}.plotly.json", traces, layout)
-    plt.close(fig)
 
 
 def money(v: float) -> str:

@@ -67,6 +67,8 @@
     "cos:llms": "node scripts/content-os/generate-llms-txt.mjs",
     "cos:aeo": "node scripts/content-os/aeo-pack.mjs",
     "cos:downloads": "node scripts/content-os/pack-article-downloads.mjs",
+    "test:charts": "node scripts/test-chart-style.mjs",
+    "render:pdf": "node scripts/render-article-pdf.mjs",
     "transcripts:build": "node scripts/build-article-transcripts.mjs",
     "cos:zine": "node scripts/content-os/pack-ig-zine.mjs",
     "cos:carousel": "node scripts/content-os/pack-ig-kruger.mjs",
