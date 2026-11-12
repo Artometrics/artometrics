@@ -145,7 +145,7 @@ for (const rawLine of body.split("\n")) {
 
   // Charts, figures and their captions carry no audio.
   if (/^<\/?(figure|div|main|section)\b/i.test(line)) continue;
-  if (/figcaption|art-chart|data-chart/i.test(line)) continue;
+  if (/figcaption|art-chart|data-chart|chart-frame__title|data-carousel|carousel__/i.test(line)) continue;
 
   const heading = line.match(/^<h[23][^>]*>([\s\S]*?)<\/h[23]>$/i);
   if (heading) {
@@ -159,6 +159,13 @@ for (const rawLine of body.split("\n")) {
     // is dropped alongside the tiles unless they are explicitly kept.
     if (!keepFacts && FACT_HEADINGS.has(key)) continue;
     lines.push("", speakable(text).toUpperCase(), "");
+    continue;
+  }
+
+  const item = line.match(/^<li[^>]*>([\s\S]*?)<\/li>$/i);
+  if (item) {
+    const text = speakable(unwrapTags(item[1]));
+    if (text) lines.push(text, "");
     continue;
   }
 
