@@ -1,0 +1,65 @@
+---
+import { artworkTiles } from "../lib/article-page";
+
+interface Props {
+  slug: string;
+  pack?: { dataset?: string | null; pdf?: string | null; transcript?: string | null; epub?: string | null } | null;
+  artwork: { href: string }[];
+}
+const { pack, artwork } = Astro.props;
+const tiles = artworkTiles(artwork);
+const hasStickers = tiles.some((tile) => tile.sticker);
+const buttons = [
+  pack?.pdf ? { label: "PDF", note: "Opens in a new tab", href: pack.pdf, icon: "pdf", tab: true } : null,
+  pack?.dataset ? { label: "Dataset", note: "CSV", href: pack.dataset, icon: "csv", tab: false } : null,
+  pack?.transcript ? { label: "Transcript", note: "Text", href: pack.transcript, icon: "txt", tab: false } : null,
+  pack?.epub ? { label: "EPUB", note: "E-book", href: pack.epub, icon: "epub", tab: false } : null,
+].filter((item): item is NonNullable<typeof item> => Boolean(item));
+---
+
+{buttons.length || tiles.length ? (
+  <section class="dl" aria-labelledby="dl-title" data-downloads>
+    <h2 id="dl-title">Downloads</h2>
+    {buttons.length ? (
+      <ul class="dl__buttons">
+        {buttons.map((button) => (
+          <li>
+            <a
+              class="dl__btn"
+              href={button.href}
+              {...(button.tab ? { target: "_blank", rel: "noopener" } : { download: "" })}
+              aria-label={`${button.label} (${button.note})`}
+            >
+              <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                {button.icon === "csv" ? (
+                  <><rect x="3" y="4" width="18" height="16" rx="1" /><path d="M3 10h18M3 15h18M9 4v16" /></>
+                ) : button.icon === "txt" ? (
+                  <><path d="M6 3h8l4 4v14H6z" /><path d="M14 3v4h4M9 12h6M9 16h6" /></>
+                ) : button.icon === "epub" ? (
+                  <><path d="M5 4h6a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H5zM19 4h-6" /><path d="M19 4v14h-6" /></>
+                ) : (
+                  <><path d="M6 3h8l4 4v14H6z" /><path d="M14 3v4h4" /><path d="M9 17v-4h1.5a1.2 1.2 0 0 1 0 2.4H9" /></>
+                )}
+              </svg>
+              <span class="dl__label">{button.label}</span>
+              <span class="dl__note">{button.note}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : null}
+    {tiles.length ? (
+      <ul class="dl__thumbs">
+        {tiles.map((tile) => (
+          <li>
+            <a class="dl__thumb" href={tile.href} download aria-label={`Download ${tile.label}`}>
+              <img src={tile.href} alt="" loading="lazy" decoding="async" />
+              <span>{tile.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : null}
+    {hasStickers ? <p class="dl__note-line">Stickers are PNG art, not a WhatsApp or iMessage pack.</p> : null}
+  </section>
+) : null}

@@ -30,7 +30,7 @@
     var capped = size > cap;
     if (capped) size = cap;
     el.style.fontSize = size + "px";
-    if (capped) {
+    if (capped && el.getAttribute("data-fit-track") !== "0") {
       var used = el.getBoundingClientRect().width;
       var chars = Math.max(1, (el.textContent || "").trim().length);
       var extra = (width - used) / chars;

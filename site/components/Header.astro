@@ -16,7 +16,7 @@ const { variant = "site", logoReview } = Astro.props;
 const preview = variant === "preview";
 const review = logoReview ? LOGO_REVIEW[logoReview] : null;
 const path = Astro.url.pathname.replace(/\.html$/, "").replace(/\/$/, "") || "/";
-const reviewSection = /\/sources$/.test(path) ? "sources" : /\/mag$/.test(path) ? "mag" : "";
+const reviewSection = /\/sources$/.test(path) ? "sources" : "";
 const dateline = formatHeaderDate();
 const fact = facts[0];
 const homeHref = review ? `/review/logos/${review.id}` : preview ? "/design-preview" : "/";
@@ -203,7 +203,6 @@ const singles = [WORDMARKS.find((mark) => mark.id === "halftone")!, ...WORDMARKS
         </li>
       ))}
       <li><a href="/podcast">Podcast <span>Interviews</span></a></li>
-      <li><a href="/mag">Magazine <span>Page-flip edition</span></a></li>
       <li><a href="/studio">Studio</a></li>
       <li><a href="/contact">Dispatch</a></li>
       <li><a href="/about">About</a></li>
@@ -216,7 +215,7 @@ const singles = [WORDMARKS.find((mark) => mark.id === "halftone")!, ...WORDMARKS
       <div class="nav-catalogue__row" id="nav-catalogue-row" tabindex="0">
         {catalogue.map(([slug, title]) => (
           <div class="nav-catalogue__card">
-            <a href={`/mag/${slug}`}>
+            <a href={`/${slug}`}>
               <img src={coverSrc(slug).src || `/images/content/articles/${slug}/cover.webp`} alt="" width="900" height="1200" />
               <span>{title}</span>
             </a>
