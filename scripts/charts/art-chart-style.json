@@ -1,0 +1,22 @@
+{
+  "name": "Artometrics chart style, one style in two modes",
+  "note": "Every article chart is drawn twice from these tokens. The page shows the render that matches the theme. Python (matplotlib) and R (ggplot2) both read this file.",
+  "light": {
+    "paper": "#f7f4ee",
+    "ink": "#14110e",
+    "muted": "#5c5148",
+    "grid": "#e6dfd4",
+    "red": "#E60000",
+    "blue": "#1f4b99",
+    "other": "#8a8178"
+  },
+  "dark": {
+    "paper": "#0e1110",
+    "ink": "#f3ead7",
+    "muted": "#b7d0cb",
+    "grid": "#2a3330",
+    "red": "#ff5f6d",
+    "blue": "#7ea2ff",
+    "other": "#a8a095"
+  }
+}

@@ -9,14 +9,13 @@ interface Props {
 
 const { post, art } = Astro.props;
 const lines = magazineLines(post.title);
+const fit = !lines.word.includes(" ");
 ---
 
-<a class="story-tile" href={`/${post.slug}`} data-text-free={art.htmlTitle ? "true" : "false"}>
-  <img src={art.src} alt={art.htmlTitle ? "" : post.title} width="800" height="800" />
-  {art.htmlTitle ? (
-    <span class="story-tile__title">
-      <span class="story-tile__word">{lines.word}</span>
-      {lines.sub ? <span class="story-tile__sub">{lines.sub}</span> : null}
-    </span>
-  ) : null}
+<a class="story-tile" href={`/${post.slug}`} data-contrast-skip>
+  <img src={art.src} alt="" width="800" height="800" loading="lazy" decoding="async" />
+  <span class="story-tile__title" data-fit-box={fit ? "" : undefined}>
+    <span class:list={["story-tile__word", { "story-tile__word--wrap": !fit }]} data-fit={fit ? "" : undefined} data-fit-max="0.4">{lines.word}</span>
+  </span>
 </a>
+<script is:inline src="/js/fit-text.js"></script>

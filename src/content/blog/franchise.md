@@ -130,14 +130,11 @@ faq:
 
 <h2 id="region-origin" class="anchored">Is Japan the franchise giant, or is the United States?</h2>
 <p class="art-p">On this list, US-origin franchises have the larger total. Japan-origin franchises have the higher merchandise share. That is narrower than declaring a winner between two national industries, which this dataset cannot do. [S017]</p>
-<table>
-<thead><tr><th>Origin</th><th>Franchises</th><th>Listed lifetime revenue</th><th>Merchandise share</th></tr></thead>
-<tbody>
-<tr><td>United States</td><td>88</td><td>$825.5B</td><td>51.5%</td></tr>
-<tr><td>Japan</td><td>30</td><td>$394.5B</td><td>71.4%</td></tr>
-<tr><td>United Kingdom</td><td>9</td><td>$136.1B</td><td>53.9%</td></tr>
-</tbody>
-</table>
+<ul class="stat-cards" aria-label="Franchises by origin: count, listed lifetime revenue, merchandise share">
+<li class="stat-card stat-card--blue"><span class="stat-card__name">United States</span><strong class="stat-card__value">$825.5B</strong><span class="stat-card__meta">88 franchises · 51.5% merchandise share</span></li>
+<li class="stat-card stat-card--pink"><span class="stat-card__name">Japan</span><strong class="stat-card__value">$394.5B</strong><span class="stat-card__meta">30 franchises · 71.4% merchandise share</span></li>
+<li class="stat-card stat-card--cream"><span class="stat-card__name">United Kingdom</span><strong class="stat-card__value">$136.1B</strong><span class="stat-card__meta">9 franchises · 53.9% merchandise share</span></li>
+</ul>
 <p class="art-p">Korea is $27.0 billion, Sweden $26.3 billion and Canada $23.1 billion. Canada's sum was $20.1 billion in October. The difference is Paw Patrol, which is coded to Canada, and it carries the caveat in the previous section. [S017]</p>
 <figure class="art-chart">
 <div class="art-chart-live art-chart-live--roomy" data-chart="/data/articles/franchise/charts/chart15_region_2026.plotly.json" data-fallback="/images/content/articles/franchise/charts/chart15_region_2026.png" data-source="S017" role="img" aria-label="Lifetime revenue by region of origin, United States largest, Japan second."></div>
@@ -178,16 +175,13 @@ faq:
 <figcaption class="art-chart-caption art-chart-caption--visible">Same file, one roll-up rule. Not a legal audit.</figcaption>
 </figure>
 <p class="art-p">On the <strong>November 2026 list</strong>, the same style of first-listed parent puts Disney at $430.7 billion, 29.5%, with a range of 18.0–42.9. The top five are 58.3%, range 52.3–72.7. [S017]</p>
-<table>
-<thead><tr><th>Assigned parent</th><th>Listed lifetime revenue</th></tr></thead>
-<tbody>
-<tr><td>Disney</td><td>$430.7B</td></tr>
-<tr><td>Warner Bros. Discovery</td><td>$133.0B</td></tr>
-<tr><td>The Pokémon Company</td><td>$130.7B</td></tr>
-<tr><td>Microsoft</td><td>$84.2B</td></tr>
-<tr><td>Paramount Skydance</td><td>$72.8B</td></tr>
-</tbody>
-</table>
+<ul class="stat-cards stat-cards--five" aria-label="Assigned parent and listed lifetime revenue">
+<li class="stat-card stat-card--blue"><span class="stat-card__name">Disney</span><strong class="stat-card__value">$430.7B</strong><span class="stat-card__meta">listed lifetime revenue</span></li>
+<li class="stat-card stat-card--pink"><span class="stat-card__name">Warner Bros. Discovery</span><strong class="stat-card__value">$133.0B</strong><span class="stat-card__meta">listed lifetime revenue</span></li>
+<li class="stat-card stat-card--cream"><span class="stat-card__name">The Pokémon Company</span><strong class="stat-card__value">$130.7B</strong><span class="stat-card__meta">listed lifetime revenue</span></li>
+<li class="stat-card stat-card--blue"><span class="stat-card__name">Microsoft</span><strong class="stat-card__value">$84.2B</strong><span class="stat-card__meta">listed lifetime revenue</span></li>
+<li class="stat-card stat-card--pink"><span class="stat-card__name">Paramount Skydance</span><strong class="stat-card__value">$72.8B</strong><span class="stat-card__meta">listed lifetime revenue</span></li>
+</ul>
 <figure class="art-chart">
 <div class="art-chart-live art-chart-live--roomy" data-chart="/data/articles/franchise/charts/chart12_owner_concentration_2026.plotly.json" data-fallback="/images/content/articles/franchise/charts/chart12_owner_concentration_2026.png" data-source="S017" role="img" aria-label="Top parent companies on the November 2026 list."></div>
 <figcaption class="art-chart-caption art-chart-caption--visible">Microsoft's bar includes Call of Duty, which is why it is larger than it was in October.</figcaption>

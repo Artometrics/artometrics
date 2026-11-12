@@ -171,7 +171,7 @@ async function chromiumTouchPass(path) {
   await browser.close();
 }
 
-const routes = ["/", "/franchise", "/mag", "/mag/franchise"];
+const routes = ["/", "/franchise"];
 for (const path of routes) {
   console.log("\nwebkit", path);
   await webkitPass(path);

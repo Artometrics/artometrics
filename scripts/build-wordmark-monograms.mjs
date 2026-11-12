@@ -74,10 +74,13 @@ function cropA(data, width, height, channels) {
   const [a0, a1] = merged[0];
   const left = Math.max(0, minX + a0 - 1);
   const top = Math.max(0, minY - 1);
+  /* The extrusion runs down and right of the face. Keep it up to the next glyph's face. */
+  const nextFace = merged[1] ? minX + merged[1][0] - 1 : minX + a1 + Math.round((maxY - minY) * 0.12);
+  const right = Math.min(width - 1, Math.max(minX + a1 + 2, nextFace));
   return {
     left,
     top,
-    width: Math.min(a1 - a0 + 3, width - left),
+    width: Math.min(right - left + 1, width - left),
     height: Math.min(maxY - minY + 3, height - top),
   };
 }
@@ -101,10 +104,35 @@ function inkFace(data) {
   return out;
 }
 
+/** Fade the alpha over the last columns so the crop through the extrusion has no hard edge. */
+function featherRight(data, width, height, channels, span) {
+  const out = Buffer.from(data);
+  const from = Math.max(0, width - span);
+  for (let y = 0; y < height; y += 1) {
+    for (let x = from; x < width; x += 1) {
+      const k = 1 - (x - from + 1) / (span + 1);
+      const i = (y * width + x) * channels + 3;
+      out[i] = Math.round(out[i] * k);
+    }
+  }
+  return out;
+}
+
+const PAD = 0.1;
+
+/** Trim to the ink, then centre it inside the canvas with PAD of transparent margin on every side. */
 async function square(input, size) {
-  return sharp(input)
-    .trim({ threshold: 12 })
-    .resize(size, size, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } })
+  const trimmed = await sharp(input).trim({ threshold: 12 }).png().toBuffer();
+  const inner = Math.round(size * (1 - 2 * PAD));
+  const fitted = await sharp(trimmed)
+    .resize(inner, inner, { fit: "inside", background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    .png()
+    .toBuffer();
+  const meta = await sharp(fitted).metadata();
+  const left = Math.floor((size - meta.width) / 2);
+  const top = Math.floor((size - meta.height) / 2);
+  return sharp({ create: { width: size, height: size, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } } })
+    .composite([{ input: fitted, left, top }])
     .png()
     .toBuffer();
 }
@@ -116,7 +144,9 @@ for (const [id, rel] of marks) {
   const resized = await sharp(file, { density: 96 }).resize({ width: 1200 }).ensureAlpha().png().toBuffer();
   const raster = await sharp(resized).raw().toBuffer({ resolveWithObject: true });
   const box = cropA(raster.data, raster.info.width, raster.info.height, raster.info.channels);
-  const cropped = await sharp(resized).extract(box).png().toBuffer();
+  const extracted = await sharp(resized).extract(box).raw().toBuffer({ resolveWithObject: true });
+  const feathered = featherRight(extracted.data, extracted.info.width, extracted.info.height, extracted.info.channels, Math.round(extracted.info.width * 0.1));
+  const cropped = await sharp(feathered, { raw: { width: extracted.info.width, height: extracted.info.height, channels: extracted.info.channels } }).png().toBuffer();
   const { data, info } = await sharp(cropped).raw().toBuffer({ resolveWithObject: true });
   const dayRaw = inkFace(data);
   const day = await sharp(dayRaw, { raw: { width: info.width, height: info.height, channels: 4 } }).png().toBuffer();

@@ -1,0 +1,21 @@
+---
+interface Props {
+  facts: { value: string; label: string }[];
+  source?: string;
+}
+const { facts, source = "" } = Astro.props;
+const tones = ["blue", "pink", "cream"];
+---
+
+<section class="keyfigs" aria-label="Key figures from this report">
+  <ul class="keyfigs__grid">
+    {facts.map((fact, i) => (
+      <li class={`keyfig keyfig--${tones[i % tones.length]}${fact.value.length > 9 ? " keyfig--wide" : ""}`}>
+        <strong class="keyfig__value" data-fit data-fit-max="0.2" data-fit-min="16" data-fit-track="0">{fact.value}</strong>
+        <span class="keyfig__label">{fact.label}</span>
+      </li>
+    ))}
+  </ul>
+  {source ? <p class="keyfigs__source">Source: {source}</p> : null}
+</section>
+<script is:inline src="/js/fit-text.js"></script>
