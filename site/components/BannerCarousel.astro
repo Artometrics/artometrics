@@ -52,7 +52,6 @@ const slides = posts
     {slides.length > 1 ? (
       <div class="banner-carousel__controls">
         <button type="button" data-banner="prev">Previous</button>
-        <button type="button" data-banner="pause" aria-pressed="false">Pause</button>
         <button type="button" data-banner="next">Next</button>
         <p class="banner-carousel__status" aria-live="polite">1 of {slides.length}</p>
       </div>
@@ -65,52 +64,34 @@ const slides = posts
     var roots = document.querySelectorAll("[data-banner-carousel]:not([data-banner-ready])");
     for (var r = 0; r < roots.length; r++) init(roots[r]);
 
+    /* Manual only: slides change on Previous, Next, a tap or a swipe. Nothing moves on a timer. */
     function init(root) {
       root.setAttribute("data-banner-ready", "");
       var slides = root.querySelectorAll("[data-banner-slide]");
       if (slides.length < 2) return;
       var index = 0;
       var status = root.querySelector(".banner-carousel__status");
-      var pauseBtn = root.querySelector("[data-banner='pause']");
-      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var userPaused = reduce;
-      var hovering = false;
-      var focused = false;
-      var timer = 0;
 
       function show(next) {
         index = (next + slides.length) % slides.length;
         for (var i = 0; i < slides.length; i++) slides[i].hidden = i !== index;
         if (status) status.textContent = index + 1 + " of " + slides.length;
       }
-      function running() {
-        return !userPaused && !hovering && !focused && !reduce;
-      }
-      function paintPause() {
-        if (!pauseBtn) return;
-        var paused = !running();
-        pauseBtn.setAttribute("aria-pressed", paused ? "true" : "false");
-        pauseBtn.textContent = paused ? "Play" : "Pause";
-      }
-      function tick() {
-        if (running()) show(index + 1);
-      }
       root.querySelector("[data-banner='prev']").addEventListener("click", function () { show(index - 1); });
       root.querySelector("[data-banner='next']").addEventListener("click", function () { show(index + 1); });
-      pauseBtn.addEventListener("click", function () {
-        userPaused = !userPaused;
-        paintPause();
-      });
-      root.addEventListener("mouseenter", function () { hovering = true; paintPause(); });
-      root.addEventListener("mouseleave", function () { hovering = false; paintPause(); });
-      root.addEventListener("focusin", function () { focused = true; paintPause(); });
-      root.addEventListener("focusout", function (event) {
-        if (root.contains(event.relatedTarget)) return;
-        focused = false;
-        paintPause();
-      });
-      paintPause();
-      timer = window.setInterval(tick, 7000);
+
+      var startX = 0;
+      var startY = 0;
+      var viewport = root.querySelector(".banner-carousel__viewport");
+      viewport.addEventListener("touchstart", function (event) {
+        startX = event.touches[0].clientX;
+        startY = event.touches[0].clientY;
+      }, { passive: true });
+      viewport.addEventListener("touchend", function (event) {
+        var dx = event.changedTouches[0].clientX - startX;
+        var dy = event.changedTouches[0].clientY - startY;
+        if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.5) show(dx < 0 ? index + 1 : index - 1);
+      }, { passive: true });
     }
   })();
 </script>
