@@ -29,5 +29,5 @@ Charts are drawn by `scripts/build_theme_a_charts.py` from the CSVs in `data/`, 
 
 ```bash
 python3 articles/franchise/scripts/build_theme_a_charts.py
-npm run test:charts
+npm run test:chart-style
 ```

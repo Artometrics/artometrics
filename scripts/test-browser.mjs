@@ -237,6 +237,13 @@ for (const viewport of VIEWPORTS) {
       check(figs.columns === (viewport.width < 600 ? 2 : 3), `${tag} key figures: responsive grid (${figs.columns} columns)`);
       check(figs.values.includes("$1,460.1B") && figs.values.includes("55.6%") && figs.values.includes("$130.7B"), `${tag} key figures: published numbers unchanged`);
 
+      const cards = await page.evaluate(() => ({
+        count: document.querySelectorAll(".stat-card").length,
+        tables: document.querySelectorAll(".artometrics-article-body table").length,
+        text: [...document.querySelectorAll(".stat-card__value")].map((el) => el.textContent.trim()),
+      }));
+      check(cards.count === 8 && ["$825.5B", "$394.5B", "$136.1B", "$430.7B", "$72.8B"].every((v) => cards.text.includes(v)), `${tag} stat cards: origin and parent tables are boxes with the same numbers (${cards.count})`);
+
       const slides = await page.evaluate(() => {
         const track = document.querySelector(".chartcar__track");
         const items = [...document.querySelectorAll(".chartcar__slide")];

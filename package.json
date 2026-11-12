@@ -68,7 +68,7 @@
     "cos:aeo": "node scripts/content-os/aeo-pack.mjs",
     "cos:downloads": "node scripts/content-os/pack-article-downloads.mjs",
     "test:browser": "node scripts/test-browser.mjs",
-    "test:charts": "node scripts/test-chart-style.mjs",
+    "test:chart-style": "node scripts/test-chart-style.mjs",
     "render:pdf": "node scripts/render-article-pdf.mjs",
     "transcripts:build": "node scripts/build-article-transcripts.mjs",
     "cos:zine": "node scripts/content-os/pack-ig-zine.mjs",
