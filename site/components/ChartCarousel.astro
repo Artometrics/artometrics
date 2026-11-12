@@ -1,0 +1,53 @@
+---
+import type { ChartSlide } from "../lib/article-page";
+
+interface Props {
+  slides: ChartSlide[];
+}
+const { slides } = Astro.props;
+---
+
+{slides.length > 1 ? (
+  <section class="chartcar" aria-label="Charts in this report" data-chart-carousel>
+    <div class="chartcar__head">
+      <h2>Charts in this report</h2>
+      <div class="chartcar__nav">
+        <button type="button" data-dir="-1" aria-label="Previous charts">&larr;</button>
+        <button type="button" data-dir="1" aria-label="Next charts">&rarr;</button>
+      </div>
+    </div>
+    <ul class="chartcar__track" tabindex="0" aria-label="Swipe sideways. Tap a chart to jump to it.">
+      {slides.map((slide) => (
+        <li class="chartcar__slide">
+          <a href={`#${slide.id}`}>
+            <span class="chartcar__img">
+              {slide.dark ? (
+                <>
+                  <img class="chartcar__light" src={slide.src} alt="" loading="lazy" decoding="async" />
+                  <img class="chartcar__dark" src={slide.dark} alt="" loading="lazy" decoding="async" />
+                </>
+              ) : (
+                <img src={slide.src} alt="" loading="lazy" decoding="async" />
+              )}
+            </span>
+            <span class="chartcar__text"><b>{slide.n}</b> {slide.description}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+) : null}
+<script is:inline>
+  (function () {
+    var root = document.querySelector("[data-chart-carousel]");
+    if (!root) return;
+    var track = root.querySelector(".chartcar__track");
+    root.querySelectorAll("button[data-dir]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var dir = Number(button.getAttribute("data-dir"));
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        track.scrollBy({ left: dir * track.clientWidth * 0.85, behavior: reduce ? "auto" : "smooth" });
+      });
+    });
+  })();
+</script>

@@ -42,11 +42,16 @@ function findCsv(slug) {
   return null;
 }
 
+/** The one CSV a reader should download. Without an entry the first CSV found wins. */
+const PRIMARY_DATASET = {
+  franchise: "/data/articles/franchise/wikipedia_franchise_revenue_2026.csv",
+};
+
 const manifest = {};
 for (const post of blog) {
   const slug = post.slug;
   const github = `https://github.com/Artometrics/${slug}`;
-  const dataset = findCsv(slug);
+  const dataset = firstExisting([PRIMARY_DATASET[slug]].filter(Boolean)) || findCsv(slug);
   const html = firstExisting([
     `/data/articles/${slug}/article.html`,
     `/exports/${slug}.html`,

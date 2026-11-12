@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import DeskHome from "../components/DeskHome.astro";
+import { TAGLINE } from "@/lib/tagline.mjs";
 
 const jsonLd = [
   {
@@ -26,8 +27,8 @@ const jsonLd = [
 ---
 
 <Base
-  title="Artometrics — data reports for creative industries"
-  description="Investigative data stories on arts, sports, science, humanities, civics, and culture."
+  title={`Artometrics — ${TAGLINE}`}
+  description={`${TAGLINE}. Investigative data stories on arts, sports, science, humanities, civics, and culture.`}
   path="/"
   jsonLd={jsonLd}
   footer="none"

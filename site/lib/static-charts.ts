@@ -1,3 +1,12 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
+export function darkVariant(src: string): string | undefined {
+  if (!/^\/.+\.png$/.test(src)) return undefined;
+  const dark = src.replace(/\.png$/, "-dark.png");
+  return existsSync(join(process.cwd(), "public", dark)) ? dark : undefined;
+}
+
 /** Bake each Plotly mount into the PNG already rendered for that chart. */
 export function withStaticCharts(html: string): string {
   const withCharts = html.replace(
@@ -10,7 +19,11 @@ export function withStaticCharts(html: string): string {
         .replace(/&/g, "&amp;")
         .replace(/"/g, "&quot;")
         .replace(/</g, "&lt;");
-      return `<div class="${className}"${attrs}><img class="art-chart-fallback" src="${fallback}" alt="${alt}" loading="lazy" decoding="async" /></div>`;
+      const dark = darkVariant(fallback);
+      if (!dark) {
+        return `<div class="${className}"${attrs}><img class="art-chart-fallback" src="${fallback}" alt="${alt}" loading="lazy" decoding="async" /></div>`;
+      }
+      return `<div class="${className} art-chart-live--themed"${attrs}><img class="art-chart-fallback art-chart-fallback--light" src="${fallback}" alt="${alt}" loading="lazy" decoding="async" /><img class="art-chart-fallback art-chart-fallback--dark" src="${dark}" alt="" aria-hidden="true" loading="lazy" decoding="async" /></div>`;
     },
   );
   const withTables = withCharts.replace(/<table\b[^>]*>[\s\S]*?<\/table>/gi, (table, offset) => {

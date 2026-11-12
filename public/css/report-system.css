@@ -218,62 +218,47 @@
   font-weight: 700;
 }
 
-/* ---------- Quick facts ---------- */
-.fact-grid {
+/* ---------- Quick facts (key figures) ---------- */
+.report-page .keyfigs {
+  margin: var(--sys-gap) 0 0;
+}
+
+.report-page .keyfigs__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--sys-gap);
-  margin: var(--sys-gap) 0 0;
-  padding: 0 4px 4px 0;
+  padding: 0 6px 6px 0;
 }
 
-.fact-grid > .fact-tile:last-child:nth-child(odd) {
+.report-page .keyfig {
+  grid-column: auto;
+}
+
+.report-page .keyfigs__grid > .keyfig:last-child:nth-child(odd) {
   grid-column: 1 / -1;
 }
 
-@media (min-width: 900px) {
-  .fact-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+@media (min-width: 720px) {
+  .report-page .keyfigs__grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
-  .fact-grid > .fact-tile:last-child:nth-child(odd) {
-    grid-column: auto;
-  }
-  .fact-grid > .fact-tile:last-child:nth-child(3n + 1) {
-    grid-column: 1 / -1;
-  }
-  .fact-grid > .fact-tile:last-child:nth-child(3n + 2) {
+  .report-page .keyfigs__grid > .keyfig,
+  .report-page .keyfigs__grid > .keyfig:last-child:nth-child(odd) {
     grid-column: span 2;
   }
+  .report-page .keyfigs__grid > .keyfig:last-child:nth-child(3n + 1) {
+    grid-column: 1 / -1;
+  }
+  .report-page .keyfigs__grid > .keyfig:nth-last-child(2):nth-child(3n + 1),
+  .report-page .keyfigs__grid > .keyfig:last-child:nth-child(3n + 2) {
+    grid-column: span 3;
+  }
 }
 
-.fact-tile {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 8px;
-  min-width: 0;
-  padding: var(--sys-pad);
-}
-
-.fact-tile--accent {
-  box-shadow: 4px 4px 0 var(--sys-blue);
-}
-
-.fact-tile__value {
-  margin: 0;
-  font-family: var(--sys-display);
-  font-size: clamp(2rem, 8vw, 2.9rem);
-  line-height: 0.95;
-  letter-spacing: 0;
-  color: var(--sys-ink);
-  overflow-wrap: anywhere;
-}
-
-.fact-tile__label {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.4;
-  color: var(--sys-muted);
+.report-page .keyfig__label a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 /* ---------- On this page ---------- */

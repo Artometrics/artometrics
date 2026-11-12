@@ -26,6 +26,10 @@ import {
   retrievedLabel,
 } from "../lib/report";
 import ArtBarChart from "../components/preview/ArtBarChart.astro";
+import ArticleDownloads from "../components/ArticleDownloads.astro";
+import ChartCarousel from "../components/ChartCarousel.astro";
+import KeyFigures from "../components/KeyFigures.astro";
+import { articleBanner, chartSlides, shortLabel } from "../lib/article-page";
 import { artworkDownloads } from "@/lib/article-assets.mjs";
 import { previewFiles } from "../lib/preview-reports";
 
@@ -71,36 +75,36 @@ const fileTiles = files.map((file) => ({
     .filter(Boolean)
     .join(" · "),
 }));
-const artworkTiles = artworkDownloads(post.slug).map((file) => {
-  const [first, ...rest] = file.label.split(/\.\s+/);
-  return {
-    label: first,
-    href: file.href,
-    meta: [rest.join(". ").replace(/\.$/, ""), fileSize(file.href)].filter(Boolean).join(" · "),
-  };
-});
+const artwork = artworkDownloads(post.slug);
 const related = getRelatedPosts(post.slug, 3);
 const faq = (post.faq || []) as { question: string; answer: string }[];
 const image = post.heroImage || "/images/brand/og-default.png";
-const rawBody = post.body || "";
-const body = rawBody;
+const { html: anchoredBody, slides } = chartSlides(post.body || "");
+const body = post.body || "";
+const printCover = existsSync(new URL(`../../public/images/content/articles/${post.slug}/cover-title.webp`, import.meta.url))
+  ? `/images/content/articles/${post.slug}/cover-title.webp`
+  : "";
 const embeddedFacts = body.includes('class="facts-grid"');
 const points = embeddedFacts ? [] : ((post.keyPoints || []) as string[]);
 const facts = points
   .map((point) => parseKeyPoint(String(point)))
   .filter((fact) => fact.value)
-  .slice(0, 6);
+  .slice(0, 6)
+  .map((fact) => {
+    const ids = [...new Set(fact.label.match(/S\d{3}/g) || [])];
+    const text = shortLabel(fact.label.replace(/\s*\[[^\]]*\]/g, ""));
+    return { value: fact.value, label: ids.length ? `${text} [${ids.join("; ")}]` : text };
+  });
 const factSource = /data-source="([^"]+)"/.exec(body)?.[1]
   ?.replace(/\s+[—-]\s+ARTOMETRICS\s*$/i, "")
   .trim() || "";
-const prepared = prepareHeadings(body);
+const prepared = prepareHeadings(anchoredBody);
 const framed = frameCharts(prepared.html, meta, post.slug);
 const bodyLinked = linkCitations(withStaticCharts(framed), meta);
-const factsLinked = facts.map((fact) => linkCitations(escapeHtml(fact.label), meta)).map((linked, index) => ({
-  value: facts[index].value,
-  label: linked.html,
-  used: linked.used,
-}));
+const factsLinked = facts.map((fact) => {
+  const linked = linkCitations(escapeHtml(fact.label), meta);
+  return { value: fact.value, label: linked.html, used: linked.used };
+});
 const methodLinked = meta?.method
   ? Object.fromEntries(
       (["pulled", "cleaned", "updated", "vintage", "caveats"] as const).map((key) => [
@@ -123,9 +127,10 @@ const toc = [
   ...(hasMethod ? [{ id: "sources-and-method", text: "Sources & method" }] : []),
   ...(shownSources.length ? [{ id: "sources", text: "Sources" }] : []),
 ];
-const bannerFile = existsSync(new URL(`../../public/images/content/articles/${post.slug}/banner-art.webp`, import.meta.url))
-  ? `/images/content/articles/${post.slug}/banner-art.webp`
-  : image;
+const textFreeBanner = `/images/content/articles/${post.slug}/banner-art.webp`;
+const bannerFile = existsSync(new URL(`../../public${textFreeBanner}`, import.meta.url))
+  ? textFreeBanner
+  : articleBanner(post.slug)?.src || image;
 const updatedLabel = meta?.updated ? formatLongDate(meta.updated) : "";
 const publishedLabel = post.pubDate ? formatDate(post.pubDate) : "";
 const jsonLd = [
@@ -172,6 +177,11 @@ const jsonLd = [
   <link slot="head" rel="stylesheet" href="/css/report-system.css" />
 
   <article class="preview-frame preview-report report-page">
+    {printCover ? (
+      <figure class="print-cover" aria-hidden="true">
+        <img src={printCover} alt="" width="900" height="1200" loading="lazy" />
+      </figure>
+    ) : null}
     <header class="report-banner">
       <img
         class="report-banner__art"
@@ -233,16 +243,7 @@ const jsonLd = [
       </aside>
     ) : null}
 
-    {factsLinked.length ? (
-      <section class="fact-grid" aria-label="Quick facts">
-        {factsLinked.map((fact, index) => (
-          <div class:list={["fact-tile", { "fact-tile--accent": index % 2 === 1 }]}>
-            <p class="fact-tile__value">{fact.value}</p>
-            {fact.label ? <p class="fact-tile__label" set:html={fact.label} /> : null}
-          </div>
-        ))}
-      </section>
-    ) : null}
+    {factsLinked.length ? <KeyFigures facts={factsLinked} source={factSource} /> : null}
 
     {toc.length > 2 ? (
       <details class="on-page on-page--inline">
@@ -253,43 +254,8 @@ const jsonLd = [
       </details>
     ) : null}
 
-    {fileTiles.length || artworkTiles.length || audioFile ? (
-      <section class="report-files-block" aria-labelledby="files-title">
-        <h2 class="sys-eyebrow" id="files-title">Files and downloads</h2>
-        {fileTiles.length ? (
-          <ul class="file-grid">
-            {fileTiles.map((file) => (
-              <li>
-                <a class="file-tile" href={file.href} target="_blank" rel="noopener">
-                  <span class="file-tile__label">{file.label}</span>
-                  <span class="file-tile__meta">{file.meta} · opens in a new tab</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        ) : null}
-        {audioFile && post.audioSrc ? (
-          <audio controls preload="none" src={post.audioSrc}>
-            <a href={post.audioSrc} target="_blank" rel="noopener">Listen</a>
-          </audio>
-        ) : null}
-        {artworkTiles.length ? (
-          <details class="artwork-files">
-            <summary>Artwork and wallpapers ({artworkTiles.length})</summary>
-            <ul class="file-grid">
-              {artworkTiles.map((file) => (
-                <li>
-                  <a class="file-tile" href={file.href} target="_blank" rel="noopener">
-                    <span class="file-tile__label">{file.label}</span>
-                    <span class="file-tile__meta">{file.meta}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </details>
-        ) : null}
-      </section>
-    ) : null}
+    <ChartCarousel slides={slides} />
+    <ArticleDownloads files={fileTiles} artwork={artwork} audioSrc={audioFile ? post.audioSrc : null} />
 
     {post.slug === "longevity" ? (
       <section class="preview-panel" aria-labelledby="leaders-title">
@@ -392,66 +358,28 @@ const jsonLd = [
     ) : null}
     {post.slug === "franchise" ? (
       <figure class="franchise-cover">
-        <video
-          class="franchise-cover__motion"
-          poster="/images/content/articles/franchise/cover.png"
-          width="720"
-          height="960"
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          aria-label="Franchise magazine cover, animated"
-        >
-          <source src="/videos/franchise-cover.mp4" type="video/mp4" />
-        </video>
-        <img
-          class="franchise-cover__still"
-          src="/images/content/articles/franchise/cover.png"
-          alt="Franchise magazine cover"
-          width="1600"
-          height="2133"
-        />
-        <button type="button" class="franchise-cover__pause" aria-pressed="false">Pause</button>
+        {pack?.pdf ? (
+          <a href={pack.pdf} target="_blank" rel="noopener" aria-label="Open the Franchise PDF in a new tab">
+            <img
+              class="franchise-cover__still"
+              src="/images/content/articles/franchise/cover-title.webp"
+              alt="Franchise magazine cover"
+              width="900"
+              height="1200"
+              loading="lazy"
+            />
+          </a>
+        ) : (
+          <img
+            class="franchise-cover__still"
+            src="/images/content/articles/franchise/cover-title.webp"
+            alt="Franchise magazine cover"
+            width="900"
+            height="1200"
+            loading="lazy"
+          />
+        )}
       </figure>
-      <p class="franchise-cover__link"><a href="/mag/franchise">Magazine issue</a></p>
-      <script is:inline>
-        (function () {
-          var root = document.querySelector(".franchise-cover");
-          var video = root && root.querySelector("video");
-          var button = root && root.querySelector(".franchise-cover__pause");
-          if (!root || !video || !button) return;
-          var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-          function paint() {
-            video.muted = true;
-            if (reduce.matches) {
-              video.pause();
-              root.setAttribute("data-motion", "reduce");
-              return;
-            }
-            root.setAttribute("data-motion", "play");
-            var pending = video.play();
-            if (pending && pending.catch) pending.catch(function () {});
-            button.textContent = "Pause";
-            button.setAttribute("aria-pressed", "false");
-          }
-          paint();
-          if (reduce.addEventListener) reduce.addEventListener("change", paint);
-          button.addEventListener("click", function () {
-            if (reduce.matches) return;
-            if (video.paused) {
-              var pending = video.play();
-              if (pending && pending.catch) pending.catch(function () {});
-              button.textContent = "Pause";
-              button.setAttribute("aria-pressed", "false");
-            } else {
-              video.pause();
-              button.textContent = "Play";
-              button.setAttribute("aria-pressed", "true");
-            }
-          });
-        })();
-      </script>
     ) : null}
   </article>
 

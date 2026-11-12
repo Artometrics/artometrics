@@ -26,28 +26,37 @@ const slides = posts
 ---
 
 {slides.length ? (
-  <section class="banner-carousel" data-banner-carousel aria-roledescription="carousel" aria-label={label}>
+  <section
+    class="banner-carousel"
+    data-banner-carousel
+    aria-roledescription="carousel"
+    aria-label={label}
+    tabindex={slides.length > 1 ? 0 : undefined}
+  >
     <div class="banner-carousel__viewport">
-      {slides.map(({ post, src, lines }, index) => (
-        <article class="desk-lead banner-carousel__slide" data-banner-slide hidden={index > 0}>
-          <a class="desk-lead__hit" href={hrefFor(post)}>
-            <img src={src} alt="" width="1600" height="900" />
-            <div class="desk-lead__copy">
-              {pageHeading && index === 0 ? (
-                <h1 class:list={["banner-carousel__word", { "banner-carousel__word--sentence": lines.word.includes(" ") }]}>
-                  <span class="banner-carousel__kicker">{lines.word}</span>
+      {slides.map(({ post, src, lines }, index) => {
+        const fit = !lines.word.includes(" ");
+        const Tag = pageHeading && index === 0 ? "h1" : "p";
+        return (
+          <article
+            class="desk-lead banner-carousel__slide"
+            data-banner-slide
+            hidden={index > 0}
+            aria-roledescription="slide"
+            aria-label={`${index + 1} of ${slides.length}`}
+          >
+            <a class="desk-lead__hit" href={hrefFor(post)} draggable="false" data-contrast-skip>
+              <img src={src} alt="" width="1600" height="900" draggable="false" />
+              <div class="desk-lead__copy">
+                <Tag class:list={["banner-carousel__word", { "banner-carousel__word--sentence": !fit }]} data-fit-box={fit ? "" : undefined}>
+                  <span class="banner-carousel__kicker" data-fit={fit ? "" : undefined} data-fit-max="0.3">{lines.word}</span>
                   {lines.sub ? <span class="banner-carousel__sub">{lines.sub}</span> : null}
-                </h1>
-              ) : (
-                <p class:list={["banner-carousel__word", { "banner-carousel__word--sentence": lines.word.includes(" ") }]}>
-                  <span class="banner-carousel__kicker">{lines.word}</span>
-                  {lines.sub ? <span class="banner-carousel__sub">{lines.sub}</span> : null}
-                </p>
-              )}
-            </div>
-          </a>
-        </article>
-      ))}
+                </Tag>
+              </div>
+            </a>
+          </article>
+        );
+      })}
     </div>
     {slides.length > 1 ? (
       <div class="banner-carousel__controls">
@@ -59,12 +68,12 @@ const slides = posts
   </section>
 ) : null}
 
+<script is:inline src="/js/fit-text.js"></script>
 <script is:inline>
   (function () {
     var roots = document.querySelectorAll("[data-banner-carousel]:not([data-banner-ready])");
     for (var r = 0; r < roots.length; r++) init(roots[r]);
 
-    /* Manual only: slides change on Previous, Next, a tap or a swipe. Nothing moves on a timer. */
     function init(root) {
       root.setAttribute("data-banner-ready", "");
       var slides = root.querySelectorAll("[data-banner-slide]");
@@ -76,22 +85,49 @@ const slides = posts
         index = (next + slides.length) % slides.length;
         for (var i = 0; i < slides.length; i++) slides[i].hidden = i !== index;
         if (status) status.textContent = index + 1 + " of " + slides.length;
+        if (window.__fitText) window.__fitText.fitAll(slides[index]);
       }
+      /* Manual only: slides change on Previous, Next, a swipe, a sideways wheel or an arrow key. */
       root.querySelector("[data-banner='prev']").addEventListener("click", function () { show(index - 1); });
       root.querySelector("[data-banner='next']").addEventListener("click", function () { show(index + 1); });
 
-      var startX = 0;
-      var startY = 0;
-      var viewport = root.querySelector(".banner-carousel__viewport");
-      viewport.addEventListener("touchstart", function (event) {
-        startX = event.touches[0].clientX;
-        startY = event.touches[0].clientY;
+      var x0 = 0;
+      var y0 = 0;
+      var swiped = false;
+      root.addEventListener("touchstart", function (event) {
+        var t = event.changedTouches[0];
+        x0 = t.clientX;
+        y0 = t.clientY;
+        swiped = false;
       }, { passive: true });
-      viewport.addEventListener("touchend", function (event) {
-        var dx = event.changedTouches[0].clientX - startX;
-        var dy = event.changedTouches[0].clientY - startY;
-        if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.5) show(dx < 0 ? index + 1 : index - 1);
+      root.addEventListener("touchend", function (event) {
+        var t = event.changedTouches[0];
+        var dx = t.clientX - x0;
+        var dy = t.clientY - y0;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+          swiped = true;
+          show(index + (dx < 0 ? 1 : -1));
+        }
       }, { passive: true });
+      root.addEventListener("click", function (event) {
+        if (swiped) {
+          event.preventDefault();
+          swiped = false;
+        }
+      }, true);
+      var wheelAt = 0;
+      root.addEventListener("wheel", function (event) {
+        if (Math.abs(event.deltaX) < 30 || Math.abs(event.deltaX) < Math.abs(event.deltaY)) return;
+        event.preventDefault();
+        var now = Date.now();
+        if (now - wheelAt < 600) return;
+        wheelAt = now;
+        show(index + (event.deltaX > 0 ? 1 : -1));
+      }, { passive: false });
+      root.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowRight") { show(index + 1); }
+        if (event.key === "ArrowLeft") { show(index - 1); }
+      });
     }
   })();
 </script>

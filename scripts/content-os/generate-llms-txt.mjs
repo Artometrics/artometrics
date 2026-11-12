@@ -29,7 +29,7 @@ const updated = new Date().toISOString();
 const short = [
   "# Artometrics",
   "",
-  "> Independent data-science magazine for the creative industries and culture.",
+  "> culture, quantified. Independent data-science magazine for the creative industries and culture.",
   "> Site: https://artometrics.com",
   "",
   "## About",

@@ -1,0 +1,51 @@
+---
+import { artworkTiles } from "../lib/article-page";
+
+interface Props {
+  files: { label: string; href: string; meta: string }[];
+  artwork: { href: string }[];
+  audioSrc?: string | null;
+}
+const { files, artwork, audioSrc = null } = Astro.props;
+const tiles = artworkTiles(artwork);
+const hasStickers = tiles.some((tile) => tile.sticker);
+---
+
+{files.length || tiles.length || audioSrc ? (
+  <section class="report-files-block" aria-labelledby="files-title" data-downloads>
+    <h2 class="sys-eyebrow" id="files-title">Files and downloads</h2>
+    {files.length ? (
+      <ul class="file-grid">
+        {files.map((file) => (
+          <li>
+            <a class="file-tile" href={file.href} target="_blank" rel="noopener">
+              <span class="file-tile__label">{file.label}</span>
+              <span class="file-tile__meta">{file.meta} · opens in a new tab</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : null}
+    {audioSrc ? (
+      <audio controls preload="none" src={audioSrc}>
+        <a href={audioSrc} target="_blank" rel="noopener">Listen</a>
+      </audio>
+    ) : null}
+    {tiles.length ? (
+      <details class="artwork-files">
+        <summary>Artwork and wallpapers ({tiles.length})</summary>
+        <ul class="dl__thumbs">
+          {tiles.map((tile) => (
+            <li>
+              <a class="dl__thumb" href={tile.href} target="_blank" rel="noopener" aria-label={`${tile.label} (opens in a new tab)`}>
+                <img src={tile.href} alt="" loading="lazy" decoding="async" />
+                <span>{tile.label}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        {hasStickers ? <p class="dl__note-line">Stickers are PNG art, not a WhatsApp or iMessage pack.</p> : null}
+      </details>
+    ) : null}
+  </section>
+) : null}

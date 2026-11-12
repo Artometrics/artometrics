@@ -51,7 +51,6 @@ html[data-theme="light"] {
 .sys-box,
 .story-tile,
 .chart-frame,
-.fact-tile,
 .file-tile,
 .card,
 .report-related a,
@@ -165,60 +164,9 @@ html[data-theme="light"] {
   text-decoration: none;
 }
 
-.story-tile.story-tile img,
-.story-tile.story-tile .story-tile__fallback {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  background: #100e0c;
-}
-
 .story-tile:hover,
 .story-tile:focus-visible {
   box-shadow: var(--sys-shadow-action);
-}
-
-.story-tile[data-text-free="true"] .story-tile__title {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 6px;
-  padding: 18px 12px 16px;
-  background: linear-gradient(0deg, rgba(7, 6, 10, 0.94) 0%, rgba(7, 6, 10, 0.78) 50%, rgba(7, 6, 10, 0.2) 85%, rgba(7, 6, 10, 0) 100%);
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.85);
-  text-align: center;
-  text-transform: none;
-  color: #f3ead7;
-}
-
-.story-tile[data-text-free="true"] .story-tile__word {
-  font-family: var(--sys-display);
-  font-size: clamp(1.7rem, 7.5vw, 2.3rem);
-  line-height: 0.9;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  text-wrap: balance;
-  padding: 0;
-  background: none;
-  position: static;
-}
-
-.story-tile[data-text-free="true"] .story-tile__sub {
-  max-width: 17em;
-  font-family: var(--sys-mono);
-  font-size: clamp(11px, 3vw, 13px);
-  font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-wrap: balance;
-  padding: 0;
-  background: none;
-  position: static;
 }
 
 /* ---------- Cards and lists (downloads, blog index, stacks) ---------- */

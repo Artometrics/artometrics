@@ -198,7 +198,7 @@ export function prepareHeadings(html: string): { html: string; toc: TocEntry[] }
  * Reports with a `charts` entry get the written copy; others reuse their existing caption.
  */
 export function frameCharts(html: string, meta: ReportMeta | null, slug: string): string {
-  return html.replace(/<figure class="art-chart">([\s\S]*?)<\/figure>/g, (full, inner: string) => {
+  return html.replace(/<figure class="art-chart"( id="[^"]*")?>([\s\S]*?)<\/figure>/g, (full, idAttr: string | undefined, inner: string) => {
     const chartPath = /data-chart="([^"]+)"/.exec(inner)?.[1] || "";
     const key = chartPath.split("/").pop()?.replace(/\.plotly\.json$/, "") || "";
     const live = /<div class="art-chart-live[\s\S]*?<\/div>/.exec(inner)?.[0] || "";
@@ -218,7 +218,7 @@ export function frameCharts(html: string, meta: ReportMeta | null, slug: string)
       .map((item) => `<a href="${escapeHtml(item.href)}" target="_blank" rel="noopener">${escapeHtml(item.label)}</a>`)
       .join(" · ");
     const headingId = `chart-${slugify(key || title)}`;
-    return `<figure class="art-chart chart-frame" aria-labelledby="${headingId}">
+    return `<figure class="art-chart chart-frame"${idAttr || ""} aria-labelledby="${headingId}">
 <h3 class="chart-frame__title" id="${headingId}">${escapeHtml(title)}</h3>
 <div class="chart-frame__plot">${live}<p class="chart-frame__hint">Swipe sideways inside the chart to read it at full size.</p></div>
 <div class="chart-frame__copy">

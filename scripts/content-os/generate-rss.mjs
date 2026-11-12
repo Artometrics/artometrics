@@ -49,7 +49,7 @@ const reportRss = `<?xml version="1.0" encoding="UTF-8"?>
   <channel>
     <title>Artometrics Reports</title>
     <link>${SITE}</link>
-    <description>Data reports on culture, power, and the creative economy — Arts, Sports, Science, Humanities, Civics, Culture.</description>
+    <description>culture, quantified. Data reports on culture, power, and the creative economy — Arts, Sports, Science, Humanities, Civics, Culture.</description>
     <language>en-us</language>
     <category>Arts</category>
     <category>Sports</category>

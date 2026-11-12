@@ -131,6 +131,26 @@
     ],
     "redirects": [
       {
+        "source": "/mag/franchise",
+        "destination": "/exports/franchise.pdf",
+        "type": 302
+      },
+      {
+        "source": "/mag/:slug",
+        "destination": "/:slug",
+        "type": 302
+      },
+      {
+        "source": "/mag",
+        "destination": "/blog",
+        "type": 302
+      },
+      {
+        "source": "/review/logos/:mark/mag",
+        "destination": "/review/logos/:mark",
+        "type": 302
+      },
+      {
         "source": "/methodology/",
         "destination": "/about",
         "type": 301
