@@ -3,7 +3,7 @@
   "main": "expo-router/entry",
   "version": "0.0.1",
   "private": true,
-    "description": "Artometrics — data reports on culture. The public site is a static Astro build; Expo remains for the native app.",
+  "description": "Artometrics — data reports on culture. The public site is a static Astro build; Expo remains for the native app.",
   "scripts": {
     "content": "node scripts/build-content.mjs",
     "sources": "node scripts/build-sources.mjs",
@@ -93,7 +93,8 @@
     "test:unit": "node scripts/test-unit.mjs",
     "eas:build:ios": "node scripts/run-eas-build.mjs",
     "eas:build:preview": "npx eas-cli build -p ios --profile preview",
-    "eas:submit:ios": "node scripts/run-eas-submit.mjs"
+    "eas:submit:ios": "node scripts/run-eas-submit.mjs",
+    "test:logos": "node scripts/test-logos.mjs"
   },
   "engines": {
     "node": ">=20.0.0"
