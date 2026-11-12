@@ -14,31 +14,31 @@ subject: Franchises
 tldr: >-
   The 2019 TidyTuesday file sat below its own Wikipedia source (28 of 39 sampled franchises within 10%). Rebuilt on Wikipedia's October 2026 list (140 franchises), merchandise holds at 55.8%, box office rises from 8.9% to 18.3% mostly through better itemisation, the top five owners rise from 46.4% to 58.2%, and the US overtakes Japan ($816.5B vs $394.5B) while Japan's merchandise share rises to 71.4%.
 keyPoints:
-  - "28 of 39 — sampled 2019 franchises within 10% of their own Wikipedia source"
-  - "55.8% — merchandise share, essentially unchanged from 56.0%"
-  - "8.9% → 18.3% — box office share, mostly a measurement change"
-  - "$80.0B → $33.5B — Hello Kitty, a source revision, not a collapse"
-  - "Japan $681.5B → $394.5B; US $622.6B → $816.5B — the regional ranking flipped"
+  - "28 of 39 — sampled 2019 franchises within 10% of their own Wikipedia source [S001; S007]"
+  - "55.8% — merchandise share, essentially unchanged from 56.0% [S001; S017]"
+  - "8.9% → 18.3% — box office share, mostly a measurement change [S001; S017]"
+  - "$80.0B → $33.5B — Hello Kitty, a source revision, not a collapse [S001; S017]"
+  - "Japan $681.5B → $394.5B; US $622.6B → $816.5B — the regional ranking flipped [S001; S017]"
 ---
 <div id="quarto-content">
 <main class="art-article-main">
 
 <div class="art-callout" id="executive-summary">
-<p class="art-p"><strong>Executive summary.</strong> Research is only as good as its ledger, so we treat corrections as findings. We re-audited the data behind <a href="/franchise">FRANCHISE: Merchandise Owns the Ledger</a>, rebuilt it from Wikipedia's October 2026 list, and recomputed every number we had published. The core finding survives: merchandise is still 55.8% of franchise revenue. Three readings change. Box office looks twice as big, but mostly because it is now counted more completely. Ownership is more concentrated (top five parents 58.2%, up from 46.4%). And the Japan–US comparison reverses.</p>
+<p class="art-p"><strong>Executive summary.</strong> Research is only as good as its ledger, so we treat corrections as findings. We re-audited the data behind <a href="/franchise">FRANCHISE: Merchandise Owns the Ledger</a>, rebuilt it from Wikipedia's October 2026 list, and recomputed every number we had published. The core finding survives: merchandise is still 55.8% of franchise revenue. Three readings change. Box office looks twice as big, but mostly because it is now counted more completely. Ownership is more concentrated (top five parents 58.2%, up from 46.4%). And the Japan–US comparison reverses. [S001; S017]</p>
 </div>
 
-<h2 id="what-we-checked" class="anchored">WHAT WE CHECKED</h2>
-<p class="art-p">The original report used the TidyTuesday file of July 2, 2019: 321 rows, 103 franchises, eight revenue categories. It had no missing values or duplicates, but it had 15 placeholder rows under $10 million (Star Wars TV at $0.004B), six cells with leftover Wikipedia citation tags, 59 with stray double spaces, and owner names from 2019 (AT&amp;T, Viacom, Activision Blizzard).</p>
-<p class="art-p">We then checked it against the source it was scraped from — the Wikipedia revision of June 29, 2019 — for a random sample of 40 franchises (seed 20261012). Thirty-nine matched. Only 5 agreed with the itemised breakdown within 1%, and 28 of 39 came within 10% of the headline total. The file was always lower, because its eight-category schema dropped line items that did not fit: card games, theme parks, pachinko. James Bond is the extreme case at $13.9B against $19.9B.</p>
+<h2 id="what-we-checked" class="anchored">What we checked</h2>
+<p class="art-p">The original report used the TidyTuesday file of July 2, 2019: 321 rows, 103 franchises, eight revenue categories. It had no missing values or duplicates, but it had 15 placeholder rows under $10 million (Star Wars TV at $0.004B), six cells with leftover Wikipedia citation tags, 59 with stray double spaces, and owner names from 2019 (AT&amp;T, Viacom, Activision Blizzard). [S001]</p>
+<p class="art-p">We then checked it against the source it was scraped from — the Wikipedia revision of June 29, 2019 — for a random sample of 40 franchises (seed 20261012). Thirty-nine matched. Only 5 agreed with the itemised breakdown within 1%, and 28 of 39 came within 10% of the headline total. The file was always lower, because its eight-category schema dropped line items that did not fit: card games, theme parks, pachinko. James Bond is the extreme case at $13.9B against $19.9B. [S001; S007]</p>
 <figure class="art-chart">
 <div class="art-chart-live" data-chart="/data/articles/franchise/charts/chart18_verification_2019.plotly.json" data-fallback="/images/content/articles/franchise/charts/chart18_verification_2019.png" data-source="Data: S001, S017 — ARTOMETRICS" role="img" aria-label="Scatter of TidyTuesday sums against Wikipedia 2019 totals."></div>
 <figcaption class="art-chart-caption art-chart-caption--visible">Every sampled franchise sits on or below the line: the 2019 file under-counts its own source.</figcaption>
 </figure>
 
-<h2 id="old-vs-new" class="anchored">OLD VS NEW</h2>
-<p class="art-p"><strong>Published</strong> is the number in the report before October 2026. <strong>Raw new</strong> recomputes it from the unchanged 2019 file (every figure reproduces exactly). <strong>Clean new</strong> uses the rebuilt October 2026 ledger; brackets are 95% bootstrap ranges. Dollar figures are USD billions, nominal.</p>
+<h2 id="old-vs-new" class="anchored">Old vs new</h2>
+<p class="art-p"><strong>Published</strong> is the number in the report before October 2026. <strong>Raw new</strong> recomputes it from the unchanged 2019 file (every figure reproduces exactly). <strong>Clean new</strong> uses the rebuilt October 2026 ledger; brackets are 95% bootstrap ranges. Dollar figures are USD billions, nominal. [S001; S017]</p>
 <div class="art-table-wrap"><table class="art-table">
-<thead><tr><th>Figure</th><th>Published</th><th>Raw new</th><th>Clean new (Oct 2026)</th><th>Why it moved</th></tr></thead>
+<thead><tr><th>Figure</th><th>Published [S001]</th><th>Raw new [S001]</th><th>Clean new (Oct 2026) [S017]</th><th>Why it moved</th></tr></thead>
 <tbody>
 <tr><td>Franchises in dataset</td><td>103</td><td>103</td><td><strong>140</strong></td><td>Wikipedia's list grew; 82 of 103 franchises carried over, 58 are new, 21 dropped off.</td></tr>
 <tr><td>Total lifetime revenue</td><td>1522.2</td><td>1522.2</td><td><strong>1448.1</strong></td><td>More franchises, but large downward source revisions (Hello Kitty, Mario, Gundam) outweigh them.</td></tr>
@@ -77,28 +77,28 @@ keyPoints:
 <figcaption class="art-chart-caption art-chart-caption--visible">Grey: published 2019 figure. Blue: October 2026. Pokémon, Call of Duty, Naruto and the MCU grew; Hello Kitty, Mario and Gundam were revised at the source.</figcaption>
 </figure>
 
-<h2 id="why-it-moved" class="anchored">WHY THE BIG NUMBERS MOVED</h2>
-<p class="art-p"><strong>Source revisions, not declines.</strong> Hello Kitty ($80.0B→$33.5B), Mario ($35.0B→$9.74B) and Gundam ($25.5B→$5.0B) fell because Wikipedia editors replaced older estimates with better-sourced ones. Neither Sanrio nor Nintendo reported a collapse. We flag these rows rather than quote them as change.</p>
-<p class="art-p"><strong>Real growth.</strong> Pokémon (+$39.8B), Call of Duty (+$14.0B) and Naruto (+$13.9B) added seven years of sales and newly itemised mobile revenue.</p>
-<p class="art-p"><strong>Measurement.</strong> Box office went from 8.9% to 18.3% of the ledger. On the 82 franchises in both vintages it is 15.4%, and on franchises above $4B it is 15.0%. Most of the jump is the 2026 list counting theatrical grosses more completely.</p>
-<p class="art-p"><strong>Coverage.</strong> The list grew from 103 to 140. Forty-three of the 58 additions are US-origin (Fortnite, Avatar, Madden NFL), while Japanese titles such as Detective Conan, Digimon and Bleach left the English table. Together with the downward revisions, that turns “Japan out-earns the US” into “the US out-earns Japan, and Japan is more merchandise-heavy.”</p>
-<p class="art-p"><strong>Consolidation.</strong> Assigning franchises to today's parents (Activision Blizzard and King into Microsoft, Fox into Disney, Viacom into Paramount Skydance) lifts the top-five share. On the same 2019 franchises it would be 62.8%.</p>
+<h2 id="why-it-moved" class="anchored">Why the big numbers moved</h2>
+<p class="art-p"><strong>Source revisions, not declines.</strong> Hello Kitty ($80.0B→$33.5B), Mario ($35.0B→$9.74B) and Gundam ($25.5B→$5.0B) fell because Wikipedia editors replaced older estimates with better-sourced ones. Neither Sanrio nor Nintendo reported a collapse. We flag these rows rather than quote them as change. [S001; S017]</p>
+<p class="art-p"><strong>Real growth.</strong> Pokémon (+$39.8B), Call of Duty (+$14.0B) and Naruto (+$13.9B) added seven years of sales and newly itemised mobile revenue. [S001; S017]</p>
+<p class="art-p"><strong>Measurement.</strong> Box office went from 8.9% to 18.3% of the ledger. On the 82 franchises in both vintages it is 15.4%, and on franchises above $4B it is 15.0%. Most of the jump is the 2026 list counting theatrical grosses more completely. [S001; S017]</p>
+<p class="art-p"><strong>Coverage.</strong> The list grew from 103 to 140. Forty-three of the 58 additions are US-origin (Fortnite, Avatar, Madden NFL), while Japanese titles such as Detective Conan, Digimon and Bleach left the English table. Together with the downward revisions, that turns “Japan out-earns the US” into “the US out-earns Japan, and Japan is more merchandise-heavy.” [S001; S017] <em>Update, 12 November 2026: the current report counts 45 US-origin additions, not 43. The 43 did not reconcile against the crosswalk.</em></p>
+<p class="art-p"><strong>Consolidation.</strong> Assigning franchises to today's parents (Activision Blizzard and King into Microsoft, Fox into Disney, Viacom into Paramount Skydance) lifts the top-five share. On the same 2019 franchises it would be 62.8%. [S001; S017]</p>
 
-<h2 id="what-we-added" class="anchored">WHAT WE ADDED AND DROPPED</h2>
+<h2 id="what-we-added" class="anchored">What we added and dropped</h2>
 <ul>
-<li><strong>Added:</strong> the full October 2026 ledger (140 franchises, every itemised stream), worldwide top-ten box office for 2025 and 2026, 2026 parent companies, region of origin with documented hand assignments, 95% ranges and sensitivity checks.</li>
-<li><strong>Kept, flagged:</strong> the 15 placeholder rows (excluding them changes no share), and $27.2B listed in totals but not itemised (kept as “Unallocated”).</li>
-<li><strong>Not added:</strong> streaming revenue, because no free source reports it per franchise in dollars; inflation-adjusted lifetime totals, because they mix decades with no year split; Disney FY2025 segments, which are a pending update.</li>
+<li><strong>Added:</strong> the full October 2026 ledger (140 franchises, every itemised stream), worldwide top-ten box office for 2025 and 2026, 2026 parent companies, region of origin with documented hand assignments, 95% ranges and sensitivity checks. [S017]</li>
+<li><strong>Kept, flagged:</strong> the 15 placeholder rows (excluding them changes no share), and $27.2B listed in totals but not itemised (kept as “Unallocated”). [S017]</li>
+<li><strong>Not added:</strong> streaming revenue, because no free source reports it per franchise in dollars; inflation-adjusted lifetime totals, because they mix decades with no year split; Disney FY2025 segments, which were a pending update then and are in the current report.</li>
 <li><strong>Dropped:</strong> no rows from the 2019 file. It stays as the audited baseline.</li>
 </ul>
 
-<h2 id="method" class="anchored">METHOD NOTES</h2>
-<p class="art-p">One script rebuilds everything from committed snapshots: <code>scripts/franchise-data/clean_audit.py</code>, with rules R1–R10, flow counts, and sources in <code>CLEANING_LOG.md</code>, <code>METHODS_NOTE.md</code> and <code>DATA_DICTIONARY.md</code>. Sources: Wikipedia “List of highest-grossing media franchises” revisions 904026364 (2019-06-29) and 1379832186 (2026-10-12); “2025 in film” and “2026 in film” (citing Box Office Mojo and The Numbers); FRED CPI-U. All accessed October 12, 2026. Bootstrap: 5,000 resamples of franchises.</p>
+<h2 id="method" class="anchored">Method notes</h2>
+<p class="art-p">One script rebuilds everything from committed snapshots: <code>scripts/franchise-data/clean_audit.py</code>, with rules R1–R10, flow counts, and sources in <code>CLEANING_LOG.md</code>, <code>METHODS_NOTE.md</code> and <code>DATA_DICTIONARY.md</code>. Sources: Wikipedia “List of highest-grossing media franchises” revisions 904026364 (2019-06-29) and 1379832186 (2026-10-12); “2025 in film” and “2026 in film” (citing Box Office Mojo and The Numbers); FRED CPI-U. All accessed October 12, 2026. Bootstrap: 5,000 resamples of franchises. [S001; S007; S017; S090; S091; S092]</p>
 
-<h2 id="limitations" class="anchored">LIMITATIONS</h2>
-<p class="art-p">Wikipedia figures are editors' estimates of consumer spend, not audited revenue or profit, and they will be revised again. The list is not a random sample, so bootstrap ranges describe sensitivity to which franchises appear, not sampling error. Region and parent coding involve judgment, documented line by line. 2026 box office is still moving. The video versions of FRANCHISE still use 2019 figures and will be re-recorded.</p>
+<h2 id="limitations" class="anchored">Limitations</h2>
+<p class="art-p">Wikipedia figures are editors' estimates of consumer spend, not audited revenue or profit, and they will be revised again. [S017] The list is not a random sample, so bootstrap ranges describe sensitivity to which franchises appear, not sampling error. Region and parent coding involve judgment, documented line by line. 2026 box office is still moving. The video versions of FRANCHISE still use 2019 figures and will be re-recorded.</p>
 
-<h2 id="editors-note" class="anchored">EDITOR'S NOTE</h2>
-<div class="art-editorial-note"><p class="art-p"><em>Part of our corrections series: we publish what changed, and why, whenever we fix a dataset. Human editorial direction; AI-assisted analysis per Artometrics workflow.</em></p><p class="art-p">— Artometrics Editorial Desk</p></div>
+<h2 id="editors-note" class="anchored">Editor's note</h2>
+<div class="art-editorial-note"><p class="art-p"><em>Part of our corrections series: we publish what changed, and why, whenever we fix a dataset. The current numbers are in <a href="/franchise">FRANCHISE: Merchandise Owns the Ledger</a>, read on 10 November 2026. Human editorial direction; AI-assisted analysis per Artometrics workflow.</em></p><p class="art-p">— Artometrics Editorial Desk</p></div>
 </main>
 </div>

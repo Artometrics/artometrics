@@ -2,6 +2,12 @@
 
 Read 10 November 2026. The October column is the published 12 October 2026 article. The November column is what this reading uses. Anything not re-checked is in the flagged list, not in the November column.
 
+## 12 November 2026: page changes only
+
+No figure changed in this edit. The page gained a section for people who own or market an IP, a Sources & method section, source links on every figure, a description, source line and data link for each chart, and a manual-only chart carousel. The transcript file was regenerated from the current text, because the old file was an unrelated 2019 draft. The figures below are as read on 10 November 2026.
+
+## 10 November 2026: figure changes since October
+
 | Figure | October 2026 article | November 2026 reading | Why it moved |
 |---|---:|---:|---|
 | Wikipedia franchise-list revision | 1379832186 (12 Oct 2026, 04:29 UTC) | 1384334611 (7 Nov 2026, 19:52 UTC), read 10 Nov | New revision. The old script date of 11 Oct was a scrape label, not the revision clock. |

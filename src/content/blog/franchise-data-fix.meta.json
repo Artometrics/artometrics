@@ -1,0 +1,119 @@
+{
+  "updated": "2026-11-12",
+  "whatChanged": "Added a notice that this audit was written against the 12 October revision and has been superseded in part by the 10 November update, plus source links. The audit's own figures are unchanged.",
+  "changelog": {
+    "href": "/franchise/changelog",
+    "file": "articles/franchise/data/CHANGELOG.md"
+  },
+  "status": {
+    "state": "earlier",
+    "label": "Earlier audit, 12 October 2026",
+    "note": "This audit was written against Wikipedia's 12 October 2026 revision (1379832186). Some figures were later updated on 10 November 2026 against revision 1384334611: merchandise is now 55.6% (was 55.8%), the top five parents 58.3% (was 58.2%), US-origin revenue $825.5 billion (was $816.5 billion) and Call of Duty $40 billion (was $31 billion). For current numbers use the report below. The figures on this page are left as they were published in October.",
+    "links": [
+      { "label": "Current report: Merchandise Owns the Ledger", "href": "/franchise" },
+      { "label": "Figure-by-figure changelog", "href": "/franchise/changelog" }
+    ]
+  },
+  "sources": {
+    "S001": {
+      "title": "TidyTuesday: Media Franchise Revenues (2019-07-02)",
+      "publisher": "R for Data Science Online Learning Community",
+      "year": 2019,
+      "url": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-07-02",
+      "retrieved": null,
+      "retrievedNote": "Committed copy, SHA-256 6e556287bad580be04e14d346036a8453f7ce975a7b26cf47d2057b873be1090; retrieval date not recorded",
+      "revision": "Dataset dated 2 July 2019",
+      "note": "Community copy of Wikipedia editors' estimates. Not audited."
+    },
+    "S007": {
+      "title": "List of highest-grossing media franchises, June 2019 revision (audit baseline)",
+      "publisher": "Wikipedia contributors",
+      "year": 2019,
+      "url": "https://en.wikipedia.org/w/index.php?title=List_of_highest-grossing_media_franchises&oldid=904026364",
+      "retrieved": "2026-10-12",
+      "revision": "904026364 (29 June 2019)",
+      "note": "Upstream of S001. The 40-franchise audit sample was checked against it."
+    },
+    "S017": {
+      "title": "List of highest-grossing media franchises, October 2026 revision",
+      "publisher": "Wikipedia contributors",
+      "year": 2026,
+      "url": "https://en.wikipedia.org/w/index.php?title=List_of_highest-grossing_media_franchises&oldid=1379832186",
+      "retrieved": "2026-10-12",
+      "revision": "1379832186 (12 October 2026, 04:29 UTC)",
+      "note": "In this audit S017 means the October revision. The current report uses revision 1384334611."
+    },
+    "S090": {
+      "title": "Consumer Price Index for All Urban Consumers: All Items (CPIAUCSL)",
+      "publisher": "Federal Reserve Bank of St. Louis",
+      "year": 2026,
+      "url": "https://fred.stlouisfed.org/series/CPIAUCSL",
+      "retrieved": "2026-10-12",
+      "revision": null,
+      "note": "Not used to inflate lifetime totals."
+    },
+    "S091": {
+      "title": "2025 in film",
+      "publisher": "Wikipedia contributors",
+      "year": 2026,
+      "url": "https://en.wikipedia.org/w/index.php?title=2025_in_film&oldid=1378645325",
+      "retrieved": "2026-10-12",
+      "revision": "1378645325",
+      "note": "The 94.4% figure here came from this Wikipedia table. The current report replaces it with Box Office Mojo and The Numbers (94.3% and 94.2%)."
+    },
+    "S092": {
+      "title": "2026 in film",
+      "publisher": "Wikipedia contributors",
+      "year": 2026,
+      "url": "https://en.wikipedia.org/w/index.php?title=2026_in_film&oldid=1379926625",
+      "retrieved": "2026-10-12",
+      "revision": "1379926625",
+      "note": "The 62.0% figure covers releases to 12 October 2026 only."
+    }
+  },
+  "method": {
+    "pulled": [
+      "The October ledger is Wikipedia's \"List of highest-grossing media franchises\", revision 1379832186 (12 October 2026). The baseline is the TidyTuesday file of 2 July 2019, audited against Wikipedia revision 904026364 (29 June 2019). [S017; S001; S007]",
+      "Worldwide top-ten box office came from Wikipedia's \"2025 in film\" and \"2026 in film\" pages, which cite Box Office Mojo and The Numbers. CPI-U came from FRED. All were accessed 12 October 2026. [S091; S092; S090]"
+    ],
+    "cleaned": [
+      "One script rebuilds everything from committed snapshots: scripts/franchise-data/clean_audit.py, with rules R1–R10 documented in the cleaning log.",
+      "The 2019 file has 15 placeholder rows under $10 million, six cells with leftover Wikipedia citation tags and 59 with stray double spaces. The placeholder rows are kept and flagged; excluding them changes no share. [S001]",
+      "A random sample of 40 franchises (seed 20261012) was checked against the June 2019 Wikipedia page: 39 matched, 28 of those within 10% of the headline total. [S001; S007]",
+      "Ranges are 95% bootstrap ranges from 5,000 resamples of the franchises. They describe sensitivity to which rows are on the list, not sampling error. [S017]"
+    ],
+    "updated": [
+      "This audit was published on 12 October 2026 and is not re-run. The 10 November 2026 reading of the same ledger is in the current report and in the changelog."
+    ],
+    "vintage": [
+      "Franchise list: Wikipedia revision 1379832186, 12 October 2026. [S017]",
+      "Baseline: TidyTuesday file of 2 July 2019, from Wikipedia revision 904026364. [S001; S007]",
+      "2026 box office covers releases to 12 October 2026 and is a partial year. [S092]"
+    ],
+    "caveats": [
+      "Wikipedia figures are editors' estimates of consumer spend, not audited revenue or profit, and they will be revised again. [S017]",
+      "The list is not a random sample. Region and parent coding involve judgment, documented line by line.",
+      "Streaming revenue is not added, because no free source reports it per franchise in dollars. Inflation-adjusted lifetime totals are not added either.",
+      "The video versions of FRANCHISE still use 2019 figures and will be re-recorded."
+    ],
+    "files": [
+      { "label": "Figure-by-figure changelog", "href": "/franchise/changelog" },
+      { "label": "Old vs new figures (CSV)", "href": "/data/articles/franchise/clean/old_vs_new.csv" },
+      { "label": "2019 audit sample (CSV)", "href": "/data/articles/franchise/clean/verification_sample_2019.csv" }
+    ]
+  },
+  "charts": {
+    "chart18_verification_2019": {
+      "title": "The 2019 file against its own Wikipedia source",
+      "description": "Each dot is one of the 39 sampled franchises, with the TidyTuesday sum on one axis and the June 2019 Wikipedia total on the other. Every sampled franchise sits on or below the line, so the 2019 file under-counts its own source. It matters because 28 of the 39 were within 10% of the Wikipedia headline, which is the scale of error in the old baseline.",
+      "source": "TidyTuesday 2019 file [S001] against Wikipedia revision 904026364 [S007]",
+      "data": [{ "label": "2019 audit sample (CSV)", "href": "/data/articles/franchise/clean/verification_sample_2019.csv" }]
+    },
+    "chart17_old_vs_new_2026": {
+      "title": "Published figures against the October 2026 rebuild",
+      "description": "For each franchise, grey marks the figure published before October 2026 and blue marks the rebuilt October 2026 figure. Pokémon, Call of Duty, Naruto and the MCU grew, while Hello Kitty, Mario and Gundam were revised at the source. It matters because a lower bar here is often a changed estimate, not a business that shrank.",
+      "source": "TidyTuesday 2019 file [S001]; Wikipedia revision 1379832186 [S017]",
+      "data": [{ "label": "Old vs new figures (CSV)", "href": "/data/articles/franchise/clean/old_vs_new.csv" }]
+    }
+  }
+}
