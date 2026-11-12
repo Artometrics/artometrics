@@ -48,7 +48,7 @@ const browser = await chromium.launch();
 async function open(viewport, theme, path, options = {}) {
   const context = await browser.newContext({
     viewport: { width: viewport.width, height: viewport.height },
-    reducedMotion: "reduce",
+    reducedMotion: options.motion || "reduce",
     timezoneId: options.timezoneId || "America/Los_Angeles",
     acceptDownloads: true,
   });
@@ -182,6 +182,41 @@ for (const viewport of VIEWPORTS) {
       const { context, page } = await open(viewport, theme, "/about");
       const footer = await page.locator(".site-footer__tagline").first().textContent();
       check(footer?.trim() === TAGLINE, `${tag} tagline in the footer`);
+      await context.close();
+    }
+
+    {
+      const inView = (page, selector) =>
+        page.evaluate((sel) => {
+          const rect = document.querySelector(sel).getBoundingClientRect();
+          return { top: rect.top, bottom: rect.bottom, h: window.innerHeight, visible: rect.top >= 0 && rect.top < window.innerHeight && rect.bottom > 0 };
+        }, selector);
+
+      for (const motion of ["no-preference", "reduce"]) {
+        const jumpTag = `${tag} citation jump (${motion === "reduce" ? "reduced motion" : "smooth scroll allowed"})`;
+        const { context, page } = await open(viewport, theme, "/franchise", { motion });
+        const lazyBefore = await page.evaluate(() => [...document.images].filter((img) => img.loading === "lazy" && !img.complete).length);
+        check(lazyBefore > 0, `${jumpTag}: cold load has lazy images still waiting (${lazyBefore})`);
+        const unsized = await page.evaluate(() => [...document.querySelectorAll(".chart-frame img.art-chart-fallback")].filter((img) => !img.getAttribute("width") || !img.getAttribute("height")).length);
+        check(unsized === 0, `${jumpTag}: every chart image reserves its space (${unsized} without width/height)`);
+        await page.locator('.report-body a.cite-link[href="#src-S017"]').first().click();
+        const flashing = await page.evaluate(() => document.querySelector("#src-S017").classList.contains("anchor-flash"));
+        await page.waitForTimeout(3600);
+        const jumped = await inView(page, "#src-S017");
+        check(jumped.visible && jumped.bottom <= jumped.h + 1, `${jumpTag}: clicking [S017] lands on #src-S017 after lazy images load (top ${jumped.top.toFixed(0)}px of ${jumped.h}px)`);
+        check(flashing, `${jumpTag}: target is highlighted`);
+        await context.close();
+      }
+    }
+
+    {
+      const { context, page } = await open(viewport, theme, "/franchise#src-S017", { motion: "no-preference" });
+      await page.waitForTimeout(3600);
+      const landed = await page.evaluate(() => {
+        const rect = document.querySelector("#src-S017").getBoundingClientRect();
+        return { top: rect.top, visible: rect.top >= 0 && rect.top < window.innerHeight, h: window.innerHeight };
+      });
+      check(landed.visible, `${tag} citation jump: a cold load with #src-S017 ends on the source (top ${landed.top.toFixed(0)}px of ${landed.h}px)`);
       await context.close();
     }
 
