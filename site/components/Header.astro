@@ -53,7 +53,23 @@ const singles = [WORDMARKS.find((mark) => mark.id === "halftone")!, ...WORDMARKS
 ---
 
 <header class="mast">
-  <div class="dateline">{dateline}</div>
+  <div class="dateline" data-dateline>{dateline}</div>
+  <script is:inline>
+    (function () {
+      try {
+        var el = document.querySelector("[data-dateline]");
+        if (!el) return;
+        el.textContent = new Date().toLocaleDateString("en-US", {
+          weekday: "short",
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+          timeZone: "America/Los_Angeles",
+        });
+        el.setAttribute("data-dateline-live", "");
+      } catch (e) {}
+    })();
+  </script>
   <div class="wrap mast-row">
     <div class="mast-side">
       <button class="icon-btn" id="open-menu" type="button" aria-expanded="false" aria-controls="nav-overlay">
