@@ -364,9 +364,9 @@ html[data-theme] .report-page .report-banner h1 {
   .on-page--sticky {
     display: block;
     position: sticky;
-    top: 24px;
+    top: calc(var(--mast-height) + 24px);
     margin: 0;
-    max-height: calc(100vh - 48px);
+    max-height: calc(100vh - var(--mast-height) - 48px);
     overflow-y: auto;
   }
   .on-page--sticky li a {
@@ -441,7 +441,7 @@ html[data-theme] .report-body.artometrics-article-body h2#fast-facts {
   text-transform: none !important;
   text-align: left !important;
   color: var(--sys-ink) !important;
-  scroll-margin-top: 16px;
+  scroll-margin-top: var(--anchor-offset);
 }
 
 html[data-theme] .report-body.artometrics-article-body h3,
@@ -589,7 +589,7 @@ html[data-theme] .report-body.artometrics-article-body .table-wrapper {
 }
 
 .source-entry {
-  scroll-margin-top: 16px;
+  scroll-margin-top: var(--anchor-offset);
 }
 
 /* ---------- Charts: one frame ---------- */
@@ -667,7 +667,7 @@ html[data-theme] .report-body.artometrics-article-body .chart-frame__meta {
 
 .report-section > h2 {
   margin-top: 0 !important;
-  scroll-margin-top: 16px;
+  scroll-margin-top: var(--anchor-offset);
 }
 
 .report-section h3 {

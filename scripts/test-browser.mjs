@@ -189,7 +189,9 @@ for (const viewport of VIEWPORTS) {
       const inView = (page, selector) =>
         page.evaluate((sel) => {
           const rect = document.querySelector(sel).getBoundingClientRect();
-          return { top: rect.top, bottom: rect.bottom, h: window.innerHeight, visible: rect.top >= 0 && rect.top < window.innerHeight && rect.bottom > 0 };
+          const label = document.querySelector(`${sel} .source-entry__id`) || document.querySelector(sel);
+          const header = document.querySelector(".mast").getBoundingClientRect().bottom;
+          return { top: rect.top, labelTop: label.getBoundingClientRect().top, header, bottom: rect.bottom, h: window.innerHeight, visible: rect.top >= 0 && rect.top < window.innerHeight && rect.bottom > 0 };
         }, selector);
 
       for (const motion of ["no-preference", "reduce"]) {
@@ -205,6 +207,7 @@ for (const viewport of VIEWPORTS) {
         const jumped = await inView(page, "#src-S017");
         check(jumped.visible && jumped.bottom <= jumped.h + 1, `${jumpTag}: clicking [S017] lands on #src-S017 after lazy images load (top ${jumped.top.toFixed(0)}px of ${jumped.h}px)`);
         check(flashing, `${jumpTag}: target is highlighted`);
+        check(jumped.top >= jumped.header && jumped.labelTop >= jumped.header, `${jumpTag}: the sticky header (${jumped.header.toFixed(0)}px) does not cover the S017 card (card top ${jumped.top.toFixed(0)}px, label ${jumped.labelTop.toFixed(0)}px)`);
         await context.close();
       }
     }
@@ -214,9 +217,11 @@ for (const viewport of VIEWPORTS) {
       await page.waitForTimeout(3600);
       const landed = await page.evaluate(() => {
         const rect = document.querySelector("#src-S017").getBoundingClientRect();
-        return { top: rect.top, visible: rect.top >= 0 && rect.top < window.innerHeight, h: window.innerHeight };
+        const header = document.querySelector(".mast").getBoundingClientRect().bottom;
+        return { top: rect.top, header, visible: rect.top >= 0 && rect.top < window.innerHeight, h: window.innerHeight };
       });
       check(landed.visible, `${tag} citation jump: a cold load with #src-S017 ends on the source (top ${landed.top.toFixed(0)}px of ${landed.h}px)`);
+      check(landed.top >= landed.header, `${tag} citation jump: a cold load with #src-S017 clears the sticky header (card top ${landed.top.toFixed(0)}px, header ${landed.header.toFixed(0)}px)`);
       await context.close();
     }
 
