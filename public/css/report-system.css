@@ -79,13 +79,13 @@
   color: #f3ead7;
 }
 
-.report-banner__crumb a {
+html[data-theme] .report-banner .report-banner__crumb a {
   color: #f3ead7;
   text-decoration: none;
   border-bottom: 1px solid rgba(243, 234, 215, 0.45);
 }
 
-.report-banner h1 {
+html[data-theme] .report-page .report-banner h1 {
   margin: 0;
   max-width: 18ch;
   font-family: var(--sys-display);
@@ -471,7 +471,7 @@ html[data-theme] .report-body.artometrics-article-body h2::before {
 html[data-theme] .report-body.artometrics-article-body main.art-article-main p,
 html[data-theme] .report-body.artometrics-article-body main.art-article-main li,
 html[data-theme] .report-body.artometrics-article-body p,
-html[data-theme] .report-body.artometrics-article-body li {
+html[data-theme] .report-body.artometrics-article-body li:not(.stat-card) {
   font-size: 18px !important;
   line-height: 1.65 !important;
   color: var(--sys-ink) !important;
@@ -482,20 +482,20 @@ html[data-theme] .report-body.artometrics-article-body p {
   margin: 0 0 1em !important;
 }
 
-html[data-theme] .report-body.artometrics-article-body strong,
+html[data-theme] .report-body.artometrics-article-body strong:not(.stat-card__value),
 html[data-theme] .report-body.artometrics-article-body b {
   font-size: inherit !important;
   font-weight: 700 !important;
   color: inherit !important;
 }
 
-html[data-theme] .report-body.artometrics-article-body ul,
+html[data-theme] .report-body.artometrics-article-body ul:not(.stat-cards),
 html[data-theme] .report-body.artometrics-article-body ol {
   padding-left: 1.3em;
   margin: 0 0 1.2em;
 }
 
-html[data-theme] .report-body.artometrics-article-body li {
+html[data-theme] .report-body.artometrics-article-body li:not(.stat-card) {
   margin-bottom: 0.5em;
 }
 

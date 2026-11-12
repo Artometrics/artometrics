@@ -252,6 +252,17 @@ html[data-theme="light"] {
   color: #f3ead7;
 }
 
+html[data-theme] .file-tile .file-tile__label {
+  color: var(--sys-ink);
+}
+
+html[data-theme] .file-tile:hover,
+html[data-theme] .file-tile:focus-visible,
+html[data-theme] .file-tile:hover .file-tile__label,
+html[data-theme] .file-tile:focus-visible .file-tile__label {
+  color: #f3ead7;
+}
+
 .file-tile__label {
   font-family: var(--sys-display);
   font-size: 1.15rem;
