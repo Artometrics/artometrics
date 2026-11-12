@@ -1,6 +1,6 @@
 # Artometrics
 
-> culture, quantified. Independent data-science magazine for the creative industries and culture.
+> Independent data-science magazine for the creative industries and culture.
 > Site: https://artometrics.com
 
 ## About
@@ -154,4 +154,4 @@
 
 ## Generated
 
-Updated: 2026-11-12T07:45:04.995Z
+Updated: 2026-11-10T08:03:14.969Z

@@ -14,12 +14,24 @@ import { DOMAIN_META, SUBDOMAIN_META, primaryDomain, primarySubdomain } from "@/
 import downloads from "@/src/generated/downloads.json";
 import { existsSync } from "node:fs";
 import { readingMinutes, withStaticCharts } from "../lib/static-charts";
+import {
+  escapeHtml,
+  fileSize,
+  formatKind,
+  formatLongDate,
+  frameCharts,
+  linkCitations,
+  loadReportMeta,
+  prepareHeadings,
+  retrievedLabel,
+} from "../lib/report";
 import ArtBarChart from "../components/preview/ArtBarChart.astro";
 import ArticleDownloads from "../components/ArticleDownloads.astro";
 import ChartCarousel from "../components/ChartCarousel.astro";
 import KeyFigures from "../components/KeyFigures.astro";
 import { articleBanner, chartSlides, shortLabel } from "../lib/article-page";
 import { artworkDownloads } from "@/lib/article-assets.mjs";
+import { previewFiles } from "../lib/preview-reports";
 
 export function getStaticPaths() {
   return getBlogPosts().map((post) => ({ params: { slug: post.slug }, props: { post } }));
@@ -46,13 +58,29 @@ const pack = downloads[post.slug as keyof typeof downloads] as
       html?: string | null;
     }
   | undefined;
+const meta = loadReportMeta(post.slug);
+const transcriptHref = pack?.transcript ? `/transcripts/${post.slug}` : null;
+const files = [
+  ...previewFiles(post.slug).map((file) =>
+    file.label === "Transcript" && transcriptHref ? { ...file, href: transcriptHref } : file,
+  ),
+  audioFile && post.audioSrc && !pack?.audio ? { label: "Narration", href: post.audioSrc } : null,
+]
+  .filter((file): file is { label: string; href: string } => Boolean(file))
+  .filter((file) => file.label !== "Audio");
+const fileTiles = files.map((file) => ({
+  label: file.label === "Dataset CSV" ? "Dataset" : file.label,
+  href: file.href,
+  meta: [file.label === "Transcript" ? "Text" : formatKind(file.href), fileSize(file.href === transcriptHref ? pack?.transcript || "" : file.href)]
+    .filter(Boolean)
+    .join(" · "),
+}));
 const artwork = artworkDownloads(post.slug);
 const related = getRelatedPosts(post.slug, 3);
 const faq = (post.faq || []) as { question: string; answer: string }[];
 const image = post.heroImage || "/images/brand/og-default.png";
 const { html: anchoredBody, slides } = chartSlides(post.body || "");
 const body = post.body || "";
-const banner = articleBanner(post.slug);
 const printCover = existsSync(new URL(`../../public/images/content/articles/${post.slug}/cover-title.webp`, import.meta.url))
   ? `/images/content/articles/${post.slug}/cover-title.webp`
   : "";
@@ -61,10 +89,50 @@ const points = embeddedFacts ? [] : ((post.keyPoints || []) as string[]);
 const facts = points
   .map((point) => parseKeyPoint(String(point)))
   .filter((fact) => fact.value)
-  .map((fact) => ({ value: fact.value, label: shortLabel(fact.label) }));
+  .slice(0, 6)
+  .map((fact) => {
+    const ids = [...new Set(fact.label.match(/S\d{3}/g) || [])];
+    const text = shortLabel(fact.label.replace(/\s*\[[^\]]*\]/g, ""));
+    return { value: fact.value, label: ids.length ? `${text} [${ids.join("; ")}]` : text };
+  });
 const factSource = /data-source="([^"]+)"/.exec(body)?.[1]
   ?.replace(/\s+[—-]\s+ARTOMETRICS\s*$/i, "")
   .trim() || "";
+const prepared = prepareHeadings(anchoredBody);
+const framed = frameCharts(prepared.html, meta, post.slug);
+const bodyLinked = linkCitations(withStaticCharts(framed), meta);
+const factsLinked = facts.map((fact) => {
+  const linked = linkCitations(escapeHtml(fact.label), meta);
+  return { value: fact.value, label: linked.html, used: linked.used };
+});
+const methodLinked = meta?.method
+  ? Object.fromEntries(
+      (["pulled", "cleaned", "updated", "vintage", "caveats"] as const).map((key) => [
+        key,
+        meta.method![key].map((text) => linkCitations(escapeHtml(text), meta)),
+      ]),
+    )
+  : null;
+const usedIds = new Set<string>([
+  ...bodyLinked.used,
+  ...factsLinked.flatMap((fact) => fact.used),
+  ...Object.values(methodLinked || {}).flatMap((items) => items.flatMap((item) => item.used)),
+]);
+const shownSources = Object.keys(meta?.sources || {})
+  .filter((id) => usedIds.has(id) || meta?.sources?.[id]?.listed)
+  .sort();
+const hasMethod = Boolean(meta?.method);
+const toc = [
+  ...prepared.toc,
+  ...(hasMethod ? [{ id: "sources-and-method", text: "Sources & method" }] : []),
+  ...(shownSources.length ? [{ id: "sources", text: "Sources" }] : []),
+];
+const textFreeBanner = `/images/content/articles/${post.slug}/banner-art.webp`;
+const bannerFile = existsSync(new URL(`../../public${textFreeBanner}`, import.meta.url))
+  ? textFreeBanner
+  : articleBanner(post.slug)?.src || image;
+const updatedLabel = meta?.updated ? formatLongDate(meta.updated) : "";
+const publishedLabel = post.pubDate ? formatDate(post.pubDate) : "";
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -72,6 +140,7 @@ const jsonLd = [
     headline: post.title,
     description: post.description,
     datePublished: post.pubDate,
+    ...(meta?.updated ? { dateModified: meta.updated } : {}),
     image: [image.startsWith("http") ? image : `https://artometrics.com${image}`],
     author: { "@type": "Person", name: author },
     publisher: { "@type": "Organization", name: "Artometrics", url: "https://artometrics.com" },
@@ -104,53 +173,89 @@ const jsonLd = [
 >
   <link slot="head" rel="stylesheet" href="/css/artometrics-article.css" />
   <link slot="head" rel="stylesheet" href="/css/astro-contrast.css" />
-  <article class="preview-frame preview-report">
+  <link slot="head" rel="stylesheet" href="/css/system.css" />
+  <link slot="head" rel="stylesheet" href="/css/report-system.css" />
+
+  <article class="preview-frame preview-report report-page">
     {printCover ? (
       <figure class="print-cover" aria-hidden="true">
         <img src={printCover} alt="" width="900" height="1200" loading="lazy" />
       </figure>
     ) : null}
-    {banner ? (
-      <figure class="article-banner">
-        <img src={banner.src} alt="" width={banner.width} height={banner.height} fetchpriority="high" />
-      </figure>
-    ) : null}
-    <p class="preview-crumb">
-      <a href="/#reports">Reports</a>
-      <span aria-hidden="true"> · </span>
-      <a href={`/topics/${domain}`}>{DOMAIN_META[domain].title}</a>
-      {sub && SUBDOMAIN_META[sub] ? (
-        <>
+    <header class="report-banner">
+      <img
+        class="report-banner__art"
+        src={bannerFile}
+        alt=""
+        width="1600"
+        height="900"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="report-banner__copy">
+        <p class="preview-crumb report-banner__crumb">
+          <a href="/#reports">Reports</a>
           <span aria-hidden="true"> · </span>
-          <a href={`/topics/${domain}?sub=${sub}`}>{SUBDOMAIN_META[sub].title}</a>
-        </>
-      ) : null}
-    </p>
-
-    <div class="preview-report-top">
-      <div>
+          <a href={`/topics/${domain}`}>{DOMAIN_META[domain].title}</a>
+          {sub && SUBDOMAIN_META[sub] ? (
+            <>
+              <span aria-hidden="true"> · </span>
+              <a href={`/topics/${domain}?sub=${sub}`}>{SUBDOMAIN_META[sub].title}</a>
+            </>
+          ) : null}
+        </p>
         <h1>
           <span class="report-kicker">{kicker}:</span>
           {" "}{headlineRest}
         </h1>
-        <p class="preview-dek">{post.description}</p>
-        <ul class="preview-meta">
-          {label ? <li>{label}</li> : null}
-          <li>By {author}</li>
-          {post.pubDate ? <li>{formatDate(post.pubDate)}</li> : null}
-          <li>{minutes} min</li>
-        </ul>
-        {audioFile && post.audioSrc ? (
-          <audio controls preload="none" src={post.audioSrc}>
-            <a href={post.audioSrc}>Listen</a>
-          </audio>
-        ) : null}
       </div>
+    </header>
+
+    <p class="preview-dek report-dek">{post.description}</p>
+
+    <div class="report-updated">
+      <p class="report-updated__line">
+        {updatedLabel ? <strong>Updated {updatedLabel}</strong> : null}
+        {updatedLabel && publishedLabel ? <span aria-hidden="true"> · </span> : null}
+        {publishedLabel ? <span>Published {publishedLabel}</span> : null}
+        <span aria-hidden="true"> · </span><span>By {author}</span>
+        <span aria-hidden="true"> · </span><span>{minutes} min read</span>
+      </p>
+      {meta?.whatChanged ? (
+        <p class="report-updated__note">
+          <strong>What changed:</strong> {meta.whatChanged}
+          {meta.changelog ? <> <a href={meta.changelog.href}>Read the changelog</a>.</> : null}
+        </p>
+      ) : null}
     </div>
 
-    {facts.length ? <KeyFigures facts={facts} source={factSource} /> : null}
+    {meta?.status ? (
+      <aside class="report-status" data-state={meta.status.state} aria-label="Which version is current">
+        <p class="report-status__label">{meta.status.label}</p>
+        <p class="report-status__note">{meta.status.note}</p>
+        {meta.status.links?.length ? (
+          <ul class="report-status__links">
+            {meta.status.links.map((link) => (
+              <li><a href={link.href}>{link.label}</a></li>
+            ))}
+          </ul>
+        ) : null}
+      </aside>
+    ) : null}
+
+    {factsLinked.length ? <KeyFigures facts={factsLinked} source={factSource} /> : null}
+
+    {toc.length > 2 ? (
+      <details class="on-page on-page--inline">
+        <summary>On this page <span>({toc.length} sections)</span></summary>
+        <ol>
+          {toc.map((item) => <li><a href={`#${item.id}`}>{item.text}</a></li>)}
+        </ol>
+      </details>
+    ) : null}
+
     <ChartCarousel slides={slides} />
-    <ArticleDownloads slug={post.slug} pack={pack} artwork={artwork} />
+    <ArticleDownloads files={fileTiles} artwork={artwork} audioSrc={audioFile ? post.audioSrc : null} />
 
     {post.slug === "longevity" ? (
       <section class="preview-panel" aria-labelledby="leaders-title">
@@ -159,7 +264,86 @@ const jsonLd = [
       </section>
     ) : null}
 
-    <div class="artometrics-article-body" set:html={withStaticCharts(anchoredBody)} />
+    <div class="report-layout">
+      {toc.length > 2 ? (
+        <nav class="on-page on-page--sticky" aria-label="On this page">
+          <p class="on-page__title">On this page</p>
+          <ol>
+            {toc.map((item) => <li><a href={`#${item.id}`}>{item.text}</a></li>)}
+          </ol>
+        </nav>
+      ) : null}
+
+      <div class="report-column">
+        <div class="artometrics-article-body report-body" set:html={bodyLinked.html} />
+
+        {methodLinked ? (
+          <section class="report-section report-method" id="sources-and-method" aria-labelledby="sources-and-method-title">
+            <h2 id="sources-and-method-title">Sources &amp; method</h2>
+            <p class="report-section__lede">How the data was pulled, cleaned and updated, which dates it covers, and what it cannot tell you.</p>
+            <h3>How the data was pulled</h3>
+            <ul>{methodLinked.pulled.map((item) => <li set:html={item.html} />)}</ul>
+            <h3>How it was cleaned</h3>
+            <ul>{methodLinked.cleaned.map((item) => <li set:html={item.html} />)}</ul>
+            <h3>How it is updated</h3>
+            <ul>{methodLinked.updated.map((item) => <li set:html={item.html} />)}</ul>
+            <h3>Data vintage</h3>
+            <ul>{methodLinked.vintage.map((item) => <li set:html={item.html} />)}</ul>
+            <h3>Known caveats</h3>
+            <ul>{methodLinked.caveats.map((item) => <li set:html={item.html} />)}</ul>
+            {meta?.method?.files?.length ? (
+              <ul class="file-grid">
+                {meta.method.files.map((file) => (
+                  <li>
+                    <a class="file-tile" href={file.href} target="_blank" rel="noopener">
+                      <span class="file-tile__label">{file.label}</span>
+                      <span class="file-tile__meta">{formatKind(file.href)} · opens in a new tab</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </section>
+        ) : null}
+
+        {shownSources.length && meta?.sources ? (
+          <section class="report-section report-sources" id="sources" aria-labelledby="sources-title">
+            <h2 id="sources-title">Sources</h2>
+            <p class="report-section__lede">Each source tag in the text, such as S017, links here. Dates are when we read the source. Where a source has a revision ID, the figures come from that revision.</p>
+            <ol class="source-list">
+              {shownSources.map((id) => {
+                const source = meta.sources![id];
+                return (
+                  <li class="source-entry" id={`src-${id}`}>
+                    <p class="source-entry__id">{id}</p>
+                    <p class="source-entry__title">{source.title}</p>
+                    <p class="source-entry__by">{[source.publisher, source.year].filter(Boolean).join(", ")}</p>
+                    <dl>
+                      <dt>URL</dt>
+                      <dd>
+                        <a href={source.url} rel="noopener" target="_blank">{source.url}</a>
+                        {(source.moreUrls || []).map((extra) => (
+                          <>
+                            <br />
+                            <span class="source-entry__also">{extra.label}: </span>
+                            <a href={extra.url} rel="noopener" target="_blank">{extra.url}</a>
+                          </>
+                        ))}
+                      </dd>
+                      <dt>Retrieved</dt>
+                      <dd>{retrievedLabel(source)}</dd>
+                      <dt>Revision ID</dt>
+                      <dd>{source.revision || "None. This source is not versioned."}</dd>
+                    </dl>
+                    {source.note ? <p class="source-entry__note">{source.note}</p> : null}
+                  </li>
+                );
+              })}
+            </ol>
+          </section>
+        ) : null}
+      </div>
+    </div>
 
     {related.length ? (
       <section class="report-related">
@@ -198,4 +382,44 @@ const jsonLd = [
       </figure>
     ) : null}
   </article>
+
+  <script is:inline>
+    (function () {
+      /* Manual chart carousels: swipe, scroll or tap Previous and Next. No timers, no auto-advance. */
+      var roots = document.querySelectorAll("[data-carousel]");
+      for (var i = 0; i < roots.length; i++) setup(roots[i]);
+      function setup(root) {
+        var track = root.querySelector(".carousel__track");
+        var cards = track ? track.children : [];
+        var status = root.querySelector(".carousel__status");
+        var prev = root.querySelector("[data-carousel-prev]");
+        var next = root.querySelector("[data-carousel-next]");
+        if (!track || !cards.length) return;
+        function current() {
+          var best = 0;
+          var min = Infinity;
+          for (var c = 0; c < cards.length; c++) {
+            var d = Math.abs(cards[c].offsetLeft - track.scrollLeft - track.offsetLeft);
+            if (d < min) { min = d; best = c; }
+          }
+          return best;
+        }
+        function paint() {
+          var at = current();
+          if (status) status.textContent = at + 1 + " of " + cards.length;
+          if (prev) prev.disabled = at === 0;
+          if (next) next.disabled = at === cards.length - 1;
+        }
+        function go(step) {
+          var at = Math.max(0, Math.min(cards.length - 1, current() + step));
+          track.scrollTo({ left: cards[at].offsetLeft - track.offsetLeft, behavior: "auto" });
+          paint();
+        }
+        if (prev) prev.addEventListener("click", function () { go(-1); });
+        if (next) next.addEventListener("click", function () { go(1); });
+        track.addEventListener("scroll", function () { window.requestAnimationFrame(paint); }, { passive: true });
+        paint();
+      }
+    })();
+  </script>
 </Base>

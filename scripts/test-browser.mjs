@@ -193,7 +193,7 @@ for (const viewport of VIEWPORTS) {
       check(overflow <= 0, `${tag} franchise: no sideways scroll (${overflow}px)`);
 
       const top = await page.evaluate(() => {
-        const banner = document.querySelector(".article-banner img");
+        const banner = document.querySelector(".report-banner__art");
         const h1 = document.querySelector(".preview-report h1");
         const kicker = h1.querySelector(".report-kicker");
         const range = document.createRange();
@@ -201,7 +201,9 @@ for (const viewport of VIEWPORTS) {
         range.selectNodeContents(headline);
         const style = getComputedStyle(kicker);
         return {
+          bannerTop: banner?.getBoundingClientRect().top ?? null,
           bannerBottom: banner?.getBoundingClientRect().bottom ?? null,
+          h1Bottom: h1.getBoundingClientRect().bottom,
           bannerLoaded: banner ? banner.naturalWidth > 0 : false,
           h1Top: h1.getBoundingClientRect().top,
           kickerDisplay: style.display,
@@ -209,7 +211,7 @@ for (const viewport of VIEWPORTS) {
         };
       });
       check(top.bannerLoaded, `${tag} article: banner image loads`);
-      check(top.bannerBottom !== null && top.bannerBottom <= top.h1Top, `${tag} article: banner sits above the title`);
+      check(top.bannerTop !== null && top.bannerTop <= top.h1Top && top.h1Bottom <= top.bannerBottom, `${tag} article: the title sits in front of the banner art`);
       check(top.kickerDisplay === "block" && top.gap >= 6, `${tag} article: space between the kicker and the headline (${top.gap.toFixed(1)}px)`);
 
       const figs = await page.evaluate(() => {
@@ -297,36 +299,32 @@ for (const viewport of VIEWPORTS) {
       check(charts.every((chart) => (theme === "dark" ? chart.darkShown && !chart.lightShown : chart.lightShown && !chart.darkShown)), `${tag} charts: the ${theme} render is the one shown`);
       check(charts.every((chart) => !/invert/.test(chart.filter)), `${tag} charts: no invert hack`);
 
+      await page.evaluate(() => document.querySelectorAll("[data-downloads] details").forEach((d) => { d.open = true; }));
+      await loadLazyImages(page);
       const downloads = await page.evaluate(() => {
         const root = document.querySelector("[data-downloads]");
         const thumbs = [...root.querySelectorAll(".dl__thumb")];
-        const buttons = [...root.querySelectorAll(".dl__btn")];
+        const tiles = [...root.querySelectorAll(".file-tile")];
         return {
           thumbs: thumbs.length,
           loaded: thumbs.every((a) => a.querySelector("img").naturalWidth > 0),
-          thumbDownload: thumbs.every((a) => a.hasAttribute("download")),
+          thumbsNewTab: thumbs.every((a) => a.target === "_blank" && !a.hasAttribute("download")),
           thumbHrefsAreImages: thumbs.every((a) => /\.(webp|png|jpe?g)$/.test(a.getAttribute("href"))),
-          buttons: buttons.map((a) => ({ label: a.querySelector(".dl__label").textContent.trim(), href: a.getAttribute("href"), target: a.getAttribute("target"), rel: a.getAttribute("rel"), download: a.hasAttribute("download"), icon: !!a.querySelector("svg") })),
-          plainList: root.querySelectorAll(".preview-files").length,
+          tiles: tiles.map((a) => ({ label: a.querySelector(".file-tile__label").textContent.trim(), href: a.getAttribute("href"), target: a.getAttribute("target"), rel: a.getAttribute("rel"), download: a.hasAttribute("download") })),
         };
       });
-      const byLabel = Object.fromEntries(downloads.buttons.map((button) => [button.label, button]));
+      const byLabel = Object.fromEntries(downloads.tiles.map((tile) => [tile.label, tile]));
       check(downloads.thumbs >= 4 && downloads.loaded, `${tag} downloads: ${downloads.thumbs} thumbnails of the real images`);
-      check(downloads.thumbDownload && downloads.thumbHrefsAreImages, `${tag} downloads: thumbnails download the image`);
-      check(byLabel.Dataset?.href.endsWith("wikipedia_franchise_revenue_2026.csv") && byLabel.Dataset.download && byLabel.Dataset.icon, `${tag} downloads: dataset CSV icon button downloads the 2026 file`);
-      check(byLabel.Transcript?.download && byLabel.Transcript.icon, `${tag} downloads: transcript icon button downloads`);
-      check(byLabel.PDF?.href === "/exports/franchise.pdf" && byLabel.PDF.target === "_blank" && /noopener/.test(byLabel.PDF.rel || "") && byLabel.PDF.icon, `${tag} downloads: PDF opens in a new tab with rel=noopener`);
-      check(downloads.plainList === 0, `${tag} downloads: the plain link list is gone`);
+      check(downloads.thumbsNewTab && downloads.thumbHrefsAreImages, `${tag} downloads: thumbnails open the image in a new tab`);
+      check(downloads.tiles.length >= 3 && downloads.tiles.every((tile) => tile.target === "_blank" && /noopener/.test(tile.rel || "") && !tile.download), `${tag} downloads: every file opens in a new tab, none force-downloads`);
+      check(byLabel.Dataset?.href.endsWith("wikipedia_franchise_revenue_2026.csv"), `${tag} downloads: dataset is the 2026 file`);
+      check(byLabel.Transcript?.href === "/transcripts/franchise", `${tag} downloads: transcript opens the text page`);
+      check(byLabel.PDF?.href === "/exports/franchise.pdf", `${tag} downloads: PDF tile`);
 
       const before = page.url();
-      const downloadPromise = page.waitForEvent("download", { timeout: 5000 });
-      await page.locator('.dl__btn[href$=".csv"]').click();
-      const file = await downloadPromise;
-      check(file.suggestedFilename().endsWith(".csv") && page.url() === before, `${tag} downloads: the CSV downloads without leaving the page (${file.suggestedFilename()})`);
-
       const pages = context.pages().length;
       const popupPromise = context.waitForEvent("page", { timeout: 5000 });
-      await page.locator('.dl__btn[href$=".pdf"]').click();
+      await page.locator('.file-tile[href$=".pdf"]').click();
       const popup = await popupPromise;
       const served = await context.request.get(`${origin}/exports/franchise.pdf`);
       check(context.pages().length === pages + 1 && page.url() === before, `${tag} PDF: opens in a new tab and the article stays put`);

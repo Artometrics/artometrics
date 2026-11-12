@@ -1,0 +1,77 @@
+---
+import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
+import { marked } from "marked";
+import Base from "../../layouts/Base.astro";
+import { getBlogPost } from "@/lib/content";
+import { loadReportMeta } from "../../lib/report";
+
+export function getStaticPaths() {
+  const dir = join(process.cwd(), "src/content/blog");
+  return readdirSync(dir)
+    .filter((name) => name.endsWith(".meta.json"))
+    .map((name) => name.replace(/\.meta\.json$/, ""))
+    .filter((slug) => loadReportMeta(slug)?.changelog)
+    .map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const meta = loadReportMeta(String(slug));
+const post = getBlogPost(String(slug));
+const file = join(process.cwd(), meta?.changelog?.file || "");
+const markdown = existsSync(file) ? readFileSync(file, "utf8") : "";
+const html = marked.parse(markdown.replace(/^# .*\n/, "")) as string;
+const heading = /^# (.*)$/m.exec(markdown)?.[1] || "Changelog";
+const dataHref = `/data/articles/${slug}/CHANGELOG.md`;
+---
+
+<Base
+  title={`${heading}: ${post?.title || slug}`}
+  description={`Figure-by-figure changelog for ${post?.title || slug}.`}
+  path={`/${slug}/changelog`}
+>
+  <link slot="head" rel="stylesheet" href="/css/system.css" />
+  <link slot="head" rel="stylesheet" href="/css/report-system.css" />
+  <div class="text-page changelog-page">
+    <p class="sys-eyebrow">Changelog</p>
+    <h1 class="sys-h2">{heading}</h1>
+    <div class="text-page__actions">
+      <a class="file-tile" href={`/${slug}`}>
+        <span class="file-tile__label">Back to the report</span>
+        <span class="file-tile__meta">{post?.title}</span>
+      </a>
+      <a class="file-tile" href={dataHref} target="_blank" rel="noopener">
+        <span class="file-tile__label">Markdown source</span>
+        <span class="file-tile__meta">MD · opens in a new tab</span>
+      </a>
+    </div>
+    <div class="changelog-body report-body" set:html={html} />
+  </div>
+</Base>
+
+<style is:global>
+  .changelog-body table {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+    margin: 16px 4px 24px 0;
+    border: 1px solid var(--sys-line);
+    background: var(--sys-panel);
+    box-shadow: var(--sys-shadow);
+  }
+  .changelog-body th,
+  .changelog-body td {
+    min-width: 8rem;
+    font-size: 14px;
+  }
+  .changelog-body td:first-child {
+    min-width: 11rem;
+    font-weight: 700;
+  }
+  .changelog-body h2 {
+    font-family: var(--sys-display);
+    font-weight: 400;
+    font-size: var(--sys-h3);
+    margin: 32px 0 10px;
+  }
+</style>

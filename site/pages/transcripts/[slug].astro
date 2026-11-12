@@ -1,0 +1,58 @@
+---
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+import Base from "../../layouts/Base.astro";
+import downloads from "@/src/generated/downloads.json";
+import { getBlogPost } from "@/lib/content";
+import { fileSize } from "../../lib/report";
+
+export function getStaticPaths() {
+  return Object.values(downloads)
+    .filter((pack) => pack.transcript)
+    .map((pack) => ({ params: { slug: pack.slug }, props: { href: String(pack.transcript) } }));
+}
+
+const { slug } = Astro.params;
+const { href } = Astro.props;
+const post = getBlogPost(String(slug));
+const file = join(process.cwd(), "public", href.replace(/^\//, ""));
+const text = existsSync(file) ? readFileSync(file, "utf8") : "";
+const paragraphs = text.split(/\n{2,}/).map((part) => part.trim()).filter(Boolean);
+const [heading, ...rest] = paragraphs;
+---
+
+<Base
+  title={`Transcript: ${post?.title || slug}`}
+  description={`Plain-text transcript of ${post?.title || slug}.`}
+  path={`/transcripts/${slug}`}
+>
+  <link slot="head" rel="stylesheet" href="/css/system.css" />
+  <link slot="head" rel="stylesheet" href="/css/report-system.css" />
+  <div class="text-page">
+    <p class="sys-eyebrow">Transcript</p>
+    <h1 class="sys-h2">{post?.title || heading}</h1>
+    <div class="text-page__actions">
+      <a class="file-tile" href={`/${slug}`}>
+        <span class="file-tile__label">Back to the report</span>
+        <span class="file-tile__meta">The full report with charts</span>
+      </a>
+      <a class="file-tile" href={href} target="_blank" rel="noopener">
+        <span class="file-tile__label">Plain text file</span>
+        <span class="file-tile__meta">TXT · {fileSize(href)} · opens in a new tab</span>
+      </a>
+    </div>
+    <div class="text-page__prose">
+      {rest.map((part) => <p>{part}</p>)}
+    </div>
+  </div>
+</Base>
+
+<style is:global>
+  .text-page__prose p {
+    margin: 0 0 1em;
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--sys-ink);
+    overflow-wrap: break-word;
+  }
+</style>

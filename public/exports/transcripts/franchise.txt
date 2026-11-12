@@ -1,57 +1,167 @@
-FRANCHISE: Pokémon's $91 billion Beats Marvel and Star Wars
+FRANCHISE: Merchandise Owns the Ledger
 
-A child trades a cardboard Pikachu for lunch money; a studio greenlights a $220 million film. Both gestures sit on the same TidyTuesday ledger — 107 media franchises that cleared at least $4 billion in estimated lifetime revenue as of mid-2019 — but only one side of the table compounds through merchandise, licensing, and retail. Pokémon earns $91 billion lifetime in that file, more than Marvel, Star Wars, and Harry Potter combined. Merchandise accounts for 61 percent of all tracked earnings across the ceiling set, not as a reporting quirk but as business-model design.
+Read this before the big numbers get comfortable. The figures below are nominal estimates of what audiences spent, compiled by Wikipedia's editors from press and trade sources over many years. They are not profit, not a company valuation, and not cash paid to the rights holder. A very large number can still be answering a different question than the one you meant to ask. Data vintage: Wikipedia revision 1384334611, timestamp 7 November 2026, read 10 November 2026. Box office is Box Office Mojo the same day, with The Numbers beside it. Disney's segments are the fiscal year ended 27 September 2025. [S017; S005; S019; S093]
 
-Henry Jenkins's transmedia frame (Convergence Culture, NYU Press, 2006) helps explain why: revenue attached to characters can move across games, apparel, and film without routing through a single theatrical weekend. The charts below ask where franchise money actually comes from, which properties earn it most efficiently per year of existence, and what the ownership picture looks like when Disney subsidiaries stop masquerading as competitors.
+Five findings, each with a date on it:
 
-RESEARCH QUESTION
+Merchandise, licensing and retail are 55.6 percent of the list (range 43.2–65.8). [S017]
 
-Among franchises that cleared the $4 billion inclusion floor, how much of lifetime value is merchandise rather than box office — and how much does consolidating Disney's acquisitions change the ownership leaderboard readers think they are reading?
+Pokémon's row, $130.7 billion, is larger than Star Wars and the Marvel Cinematic Universe added together, $84.2 billion. [S017]
 
-TOP 20 FRANCHISES BY REVENUE
+Five first-listed parents account for 58.3 percent of the list (range 52.3–72.7). Disney alone is 29.5 percent. [S017]
 
-TOP20 REVENUE
+US-origin rows now sum to more than Japan-origin rows ($825.5 billion vs $394.5 billion). Japan's merchandise share is the higher one, 71.4 percent to 51.5 percent. [S017]
 
-Pokémon at $91 billion is not just first — it is a different category of number. The gap between Pokémon and second-place Hello Kitty ($80 billion) exceeds the lifetime revenue of Batman, Spider-Man, or Dragon Ball. This is structural escape velocity: merchandise revenue compounding across decades, driven by a product line expanding into every available category — cards, video games, plush, clothing, themed food. The anime functions primarily as a 25-year commercial for the card game. Pokémon was not built as a franchise. It was built as an economy. Merchandise, Licensing & Retail (red) dominates nearly every bar in the top 20. This is not a reporting quirk — it is how large-scale IP makes money. Content — films, games, episodes — functions as marketing infrastructure. Merchandise captures demand. Three franchises break the pattern. Mario is mostly dark blue — Nintendo resists licensing, keeping IP tightly coupled to its hardware ecosystem. Shōnen Jump / Jump Comics is mostly purple (Comic or Manga), a publishing business driven by magazines and tankōbon volumes. Star Wars shows the most balanced mix: box office, merchandise, home video, and games each contributing meaningfully. Star Wars is the model of a fully diversified franchise — which is why Disney paid $4 billion for Lucasfilm in 2012.
+Nine of the ten biggest 2025 films worldwide were franchise installments. In 2026, so far, six of ten are. The denominator is ten films, and 2026 is not finished. [S005]
 
-REVENUE PER YEAR OF EXISTENCE
+Narration placeholder. The player on this page is the existing Kore recording, 27 minutes 3 seconds, file /audios/franchise-kore-v4.mp3. It reads the October article. This November text has not been re-rendered. Please do not treat the audio as a reading of the paragraphs below.
 
-REVENUE PER YEAR
+HOW DOES POKÉMON END UP THIS LARGE?
 
-Total revenue rewards longevity. Revenue per year rewards efficiency. Normalizing by age puts 1928 and 1996 franchises on comparable footing — and surfaces what raw totals hide. Pokémon's $4 billion/yr is not explained by a single hit. It is explained by a system: video games create new entry points every hardware generation; the trading card game creates perpetual demand for new product; the anime provides continuous character exposure that drives card and game sales. Each component feeds the others in a loop that doesn't require any single cultural moment to sustain. Several franchises ranking high on total revenue drop when normalized by time. Hello Kitty ($80 billion total, second overall) falls to fourth at $1.8 billion/yr — because it has operated since 1974, making 45 years the denominator. Winnie the Pooh and Mickey Mouse drop further. Their massive lifetime totals are the product of nearly a century. The per-year lens penalizes age: a franchise earning $1 billion/yr for 90 years scores lower than one earning $2 billion/yr for 25. Franchises that rise on this chart share a trait: they earn across multiple simultaneous streams rather than sequentially. A film franchise earns at release, then waits. A trading-card-plus-video-game-plus-anime ecosystem earns every month at every retail touchpoint. The per-year chart measures business model design.
+Pokémon is listed at $130.7 billion. Star Wars is $46.7 billion and the Marvel Cinematic Universe is $37.5 billion. Add those two film-world rows and you get $84.2 billion. You can bring a space station and a team of superheroes. On this list, the merchandise still needs counting. [S017]
 
-THE DISNEY EMPIRE, CONSOLIDATED
+Across 140 properties the stated lifetime total is $1,460.1 billion. That is $12.0 billion more than the 12 October revision, and the whole of the increase is two rows, which we will come to. Mickey Mouse & Friends follows Pokémon at $61.2 billion, then Winnie-the-Pooh at $50.2 billion, Star Wars, and Disney Princess at $45.4 billion. The small bear did not wait for a cinematic universe to get organised. [S017]
 
-DISNEY NON CONSOLIDATED
+Pokémon began in 1996 with Game Freak and Nintendo. Games, animation, cards and other products give people more than one way to stay with the same characters. That is a fair description of the system. It is not proof that every viewer becomes a card buyer. Jenkins's Convergence Culture describes stories moving across formats. Steinberg's Anime's Media Mix describes how Japanese animation and character goods grew up together. Japan's production committees can put publishers, broadcasters and toy makers into the same rights arrangement. [Jenkins, 2006; Steinberg, 2012; Hernández Hernández, 2018]
 
-The raw data lists "The Walt Disney Company," "Marvel Entertainment (The Walt Disney Company)," and "20th Century Fox (The Walt Disney Company)" as three separate owners. Technically accurate. Strategically misleading. Marvel was acquired in 2009 for $4 billion. Fox was acquired in 2019 for $71 billion. Both are wholly owned subsidiaries. Their revenue goes to the same place. You don't buy franchises — you buy the companies that own franchises, and those companies keep operating under their own names. Marvel Studios still greenlights its own films. Fox kept its lot in Century City. But the revenue goes to Burbank. Add them up and Disney's true total is $426 billion. Nintendo at $49 billion — still second — now represents 11 cents on Disney's dollar. Marvel ($20 billion) plus Fox ($17 billion) consolidate to $296 billion. The remaining $130 billion comes from Disney-owned entities too small to crack the top 14 individually — Pixar, Lucasfilm, ABC, ESPN. Subsidiaries whose franchise rows exist in the dataset but don't rank highly enough to appear as standalone bars. Individually invisible. Collectively, they exceed Nintendo's entire lifetime output. That is the actual scale. Not one dominant company. Not even three. An ecosystem of wholly-owned studios, publishers, and licensors — some famous, some not — each running their own operations, all consolidating upward to the same balance sheet. The chart makes visible what the raw data quietly obscures: in IP, ownership structure is as strategically important as the franchises themselves. Disney didn't just build great IP. It bought the companies that owned great IP, let them keep their identities, and harvested everything upward.
+Disney takes another route, through parks, resorts, cruises and shops. Different arrangements, more than one place to spend money. Neither story requires us to assume that anyone is being fooled. People can love the story and also want the toy.
 
-THE SAME LEADERBOARD, CONSOLIDATED
+THE FILM ENDS. THE SHOPPING DOES NOT.
 
-DISNEY SUBSIDIARIES FOLDED INTO ONE OWNERSHIP BAR
+The list puts merchandise, licensing and retail at $812.4 billion, video games at $268.2 billion and box office at $265.3 billion. Another $27.2 billion, about 1.9 percent, is in the totals without an itemised breakdown. [S017]
 
-Chart 3a shows Disney's labels as the raw file stores them. Chart 3b collapses Marvel Entertainment and 20th Century Fox into The Walt Disney Company — the ownership reality after the 2009 Marvel purchase and 2019 Fox deal. Star Wars (Lucasfilm), the Marvel Cinematic Universe, and Fox's legacy film library stop looking like peer competitors and start looking like internal divisions. That consolidation is the claim: lifetime franchise revenue is not only a creative ranking. It is a map of who controls cash flows after M&A. Readers comparing "Disney" to "Nintendo" without folding subsidiaries are comparing an incomplete parent to a fully listed one.
+Since October the point estimates have swapped: games now sit a hair above box office. The ranges still swallow that gap. Resampling the franchises 5,000 times tells you the result depends on which rows are in the list. It does not certify Wikipedia's underlying estimates, and it does not make merchandise, games and ticket sales economically independent of one another. A toy can be the thing the film was for. [S017]
 
-WHERE THE MONEY STARTS
+DID HELLO KITTY REALLY LOSE BILLIONS?
 
-LIFETIME REVENUE BY ORIGINAL MEDIA — TOP ORIGIN FORMATS
+Not in the sense that sentence suggests. The 2019 file listed Hello Kitty at $80.0 billion. The November list says $33.5 billion. Mario went from $35.0 billion to $9.74 billion, and Gundam from $25.5 billion to $5.0 billion. Those rows did not move between 12 October and 7 November. The change is the long edit between the 2019 file and the current list, which this article has treated as revised sourcing rather than a reported collapse at Sanrio or Nintendo. [S001; S017]
 
-Stack every franchise by original media and the archive's ceiling is not evenly shared across formats. Novel-origin and game-origin properties — A Song of Ice and Fire / Game of Thrones (George R. R. Martin; Random House / WarnerMedia in the 2019 file) and Nintendo's game-led ecosystems — account for outsized lifetime totals relative to how casually "franchise" is equated with theatrical film. That is the complement to Pokémon's merchandise dominance: the seed format matters, but the extraction layer (licensing and retail) turns a hit into a compounding machine. Chart 5 measures the seed. Chart 1 measures the harvest.
+The 2019 baseline is TidyTuesday's 2 July file: 103 franchises, audited against Wikipedia revision 904026364, which really is 29 June 2019. A hand-mapped crosswalk has 103 rows, and 82 of them have a usable total in both vintages. These are not two identical baskets watched for seven years. [S001; S007]
 
-WHAT THIS FILE CANNOT TELL YOU
+Among paired rows, Pokémon rises from $90.9 billion to $130.7 billion, a difference of $39.8 billion. Naruto rises by about $13.9 billion. Call of Duty rises from $17.0 billion to $40.0 billion, a difference of $23.0 billion, and most of the new part of that story is below. Call these revenue growth only where the crosswalk says the scope matches. [S001; S017]
 
-This dataset reflects revenue estimates compiled from Wikipedia as of mid-2019 and carries several caveats. Revenue figures are sourced inconsistently — some represent lifetime totals through 2019, others may reflect different windows or methodologies. Franchises are only included if they surpassed an estimated $4 billion threshold, meaning smaller but culturally significant IP is absent. Ownership and creator fields reflect the state of the industry at the time of collection and do not account for subsequent acquisitions. Revenue categories were consolidated from over 60 raw Wikipedia subcategories into 8 groups, involving judgment calls documented in the original TidyTuesday cleaning script.
+The audit drew 40 franchises from the old file with seed 20261012. Thirty-nine matched the June 2019 page. Of those, 28 were within 10 percent of the Wikipedia headline, and 5 were within 1 percent of the itemised breakdown. The old spreadsheet was not an immaculate starting point either. We re-ran that check. The 28 of 39 is still the result. [S001; S007]
 
-The "Merchandise, Licensing & Retail" category is particularly broad and may include revenue streams that other analyses would track separately. The dominance of merchandise in Chart 1 is structurally real, but the exact percentage share depends on how individual Wikipedia editors categorized edge cases — which is not fully auditable from this dataset. All revenue figures should be treated as order-of-magnitude approximations rather than audited financial data.
+Box office's share of the list moves from 8.9 percent in the 2019 file to 18.1 percent now, and a lot of that is fuller itemisation plus a different basket, not a sudden change in what people buy. [S001; S017] The companion piece keeps the revision log: What changed when we fixed the data.
 
-Chart 2 divides total lifetime revenue by years of existence as of 2019. This is simple normalization, not a modeled annual revenue figure. A franchise with uneven revenue across its lifespan — a massive recent hit, or decades of dormancy — will produce a per-year figure that doesn't reflect any actual year's performance. The metric rewards consistent earners and penalizes concentrated bursts.
+WHAT MOVED SINCE OCTOBER?
 
-WHAT TO TAKE AWAY
+We re-parsed the list. Same 140 names. Two stated totals changed. Call of Duty went from $31 billion to $40 billion. Paw Patrol went from $15.4 billion to $18.4 billion. Everything else in the comparison, including Pokémon, held still. [S017]
 
-The media franchise landscape is sharply skewed toward a small number of IP that have mastered merchandise and sustained it across decades. Pokémon stands alone at the top not because of box office dominance but because it turned a video game into the world's most successful licensing machine while simultaneously running an anime, a card game, and a global trading ecosystem. The structural insight: the most valuable thing a franchise can do is give people something to own, collect, and trade — not just something to watch.
+Call of Duty's new row is a single video-game line of $40 billion. IGN reported on 26 October 2026 that the franchise had surpassed $40 billion in lifetime revenue, quoting a public note from Xbox. "Surpassed" is a threshold, and the list rounds it to $40 billion. It is not an itemised audit. [S094; S017]
 
-Disney's story is a different lesson. The company didn't just build great IP — it systematically acquired the companies that owned great IP and rolled them into a single consolidated empire. The $130 billion gap between Disney's apparent total and its true total is a number that only becomes visible when you collapse the ownership structure the raw data obscures. That gap, by itself, is larger than Nintendo's entire lifetime output. In IP, what you own is one thing. What your subsidiaries own is another. Disney understood the difference earlier and more completely than anyone.
+Paw Patrol's retail line is on firmer ground than the row's total. Deadline, 28 October 2026, says the franchise has $18 billion in lifetime retail, in a story about a fourth film. The Wikipedia row then adds a box-office line of $373.7 million and a home-media line of $39 million, both cited to The Numbers pages with access dates in 2024 and 2023, and prints $18.4 billion. The same Deadline story says one of the films grossed more than half a billion dollars worldwide, which does not sit neatly under that older box-office line. We keep the list's stated $18.4 billion in the sum, and we do not pretend the extra $0.4 billion was freshly checked. [S095; S017]
 
-The two insights describe the same underlying dynamic from different angles. Merchandise is how IP extracts value from audiences. Acquisition is how corporations extract value from IP. The companies that have mastered both — Disney chief among them — are not competing in the same game as everyone else. They operate at a different level of the stack.
+IS JAPAN THE FRANCHISE GIANT, OR IS THE UNITED STATES?
 
-DATA, METHODS & SOURCES
+On this list, US-origin franchises have the larger total. Japan-origin franchises have the higher merchandise share. That is narrower than declaring a winner between two national industries, which this dataset cannot do. [S017]
+
+Korea is $27.0 billion, Sweden $26.3 billion and Canada $23.1 billion. Canada's sum was $20.1 billion in October. The difference is Paw Patrol, which is coded to Canada, and it carries the caveat in the previous section. [S017]
+
+The 2019 file had the totals the other way around: Japan $681.5 billion, the United States $622.6 billion, and the merchandise shares the other way too, 49.1 percent for Japan and 64.6 percent for the United States. Countries did not swap business models while a CSV was downloading. The basket changed. [S001]
+
+An earlier draft of this article said 43 additional US-origin properties. The crosswalk does not support 43. It marks 45 US-origin rows on the November list that have no 2019 row, including Fortnite, Avatar, Madden NFL, Scooby-Doo and The Sims, and also separate rows for Thor, Iron Man, Captain America and Black Panther. Japanese additions are fewer, five rows, and several large Japanese estimates were revised down. English-language Wikipedia is not a census of world culture. [S001; S017]
+
+Region here means the creator's home market at launch, not where the money was spent. The rebuilt MCU row can be mostly theatrical while Pokémon, Anpanman and Hello Kitty pull Japan's merchandise share up. Some of those character rows sit beside the MCU row, so adding every hero's row to the MCU total would count the same affection twice. [S017]
+
+DOES IT MATTER WHETHER A FRANCHISE STARTS AS A GAME, A COMIC OR A FILM?
+
+Yes, a little. The debut format is not a complete business plan. The charts in this section use the 2019 file, and they say so, because we did not rebuild every historical cut on the November list. [S001]
+
+Wizarding World started with books and then became films and merchandise. Its existence does not mean any successful novel can support endless films. The later Fantastic Beasts films are a reason to ask about execution, not a reason to blame the original medium.
+
+HOW MUCH OF THE TABLE SITS WITH DISNEY?
+
+First decide what "Disney" includes. On the 2019 file, the owner string "The Walt Disney Company" sums to $259.0 billion. Roll in the subsidiaries the way our rule does and the same file sums to $426.2 billion. The standalone Nintendo label, which does not include the Pokémon Company string, is $49.0 billion. Leaving the rooms uncounted is a good way to lose the house. Combining them still needs a rule, especially when rights are shared. [S001]
+
+On the November 2026 list, the same style of first-listed parent puts Disney at $430.7 billion, 29.5 percent, with a range of 18.0–42.9. The top five are 58.3 percent, range 52.3–72.7. [S017]
+
+The 2019 file, with today's parent labels, put the top five at 62.8 percent in one of our checks and 46.4 percent before that roll-up. Consolidation changes the answer. None of this means a company earned every dollar historically spent on a character it now controls. Spider-Man's merchandise and film rights connect Disney/Marvel and Sony in different ways. Pokémon's row sits with The Pokémon Company; Nintendo, Game Freak and Creatures share the copyright. Adding $130.7 billion to Nintendo's old $49.0 billion label would mix dates and pretend the rights were simpler than they are. [S001; S017]
+
+For Warner, the November list's DC rows are Batman $29.9 billion, Superman $8.2 billion and the DC Extended Universe $8.0 billion. The sum is $46.1 billion. That sum is three rows on the 2026 list (S017), not a total from the 2019 file. An earlier version of this paragraph pointed the 2026 figure at franchise.csv, which is the 2019 file. That citation was wrong, and it is withdrawn. The 2019 DC sum, same three names, is $44.4 billion (S001). Wizarding World, $35.1 billion, is a separate Warner row. These groupings are not a clean, non-overlapping corporate account. [S017; S001]
+
+WHAT DID THOSE BILLIONS BUY?
+
+The filed prices we checked are Pixar in 2006 for $7.4 billion, Marvel in 2009 for about $4.0 billion, Lucasfilm in 2012 for $4.05 billion, and 21st Century Fox in a June 2018 exhibit for $71.3 billion in cash and stock. The exhibit's own headline uses those words. This article does not re-label that figure as enterprise value. [S009–S012]
+
+A purchase price is not lifetime consumer spending. Putting them near each other does not produce a return, and it does not tell us whether a deal was cheap. It starts a question about what the buyer thought it was buying.
+
+Disney's own reporting answers a different question, an annual one. For the year ended 27 September 2025, the Form 10-K segment table shows Entertainment revenue of $42.466 billion, Sports $17.672 billion and Experiences $36.156 billion. The same table's prior-year column is $41.186 billion, $17.619 billion and $34.151 billion, which is the FY2024 set this article used to cite. The earnings exhibit filed the same day repeats the FY2025 table. FY2026's 10-K was not on file as of 10 November 2026. The latest quarterly report then on file covered the quarter ended 27 June 2026, and we do not annualise it. [S093; S081]
+
+These are annual segment revenues, not Wikipedia lifetime totals. The FY2024 chart remains available under its old filename, labeled as FY2024, so the old address does not silently change year. [S093; S004]
+
+WHY DO THE BIGGEST FILMS LOOK FAMILIAR?
+
+The domestic coding, which counts titles rather than ticket dollars, runs from 60 percent franchise entries in the 2010 top ten to 80 percent in 2019 and 90 percent in 2024. We did not recode 2025's domestic chart in this pass, so the line stops at 2024 on purpose. [S005]
+
+Worldwide, we stopped using the Wikipedia film tables as the dollar source. The 10 November 2026 revision of "2026 in film" prints The Super Mario Galaxy Movie as $1,013,2447,550, which is not a readable amount. Box Office Mojo, read the same day, has the film at $1.013 billion. The Numbers has $1.013 billion as well. The Wikipedia cell is flagged and unused. [S005; S019]
+
+For 2025, the trackers do not agree on Ne Zha 2. Wikipedia's 4 November revision still says $2.318 billion. Box Office Mojo says $2.271 billion. The Numbers says $2.004 billion. We do not average them. The count is sturdier than the dollars: on both Box Office Mojo and The Numbers, nine of the ten biggest 2025 films fit this article's coding, and F1 is the one that does not. The share of that top ten is 94.3 percent on Box Office Mojo and 94.2 percent on The Numbers. The October article's 94.4 percent used the Wikipedia table. It is retired. [S005; S019; S091]
+
+For 2026, read 10 November, both trackers have the same ten films in the same order and the same six-of-ten franchise count. The share of top-ten gross is 61.9 percent on each. That is not 61.9 percent of all worldwide box office. The denominator is ten films, and several of them are still in theatres. "Original" here means not coded as a sequel, prequel, spin-off, remake or shared-universe installment. The Odyssey, Michael, Project Hail Mary and Obsession are the four originals under that rule. It does not mean the screenplay had no earlier source. [S005; S019]
+
+Recognition may help explain why studios return to familiar titles. These rankings do not measure marketing savings, and they do not prove why a film succeeded.
+
+CAN A FAMILIAR NAME STILL MISS?
+
+Owning a recognisable character does not make the next release work. The case list points at Universal shelving the Dark Universe after The Mummy (2017), the Fantastic Beasts films falling short of Harry Potter's peaks, DC's changes before the 2023 DC Studios reset, the reception of Ghostbusters (2016), and the changing fortunes of Angry Birds. Links are in franchise_failures.csv. [S013; S015]
+
+Those cases are invitations to look, not a single cause called franchise fatigue, and not a moral about discipline. A lifetime total does not say whether the latest release made money. The spreadsheet remembers past success. Audiences are under no obligation to renew it.
+
+WHAT THIS MEANS IF YOU OWN OR MARKET AN IP
+
+This section is for brand, licensing and marketing teams. It turns the figures above into questions to ask and cautions to keep. It uses only numbers already in this report, and it is not advice on any single deal. [S017]
+
+OWNERSHIP IS CONCENTRATED, SO CHECK WHO SITS BEHIND A PROPERTY
+
+On the November list, Disney is the first-listed parent for $430.7 billion, 29.5 percent of the list (range 18.0–42.9). The top five parents are 58.3 percent (range 52.3–72.7). [S017]
+
+Part of that concentration was bought. The filed prices we checked are $7.4 billion for Pixar in 2006, about $4.0 billion for Marvel in 2009, $4.05 billion for Lucasfilm in 2012, and $71.3 billion in cash and stock for 21st Century Fox in a 2018 exhibit. [S009–S012] On the 2019 file, the owner name "The Walt Disney Company" alone summed to $259.0 billion. With the subsidiaries rolled in, the same file sums to $426.2 billion. [S001] A name on a character can understate who controls it.
+
+Check the rights holder for the specific property, not the studio name. Rights are sometimes shared. Spider-Man's film and merchandise rights connect Disney/Marvel and Sony in different ways, and Pokémon's copyright is shared by Nintendo, Game Freak and Creatures. [S017]
+
+Ask how the holder's other properties overlap your category. Five parents sit behind 58.3 percent of the list, so a licensor with a large portfolio is a normal case, not an exception. [S017]
+
+Treat an acquisition as a change in who you deal with. It is not evidence that the property will sell the way it did before. A purchase price is not lifetime consumer spending, and buying a company does not retroactively earn the money audiences once spent on its characters. [S009–S012]
+
+Quote the counting rule with the share. On the 2019 file with today's parent labels, the top five were 62.8 percent in one of our checks and 46.4 percent before the roll-up. Consolidation changes the answer. [S001]
+
+MERCHANDISE IS THE MAIN ENGINE, BUT IT WORKS DIFFERENTLY IN DIFFERENT PLACES
+
+Merchandise, licensing and retail are $812.4 billion, 55.6 percent of the list (range 43.2–65.8). Video games are 18.3 percent and box office 18.1 percent, and those two ranges overlap. [S017] Pokémon's $130.7 billion row is larger than Star Wars and the Marvel Cinematic Universe added together, $84.2 billion. [S017]
+
+By origin, the 30 Japan-origin franchises total $394.5 billion with a merchandise share of 71.4 percent. The 88 US-origin franchises total $825.5 billion with 51.5 percent. The nine UK-origin franchises are $136.1 billion at 53.9 percent. [S017] We read the gap as two merchandising styles, not two national industries. Pokémon, Anpanman and Hello Kitty pull Japan's share up, while the MCU row can be mostly theatrical. [S017] Steinberg describes Japanese animation and character goods growing up together, and Japan's production committees can put publishers, broadcasters and toy makers into one rights arrangement. [Steinberg, 2012; Hernández Hernández, 2018] Disney's own filing shows a different route: for the year ended 27 September 2025, Experiences, which includes parks, resorts, cruises and merchandise, was $36.2 billion beside Entertainment at $42.5 billion. [S093]
+
+Decide which style your property is closer to before you benchmark. A character-led property, where the goods are much of the product, should not be measured against a story-led property using one 55.6 percent figure. [S017]
+
+Do not credit merchandise to a single campaign or film. The list counts toys, games and tickets separately, but they are not independent of each other. A toy can be the thing the film was for. [S017]
+
+Do not turn 71.4 percent and 51.5 percent into national traits. Region means the creator's home market at launch. The basket also changed: the crosswalk marks 45 US-origin rows on the November list that have no 2019 row. [S017; S001]
+
+WHAT THE DATA CANNOT TELL YOU
+
+It is not profit. The figures are nominal estimates of consumer spending, compiled by Wikipedia's editors. They are not profit, not a company valuation, and not cash paid to a rights holder. [S017]
+
+The ranges are wide. Disney's share runs 18.0–42.9 and the top five's 52.3–72.7. The ranges show how much a share depends on which rows are on the list. They are not sampling error, and they do not certify the underlying estimates. [S017]
+
+The estimates move. Between 12 October and 7 November, Call of Duty went from $31 billion to $40 billion and Paw Patrol from $15.4 billion to $18.4 billion, which is all of the list's $12.0 billion rise. [S017] Hello Kitty's row went from $80.0 billion in the 2019 file to $33.5 billion, a revised row, not a reported collapse at Sanrio. [S001; S017]
+
+Small groups swing. Canada's two franchises sum to $23.1 billion with a 77.9 percent merchandise share, and Sweden's three sum to $26.3 billion with 12.8 percent. One row changes either figure. [S017]
+
+A lifetime total says nothing about the next release. The list has no royalty rates, licence terms, margins or campaign results, and a famous name can still miss. [S013; S015]
+
+Before you quote a number from this report, give its vintage (the Wikipedia revision and the date we read it), give the range, say that it is an estimate of consumer spending, and check the changelog for a later revision. [S017]
+
+WHAT TO KEEP
+
+Counting only movies leaves out most of this list. Merchandise, licensing and retail are 55.6 percent of the recorded lifetime spending, inside a range wide enough to respect. Pokémon's $130.7 billion is larger than Star Wars and the MCU combined. Five assigned parents sit behind 58.3 percent of the table, on a rule that is not a title search. [S017]
+
+Every useful comparison needs a date, a denominator and a description of what the number measures. Consumer spending is not profit. A changed estimate is not a collapsing business. A national label is not a national industry. Buying a company does not retroactively earn the money audiences once spent on its characters.
+
+The characters may travel between games, films, shelves and parks. The accounting labels should travel with them.
+
+MORE CHARTS
+
+Twenty-four candidates were drawn in the same theme and scored for a single point, a surprise, whether a phone can read them, and whether the data can hold the claim. The five above led. Eight more are below: swipe or use the buttons. Nothing moves on its own. Scores and the contact sheet: scores.csv, contact sheet.
+
+The other candidates, the restyled body charts, and the ledger CSVs are in /data/articles/franchise/. The candidate folder is charts/candidates/.

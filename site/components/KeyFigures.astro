@@ -10,9 +10,9 @@ const tones = ["blue", "pink", "cream"];
 <section class="keyfigs" aria-label="Key figures from this report">
   <ul class="keyfigs__grid">
     {facts.map((fact, i) => (
-      <li class={`keyfig keyfig--${tones[i % tones.length]}${fact.value.length > 9 ? " keyfig--wide" : ""}`}>
+      <li class={`keyfig keyfig--${tones[i % tones.length]}`}>
         <strong class="keyfig__value" data-fit data-fit-max="0.2" data-fit-min="16" data-fit-track="0">{fact.value}</strong>
-        <span class="keyfig__label">{fact.label}</span>
+        <span class="keyfig__label" set:html={fact.label} />
       </li>
     ))}
   </ul>

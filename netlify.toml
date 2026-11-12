@@ -24,6 +24,30 @@
     Content-Type = "text/plain; charset=utf-8"
 
 [[headers]]
+  for = "/exports/*.txt"
+  [headers.values]
+    Content-Disposition = "inline"
+    Content-Type = "text/plain; charset=utf-8"
+
+[[headers]]
+  for = "/exports/*/*.txt"
+  [headers.values]
+    Content-Disposition = "inline"
+    Content-Type = "text/plain; charset=utf-8"
+
+[[headers]]
+  for = "/data/*/*/*.txt"
+  [headers.values]
+    Content-Disposition = "inline"
+    Content-Type = "text/plain; charset=utf-8"
+
+[[headers]]
+  for = "/data/*/*/*.md"
+  [headers.values]
+    Content-Disposition = "inline"
+    Content-Type = "text/plain; charset=utf-8"
+
+[[headers]]
   for = "/rss.xml"
   [headers.values]
     Cache-Control = "public, max-age=3600"

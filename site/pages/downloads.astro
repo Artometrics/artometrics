@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import downloads from "@/src/generated/downloads.json";
 import { getBlogPost } from "@/lib/content";
+import { fileSize, formatKind } from "../lib/report";
 
 const packs = Object.values(downloads).sort((a, b) => a.slug.localeCompare(b.slug));
 ---
@@ -10,23 +11,32 @@ const packs = Object.values(downloads).sort((a, b) => a.slug.localeCompare(b.slu
   <div class="wrap page">
     <p class="kicker">Exports</p>
     <h1>Downloads</h1>
-    <p class="lede">Files that already exist for each report. Empty cells mean that export has not been packed yet.</p>
+    <p class="lede">Files that already exist for each report. Each one opens in a new tab, and none starts a download on its own.</p>
     <div class="stack">
       {packs.map((pack) => {
         const post = getBlogPost(pack.slug);
         const files = [
-          pack.dataset ? ["CSV", pack.dataset] : null,
-          pack.pdf ? ["PDF", pack.pdf] : null,
-          pack.epub ? ["EPUB", pack.epub] : null,
-          pack.audio ? ["Audio", pack.audio] : null,
-          pack.transcript ? ["Transcript", pack.transcript] : null,
-          pack.html ? ["HTML", pack.html] : null,
-        ].filter(Boolean) as [string, string][];
+          pack.dataset ? { label: "Dataset", href: pack.dataset, kind: formatKind(pack.dataset), size: fileSize(pack.dataset) } : null,
+          pack.pdf ? { label: "PDF", href: pack.pdf, kind: "PDF", size: fileSize(pack.pdf) } : null,
+          pack.epub ? { label: "EPUB", href: pack.epub, kind: "EPUB", size: fileSize(pack.epub) } : null,
+          pack.audio ? { label: "Audio", href: pack.audio, kind: formatKind(pack.audio), size: fileSize(pack.audio) } : null,
+          pack.transcript ? { label: "Transcript", href: `/transcripts/${pack.slug}`, kind: "Text", size: fileSize(pack.transcript) } : null,
+          pack.html ? { label: "HTML", href: pack.html, kind: "HTML", size: fileSize(pack.html) } : null,
+        ].filter(Boolean) as { label: string; href: string; kind: string; size: string | null }[];
         return (
           <article class="card">
             <h2><a href={`/${pack.slug}`}>{post?.title || pack.slug}</a></h2>
             {files.length ? (
-              <p class="downloads">{files.map(([label, href]) => <a href={href}>{label}</a>)}</p>
+              <ul class="file-grid">
+                {files.map((file) => (
+                  <li>
+                    <a class="file-tile" href={file.href} target="_blank" rel="noopener">
+                      <span class="file-tile__label">{file.label}</span>
+                      <span class="file-tile__meta">{[file.kind, file.size].filter(Boolean).join(" · ")} · new tab</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             ) : <p class="meta">No packed files yet</p>}
           </article>
         );
