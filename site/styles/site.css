@@ -179,6 +179,8 @@ button,
 }
 .wordmark {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   min-width: 0;
   line-height: 0;
@@ -1830,3 +1832,21 @@ html[data-theme="light"] .desk-lead__copy {
 html[data-theme="light"] .desk-lead__dek,
 html[data-theme="light"] .desk-lead h1 { color: #14110e; }
 html[data-theme="light"] .story-tile span { color: #f3ead7; }
+
+/* Tagline under the logo and in the footer. */
+.wordmark__tag,
+.site-footer__tagline {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--muted);
+}
+.wordmark__tag { margin-top: -2px; padding-bottom: 2px; }
+.site-footer__tagline { margin: 0 0 10px; }
+@media (max-width: 340px) {
+  .wordmark__tag { display: none; }
+}

@@ -4,6 +4,7 @@ import { formatHeaderDate } from "@/lib/headerDateline";
 import facts from "@/lib/nav-fun-facts.json";
 import { LOGO_REVIEW, type LogoReviewMark, WORDMARKS } from "@/lib/wordmarks";
 import { coverSrc } from "@/lib/article-assets.mjs";
+import { TAGLINE } from "@/lib/tagline.mjs";
 import { jsonForScript } from "../lib/static-charts";
 
 interface Props {
@@ -74,6 +75,7 @@ const singles = [WORDMARKS.find((mark) => mark.id === "halftone")!, ...WORDMARKS
           fetchpriority="high"
         />
       </span>
+      <span class="wordmark__tag">{TAGLINE}</span>
     </a>
     <div class="mast-side mast-side--end">
       <button

@@ -1,7 +1,7 @@
 {
   "name": "Artometrics",
   "short_name": "Artometrics",
-  "description": "Data-science magazine for the creative industries — arts, sports, science, humanities, civics, culture.",
+  "description": "culture, quantified. Data reports on arts, sports, science, humanities, civics, and culture.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
