@@ -129,7 +129,7 @@ const toc = [
 ];
 const textFreeBanner = `/images/content/articles/${post.slug}/banner-art.webp`;
 /** Throne art with the title baked in — full 16:9, no crop, no HTML overlay. */
-const bakedBanner = ["franchise", "anime", "coffee", "wine", "cetaceans"].includes(post.slug);
+const bakedBanner = ["anime", "coffee", "wine", "cetaceans"].includes(post.slug);
 const bannerFile = bakedBanner
   ? articleBanner(post.slug)?.src || image
   : existsSync(new URL(`../../public${textFreeBanner}`, import.meta.url))
@@ -137,6 +137,28 @@ const bannerFile = bakedBanner
     : articleBanner(post.slug)?.src || image;
 const updatedLabel = meta?.updated ? formatLongDate(meta.updated) : "";
 const publishedLabel = post.pubDate ? formatDate(post.pubDate) : "";
+const isFranchiseEg = post.slug === "franchise";
+const egUpdatedLabel = meta?.updated
+  ? new Date(`${String(meta.updated).slice(0, 10)}T12:00:00Z`).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      timeZone: "UTC",
+    })
+  : "";
+/** Swiss grid: four named ledger figures, then remaining key points. Numbers unchanged. */
+const swissFacts: { value: string; label: string }[] = isFranchiseEg
+  ? [
+      { value: "55.6%", label: escapeHtml("merchandise share") },
+      { value: "$130.7B", label: escapeHtml("Pokémon") },
+      { value: "$1,460.1B", label: escapeHtml("total lifetime estimates") },
+      { value: "140", label: escapeHtml("franchises") },
+      ...factsLinked
+        .filter((fact) => !["55.6%", "$130.7B", "$1,460.1B"].includes(fact.value))
+        .slice(0, 2)
+        .map((fact) => ({ value: fact.value, label: fact.label })),
+    ]
+  : [];
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -174,65 +196,95 @@ const jsonLd = [
   jsonLd={jsonLd}
   footer="none"
   bodyClass="dash"
-  robots={bakedBanner ? "noindex, nofollow" : "index, follow"}
+  robots={(bakedBanner || isFranchiseEg) ? "noindex, nofollow" : "index, follow"}
 >
   <link slot="head" rel="stylesheet" href="/css/artometrics-article.css" />
   <link slot="head" rel="stylesheet" href="/css/astro-contrast.css" />
   <link slot="head" rel="stylesheet" href="/css/system.css" />
   <link slot="head" rel="stylesheet" href="/css/report-system.css" />
+  {isFranchiseEg ? <link slot="head" rel="stylesheet" href="/css/franchise-eg.css" /> : null}
 
-  <article class:list={["preview-frame", "preview-report", "report-page", bakedBanner && "report-page--franchise"]}>
+  <article class:list={["preview-frame", "preview-report", "report-page", bakedBanner && "report-page--franchise", isFranchiseEg && "report-page--eg"]}>
+    {isFranchiseEg ? <div class="eg-topline" aria-hidden="true"></div> : null}
     {printCover ? (
       <figure class="print-cover" aria-hidden="true">
         <img src={printCover} alt="" width="900" height="1200" loading="lazy" />
       </figure>
     ) : null}
-    <header class:list={["report-banner", bakedBanner && "report-banner--baked"]}>
-      <img
-        class="report-banner__art"
-        src={bannerFile}
-        alt={bakedBanner ? post.title : ""}
-        width={bakedBanner ? 1920 : 1600}
-        height={bakedBanner ? 1080 : 900}
-        fetchpriority="high"
-        decoding="async"
-      />
-      <div class="report-banner__copy">
-        <p class="preview-crumb report-banner__crumb">
-          <a href="/#reports">Reports</a>
-          <span aria-hidden="true"> · </span>
-          <a href={`/topics/${domain}`}>{DOMAIN_META[domain].title}</a>
-          {sub && SUBDOMAIN_META[sub] ? (
+    {isFranchiseEg ? (
+      <header class="eg-header">
+        <p class="eg-kicker">{(sub && SUBDOMAIN_META[sub] ? SUBDOMAIN_META[sub].title : label) || "Film"}</p>
+        <h1 class="eg-headline">{headlineRest}</h1>
+        <p class="eg-dek">{post.description}</p>
+        <p class="eg-byline">
+          <span>By {author}</span>
+          {egUpdatedLabel ? (
             <>
               <span aria-hidden="true"> · </span>
-              <a href={`/topics/${domain}?sub=${sub}`}>{SUBDOMAIN_META[sub].title}</a>
+              <strong>Updated {egUpdatedLabel}</strong>
             </>
           ) : null}
+          <span aria-hidden="true"> · </span>
+          <span>{minutes} min read</span>
         </p>
-        <h1 class:list={[bakedBanner && "sr-only"]} data-contrast-skip={bakedBanner ? "" : undefined}>
-          <span class="report-kicker">{kicker}:</span>
-          {" "}{headlineRest}
-        </h1>
+      </header>
+    ) : (
+      <header class:list={["report-banner", bakedBanner && "report-banner--baked"]}>
+        <img
+          class="report-banner__art"
+          src={bannerFile}
+          alt={bakedBanner ? post.title : ""}
+          width={bakedBanner ? 1920 : 1600}
+          height={bakedBanner ? 1080 : 900}
+          fetchpriority="high"
+          decoding="async"
+        />
+        <div class="report-banner__copy">
+          <p class="preview-crumb report-banner__crumb">
+            <a href="/#reports">Reports</a>
+            <span aria-hidden="true"> · </span>
+            <a href={`/topics/${domain}`}>{DOMAIN_META[domain].title}</a>
+            {sub && SUBDOMAIN_META[sub] ? (
+              <>
+                <span aria-hidden="true"> · </span>
+                <a href={`/topics/${domain}?sub=${sub}`}>{SUBDOMAIN_META[sub].title}</a>
+              </>
+            ) : null}
+          </p>
+          <h1 class:list={[bakedBanner && "sr-only"]} data-contrast-skip={bakedBanner ? "" : undefined}>
+            <span class="report-kicker">{kicker}:</span>
+            {" "}{headlineRest}
+          </h1>
+        </div>
+      </header>
+    )}
+
+    {!isFranchiseEg ? <p class="preview-dek report-dek">{post.description}</p> : null}
+
+    {!isFranchiseEg ? (
+      <div class="report-updated">
+        <p class="report-updated__line">
+          {updatedLabel ? <strong>Updated {updatedLabel}</strong> : null}
+          {updatedLabel && publishedLabel ? <span aria-hidden="true"> · </span> : null}
+          {publishedLabel ? <span>Published {publishedLabel}</span> : null}
+          <span aria-hidden="true"> · </span><span>By {author}</span>
+          <span aria-hidden="true"> · </span><span>{minutes} min read</span>
+        </p>
+        {meta?.whatChanged ? (
+          <p class="report-updated__note">
+            <strong>What changed:</strong> {meta.whatChanged}
+            {meta.changelog ? <> <a href={meta.changelog.href}>Read the changelog</a>.</> : null}
+          </p>
+        ) : null}
       </div>
-    </header>
-
-    <p class="preview-dek report-dek">{post.description}</p>
-
-    <div class="report-updated">
-      <p class="report-updated__line">
-        {updatedLabel ? <strong>Updated {updatedLabel}</strong> : null}
-        {updatedLabel && publishedLabel ? <span aria-hidden="true"> · </span> : null}
-        {publishedLabel ? <span>Published {publishedLabel}</span> : null}
-        <span aria-hidden="true"> · </span><span>By {author}</span>
-        <span aria-hidden="true"> · </span><span>{minutes} min read</span>
-      </p>
-      {meta?.whatChanged ? (
+    ) : meta?.whatChanged ? (
+      <div class="report-updated">
         <p class="report-updated__note">
           <strong>What changed:</strong> {meta.whatChanged}
           {meta.changelog ? <> <a href={meta.changelog.href}>Read the changelog</a>.</> : null}
         </p>
-      ) : null}
-    </div>
+      </div>
+    ) : null}
 
     {meta?.status ? (
       <aside class="report-status" data-state={meta.status.state} aria-label="Which version is current">
@@ -248,7 +300,43 @@ const jsonLd = [
       </aside>
     ) : null}
 
-    {factsLinked.length ? <KeyFigures facts={factsLinked} source={factSource} /> : null}
+    {isFranchiseEg && swissFacts.length ? (
+      <section class="eg-swiss" aria-label="Key figures from this report">
+        <ul class="eg-swiss__grid">
+          {swissFacts.map((fact) => (
+            <li class="eg-swiss__item">
+              <strong class="eg-swiss__value" data-fit data-fit-max="0.2" data-fit-min="16" data-fit-track="0">{fact.value}</strong>
+              <span class="eg-swiss__label" set:html={fact.label} />
+            </li>
+          ))}
+        </ul>
+        {factSource ? <p class="eg-swiss__source">Source: {factSource}</p> : null}
+      </section>
+    ) : null}
+    {isFranchiseEg ? <script is:inline src="/js/fit-text.js"></script> : null}
+    {isFranchiseEg ? (
+      <figure class="eg-engraving">
+        <div class="eg-engraving__frame">
+          <img
+            class="eg-engraving__img"
+            src="/images/content/articles/franchise/hero.png"
+            alt=""
+            width="1600"
+            height="900"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+        <figcaption class="eg-engraving__caption">Artometrics editorial illustration for the Franchise report. © Artometrics.</figcaption>
+      </figure>
+    ) : null}
+    {isFranchiseEg ? (
+      <blockquote class="eg-pull">
+        <p class="eg-pull__text">Pokémon, at $130.7 billion, is larger than Star Wars and the MCU combined.</p>
+      </blockquote>
+    ) : null}
+
+    {!isFranchiseEg && factsLinked.length ? <KeyFigures facts={factsLinked} source={factSource} /> : null}
 
     {toc.length > 2 ? (
       <details class="on-page on-page--inline">
@@ -361,7 +449,7 @@ const jsonLd = [
         ))}
       </section>
     ) : null}
-    {bakedBanner ? (
+    {bakedBanner || isFranchiseEg ? (
       <figure class="franchise-cover">
         {pack?.pdf ? (
           <a href={pack.pdf} target="_blank" rel="noopener" aria-label={`Open the ${kicker} PDF in a new tab`}>
@@ -385,6 +473,14 @@ const jsonLd = [
           />
         )}
       </figure>
+    ) : null}
+    {isFranchiseEg ? (
+      <footer class="eg-endmark">
+        <a class="eg-endmark__mark" href="/">
+          <img src="/images/brand/svg/wordmark-black.svg" alt="Artometrics" width="160" height="24" />
+        </a>
+        <a class="eg-endmark__url" href="https://artometrics.com/franchise">artometrics.com/franchise</a>
+      </footer>
     ) : null}
   </article>
 

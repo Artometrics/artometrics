@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Theme A (Economist print) charts for Franchise.
 
-Primary theme: cream paper, ink, one red. B and C live in scripts/r/artometrics_theme.R
+Primary theme: cream paper, ink, pink lead + electric blue comparison
+(Artometrics brand tokens; no red). B and C live in scripts/r/artometrics_theme.R
 and lib/charts/economistThemes.ts. No note in the repo marks them primary.
 
 Writes the 16 live chart ids, 24 scored candidates, and a contact sheet.
@@ -120,7 +121,7 @@ def save_hbar(stem: str, labels: list[str], values: list[float], title: str, sub
         with plt.rc_context(mode_rc(mode)):
             fig, ax = plt.subplots(figsize=(10.4, fig_h))
             y = list(range(n))
-            ax.barh(y, values, color=[tone(c, mode) for c in bar_colors], height=0.62)
+            ax.barh(y, values, color=[tone(c, mode) for c in bar_colors], height=0.38)
             ax.set_yticks(y, labels)
             ax.invert_yaxis()
             ax.set_xlim(0, ceiling * 1.32)

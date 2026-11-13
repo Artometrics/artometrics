@@ -4,7 +4,7 @@
       "x": ["After Fox (Disney consolidated)", "Before Fox deal (Disney split)"],
       "y": [46.4, 46.4],
       "marker": {
-        "color": "#E60000",
+        "color": "#ff3d8a",
         "line": {
           "color": "rgba(31,119,180,1)"
         }
@@ -53,9 +53,9 @@
           "size": 11,
           "color": "#FFFFFF"
         },
-        "bgcolor": "#E60000",
+        "bgcolor": "#ff3d8a",
         "borderwidth": 3,
-        "bordercolor": "#E60000",
+        "bordercolor": "#ff3d8a",
         "borderpad": 6
       },
       {

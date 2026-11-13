@@ -299,8 +299,8 @@ ART_ECON_PAPER <- "#f7f4ee"
 ART_ECON_INK <- "#14110e"
 ART_ECON_MUTED <- "#5c5148"
 ART_ECON_GRID <- "#e6dfd4"
-ART_ECON_ACCENT <- "#E60000"
-ART_ECON_BLUE <- "#1f4b99"
+ART_ECON_ACCENT <- "#ff3d8a"
+ART_ECON_BLUE <- "#0047ff"
 
 theme_economist_a <- function(base_size = 12) {
   theme_minimal(base_size = base_size, base_family = "Helvetica") +
