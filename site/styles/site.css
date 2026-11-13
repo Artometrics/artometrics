@@ -1562,6 +1562,20 @@ html:has(.desk-home) { overflow-x: clip; }
   object-fit: cover;
   opacity: 0.42;
 }
+/* Franchise throne slide: full 16:9 art with baked-in type — no crop, no fade. */
+.desk-lead__hit--baked {
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+}
+.desk-lead__hit--baked img {
+  object-fit: contain;
+  object-position: center;
+  opacity: 1;
+  background: #0b090d;
+}
+@media (min-width: 800px) {
+  .desk-lead__hit--baked { min-height: 0; }
+}
 .desk-lead__copy {
   position: relative;
   z-index: 1;

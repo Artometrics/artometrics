@@ -233,26 +233,26 @@ for (const viewport of VIEWPORTS) {
       check(overflow <= 0, `${tag} franchise: no sideways scroll (${overflow}px)`);
 
       const top = await page.evaluate(() => {
+        const header = document.querySelector(".report-banner");
         const banner = document.querySelector(".report-banner__art");
         const h1 = document.querySelector(".preview-report h1");
-        const kicker = h1.querySelector(".report-kicker");
-        const range = document.createRange();
-        const headline = [...h1.childNodes].find((node) => node.nodeType === 3 && node.textContent.trim());
-        range.selectNodeContents(headline);
-        const style = getComputedStyle(kicker);
+        const ratio = banner ? banner.clientWidth / Math.max(1, banner.clientHeight) : 0;
+        const natural = banner ? banner.naturalWidth / Math.max(1, banner.naturalHeight) : 0;
         return {
-          bannerTop: banner?.getBoundingClientRect().top ?? null,
-          bannerBottom: banner?.getBoundingClientRect().bottom ?? null,
-          h1Bottom: h1.getBoundingClientRect().bottom,
+          baked: header?.classList.contains("report-banner--baked") ?? false,
           bannerLoaded: banner ? banner.naturalWidth > 0 : false,
-          h1Top: h1.getBoundingClientRect().top,
-          kickerDisplay: style.display,
-          gap: range.getBoundingClientRect().top - kicker.getBoundingClientRect().bottom,
+          objectFit: banner ? getComputedStyle(banner).objectFit : "",
+          ratio,
+          natural,
+          h1SrOnly: h1?.classList.contains("sr-only") ?? false,
+          h1Text: h1?.textContent.replace(/\s+/g, " ").trim() || "",
         };
       });
       check(top.bannerLoaded, `${tag} article: banner image loads`);
-      check(top.bannerTop !== null && top.bannerTop <= top.h1Top && top.h1Bottom <= top.bannerBottom, `${tag} article: the title sits in front of the banner art`);
-      check(top.kickerDisplay === "block" && top.gap >= 6, `${tag} article: space between the kicker and the headline (${top.gap.toFixed(1)}px)`);
+      check(top.baked, `${tag} article: Franchise uses the baked-title banner`);
+      check(top.objectFit === "contain", `${tag} article: banner shows the whole 16:9 frame (${top.objectFit})`);
+      check(Math.abs(top.ratio - top.natural) < 0.05, `${tag} article: banner box matches the art ratio (${top.ratio.toFixed(3)} vs ${top.natural.toFixed(3)})`);
+      check(top.h1SrOnly && /FRANCHISE/i.test(top.h1Text), `${tag} article: accessible title stays in the header without overlaying the art`);
 
       const figs = await page.evaluate(() => {
         const boxes = [...document.querySelectorAll(".keyfig")];

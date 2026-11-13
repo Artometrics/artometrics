@@ -21,7 +21,13 @@ function bannerSrc(post: BlogPost) {
 }
 
 const slides = posts
-  .map((post) => ({ post, src: bannerSrc(post), lines: magazineLines(post.title) }))
+  .map((post) => ({
+    post,
+    src: bannerSrc(post),
+    lines: magazineLines(post.title),
+    /** Franchise throne art already carries the title — do not overlay HTML type. */
+    baked: post.slug === "franchise",
+  }))
   .filter((slide) => slide.src);
 ---
 
@@ -34,25 +40,35 @@ const slides = posts
     tabindex={slides.length > 1 ? 0 : undefined}
   >
     <div class="banner-carousel__viewport">
-      {slides.map(({ post, src, lines }, index) => {
+      {slides.map(({ post, src, lines, baked }, index) => {
         const fit = !lines.word.includes(" ");
         const Tag = pageHeading && index === 0 ? "h1" : "p";
         return (
           <article
-            class="desk-lead banner-carousel__slide"
+            class:list={["desk-lead", "banner-carousel__slide", baked && "banner-carousel__slide--baked"]}
             data-banner-slide
             hidden={index > 0}
             aria-roledescription="slide"
             aria-label={`${index + 1} of ${slides.length}`}
           >
-            <a class="desk-lead__hit" href={hrefFor(post)} draggable="false" data-contrast-skip>
-              <img src={src} alt="" width="1600" height="900" draggable="false" />
-              <div class="desk-lead__copy">
-                <Tag class:list={["banner-carousel__word", { "banner-carousel__word--sentence": !fit }]} data-fit-box={fit ? "" : undefined}>
-                  <span class="banner-carousel__kicker" data-fit={fit ? "" : undefined} data-fit-max="0.3">{lines.word}</span>
-                  {lines.sub ? <span class="banner-carousel__sub">{lines.sub}</span> : null}
-                </Tag>
-              </div>
+            <a
+              class:list={["desk-lead__hit", baked && "desk-lead__hit--baked"]}
+              href={hrefFor(post)}
+              draggable="false"
+              data-contrast-skip
+              aria-label={baked ? post.title : undefined}
+            >
+              <img src={src} alt={baked ? post.title : ""} width="1600" height="900" draggable="false" />
+              {baked ? (
+                <Tag class="sr-only">{post.title}</Tag>
+              ) : (
+                <div class="desk-lead__copy">
+                  <Tag class:list={["banner-carousel__word", { "banner-carousel__word--sentence": !fit }]} data-fit-box={fit ? "" : undefined}>
+                    <span class="banner-carousel__kicker" data-fit={fit ? "" : undefined} data-fit-max="0.3">{lines.word}</span>
+                    {lines.sub ? <span class="banner-carousel__sub">{lines.sub}</span> : null}
+                  </Tag>
+                </div>
+              )}
             </a>
           </article>
         );
