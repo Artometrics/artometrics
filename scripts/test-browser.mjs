@@ -382,6 +382,48 @@ for (const viewport of VIEWPORTS) {
       check(contrast.failures.length === 0, `${tag} franchise contrast: ${contrast.failures.length} failures ${JSON.stringify(contrast.failures.slice(0, 3))}`);
       await context.close();
     }
+
+    for (const article of [
+      { slug: "anime", word: /ANIME/i },
+      { slug: "coffee", word: /COFFEE/i },
+      { slug: "wine", word: /WINE/i },
+      { slug: "cetaceans", word: /CETACEANS/i },
+    ]) {
+      const { context, page } = await open(viewport, theme, `/${article.slug}`);
+      await loadLazyImages(page);
+      const top = await page.evaluate(() => {
+        const header = document.querySelector(".report-banner");
+        const banner = document.querySelector(".report-banner__art");
+        const h1 = document.querySelector(".preview-report h1");
+        const cover = document.querySelector(".franchise-cover img");
+        const robots = document.querySelector('meta[name="robots"]')?.content || "";
+        const og = document.querySelector('meta[property="og:image"]')?.content || "";
+        const ratio = banner ? banner.clientWidth / Math.max(1, banner.clientHeight) : 0;
+        const natural = banner ? banner.naturalWidth / Math.max(1, banner.naturalHeight) : 0;
+        return {
+          baked: header?.classList.contains("report-banner--baked") ?? false,
+          bannerLoaded: banner ? banner.naturalWidth > 0 : false,
+          objectFit: banner ? getComputedStyle(banner).objectFit : "",
+          ratio,
+          natural,
+          h1SrOnly: h1?.classList.contains("sr-only") ?? false,
+          h1Text: h1?.textContent.replace(/\s+/g, " ").trim() || "",
+          coverLoaded: cover ? cover.naturalWidth > 0 : false,
+          coverSrc: cover?.getAttribute("src") || "",
+          robots,
+          og,
+        };
+      });
+      check(top.bannerLoaded, `${tag} ${article.slug}: banner image loads`);
+      check(top.baked, `${tag} ${article.slug}: uses the baked-title banner`);
+      check(top.objectFit === "contain", `${tag} ${article.slug}: banner shows the whole 16:9 frame (${top.objectFit})`);
+      check(Math.abs(top.ratio - top.natural) < 0.05, `${tag} ${article.slug}: banner box matches the art ratio (${top.ratio.toFixed(3)} vs ${top.natural.toFixed(3)})`);
+      check(top.h1SrOnly && article.word.test(top.h1Text), `${tag} ${article.slug}: accessible title stays in the header without overlaying the art`);
+      check(top.coverLoaded && top.coverSrc.endsWith(`/${article.slug}/cover-title.webp`), `${tag} ${article.slug}: magazine cover still loads`);
+      check(/noindex/.test(top.robots), `${tag} ${article.slug}: stays noindex`);
+      check(top.og.includes(`/images/content/articles/${article.slug}/banner.png`), `${tag} ${article.slug}: og:image is the wide banner`);
+      await context.close();
+    }
   }
 }
 

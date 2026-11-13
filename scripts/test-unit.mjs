@@ -399,7 +399,7 @@ assert(artworkDownloads("pixar").some((item) => item.label === "Banner image wit
 assert(!artworkDownloads("atlas").some((item) => item.href.includes("sticker")), "articles outside batch 1 have no sticker downloads");
 const carousel = readFileSync(join(ROOT, "site/components/BannerCarousel.astro"), "utf8");
 assert(carousel.includes("banner-art.webp"), "banners use the text-free banner-art file");
-assert(carousel.includes('baked: post.slug === "franchise"'), "Franchise carousel slide keeps the baked-in title");
+assert(carousel.includes('"franchise", "anime", "coffee", "wine", "cetaceans"'), "throne carousel slides keep the baked-in title");
 assert(carousel.includes("desk-lead__hit--baked"), "Franchise carousel slide shows the whole 16:9 art");
 assert(carousel.includes("banner-carousel__word"), "banner type is HTML on the blank banner");
 assert(!carousel.includes("Banner with title"), "the carousel does not show a raw banner download");
@@ -432,7 +432,8 @@ assert(reportPage.includes('"report-banner"'), "every report shows the banner wi
 assert(reportPage.includes("report-banner__art") && reportPage.includes("banner-art.webp"), "the report banner prefers the text-free banner art");
 assert(reportPage.includes("articleBanner(post.slug)"), "an article's own banner file is the fallback, not a slug check");
 assert(reportPage.includes("report-banner--baked"), "Franchise uses the full 16:9 baked-title banner");
-assert(reportPage.includes('robots={bakedBanner ? "noindex, nofollow" : "index, follow"}'), "Franchise stays noindex on this PR");
+assert(reportPage.includes('"franchise", "anime", "coffee", "wine", "cetaceans"'), "Anime/Coffee/Wine/Cetaceans use the baked throne banner");
+assert(reportPage.includes('robots={bakedBanner ? "noindex, nofollow" : "index, follow"}'), "baked throne reports stay noindex on this PR");
 assert(reportPage.includes("cover-title.webp"), "franchise article shows the title cover still");
 assert(!reportPage.includes("franchise-cover.mp4"), "the cover video is gone from the page");
 assert(!reportPage.includes("/mag/"), "report pages do not link to the old magazine reader");
@@ -458,6 +459,14 @@ assert(
   ),
   "franchise hero is the approved wide banner",
 );
+for (const slug of ["anime", "coffee", "wine", "cetaceans"]) {
+  assert(
+    readFileSync(join(ROOT, `src/content/blog/${slug}.md`), "utf8").includes(
+      `heroImage: /images/content/articles/${slug}/banner.png`,
+    ),
+    `${slug} hero is the approved wide banner`,
+  );
+}
 assert(!existsSync(join(ROOT, "incoming")), "approved Franchise art left the incoming folder");
 function sha256(file) {
   return createHash("sha256").update(readFileSync(file)).digest("hex");
@@ -482,6 +491,45 @@ assert(
     "edea9363c95e2ccf74ef20d471d0633da9fa2c0125bc34f88e4b7667f1d0a90a",
   "franchise cover original is kept beside the web exports",
 );
+const throneHashes = {
+  anime: {
+    banner: "930a1add68f1b1acfaf76abc8a009f99d1ba339869266786e8d4340533c93e78",
+    cover: "967daa9b2e0954cbbebfd64ea244c3a1dea610508ee0cfa31280c0b9ce73d842",
+  },
+  coffee: {
+    banner: "df15febf27baf65d2d6b796aeba968d893a193c986738d49a205761dab8a6a86",
+    cover: "4a2f16927b20fbe16ad53d136946df31f02e73a9a4acef5e1aade00d580d0276",
+  },
+  wine: {
+    banner: "fd93e215e8333a1a870f8acd3c303e2c778fe02a373308debe66205d1fc4ce20",
+    cover: "b93c9904122fcaf0ed8cf533b58ddbfa22a9a2078f823d969434603a5532b1cd",
+  },
+  cetaceans: {
+    banner: "6101d802eca617182a0965de7489474e348b6430f999bf55eec85bf27e7453c2",
+    cover: "a93f35ed0bc2e5adfb8b5c6a62bfdcadf0f10a7cf70d7d10f1a9f2d4daf66efb",
+  },
+};
+for (const [slug, hashes] of Object.entries(throneHashes)) {
+  assert(
+    sha256(join(ROOT, `public/images/content/articles/${slug}/banner.png`)) === hashes.banner,
+    `${slug} banner bytes match the supplied PNG`,
+  );
+  assert(
+    sha256(join(ROOT, `public/images/content/articles/${slug}/cover.png`)) === hashes.cover,
+    `${slug} cover bytes match the supplied PNG`,
+  );
+  assert(
+    sha256(join(ROOT, `public/images/content/articles/${slug}/originals/banner-1920x1080.png`)) === hashes.banner,
+    `${slug} banner original is kept beside the web exports`,
+  );
+  assert(
+    sha256(join(ROOT, `public/images/content/articles/${slug}/originals/cover-1600x2133.png`)) === hashes.cover,
+    `${slug} cover original is kept beside the web exports`,
+  );
+  for (const name of ["banner.webp", "banner-art.webp", "banner-text.webp", "banner.jpg", "banner-1280.jpg", "cover.webp", "cover-title.webp", "cover.jpg", "cover-900.jpg"]) {
+    assert(existsSync(join(ROOT, `public/images/content/articles/${slug}/${name}`)), `${slug} ships ${name}`);
+  }
+}
 assert(
   sha256(join(ROOT, "public/videos/franchise-cover.mp4")) ===
     "d10f9d323d290a7e29e58b40a37defc57d7a12d1604e36b659207d4d7e68e731",

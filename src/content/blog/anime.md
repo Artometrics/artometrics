@@ -5,7 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-03-31T00:00:00.000Z
 description: >-
   On the October 2026 MyAnimeList ledger, light-novel TV adaptations still draw 27.5 times the median audience of originals. Source mix and isekai tags trace how committees greenlight shows — with wide uncertainty on any single year.
-heroImage: /images/content/articles/anime/hero.webp
+heroImage: /images/content/articles/anime/banner.png
 audioSrc: /audios/anime-r2.mp3
 draft: false
 tags:

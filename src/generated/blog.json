@@ -183,7 +183,7 @@
     "slug": "anime",
     "pubDate": "2026-03-31T00:00:00.000Z",
     "description": "On the October 2026 MyAnimeList ledger, light-novel TV adaptations still draw 27.5 times the median audience of originals. Source mix and isekai tags trace how committees greenlight shows — with wide uncertainty on any single year.",
-    "heroImage": "/images/content/articles/anime/hero.webp",
+    "heroImage": "/images/content/articles/anime/banner.png",
     "tags": [
       "arts",
       "film"
@@ -961,7 +961,7 @@
     "slug": "cetaceans",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "2,172 of 2,194 cetacean transfer records are US-labeled; bottlenose dolphins account for 1,668 entries in a 1946–2017 captivity ledger.",
-    "heroImage": "/images/content/articles/cetaceans/hero.png",
+    "heroImage": "/images/content/articles/cetaceans/banner.png",
     "tags": [
       "science",
       "biology"
@@ -1004,7 +1004,7 @@
     "slug": "coffee",
     "pubDate": "2026-04-14T00:00:00.000Z",
     "description": "Ethiopia's median CQI cup score is 85.3 — the highest of 16 countries with 20+ samples — yet Starbucks operates zero stores in the top three scoring nations.",
-    "heroImage": "/images/content/articles/coffee/hero.png",
+    "heroImage": "/images/content/articles/coffee/banner.png",
     "tags": [
       "culture",
       "food"
@@ -4744,7 +4744,7 @@
     "slug": "wine",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Austria leads Chile by 2.00 points; the median sits at 88.0 in a dataset where the top dozen titles all score 100.",
-    "heroImage": "/images/content/articles/wine/hero.png",
+    "heroImage": "/images/content/articles/wine/banner.png",
     "tags": [
       "culture",
       "food"

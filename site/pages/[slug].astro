@@ -128,7 +128,8 @@ const toc = [
   ...(shownSources.length ? [{ id: "sources", text: "Sources" }] : []),
 ];
 const textFreeBanner = `/images/content/articles/${post.slug}/banner-art.webp`;
-const bakedBanner = post.slug === "franchise";
+/** Throne art with the title baked in — full 16:9, no crop, no HTML overlay. */
+const bakedBanner = ["franchise", "anime", "coffee", "wine", "cetaceans"].includes(post.slug);
 const bannerFile = bakedBanner
   ? articleBanner(post.slug)?.src || image
   : existsSync(new URL(`../../public${textFreeBanner}`, import.meta.url))
@@ -360,14 +361,14 @@ const jsonLd = [
         ))}
       </section>
     ) : null}
-    {post.slug === "franchise" ? (
+    {bakedBanner ? (
       <figure class="franchise-cover">
         {pack?.pdf ? (
-          <a href={pack.pdf} target="_blank" rel="noopener" aria-label="Open the Franchise PDF in a new tab">
+          <a href={pack.pdf} target="_blank" rel="noopener" aria-label={`Open the ${kicker} PDF in a new tab`}>
             <img
               class="franchise-cover__still"
-              src="/images/content/articles/franchise/cover-title.webp"
-              alt="Franchise magazine cover"
+              src={`/images/content/articles/${post.slug}/cover-title.webp`}
+              alt={`${kicker} magazine cover`}
               width="900"
               height="1200"
               loading="lazy"
@@ -376,8 +377,8 @@ const jsonLd = [
         ) : (
           <img
             class="franchise-cover__still"
-            src="/images/content/articles/franchise/cover-title.webp"
-            alt="Franchise magazine cover"
+            src={`/images/content/articles/${post.slug}/cover-title.webp`}
+            alt={`${kicker} magazine cover`}
             width="900"
             height="1200"
             loading="lazy"
