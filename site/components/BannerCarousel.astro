@@ -25,8 +25,8 @@ const slides = posts
     post,
     src: bannerSrc(post),
     lines: magazineLines(post.title),
-    /** Franchise throne art already carries the title — do not overlay HTML type. */
-    baked: post.slug === "franchise",
+    /** Throne art already carries the title — do not overlay HTML type. */
+    baked: ["franchise", "anime", "coffee", "wine", "cetaceans"].includes(post.slug),
   }))
   .filter((slide) => slide.src);
 ---
