@@ -125,6 +125,58 @@ html[data-theme] .report-page .report-banner h1 {
   }
 }
 
+/* Franchise throne banner: title is baked into the 16:9 art — show the whole frame, no crop. */
+.report-banner--baked {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 0;
+  overflow: visible;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+.report-banner--baked .report-banner__art {
+  position: static;
+  inset: auto;
+  z-index: auto;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  object-position: center;
+  background: #0b090d;
+  border: 1px solid var(--sys-line);
+  box-shadow: var(--sys-shadow);
+}
+.report-banner--baked::after {
+  content: none;
+}
+.report-banner--baked .report-banner__copy {
+  position: static;
+  width: 100%;
+  padding: 12px 4px 0;
+  color: var(--sys-ink);
+  background: transparent;
+}
+.report-banner--baked .report-banner__crumb {
+  margin: 0;
+  color: var(--sys-muted);
+}
+html[data-theme] .report-banner--baked .report-banner__crumb a {
+  color: var(--sys-muted);
+  border-bottom-color: color-mix(in srgb, var(--sys-muted) 45%, transparent);
+}
+@media (min-width: 900px) {
+  .report-banner--baked {
+    min-height: 0;
+  }
+  .report-banner--baked .report-banner__copy {
+    padding: 16px 4px 0;
+  }
+}
+
 /* ---------- Dek, updated line, status ---------- */
 .report-dek {
   margin: 20px 4px 0 0;

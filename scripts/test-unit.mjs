@@ -399,6 +399,8 @@ assert(artworkDownloads("pixar").some((item) => item.label === "Banner image wit
 assert(!artworkDownloads("atlas").some((item) => item.href.includes("sticker")), "articles outside batch 1 have no sticker downloads");
 const carousel = readFileSync(join(ROOT, "site/components/BannerCarousel.astro"), "utf8");
 assert(carousel.includes("banner-art.webp"), "banners use the text-free banner-art file");
+assert(carousel.includes('baked: post.slug === "franchise"'), "Franchise carousel slide keeps the baked-in title");
+assert(carousel.includes("desk-lead__hit--baked"), "Franchise carousel slide shows the whole 16:9 art");
 assert(carousel.includes("banner-carousel__word"), "banner type is HTML on the blank banner");
 assert(!carousel.includes("Banner with title"), "the carousel does not show a raw banner download");
 assert(storySquare("pixar", "").htmlTitle === true, "Pixar uses the text-free square and an HTML title");
@@ -426,21 +428,23 @@ assert(!deskCss.includes("desk-dial"), "shortcut-grid styles are gone");
 const reportPage = readFileSync(join(ROOT, "site/pages/[slug].astro"), "utf8");
 assert(!reportPage.includes("Read as ebook"), "report pages do not show the ebook link");
 assert(!reportPage.includes("report-hero"), "report pages do not render the hero figure");
-assert(reportPage.includes('class="report-banner"'), "every report shows the banner with the title in front of it");
+assert(reportPage.includes('"report-banner"'), "every report shows the banner with the title in front of it");
 assert(reportPage.includes("report-banner__art") && reportPage.includes("banner-art.webp"), "the report banner prefers the text-free banner art");
 assert(reportPage.includes("articleBanner(post.slug)"), "an article's own banner file is the fallback, not a slug check");
+assert(reportPage.includes("report-banner--baked"), "Franchise uses the full 16:9 baked-title banner");
+assert(reportPage.includes('robots={bakedBanner ? "noindex, nofollow" : "index, follow"}'), "Franchise stays noindex on this PR");
 assert(reportPage.includes("cover-title.webp"), "franchise article shows the title cover still");
 assert(!reportPage.includes("franchise-cover.mp4"), "the cover video is gone from the page");
 assert(!reportPage.includes("/mag/"), "report pages do not link to the old magazine reader");
 assert(reportPage.includes('href={pack.pdf} target="_blank" rel="noopener"'), "the cover opens the PDF in a new tab");
-const bannerAt = reportPage.indexOf('class="report-banner"');
-const titleAt = reportPage.indexOf("<h1>");
+const bannerAt = reportPage.indexOf('"report-banner"');
+const titleAt = reportPage.indexOf("<h1");
 const articleBodyAt = reportPage.indexOf('class="artometrics-article-body report-body"');
 const coverAt = reportPage.indexOf('class="franchise-cover"');
-assert(bannerAt >= 0 && titleAt > bannerAt, "the title sits inside the banner, in front of the art");
+assert(bannerAt >= 0 && titleAt > bannerAt, "the title sits inside the banner header");
 assert(reportPage.indexOf("</header>", bannerAt) > titleAt, "the title is inside the banner header");
 assert(coverAt > articleBodyAt, "cover follows the article body");
-assert((reportPage.match(/<header class="report-banner">/g) || []).length === 1, "banner appears once");
+assert((reportPage.match(/class:list=\{\["report-banner"/g) || []).length === 1, "banner appears once");
 assert(!/setInterval|setTimeout|autoplay/i.test(readFileSync(join(ROOT, "site/components/BannerCarousel.astro"), "utf8")), "the banner carousel never advances on a timer");
 assert(!reportPage.includes("setInterval"), "report pages have no timers that move content");
 assert(!/<a[^>]*\sdownload[\s=>]/.test(reportPage + readFileSync(join(ROOT, "site/components/ArticleDownloads.astro"), "utf8")), "report downloads open in a new tab, not a forced download");
@@ -454,18 +458,29 @@ assert(
   ),
   "franchise hero is the approved wide banner",
 );
+assert(!existsSync(join(ROOT, "incoming")), "approved Franchise art left the incoming folder");
 function sha256(file) {
   return createHash("sha256").update(readFileSync(file)).digest("hex");
 }
 assert(
   sha256(join(ROOT, "public/images/content/articles/franchise/banner.png")) ===
-    "a9b0daafcc33fe8ccf77f3b1e62d3c07402823c4056240ca8702bda76030dbd0",
+    "37c6fa83ee417ae79ae50869ada7e3642da3ad950f4f029b66c869b483db56fd",
   "franchise banner bytes match the supplied PNG",
 );
 assert(
   sha256(join(ROOT, "public/images/content/articles/franchise/cover.png")) ===
-    "db805d90be71dbfeb3962cc23feab879e7cc3f5317fc9fd28b847bceeb935386",
+    "edea9363c95e2ccf74ef20d471d0633da9fa2c0125bc34f88e4b7667f1d0a90a",
   "franchise cover bytes match the supplied PNG",
+);
+assert(
+  sha256(join(ROOT, "public/images/content/articles/franchise/originals/banner-1920x1080.png")) ===
+    "37c6fa83ee417ae79ae50869ada7e3642da3ad950f4f029b66c869b483db56fd",
+  "franchise banner original is kept beside the web exports",
+);
+assert(
+  sha256(join(ROOT, "public/images/content/articles/franchise/originals/cover-1600x2133.png")) ===
+    "edea9363c95e2ccf74ef20d471d0633da9fa2c0125bc34f88e4b7667f1d0a90a",
+  "franchise cover original is kept beside the web exports",
 );
 assert(
   sha256(join(ROOT, "public/videos/franchise-cover.mp4")) ===

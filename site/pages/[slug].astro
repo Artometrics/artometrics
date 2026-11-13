@@ -128,9 +128,12 @@ const toc = [
   ...(shownSources.length ? [{ id: "sources", text: "Sources" }] : []),
 ];
 const textFreeBanner = `/images/content/articles/${post.slug}/banner-art.webp`;
-const bannerFile = existsSync(new URL(`../../public${textFreeBanner}`, import.meta.url))
-  ? textFreeBanner
-  : articleBanner(post.slug)?.src || image;
+const bakedBanner = post.slug === "franchise";
+const bannerFile = bakedBanner
+  ? articleBanner(post.slug)?.src || image
+  : existsSync(new URL(`../../public${textFreeBanner}`, import.meta.url))
+    ? textFreeBanner
+    : articleBanner(post.slug)?.src || image;
 const updatedLabel = meta?.updated ? formatLongDate(meta.updated) : "";
 const publishedLabel = post.pubDate ? formatDate(post.pubDate) : "";
 const jsonLd = [
@@ -170,25 +173,26 @@ const jsonLd = [
   jsonLd={jsonLd}
   footer="none"
   bodyClass="dash"
+  robots={bakedBanner ? "noindex, nofollow" : "index, follow"}
 >
   <link slot="head" rel="stylesheet" href="/css/artometrics-article.css" />
   <link slot="head" rel="stylesheet" href="/css/astro-contrast.css" />
   <link slot="head" rel="stylesheet" href="/css/system.css" />
   <link slot="head" rel="stylesheet" href="/css/report-system.css" />
 
-  <article class="preview-frame preview-report report-page">
+  <article class:list={["preview-frame", "preview-report", "report-page", bakedBanner && "report-page--franchise"]}>
     {printCover ? (
       <figure class="print-cover" aria-hidden="true">
         <img src={printCover} alt="" width="900" height="1200" loading="lazy" />
       </figure>
     ) : null}
-    <header class="report-banner">
+    <header class:list={["report-banner", bakedBanner && "report-banner--baked"]}>
       <img
         class="report-banner__art"
         src={bannerFile}
-        alt=""
-        width="1600"
-        height="900"
+        alt={bakedBanner ? post.title : ""}
+        width={bakedBanner ? 1920 : 1600}
+        height={bakedBanner ? 1080 : 900}
         fetchpriority="high"
         decoding="async"
       />
@@ -204,7 +208,7 @@ const jsonLd = [
             </>
           ) : null}
         </p>
-        <h1>
+        <h1 class:list={[bakedBanner && "sr-only"]} data-contrast-skip={bakedBanner ? "" : undefined}>
           <span class="report-kicker">{kicker}:</span>
           {" "}{headlineRest}
         </h1>
