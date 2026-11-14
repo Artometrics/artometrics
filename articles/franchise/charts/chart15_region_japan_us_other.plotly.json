@@ -5,7 +5,7 @@
       "values": [681.494, 622.59, 163.425, 20, 11.253, 9, 8.48, 6],
       "marker": {
         "color": "rgba(31,119,180,1)",
-        "colors": ["#E60000", "#0047FF", "#111111", "#6B6B6B", "#4A6FA5", "#2E8B57", "#C4A35A", "#7A4E2D"],
+        "colors": ["#ff3d8a", "#0047FF", "#111111", "#6B6B6B", "#4A6FA5", "#2E8B57", "#C4A35A", "#7A4E2D"],
         "line": {
           "color": "rgba(255,255,255,1)"
         }
@@ -46,9 +46,9 @@
           "size": 11,
           "color": "#FFFFFF"
         },
-        "bgcolor": "#E60000",
+        "bgcolor": "#ff3d8a",
         "borderwidth": 3,
-        "bordercolor": "#E60000",
+        "bordercolor": "#ff3d8a",
         "borderpad": 6
       },
       {

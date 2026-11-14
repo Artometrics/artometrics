@@ -233,51 +233,69 @@ for (const viewport of VIEWPORTS) {
       check(overflow <= 0, `${tag} franchise: no sideways scroll (${overflow}px)`);
 
       const top = await page.evaluate(() => {
-        const header = document.querySelector(".report-banner");
-        const banner = document.querySelector(".report-banner__art");
-        const h1 = document.querySelector(".preview-report h1");
-        const ratio = banner ? banner.clientWidth / Math.max(1, banner.clientHeight) : 0;
-        const natural = banner ? banner.naturalWidth / Math.max(1, banner.naturalHeight) : 0;
+        const pageRoot = document.querySelector(".report-page--eg");
+        const h1 = document.querySelector(".eg-headline") || document.querySelector(".preview-report h1");
+        const kicker = document.querySelector(".eg-kicker") || h1?.querySelector(".report-kicker");
+        const topline = document.querySelector(".eg-topline");
+        const engraving = document.querySelector(".eg-engraving__img");
+        const pull = document.querySelector(".eg-pull__text");
+        const endmark = document.querySelector(".eg-endmark__url");
+        const robots = document.querySelector('meta[name="robots"]')?.getAttribute("content") || "";
+        const style = kicker ? getComputedStyle(kicker) : null;
+        const gap = kicker && h1
+          ? h1.getBoundingClientRect().top - kicker.getBoundingClientRect().bottom
+          : 0;
         return {
-          baked: header?.classList.contains("report-banner--baked") ?? false,
-          bannerLoaded: banner ? banner.naturalWidth > 0 : false,
-          objectFit: banner ? getComputedStyle(banner).objectFit : "",
-          ratio,
-          natural,
-          h1SrOnly: h1?.classList.contains("sr-only") ?? false,
-          h1Text: h1?.textContent.replace(/\s+/g, " ").trim() || "",
+          isEg: Boolean(pageRoot),
+          h1Text: h1?.textContent?.trim() || "",
+          kickerText: kicker?.textContent?.trim() || "",
+          kickerDisplay: style?.display || "",
+          gap,
+          toplineH: topline ? topline.getBoundingClientRect().height : 0,
+          engravingLoaded: engraving ? engraving.naturalWidth > 0 : false,
+          pullText: pull?.textContent?.trim() || "",
+          endmark: endmark?.textContent?.trim() || "",
+          robots,
+          redHits: [...document.querySelectorAll(".report-page--eg *")].filter((el) => {
+            const c = getComputedStyle(el);
+            const blob = `${c.color} ${c.backgroundColor} ${c.borderTopColor}`;
+            return /rgb\(\s*230,\s*0,\s*0\s*\)|rgb\(\s*255,\s*42,\s*42\s*\)|#e60000|#ff2a2a/i.test(blob);
+          }).length,
         };
       });
-      check(top.bannerLoaded, `${tag} article: banner image loads`);
-      check(top.baked, `${tag} article: Franchise uses the baked-title banner`);
-      check(top.objectFit === "contain", `${tag} article: banner shows the whole 16:9 frame (${top.objectFit})`);
-      check(Math.abs(top.ratio - top.natural) < 0.05, `${tag} article: banner box matches the art ratio (${top.ratio.toFixed(3)} vs ${top.natural.toFixed(3)})`);
-      check(top.h1SrOnly && /FRANCHISE/i.test(top.h1Text), `${tag} article: accessible title stays in the header without overlaying the art`);
+      check(top.isEg, `${tag} article: Economist + Swiss edition`);
+      check(/Merchandise Owns the Ledger/i.test(top.h1Text), `${tag} article: Caslon headline`);
+      check(top.kickerDisplay === "block" && top.gap >= 6, `${tag} article: space between the kicker and the headline (${top.gap.toFixed(1)}px)`);
+      check(top.toplineH >= 3, `${tag} article: thin colored rule at top`);
+      check(top.engravingLoaded, `${tag} article: engraving illustration loads`);
+      check(/\$130\.7 billion/.test(top.pullText), `${tag} article: pull quote keeps published numbers`);
+      check(top.endmark === "artometrics.com/franchise", `${tag} article: endmark URL`);
+      check(/noindex/i.test(top.robots), `${tag} article: stays noindex`);
+      check(top.redHits === 0, `${tag} article: no red in the E+G chrome (${top.redHits})`);
 
       const figs = await page.evaluate(() => {
-        const boxes = [...document.querySelectorAll(".keyfig")];
+        const boxes = [...document.querySelectorAll(".eg-swiss__item")];
         return {
           count: boxes.length,
-          shadow: boxes.every((box) => /\d+px \d+px 0px 0px|0px 0px/.test(getComputedStyle(box).boxShadow) && !/none/.test(getComputedStyle(box).boxShadow)),
-          offset: boxes.map((box) => getComputedStyle(box).boxShadow.match(/(\d+)px (\d+)px/)?.slice(1, 3).map(Number) ?? [0, 0]),
-          border: boxes.every((box) => parseFloat(getComputedStyle(box).borderTopWidth) >= 3),
-          colors: new Set(boxes.map((box) => getComputedStyle(box).backgroundColor)).size,
-          overflowing: boxes.filter((box) => box.querySelector(".keyfig__value").scrollWidth > box.clientWidth || box.scrollWidth > box.clientWidth + 1).length,
+          overflowing: boxes.filter((box) => {
+            const value = box.querySelector(".eg-swiss__value");
+            if (!value) return true;
+            const boxRect = box.getBoundingClientRect();
+            const valueRect = value.getBoundingClientRect();
+            return valueRect.width > boxRect.width + 2 || box.scrollWidth > box.clientWidth + 2;
+          }).length,
           columns: new Set(boxes.map((box) => Math.round(box.getBoundingClientRect().left))).size,
-          valueSizes: boxes.map((box) => parseFloat(getComputedStyle(box.querySelector(".keyfig__value")).fontSize)),
-          hasLabel: boxes.every((box) => box.querySelector(".keyfig__label")?.textContent.trim().length > 0),
-          values: boxes.map((box) => box.querySelector(".keyfig__value").textContent.trim()),
+          valueSizes: boxes.map((box) => parseFloat(getComputedStyle(box.querySelector(".eg-swiss__value")).fontSize)),
+          hasLabel: boxes.every((box) => box.querySelector(".eg-swiss__label")?.textContent.trim().length > 0),
+          values: boxes.map((box) => box.querySelector(".eg-swiss__value").textContent.trim()),
         };
       });
-      check(figs.count >= 5, `${tag} key figures: ${figs.count} boxes`);
-      check(figs.shadow && figs.offset.every(([x, y]) => x >= 4 && y >= 4), `${tag} key figures: hard offset shadow`);
-      check(figs.border, `${tag} key figures: thick border`);
-      check(figs.colors >= 3, `${tag} key figures: bold brand colours (${figs.colors})`);
+      check(figs.count >= 5, `${tag} key figures: ${figs.count} Swiss numerals`);
       check(figs.overflowing === 0, `${tag} key figures: numbers fit their boxes`);
       check(figs.hasLabel, `${tag} key figures: every box has a label`);
       check(figs.valueSizes.every((px) => px >= (viewport.width < 600 ? 18 : 26)), `${tag} key figures: big numbers (${figs.valueSizes.map((n) => n.toFixed(0))})`);
-      check(figs.columns === (viewport.width < 600 ? 2 : 3), `${tag} key figures: responsive grid (${figs.columns} columns)`);
-      check(figs.values.includes("$1,460.1B") && figs.values.includes("55.6%") && figs.values.includes("$130.7B"), `${tag} key figures: published numbers unchanged`);
+      check(figs.columns === (viewport.width < 600 ? 2 : 4), `${tag} key figures: responsive Swiss grid (${figs.columns} columns)`);
+      check(figs.values.includes("$1,460.1B") && figs.values.includes("55.6%") && figs.values.includes("$130.7B") && figs.values.includes("140"), `${tag} key figures: published numbers unchanged`);
 
       const cards = await page.evaluate(() => ({
         count: document.querySelectorAll(".stat-card").length,

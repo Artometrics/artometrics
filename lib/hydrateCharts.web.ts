@@ -2,8 +2,36 @@
  * Client-side chart hydration: interactive Plotly when data-chart is present,
  * PNG fallback on failure or reduced motion.
  */
-import { applyEconomistALayout, cloneTraces } from "@/lib/charts/economistThemes";
+import {
+  ECONOMIST_A,
+  applyEconomistALayout,
+  cloneTraces,
+} from "@/lib/charts/economistThemes";
 import { applyHouseLayout, applyHouseTraces } from "@/lib/charts/plotlyTheme";
+
+/** Remap legacy Economist red/navy to Artometrics pink/blue without changing values. */
+function brandFranchiseTraces(data: unknown[]): Record<string, unknown>[] {
+  const remap = (color: unknown): unknown => {
+    if (typeof color !== "string") return color;
+    if (/e60000|ff5f6d|c0392b|ff3333/i.test(color)) return ECONOMIST_A.accent;
+    if (/1f4b99|7ea2ff|7fded6/i.test(color)) return ECONOMIST_A.blue;
+    return color;
+  };
+  return cloneTraces(data).map((t) => {
+    const marker = t.marker && typeof t.marker === "object" ? { ...(t.marker as Record<string, unknown>) } : null;
+    const line = t.line && typeof t.line === "object" ? { ...(t.line as Record<string, unknown>) } : null;
+    if (marker) {
+      if (Array.isArray(marker.color)) marker.color = marker.color.map(remap);
+      else if (marker.color != null) marker.color = remap(marker.color);
+      t.marker = marker;
+    }
+    if (line && line.color != null) {
+      line.color = remap(line.color);
+      t.line = line;
+    }
+    return t;
+  });
+}
 
 export type PlotlyLike = {
   newPlot: (
@@ -170,7 +198,7 @@ async function renderInteractive(live: HTMLElement, Plotly: PlotlyLike) {
     live.style.height = `${hostHeight}px`;
     await Plotly.newPlot(
       live,
-      cloneTraces(payload.data ?? []),
+      brandFranchiseTraces(payload.data ?? []),
       {
         ...applyEconomistALayout(rawLayout),
         autosize: true,

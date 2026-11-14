@@ -1,9 +1,9 @@
 /**
  * Economist-inspired chart pairs for Franchise.
  * A is primary. Nothing in the repo marks B or C as the template.
- * A: cream paper, ink, one red series.
- * B: dark ground, cream ink, the same red.
- * C: cream paper, blue series, red only when a value is negative.
+ * A: cream paper, ink, pink lead series + electric blue comparison (Artometrics brand; no red).
+ * B: dark ground, cream ink, the same pink/blue pair.
+ * C: cream paper, blue lead, pink for the secondary/comparison series.
  * The live Franchise page uses A.
  */
 
@@ -12,8 +12,8 @@ export const ECONOMIST_A = {
   ink: "#14110e",
   muted: "#5c5148",
   grid: "#e6dfd4",
-  accent: "#E60000",
-  blue: "#1f4b99",
+  accent: "#ff3d8a",
+  blue: "#0047ff",
   source: "#6b6258",
 } as const;
 
@@ -22,8 +22,8 @@ export const ECONOMIST_B = {
   ink: "#f4f7f6",
   muted: "#b7d0cb",
   grid: "#2a3330",
-  accent: "#E60000",
-  blue: "#7fded6",
+  accent: "#ff3d8a",
+  blue: "#0047ff",
   source: "#8fb8b2",
 } as const;
 
@@ -32,8 +32,8 @@ export const ECONOMIST_C = {
   ink: "#14110e",
   muted: "#5c5148",
   grid: "#e6dfd4",
-  accent: "#1f4b99",
-  blue: "#E60000",
+  accent: "#0047ff",
+  blue: "#ff3d8a",
   source: "#6b6258",
 } as const;
 

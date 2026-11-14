@@ -14,7 +14,7 @@ const pathsArg = process.argv.indexOf("--paths");
 const paths = pathsArg > -1 ? process.argv[pathsArg + 1].split(",") : ["/", "/franchise"];
 const viewports = [
   { name: "mobile", width: 390, height: 844 },
-  { name: "desktop", width: 1280, height: 800 },
+  { name: "desktop", width: 1440, height: 900 },
 ];
 const themes = ["light", "dark"];
 

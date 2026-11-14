@@ -1,0 +1,638 @@
+/*
+  Franchise report — Economist layout (E) + Swiss numerals (G).
+  Brand tokens only: hot pink, electric blue, cream paper, black ink. No red.
+*/
+
+@font-face {
+  font-family: "Libre Caslon Text";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/skins/libre-caslon-text-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Libre Caslon Text";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/skins/libre-caslon-text-400-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Libre Caslon Text";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/skins/libre-caslon-text-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/skins/space-grotesk-latin.woff2") format("woff2");
+}
+
+.report-page--eg {
+  --eg-pink: #ff3d8a;
+  --eg-blue: #0047ff;
+  --eg-cream: #f3ead7;
+  --eg-paper: #fffef8;
+  --eg-ink: #14110e;
+  --eg-muted: #5c5148;
+  --eg-rule: #ff3d8a;
+  --eg-serif: "Libre Caslon Text", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --eg-sans: "Space Grotesk", "DM Sans", system-ui, sans-serif;
+  --eg-mono: "DM Mono", ui-monospace, monospace;
+  /* Lock the print page to cream paper + black ink even when the site chrome is dark. */
+  --sys-ink: #14110e;
+  --sys-line: #14110e;
+  --sys-panel: #f3ead7;
+  --sys-plot: #fffef8;
+  --sys-muted: #5c5148;
+  --sys-link: #0047ff;
+  --sys-pink: #ff3d8a;
+  --sys-blue: #0047ff;
+  --sys-red: #ff3d8a;
+  --sys-shadow: 4px 4px 0 #ff3d8a;
+  --sys-shadow-action: 4px 4px 0 #0047ff;
+  --ink: #14110e;
+  --muted: #5c5148;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 16px 64px;
+  background: var(--eg-paper);
+  color: var(--eg-ink);
+}
+
+html[data-theme="dark"] .report-page--eg,
+html[data-theme="light"] .report-page--eg {
+  background: var(--eg-paper);
+  color: var(--eg-ink);
+}
+
+html[data-theme="dark"] .report-page--eg,
+html[data-theme="dark"] .report-page--eg h1,
+html[data-theme="dark"] .report-page--eg h2,
+html[data-theme="dark"] .report-page--eg h3,
+html[data-theme="dark"] .report-page--eg p,
+html[data-theme="dark"] .report-page--eg li:not(.stat-card),
+html[data-theme="dark"] .report-page--eg figcaption,
+html[data-theme="dark"] .report-page--eg code,
+html[data-theme="dark"] .report-page--eg .eg-headline,
+html[data-theme="dark"] .report-page--eg .eg-dek {
+  color: var(--eg-ink) !important;
+}
+
+html[data-theme="dark"] .report-page--eg a:not(.stat-card a),
+html[data-theme="dark"] .report-page--eg .eg-kicker {
+  color: var(--eg-blue) !important;
+}
+
+html[data-theme="dark"] .report-page--eg .eg-swiss__item:nth-child(4n + 1) .eg-swiss__value { color: var(--eg-pink) !important; }
+html[data-theme="dark"] .report-page--eg .eg-swiss__item:nth-child(4n + 2) .eg-swiss__value { color: var(--eg-blue) !important; }
+html[data-theme="dark"] .report-page--eg .eg-swiss__item:nth-child(4n + 3) .eg-swiss__value { color: var(--eg-ink) !important; }
+html[data-theme="dark"] .report-page--eg .eg-swiss__item:nth-child(4n + 4) .eg-swiss__value { color: var(--eg-pink) !important; }
+html[data-theme="dark"] .report-page--eg .eg-swiss__label,
+html[data-theme="dark"] .report-page--eg .eg-byline {
+  color: var(--eg-muted) !important;
+}
+html[data-theme="dark"] .report-page--eg .eg-byline strong {
+  color: var(--eg-ink) !important;
+}
+
+/* Colored stat cards keep their own ink, not the cream-page defaults. */
+.report-page--eg .stat-card--blue,
+.report-page--eg .stat-card--blue .stat-card__name,
+.report-page--eg .stat-card--blue .stat-card__value,
+.report-page--eg .stat-card--blue .stat-card__meta {
+  color: #ffffff !important;
+}
+.report-page--eg .stat-card--pink,
+.report-page--eg .stat-card--pink .stat-card__name,
+.report-page--eg .stat-card--pink .stat-card__value,
+.report-page--eg .stat-card--pink .stat-card__meta {
+  color: #14110e !important;
+}
+.report-page--eg .stat-card--cream,
+.report-page--eg .stat-card--cream .stat-card__name,
+.report-page--eg .stat-card--cream .stat-card__value,
+.report-page--eg .stat-card--cream .stat-card__meta {
+  color: #14110e !important;
+}
+
+.report-page--eg code {
+  color: var(--eg-ink) !important;
+  background: color-mix(in srgb, var(--eg-cream) 80%, var(--eg-blue) 8%);
+}
+
+.report-page--eg > * + * {
+  margin-top: 0;
+}
+
+/* Thin colored rule at top */
+.eg-topline {
+  height: 4px;
+  margin: 0 -16px;
+  background: var(--eg-rule);
+}
+
+@media (min-width: 900px) {
+  .report-page--eg {
+    padding: 0 28px 80px;
+  }
+  .eg-topline {
+    margin: 0 -28px;
+  }
+}
+
+/* Economist masthead block */
+.eg-header {
+  padding: 28px 0 8px;
+  border-bottom: 1px solid var(--eg-ink);
+}
+
+.eg-kicker {
+  margin: 0 0 14px;
+  font-family: var(--eg-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  /* Small caps need AA on cream; brand blue clears 4.5:1, pink is reserved for the rule. */
+  color: var(--eg-blue);
+}
+
+.eg-headline,
+html[data-theme] .report-page--eg .eg-headline,
+html[data-theme] .report-page--eg h1.eg-headline {
+  margin: 0;
+  max-width: 18ch;
+  font-family: var(--eg-serif) !important;
+  font-weight: 700 !important;
+  font-size: clamp(2.4rem, 7.2vw, 4.25rem) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--eg-ink) !important;
+  text-wrap: balance;
+  text-transform: none !important;
+  text-shadow: none !important;
+}
+
+.eg-dek,
+html[data-theme] .report-page--eg .eg-dek {
+  margin: 18px 0 0;
+  max-width: 40rem;
+  font-family: var(--eg-serif) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  font-size: clamp(1.05rem, 2.6vw, 1.28rem) !important;
+  line-height: 1.45;
+  color: var(--eg-ink) !important;
+}
+
+.eg-byline {
+  margin: 18px 0 16px;
+  font-family: var(--eg-sans);
+  font-size: 13px;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  color: var(--eg-muted);
+}
+
+.eg-byline strong {
+  color: var(--eg-ink);
+  font-weight: 700;
+}
+
+/* Hide the old banner/dek chrome on the E+G edition */
+.report-page--eg .report-banner,
+.report-page--eg .report-dek,
+.report-page--eg .print-cover {
+  display: none !important;
+}
+
+.report-page--eg .report-updated {
+  margin: 14px 0 0;
+  padding: 0;
+  border-top: none;
+}
+
+.report-page--eg .report-updated__line {
+  display: none;
+}
+
+.report-page--eg .report-updated__note {
+  margin: 0 !important;
+  font-family: var(--eg-serif);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--eg-muted);
+}
+
+.report-page--eg .report-updated__note strong {
+  color: var(--eg-ink);
+}
+
+/* Swiss giant numerals */
+.eg-swiss {
+  margin: 28px 0 8px;
+  padding: 8px 0 4px;
+  border-bottom: 1px solid color-mix(in srgb, var(--eg-ink) 18%, transparent);
+}
+
+.eg-swiss__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.eg-swiss__item {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 4px 0 10px;
+  border-top: 1px solid color-mix(in srgb, var(--eg-ink) 14%, transparent);
+  overflow: hidden;
+}
+
+.eg-swiss__value {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  font-family: var(--eg-sans);
+  font-weight: 700;
+  font-size: clamp(1.35rem, 7.2vw, 3.6rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums lining-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  color: var(--eg-ink);
+}
+
+.eg-swiss__item:nth-child(4n + 1) .eg-swiss__value { color: var(--eg-pink); }
+.eg-swiss__item:nth-child(4n + 2) .eg-swiss__value { color: var(--eg-blue); }
+.eg-swiss__item:nth-child(4n + 3) .eg-swiss__value { color: var(--eg-ink); }
+.eg-swiss__item:nth-child(4n + 4) .eg-swiss__value { color: var(--eg-pink); }
+
+.eg-swiss__label {
+  font-family: var(--eg-sans);
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--eg-muted);
+  text-wrap: balance;
+}
+
+.eg-swiss__label a {
+  color: var(--eg-blue);
+  font-weight: 600;
+}
+
+.eg-swiss__source {
+  margin: 12px 0 0;
+  font-family: var(--eg-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--eg-muted);
+}
+
+@media (min-width: 720px) {
+  .eg-swiss__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px 20px;
+  }
+  .eg-swiss__value {
+    font-size: clamp(2.4rem, 4.2vw, 3.75rem);
+  }
+}
+
+/* Status note keeps pink/blue rules, no red */
+.report-page--eg .report-status {
+  margin: 24px 0 0;
+  border: 1px solid var(--eg-ink);
+  box-shadow: none;
+  background: var(--eg-cream);
+}
+
+.report-page--eg .report-status[data-state="current"] {
+  border-left: 6px solid var(--eg-blue);
+}
+
+.report-page--eg .report-status[data-state="earlier"] {
+  border-left: 6px solid var(--eg-pink);
+}
+
+.report-page--eg .report-status__label,
+.report-page--eg .report-status__note,
+.report-page--eg .report-status a {
+  color: var(--eg-ink);
+}
+
+.report-page--eg .report-status a {
+  color: var(--eg-blue);
+}
+
+/* Engraving illustration slot */
+.eg-engraving {
+  margin: 28px 0 8px;
+  padding: 0;
+}
+
+.eg-engraving__frame {
+  margin: 0;
+  border-top: 1px solid var(--eg-ink);
+  border-bottom: 1px solid var(--eg-ink);
+  padding: 14px 0;
+  background: var(--eg-cream);
+}
+
+.eg-engraving__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(52vh, 520px);
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(1) contrast(1.35) brightness(1.02);
+  mix-blend-mode: multiply;
+}
+
+.eg-engraving__caption {
+  margin: 10px 0 0;
+  font-family: var(--eg-serif);
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--eg-muted);
+}
+
+/* Pull quote between rules */
+.eg-pull {
+  margin: 36px 0;
+  padding: 22px 0;
+  border-top: 2px solid var(--eg-ink);
+  border-bottom: 2px solid var(--eg-ink);
+}
+
+.eg-pull__text {
+  margin: 0;
+  font-family: var(--eg-serif);
+  font-style: italic;
+  font-size: clamp(1.35rem, 3.4vw, 1.9rem);
+  line-height: 1.35;
+  color: var(--eg-ink);
+  text-wrap: balance;
+}
+
+.eg-pull__text::before {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  margin: 0 0 14px;
+  background: var(--eg-pink);
+}
+
+/* Two-column body on desktop; single column on mobile */
+.report-page--eg .report-layout {
+  margin-top: 28px;
+}
+
+.report-page--eg .report-body.artometrics-article-body {
+  --art-bg: transparent;
+  --art-dark: #14110e;
+  --art-mid: #5c5148;
+  --art-highlight: #ff3d8a;
+  --art-secondary: #0047ff;
+  --art-chart-red: #ff3d8a;
+  --art-chart-blue: #0047ff;
+  --art-muted: #d9cbb8;
+  --art-white: #f3ead7;
+  --art-cream: #fffef8;
+  color: var(--eg-ink);
+  background: transparent !important;
+}
+
+html[data-theme="dark"] .report-page--eg .report-body.artometrics-article-body {
+  --art-dark: #14110e;
+  --art-mid: #5c5148;
+  --art-highlight: #ff3d8a;
+  --art-secondary: #0047ff;
+  --art-chart-red: #ff3d8a;
+  --art-chart-blue: #0047ff;
+  --art-muted: #d9cbb8;
+  --art-white: #f3ead7;
+  --art-cream: #fffef8;
+  color: var(--eg-ink);
+}
+
+.report-page--eg .report-body.artometrics-article-body main.art-article-main > p.art-p:first-of-type::first-letter {
+  font-family: var(--eg-serif) !important;
+  font-size: 5.6em;
+  line-height: 0.8;
+  float: left;
+  margin: 0.04em 0.12em 0 0;
+  padding: 0;
+  border: none !important;
+  background: transparent !important;
+  color: var(--eg-pink) !important;
+  font-weight: 700;
+}
+
+.report-page--eg .report-body.artometrics-article-body main.art-article-main > h2 {
+  font-family: var(--eg-serif) !important;
+  font-size: clamp(1.45rem, 2.8vw, 1.9rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  text-transform: none !important;
+  text-align: left !important;
+  color: var(--eg-ink) !important;
+  display: block !important;
+  align-items: flex-start !important;
+  gap: 0 !important;
+  margin: 2.4rem 0 0.9rem !important;
+  max-width: none !important;
+}
+
+.report-page--eg .report-body.artometrics-article-body main.art-article-main > h2:not(#toc-title)::before {
+  display: none !important;
+}
+
+.report-page--eg .report-body.artometrics-article-body main.art-article-main > p.art-p,
+.report-page--eg .report-body.artometrics-article-body main.art-article-main > ol,
+.report-page--eg .report-body.artometrics-article-body main.art-article-main > ul:not(.stat-cards) {
+  font-family: var(--eg-serif);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--eg-ink);
+}
+
+.report-page--eg .report-body a:not(.cite-link),
+.report-page--eg .report-section a {
+  color: var(--eg-blue);
+}
+
+.report-page--eg .report-body .cite-link {
+  color: var(--eg-pink);
+}
+
+@media (min-width: 960px) {
+  .report-page--eg .report-body.artometrics-article-body main.art-article-main {
+    column-count: 2;
+    column-gap: 2.4rem;
+    column-rule: 1px solid color-mix(in srgb, var(--eg-ink) 16%, transparent);
+  }
+
+  .report-page--eg .report-body.artometrics-article-body main.art-article-main > h2,
+  .report-page--eg .report-body.artometrics-article-body main.art-article-main > figure,
+  .report-page--eg .report-body.artometrics-article-body main.art-article-main > .art-callout,
+  .report-page--eg .report-body.artometrics-article-body main.art-article-main > .carousel,
+  .report-page--eg .report-body.artometrics-article-body main.art-article-main > .stat-cards,
+  .report-page--eg .report-body.artometrics-article-body main.art-article-main > .art-editorial-note,
+  .report-page--eg .report-body.artometrics-article-body main.art-article-main > .art-github-wrap,
+  .report-page--eg .report-body.artometrics-article-body main.art-article-main > .eg-pull {
+    column-span: all;
+  }
+}
+
+/* Chart frames stay cream; accents pink/blue */
+.report-page--eg .chart-frame,
+.report-page--eg .carousel-card,
+.report-page--eg .file-tile,
+.report-page--eg .source-entry,
+.report-page--eg .report-related a,
+.report-page--eg .dl__thumb,
+.report-page--eg [data-downloads] .file-tile {
+  background: var(--eg-cream) !important;
+  border-color: var(--eg-ink) !important;
+  box-shadow: 4px 4px 0 var(--eg-pink);
+  color: var(--eg-ink) !important;
+}
+
+.report-page--eg .file-tile,
+.report-page--eg .source-entry:target,
+.report-page--eg [data-downloads] .file-tile {
+  box-shadow: 4px 4px 0 var(--eg-blue);
+}
+
+.report-page--eg .file-tile__label,
+.report-page--eg .file-tile__meta,
+.report-page--eg .chart-frame__title,
+.report-page--eg .chart-frame__desc,
+.report-page--eg .chart-frame__meta,
+.report-page--eg .source-entry__id,
+.report-page--eg .source-entry__title,
+.report-page--eg .source-entry__by,
+.report-page--eg .source-entry__note,
+.report-page--eg .report-related a,
+.report-page--eg .report-kicker {
+  color: var(--eg-ink) !important;
+}
+
+.report-page--eg .file-tile__meta {
+  color: var(--eg-muted) !important;
+}
+
+.report-page--eg .stat-card--blue {
+  background: var(--eg-blue);
+  color: #fff;
+}
+.report-page--eg .stat-card--pink {
+  background: var(--eg-pink);
+  color: #14110e;
+}
+.report-page--eg .stat-card--cream {
+  background: var(--eg-cream);
+  color: var(--eg-ink);
+}
+
+.report-page--eg .on-page--inline,
+.report-page--eg .on-page--sticky {
+  background: var(--eg-cream);
+  border-color: var(--eg-ink);
+  box-shadow: none;
+  color: var(--eg-ink);
+}
+
+.report-page--eg .on-page li a {
+  color: var(--eg-ink);
+}
+
+.report-page--eg .on-page li a::before {
+  color: var(--eg-pink);
+}
+
+.report-page--eg .report-related > h2,
+.report-page--eg .report-section > h2,
+.report-page--eg .sys-h2 {
+  font-family: var(--eg-serif);
+  color: var(--eg-ink);
+}
+
+.report-page--eg .report-related a {
+  color: var(--eg-ink);
+}
+
+/* Article footer: wordmark + URL */
+.eg-endmark {
+  margin: 48px 0 0;
+  padding: 18px 0 0;
+  border-top: 1px solid var(--eg-ink);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+}
+
+.eg-endmark__mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--eg-ink);
+}
+
+.eg-endmark__mark img {
+  height: 22px;
+  width: auto;
+  display: block;
+}
+
+.eg-endmark__url {
+  font-family: var(--eg-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--eg-muted);
+  text-decoration: none;
+}
+
+.eg-endmark__url:hover {
+  color: var(--eg-blue);
+}
+
+/* Keyfigs fallback (if still rendered) — Swiss, no red */
+.report-page--eg .keyfigs {
+  display: none;
+}
+
+/* Carousel / downloads keep cream paper */
+.report-page--eg .chartcar,
+.report-page--eg [data-downloads] {
+  color: var(--eg-ink);
+}
+
+.report-page--eg .chartcar__head h2 {
+  font-family: var(--eg-serif);
+  color: var(--eg-ink);
+}
+
+/* No auto-motion beyond user-driven carousel */
+.report-page--eg * {
+  animation: none !important;
+}
