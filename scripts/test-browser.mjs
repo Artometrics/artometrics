@@ -281,8 +281,10 @@ for (const viewport of VIEWPORTS) {
             const value = box.querySelector(".eg-swiss__value");
             if (!value) return true;
             const boxRect = box.getBoundingClientRect();
-            const valueRect = value.getBoundingClientRect();
-            return valueRect.width > boxRect.width + 2 || box.scrollWidth > box.clientWidth + 2;
+            const range = document.createRange();
+            range.selectNodeContents(value);
+            const ink = range.getBoundingClientRect();
+            return ink.width > boxRect.width + 1 || value.scrollWidth > value.clientWidth + 1 || box.scrollWidth > box.clientWidth + 1;
           }).length,
           columns: new Set(boxes.map((box) => Math.round(box.getBoundingClientRect().left))).size,
           valueSizes: boxes.map((box) => parseFloat(getComputedStyle(box.querySelector(".eg-swiss__value")).fontSize)),
@@ -292,6 +294,7 @@ for (const viewport of VIEWPORTS) {
       });
       check(figs.count >= 5, `${tag} key figures: ${figs.count} Swiss numerals`);
       check(figs.overflowing === 0, `${tag} key figures: numbers fit their boxes`);
+      check(figs.values.includes("29.5% / 58.3%") && figs.values.includes("71.4% vs 51.5%"), `${tag} key figures: the two longer comparisons are present in full`);
       check(figs.hasLabel, `${tag} key figures: every box has a label`);
       check(figs.valueSizes.every((px) => px >= (viewport.width < 600 ? 18 : 26)), `${tag} key figures: big numbers (${figs.valueSizes.map((n) => n.toFixed(0))})`);
       check(figs.columns === (viewport.width < 600 ? 2 : 4), `${tag} key figures: responsive Swiss grid (${figs.columns} columns)`);

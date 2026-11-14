@@ -456,6 +456,9 @@ assert((reportPage.match(/<figure class="franchise-cover">/g) || []).length === 
 assert(existsSync(join(ROOT, "public/css/franchise-eg.css")), "Franchise E+G stylesheet is present");
 assert(readFileSync(join(ROOT, "public/css/franchise-eg.css"), "utf8").includes("#ff3d8a") && readFileSync(join(ROOT, "public/css/franchise-eg.css"), "utf8").includes("#0047ff"), "Franchise E+G uses brand pink and blue");
 assert(!/#e60000|#ff2a2a/i.test(readFileSync(join(ROOT, "public/css/franchise-eg.css"), "utf8")), "Franchise E+G has no red");
+assert(readFileSync(join(ROOT, "public/css/franchise-eg.css"), "utf8").includes(".eg-swiss__item:nth-child(n + 5)") && readFileSync(join(ROOT, "public/css/franchise-eg.css"), "utf8").includes("grid-column: span 2"), "longer Swiss figures span two columns on desktop");
+assert(readFileSync(join(ROOT, "public/js/fit-text.js"), "utf8").includes('el.style.width = "auto"') && readFileSync(join(ROOT, "public/js/fit-text.js"), "utf8").includes("inkWidth"), "fit-text measures glyph width, not a 100% box");
+
 const previewCss = readFileSync(join(ROOT, "site/styles/preview.css"), "utf8");
 assert(previewCss.includes("prefers-reduced-motion: no-preference"), "smooth scrolling to charts only runs when motion is allowed");
 assert(
