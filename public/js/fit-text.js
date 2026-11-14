@@ -14,6 +14,15 @@
     return parent.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
   }
 
+  function inkWidth(el) {
+    var range = document.createRange();
+    range.selectNodeContents(el);
+    var rects = range.getClientRects();
+    var w = 0;
+    for (var i = 0; i < rects.length; i++) w = Math.max(w, rects[i].width);
+    return w || el.getBoundingClientRect().width;
+  }
+
   function fit(el) {
     var width = box(el);
     if (!width || width < 20) return;
@@ -23,15 +32,26 @@
     el.style.marginRight = "0";
     el.style.whiteSpace = "nowrap";
     el.style.display = "inline-block";
+    /* Measure the glyphs, not a width:100% box — otherwise long Swiss figures
+       all get the cap size and overflow:hidden clips the last digits. */
+    el.style.width = "auto";
+    el.style.maxWidth = "none";
     el.style.fontSize = "100px";
-    var natural = el.getBoundingClientRect().width;
+    var natural = inkWidth(el);
     if (!natural) return;
     var size = Math.max(floor, (100 * width) / natural);
     var capped = size > cap;
     if (capped) size = cap;
     el.style.fontSize = size + "px";
-    if (capped && el.getAttribute("data-fit-track") !== "0") {
-      var used = el.getBoundingClientRect().width;
+    var used = inkWidth(el);
+    if (used > width - 1) {
+      /* Floor / cap / rounding can still overflow; shrink to the box (with a
+         1px slack for subpixels), even below the floor, so digits are never clipped. */
+      size = size * (Math.max(1, width - 1) / used);
+      el.style.fontSize = size + "px";
+      used = inkWidth(el);
+    }
+    if (capped && used <= width + 0.5 && el.getAttribute("data-fit-track") !== "0") {
       var chars = Math.max(1, (el.textContent || "").trim().length);
       var extra = (width - used) / chars;
       var track = Math.min(extra, MAX_TRACK * size);

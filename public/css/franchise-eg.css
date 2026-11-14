@@ -309,6 +309,11 @@ html[data-theme] .report-page--eg .eg-dek {
   .eg-swiss__value {
     font-size: clamp(2.4rem, 4.2vw, 3.75rem);
   }
+  /* The two remaining key figures are longer ("29.5% / 58.3%", "71.4% vs 51.5%").
+     Let each span half the row so fit-text can keep them large without clipping. */
+  .eg-swiss__item:nth-child(n + 5) {
+    grid-column: span 2;
+  }
 }
 
 /* Status note keeps pink/blue rules, no red */
