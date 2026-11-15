@@ -4,6 +4,7 @@ slug: exercise
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'Colorado leads at 32.0; median across 52 U.S. jurisdictions is 23.0, with Western and New England states dominating the top tier.'
+dek: "One state beats the typical state for exercise by nine points. Can you guess which?"
 heroImage: /images/content/articles/exercise/hero.png
 draft: false
 tags:

@@ -6,6 +6,7 @@ pubDate: 2026-07-01T00:00:00.000Z
 description: >-
   Six championships in 19 seasons compressed a century of legacy into one
   Brady–Belichick era that rewrote franchise identity.
+dek: "Nineteen seasons, six Super Bowls. The Brady-Belichick years rewrote what the Patriots are."
 heroImage: >-
   /images/content/articles/patriots/hero.png
 draft: false

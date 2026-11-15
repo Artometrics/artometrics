@@ -5,6 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-10-12T00:00:00.000Z
 description: >-
   We audited the franchise dataset behind our FRANCHISE report, rebuilt it from Wikipedia's October 2026 list and recomputed every published number. Merchandise still dominates (55.8%), but the Japan–US ranking flipped and Hello Kitty's $80B was a source error.
+dek: "We audited our franchise numbers, rebuilt the dataset, and one ranking flipped."
 heroImage: /images/content/articles/franchise/hero.png
 draft: false
 tags:

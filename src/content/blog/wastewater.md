@@ -4,6 +4,7 @@ slug: wastewater
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'Facility-level data show median discharge at 1,079 m³/day; Singapore''s plants average 223,683.'
+dek: "One island country's wastewater plants discharge more than 200 times the global median."
 heroImage: /images/content/articles/wastewater/hero.png
 draft: false
 tags:

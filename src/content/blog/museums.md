@@ -5,6 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: >-
   4,191 UK museums mapped to area deprivation: median 5.00, maximum 10.0, with South West England showing 3-point admin-area gaps.
+dek: "Britain's museums are not spread evenly across rich and poor neighborhoods."
 heroImage: /images/content/articles/museums/hero.png
 draft: false
 tags:

@@ -7,6 +7,7 @@ description: >-
   A Psychonomics profile of Michael Jackson — Thriller's 34× RIAA
   certification, the 2016 Sony/ATV deal, and the disputed allegations on the
   same ledger.
+dek: "What happens to a person when they are the product? Michael Jackson's ledger has the numbers."
 heroImage: /images/content/articles/jackson/hero.png
 draft: false
 tags:

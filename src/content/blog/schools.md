@@ -4,6 +4,7 @@ slug: schools
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'Butteville Union Elementary scores 85.3 on the Multi index while the national median sits at 2.38 across 27,944 local education agencies.'
+dek: "Across 27,944 school agencies, one is off the chart on diversity. Which?"
 heroImage: /images/content/articles/schools/hero.png
 draft: false
 tags:

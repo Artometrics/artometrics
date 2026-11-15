@@ -4,6 +4,7 @@ slug: legos
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'Median part counts dropped from 142 to 59.5 as World Map and display sets pushed the complexity ceiling past 11,000 pieces.'
+dek: "LEGO's biggest set has 11,695 pieces. The typical set has 34."
 heroImage: /images/content/articles/legos/hero.png
 draft: false
 tags:

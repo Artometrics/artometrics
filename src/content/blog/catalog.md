@@ -4,6 +4,7 @@ slug: catalog
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'Black Mirror: Bandersnatch hit 312 minutes; median duration rose from 41 to 98 minutes between 2008 and 2021 as the catalog skewed longer.'
+dek: "Netflix's longest title runs 312 minutes, and you choose how it ends."
 heroImage: /images/content/articles/catalog/hero.png
 draft: false
 tags:

@@ -4,6 +4,7 @@ slug: phds
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: Five fields produced 63% of U.S. PhDs; social sciences led at 4,944 degrees while the median field awarded just 85.
+dek: "Five fields produced 63% of U.S. PhDs. Which five?"
 heroImage: /images/content/articles/phds/hero.png
 draft: false
 tags:

@@ -4,6 +4,7 @@ slug: breweries
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'Analysis of 2,410 U.S. craft beers shows median ABV of 6%, maximum 12.8%, and high bitterness concentrated in the IPA cluster.'
+dek: "Most craft beers sit at 6% ABV. One is more than double that."
 heroImage: /images/content/articles/breweries/hero.png
 draft: false
 tags:

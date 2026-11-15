@@ -4,6 +4,7 @@ slug: padres
 author: kyle-mcauliffe
 pubDate: 2026-10-11T00:00:00.000Z
 description: "San Diego solved demand and the tax bill. It has not solved October. Franchise values follow the market and the ballpark anyway."
+dek: "Ten postseasons in 58 seasons, no World Series, and a record sale. What did the buyers just buy?"
 heroImage: /images/content/articles/padres/hero.png
 audioSrc: /audios/padres-the-artometrics-of-paying-for-october.mp3
 draft: false

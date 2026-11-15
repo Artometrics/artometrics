@@ -5,6 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: >-
   How Oscars, Grammys, and Nobels manufacture legitimacy differently. Oscar prestige ties to market; Nobel prestige ties to institutional memory.
+dek: "The Oscars, the Grammys, and the Nobels are three different ways to manufacture prestige."
 heroImage: >-
   /images/content/articles/oscars/hero.png
 draft: false

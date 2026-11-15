@@ -4,6 +4,7 @@ slug: blueprint
 author: kyle-mcauliffe
 pubDate: 2026-07-31T00:00:00.000Z
 description: 'José E. Feliciano and Kwanza Jones paid a record $3.9bn for a club drawing 42,000 a game, ranked last in farm talent, and carrying $858m owed to five underperforming stars.'
+dek: "$3.9 billion bought the Padres. Their farm system ranked 30th out of 30."
 heroImage: /images/content/articles/blueprint/hero.png
 audioSrc: /audios/blueprint.mp3
 draft: false

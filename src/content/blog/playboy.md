@@ -4,6 +4,7 @@ slug: playboy
 author: kyle-mcauliffe
 pubDate: 2026-09-22T00:00:00.000Z
 description: "Hefner died in 2017. In 2024 his son's $100M+ bid to buy back Playboy's legacy was rejected. What survives a founder who was the product?"
+dek: "A founder who was the product, a brand that outlived him, and a buyback bid that was turned down."
 heroImage: /images/content/articles/playboy/hero.png
 draft: false
 tags:

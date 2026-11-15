@@ -6,6 +6,7 @@ pubDate: 2026-06-15T00:00:00.000Z
 description: >-
   10,000 pizza menu records show a median price floor of 0.00 and a premium tier
   reaching 50.0, encoding two separate markets in one dataset.
+dek: "A slice at the bottom, a splurge at the top: ten thousand pizza menus, two separate markets."
 heroImage: /images/content/articles/pizza/hero.png
 draft: false
 tags:

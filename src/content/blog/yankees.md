@@ -4,6 +4,7 @@ slug: yankees
 author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: '27 titles create expectations no payroll can meet: the Yankees spend like champions but haven''t converted October access into rings since 2009.'
+dek: "Twenty-seven titles, and the last one came in 2009. What does the drought say?"
 heroImage: /images/content/articles/yankees/hero.png
 draft: false
 tags:

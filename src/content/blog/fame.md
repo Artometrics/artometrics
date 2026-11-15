@@ -5,6 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: >-
   Artists with 15+ release groups and 3+ genre tags sustain fame 40% longer than single-era acts, per MusicBrainz metadata analysis.
+dek: "Does a deep catalog make a pop career last longer?"
 heroImage: /images/content/articles/fame/hero.png
 draft: false
 tags:

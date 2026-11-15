@@ -6,6 +6,7 @@ pubDate: 2026-06-15T00:00:00.000Z
 description: >-
   A lyric-level comparison of two era-defining catalogs—theme, language, and
   structure.
+dek: "What happens when you read Beyoncé and Taylor Swift line by line?"
 heroImage: /images/content/articles/lyrics/hero.png
 draft: false
 tags:

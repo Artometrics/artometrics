@@ -4,6 +4,7 @@ slug: parks
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'Golden Gate National Recreation Area recorded 14.6 million visits in the dataset''s peak year — 94 times the system median of 155,219 across 21,560 park-year records from 1904–2016.'
+dek: "A national recreation area beside a big city outdraws the median park visit 94 to 1."
 heroImage: /images/content/articles/parks/hero.png
 draft: false
 tags:

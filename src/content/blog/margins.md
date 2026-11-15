@@ -6,6 +6,7 @@ pubDate: 2026-06-15T00:00:00.000Z
 description: >-
   3,401 films tagged horror show median domestic gross of $25.5M, but Star Wars
   topped the list—revealing how loose genre tags obscure profit patterns.
+dek: "When genre tags are sloppy, even Star Wars can land in your horror data."
 heroImage: /images/content/articles/margins/hero.png
 draft: false
 tags:

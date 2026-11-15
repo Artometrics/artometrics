@@ -5,6 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: >-
   The Yankees hold 27 titles but convert 40% of Finals trips; the Patriots won 6 of 11 Super Bowls at 55% conversion across MLB, NBA, NFL, NHL since 1950.
+dek: "27 titles sounds like the end of the argument, until you count how often each team wins once it reaches the Finals."
 heroImage: >-
   /images/content/articles/dynasties/hero.png
 draft: false

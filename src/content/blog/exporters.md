@@ -4,6 +4,7 @@ slug: exporters
 author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: 'The U.S., China, and Germany dominate trade through different architectures — platform control, manufacturing scale, and industrial precision.'
+dek: "Three countries, three ways to dominate world trade. None of them look alike."
 heroImage: /images/content/articles/exporters/hero.png
 draft: false
 tags:

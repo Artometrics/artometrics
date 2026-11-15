@@ -5,6 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-09-22T00:00:00.000Z
 description: >-
   Yankees, Patriots, Celtics, Cowboys: a synthesis of Artometrics' sports-dynasty reports asks what transfers when winning is a system, not a roster.
+dek: "When a team keeps winning, is it the players or the machine behind them?"
 heroImage: /images/content/articles/institutions/hero.png
 draft: false
 tags:

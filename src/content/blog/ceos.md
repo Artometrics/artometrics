@@ -4,6 +4,7 @@ slug: ceos
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: Median tenure coded at 1.0 year; "Interim" label accounts for 218 observations in TidyTuesday departures extract.
+dek: "Thousands of CEO departures, one question: how long did they actually last?"
 heroImage: /images/content/articles/ceos/hero.png
 draft: false
 tags:

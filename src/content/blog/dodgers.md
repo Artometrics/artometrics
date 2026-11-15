@@ -5,6 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: >-
   Twelve straight playoff trips, eight championships, and 32 years between rings reveal how payroll and depth buy access—but not closure.
+dek: "The Dodgers won 111 games in 2022. It was not enough."
 heroImage: >-
   /images/content/articles/dodgers/hero.png
 draft: false

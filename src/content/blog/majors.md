@@ -4,6 +4,7 @@ slug: majors
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'Psychology leads 173 majors with 48,207 low-wage jobs; engineering''s median is 372—a hundredfold gap in labor-market absorption.'
+dek: "Some college majors end up in low-wage jobs far more often than others. Psychology tops the list."
 heroImage: /images/content/articles/majors/hero.png
 draft: false
 tags:

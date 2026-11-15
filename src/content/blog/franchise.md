@@ -6,6 +6,7 @@ pubDate: 2026-04-08T00:00:00.000Z
 updatedDate: 2026-11-12T00:00:00.000Z
 description: >-
   As of 10 November 2026, Wikipedia's franchise list (revision 7 November) sums 140 properties to $1,460.1 billion. Merchandise is 55.6%. Pokémon, at $130.7 billion, is larger than Star Wars and the MCU combined. Nine of 2025's ten biggest films were franchise installments.
+dek: "Merchandise, not box office, pays for the world's biggest franchises."
 heroImage: /images/content/articles/franchise/banner.png
 audioSrc: /audios/franchise-kore-v4.mp3
 draft: false

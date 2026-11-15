@@ -5,6 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: >-
   Dallas holds $10B+ in franchise value but hasn't won an NFC championship in 29 years—a widening gap between attention and playoff output.
+dek: "The most valuable team in American sports has not reached a conference title game in 29 years."
 heroImage: /images/content/articles/cowboys/hero.png
 draft: false
 tags:

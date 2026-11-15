@@ -4,6 +4,7 @@ slug: factbook
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: China's 1.36 billion against a 5.2 million median — the top five countries hold 72% of aggregate population in the CIA World Factbook extract.
+dek: "Half the places in the CIA World Factbook have under 5.2 million people. Five hold 72% of everyone."
 heroImage: /images/content/articles/factbook/hero.png
 draft: false
 tags:

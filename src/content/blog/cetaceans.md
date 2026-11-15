@@ -4,6 +4,7 @@ slug: cetaceans
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: '2,172 of 2,194 cetacean transfer records are US-labeled; bottlenose dolphins account for 1,668 entries in a 1946–2017 captivity ledger.'
+dek: "A 70-year ledger of captive whales and dolphins is almost entirely an American story."
 heroImage: /images/content/articles/cetaceans/banner.png
 draft: false
 tags:

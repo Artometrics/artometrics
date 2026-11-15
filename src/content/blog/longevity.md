@@ -4,6 +4,7 @@ slug: longevity
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'Global median life expectancy rose from 33.9 to 73 years between 1543 and 2015, yet top countries still outlive the lowest by more than two-to-one.'
+dek: "Life expectancy nearly tripled in five centuries. So why is the gap between countries still more than two to one?"
 heroImage: /images/content/articles/longevity/hero.png
 draft: false
 tags:

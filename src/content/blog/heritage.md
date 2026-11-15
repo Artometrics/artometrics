@@ -4,6 +4,7 @@ slug: heritage
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: Sweden led Scandinavia with 15 UNESCO sites by 2022; Denmark's count grew 150% from 2004. Median rose from 5 to 10 sites.
+dek: "Sweden leads Scandinavia in UNESCO sites. Denmark is catching up fast."
 heroImage: /images/content/articles/heritage/hero.png
 draft: false
 tags:

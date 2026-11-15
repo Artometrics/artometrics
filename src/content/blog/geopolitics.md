@@ -4,6 +4,7 @@ slug: geopolitics
 author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: 'Film scores 91 on exportability, music 88. South Korea''s cultural wave index climbed from 22 in 1990 to 92 in 2025 across eight mediums and 45 cities.'
+dek: "Which art form travels furthest, and why did South Korea's score climb 70 points after 1990?"
 heroImage: /images/content/articles/geopolitics/hero.png
 draft: false
 tags:

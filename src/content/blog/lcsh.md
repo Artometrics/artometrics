@@ -4,6 +4,7 @@ slug: lcsh
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: LCSH accounts for 69% of subject headings; PS (American literature) appears 4,684 times — concentration defines the reusable public-domain canon.
+dek: "Most subject headings in Project Gutenberg appear exactly once. A few appear thousands of times."
 heroImage: /images/content/articles/lcsh/hero.png
 draft: false
 tags:

@@ -5,6 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: >-
   1,667 subnational regions and 1,100+ datasets define the economic signature of cities — exports, housing, transit, culture, and historical infrastructure.
+dek: "What would it take to compare two cities by what they actually make, trade, and build?"
 heroImage: /images/content/articles/bioeconomics/hero.png
 draft: false
 tags:

@@ -4,6 +4,7 @@ slug: sherlock
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: Tokenized Holmes corpus from TidyTuesday shows median 12.0 words, mean 10.9, with top five titles holding 34% of aggregate count.
+dek: "We broke the Sherlock Holmes stories into 65,958 pieces. No single book runs away with it."
 heroImage: /images/content/articles/sherlock/hero.png
 draft: false
 tags:

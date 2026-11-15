@@ -5,6 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-10-13T00:00:00.000Z
 description: >-
   We refreshed the MyAnimeList catalog behind ANIME after Jikan shut down, moved to the Tenrai-compatible API, and recomputed every headline on the clean TV frame. The light-novel reach premium fell from 32× to 27.5×; manga's 8.0+ share fell to 14.8%; 2015 isekai was under-counted at 0.9% (now 2.2%).
+dek: "We found our numbers were off, rebuilt the catalog, and recomputed every headline. Here is what moved."
 heroImage: /images/content/articles/anime/hero.webp
 draft: false
 tags:

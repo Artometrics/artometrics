@@ -4,6 +4,7 @@ slug: poison
 author: kyle-mcauliffe
 pubDate: 2026-09-22T00:00:00.000Z
 description: Merch built Pokémon's $91B; one actor's six films show the bill.
+dek: "Merchandise built Pokémon into a $91 billion property. What happens when a star becomes the risk?"
 heroImage: /images/content/articles/poison/hero.png
 draft: false
 tags:

@@ -6,6 +6,7 @@ pubDate: 2026-07-01T00:00:00.000Z
 description: >-
   Title fields, ratings, and box-office references explain how films accumulate
   attention.
+dek: "What turns a movie into an IMDb household name? We looked under the hood of the data."
 heroImage: /images/content/articles/blockbusters/hero.png
 draft: false
 tags:

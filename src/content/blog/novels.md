@@ -5,6 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: >-
   A Gutenberg holiday corpus shows a median author birthdate of 1859 and Dickens as the most common name.
+dek: "Christmas fiction on Project Gutenberg is a Victorian club, with Dickens at the door."
 heroImage: /images/content/articles/novels/hero.png
 draft: false
 tags:

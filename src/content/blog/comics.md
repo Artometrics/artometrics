@@ -4,6 +4,7 @@ slug: comics
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'Spider-Man logged 4,043 appearances across 1935–2013; the top five characters account for 45% of cumulative appearances among 23,272 records.'
+dek: "Five characters take up 45% of every comic appearance on record. Guess who."
 heroImage: /images/content/articles/comics/hero.png
 draft: false
 tags:

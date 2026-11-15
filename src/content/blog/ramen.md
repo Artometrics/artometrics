@@ -4,6 +4,7 @@ slug: ramen
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: '3,180 instant-ramen reviews show a 5.00-star ceiling and country gaps of 0.25–0.50 stars around the 3.75 median.'
+dek: "Plenty of instant ramen earns five stars. Only one country rates higher across the board."
 heroImage: /images/content/articles/ramen/hero.png
 draft: false
 tags:

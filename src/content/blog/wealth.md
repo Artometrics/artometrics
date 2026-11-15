@@ -4,6 +4,7 @@ slug: wealth
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: Middle income groups claimed 16% more share; top earners held 6.7 points less than the 10.9% median between 1967 and 2019.
+dek: "Where did U.S. income share go between 1967 and 2019? The middle brackets might surprise you."
 heroImage: /images/content/articles/wealth/hero.png
 draft: false
 tags:

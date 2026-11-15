@@ -4,6 +4,7 @@ slug: radio
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: '17,186 station records show Country owns format share while News/Talk owns the upper AM band — frequency and culture answer different questions.'
+dek: "Why does News/Talk live on the AM dial while Country owns FM?"
 heroImage: /images/content/articles/radio/hero.png
 draft: false
 tags:

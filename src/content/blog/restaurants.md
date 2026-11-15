@@ -4,6 +4,7 @@ slug: restaurants
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'NYC restaurant inspection scores cluster at 15; highest violation count reaches 156 in 100,000-record TidyTuesday extract.'
+dek: "The worst New York City inspection score in this file is 156. The median is 15."
 heroImage: /images/content/articles/restaurants/hero.png
 draft: false
 tags:

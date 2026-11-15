@@ -6,6 +6,7 @@ pubDate: 2026-06-15T00:00:00.000Z
 description: >-
   336 airline records show capacity dominates safety rankings—United leads at
   7.1B seat-km/week, but incident counts don't scale linearly with size.
+dek: "Raw incident counts rank airlines unfairly. Here is what happens when you account for how much each one flies."
 heroImage: /images/content/articles/airlines/hero.png
 draft: false
 tags:

@@ -4,6 +4,7 @@ slug: metrics
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'Median P50 fell from 7.00 to 4.80 across 238 HTTP Archive records, though desktop and mobile showed different speed profiles.'
+dek: "The median web page loads 31% faster than in 2016. Desktop and mobile tell different stories."
 heroImage: /images/content/articles/metrics/hero.png
 draft: false
 tags:

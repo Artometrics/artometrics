@@ -6,6 +6,7 @@ pubDate: 2026-07-01T00:00:00.000Z
 description: >-
   17 championships, 32 Finals appearances — Los Angeles converts market gravity
   into recurring title windows through six distinct star eras.
+dek: "Seventeen championships, six eras, and every one built around a star."
 heroImage: /images/content/articles/lakers/hero.png
 draft: false
 tags:

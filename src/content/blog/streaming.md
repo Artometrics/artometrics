@@ -3,6 +3,7 @@ title: "Netflix's Top 10% of Titles Drew 68% of Viewing"
 slug: streaming
 pubDate: 2026-07-21T00:00:00.000Z
 description: Netflix's January–June 2026 engagement report lists 17,370 titles with at least 50,000 views worldwide (8,193 shows and 9,177 movies). The top 10% drew 67.9% of named hours; the top 20% drew 82.6%.
+dek: "A fifth of Netflix's titles drew more than 82% of the viewing. What happens to the rest?"
 heroImage: /images/content/articles/streaming/hero.png
 tags:
   - arts

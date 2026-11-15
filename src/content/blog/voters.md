@@ -4,6 +4,7 @@ slug: voters
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: National turnout reached 132.6 million in 2014 while the median state recorded 1.17 million votes across 936 elections from 1980–2014.
+dek: "How many people actually vote in a typical state? Far fewer than the national total makes it sound."
 heroImage: /images/content/articles/voters/hero.png
 draft: false
 tags:

@@ -6,6 +6,7 @@ pubDate: 2026-06-15T00:00:00.000Z
 description: >-
   Country-level consumption data map which nations drink the most per person—and
   how that has shifted.
+dek: "Which countries drink the most per person, and what are they pouring?"
 heroImage: /images/content/articles/alcohol/hero.png
 draft: false
 tags:

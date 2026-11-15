@@ -4,6 +4,7 @@ slug: hurricanes
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'Texas, Florida, and Puerto Rico absorbed 100% of measured 2017 hurricane impact in 153-record TidyTuesday extract; median reading 703, ceiling 5,072.'
+dek: "Which three places took the whole 2017 hurricane season in this dataset?"
 heroImage: /images/content/articles/hurricanes/hero.png
 draft: false
 tags:

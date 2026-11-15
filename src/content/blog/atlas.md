@@ -4,6 +4,7 @@ slug: atlas
 author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: Export ledgers reveal national identity under market constraint—200+ countries, 5,000+ products, six diagnostic questions.
+dek: "Look at what a country sells and you are looking at who it is."
 heroImage: /images/content/articles/atlas/hero.png
 draft: false
 tags:

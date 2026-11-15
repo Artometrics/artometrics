@@ -6,6 +6,7 @@ pubDate: 2026-06-15T00:00:00.000Z
 description: >-
   Global burger prices illustrate how currency and wages shape the real cost of
   everyday goods.
+dek: "The same burger costs nearly three times the median price in one country. Which one?"
 heroImage: /images/content/articles/mac/hero.png
 draft: false
 tags:

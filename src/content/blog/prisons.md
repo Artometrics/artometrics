@@ -4,6 +4,7 @@ slug: prisons
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'County-level population data show regional regimes that diverge for decades, not one national curve.'
+dek: "County jail populations did not follow one national story. They followed hundreds of local ones."
 heroImage: /images/content/articles/prisons/hero.png
 draft: false
 tags:

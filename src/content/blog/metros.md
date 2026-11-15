@@ -5,6 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: >-
   New York legitimizes and commands global systems; San Francisco prototypes them. Both export intangible power, not goods.
+dek: "New York gives the orders. San Francisco builds the thing. Both sell what you cannot hold."
 heroImage: /images/content/articles/metros/hero.png
 draft: false
 tags:
