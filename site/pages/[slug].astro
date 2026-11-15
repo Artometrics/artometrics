@@ -12,6 +12,7 @@ import {
 } from "@/lib/content";
 import { DOMAIN_META, SUBDOMAIN_META, primaryDomain, primarySubdomain } from "@/data/sections";
 import downloads from "@/src/generated/downloads.json";
+import { sourcesSlugFor } from "../lib/sources-pages";
 import { existsSync } from "node:fs";
 import { readingMinutes, withStaticCharts } from "../lib/static-charts";
 import {
@@ -64,7 +65,7 @@ const pack = downloads[post.slug as keyof typeof downloads] as
   | undefined;
 const meta = loadReportMeta(post.slug);
 const dek = (post as { dek?: string }).dek || post.description;
-const links = articleLinks(post.slug, pack);
+const links = articleLinks(post.slug, pack, sourcesSlugFor(post.slug));
 const transcriptHref = pack?.transcript ? `/transcripts/${post.slug}` : null;
 const files = [
   ...previewFiles(post.slug).map((file) =>

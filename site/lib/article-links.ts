@@ -65,16 +65,16 @@ export type ArticleLinks = {
  */
 export function articleLinks(
   slug: string,
-  pack?: { pdf?: string | null; epub?: string | null; dataset?: string | null } | null,
-  hasSourcesPage = true,
+  pack?: { pdf?: string | null; epub?: string | null; dataset?: string | null; github?: string | null } | null,
+  sourcesSlug: string | null = slug,
 ): ArticleLinks {
   const pdf = pdfFor(slug, pack?.pdf);
   const dataset = publicFile(pack?.dataset);
   return {
     download: pdf ? { href: pdf, label: "Download the PDF" } : dataset ? { href: dataset, label: "Download the dataset (CSV)" } : null,
     book: ebookFor(slug, pack?.epub),
-    data: hasSourcesPage ? `/sources/${slug}` : null,
-    github: githubFolderFor(slug),
+    data: sourcesSlug ? `/sources/${sourcesSlug}` : null,
+    github: githubFolderFor(slug) || (pack?.github && /^https:\/\/github\.com\//.test(pack.github) ? pack.github : null),
   };
 }
 
