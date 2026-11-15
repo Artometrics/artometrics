@@ -90,7 +90,7 @@ const blog = JSON.parse(readFileSync(join(ROOT, "src/generated/blog.json"), "utf
 );
 const issueSlugs = new Set(issues.map((issue) => issue.slug));
 const blogSlugs = new Set(blog.map((post) => post.slug));
-assert(issues.length === 103, `expected 103 magazine issues, got ${issues.length}`);
+assert(issues.length === 105, `expected 105 magazine issues, got ${issues.length}`);
 for (const slug of blogSlugs) assert(issueSlugs.has(slug), `magazine missing blog slug ${slug}`);
 for (const slug of issueSlugs) assert(blogSlugs.has(slug), `blog missing magazine slug ${slug}`);
 assert(issues.every((issue) => issue.sections || issue.custom), "every issue has sections or custom body");
@@ -706,7 +706,7 @@ assert(
 assert(freshSources.orphanFixes.length === 0, "every data fix has a parent issue");
 assert(freshSources.topics.map((topic) => topic.id).join(",") === "arts,sports,science,humanities,civics,culture", "topics follow the site order");
 const listed = freshSources.topics.flatMap((topic) => topic.issues);
-assert(listed.length === 100, `expected 100 parent reports, got ${listed.length}`);
+assert(listed.length === 102, `expected 102 parent reports, got ${listed.length}`);
 assert(listed.every((issue) => !issue.slug.endsWith("-data-fix")), "data fixes are not top-level rows");
 const anime = listed.find((issue) => issue.slug === "anime");
 assert(anime && anime.updatedThrough === "Updated through October 11, 2026", "anime uses the snapshot coverage end");

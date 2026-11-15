@@ -1,0 +1,59 @@
+polling
+
+In the 23 states with polling-place data for every general election from 2012 to 2020, the number of distinct polling-place addresses fell from 45,512 to 38,850, a loss of 6,662, or 14.6 percent. Four states account for 69 percent of it.
+
+The data comes from the Center for Public Integrity's collection of state and local polling-place lists, released through TidyTuesday. It has 461,445 rows across seven election dates and 39 states. Coverage changes from year to year, so this report compares only states that appear in all five general elections: 2012, 2014, 2016, 2018 and 2020.
+
+FOUR STATES DID MOST OF IT
+
+FOUR STATES ACCOUNT FOR 69 PERCENT OF THE NET LOSS
+
+Ohio lost 1,264 addresses between 2012 and 2020 and Maryland 1,250. Indiana lost 1,037 and Illinois 1,033. Those four add up to 4,584 of the net 6,662, or 69 percent. Pennsylvania, the largest state in the set with 7,454 addresses in 2012, lost 695.
+
+Without Maryland, the other 22 states lost 12.3 percent instead of 14.6 percent. The decline is broad, but a handful of states set the total.
+
+A SLOW SLIDE, THEN A CLIFF
+
+A SLOW SLIDE, THEN A 9 PERCENT DROP IN 2020
+
+Indexed to 2012, the total reached 96.7 in 2014, 95.9 in 2016 and 93.8 in 2018. It then fell to 85.4 in 2020. The 2018 to 2020 step, from 42,695 to 38,850 addresses, is a 9.0 percent drop in one cycle, and it is larger than the whole 2012 to 2018 decline of 6.2 percent.
+
+Two things overlap in 2020: long-running consolidation and the pandemic. The data records where polling places were, not why they closed.
+
+THE DEEPEST CUTS IN PERCENT
+
+MARYLAND AND NORTH DAKOTA CUT DEEPEST
+
+By percentage, Maryland fell 79.6 percent and North Dakota 57.4 percent, from 263 addresses to 112. Indiana fell 35.6 percent and Ohio 26.7 percent. Indiana's drop came early: it listed 2,912 addresses in 2012 and 1,979 in 2014.
+
+Only 3 of the 23 states added polling places. Vermont grew from 139 to 261 (+122), Alaska from 390 to 416 (+26) and Virginia from 2,383 to 2,408 (+25). Connecticut was nearly flat, at 643 and 638.
+
+MARYLAND: FROM 1,566 TO 320
+
+MARYLAND WENT FROM 1,566 PLACES TO 320 IN ONE CYCLE
+
+Maryland's count sat between 1,566 and 1,581 addresses for four straight general elections, then fell to 320 in 2020. The reason is documented. The Maryland State Board of Elections reports that voters on Election Day 2020 used 321 vote centers instead of neighborhood polling places, the first time the state used vote centers on Election Day. The board gave two reasons: election judges were resigning during the public-health emergency, and many neighborhood sites could not meet social-distancing guidelines.
+
+The dataset's 320 distinct addresses is within one of the board's figure of 321. Maryland is the clearest case in the data of a state that did not close polling places one by one but replaced a system.
+
+THE MAP KEEPS CHANGING
+
+THE MAP KEEPS CHANGING: 30 STATES IN 2012, 35 IN 2020
+
+The raw row count rises from 87,176 in 2012 to 103,290 in 2020. That rise tracks coverage as much as anything: the number of states with data went from 30 to 35 over the same period. Georgia, for example, has no data before 2016 and Alabama, California, Missouri, Nevada, Texas and Utah appear only in 2020. A national total taken from this file would mix real change with changes in which states are listed.
+
+That is why the comparison in this report uses only the 23 states present in all five general elections. The source notes also say that Colorado, Hawaii, Oregon, Washington and Utah vote mostly by mail and have little or no data.
+
+WHAT THIS FILE CANNOT TELL YOU
+
+A polling place here is a distinct address, after trimming whitespace and ignoring case. Two lists that format the same address differently count as two places, and two precincts sharing one building count as one. Counts describe what the source lists contained; they are not official tallies. Early-voting sites and Election Day sites are mixed in some states and separate in others, and the file does not carry a consistent flag for every row.
+
+The data cannot say whether a closure made voting harder. Distance to a polling place, wait times and turnout are not in the file. A drop in addresses can reflect consolidation into larger vote centers, as in Maryland, rather than less capacity.
+
+WHAT TO TAKE AWAY
+
+Across 23 states with a complete record, polling-place addresses fell 14.6 percent between 2012 and 2020, and 69 percent of that came from Ohio, Maryland, Indiana and Illinois. The step between 2018 and 2020 was the largest, and Maryland's move to vote centers is the biggest single piece.
+
+Any claim about polling places nationwide needs the same discipline as this one: pick the states that are present in every year, and compare them to themselves.
+
+DATA, METHODS & SOURCES

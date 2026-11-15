@@ -7,6 +7,6 @@ export const DESKS = [
   { label: "Sports", href: "/topics/sports", slugs: ["dodgers", "padres", "celtics", "steam"] },
   { label: "Science", href: "/topics/science", slugs: ["nuclear", "cetaceans", "readmitted", "wastewater"] },
   { label: "Culture", href: "/topics/culture", slugs: ["wine", "coffee", "ramen", "pizza"] },
-  { label: "Humanities", href: "/topics/humanities", slugs: ["caesar", "beyonce", "emperors"] },
-  { label: "Civics", href: "/topics/civics", slugs: ["geopolitics", "atlas", "exporters"] },
+  { label: "Humanities", href: "/topics/humanities", slugs: ["caesar", "beyonce", "emperors", "markers"] },
+  { label: "Civics", href: "/topics/civics", slugs: ["geopolitics", "atlas", "exporters", "polling"] },
 ];

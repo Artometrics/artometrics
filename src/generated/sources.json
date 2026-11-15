@@ -2018,6 +2018,34 @@
           "fixes": []
         },
         {
+          "slug": "markers",
+          "title": "Texas Holds One in Four of America's Historical Markers",
+          "kicker": "Markers",
+          "href": "/markers",
+          "updatedThrough": "Updated through July 4, 2023",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "TidyTuesday, 2023-07-04: Historical Markers. The R for Data Science community's release of the Historical Marker Database USA index, 42,724 markers, plus a companion file of 103 counties with no entry.",
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2023/2023-07-04"
+            },
+            {
+              "text": "Historical Marker Database (HMdb.org). The volunteer-built catalog that the extract comes from.",
+              "href": "https://www.hmdb.org/"
+            },
+            {
+              "text": "HMdb.org, Database Counts and Statistics. The database's own running totals, for comparison with the extract.",
+              "href": "https://www.hmdb.org/stats.asp"
+            },
+            {
+              "text": "Texas State Historical Association, Handbook of Texas Online: Texas Centennial. On the 1936 centennial program that put a marker in every Texas county.",
+              "href": "https://www.tshaonline.org/handbook/entries/texas-centennial"
+            }
+          ],
+          "fixes": []
+        },
+        {
           "slug": "jackson",
           "title": "The Cost of Being the Product",
           "kicker": "Jackson",
@@ -2225,6 +2253,34 @@
             {
               "text": "U.S. Census ACS and International Trade Administration Metropolitan Export Series.",
               "href": null
+            }
+          ],
+          "fixes": []
+        },
+        {
+          "slug": "polling",
+          "title": "About One in Seven Polling Places Vanished from 23 States, 2012–2020",
+          "kicker": "Polling",
+          "href": "/polling",
+          "updatedThrough": "Updated through January 16, 2024",
+          "updatedThroughKind": "coverage",
+          "datasets": [],
+          "citations": [
+            {
+              "text": "TidyTuesday, 2024-01-16: US Polling Places 2012-2020. The R for Data Science community's release of the polling_places table, 461,445 rows.",
+              "href": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2024/2024-01-16"
+            },
+            {
+              "text": "The Center for Public Integrity, us-polling-places. The original collection of state and local polling-place lists, 2012-2020.",
+              "href": "https://github.com/PublicI/us-polling-places"
+            },
+            {
+              "text": "The Center for Public Integrity, \"National data release sheds light on past polling place changes\" (September 2020). How the data was collected.",
+              "href": "https://publicintegrity.org/politics/elections/ballotboxbarriers/data-release-sheds-light-on-past-polling-place-changes/"
+            },
+            {
+              "text": "Maryland State Board of Elections, Report on November 3, 2020 Election. States that 321 Election Day vote centers replaced neighborhood polling places.",
+              "href": "https://elections.maryland.gov/press_room/2020_stats/Nov%203%20Election%20Report_Final.pdf"
             }
           ],
           "fixes": []
