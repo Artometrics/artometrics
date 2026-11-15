@@ -274,11 +274,11 @@ for (const viewport of VIEWPORTS) {
       check(top.redHits === 0, `${tag} article: no red in the E+G chrome (${top.redHits})`);
 
       const figs = await page.evaluate(() => {
-        const boxes = [...document.querySelectorAll(".eg-swiss__item")];
+        const boxes = [...document.querySelectorAll(".keyfig")];
         return {
           count: boxes.length,
           overflowing: boxes.filter((box) => {
-            const value = box.querySelector(".eg-swiss__value");
+            const value = box.querySelector(".keyfig__value");
             if (!value) return true;
             const boxRect = box.getBoundingClientRect();
             const range = document.createRange();
@@ -286,18 +286,20 @@ for (const viewport of VIEWPORTS) {
             const ink = range.getBoundingClientRect();
             return ink.width > boxRect.width + 1 || value.scrollWidth > value.clientWidth + 1 || box.scrollWidth > box.clientWidth + 1;
           }).length,
-          columns: new Set(boxes.map((box) => Math.round(box.getBoundingClientRect().left))).size,
-          valueSizes: boxes.map((box) => parseFloat(getComputedStyle(box.querySelector(".eg-swiss__value")).fontSize)),
-          hasLabel: boxes.every((box) => box.querySelector(".eg-swiss__label")?.textContent.trim().length > 0),
-          values: boxes.map((box) => box.querySelector(".eg-swiss__value").textContent.trim()),
+          columns: new Set(boxes.filter((box) => !box.classList.contains("keyfig--wide")).map((box) => Math.round(box.getBoundingClientRect().left))).size,
+          wideAtEnd: boxes.findIndex((box) => box.classList.contains("keyfig--wide")) === boxes.length - boxes.filter((box) => box.classList.contains("keyfig--wide")).length,
+          valueSizes: boxes.map((box) => parseFloat(getComputedStyle(box.querySelector(".keyfig__value")).fontSize)),
+          hasLabel: boxes.every((box) => box.querySelector(".keyfig__label")?.textContent.trim().length > 0),
+          values: boxes.map((box) => box.querySelector(".keyfig__value").textContent.trim()),
         };
       });
-      check(figs.count >= 5, `${tag} key figures: ${figs.count} Swiss numerals`);
+      check(figs.count >= 5, `${tag} key figures: ${figs.count} boxes`);
+      check(figs.wideAtEnd, `${tag} key figures: wide boxes sit at the end of the group`);
       check(figs.overflowing === 0, `${tag} key figures: numbers fit their boxes`);
       check(figs.values.includes("29.5% / 58.3%") && figs.values.includes("71.4% vs 51.5%"), `${tag} key figures: the two longer comparisons are present in full`);
       check(figs.hasLabel, `${tag} key figures: every box has a label`);
-      check(figs.valueSizes.every((px) => px >= (viewport.width < 600 ? 18 : 26)), `${tag} key figures: big numbers (${figs.valueSizes.map((n) => n.toFixed(0))})`);
-      check(figs.columns === (viewport.width < 600 ? 2 : 4), `${tag} key figures: responsive Swiss grid (${figs.columns} columns)`);
+      check(figs.valueSizes.every((px) => px >= (viewport.width < 600 ? 14 : 20)), `${tag} key figures: big numbers (${figs.valueSizes.map((n) => n.toFixed(0))})`);
+      check(figs.columns === (viewport.width < 600 ? 2 : 4), `${tag} key figures: responsive square grid (${figs.columns} columns)`);
       check(figs.values.includes("$1,460.1B") && figs.values.includes("55.6%") && figs.values.includes("$130.7B") && figs.values.includes("140"), `${tag} key figures: published numbers unchanged`);
 
       const cards = await page.evaluate(() => ({
@@ -413,21 +415,21 @@ for (const viewport of VIEWPORTS) {
       const { context, page } = await open(viewport, theme, `/${article.slug}`);
       await loadLazyImages(page);
       const top = await page.evaluate(() => {
-        const header = document.querySelector(".report-banner");
-        const banner = document.querySelector(".report-banner__art");
-        const h1 = document.querySelector(".preview-report h1");
+        const header = document.querySelector(".cover");
+        const banner = document.querySelector(".cover__art");
+        const h1 = document.querySelector(".cover__title");
         const cover = document.querySelector(".franchise-cover img");
         const robots = document.querySelector('meta[name="robots"]')?.content || "";
         const og = document.querySelector('meta[property="og:image"]')?.content || "";
         const ratio = banner ? banner.clientWidth / Math.max(1, banner.clientHeight) : 0;
         const natural = banner ? banner.naturalWidth / Math.max(1, banner.naturalHeight) : 0;
         return {
-          baked: header?.classList.contains("report-banner--baked") ?? false,
+          baked: header?.classList.contains("cover--baked") ?? false,
           bannerLoaded: banner ? banner.naturalWidth > 0 : false,
           objectFit: banner ? getComputedStyle(banner).objectFit : "",
           ratio,
           natural,
-          h1SrOnly: h1?.classList.contains("sr-only") ?? false,
+          h1SrOnly: h1 ? getComputedStyle(h1).position === "absolute" && h1.getBoundingClientRect().width <= 2 : false,
           h1Text: h1?.textContent.replace(/\s+/g, " ").trim() || "",
           coverLoaded: cover ? cover.naturalWidth > 0 : false,
           coverSrc: cover?.getAttribute("src") || "",

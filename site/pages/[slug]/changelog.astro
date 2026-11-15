@@ -22,7 +22,8 @@ const file = join(process.cwd(), meta?.changelog?.file || "");
 const markdown = existsSync(file) ? readFileSync(file, "utf8") : "";
 const html = marked.parse(markdown.replace(/^# .*\n/, "")) as string;
 const heading = /^# (.*)$/m.exec(markdown)?.[1] || "Changelog";
-const dataHref = `/data/articles/${slug}/CHANGELOG.md`;
+const homeSlug = /^articles\/([^/]+)\//.exec(meta?.changelog?.file || "")?.[1] || String(slug);
+const dataHref = `/data/articles/${homeSlug}/CHANGELOG.md`;
 ---
 
 <Base
