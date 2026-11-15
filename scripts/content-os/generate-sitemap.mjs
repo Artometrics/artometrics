@@ -22,6 +22,11 @@ const authors = existsSync(join(ROOT, "src/generated/authors.json"))
   ? JSON.parse(readFileSync(join(ROOT, "src/generated/authors.json"), "utf8"))
   : [];
 
+const sourcesCatalog = existsSync(join(ROOT, "src/generated/sources.json"))
+  ? JSON.parse(readFileSync(join(ROOT, "src/generated/sources.json"), "utf8"))
+  : { topics: [] };
+const sourceSlugs = sourcesCatalog.topics.flatMap((topic) => topic.issues.map((issue) => issue.slug));
+
 const SECTIONS = [
   "arts",
   "sports",
@@ -72,6 +77,7 @@ const parts = [
   `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
   ...staticPaths.map((p) => url(p, null, p === "/" ? "1.0" : "0.7")),
   ...blog.map((p) => url(`/${p.slug.replace(/\/$/, "")}`, p.pubDate, "0.8")),
+  ...sourceSlugs.map((slug) => url(`/sources/${slug}`, null, "0.5")),
   ...podcast.map((e) => url(`/podcast/interviews/${e.id}`, e.pubDate, "0.6")),
   ...authors.map((a) => url(`/authors/${a.id}`, null, "0.4")),
   ...legal.map((l) => url(`/legal/${l.id}`, l.pubDate, "0.3")),
