@@ -46,10 +46,10 @@ export function pdfFor(slug: string, packPdf?: string | null): string | null {
   ]);
 }
 
-/** The article's folder in the public repository, only when that folder exists. */
+/** The article's folder in the public repository, only when that folder exists and holds files. */
 export function githubFolderFor(slug: string): string | null {
   const dir = join(ROOT, "articles", slug);
-  return existsSync(dir) && statSync(dir).isDirectory() ? `${REPO_URL}/tree/main/articles/${slug}` : null;
+  return existsSync(dir) && statSync(dir).isDirectory() && readdirSync(dir).length ? `${REPO_URL}/tree/main/articles/${slug}` : null;
 }
 
 export type ArticleLinks = {
@@ -74,7 +74,7 @@ export function articleLinks(
     download: pdf ? { href: pdf, label: "Download the PDF" } : dataset ? { href: dataset, label: "Download the dataset (CSV)" } : null,
     book: ebookFor(slug, pack?.epub),
     data: sourcesSlug ? `/sources/${sourcesSlug}` : null,
-    github: githubFolderFor(slug) || (pack?.github && /^https:\/\/github\.com\//.test(pack.github) ? pack.github : null),
+    github: githubFolderFor(slug) || (sourcesSlug ? githubFolderFor(sourcesSlug) : null),
   };
 }
 

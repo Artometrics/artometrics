@@ -1,0 +1,38 @@
+{
+  "data": [
+    {
+      "type": "scatter",
+      "mode": "markers+text",
+      "name": "Jimmy Savile / BBC",
+      "x": [2011, 2016],
+      "y": [1, 1],
+      "text": ["2011: dies, still protected", "2016: Dame Janet Smith Review confirms decades of abuse"],
+      "textposition": "top center",
+      "marker": { "size": 14, "color": "#000000" },
+      "hovertemplate": "%{text}<extra></extra>"
+    },
+    {
+      "type": "scatter",
+      "mode": "markers+text",
+      "name": "Russell Brand",
+      "x": [2023.7],
+      "y": [2],
+      "text": ["Sept 2023: Sunday Times / Dispatches report; Brand denies"],
+      "textposition": "bottom center",
+      "marker": { "size": 14, "color": "#E60000" },
+      "hovertemplate": "%{text}<extra></extra>"
+    }
+  ],
+  "layout": {
+    "title": { "text": "Two broadcaster cases: institutional trust, not a studio P&L" },
+    "xaxis": { "title": { "text": "Year" }, "range": [2010, 2025], "dtick": 5 },
+    "yaxis": {
+      "tickmode": "array",
+      "tickvals": [1, 2],
+      "ticktext": ["Savile / BBC", "Brand"],
+      "range": [0.5, 2.5]
+    },
+    "showlegend": false,
+    "margin": { "t": 60, "b": 50, "l": 100 }
+  }
+}

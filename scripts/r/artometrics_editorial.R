@@ -97,11 +97,11 @@ theme_art_ed <- function(mode = "light", base = 14, root = ART_ED_ROOT) {
       plot.caption.position = "plot",
       plot.title = element_text(
         family = ART_ED_HEAD, size = rel(1.9), color = p$ink, lineheight = 1.08, hjust = 0, vjust = 1,
-        margin = margin(t = 22, b = 10)
+        margin = margin(t = 22, b = 18)
       ),
       plot.subtitle = element_textbox_simple(
         family = ART_ED_BODY, size = rel(1.02), color = p$muted, lineheight = 1.25,
-        width = unit(1, "npc"), margin = margin(b = 14)
+        width = unit(1, "npc"), margin = margin(b = 22)
       ),
       plot.caption = element_textbox_simple(
         family = ART_ED_MONO, size = rel(0.7), color = p$muted, lineheight = 1.3,
@@ -170,7 +170,7 @@ art_ed_col <- function(labels, values, highlight = integer(), fmt = scales::labe
 }
 
 # One or more lines. `x`, `y` numeric; `group` optional. The last point of each line is labelled directly.
-art_ed_line <- function(x, y, group = NULL, highlight = NULL, fmt = scales::label_comma(), label_last = TRUE, points = FALSE, xbreaks = NULL, notes = NULL, lfmt = NULL) {
+art_ed_line <- function(x, y, group = NULL, highlight = NULL, fmt = scales::label_comma(), label_last = TRUE, points = FALSE, xbreaks = NULL, notes = NULL, lfmt = NULL, xlab = NULL) {
   if (is.null(lfmt)) lfmt <- fmt
   force(x); force(y); force(group); force(highlight); force(fmt); force(notes)
   function(mode = "light", root = ART_ED_ROOT) {
@@ -187,8 +187,10 @@ art_ed_line <- function(x, y, group = NULL, highlight = NULL, fmt = scales::labe
       geom_line(linewidth = 1.5, lineend = "round") +
       scale_color_manual(values = cols) +
       scale_y_continuous(labels = fmt, expand = expansion(mult = c(0.04, 0.16))) +
-      scale_x_continuous(breaks = if (is.null(xbreaks)) scales::breaks_pretty(5) else xbreaks, labels = if (all(df$x >= 1800 & df$x <= 2100)) function(v) format(v, big.mark = "", trim = TRUE) else waiver(), expand = expansion(mult = c(0.02, if (length(groups) > 1) 0.24 else 0.1))) +
+      scale_x_continuous(breaks = if (is.null(xbreaks)) scales::breaks_pretty(5) else xbreaks, labels = if (!is.null(xlab)) xlab else if (all(df$x >= 1800 & df$x <= 2100)) function(v) format(v, big.mark = "", trim = TRUE) else waiver(), expand = expansion(mult = c(0.02, if (length(groups) > 1) 0.24 else 0.16))) +
+      coord_cartesian(clip = "off") +
       theme_art_ed(mode, base, root)
+    if (!is.null(xbreaks) && length(xbreaks) > 4) g <- g + theme(axis.text.x = element_text(angle = 35, hjust = 1, vjust = 1))
     if (points) g <- g + geom_point(size = 2.6)
     if (!is.null(notes)) {
       g <- g + geom_point(data = notes, aes(x, y), inherit.aes = FALSE, color = p$ink, size = 2.6) +
@@ -212,7 +214,7 @@ art_ed_line <- function(x, y, group = NULL, highlight = NULL, fmt = scales::labe
 }
 
 # Scatter. `label` marks points to name directly (others stay unlabelled); `highlight` colours points.
-art_ed_scatter <- function(x, y, label = NULL, highlight = integer(), xfmt = scales::label_comma(), yfmt = scales::label_comma(), alpha = 0.55) {
+art_ed_scatter <- function(x, y, label = NULL, highlight = integer(), xfmt = scales::label_comma(), yfmt = scales::label_comma(), alpha = 0.55, xlog = FALSE, ylog = FALSE) {
   force(x); force(y); force(label); force(highlight)
   function(mode = "light", root = ART_ED_ROOT) {
     art_ed_fonts(root)
@@ -223,8 +225,8 @@ art_ed_scatter <- function(x, y, label = NULL, highlight = integer(), xfmt = sca
     g <- ggplot(df, aes(x, y)) +
       geom_point(data = df[!df$hi, ], color = p$other, alpha = alpha, size = if (nrow(df) > 400) 1.4 else 3.2, stroke = 0) +
       geom_point(data = df[df$hi, ], color = p$red, size = 4, stroke = 0) +
-      scale_x_continuous(labels = xfmt, breaks = scales::breaks_pretty(5)) +
-      scale_y_continuous(labels = yfmt, breaks = scales::breaks_pretty(5)) +
+      (if (xlog) scale_x_log10(labels = xfmt, breaks = scales::breaks_log(5)) else scale_x_continuous(labels = xfmt, breaks = scales::breaks_pretty(5))) +
+      (if (ylog) scale_y_log10(labels = yfmt, breaks = scales::breaks_log(5)) else scale_y_continuous(labels = yfmt, breaks = scales::breaks_pretty(5))) +
       theme_art_ed(mode, base, root)
     named <- df[df$hi & !is.na(df$lab), ]
     if (nrow(named)) {
@@ -237,8 +239,33 @@ art_ed_scatter <- function(x, y, label = NULL, highlight = integer(), xfmt = sca
   }
 }
 
+
+# Dot plot of a measure that does not start at zero: first label on top, value printed at the dot.
+art_ed_dot <- function(labels, values, fmt = scales::label_number(accuracy = 0.01), lo = NULL, hi = NULL) {
+  force(labels); force(values); force(lo); force(hi)
+  function(mode = "light", root = ART_ED_ROOT) {
+    art_ed_fonts(root)
+    p <- art_ed_palette(mode, root)
+    df <- data.frame(label = factor(labels, levels = rev(labels)), v = values)
+    df$hi <- seq_len(nrow(df)) == 1
+    has_range <- !is.null(lo) && !is.null(hi)
+    df$lo <- if (has_range) lo else df$v
+    df$up <- if (has_range) hi else df$v
+    base <- 14
+    ggplot(df, aes(v, label)) +
+      geom_segment(aes(x = min(lo) - diff(range(c(lo, up))) * 0.08, xend = lo, yend = label), color = p$grid, linewidth = 0.6) +
+      (if (has_range) geom_segment(aes(x = lo, xend = up, yend = label), color = p$muted, linewidth = 1.6, lineend = "round") else NULL) +
+      geom_point(aes(color = hi), size = 4) +
+      geom_text(aes(x = up, label = fmt(v)), hjust = -0.4, size = base * 0.28, family = ART_ED_HEAD, color = p$ink) +
+      scale_color_manual(values = c(`TRUE` = p$red, `FALSE` = p$other), guide = "none") +
+      scale_x_continuous(expand = expansion(mult = c(0.02, 0.18)), labels = fmt) +
+      theme_art_ed(mode, base, root) +
+      theme(panel.grid.major.y = element_blank(), axis.text.y = element_text(color = p$ink))
+  }
+}
+
 # Histogram of precomputed bins: `mids` and `counts`.
-art_ed_hist <- function(mids, counts, highlight = integer(), fmt = scales::label_comma()) {
+art_ed_hist <- function(mids, counts, highlight = integer(), fmt = scales::label_comma(), xfmt = waiver(), nbreaks = 5) {
   force(mids); force(counts)
   function(mode = "light", root = ART_ED_ROOT) {
     art_ed_fonts(root)
@@ -248,9 +275,64 @@ art_ed_hist <- function(mids, counts, highlight = integer(), fmt = scales::label
     base <- 14
     ggplot(df, aes(x, n)) +
       geom_col(aes(fill = I(art_ed_fill(nrow(df), highlight, mode, root))), width = width) +
-      scale_x_continuous(breaks = scales::breaks_pretty(6)) +
+      scale_x_continuous(breaks = scales::breaks_pretty(nbreaks), labels = xfmt, expand = expansion(mult = c(0.03, 0.07))) +
       scale_y_continuous(labels = fmt, expand = expansion(mult = c(0, 0.08))) +
       theme_art_ed(mode, base, root)
+  }
+}
+
+
+# Grouped or stacked columns: `cats` (x), `series` (fill), `values`. Horizontal puts categories on the y axis, first on top.
+art_ed_gbar <- function(cats, series, values, stacked = FALSE, horizontal = FALSE, fmt = scales::label_comma()) {
+  force(cats); force(series); force(values)
+  function(mode = "light", root = ART_ED_ROOT) {
+    art_ed_fonts(root)
+    p <- art_ed_palette(mode, root)
+    df <- data.frame(cat = factor(cats, levels = unique(cats)), s = factor(series, levels = unique(series)), v = values)
+    pal <- c(p$red, p$blue, p$other, p$ink, p$muted)[seq_len(nlevels(df$s))]
+    names(pal) <- levels(df$s)
+    base <- 14
+    pos <- if (stacked) "stack" else position_dodge2(width = 0.8, reverse = horizontal)
+    g <- ggplot(df, aes(cat, v, fill = s)) +
+      geom_col(position = pos, width = if (stacked) 0.72 else 0.8) +
+      scale_fill_manual(values = pal, name = NULL) +
+      guides(fill = guide_legend(nrow = if (sum(nchar(levels(df$s))) > 34) nlevels(df$s) else if (nlevels(df$s) > 3) ceiling(nlevels(df$s) / 2) else 1, byrow = TRUE)) +
+      scale_y_continuous(labels = fmt, expand = expansion(mult = c(0, 0.08))) +
+      theme_art_ed(mode, base, root) +
+      theme(legend.position = "top", legend.justification = "left", legend.text = element_text(color = p$ink, size = rel(0.95)),
+            legend.key.size = unit(10, "pt"), legend.margin = margin(0, 0, 8, 0))
+    if (horizontal) {
+      g <- g + scale_x_discrete(limits = rev(levels(df$cat))) + coord_flip() +
+        theme(panel.grid.major.x = element_line(color = p$grid, linewidth = 0.45), panel.grid.major.y = element_blank(), axis.text.y = element_text(color = p$ink))
+    }
+    g
+  }
+}
+
+# Heatmap of `values` over `rows` x `cols`; cell values are printed when there are few cells.
+art_ed_heat <- function(rows, cols, values, fmt = scales::label_number(accuracy = 0.1), show_values = TRUE) {
+  force(rows); force(cols); force(values)
+  function(mode = "light", root = ART_ED_ROOT) {
+    art_ed_fonts(root)
+    p <- art_ed_palette(mode, root)
+    clean <- function(z) sub("\\.0$", "", z)
+    df <- data.frame(r = factor(clean(rows), levels = rev(unique(clean(rows)))), c = factor(clean(cols), levels = unique(clean(cols))), v = values)
+    base <- 14
+    lo <- if (mode == "dark") "#26211c" else "#efe7d8"
+    g <- ggplot(df, aes(c, r, fill = v)) +
+      geom_tile(color = p$paper, linewidth = 1.2) +
+      scale_fill_gradient(low = lo, high = p$red, guide = "none", na.value = p$grid) +
+      scale_x_discrete(position = "top", expand = c(0, 0), labels = function(l) l) + scale_y_discrete(expand = c(0, 0)) +
+      theme_art_ed(mode, base, root) +
+      theme(panel.grid = element_blank(), axis.line.x = element_blank(), axis.text.x = element_text(angle = if (nlevels(df$c) > 4 && max(nchar(levels(df$c))) > 6) 35 else 0, hjust = if (nlevels(df$c) > 4 && max(nchar(levels(df$c))) > 6) 0 else 0.5, color = p$ink, size = rel(0.85)),
+            axis.text.y = element_text(color = p$ink),
+            plot.margin = if (nlevels(df$c) > 4 && max(nchar(levels(df$c))) > 6) margin(14, 48, 14, 22) else margin(14, 22, 14, 22))
+    if (show_values) {
+      thr <- min(df$v, na.rm = TRUE) + 0.6 * diff(range(df$v, na.rm = TRUE))
+      g <- g + geom_text(aes(label = fmt(v), color = v >= thr), size = base * 0.26, family = ART_ED_HEAD, show.legend = FALSE) +
+        scale_color_manual(values = c(`TRUE` = if (mode == "dark") "#14110e" else "#14110e", `FALSE` = p$ink))
+    }
+    g
   }
 }
 

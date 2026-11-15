@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "type": "scatter",
+      "mode": "markers+text",
+      "x": [2017.9, 2018.8, 2019.2, 2025.5],
+      "y": [1, 1, 1, 1],
+      "text": [
+        "Dec 2017: fired, keeps DGA credit",
+        "2018–19: Bohemian Rhapsody hit",
+        "Mar 2019: The Atlantic report",
+        "2025: Variety, fringe Voight project"
+      ],
+      "textposition": ["bottom center", "top center", "bottom center", "top center"],
+      "marker": { "size": 14, "color": ["#000000", "#E60000", "#525252", "#525252"] },
+      "hovertemplate": "%{text}<extra></extra>"
+    }
+  ],
+  "layout": {
+    "title": { "text": "Bohemian Rhapsody's success did not restore Singer's attachments" },
+    "xaxis": { "title": { "text": "Year" }, "range": [2017.5, 2026], "dtick": 1 },
+    "yaxis": { "visible": false, "range": [0.5, 1.5] },
+    "margin": { "t": 60, "b": 50 }
+  }
+}

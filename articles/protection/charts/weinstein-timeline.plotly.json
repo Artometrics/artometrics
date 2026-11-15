@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "type": "scatter",
+      "mode": "markers+text",
+      "x": [2017, 2020, 2022],
+      "y": [1, 1, 1],
+      "text": ["Oct 2017: NYT exposé", "2020: NY conviction", "2022: CA conviction"],
+      "textposition": "top center",
+      "marker": { "size": 14, "color": ["#525252", "#000000", "#000000"] },
+      "hovertemplate": "%{text}<extra></extra>"
+    }
+  ],
+  "layout": {
+    "title": { "text": "The Weinstein Company: exposé to conviction" },
+    "xaxis": { "title": { "text": "Year" }, "range": [2016, 2023], "dtick": 1 },
+    "yaxis": { "visible": false, "range": [0.5, 1.5] },
+    "margin": { "t": 60, "b": 50 }
+  }
+}

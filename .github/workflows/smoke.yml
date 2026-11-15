@@ -34,3 +34,6 @@ jobs:
       - run: npm run test:browser
       - run: npm run test:layout
       - run: node scripts/check-astro-links.mjs
+      - run: node scripts/test-github-links.mjs --online
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

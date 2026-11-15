@@ -1,0 +1,22 @@
+---
+title: "JACKSON: The Cost of Being the Product"
+description: "A Psychonomics profile of Michael Jackson — Thriller's 34× RIAA certification, the 2016 Sony/ATV deal, and the disputed allegations on the same ledger."
+format:
+  html:
+    css: styles/report.css
+execute:
+  echo: false
+  warning: false
+---
+
+A Psychonomics profile of Michael Jackson — Thriller's 34× RIAA certification, the 2016 Sony/ATV deal, and the disputed allegations on the same ledger.
+
+## FAST FACTS
+
+## DATASET CONTEXT
+
+## CHART 1
+
+## LIMITATIONS
+
+## EDITOR'S NOTE

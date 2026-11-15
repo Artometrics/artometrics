@@ -1,0 +1,22 @@
+---
+title: "PLAYBOY: When the Brand Outlives the House"
+description: "Hefner died in 2017. In 2024 his son's $100M+ bid to buy back Playboy's legacy was rejected. What survives a founder who was the product?"
+format:
+  html:
+    css: styles/report.css
+execute:
+  echo: false
+  warning: false
+---
+
+Hefner died in 2017. In 2024 his son's $100M+ bid to buy back Playboy's legacy was rejected. What survives a founder who was the product?
+
+## FAST FACTS
+
+## DATASET CONTEXT
+
+## CHART 1
+
+## LIMITATIONS
+
+## EDITOR'S NOTE

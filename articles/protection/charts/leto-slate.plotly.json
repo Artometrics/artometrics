@@ -1,0 +1,31 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "x": ["House of Gucci\n(2021)", "The Little Things\n(2021)", "Morbius\n(2022)", "Haunted Mansion\n(2023)", "Tron: Ares\n(2025)", "Masters of the Universe\n(2026)"],
+      "y": [2.04, 1.03, 2.02, 0.79, 0.65, 0.66],
+      "marker": {
+        "color": ["#525252", "#E60000", "#E60000", "#525252", "#E60000", "#000000"]
+      },
+      "text": ["2.04x", "1.03x", "2.02x", "0.79x", "0.65x", "0.66x"],
+      "textposition": "outside",
+      "hovertemplate": "%{x}<br>WW gross / budget: %{y:.2f}x<extra></extra>"
+    }
+  ],
+  "layout": {
+    "title": { "text": "Worldwide gross ÷ reported budget, Leto 2020s slate" },
+    "yaxis": { "title": { "text": "Gross / budget (×)" }, "rangemode": "tozero" },
+    "xaxis": { "title": { "text": "Title (release year)" } },
+    "shapes": [
+      {
+        "type": "line",
+        "x0": -0.5,
+        "x1": 5.5,
+        "y0": 1,
+        "y1": 1,
+        "line": { "color": "#1A1A1A", "dash": "dot", "width": 1 }
+      }
+    ],
+    "margin": { "t": 60, "b": 90 }
+  }
+}

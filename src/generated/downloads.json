@@ -5,7 +5,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/airlines.epub",
     "audio": null,
     "transcript": "/exports/transcripts/airlines.txt",
     "github": null
@@ -16,7 +16,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/albums.epub",
     "audio": null,
     "transcript": "/exports/transcripts/albums.txt",
     "github": null
@@ -27,7 +27,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/alcohol.epub",
     "audio": null,
     "transcript": "/exports/transcripts/alcohol.txt",
     "github": null
@@ -38,10 +38,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/anime-data-fix.epub",
     "audio": null,
     "transcript": null,
-    "github": "https://github.com/Artometrics/anime-data-fix"
+    "github": null
   },
   "anime": {
     "slug": "anime",
@@ -52,7 +52,7 @@
     "epub": "/exports/anime.epub",
     "audio": "/audios/anime-r2.mp3",
     "transcript": "/exports/transcripts/anime.txt",
-    "github": null
+    "github": "https://github.com/Artometrics/anime"
   },
   "atlas": {
     "slug": "atlas",
@@ -60,10 +60,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/atlas.epub",
     "audio": null,
     "transcript": "/exports/transcripts/atlas.txt",
-    "github": "https://github.com/Artometrics/atlas"
+    "github": null
   },
   "beyonce": {
     "slug": "beyonce",
@@ -82,7 +82,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/bikeshare.epub",
     "audio": null,
     "transcript": "/exports/transcripts/bikeshare.txt",
     "github": null
@@ -104,10 +104,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/bioeconomics.epub",
     "audio": null,
     "transcript": "/exports/transcripts/bioeconomics.txt",
-    "github": "https://github.com/Artometrics/bioeconomics"
+    "github": null
   },
   "blockbusters": {
     "slug": "blockbusters",
@@ -115,10 +115,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/blockbusters.epub",
     "audio": null,
     "transcript": "/exports/transcripts/blockbusters.txt",
-    "github": "https://github.com/Artometrics/blockbusters"
+    "github": null
   },
   "blueprint": {
     "slug": "blueprint",
@@ -126,10 +126,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/blueprint.epub",
     "audio": null,
     "transcript": "/exports/transcripts/blueprint.txt",
-    "github": "https://github.com/Artometrics/blueprint"
+    "github": null
   },
   "breweries": {
     "slug": "breweries",
@@ -137,7 +137,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/breweries.epub",
     "audio": null,
     "transcript": "/exports/transcripts/breweries.txt",
     "github": null
@@ -148,7 +148,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/broadway.epub",
     "audio": null,
     "transcript": "/exports/transcripts/broadway.txt",
     "github": null
@@ -162,7 +162,7 @@
     "epub": null,
     "audio": null,
     "transcript": "/exports/transcripts/caesar.txt",
-    "github": null
+    "github": "https://github.com/Artometrics/caesar"
   },
   "calories": {
     "slug": "calories",
@@ -170,7 +170,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/calories.epub",
     "audio": null,
     "transcript": "/exports/transcripts/calories.txt",
     "github": null
@@ -181,7 +181,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/carols.epub",
     "audio": null,
     "transcript": "/exports/transcripts/carols.txt",
     "github": null
@@ -192,7 +192,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/catalog.epub",
     "audio": null,
     "transcript": "/exports/transcripts/catalog.txt",
     "github": null
@@ -203,10 +203,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/celtics.epub",
     "audio": null,
     "transcript": "/exports/transcripts/celtics.txt",
-    "github": "https://github.com/Artometrics/celtics"
+    "github": null
   },
   "ceos": {
     "slug": "ceos",
@@ -214,7 +214,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/ceos.epub",
     "audio": null,
     "transcript": "/exports/transcripts/ceos.txt",
     "github": null
@@ -225,7 +225,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/cetaceans.epub",
     "audio": null,
     "transcript": "/exports/transcripts/cetaceans.txt",
     "github": null
@@ -236,10 +236,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/coffee.epub",
     "audio": null,
     "transcript": "/exports/transcripts/coffee.txt",
-    "github": null
+    "github": "https://github.com/Artometrics/coffee"
   },
   "comics": {
     "slug": "comics",
@@ -247,7 +247,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/comics.epub",
     "audio": null,
     "transcript": "/exports/transcripts/comics.txt",
     "github": null
@@ -258,10 +258,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/cowboys.epub",
     "audio": null,
     "transcript": "/exports/transcripts/cowboys.txt",
-    "github": "https://github.com/Artometrics/cowboys"
+    "github": null
   },
   "diplomacy": {
     "slug": "diplomacy",
@@ -269,7 +269,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/diplomacy.epub",
     "audio": null,
     "transcript": "/exports/transcripts/diplomacy.txt",
     "github": null
@@ -280,10 +280,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/dodgers.epub",
     "audio": null,
     "transcript": "/exports/transcripts/dodgers.txt",
-    "github": "https://github.com/Artometrics/dodgers"
+    "github": null
   },
   "dynasties": {
     "slug": "dynasties",
@@ -291,10 +291,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/dynasties.epub",
     "audio": null,
     "transcript": "/exports/transcripts/dynasties.txt",
-    "github": "https://github.com/Artometrics/dynasties"
+    "github": null
   },
   "emmys": {
     "slug": "emmys",
@@ -302,7 +302,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/emmys.epub",
     "audio": null,
     "transcript": "/exports/transcripts/emmys.txt",
     "github": null
@@ -313,7 +313,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/emperors.epub",
     "audio": null,
     "transcript": "/exports/transcripts/emperors.txt",
     "github": null
@@ -324,7 +324,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/exercise.epub",
     "audio": null,
     "transcript": "/exports/transcripts/exercise.txt",
     "github": null
@@ -335,10 +335,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/exporters.epub",
     "audio": null,
     "transcript": "/exports/transcripts/exporters.txt",
-    "github": "https://github.com/Artometrics/exporters"
+    "github": null
   },
   "factbook": {
     "slug": "factbook",
@@ -346,7 +346,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/factbook.epub",
     "audio": null,
     "transcript": "/exports/transcripts/factbook.txt",
     "github": null
@@ -357,10 +357,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/fame.epub",
     "audio": null,
     "transcript": "/exports/transcripts/fame.txt",
-    "github": "https://github.com/Artometrics/fame"
+    "github": null
   },
   "fandom": {
     "slug": "fandom",
@@ -368,10 +368,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/fandom.epub",
     "audio": null,
     "transcript": "/exports/transcripts/fandom.txt",
-    "github": "https://github.com/Artometrics/fandom"
+    "github": null
   },
   "franchise-data-fix": {
     "slug": "franchise-data-fix",
@@ -379,10 +379,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/franchise-data-fix.epub",
     "audio": null,
     "transcript": null,
-    "github": "https://github.com/Artometrics/franchise-data-fix"
+    "github": null
   },
   "franchise": {
     "slug": "franchise",
@@ -390,10 +390,10 @@
     "quarto": null,
     "html": "/exports/franchise.html",
     "pdf": "/exports/franchise.pdf",
-    "epub": null,
+    "epub": "/exports/franchise.epub",
     "audio": "/audios/franchise-kore-v4.mp3",
     "transcript": "/exports/transcripts/franchise.txt",
-    "github": null
+    "github": "https://github.com/Artometrics/franchise"
   },
   "games": {
     "slug": "games",
@@ -401,7 +401,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/games.epub",
     "audio": null,
     "transcript": "/exports/transcripts/games.txt",
     "github": null
@@ -412,10 +412,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/geopolitics.epub",
     "audio": null,
     "transcript": "/exports/transcripts/geopolitics.txt",
-    "github": "https://github.com/Artometrics/geopolitics"
+    "github": null
   },
   "giants": {
     "slug": "giants",
@@ -423,7 +423,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/giants.epub",
     "audio": null,
     "transcript": "/exports/transcripts/giants.txt",
     "github": null
@@ -434,10 +434,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/gutenberg.epub",
     "audio": null,
     "transcript": "/exports/transcripts/gutenberg.txt",
-    "github": "https://github.com/Artometrics/gutenberg"
+    "github": null
   },
   "heritage": {
     "slug": "heritage",
@@ -445,7 +445,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/heritage.epub",
     "audio": null,
     "transcript": "/exports/transcripts/heritage.txt",
     "github": null
@@ -467,7 +467,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/hurricanes.epub",
     "audio": null,
     "transcript": "/exports/transcripts/hurricanes.txt",
     "github": null
@@ -478,10 +478,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/imperial.epub",
     "audio": null,
     "transcript": "/exports/transcripts/imperial.txt",
-    "github": null
+    "github": "https://github.com/Artometrics/imperial"
   },
   "institutions": {
     "slug": "institutions",
@@ -489,10 +489,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/institutions.epub",
     "audio": null,
     "transcript": "/exports/transcripts/institutions.txt",
-    "github": "https://github.com/Artometrics/institutions"
+    "github": null
   },
   "jackson": {
     "slug": "jackson",
@@ -500,10 +500,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/jackson.epub",
     "audio": null,
     "transcript": "/exports/transcripts/jackson.txt",
-    "github": "https://github.com/Artometrics/jackson"
+    "github": null
   },
   "lakers": {
     "slug": "lakers",
@@ -511,10 +511,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/lakers.epub",
     "audio": null,
     "transcript": "/exports/transcripts/lakers.txt",
-    "github": "https://github.com/Artometrics/lakers"
+    "github": null
   },
   "languages": {
     "slug": "languages",
@@ -522,7 +522,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/languages.epub",
     "audio": null,
     "transcript": "/exports/transcripts/languages.txt",
     "github": null
@@ -533,7 +533,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/lcsh.epub",
     "audio": null,
     "transcript": "/exports/transcripts/lcsh.txt",
     "github": null
@@ -544,10 +544,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/leagues.epub",
     "audio": null,
     "transcript": "/exports/transcripts/leagues.txt",
-    "github": "https://github.com/Artometrics/leagues"
+    "github": null
   },
   "legos": {
     "slug": "legos",
@@ -555,7 +555,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/legos.epub",
     "audio": null,
     "transcript": "/exports/transcripts/legos.txt",
     "github": null
@@ -566,7 +566,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/longevity.epub",
     "audio": null,
     "transcript": "/exports/transcripts/longevity.txt",
     "github": null
@@ -577,7 +577,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/lyrics.epub",
     "audio": null,
     "transcript": "/exports/transcripts/lyrics.txt",
     "github": null
@@ -588,7 +588,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/mac.epub",
     "audio": null,
     "transcript": "/exports/transcripts/mac.txt",
     "github": null
@@ -599,7 +599,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/majors.epub",
     "audio": null,
     "transcript": "/exports/transcripts/majors.txt",
     "github": null
@@ -610,7 +610,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/margins.epub",
     "audio": null,
     "transcript": "/exports/transcripts/margins.txt",
     "github": null
@@ -632,7 +632,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/medium.epub",
     "audio": null,
     "transcript": "/exports/transcripts/medium.txt",
     "github": null
@@ -643,7 +643,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/metrics.epub",
     "audio": null,
     "transcript": "/exports/transcripts/metrics.txt",
     "github": null
@@ -654,10 +654,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/metros.epub",
     "audio": null,
     "transcript": "/exports/transcripts/metros.txt",
-    "github": "https://github.com/Artometrics/metros"
+    "github": null
   },
   "museums": {
     "slug": "museums",
@@ -665,7 +665,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/museums.epub",
     "audio": null,
     "transcript": "/exports/transcripts/museums.txt",
     "github": null
@@ -676,10 +676,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/narratives.epub",
     "audio": null,
     "transcript": "/exports/transcripts/narratives.txt",
-    "github": "https://github.com/Artometrics/narratives"
+    "github": null
   },
   "netflix": {
     "slug": "netflix",
@@ -687,7 +687,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/netflix.epub",
     "audio": null,
     "transcript": "/exports/transcripts/netflix.txt",
     "github": null
@@ -698,7 +698,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/novels.epub",
     "audio": null,
     "transcript": "/exports/transcripts/novels.txt",
     "github": null
@@ -709,7 +709,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/nuclear.epub",
     "audio": null,
     "transcript": "/exports/transcripts/nuclear.txt",
     "github": null
@@ -720,10 +720,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/oscars.epub",
     "audio": null,
     "transcript": "/exports/transcripts/oscars.txt",
-    "github": "https://github.com/Artometrics/oscars"
+    "github": null
   },
   "padres-data-fix": {
     "slug": "padres-data-fix",
@@ -731,10 +731,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/padres-data-fix.epub",
     "audio": null,
     "transcript": null,
-    "github": "https://github.com/Artometrics/padres-data-fix"
+    "github": null
   },
   "padres": {
     "slug": "padres",
@@ -742,7 +742,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/padres.epub",
     "audio": "/audios/padres-the-artometrics-of-paying-for-october.mp3",
     "transcript": "/exports/transcripts/padres.txt",
     "github": null
@@ -753,10 +753,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/pantheon.epub",
     "audio": null,
     "transcript": "/exports/transcripts/pantheon.txt",
-    "github": "https://github.com/Artometrics/pantheon"
+    "github": null
   },
   "parks": {
     "slug": "parks",
@@ -764,7 +764,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/parks.epub",
     "audio": null,
     "transcript": "/exports/transcripts/parks.txt",
     "github": null
@@ -775,10 +775,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/patriots.epub",
     "audio": null,
     "transcript": "/exports/transcripts/patriots.txt",
-    "github": "https://github.com/Artometrics/patriots"
+    "github": null
   },
   "phds": {
     "slug": "phds",
@@ -786,7 +786,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/phds.epub",
     "audio": null,
     "transcript": "/exports/transcripts/phds.txt",
     "github": null
@@ -797,7 +797,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/pixar.epub",
     "audio": null,
     "transcript": "/exports/transcripts/pixar.txt",
     "github": null
@@ -808,7 +808,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/pizza.epub",
     "audio": null,
     "transcript": "/exports/transcripts/pizza.txt",
     "github": null
@@ -819,7 +819,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/plastic.epub",
     "audio": null,
     "transcript": "/exports/transcripts/plastic.txt",
     "github": null
@@ -830,10 +830,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/playboy.epub",
     "audio": null,
     "transcript": "/exports/transcripts/playboy.txt",
-    "github": "https://github.com/Artometrics/playboy"
+    "github": null
   },
   "poison": {
     "slug": "poison",
@@ -841,7 +841,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/poison.epub",
     "audio": null,
     "transcript": "/exports/transcripts/poison.txt",
     "github": null
@@ -852,10 +852,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/pokemon.epub",
     "audio": null,
     "transcript": "/exports/transcripts/pokemon.txt",
-    "github": null
+    "github": "https://github.com/Artometrics/pokemon"
   },
   "polling": {
     "slug": "polling",
@@ -874,7 +874,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/prisons.epub",
     "audio": null,
     "transcript": "/exports/transcripts/prisons.txt",
     "github": null
@@ -885,10 +885,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/protection.epub",
     "audio": null,
     "transcript": "/exports/transcripts/protection.txt",
-    "github": "https://github.com/Artometrics/protection"
+    "github": null
   },
   "radio": {
     "slug": "radio",
@@ -896,7 +896,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/radio.epub",
     "audio": null,
     "transcript": "/exports/transcripts/radio.txt",
     "github": null
@@ -907,7 +907,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/ramen.epub",
     "audio": null,
     "transcript": "/exports/transcripts/ramen.txt",
     "github": null
@@ -918,7 +918,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/rankings.epub",
     "audio": null,
     "transcript": "/exports/transcripts/rankings.txt",
     "github": null
@@ -932,7 +932,7 @@
     "epub": "/exports/readmitted.epub",
     "audio": "/audios/readmitted-kore.mp3",
     "transcript": "/exports/transcripts/readmitted.txt",
-    "github": "https://github.com/Artometrics/artometrics-web"
+    "github": "https://github.com/Artometrics/readmitted"
   },
   "restaurants": {
     "slug": "restaurants",
@@ -940,7 +940,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/restaurants.epub",
     "audio": null,
     "transcript": "/exports/transcripts/restaurants.txt",
     "github": null
@@ -951,10 +951,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/rivalry.epub",
     "audio": null,
     "transcript": "/exports/transcripts/rivalry.txt",
-    "github": "https://github.com/Artometrics/rivalry"
+    "github": null
   },
   "schools": {
     "slug": "schools",
@@ -962,7 +962,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/schools.epub",
     "audio": null,
     "transcript": "/exports/transcripts/schools.txt",
     "github": null
@@ -973,10 +973,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/sf.epub",
     "audio": null,
     "transcript": "/exports/transcripts/sf.txt",
-    "github": "https://github.com/Artometrics/sf"
+    "github": null
   },
   "sherlock": {
     "slug": "sherlock",
@@ -984,7 +984,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/sherlock.epub",
     "audio": null,
     "transcript": "/exports/transcripts/sherlock.txt",
     "github": null
@@ -995,7 +995,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/simpsons.epub",
     "audio": null,
     "transcript": "/exports/transcripts/simpsons.txt",
     "github": null
@@ -1006,7 +1006,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/slices.epub",
     "audio": null,
     "transcript": "/exports/transcripts/slices.txt",
     "github": null
@@ -1017,7 +1017,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/steam.epub",
     "audio": null,
     "transcript": "/exports/transcripts/steam.txt",
     "github": null
@@ -1028,10 +1028,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/streaming.epub",
     "audio": null,
     "transcript": "/exports/transcripts/streaming.txt",
-    "github": "https://github.com/Artometrics/streaming"
+    "github": null
   },
   "superbowl": {
     "slug": "superbowl",
@@ -1039,7 +1039,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/superbowl.epub",
     "audio": null,
     "transcript": "/exports/transcripts/superbowl.txt",
     "github": null
@@ -1050,7 +1050,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/television.epub",
     "audio": null,
     "transcript": "/exports/transcripts/television.txt",
     "github": null
@@ -1061,10 +1061,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/trademarks.epub",
     "audio": null,
     "transcript": "/exports/transcripts/trademarks.txt",
-    "github": "https://github.com/Artometrics/trademarks"
+    "github": null
   },
   "tuition": {
     "slug": "tuition",
@@ -1072,7 +1072,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/tuition.epub",
     "audio": null,
     "transcript": "/exports/transcripts/tuition.txt",
     "github": null
@@ -1083,7 +1083,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/voters.epub",
     "audio": null,
     "transcript": "/exports/transcripts/voters.txt",
     "github": null
@@ -1094,7 +1094,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/warriors.epub",
     "audio": null,
     "transcript": "/exports/transcripts/warriors.txt",
     "github": null
@@ -1105,7 +1105,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/wastewater.epub",
     "audio": null,
     "transcript": "/exports/transcripts/wastewater.txt",
     "github": null
@@ -1116,7 +1116,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/wealth.epub",
     "audio": null,
     "transcript": "/exports/transcripts/wealth.txt",
     "github": null
@@ -1127,7 +1127,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/wine.epub",
     "audio": null,
     "transcript": "/exports/transcripts/wine.txt",
     "github": null
@@ -1138,10 +1138,10 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/yankees.epub",
     "audio": null,
     "transcript": "/exports/transcripts/yankees.txt",
-    "github": "https://github.com/Artometrics/yankees"
+    "github": null
   },
   "youtube": {
     "slug": "youtube",
@@ -1149,7 +1149,7 @@
     "quarto": null,
     "html": null,
     "pdf": null,
-    "epub": null,
+    "epub": "/exports/youtube.epub",
     "audio": "/audios/youtube-kore.mp3",
     "transcript": "/exports/transcripts/youtube.txt",
     "github": null

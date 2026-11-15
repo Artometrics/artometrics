@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "type": "scatterpolar",
+      "name": "World-leader reference baseline (Hermann, 1999)",
+      "r": [0.48, 0.55, 0.48, 0.50, 0.52, 0.50, 0.55, 0.48],
+      "theta": ["Belief in Control (B)", "Conceptual Complexity (CC)", "Distrust (D)", "In-Group Bias (IB)", "Need for Power (P)", "Need for Affiliation (A)", "Task Orientation (T)", "Belief in Control (B)"],
+      "fill": "toself",
+      "fillcolor": "rgba(107,107,107,0.08)",
+      "line": { "color": "rgba(107,107,107,0.7)", "dash": "dot", "width": 1.5 },
+      "marker": { "size": 4 }
+    },
+    {
+      "type": "scatterpolar",
+      "name": "Michael Jackson — editorial LTA coding (Artometrics Psychonomics)",
+      "r": [0.84, 0.58, 0.55, 0.66, 0.62, 0.93, 0.88, 0.84],
+      "theta": ["Belief in Control (B)", "Conceptual Complexity (CC)", "Distrust (D)", "In-Group Bias (IB)", "Need for Power (P)", "Need for Affiliation (A)", "Task Orientation (T)", "Belief in Control (B)"],
+      "fill": "toself",
+      "fillcolor": "rgba(192,57,43,0.15)",
+      "line": { "color": "rgba(192,57,43,1)", "width": 3 },
+      "marker": { "size": 6, "color": "rgba(192,57,43,1)" }
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "EDITORIAL / INTERPRETIVE INDEX — expert-coded, not measured data. Affiliation and task orientation spike; the shape is Psychonomics' argument, not a diagnosis.",
+      "font": { "family": "Helvetica", "size": 14, "color": "#1C1C1E" }
+    },
+    "plot_bgcolor": "#F2F0EB",
+    "paper_bgcolor": "#F2F0EB",
+    "font": { "family": "DM Sans, Helvetica, sans-serif", "size": 12, "color": "#1C1C1E" },
+    "polar": {
+      "bgcolor": "#F2F0EB",
+      "radialaxis": {
+        "visible": true,
+        "range": [0, 1],
+        "gridcolor": "rgba(213,213,213,1)"
+      },
+      "angularaxis": {
+        "gridcolor": "rgba(213,213,213,1)"
+      }
+    },
+    "showlegend": true,
+    "legend": { "orientation": "h", "y": -0.2 },
+    "margin": { "t": 90, "r": 40, "b": 80, "l": 40 }
+  },
+  "config": {
+    "displayModeBar": false,
+    "scrollZoom": false,
+    "doubleClick": false
+  }
+}

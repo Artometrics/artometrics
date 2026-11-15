@@ -1,6 +1,7 @@
 import { existsSync, mkdirSync, readdirSync, writeFileSync, statSync, readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { STANDALONE_REPOS as STANDALONE_LIST } from "../lib/github-targets.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "../..");
 const OUT = join(ROOT, "src/generated/downloads.json");
@@ -49,10 +50,13 @@ const PRIMARY_DATASET = {
   polling: "/data/articles/polling/dataset.csv",
 };
 
+/** Checked by `npm run test:github -- --online`. */
+const STANDALONE_REPOS = new Set(STANDALONE_LIST);
+
 const manifest = {};
 for (const post of blog) {
   const slug = post.slug;
-  const github = `https://github.com/Artometrics/${slug}`;
+  const github = STANDALONE_REPOS.has(slug) ? `https://github.com/Artometrics/${slug}` : null;
   const dataset = firstExisting([PRIMARY_DATASET[slug]].filter(Boolean)) || findCsv(slug);
   const html = firstExisting([
     `/data/articles/${slug}/article.html`,
@@ -92,8 +96,7 @@ for (const post of blog) {
     epub,
     audio,
     transcript,
-    // Keep GitHub as metadata only when site-hosted packs exist; UI demotes it.
-    github: post.draft ? null : html || pdf || epub || dataset ? null : github,
+    github: post.draft ? null : github,
   };
 }
 
@@ -106,7 +109,6 @@ if (manifest.readmitted) {
   manifest.readmitted.dataset =
     manifest.readmitted.dataset ||
     "/data/articles/readmitted/data/hrrp_condition_err.csv";
-  manifest.readmitted.github = "https://github.com/Artometrics/artometrics-web";
 }
 
 mkdirSync(dirname(OUT), { recursive: true });

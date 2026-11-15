@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "type": "scatter",
+      "mode": "markers+text",
+      "x": [0, 1, 0.25, 0.05],
+      "y": [1, 0.05, 0.6, 0.55],
+      "text": ["Weinstein / TWC", "Savile / BBC", "Singer / studios", "Leto / studios (open question)"],
+      "textposition": ["top center", "bottom center", "top center", "bottom center"],
+      "marker": { "size": 16, "color": ["#000000", "#525252", "#525252", "#E60000"] },
+      "hovertemplate": "%{text}<extra></extra>"
+    }
+  ],
+  "layout": {
+    "title": { "text": "Editorial framework: forward value vs. institution type (not a statistically tested index)" },
+    "xaxis": {
+      "title": { "text": "Institution type" },
+      "tickmode": "array",
+      "tickvals": [0, 1],
+      "ticktext": ["Commercial studio", "Broadcaster / trust"],
+      "range": [-0.3, 1.3]
+    },
+    "yaxis": {
+      "title": { "text": "Forward commercial value already declining" },
+      "tickmode": "array",
+      "tickvals": [0, 1],
+      "ticktext": ["No / rising", "Yes / declining"],
+      "range": [-0.2, 1.2]
+    },
+    "margin": { "t": 70, "b": 60, "l": 90 }
+  }
+}
