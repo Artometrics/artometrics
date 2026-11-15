@@ -24,9 +24,12 @@
   }
 
   function fit(el) {
+    if (el.hasAttribute("data-count-lock")) return;
     var width = box(el);
     if (!width || width < 20) return;
     var cap = parseFloat(el.getAttribute("data-fit-max") || "0.6") * width;
+    var capPx = parseFloat(el.getAttribute("data-fit-max-px") || "0");
+    if (capPx > 0) cap = Math.min(cap, capPx);
     var floor = parseFloat(el.getAttribute("data-fit-min") || "10");
     el.style.letterSpacing = "0";
     el.style.marginRight = "0";

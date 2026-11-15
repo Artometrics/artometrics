@@ -621,11 +621,6 @@ html[data-theme="dark"] .report-page--eg .report-body.artometrics-article-body {
   color: var(--eg-blue);
 }
 
-/* Keyfigs fallback (if still rendered) — Swiss, no red */
-.report-page--eg .keyfigs {
-  display: none;
-}
-
 /* Carousel / downloads keep cream paper */
 .report-page--eg .chartcar,
 .report-page--eg [data-downloads] {
@@ -635,9 +630,4 @@ html[data-theme="dark"] .report-page--eg .report-body.artometrics-article-body {
 .report-page--eg .chartcar__head h2 {
   font-family: var(--eg-serif);
   color: var(--eg-ink);
-}
-
-/* No auto-motion beyond user-driven carousel */
-.report-page--eg * {
-  animation: none !important;
 }

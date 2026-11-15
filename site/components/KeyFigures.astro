@@ -1,21 +1,52 @@
 ---
 interface Props {
   facts: { value: string; label: string }[];
-  source?: string;
 }
-const { facts, source = "" } = Astro.props;
-const tones = ["blue", "pink", "cream"];
+
+const { facts } = Astro.props;
+
+/** Four colored squares, then at most two wide boxes. Wide boxes always sit at the bottom of the group. */
+const SQUARE_TONES = ["blue", "pink", "cream", "gold"] as const;
+const WIDE_TONES = ["mint", "cream"] as const;
+
+const startsWithNumber = (value: string) => /^[^a-z]*\d/i.test(value);
+const wideLooking = (value: string) => !startsWithNumber(value) || value.length > 11;
+const pool = facts.slice(0, 6);
+const wideCount = pool.length >= 5 ? pool.length - 4 : pool.length === 3 ? 1 : 0;
+const wideIdx = new Set<number>();
+pool.forEach((fact, i) => {
+  if (wideIdx.size < wideCount && wideLooking(fact.value)) wideIdx.add(i);
+});
+for (let i = pool.length - 1; i >= 0 && wideIdx.size < wideCount; i -= 1) wideIdx.add(i);
+const squares = pool.filter((_, i) => !wideIdx.has(i));
+const wides = pool.filter((_, i) => wideIdx.has(i));
+/** A short figure is scaled to fill its box. A phrase wraps at a readable size instead. */
+const isFigure = (value: string) => value.length <= 12 && !/\s{2,}/.test(value);
 ---
 
-<section class="keyfigs" aria-label="Key figures from this report">
-  <ul class="keyfigs__grid">
-    {facts.map((fact, i) => (
-      <li class={`keyfig keyfig--${tones[i % tones.length]}`}>
-        <strong class="keyfig__value" data-fit data-fit-max="0.2" data-fit-min="16" data-fit-track="0">{fact.value}</strong>
+<section class="keyfigs" aria-label="Fast facts from this report" data-keyfigs>
+  <ul class={`keyfigs__grid keyfigs__grid--n${squares.length}`}>
+    {squares.map((fact, i) => (
+      <li class={`keyfig keyfig--${SQUARE_TONES[i % SQUARE_TONES.length]}`} style={`--i:${i}`}>
+        {isFigure(fact.value) ? (
+          <strong class="keyfig__value" data-count data-fit data-fit-max="0.22" data-fit-min="16" data-fit-track="0">{fact.value}</strong>
+        ) : (
+          <strong class="keyfig__value keyfig__value--text">{fact.value}</strong>
+        )}
         <span class="keyfig__label" set:html={fact.label} />
       </li>
     ))}
   </ul>
-  {source ? <p class="keyfigs__source">Source: {source}</p> : null}
+  {wides.length ? (
+    <ul class="keyfigs__wide">
+      {wides.map((fact, i) => (
+        <li class={`keyfig keyfig--wide keyfig--${WIDE_TONES[i % WIDE_TONES.length]}`} style={`--i:${squares.length + i}`}>
+          <strong class="keyfig__value keyfig__value--text" data-count>{fact.value}</strong>
+          <span class="keyfig__label" set:html={fact.label} />
+        </li>
+      ))}
+    </ul>
+  ) : null}
 </section>
 <script is:inline src="/js/fit-text.js"></script>
+<script is:inline src="/js/keyfigs.js"></script>

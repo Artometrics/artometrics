@@ -1,0 +1,508 @@
+/*
+  Report cover, share row, fast facts, end-of-article category grid.
+  Loaded after report-system.css so these rules win over the older banner and key-figure styles.
+*/
+
+/* ---------- Headings never break inside a word ---------- */
+.report-page h1,
+.report-page h2,
+.report-page h3,
+.cover__title {
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+  -webkit-hyphens: manual;
+  text-wrap: balance;
+}
+
+/* ---------- Cover: full-bleed art, gothic kicker, big headline ---------- */
+.report-page .cover {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: min(112vw, 34rem);
+  margin: -12px -12px 0;
+  border: 0;
+  border-bottom: 3px solid var(--sys-pink);
+  background: #0b090d;
+  color: #f3ead7;
+}
+
+.cover__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: #0b090d;
+}
+
+.cover__art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    0deg,
+    rgba(7, 6, 10, 0.92) 0%,
+    rgba(7, 6, 10, 0.7) 30%,
+    rgba(7, 6, 10, 0.16) 58%,
+    rgba(7, 6, 10, 0) 100%
+  );
+}
+
+/* No hero image: a flat brand field instead of an empty hole. */
+.cover--noart .cover__media {
+  background:
+    radial-gradient(120% 90% at 12% 8%, rgba(255, 61, 138, 0.55) 0%, rgba(255, 61, 138, 0) 58%),
+    radial-gradient(110% 90% at 92% 100%, rgba(0, 71, 255, 0.7) 0%, rgba(0, 71, 255, 0) 62%),
+    #0b090d;
+}
+
+.cover__copy {
+  width: 100%;
+  min-width: 0;
+  padding: 36px 16px 20px;
+}
+
+.cover__crumb {
+  margin: 0 0 12px;
+  font-family: var(--sys-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #f3ead7;
+}
+
+html[data-theme] .cover__crumb a {
+  display: inline-block;
+  padding: 6px 0;
+  color: #f3ead7;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(243, 234, 215, 0.45);
+}
+
+.cover__title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  font-family: var(--sys-display);
+  font-weight: 400;
+  color: #f3ead7;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.7);
+}
+
+html[data-theme] .report-page .cover__kicker {
+  font-family: var(--word, "Chomsky"), "UnifrakturCook", "Old English Text MT", serif;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 17vw, 5.25rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  color: #ff6aa6;
+  max-width: 100%;
+}
+
+.cover__headline {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  font-size: clamp(1.85rem, 9vw, 3.1rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: #f3ead7;
+}
+
+/* Title painted into the art: show the whole frame, no overlay type. */
+.cover--baked {
+  display: block;
+  min-height: 0;
+  background: #0b090d;
+}
+.cover--baked .cover__media {
+  position: static;
+  z-index: auto;
+}
+.cover--baked .cover__art {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+.cover--baked::after {
+  content: none;
+}
+.cover--baked .cover__copy {
+  padding: 8px 16px 10px;
+}
+.cover--baked .cover__crumb {
+  margin: 0;
+}
+.cover--baked .cover__title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+@media (min-width: 720px) {
+  .report-page .cover {
+    min-height: 26rem;
+    margin: 0 4px 0 0;
+    border: 1px solid var(--sys-line);
+    box-shadow: var(--sys-shadow);
+  }
+  .cover__copy {
+    max-width: 52rem;
+    padding: 36px 36px 32px;
+  }
+  .cover__headline {
+    font-size: clamp(2.6rem, 4.4vw, 4rem);
+    max-width: 22ch;
+  }
+  .cover--baked {
+    background: transparent;
+  }
+  .cover--baked .cover__copy {
+    padding: 12px 4px 0;
+    color: var(--sys-muted);
+  }
+  html[data-theme] .cover--baked .cover__crumb,
+  html[data-theme] .cover--baked .cover__crumb a {
+    color: var(--sys-muted);
+    border-bottom-color: color-mix(in srgb, var(--sys-muted) 45%, transparent);
+  }
+}
+
+@media (min-width: 900px) {
+  .report-page .cover {
+    min-height: 30rem;
+  }
+}
+
+/* ---------- Share row: round buttons directly under the cover ---------- */
+.share-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 16px;
+  margin: 0 4px 0 0;
+  padding: 14px 0 12px;
+  border-bottom: 1px solid color-mix(in srgb, var(--sys-line) 30%, transparent);
+}
+
+.share-row__group {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.share-row__group li {
+  margin: 0;
+}
+
+.share-row__divider {
+  flex: none;
+  width: 2px;
+  height: 30px;
+  background: color-mix(in srgb, var(--sys-line) 55%, transparent);
+}
+
+.share-btn {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+  border: 2px solid var(--sys-line);
+  border-radius: 50%;
+  background: var(--sys-panel);
+  color: var(--sys-ink);
+  text-decoration: none;
+  transition: transform 0.12s ease, background-color 0.12s ease, color 0.12s ease;
+}
+
+.share-btn svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.share-btn:hover,
+.share-btn:focus-visible {
+  background: var(--sys-pink);
+  border-color: var(--sys-pink);
+  color: #14110e;
+  transform: translateY(-2px);
+}
+
+.share-btn:focus-visible {
+  outline: 3px solid var(--sys-link);
+  outline-offset: 3px;
+}
+
+.share-btn--get {
+  background: var(--sys-blue);
+  border-color: var(--sys-blue);
+  color: #fff;
+}
+
+.share-btn--get:hover,
+.share-btn--get:focus-visible {
+  background: var(--sys-ink);
+  border-color: var(--sys-ink);
+  color: var(--sys-panel);
+}
+
+@media (max-width: 559px) {
+  .share-row__divider {
+    flex-basis: 100%;
+    width: 100%;
+    height: 0;
+    background: none;
+    border-top: 1px dashed color-mix(in srgb, var(--sys-line) 45%, transparent);
+  }
+}
+
+/* ---------- Byline above the dek ---------- */
+.report-updated--line {
+  margin: 14px 4px 0 0;
+  padding: 0;
+  border-top: 0;
+}
+
+.report-updated--line .report-updated__line {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.report-updated--note {
+  margin-top: 12px;
+  padding: 10px 0 0;
+}
+
+.report-page .report-dek {
+  margin-top: 8px;
+}
+
+.eg-intro .eg-byline {
+  margin: 14px 0 0;
+}
+
+.eg-intro .eg-dek {
+  margin: 6px 0 16px;
+}
+
+/* ---------- Fast facts: four colored boxes, wide boxes last ---------- */
+.report-page .keyfigs {
+  margin: var(--sys-gap) 0 0;
+}
+
+.report-page .keyfigs__grid,
+.keyfigs__wide {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sys-gap);
+  margin: 0;
+  padding: 0 6px 6px 0;
+  list-style: none;
+}
+
+.keyfigs__wide {
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: calc(var(--sys-gap) - 6px);
+}
+
+.report-page .keyfigs__grid--n1 {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.report-page .keyfig {
+  position: relative;
+  overflow: hidden;
+  grid-column: auto;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 12px;
+  text-align: center;
+  border: 3px solid var(--sys-line);
+  box-shadow: 6px 6px 0 var(--sys-line);
+}
+
+.report-page .keyfigs__grid > .keyfig,
+.report-page .keyfigs__grid > .keyfig:last-child:nth-child(n) {
+  grid-column: auto !important;
+}
+
+.keyfig--blue { background: #0047ff; color: #fff; }
+.keyfig--pink { background: #ff3d8a; color: #14110e; }
+.keyfig--cream { background: #f3ead7; color: #14110e; }
+.keyfig--gold { background: #ffc933; color: #14110e; }
+.keyfig--mint { background: #7fded6; color: #07111f; }
+
+.report-page .keyfig__value {
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.report-page .keyfig__value--text {
+  white-space: normal;
+  font-size: clamp(1.25rem, 5vw, 1.75rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  overflow-wrap: normal;
+}
+
+.report-page .keyfig__label {
+  max-width: 34ch;
+  font-size: 14px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.report-page .keyfig--wide {
+  flex-direction: column;
+  padding: 18px 16px;
+}
+
+.report-page .keyfig--wide .keyfig__value--text {
+  font-size: clamp(1.7rem, 7vw, 2.6rem);
+  font-weight: 800;
+}
+
+.report-page .keyfig--wide .keyfig__label {
+  max-width: 60ch;
+  font-size: 15px;
+}
+
+@media (min-width: 720px) {
+  .report-page .keyfigs__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .report-page .keyfigs__grid--n1 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .report-page .keyfigs__grid--n2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .report-page .keyfig {
+    min-height: 11rem;
+    padding: 18px 14px;
+  }
+  .report-page .keyfig--wide {
+    min-height: 0;
+  }
+}
+
+/* ---------- Shine: a slow sweep across boxes and buttons, after a delay ---------- */
+@keyframes art-shine {
+  0%,
+  70% {
+    transform: translateX(-140%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(240%) skewX(-20deg);
+  }
+}
+
+.report-page .keyfig::after,
+.share-btn::after,
+.report-page .file-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(100deg, transparent 38%, rgba(255, 255, 255, 0.6) 50%, transparent 62%);
+  transform: translateX(-140%) skewX(-20deg);
+  animation: art-shine 9s ease-in-out infinite;
+  animation-delay: calc(3.5s + var(--i, 0) * 0.4s);
+}
+
+.report-page .file-tile {
+  position: relative;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .report-page .keyfig::after,
+  .share-btn::after,
+  .report-page .file-tile::after {
+    animation: none;
+    display: none;
+  }
+  .share-btn {
+    transition: none;
+  }
+}
+
+/* ---------- The category grid that closes every article ---------- */
+.report-categories {
+  width: min(1180px, 100%);
+  margin: var(--sys-section) auto 0;
+  padding: 0 12px 28px;
+  min-width: 0;
+}
+
+.report-categories .desk-section {
+  margin: 0 0 18px;
+}
+
+.report-categories .desk-section > h2 {
+  margin: 0 0 8px;
+  text-align: center;
+  font-family: var(--sys-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.report-categories .desk-section > h2 a {
+  color: var(--pink-text, var(--sys-pink));
+}
+
+.report-categories .desk-section > h2 a::after {
+  content: none;
+}
+
+.report-categories .story-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0;
+}
+
+@media (min-width: 720px) {
+  .report-categories {
+    padding: 0 20px 36px;
+  }
+  .report-categories .story-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+}

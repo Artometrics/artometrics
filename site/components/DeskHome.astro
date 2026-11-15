@@ -1,53 +1,15 @@
 ---
 import BannerCarousel from "./BannerCarousel.astro";
-import StoryTile from "./StoryTile.astro";
-import { storySquare } from "@/lib/article-assets.mjs";
+import CategoryGrid from "./CategoryGrid.astro";
 import { getBlogPost } from "@/lib/content";
-
-/** Four category columns are visible; swipe for Humanities and Civics.
- * Each column is three real reports. Longevity is not on this page.
- * Steam is sports and already the fourth sports report with new art, so the sports column keeps Dodgers, Padres, and Celtics.
- * New square-text files are missing for Readmitted, Caesar, Beyoncé, Emperors, Atlas, and Exporters. Those tiles use the existing article hero.
- */
-const desks = [
-  { label: "Arts", href: "/topics/arts", slugs: ["pixar", "anime", "franchise", "simpsons"] },
-  { label: "Sports", href: "/topics/sports", slugs: ["dodgers", "padres", "celtics", "steam"] },
-  { label: "Science", href: "/topics/science", slugs: ["nuclear", "cetaceans", "readmitted", "wastewater"] },
-  { label: "Culture", href: "/topics/culture", slugs: ["wine", "coffee", "ramen", "pizza"] },
-  { label: "Humanities", href: "/topics/humanities", slugs: ["caesar", "beyonce", "emperors"] },
-  { label: "Civics", href: "/topics/civics", slugs: ["geopolitics", "atlas", "exporters"] },
-];
-
-function tileSrc(slug: string, heroImage?: string) {
-  return storySquare(slug, heroImage);
-}
 
 const leadSlides = ["geopolitics", "franchise", "dodgers", "nuclear", "wine"].flatMap((slug) => {
   const post = getBlogPost(slug);
   return post ? [post] : [];
 });
-const columns = desks.map((desk) => ({
-  ...desk,
-  stories: desk.slugs.flatMap((slug) => {
-    const post = getBlogPost(slug);
-    if (!post) return [];
-    const art = tileSrc(slug, post.heroImage);
-    return art.src ? [{ post, art }] : [];
-  }),
-}));
 ---
 
 <div class="desk-home">
   <BannerCarousel posts={leadSlides} pageHeading label="Featured reports" />
-
-  {columns.map((desk) => (
-    <section class="desk-section" aria-labelledby={`desk-${desk.label}`}>
-      <h2 id={`desk-${desk.label}`}><a href={desk.href}>{desk.label}</a></h2>
-      <div class="story-grid">
-        {desk.stories.map(({ post, art }) => (
-          <StoryTile post={post} art={art} />
-        ))}
-      </div>
-    </section>
-  ))}
+  <CategoryGrid />
 </div>

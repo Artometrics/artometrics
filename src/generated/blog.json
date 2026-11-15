@@ -5,6 +5,7 @@
     "slug": "airlines",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "336 airline records show capacity dominates safety rankings—United leads at 7.1B seat-km/week, but incident counts don't scale linearly with size.",
+    "dek": "",
     "heroImage": "/images/content/articles/airlines/hero.png",
     "tags": [
       "culture",
@@ -54,6 +55,7 @@
     "slug": "albums",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "The 2003 Rolling Stone list puts median rank at 250; \"Touch\" sits at 500, studio albums dominate, and 1955–2019 releases populate the canon.",
+    "dek": "",
     "heroImage": "/images/content/articles/albums/hero.png",
     "tags": [
       "arts",
@@ -103,6 +105,7 @@
     "slug": "alcohol",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Country-level consumption data map which nations drink the most per person—and how that has shifted.",
+    "dek": "",
     "heroImage": "/images/content/articles/alcohol/hero.png",
     "tags": [
       "culture",
@@ -151,6 +154,7 @@
     "slug": "anime-data-fix",
     "pubDate": "2026-10-13T00:00:00.000Z",
     "description": "We refreshed the MyAnimeList catalog behind ANIME after Jikan shut down, moved to the Tenrai-compatible API, and recomputed every headline on the clean TV frame. The light-novel reach premium fell from 32× to 27.5×; manga's 8.0+ share fell to 14.8%; 2015 isekai was under-counted at 0.9% (now 2.2%).",
+    "dek": "",
     "heroImage": "/images/content/articles/anime/hero.webp",
     "tags": [
       "arts",
@@ -183,6 +187,7 @@
     "slug": "anime",
     "pubDate": "2026-03-31T00:00:00.000Z",
     "description": "On the October 2026 MyAnimeList ledger, light-novel TV adaptations still draw 27.5 times the median audience of originals. Source mix and isekai tags trace how committees greenlight shows — with wide uncertainty on any single year.",
+    "dek": "",
     "heroImage": "/images/content/articles/anime/banner.png",
     "tags": [
       "arts",
@@ -233,6 +238,7 @@
     "slug": "atlas",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "Export ledgers reveal national identity under market constraint—200+ countries, 5,000+ products, six diagnostic questions.",
+    "dek": "",
     "heroImage": "/images/content/articles/atlas/hero.png",
     "tags": [
       "civics",
@@ -276,6 +282,7 @@
     "slug": "beyonce",
     "pubDate": "2026-07-28T12:00:00.000Z",
     "description": "A Psychonomics profile of Beyoncé — Hermann Leadership Trait Analysis, Parkwood as institutionalized self, Lemonade’s canon economics, and an 8,000-line lyric machine.",
+    "dek": "",
     "heroImage": "/images/content/articles/beyonce/hero.png",
     "tags": [
       "humanities",
@@ -326,6 +333,7 @@
     "slug": "bikeshare",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Trip-level bike-share data measures typical distance and duration across Biketown journeys.",
+    "dek": "",
     "heroImage": "/images/content/articles/bikeshare/hero.png",
     "tags": [
       "culture",
@@ -376,6 +384,7 @@
     "slug": "billboard",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Since 1958, most chart-toppers lasted weeks; a few held for months—and streaming rewrote the pattern.",
+    "dek": "",
     "heroImage": "/images/content/articles/billboard/hero.png",
     "tags": [
       "arts",
@@ -426,6 +435,7 @@
     "slug": "bioeconomics",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "1,667 subnational regions and 1,100+ datasets define the economic signature of cities — exports, housing, transit, culture, and historical infrastructure.",
+    "dek": "",
     "heroImage": "/images/content/articles/bioeconomics/hero.png",
     "tags": [
       "civics",
@@ -475,6 +485,7 @@
     "slug": "blockbusters",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "Title fields, ratings, and box-office references explain how films accumulate attention.",
+    "dek": "",
     "heroImage": "/images/content/articles/blockbusters/hero.png",
     "tags": [
       "arts",
@@ -524,6 +535,7 @@
     "slug": "blueprint",
     "pubDate": "2026-07-31T00:00:00.000Z",
     "description": "José E. Feliciano and Kwanza Jones paid a record $3.9bn for a club drawing 42,000 a game, ranked last in farm talent, and carrying $858m owed to five underperforming stars.",
+    "dek": "",
     "heroImage": "/images/content/articles/blueprint/hero.png",
     "tags": [
       "sports",
@@ -574,6 +586,7 @@
     "slug": "breweries",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Analysis of 2,410 U.S. craft beers shows median ABV of 6%, maximum 12.8%, and high bitterness concentrated in the IPA cluster.",
+    "dek": "",
     "heroImage": "/images/content/articles/breweries/hero.png",
     "tags": [
       "culture",
@@ -622,6 +635,7 @@
     "slug": "broadway",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Springsteen On Broadway averages $509 per ticket—nearly double Hamilton's $273. Concert residencies occupy the summit; traditional musicals cluster near the $60 industry median.",
+    "dek": "",
     "heroImage": "/images/content/articles/broadway/hero.png",
     "tags": [
       "arts",
@@ -671,6 +685,7 @@
     "slug": "caesar",
     "pubDate": "2026-04-18T00:00:00.000Z",
     "description": "Caesar's author-coded LTA profile shows 0.95 Need for Power and 0.31 Distrust. He built an empire on magnanimity and was killed by senators he had pardoned.",
+    "dek": "",
     "heroImage": "/images/content/articles/caesar/hero.png",
     "tags": [
       "humanities",
@@ -721,6 +736,7 @@
     "slug": "calories",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "515 U.S. calories menu items show a median of 490 calories — top 12 items median 1,315; Sonic sits 80 above median, Chick-fil-A 100 below.",
+    "dek": "",
     "heroImage": "/images/content/articles/calories/hero.png",
     "tags": [
       "culture",
@@ -770,6 +786,7 @@
     "slug": "carols",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "387 holiday songs tracked 1958–2017 show a median 8-week chart life, with standards like Jingle Bell Rock returning across decades.",
+    "dek": "",
     "heroImage": "/images/content/articles/carols/hero.png",
     "tags": [
       "arts",
@@ -819,6 +836,7 @@
     "slug": "catalog",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Black Mirror: Bandersnatch hit 312 minutes; median duration rose from 41 to 98 minutes between 2008 and 2021 as the catalog skewed longer.",
+    "dek": "",
     "heroImage": "/images/content/articles/catalog/hero.png",
     "tags": [
       "arts",
@@ -836,7 +854,7 @@
     "keyPoints": [
       "7,787 — Catalog records spanning 2008–2021",
       "41 to 98 minutes — Median duration rose 139% across the period",
-      "[object Object]",
+      "312 minutes — Black Mirror: Bandersnatch, the longest single title",
       "38% — Share of total duration held by the top five titles",
       "Movie — Most common type label in the catalog"
     ],
@@ -864,6 +882,7 @@
     "slug": "celtics",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "18 NBA championships—11 in the Russell era alone—mean every Boston season is compared to Bill Russell and Larry Bird, not to Miami or Milwaukee.",
+    "dek": "",
     "heroImage": "/images/content/articles/celtics/hero.png",
     "tags": [
       "sports",
@@ -913,6 +932,7 @@
     "slug": "ceos",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Median tenure coded at 1.0 year; \"Interim\" label accounts for 218 observations in TidyTuesday departures extract.",
+    "dek": "",
     "heroImage": "/images/content/articles/ceos/hero.png",
     "tags": [
       "civics",
@@ -961,6 +981,7 @@
     "slug": "cetaceans",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "2,172 of 2,194 cetacean transfer records are US-labeled; bottlenose dolphins account for 1,668 entries in a 1946–2017 captivity ledger.",
+    "dek": "",
     "heroImage": "/images/content/articles/cetaceans/banner.png",
     "tags": [
       "science",
@@ -1004,6 +1025,7 @@
     "slug": "coffee",
     "pubDate": "2026-04-14T00:00:00.000Z",
     "description": "Ethiopia's median CQI cup score is 85.3 — the highest of 16 countries with 20+ samples — yet Starbucks operates zero stores in the top three scoring nations.",
+    "dek": "",
     "heroImage": "/images/content/articles/coffee/banner.png",
     "tags": [
       "culture",
@@ -1054,6 +1076,7 @@
     "slug": "comics",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Spider-Man logged 4,043 appearances across 1935–2013; the top five characters account for 45% of cumulative appearances among 23,272 records.",
+    "dek": "",
     "heroImage": "/images/content/articles/comics/hero.png",
     "tags": [
       "arts",
@@ -1103,6 +1126,7 @@
     "slug": "cowboys",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "Dallas holds $10B+ in franchise value but hasn't won an NFC championship in 29 years—a widening gap between attention and playoff output.",
+    "dek": "",
     "heroImage": "/images/content/articles/cowboys/hero.png",
     "tags": [
       "sports",
@@ -1152,6 +1176,7 @@
     "slug": "diplomacy",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "In a 100,000-row UN voting extract, Brazil appears 747 times and 79,663 votes (80%) are affirmative — before ideological coalition modeling begins.",
+    "dek": "",
     "heroImage": "/images/content/articles/diplomacy/hero.png",
     "tags": [
       "civics",
@@ -1195,6 +1220,7 @@
     "slug": "dodgers",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "Twelve straight playoff trips, eight championships, and 32 years between rings reveal how payroll and depth buy access—but not closure.",
+    "dek": "",
     "heroImage": "/images/content/articles/dodgers/hero.png",
     "tags": [
       "sports",
@@ -1244,6 +1270,7 @@
     "slug": "dynasties",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "The Yankees hold 27 titles but convert 40% of Finals trips; the Patriots won 6 of 11 Super Bowls at 55% conversion across MLB, NBA, NFL, NHL since 1950.",
+    "dek": "",
     "heroImage": "/images/content/articles/dynasties/hero.png",
     "tags": [
       "sports",
@@ -1292,6 +1319,7 @@
     "slug": "emmys",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Saturday Night Live appears 859 times across 29,678 Emmy records from 1957–2021—three times the next-closest show.",
+    "dek": "",
     "heroImage": "/images/content/articles/emmys/hero.png",
     "tags": [
       "arts",
@@ -1335,6 +1363,7 @@
     "slug": "emperors",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Constantine ruled 31 years; the median emperor lasted 6.5—dynasty membership did not close that gap.",
+    "dek": "",
     "heroImage": "/images/content/articles/emperors/hero.png",
     "tags": [
       "humanities",
@@ -1384,6 +1413,7 @@
     "slug": "exercise",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Colorado leads at 32.0; median across 52 U.S. jurisdictions is 23.0, with Western and New England states dominating the top tier.",
+    "dek": "",
     "heroImage": "/images/content/articles/exercise/hero.png",
     "tags": [
       "culture",
@@ -1432,6 +1462,7 @@
     "slug": "exporters",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "The U.S., China, and Germany dominate trade through different architectures — platform control, manufacturing scale, and industrial precision.",
+    "dek": "",
     "heroImage": "/images/content/articles/exporters/hero.png",
     "tags": [
       "civics",
@@ -1451,7 +1482,7 @@
       "7 — Identity axes measured — services, IP, manufacturing, vehicles, platforms, supply chains, complexity",
       "6 — Dependency risks scored — semiconductors, energy, consumer demand, labor, allies, shipping lanes",
       "8 — Countries positioned by replaceability — Mexico, Vietnam, India, South Korea, Japan, France, Netherlands, Taiwan",
-      "[object Object]"
+      "1 — Core question: which parts of global trade are hardest to replace if one system falters?"
     ],
     "faq": [
       {
@@ -1473,6 +1504,7 @@
     "slug": "factbook",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "China's 1.36 billion against a 5.2 million median — the top five countries hold 72% of aggregate population in the CIA World Factbook extract.",
+    "dek": "",
     "heroImage": "/images/content/articles/factbook/hero.png",
     "tags": [
       "civics",
@@ -1521,6 +1553,7 @@
     "slug": "fame",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "Artists with 15+ release groups and 3+ genre tags sustain fame 40% longer than single-era acts, per MusicBrainz metadata analysis.",
+    "dek": "",
     "heroImage": "/images/content/articles/fame/hero.png",
     "tags": [
       "arts",
@@ -1570,6 +1603,7 @@
     "slug": "fandom",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "Ten major markets split into six identity archetypes shaped by title density, league mix, and championship drought.",
+    "dek": "",
     "heroImage": "/images/content/articles/fandom/hero.png",
     "tags": [
       "sports",
@@ -1619,6 +1653,7 @@
     "slug": "franchise-data-fix",
     "pubDate": "2026-10-12T00:00:00.000Z",
     "description": "We audited the franchise dataset behind our FRANCHISE report, rebuilt it from Wikipedia's October 2026 list and recomputed every published number. Merchandise still dominates (55.8%), but the Japan–US ranking flipped and Hello Kitty's $80B was a source error.",
+    "dek": "",
     "heroImage": "/images/content/articles/franchise/hero.png",
     "tags": [
       "arts",
@@ -1651,6 +1686,7 @@
     "slug": "franchise",
     "pubDate": "2026-04-08T00:00:00.000Z",
     "description": "As of 10 November 2026, Wikipedia's franchise list (revision 7 November) sums 140 properties to $1,460.1 billion. Merchandise is 55.6%. Pokémon, at $130.7 billion, is larger than Star Wars and the MCU combined. Nine of 2025's ten biggest films were franchise installments.",
+    "dek": "",
     "heroImage": "/images/content/articles/franchise/banner.png",
     "tags": [
       "arts",
@@ -1709,6 +1745,7 @@
     "slug": "games",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Ratings and popularity across thousands of titles find games that win both mass attention and esteem.",
+    "dek": "",
     "heroImage": "/images/content/articles/games/hero.png",
     "tags": [
       "sports",
@@ -1759,6 +1796,7 @@
     "slug": "geopolitics",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "Film scores 91 on exportability, music 88. South Korea's cultural wave index climbed from 22 in 1990 to 92 in 2025 across eight mediums and 45 cities.",
+    "dek": "",
     "heroImage": "/images/content/articles/geopolitics/hero.png",
     "tags": [
       "civics",
@@ -1808,6 +1846,7 @@
     "slug": "giants",
     "pubDate": "2026-04-18T00:00:00.000Z",
     "description": "San Francisco's 2010–2014 dynasty won three titles with a draft-built rotation at mid-tier payroll—then couldn't replicate the model.",
+    "dek": "",
     "heroImage": "/images/content/articles/giants/hero.png",
     "tags": [
       "sports",
@@ -1858,6 +1897,7 @@
     "slug": "gutenberg",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "English titles hold 72% of indexed Gutenberg availability; 19th-century fiction peaks at 2.8× other eras; adventure and gothic subjects adapt 3× faster.",
+    "dek": "",
     "heroImage": "/images/content/articles/gutenberg/hero.png",
     "tags": [
       "arts",
@@ -1907,6 +1947,7 @@
     "slug": "heritage",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Sweden led Scandinavia with 15 UNESCO sites by 2022; Denmark's count grew 150% from 2004. Median rose from 5 to 10 sites.",
+    "dek": "",
     "heroImage": "/images/content/articles/heritage/hero.png",
     "tags": [
       "culture",
@@ -1956,6 +1997,7 @@
     "slug": "horror",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "32,540 horror films from 1950–2022 show median vote average climbed from 5.65 to 6.00 — modest quality gain amid explosive catalog growth.",
+    "dek": "",
     "heroImage": "/images/content/articles/horror/hero.png",
     "tags": [
       "arts",
@@ -2005,6 +2047,7 @@
     "slug": "hurricanes",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Texas, Florida, and Puerto Rico absorbed 100% of measured 2017 hurricane impact in 153-record TidyTuesday extract; median reading 703, ceiling 5,072.",
+    "dek": "",
     "heroImage": "/images/content/articles/hurricanes/hero.png",
     "tags": [
       "culture",
@@ -2053,6 +2096,7 @@
     "slug": "imperial",
     "pubDate": "2026-04-14T00:00:00.000Z",
     "description": "A historical-economics lens asks who captured wealth when rulers claimed order.",
+    "dek": "",
     "heroImage": "/images/content/articles/imperial/hero.png",
     "tags": [
       "humanities",
@@ -2103,6 +2147,7 @@
     "slug": "institutions",
     "pubDate": "2026-09-22T00:00:00.000Z",
     "description": "Yankees, Patriots, Celtics, Cowboys: a synthesis of Artometrics' sports-dynasty reports asks what transfers when winning is a system, not a roster.",
+    "dek": "",
     "heroImage": "/images/content/articles/institutions/hero.png",
     "tags": [
       "sports",
@@ -2153,6 +2198,7 @@
     "slug": "jackson",
     "pubDate": "2026-09-22T00:00:00.000Z",
     "description": "A Psychonomics profile of Michael Jackson — Thriller's 34× RIAA certification, the 2016 Sony/ATV deal, and the disputed allegations on the same ledger.",
+    "dek": "",
     "heroImage": "/images/content/articles/jackson/hero.png",
     "tags": [
       "humanities",
@@ -2203,6 +2249,7 @@
     "slug": "lakers",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "17 championships, 32 Finals appearances — Los Angeles converts market gravity into recurring title windows through six distinct star eras.",
+    "dek": "",
     "heroImage": "/images/content/articles/lakers/hero.png",
     "tags": [
       "sports",
@@ -2253,6 +2300,7 @@
     "slug": "languages",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "2,363 of 8,612 language records sit in Africa's macroarea bucket — a signal of documentation density, not speaker counts.",
+    "dek": "",
     "heroImage": "/images/content/articles/languages/hero.png",
     "tags": [
       "arts",
@@ -2292,6 +2340,7 @@
     "slug": "lcsh",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "LCSH accounts for 69% of subject headings; PS (American literature) appears 4,684 times — concentration defines the reusable public-domain canon.",
+    "dek": "",
     "heroImage": "/images/content/articles/lcsh/hero.png",
     "tags": [
       "arts",
@@ -2331,6 +2380,7 @@
     "slug": "leagues",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "NFL teams average $6.5B because 17-game scarcity compresses variance; MLB's 162 games let payroll spread; NBA star leverage hits 92.",
+    "dek": "",
     "heroImage": "/images/content/articles/leagues/hero.png",
     "tags": [
       "sports",
@@ -2374,6 +2424,7 @@
     "slug": "legos",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Median part counts dropped from 142 to 59.5 as World Map and display sets pushed the complexity ceiling past 11,000 pieces.",
+    "dek": "",
     "heroImage": "/images/content/articles/legos/hero.png",
     "tags": [
       "culture",
@@ -2417,6 +2468,7 @@
     "slug": "longevity",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Global median life expectancy rose from 33.9 to 73 years between 1543 and 2015, yet top countries still outlive the lowest by more than two-to-one.",
+    "dek": "",
     "heroImage": "/images/content/articles/longevity/hero.png",
     "tags": [
       "science",
@@ -2466,6 +2518,7 @@
     "slug": "lyrics",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "A lyric-level comparison of two era-defining catalogs—theme, language, and structure.",
+    "dek": "",
     "heroImage": "/images/content/articles/lyrics/hero.png",
     "tags": [
       "arts",
@@ -2504,6 +2557,7 @@
     "slug": "mac",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Global burger prices illustrate how currency and wages shape the real cost of everyday goods.",
+    "dek": "",
     "heroImage": "/images/content/articles/mac/hero.png",
     "tags": [
       "civics",
@@ -2553,6 +2607,7 @@
     "slug": "majors",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Psychology leads 173 majors with 48,207 low-wage jobs; engineering's median is 372—a hundredfold gap in labor-market absorption.",
+    "dek": "",
     "heroImage": "/images/content/articles/majors/hero.png",
     "tags": [
       "civics",
@@ -2602,6 +2657,7 @@
     "slug": "margins",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "3,401 films tagged horror show median domestic gross of $25.5M, but Star Wars topped the list—revealing how loose genre tags obscure profit patterns.",
+    "dek": "",
     "heroImage": "/images/content/articles/margins/hero.png",
     "tags": [
       "arts",
@@ -2648,6 +2704,7 @@
     "slug": "medium",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "78,388 Medium articles from 2017–2018 show median reading time of 4 minutes; scatter plots reveal no clean law linking length to applause.",
+    "dek": "",
     "heroImage": "/images/content/articles/medium/hero.png",
     "tags": [
       "science",
@@ -2698,6 +2755,7 @@
     "slug": "metrics",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Median P50 fell from 7.00 to 4.80 across 238 HTTP Archive records, though desktop and mobile showed different speed profiles.",
+    "dek": "",
     "heroImage": "/images/content/articles/metrics/hero.png",
     "tags": [
       "science",
@@ -2748,6 +2806,7 @@
     "slug": "metros",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "New York legitimizes and commands global systems; San Francisco prototypes them. Both export intangible power, not goods.",
+    "dek": "",
     "heroImage": "/images/content/articles/metros/hero.png",
     "tags": [
       "civics",
@@ -2793,6 +2852,7 @@
     "slug": "museums",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "4,191 UK museums mapped to area deprivation: median 5.00, maximum 10.0, with South West England showing 3-point admin-area gaps.",
+    "dek": "",
     "heroImage": "/images/content/articles/museums/hero.png",
     "tags": [
       "arts",
@@ -2842,6 +2902,7 @@
     "slug": "narratives",
     "pubDate": "2026-09-22T00:00:00.000Z",
     "description": "A working framework for treating economic narratives as contagious, falsifiable objects — built from Shiller and Kuran, not a proprietary dataset.",
+    "dek": "",
     "heroImage": "/images/content/articles/narratives/hero.png",
     "tags": [
       "civics",
@@ -2890,6 +2951,7 @@
     "slug": "netflix",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Squid Game Season 2 logged 730 million hours viewed on Netflix — 292 times the 2.5 million-hour catalog median across 27,803 titles.",
+    "dek": "",
     "heroImage": "/images/content/articles/netflix/hero.png",
     "tags": [
       "arts",
@@ -2939,6 +3001,7 @@
     "slug": "novels",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "A Gutenberg holiday corpus shows a median author birthdate of 1859 and Dickens as the most common name.",
+    "dek": "",
     "heroImage": "/images/content/articles/novels/hero.png",
     "tags": [
       "arts",
@@ -2988,6 +3051,7 @@
     "slug": "nuclear",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Public seismic catalogs reveal a median magnitude of 0.00—mostly missing data—while maximum recorded yields reached 7.40.",
+    "dek": "",
     "heroImage": "/images/content/articles/nuclear/hero.png",
     "tags": [
       "science",
@@ -3038,6 +3102,7 @@
     "slug": "oscars",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "How Oscars, Grammys, and Nobels manufacture legitimacy differently. Oscar prestige ties to market; Nobel prestige ties to institutional memory.",
+    "dek": "",
     "heroImage": "/images/content/articles/oscars/hero.png",
     "tags": [
       "humanities",
@@ -3087,6 +3152,7 @@
     "slug": "padres-data-fix",
     "pubDate": "2026-10-13T00:00:00.000Z",
     "description": "We audited the Padres dataset behind our record-sale report, rebuilt it from Lahman 1969–2025 plus a verified 2026 season, and reconciled every number the July 2026 live page had published—including a corrupted HTML sync, stale sale copy, and an FAQ that claimed eight runs in two deciding games.",
+    "dek": "",
     "heroImage": "/images/content/articles/padres/hero.png",
     "tags": [
       "sports",
@@ -3119,6 +3185,7 @@
     "slug": "padres",
     "pubDate": "2026-10-11T00:00:00.000Z",
     "description": "San Diego solved demand and the tax bill. It has not solved October. Franchise values follow the market and the ballpark anyway.",
+    "dek": "",
     "heroImage": "/images/content/articles/padres/hero.png",
     "tags": [
       "sports",
@@ -3168,6 +3235,7 @@
     "slug": "pantheon",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "85,000+ biographies in MIT's Pantheon dataset reveal which occupations and cities compound fame across languages—and which achievements remain local.",
+    "dek": "",
     "heroImage": "/images/content/articles/pantheon/hero.png",
     "tags": [
       "humanities",
@@ -3217,6 +3285,7 @@
     "slug": "parks",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Golden Gate National Recreation Area recorded 14.6 million visits in the dataset's peak year — 94 times the system median of 155,219 across 21,560 park-year records from 1904–2016.",
+    "dek": "",
     "heroImage": "/images/content/articles/parks/hero.png",
     "tags": [
       "culture",
@@ -3267,6 +3336,7 @@
     "slug": "patriots",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "Six championships in 19 seasons compressed a century of legacy into one Brady–Belichick era that rewrote franchise identity.",
+    "dek": "",
     "heroImage": "/images/content/articles/patriots/hero.png",
     "tags": [
       "sports",
@@ -3313,6 +3383,7 @@
     "slug": "phds",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Five fields produced 63% of U.S. PhDs; social sciences led at 4,944 degrees while the median field awarded just 85.",
+    "dek": "",
     "heroImage": "/images/content/articles/phds/hero.png",
     "tags": [
       "civics",
@@ -3363,6 +3434,7 @@
     "slug": "pixar",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Pixar's median Rotten Tomatoes score is 96%, but Cars 2 hit 40% and Lightyear stalled the streak—data from 24 rated theatrical features.",
+    "dek": "",
     "heroImage": "/images/content/articles/pixar/hero.png",
     "tags": [
       "arts",
@@ -3413,6 +3485,7 @@
     "slug": "pizza",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "10,000 pizza menu records show a median price floor of 0.00 and a premium tier reaching 50.0, encoding two separate markets in one dataset.",
+    "dek": "",
     "heroImage": "/images/content/articles/pizza/hero.png",
     "tags": [
       "culture",
@@ -3461,6 +3534,7 @@
     "slug": "plastic",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "22,204 country-year records show high income funds collection but does not guarantee low leakage; coastal economies face mismanagement risk at any income level.",
+    "dek": "",
     "heroImage": "/images/content/articles/plastic/hero.png",
     "tags": [
       "culture",
@@ -3506,6 +3580,7 @@
     "slug": "playboy",
     "pubDate": "2026-09-22T00:00:00.000Z",
     "description": "Hefner died in 2017. In 2024 his son's $100M+ bid to buy back Playboy's legacy was rejected. What survives a founder who was the product?",
+    "dek": "",
     "heroImage": "/images/content/articles/playboy/hero.png",
     "tags": [
       "civics",
@@ -3555,6 +3630,7 @@
     "slug": "poison",
     "pubDate": "2026-09-22T00:00:00.000Z",
     "description": "Merch built Pokémon's $91B; one actor's six films show the bill.",
+    "dek": "",
     "heroImage": "/images/content/articles/poison/hero.png",
     "tags": [
       "arts",
@@ -3605,6 +3681,7 @@
     "slug": "pokemon",
     "pubDate": "2026-05-06T00:00:00.000Z",
     "description": "Game Freak's type system encodes stat tradeoffs, power creep clusters at the tail, and Cosmoem weighs 999.9 kg at 0.1 meters.",
+    "dek": "",
     "heroImage": "/images/content/articles/pokemon/hero.png",
     "tags": [
       "sports",
@@ -3655,6 +3732,7 @@
     "slug": "prisons",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "County-level population data show regional regimes that diverge for decades, not one national curve.",
+    "dek": "",
     "heroImage": "/images/content/articles/prisons/hero.png",
     "tags": [
       "civics",
@@ -3704,6 +3782,7 @@
     "slug": "protection",
     "pubDate": "2026-09-22T00:00:00.000Z",
     "description": "BBC's Leto exposé asks why not sooner. Six film ROIs and four institutional cases test what forward value has to do with it.",
+    "dek": "",
     "heroImage": "/images/content/articles/protection/hero.jpg",
     "tags": [
       "arts",
@@ -3754,6 +3833,7 @@
     "slug": "radio",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "17,186 station records show Country owns format share while News/Talk owns the upper AM band — frequency and culture answer different questions.",
+    "dek": "",
     "heroImage": "/images/content/articles/radio/hero.png",
     "tags": [
       "arts",
@@ -3799,6 +3879,7 @@
     "slug": "ramen",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "3,180 instant-ramen reviews show a 5.00-star ceiling and country gaps of 0.25–0.50 stars around the 3.75 median.",
+    "dek": "",
     "heroImage": "/images/content/articles/ramen/hero.png",
     "tags": [
       "culture",
@@ -3848,6 +3929,7 @@
     "slug": "rankings",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Large-scale Hot 100 data show how rankings compress at the summit.",
+    "dek": "",
     "heroImage": "/images/content/articles/rankings/hero.png",
     "tags": [
       "arts",
@@ -3896,6 +3978,7 @@
     "slug": "readmitted",
     "pubDate": "2026-04-21T00:00:00.000Z",
     "description": "In CMS's latest Hospital Readmissions Reduction Program extract, 48.15% of hospital–condition pairs still exceed the expected readmission ratio after a decade of penalties capped at 3% of Medicare payments. This R2 report maps HRRP history, who pays, safety-net effects, observation and mortality debates, international comparators, and eight charts for hospital executives.",
+    "dek": "",
     "heroImage": "/images/content/articles/readmitted/hero.png",
     "tags": [
       "science",
@@ -3946,6 +4029,7 @@
     "slug": "restaurants",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "NYC restaurant inspection scores cluster at 15; highest violation count reaches 156 in 100,000-record TidyTuesday extract.",
+    "dek": "",
     "heroImage": "/images/content/articles/restaurants/hero.png",
     "tags": [
       "culture",
@@ -3994,6 +4078,7 @@
     "slug": "rivalry",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "California scores 96 on GDP, 94 on tech; Texas scores 96 on energy, 91 on migration attention. Seven dimensions explain why the comparison persists.",
+    "dek": "",
     "heroImage": "/images/content/articles/rivalry/hero.png",
     "tags": [
       "civics",
@@ -4012,8 +4097,8 @@
       "96 — California's GDP scale score vs. 86 for Texas—both large enough to function as competing national models",
       "94 — California's tech role score; Texas scores 96 on energy—divergent export systems, not substitutable strengths",
       "91 — Texas migration attention score vs. California's 88 tax-burden debate score—cost, climate, wages, and culture drive relocation, not taxes alone",
-      "[object Object]",
-      "[object Object]"
+      "7 — Rivalry dimensions scored: GDP, population, tech, energy, cultural output, migration, tax burden",
+      "6 — Comparison questions that matter more than tax rates: irreplaceable exports, talent compounding, climate handling, who benefits from growth"
     ],
     "faq": [
       {
@@ -4043,6 +4128,7 @@
     "slug": "schools",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Butteville Union Elementary scores 85.3 on the Multi index while the national median sits at 2.38 across 27,944 local education agencies.",
+    "dek": "",
     "heroImage": "/images/content/articles/schools/hero.png",
     "tags": [
       "civics",
@@ -4088,6 +4174,7 @@
     "slug": "sf",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "A small city exports global software wealth while underbuilding the physical infrastructure to metabolize it.",
+    "dek": "",
     "heroImage": "/images/content/articles/sf/hero.png",
     "tags": [
       "civics",
@@ -4137,6 +4224,7 @@
     "slug": "sherlock",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Tokenized Holmes corpus from TidyTuesday shows median 12.0 words, mean 10.9, with top five titles holding 34% of aggregate count.",
+    "dek": "",
     "heroImage": "/images/content/articles/sherlock/hero.png",
     "tags": [
       "arts",
@@ -4184,6 +4272,7 @@
     "slug": "simpsons",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Marcia Wallace logged 175 guest appearances across 30 Simpsons seasons—2.7× more than the second-place performer in the TidyTuesday dataset.",
+    "dek": "",
     "heroImage": "/images/content/articles/simpsons/hero.png",
     "tags": [
       "arts",
@@ -4223,6 +4312,7 @@
     "slug": "slices",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Median concurrent players climbed from 212 to 309 across the decade, but Dota 2's 475,924 average dwarfs the top-twelve median of 64,656.",
+    "dek": "",
     "heroImage": "/images/content/articles/slices/hero.png",
     "tags": [
       "sports",
@@ -4273,6 +4363,7 @@
     "slug": "steam",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "26,688 Steam titles show critic scores rising from 70 to 73 between 2004–2018 while million-owner games beat the median by 10 points.",
+    "dek": "",
     "heroImage": "/images/content/articles/steam/hero.png",
     "tags": [
       "sports",
@@ -4322,6 +4413,7 @@
     "slug": "streaming",
     "pubDate": "2026-07-21T00:00:00.000Z",
     "description": "Netflix's January–June 2026 engagement report lists 17,370 titles with at least 50,000 views worldwide (8,193 shows and 9,177 movies). The top 10% drew 67.9% of named hours; the top 20% drew 82.6%.",
+    "dek": "",
     "heroImage": "/images/content/articles/streaming/hero.png",
     "tags": [
       "arts",
@@ -4352,6 +4444,7 @@
     "slug": "superbowl",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "NFL leads at 403,641 views; median dropped from 111,814 to 33,766 as the 2006–2021 archive filled with ordinary uploads.",
+    "dek": "",
     "heroImage": "/images/content/articles/superbowl/hero.png",
     "tags": [
       "civics",
@@ -4402,6 +4495,7 @@
     "slug": "television",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Median season ratings climbed from 7.86 to 8.15 across 2,266 records—a raised floor, not a sudden elite leap.",
+    "dek": "",
     "heroImage": "/images/content/articles/television/hero.png",
     "tags": [
       "arts",
@@ -4451,6 +4545,7 @@
     "slug": "trademarks",
     "pubDate": "2026-07-28T00:00:00.000Z",
     "description": "Louis Vuitton won ¥10.3 million against Molly Tea in Suzhou court on 29 June 2026 for four-petal logo infringement. Chinese social media reframed the first-to-file trademark case as foreign enclosure of Tang-era motifs.",
+    "dek": "",
     "heroImage": "/images/content/articles/trademarks/hero.png",
     "tags": [
       "arts",
@@ -4501,6 +4596,7 @@
     "slug": "tuition",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Median state tuition climbed from $5,876 to $9,141 across 2004–2015; Vermont led at $13,486 while five states held 38% of aggregate value.",
+    "dek": "",
     "heroImage": "/images/content/articles/tuition/hero.png",
     "tags": [
       "civics",
@@ -4550,6 +4646,7 @@
     "slug": "voters",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "National turnout reached 132.6 million in 2014 while the median state recorded 1.17 million votes across 936 elections from 1980–2014.",
+    "dek": "",
     "heroImage": "/images/content/articles/voters/hero.png",
     "tags": [
       "civics",
@@ -4599,6 +4696,7 @@
     "slug": "warriors",
     "pubDate": "2026-04-18T00:00:00.000Z",
     "description": "Golden State won 73 games in 2015–16, launched 15 more threes per game than the league, and changed how every franchise builds offense.",
+    "dek": "",
     "heroImage": "/images/content/articles/warriors/hero.png",
     "tags": [
       "sports",
@@ -4649,6 +4747,7 @@
     "slug": "wastewater",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Facility-level data show median discharge at 1,079 m³/day; Singapore's plants average 223,683.",
+    "dek": "",
     "heroImage": "/images/content/articles/wastewater/hero.png",
     "tags": [
       "science",
@@ -4694,6 +4793,7 @@
     "slug": "wealth",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Middle income groups claimed 16% more share; top earners held 6.7 points less than the 10.9% median between 1967 and 2019.",
+    "dek": "",
     "heroImage": "/images/content/articles/wealth/hero.png",
     "tags": [
       "civics",
@@ -4744,6 +4844,7 @@
     "slug": "wine",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Austria leads Chile by 2.00 points; the median sits at 88.0 in a dataset where the top dozen titles all score 100.",
+    "dek": "",
     "heroImage": "/images/content/articles/wine/banner.png",
     "tags": [
       "culture",
@@ -4793,6 +4894,7 @@
     "slug": "yankees",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "27 titles create expectations no payroll can meet: the Yankees spend like champions but haven't converted October access into rings since 2009.",
+    "dek": "",
     "heroImage": "/images/content/articles/yankees/hero.png",
     "tags": [
       "sports",
@@ -4842,6 +4944,7 @@
     "slug": "youtube",
     "pubDate": "2026-04-14T00:00:00.000Z",
     "description": "Alphabet reported $36.1B in YouTube ad revenue in FY2024 while Nielsen puts YouTube at 15.8% of U.S. TV-screen usage (Nielsen Gauge, August 2026, before Nielsen's September 2026 method change). Against that scale, H3 Podcast's Frenemies era tripled monthly views—and set a ceiling the show has not touched since.",
+    "dek": "",
     "heroImage": "/images/content/articles/youtube/hero.png",
     "tags": [
       "civics",

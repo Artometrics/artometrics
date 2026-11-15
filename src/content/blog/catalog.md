@@ -14,7 +14,7 @@ tldr: 'Netflix catalog data from 2008 to 2021 show median duration climbed from 
 keyPoints:
   - '7,787 — Catalog records spanning 2008–2021'
   - 41 to 98 minutes — Median duration rose 139% across the period
-  - 312 minutes — Black Mirror: 'Bandersnatch, the longest single title'
+  - '312 minutes — Black Mirror: Bandersnatch, the longest single title'
   - 38% — Share of total duration held by the top five titles
   - Movie — Most common type label in the catalog
 faq:

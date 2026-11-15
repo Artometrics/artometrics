@@ -29,6 +29,10 @@ import ArtBarChart from "../components/preview/ArtBarChart.astro";
 import ArticleDownloads from "../components/ArticleDownloads.astro";
 import ChartCarousel from "../components/ChartCarousel.astro";
 import KeyFigures from "../components/KeyFigures.astro";
+import ArticleCover from "../components/ArticleCover.astro";
+import ShareRow from "../components/ShareRow.astro";
+import CategoryGrid from "../components/CategoryGrid.astro";
+import { articleLinks } from "../lib/article-links";
 import { articleBanner, chartSlides, shortLabel } from "../lib/article-page";
 import { artworkDownloads } from "@/lib/article-assets.mjs";
 import { previewFiles } from "../lib/preview-reports";
@@ -59,6 +63,8 @@ const pack = downloads[post.slug as keyof typeof downloads] as
     }
   | undefined;
 const meta = loadReportMeta(post.slug);
+const dek = (post as { dek?: string }).dek || post.description;
+const links = articleLinks(post.slug, pack);
 const transcriptHref = pack?.transcript ? `/transcripts/${post.slug}` : null;
 const files = [
   ...previewFiles(post.slug).map((file) =>
@@ -95,9 +101,6 @@ const facts = points
     const text = shortLabel(fact.label.replace(/\s*\[[^\]]*\]/g, ""));
     return { value: fact.value, label: ids.length ? `${text} [${ids.join("; ")}]` : text };
   });
-const factSource = /data-source="([^"]+)"/.exec(body)?.[1]
-  ?.replace(/\s+[—-]\s+ARTOMETRICS\s*$/i, "")
-  .trim() || "";
 const prepared = prepareHeadings(anchoredBody);
 const framed = frameCharts(prepared.html, meta, post.slug);
 const bodyLinked = linkCitations(withStaticCharts(framed), meta);
@@ -159,6 +162,7 @@ const swissFacts: { value: string; label: string }[] = isFranchiseEg
         .map((fact) => ({ value: fact.value, label: fact.label })),
     ]
   : [];
+const keyFacts = isFranchiseEg ? swissFacts : factsLinked;
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -194,7 +198,7 @@ const jsonLd = [
   image={image}
   type="article"
   jsonLd={jsonLd}
-  footer="none"
+  footer="site"
   bodyClass="dash"
   robots={(bakedBanner || isFranchiseEg) ? "noindex, nofollow" : "index, follow"}
 >
@@ -202,6 +206,7 @@ const jsonLd = [
   <link slot="head" rel="stylesheet" href="/css/astro-contrast.css" />
   <link slot="head" rel="stylesheet" href="/css/system.css" />
   <link slot="head" rel="stylesheet" href="/css/report-system.css" />
+  <link slot="head" rel="stylesheet" href="/css/report-cover.css" />
   {isFranchiseEg ? <link slot="head" rel="stylesheet" href="/css/franchise-eg.css" /> : null}
 
   <article class:list={["preview-frame", "preview-report", "report-page", bakedBanner && "report-page--franchise", isFranchiseEg && "report-page--eg"]}>
@@ -214,8 +219,27 @@ const jsonLd = [
     {isFranchiseEg ? (
       <header class="eg-header">
         <p class="eg-kicker">{(sub && SUBDOMAIN_META[sub] ? SUBDOMAIN_META[sub].title : label) || "Film"}</p>
-        <h1 class="eg-headline">{headlineRest}</h1>
-        <p class="eg-dek">{post.description}</p>
+        <h1 class="eg-headline" data-fit-words>{headlineRest}</h1>
+      </header>
+    ) : (
+      <ArticleCover
+        kicker={kicker}
+        headline={headlineRest}
+        title={post.title}
+        art={bannerFile}
+        baked={bakedBanner}
+        crumbs={[
+          { href: "/#reports", label: "Reports" },
+          { href: `/topics/${domain}`, label: DOMAIN_META[domain].title },
+          ...(sub && SUBDOMAIN_META[sub] ? [{ href: `/topics/${domain}?sub=${sub}`, label: SUBDOMAIN_META[sub].title }] : []),
+        ]}
+      />
+    )}
+
+    <ShareRow slug={post.slug} title={post.title} links={links} />
+
+    {isFranchiseEg ? (
+      <div class="eg-intro">
         <p class="eg-byline">
           <span>By {author}</span>
           {egUpdatedLabel ? (
@@ -227,58 +251,24 @@ const jsonLd = [
           <span aria-hidden="true"> · </span>
           <span>{minutes} min read</span>
         </p>
-      </header>
+        <p class="eg-dek">{dek}</p>
+      </div>
     ) : (
-      <header class:list={["report-banner", bakedBanner && "report-banner--baked"]}>
-        <img
-          class="report-banner__art"
-          src={bannerFile}
-          alt={bakedBanner ? post.title : ""}
-          width={bakedBanner ? 1920 : 1600}
-          height={bakedBanner ? 1080 : 900}
-          fetchpriority="high"
-          decoding="async"
-        />
-        <div class="report-banner__copy">
-          <p class="preview-crumb report-banner__crumb">
-            <a href="/#reports">Reports</a>
-            <span aria-hidden="true"> · </span>
-            <a href={`/topics/${domain}`}>{DOMAIN_META[domain].title}</a>
-            {sub && SUBDOMAIN_META[sub] ? (
-              <>
-                <span aria-hidden="true"> · </span>
-                <a href={`/topics/${domain}?sub=${sub}`}>{SUBDOMAIN_META[sub].title}</a>
-              </>
-            ) : null}
-          </p>
-          <h1 class:list={[bakedBanner && "sr-only"]} data-contrast-skip={bakedBanner ? "" : undefined}>
-            <span class="report-kicker">{kicker}:</span>
-            {" "}{headlineRest}
-          </h1>
-        </div>
-      </header>
-    )}
-
-    {!isFranchiseEg ? <p class="preview-dek report-dek">{post.description}</p> : null}
-
-    {!isFranchiseEg ? (
-      <div class="report-updated">
+      <div class="report-updated report-updated--line">
         <p class="report-updated__line">
+          {publishedLabel ? <span>{publishedLabel}</span> : null}
+          {publishedLabel && updatedLabel ? <span aria-hidden="true"> · </span> : null}
           {updatedLabel ? <strong>Updated {updatedLabel}</strong> : null}
-          {updatedLabel && publishedLabel ? <span aria-hidden="true"> · </span> : null}
-          {publishedLabel ? <span>Published {publishedLabel}</span> : null}
           <span aria-hidden="true"> · </span><span>By {author}</span>
           <span aria-hidden="true"> · </span><span>{minutes} min read</span>
         </p>
-        {meta?.whatChanged ? (
-          <p class="report-updated__note">
-            <strong>What changed:</strong> {meta.whatChanged}
-            {meta.changelog ? <> <a href={meta.changelog.href}>Read the changelog</a>.</> : null}
-          </p>
-        ) : null}
       </div>
-    ) : meta?.whatChanged ? (
-      <div class="report-updated">
+    )}
+
+    {!isFranchiseEg ? <p class="preview-dek report-dek">{dek}</p> : null}
+
+    {meta?.whatChanged ? (
+      <div class="report-updated report-updated--note">
         <p class="report-updated__note">
           <strong>What changed:</strong> {meta.whatChanged}
           {meta.changelog ? <> <a href={meta.changelog.href}>Read the changelog</a>.</> : null}
@@ -300,20 +290,6 @@ const jsonLd = [
       </aside>
     ) : null}
 
-    {isFranchiseEg && swissFacts.length ? (
-      <section class="eg-swiss" aria-label="Key figures from this report">
-        <ul class="eg-swiss__grid">
-          {swissFacts.map((fact) => (
-            <li class="eg-swiss__item">
-              <strong class="eg-swiss__value" data-fit data-fit-max="0.2" data-fit-min="16" data-fit-track="0">{fact.value}</strong>
-              <span class="eg-swiss__label" set:html={fact.label} />
-            </li>
-          ))}
-        </ul>
-        {factSource ? <p class="eg-swiss__source">Source: {factSource}</p> : null}
-      </section>
-    ) : null}
-    {isFranchiseEg ? <script is:inline src="/js/fit-text.js"></script> : null}
     {isFranchiseEg ? (
       <figure class="eg-engraving">
         <div class="eg-engraving__frame">
@@ -336,7 +312,7 @@ const jsonLd = [
       </blockquote>
     ) : null}
 
-    {!isFranchiseEg && factsLinked.length ? <KeyFigures facts={factsLinked} source={factSource} /> : null}
+    {keyFacts.length ? <KeyFigures facts={keyFacts} /> : null}
 
     {toc.length > 2 ? (
       <details class="on-page on-page--inline">
@@ -483,6 +459,11 @@ const jsonLd = [
       </footer>
     ) : null}
   </article>
+
+  <section class="report-categories" aria-labelledby="report-categories-title">
+    <h2 class="sr-only" id="report-categories-title">Browse every desk</h2>
+    <CategoryGrid />
+  </section>
 
   <script is:inline src="/js/anchor-jump.js"></script>
   <script is:inline>

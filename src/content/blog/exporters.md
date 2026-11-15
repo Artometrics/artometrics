@@ -17,7 +17,7 @@ keyPoints:
   - 7 — Identity axes measured — services, IP, manufacturing, vehicles, platforms, supply chains, complexity
   - 6 — Dependency risks scored — semiconductors, energy, consumer demand, labor, allies, shipping lanes
   - 8 — Countries positioned by replaceability — Mexico, Vietnam, India, South Korea, Japan, France, Netherlands, Taiwan
-  - 1 — Core question: which parts of global trade are hardest to replace if one system falters?
+  - '1 — Core question: which parts of global trade are hardest to replace if one system falters?'
 faq:
   - question: >-
       Why are the U.S., China, and Germany called export superpowers?
