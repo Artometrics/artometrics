@@ -4,6 +4,7 @@ slug: horror
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: '32,540 horror films from 1950–2022 show median vote average climbed from 5.65 to 6.00 — modest quality gain amid explosive catalog growth.'
+dek: "Horror films multiplied 50-fold since 1950. Did they get any better?"
 heroImage: /images/content/articles/horror/hero.png
 draft: false
 tags:

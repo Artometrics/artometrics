@@ -45,6 +45,8 @@ function findCsv(slug) {
 /** The one CSV a reader should download. Without an entry the first CSV found wins. */
 const PRIMARY_DATASET = {
   franchise: "/data/articles/franchise/wikipedia_franchise_revenue_2026.csv",
+  markers: "/data/articles/markers/dataset.csv",
+  polling: "/data/articles/polling/dataset.csv",
 };
 
 const manifest = {};

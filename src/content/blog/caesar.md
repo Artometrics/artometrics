@@ -4,6 +4,7 @@ slug: caesar
 author: kyle-mcauliffe
 pubDate: 2026-04-18T00:00:00.000Z
 description: Caesar's author-coded LTA profile shows 0.95 Need for Power and 0.31 Distrust. He built an empire on magnanimity and was killed by senators he had pardoned.
+dek: "He pardoned his enemies and built an empire on it. Then the pardoned killed him."
 heroImage: /images/content/articles/caesar/hero.png
 draft: false
 tags:

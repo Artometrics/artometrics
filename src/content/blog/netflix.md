@@ -4,6 +4,7 @@ slug: netflix
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'Squid Game Season 2 logged 730 million hours viewed on Netflix — 292 times the 2.5 million-hour catalog median across 27,803 titles.'
+dek: "One Netflix title was watched 292 times more than the typical one. Guess which."
 heroImage: /images/content/articles/netflix/hero.png
 draft: false
 tags:

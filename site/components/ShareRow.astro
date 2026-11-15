@@ -1,0 +1,71 @@
+---
+import { SHARE_ICONS } from "../lib/share-icons";
+import { shareTargets, SITE_URL, type ArticleLinks } from "../lib/article-links";
+
+interface Props {
+  slug: string;
+  title: string;
+  links: ArticleLinks;
+}
+
+const { slug, title, links } = Astro.props;
+const targets = shareTargets(`${SITE_URL}/${slug}`, title);
+
+const share = [
+  { key: "linkedin", label: "Share on LinkedIn", href: targets.linkedin },
+  { key: "facebook", label: "Share on Facebook", href: targets.facebook },
+  { key: "x", label: "Share on X", href: targets.x },
+  { key: "reddit", label: "Share on Reddit", href: targets.reddit },
+  { key: "email", label: "Share by email", href: targets.email },
+] as const;
+
+const get = [
+  links.download ? { key: "download", label: links.download.label, href: links.download.href, external: true } : null,
+  links.book ? { key: "book", label: "Read the ebook (EPUB)", href: links.book, external: true } : null,
+  links.data ? { key: "data", label: "Data, sources and citations for this report", href: links.data, external: false } : null,
+  links.github ? { key: "github", label: "Open this report's folder on GitHub", href: links.github, external: true } : null,
+].filter((item): item is NonNullable<typeof item> => Boolean(item));
+---
+
+<nav class="share-row" aria-label="Share this report and get its files" data-share-row>
+  <ul class="share-row__group" aria-label="Share">
+    {share.map((item) => {
+      const icon = SHARE_ICONS[item.key];
+      const web = item.href.startsWith("http");
+      return (
+        <li>
+          <a
+            class="share-btn"
+            href={item.href}
+            aria-label={item.label}
+            title={item.label}
+            {...(web ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          >
+            <svg viewBox={icon.viewBox} aria-hidden="true" focusable="false"><path d={icon.d} fill="currentColor" /></svg>
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+  {get.length ? <span class="share-row__divider" role="presentation"></span> : null}
+  {get.length ? (
+    <ul class="share-row__group" aria-label="Get this report">
+      {get.map((item) => {
+        const icon = SHARE_ICONS[item.key];
+        return (
+          <li>
+            <a
+              class="share-btn share-btn--get"
+              href={item.href}
+              aria-label={item.label}
+              title={item.label}
+              {...(item.external ? { target: "_blank", rel: "noopener" } : {})}
+            >
+              <svg viewBox={icon.viewBox} aria-hidden="true" focusable="false"><path d={icon.d} fill="currentColor" /></svg>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  ) : null}
+</nav>

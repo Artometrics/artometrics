@@ -4,6 +4,7 @@ slug: television
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'Median season ratings climbed from 7.86 to 8.15 across 2,266 records—a raised floor, not a sudden elite leap.'
+dek: "Is prestige TV actually getting better? The ratings crept up, but slowly."
 heroImage: /images/content/articles/television/hero.png
 draft: false
 tags:

@@ -4,6 +4,7 @@ slug: pantheon
 author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: '85,000+ biographies in MIT''s Pantheon dataset reveal which occupations and cities compound fame across languages—and which achievements remain local.'
+dek: "Who does the whole world remember? MIT mapped 85,000 biographies to find out."
 heroImage: /images/content/articles/pantheon/hero.png
 draft: false
 tags:

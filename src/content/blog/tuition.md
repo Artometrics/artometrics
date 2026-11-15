@@ -4,6 +4,7 @@ slug: tuition
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'Median state tuition climbed from $5,876 to $9,141 across 2004–2015; Vermont led at $13,486 while five states held 38% of aggregate value.'
+dek: "Public tuition rose 56% in a decade. Which state charged the most?"
 heroImage: /images/content/articles/tuition/hero.png
 draft: false
 tags:

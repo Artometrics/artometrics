@@ -615,6 +615,17 @@
     "transcript": "/exports/transcripts/margins.txt",
     "github": null
   },
+  "markers": {
+    "slug": "markers",
+    "dataset": "/data/articles/markers/dataset.csv",
+    "quarto": null,
+    "html": null,
+    "pdf": null,
+    "epub": "/exports/markers.epub",
+    "audio": null,
+    "transcript": "/exports/transcripts/markers.txt",
+    "github": null
+  },
   "medium": {
     "slug": "medium",
     "dataset": "/data/articles/medium/dataset.csv",
@@ -844,6 +855,17 @@
     "epub": null,
     "audio": null,
     "transcript": "/exports/transcripts/pokemon.txt",
+    "github": null
+  },
+  "polling": {
+    "slug": "polling",
+    "dataset": "/data/articles/polling/dataset.csv",
+    "quarto": null,
+    "html": null,
+    "pdf": null,
+    "epub": "/exports/polling.epub",
+    "audio": null,
+    "transcript": "/exports/transcripts/polling.txt",
     "github": null
   },
   "prisons": {

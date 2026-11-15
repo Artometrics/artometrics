@@ -5,6 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: >-
   Ten major markets split into six identity archetypes shaped by title density, league mix, and championship drought.
+dek: "Why does a Boston fan love sports so differently from a Los Angeles fan? Six patterns, ten cities."
 heroImage: /images/content/articles/fandom/hero.png
 draft: false
 tags:

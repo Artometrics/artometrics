@@ -446,6 +446,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://artometrics.com/markers</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://artometrics.com/medium</loc>
     <lastmod>2026-06-15</lastmod>
     <priority>0.8</priority>
@@ -548,6 +553,11 @@
   <url>
     <loc>https://artometrics.com/pokemon</loc>
     <lastmod>2026-05-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/polling</loc>
+    <lastmod>2026-11-13</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -679,6 +689,516 @@
     <loc>https://artometrics.com/youtube</loc>
     <lastmod>2026-04-14</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/lcsh</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/trademarks</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/lyrics</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/fame</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/gutenberg</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/margins</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/languages</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/horror</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/billboard</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/blockbusters</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/rankings</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/carols</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/simpsons</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/franchise</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/catalog</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/streaming</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/radio</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/pixar</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/television</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/albums</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/emmys</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/anime</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/comics</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/broadway</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/netflix</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/sherlock</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/museums</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/novels</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/poison</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/protection</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/cowboys</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/dodgers</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/slices</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/games</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/pokemon</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/celtics</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/blueprint</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/padres</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/lakers</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/warriors</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/fandom</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/patriots</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/steam</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/giants</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/yankees</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/institutions</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/dynasties</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/leagues</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/cetaceans</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/medium</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/longevity</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/nuclear</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/metrics</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/wastewater</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/readmitted</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/emperors</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/oscars</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/caesar</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/pantheon</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/markers</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/jackson</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/beyonce</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/imperial</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/bioeconomics</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/polling</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/diplomacy</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/rivalry</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/sf</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/ceos</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/geopolitics</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/superbowl</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/factbook</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/wealth</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/voters</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/metros</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/exporters</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/majors</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/schools</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/phds</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/narratives</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/youtube</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/mac</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/prisons</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/tuition</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/atlas</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/playboy</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/wine</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/exercise</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/coffee</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/calories</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/parks</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/bikeshare</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/airlines</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/legos</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/ramen</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/hurricanes</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/restaurants</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/plastic</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/heritage</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/pizza</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/breweries</loc>
+    
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://artometrics.com/sources/alcohol</loc>
+    
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://artometrics.com/podcast/interviews/1</loc>

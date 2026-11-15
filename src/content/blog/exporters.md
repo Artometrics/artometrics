@@ -4,6 +4,7 @@ slug: exporters
 author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: 'The U.S., China, and Germany dominate trade through different architectures — platform control, manufacturing scale, and industrial precision.'
+dek: "Three countries, three ways to dominate world trade. None of them look alike."
 heroImage: /images/content/articles/exporters/hero.png
 draft: false
 tags:
@@ -17,7 +18,7 @@ keyPoints:
   - 7 — Identity axes measured — services, IP, manufacturing, vehicles, platforms, supply chains, complexity
   - 6 — Dependency risks scored — semiconductors, energy, consumer demand, labor, allies, shipping lanes
   - 8 — Countries positioned by replaceability — Mexico, Vietnam, India, South Korea, Japan, France, Netherlands, Taiwan
-  - 1 — Core question: which parts of global trade are hardest to replace if one system falters?
+  - '1 — Core question: which parts of global trade are hardest to replace if one system falters?'
 faq:
   - question: >-
       Why are the U.S., China, and Germany called export superpowers?

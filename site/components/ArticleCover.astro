@@ -1,0 +1,59 @@
+---
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
+interface Crumb {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  kicker: string;
+  headline: string;
+  title: string;
+  crumbs: Crumb[];
+  /** Site-relative or absolute image URL. Empty when the article has no usable art. */
+  art?: string;
+  /** The title is already painted into the art, so no HTML type is overlaid. */
+  baked?: boolean;
+}
+
+const { kicker, headline, title, crumbs, art = "", baked = false } = Astro.props;
+const artExists = !art
+  ? false
+  : /^https?:/.test(art) || existsSync(join(process.cwd(), "public", art.replace(/^\//, "")));
+const hasArt = artExists;
+---
+
+<header class:list={["cover", baked && "cover--baked", !hasArt && "cover--noart"]} data-cover>
+  <div class="cover__media">
+    {hasArt ? (
+      <img
+        class="cover__art"
+        src={art}
+        alt={baked ? title : ""}
+        width={baked ? 1920 : 1600}
+        height={baked ? 1080 : 900}
+        fetchpriority="high"
+        decoding="async"
+      />
+    ) : null}
+  </div>
+  <div class="cover__copy">
+    <p class="cover__crumb">
+      {crumbs.map((crumb, i) => (
+        <>
+          {i ? <span aria-hidden="true"> · </span> : null}
+          <a href={crumb.href}>{crumb.label}</a>
+        </>
+      ))}
+    </p>
+    <h1 class="cover__title" data-contrast-skip={baked ? "" : undefined}>
+      <span class="cover__kicker" data-fit data-fit-max="0.3" data-fit-max-px="88" data-fit-min="26" data-fit-track="0">{kicker}:</span>
+      {" "}
+      <span class="cover__headline" data-fit-words>{headline}</span>
+    </h1>
+  </div>
+</header>
+<script is:inline src="/js/fit-text.js"></script>
+<script is:inline src="/js/fit-words.js"></script>

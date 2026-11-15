@@ -5,6 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-10-13T00:00:00.000Z
 description: >-
   We audited the Padres dataset behind our record-sale report, rebuilt it from Lahman 1969–2025 plus a verified 2026 season, and reconciled every number the July 2026 live page had published—including a corrupted HTML sync, stale sale copy, and an FAQ that claimed eight runs in two deciding games.
+dek: "We rebuilt the Padres dataset from scratch and checked everything we had published. Some of it was wrong."
 heroImage: /images/content/articles/padres/hero.png
 draft: false
 tags:

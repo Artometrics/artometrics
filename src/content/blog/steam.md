@@ -5,6 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: >-
   26,688 Steam titles show critic scores rising from 70 to 73 between 2004–2018 while million-owner games beat the median by 10 points.
+dek: "Games with a million owners beat the median critic score by ten points. Is hours per dollar the reason?"
 heroImage: /images/content/articles/steam/hero.png
 draft: false
 tags:

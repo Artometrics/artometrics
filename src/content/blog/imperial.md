@@ -6,6 +6,7 @@ pubDate: 2026-04-14T00:00:00.000Z
 description: >-
   A historical-economics lens asks who captured wealth when rulers claimed
   order.
+dek: "Empires wrote the histories. What did the chronicles leave out?"
 heroImage: /images/content/articles/imperial/hero.png
 draft: false
 tags:

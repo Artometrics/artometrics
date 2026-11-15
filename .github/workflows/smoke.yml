@@ -32,3 +32,5 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run build
       - run: npm run test:browser
+      - run: npm run test:layout
+      - run: node scripts/check-astro-links.mjs

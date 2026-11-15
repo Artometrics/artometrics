@@ -4,6 +4,7 @@ slug: calories
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: '515 U.S. calories menu items show a median of 490 calories — top 12 items median 1,315; Sonic sits 80 above median, Chick-fil-A 100 below.'
+dek: "One fast-food tray holds 2,430 calories. Guess the chain."
 heroImage: /images/content/articles/calories/hero.png
 draft: false
 tags:

@@ -6,6 +6,7 @@ pubDate: 2026-06-15T00:00:00.000Z
 description: >-
   Since 1958, most chart-toppers lasted weeks; a few held for months—and
   streaming rewrote the pattern.
+dek: "Most number-ones vanish in two weeks. Which songs refused to leave?"
 heroImage: /images/content/articles/billboard/hero.png
 draft: false
 tags:

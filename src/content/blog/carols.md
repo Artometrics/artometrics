@@ -4,6 +4,7 @@ slug: carols
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: '387 holiday songs tracked 1958–2017 show a median 8-week chart life, with standards like Jingle Bell Rock returning across decades.'
+dek: "Jingle Bell Rock keeps coming back. How long do Christmas songs actually stay on the chart?"
 heroImage: /images/content/articles/carols/hero.png
 draft: false
 tags:

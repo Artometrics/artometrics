@@ -4,6 +4,7 @@ slug: simpsons
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: Marcia Wallace logged 175 guest appearances across 30 Simpsons seasons—2.7× more than the second-place performer in the TidyTuesday dataset.
+dek: "Who has made more Simpsons guest appearances than anyone? The runner-up is not close."
 heroImage: /images/content/articles/simpsons/hero.png
 draft: false
 tags:

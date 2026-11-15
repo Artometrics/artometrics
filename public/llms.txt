@@ -41,6 +41,8 @@
 
 ## Reports
 
+- [POLLING: About One in Seven Polling Places Vanished from 23 States, 2012–2020](https://artometrics.com/polling): In the 23 states with polling-place data for every general election from 2012 to 2020, distinct polling-place addresses fell from 45,512 to 38,850, and four states account for 69% of the loss. (civics)
+- [MARKERS: Texas Holds One in Four of America's Historical Markers](https://artometrics.com/markers): Texas holds 10,741 of the 42,724 markers in a Historical Marker Database extract, and 1936 alone produced 887 of them. (humanities)
 - [ANIME: What Changed When We Fixed the Data](https://artometrics.com/anime-data-fix): We refreshed the MyAnimeList catalog behind ANIME after Jikan shut down, moved to the Tenrai-compatible API, and recomputed every headline on the clean TV frame. The light-novel reach premium fell from 32× to 27.5×; manga's 8.0+ share fell to 14.8%; 2015 isekai was under-counted at 0.9% (now 2.2%). (arts)
 - [PADRES: What Changed When We Fixed the Data](https://artometrics.com/padres-data-fix): We audited the Padres dataset behind our record-sale report, rebuilt it from Lahman 1969–2025 plus a verified 2026 season, and reconciled every number the July 2026 live page had published—including a corrupted HTML sync, stale sale copy, and an FAQ that claimed eight runs in two deciding games. (sports)
 - [FRANCHISE: What Changed When We Fixed the Data](https://artometrics.com/franchise-data-fix): We audited the franchise dataset behind our FRANCHISE report, rebuilt it from Wikipedia's October 2026 list and recomputed every published number. Merchandise still dominates (55.8%), but the Japan–US ranking flipped and Hello Kitty's $80B was a source error. (arts)
@@ -154,4 +156,4 @@
 
 ## Generated
 
-Updated: 2026-11-13T06:45:54.130Z
+Updated: 2026-11-15T07:29:23.280Z

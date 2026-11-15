@@ -1,0 +1,46 @@
+.src-tools { display: grid; gap: 14px; margin: 22px 0 8px; }
+.src-search input {
+  display: block; width: 100%; max-width: 32rem; min-height: 46px; margin-top: 6px; padding: 10px 12px;
+  border: 2px solid var(--ink); border-radius: 0; background: var(--bg); color: var(--ink); font: inherit; font-size: 16px;
+}
+.src-search input:focus-visible, .src-chips button:focus-visible, .src-view button:focus-visible { outline: 3px solid var(--pink); outline-offset: 2px; }
+.src-chips, .src-view { display: flex; flex-wrap: wrap; gap: 8px; }
+.src-chips button, .src-view button {
+  min-height: 44px; padding: 0 16px; border: 2px solid var(--ink); border-radius: 0; background: transparent; color: var(--ink);
+  font: inherit; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
+}
+.src-chips button[aria-pressed="true"], .src-view button[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); color: #fff; }
+.src-catalog { margin: 10px 0 0; font-size: 14px; }
+.src-count { margin: 6px 0 14px; font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+.src-head { display: none; }
+.src-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); }
+.src-item { display: grid; gap: 6px; padding: 14px; border: 2px solid var(--ink); background: color-mix(in srgb, var(--ink) 4%, transparent); align-content: start; }
+.src-item[hidden] { display: none; }
+.src-item__link { display: grid; gap: 4px; text-decoration: none; color: inherit; }
+.src-item__kicker { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pink-text); }
+.src-item__title { font-family: var(--display); font-weight: 400; font-size: 1.35rem; line-height: 1.1; color: var(--ink); overflow-wrap: break-word; }
+.src-item__link:hover .src-item__title, .src-item__link:focus-visible .src-item__title { text-decoration: underline; text-decoration-color: var(--pink); }
+.src-item__desk, .src-item__n, .src-item__when { font-size: 13px; color: var(--muted); }
+@media (min-width: 900px) {
+  .src-index--table .src-head, .src-index--table .src-item { display: grid; grid-template-columns: minmax(0, 3fr) 1fr 0.7fr 0.7fr 1.3fr; gap: 12px; align-items: center; }
+  .src-index--table .src-head { padding: 8px 14px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .src-index--table .src-list { display: block; }
+  .src-index--table .src-item { border-width: 0 0 1px; border-color: var(--rule); background: transparent; padding: 10px 14px; }
+  .src-index--table .src-item[hidden] { display: none; }
+  .src-index--table .src-item__u { display: none; }
+}
+.src-page .src-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0; }
+.src-jump { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 10px 0 26px; padding: 12px 0; border-block: 1px solid var(--rule); font-size: 14px; font-weight: 700; }
+.src-section { margin: 0 0 34px; }
+.src-section h2 { font-family: var(--display); font-weight: 400; font-size: 1.9rem; margin: 0 0 12px; color: var(--ink); }
+.src-section h3 { font-size: 1.05rem; margin: 18px 0 6px; }
+.src-files { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.src-files li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 12px 0; border-top: 1px solid var(--rule); overflow-wrap: anywhere; }
+.src-files__meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--subtle); }
+.src-charts { margin-top: 14px; }
+.src-charts summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font-weight: 700; }
+.src-cites { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.src-cites li { display: grid; grid-template-columns: 3rem 1fr; gap: 10px; padding: 12px 0; border-top: 1px solid var(--rule); overflow-wrap: anywhere; }
+.src-cites__id { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--pink-text); }
+.src-notes { margin: 0; padding-left: 1.2rem; color: var(--muted); max-width: 62ch; }
+.src-notes li { margin: 6px 0; }

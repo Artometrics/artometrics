@@ -4,6 +4,7 @@ slug: plastic
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: '22,204 country-year records show high income funds collection but does not guarantee low leakage; coastal economies face mismanagement risk at any income level.'
+dek: "Richer countries collect more plastic. They do not necessarily leak less."
 heroImage: /images/content/articles/plastic/hero.png
 draft: false
 tags:

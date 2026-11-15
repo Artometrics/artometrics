@@ -4,6 +4,7 @@ slug: emperors
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: Constantine ruled 31 years; the median emperor lasted 6.5—dynasty membership did not close that gap.
+dek: "The median Roman emperor lasted 6.5 years. One lasted 31."
 heroImage: /images/content/articles/emperors/hero.png
 draft: false
 tags:

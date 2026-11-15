@@ -1,0 +1,59 @@
+markers
+
+Texas holds 10,741 of the 42,724 historical markers in a TidyTuesday extract of the Historical Marker Database, a share of 25.1 percent. Georgia, in second place, has 3,294. The country's roadside history is not spread evenly, and the dates on the markers show why: it was built in bursts.
+
+The extract covers 50 states, the District of Columbia and Puerto Rico. The typical state has about 230 markers; Texas has more than 46 times that. This report asks where the markers are, when they went up, what they say, and how many are already gone.
+
+ONE STATE, A QUARTER OF THE MAP
+
+ONE STATE HOLDS A QUARTER OF THE MARKERS
+
+The five biggest states, Texas, Georgia, Virginia, Tennessee and California, hold 52.7 percent of all markers. Texas alone has 10,741, more than three times Georgia's 3,294.
+
+The erector field points to state programs. The Texas Historical Commission is named on 7,084 entries, Virginia's Department of Historic Resources on 1,554, the Tennessee Historical Commission on 1,432 and the Georgia Historical Commission on 1,410. A state that funds markers for decades builds a dense record.
+
+TWO YEARS THAT BUILT THE RECORD
+
+MARKER-BUILDING SPIKES IN 1890 AND 1936
+
+The year erected is known for 34,686 of the 42,724 markers. Two years tower over their neighbors. 1936 has 887 markers, and 774 of them are in Texas. That was the Texas Centennial: the state marked 100 years of independence with monuments, buildings and, according to the Texas State Historical Association, a marker in every county.
+
+The other spike is 1890, with 686 markers. In the extract, 625 of them name the Chickamauga and Chattanooga National Military Park Commission or the later battlefield commission as the erector, and 503 are in Georgia and 177 in Tennessee. A third peak, 785 markers in 2003, is more spread out: Ohio accounts for 334 of them.
+
+THE 2000S WERE THE BUSIEST DECADE
+
+THE 2000S BUILT THE MOST MARKERS
+
+Outside the spikes, marker-building has trended up since the 1950s. The 1950s produced 2,228 markers, the 1960s 3,936, the 1990s 4,269 and the 2000s 6,163, the most of any decade. The 2010s followed with 5,691.
+
+The 2020s show 891, but that decade runs only through 2023 in this extract. Yearly counts drop from 591 in 2019 to 321 in 2020, 230 in 2022 and just 23 in 2023. Recent markers are probably the least complete part of the record, so the drop should not be read as a slowdown.
+
+WHAT THE TITLES SAY
+
+CHURCH IS THE MOST COMMON WORD ON A MARKER
+
+Count the words in marker titles, drop filler such as the, of and county, and one word leads: church, in 3,519 titles, or 8.2 percent of the extract. House follows with 2,437, then cemetery with 1,655 and school with 1,236.
+
+Denominations show up as words in their own right: Baptist in 853 titles and Methodist in 789. Infantry appears in 755. The list is a quick index of what communities chose to mark: places of worship, homes, burial grounds and schools.
+
+MARKERS THAT ARE NO LONGER THERE
+
+IN WASHINGTON, D.C., ABOUT ONE MARKER IN SEVEN IS MISSING
+
+The database lets volunteers flag a marker as reported missing or confirmed missing. In the extract, 1,181 markers carry a flag: 648 confirmed and 533 reported, together 2.8 percent of the total.
+
+The rate varies. In the District of Columbia, 65 of 440 markers are flagged, 14.8 percent. Indiana is next among places with at least 300 markers at 5.8 percent, then Virginia at 5.7 percent. Virginia has the most flagged markers in absolute terms, 186.
+
+WHAT THIS FILE CANNOT TELL YOU
+
+The extract describes what volunteers have catalogued, not every marker that stands. A state with an active group of contributors looks richer than one with the same number of markers and fewer volunteers. The year erected is missing for 8,038 markers. Titles are matched as whole words, so spelling variants are counted separately. The companion file of counties with no entry lists 103 places, 50 of them in Puerto Rico, 14 in Alaska and 13 in North Dakota; it marks gaps in the database, not proof that nothing is there.
+
+The reasons given for the 1890 and 1936 spikes come from the erector names in the data and from the Texas State Historical Association. The dataset itself does not record why a marker was put up.
+
+WHAT TO TAKE AWAY
+
+Roadside history in this extract is concentrated and bursty. One state holds 25.1 percent of the markers, one year, 1936, accounts for 887 of them, and the busiest decade is the 2000s. Church is the commonest word in a title, and about one marker in 36 is flagged missing.
+
+The pattern follows programs more than places. Where a state, a commission or an anniversary put money behind markers, the record is dense. Where nobody did, the map is thin.
+
+DATA, METHODS & SOURCES

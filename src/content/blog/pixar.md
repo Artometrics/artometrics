@@ -4,6 +4,7 @@ slug: pixar
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'Pixar''s median Rotten Tomatoes score is 96%, but Cars 2 hit 40% and Lightyear stalled the streak—data from 24 rated theatrical features.'
+dek: "Pixar almost never misses with critics. Two films did."
 heroImage: /images/content/articles/pixar/hero.png
 draft: false
 tags:

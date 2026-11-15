@@ -4,6 +4,7 @@ slug: broadway
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: Springsteen On Broadway averages $509 per ticket—nearly double Hamilton's $273. Concert residencies occupy the summit; traditional musicals cluster near the $60 industry median.
+dek: "Hamilton's tickets cost a fortune. One show charged nearly twice as much."
 heroImage: /images/content/articles/broadway/hero.png
 draft: false
 tags:

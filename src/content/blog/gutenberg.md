@@ -4,6 +4,7 @@ slug: gutenberg
 author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: English titles hold 72% of indexed Gutenberg availability; 19th-century fiction peaks at 2.8× other eras; adventure and gothic subjects adapt 3× faster.
+dek: "Which languages get left on Project Gutenberg's shelf?"
 heroImage: /images/content/articles/gutenberg/hero.png
 draft: false
 tags:

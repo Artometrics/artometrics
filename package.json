@@ -68,6 +68,7 @@
     "cos:aeo": "node scripts/content-os/aeo-pack.mjs",
     "cos:downloads": "node scripts/content-os/pack-article-downloads.mjs",
     "test:browser": "node scripts/test-browser.mjs",
+    "test:studio": "node scripts/test-studio-tools.mjs",
     "test:chart-style": "node scripts/test-chart-style.mjs",
     "render:pdf": "node scripts/render-article-pdf.mjs",
     "transcripts:build": "node scripts/build-article-transcripts.mjs",
@@ -97,7 +98,8 @@
     "eas:build:ios": "node scripts/run-eas-build.mjs",
     "eas:build:preview": "npx eas-cli build -p ios --profile preview",
     "eas:submit:ios": "node scripts/run-eas-submit.mjs",
-    "test:logos": "node scripts/test-logos.mjs"
+    "test:logos": "node scripts/test-logos.mjs",
+    "test:layout": "node scripts/test-layout.mjs"
   },
   "engines": {
     "node": ">=20.0.0"

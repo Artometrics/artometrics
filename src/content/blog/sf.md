@@ -4,6 +4,7 @@ slug: sf
 author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: A small city exports global software wealth while underbuilding the physical infrastructure to metabolize it.
+dek: "Can San Francisco build enough to hold what it invents?"
 heroImage: /images/content/articles/sf/hero.png
 draft: false
 tags:

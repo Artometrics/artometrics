@@ -5,6 +5,7 @@
     "slug": "airlines",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "336 airline records show capacity dominates safety rankings—United leads at 7.1B seat-km/week, but incident counts don't scale linearly with size.",
+    "dek": "Raw incident counts rank airlines unfairly. Here is what happens when you account for how much each one flies.",
     "heroImage": "/images/content/articles/airlines/hero.png",
     "tags": [
       "culture",
@@ -54,6 +55,7 @@
     "slug": "albums",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "The 2003 Rolling Stone list puts median rank at 250; \"Touch\" sits at 500, studio albums dominate, and 1955–2019 releases populate the canon.",
+    "dek": "Rolling Stone ranked 500 albums in 2003. We checked who made the list, when, and what sits at the very bottom.",
     "heroImage": "/images/content/articles/albums/hero.png",
     "tags": [
       "arts",
@@ -103,6 +105,7 @@
     "slug": "alcohol",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Country-level consumption data map which nations drink the most per person—and how that has shifted.",
+    "dek": "Which countries drink the most per person, and what are they pouring?",
     "heroImage": "/images/content/articles/alcohol/hero.png",
     "tags": [
       "culture",
@@ -151,6 +154,7 @@
     "slug": "anime-data-fix",
     "pubDate": "2026-10-13T00:00:00.000Z",
     "description": "We refreshed the MyAnimeList catalog behind ANIME after Jikan shut down, moved to the Tenrai-compatible API, and recomputed every headline on the clean TV frame. The light-novel reach premium fell from 32× to 27.5×; manga's 8.0+ share fell to 14.8%; 2015 isekai was under-counted at 0.9% (now 2.2%).",
+    "dek": "We found our numbers were off, rebuilt the catalog, and recomputed every headline. Here is what moved.",
     "heroImage": "/images/content/articles/anime/hero.webp",
     "tags": [
       "arts",
@@ -183,6 +187,7 @@
     "slug": "anime",
     "pubDate": "2026-03-31T00:00:00.000Z",
     "description": "On the October 2026 MyAnimeList ledger, light-novel TV adaptations still draw 27.5 times the median audience of originals. Source mix and isekai tags trace how committees greenlight shows — with wide uncertainty on any single year.",
+    "dek": "Before a single episode airs, where the story came from has already sized the audience.",
     "heroImage": "/images/content/articles/anime/banner.png",
     "tags": [
       "arts",
@@ -233,6 +238,7 @@
     "slug": "atlas",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "Export ledgers reveal national identity under market constraint—200+ countries, 5,000+ products, six diagnostic questions.",
+    "dek": "Look at what a country sells and you are looking at who it is.",
     "heroImage": "/images/content/articles/atlas/hero.png",
     "tags": [
       "civics",
@@ -276,6 +282,7 @@
     "slug": "beyonce",
     "pubDate": "2026-07-28T12:00:00.000Z",
     "description": "A Psychonomics profile of Beyoncé — Hermann Leadership Trait Analysis, Parkwood as institutionalized self, Lemonade’s canon economics, and an 8,000-line lyric machine.",
+    "dek": "Beyoncé controls her catalog, her label, and her surprises. What does that control look like in the data?",
     "heroImage": "/images/content/articles/beyonce/hero.png",
     "tags": [
       "humanities",
@@ -326,6 +333,7 @@
     "slug": "bikeshare",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Trip-level bike-share data measures typical distance and duration across Biketown journeys.",
+    "dek": "Half of Portland's Biketown rides are over in 14.5 minutes. One lasted 1,392.",
     "heroImage": "/images/content/articles/bikeshare/hero.png",
     "tags": [
       "culture",
@@ -376,6 +384,7 @@
     "slug": "billboard",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Since 1958, most chart-toppers lasted weeks; a few held for months—and streaming rewrote the pattern.",
+    "dek": "Most number-ones vanish in two weeks. Which songs refused to leave?",
     "heroImage": "/images/content/articles/billboard/hero.png",
     "tags": [
       "arts",
@@ -426,6 +435,7 @@
     "slug": "bioeconomics",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "1,667 subnational regions and 1,100+ datasets define the economic signature of cities — exports, housing, transit, culture, and historical infrastructure.",
+    "dek": "What would it take to compare two cities by what they actually make, trade, and build?",
     "heroImage": "/images/content/articles/bioeconomics/hero.png",
     "tags": [
       "civics",
@@ -475,6 +485,7 @@
     "slug": "blockbusters",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "Title fields, ratings, and box-office references explain how films accumulate attention.",
+    "dek": "What turns a movie into an IMDb household name? We looked under the hood of the data.",
     "heroImage": "/images/content/articles/blockbusters/hero.png",
     "tags": [
       "arts",
@@ -524,6 +535,7 @@
     "slug": "blueprint",
     "pubDate": "2026-07-31T00:00:00.000Z",
     "description": "José E. Feliciano and Kwanza Jones paid a record $3.9bn for a club drawing 42,000 a game, ranked last in farm talent, and carrying $858m owed to five underperforming stars.",
+    "dek": "$3.9 billion bought the Padres. Their farm system ranked 30th out of 30.",
     "heroImage": "/images/content/articles/blueprint/hero.png",
     "tags": [
       "sports",
@@ -574,6 +586,7 @@
     "slug": "breweries",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Analysis of 2,410 U.S. craft beers shows median ABV of 6%, maximum 12.8%, and high bitterness concentrated in the IPA cluster.",
+    "dek": "Most craft beers sit at 6% ABV. One is more than double that.",
     "heroImage": "/images/content/articles/breweries/hero.png",
     "tags": [
       "culture",
@@ -622,6 +635,7 @@
     "slug": "broadway",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Springsteen On Broadway averages $509 per ticket—nearly double Hamilton's $273. Concert residencies occupy the summit; traditional musicals cluster near the $60 industry median.",
+    "dek": "Hamilton's tickets cost a fortune. One show charged nearly twice as much.",
     "heroImage": "/images/content/articles/broadway/hero.png",
     "tags": [
       "arts",
@@ -671,6 +685,7 @@
     "slug": "caesar",
     "pubDate": "2026-04-18T00:00:00.000Z",
     "description": "Caesar's author-coded LTA profile shows 0.95 Need for Power and 0.31 Distrust. He built an empire on magnanimity and was killed by senators he had pardoned.",
+    "dek": "He pardoned his enemies and built an empire on it. Then the pardoned killed him.",
     "heroImage": "/images/content/articles/caesar/hero.png",
     "tags": [
       "humanities",
@@ -721,6 +736,7 @@
     "slug": "calories",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "515 U.S. calories menu items show a median of 490 calories — top 12 items median 1,315; Sonic sits 80 above median, Chick-fil-A 100 below.",
+    "dek": "One fast-food tray holds 2,430 calories. Guess the chain.",
     "heroImage": "/images/content/articles/calories/hero.png",
     "tags": [
       "culture",
@@ -770,6 +786,7 @@
     "slug": "carols",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "387 holiday songs tracked 1958–2017 show a median 8-week chart life, with standards like Jingle Bell Rock returning across decades.",
+    "dek": "Jingle Bell Rock keeps coming back. How long do Christmas songs actually stay on the chart?",
     "heroImage": "/images/content/articles/carols/hero.png",
     "tags": [
       "arts",
@@ -819,6 +836,7 @@
     "slug": "catalog",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Black Mirror: Bandersnatch hit 312 minutes; median duration rose from 41 to 98 minutes between 2008 and 2021 as the catalog skewed longer.",
+    "dek": "Netflix's longest title runs 312 minutes, and you choose how it ends.",
     "heroImage": "/images/content/articles/catalog/hero.png",
     "tags": [
       "arts",
@@ -836,7 +854,7 @@
     "keyPoints": [
       "7,787 — Catalog records spanning 2008–2021",
       "41 to 98 minutes — Median duration rose 139% across the period",
-      "[object Object]",
+      "312 minutes — Black Mirror: Bandersnatch, the longest single title",
       "38% — Share of total duration held by the top five titles",
       "Movie — Most common type label in the catalog"
     ],
@@ -864,6 +882,7 @@
     "slug": "celtics",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "18 NBA championships—11 in the Russell era alone—mean every Boston season is compared to Bill Russell and Larry Bird, not to Miami or Milwaukee.",
+    "dek": "When you have won 18 titles, every season gets graded against Bill Russell.",
     "heroImage": "/images/content/articles/celtics/hero.png",
     "tags": [
       "sports",
@@ -913,6 +932,7 @@
     "slug": "ceos",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Median tenure coded at 1.0 year; \"Interim\" label accounts for 218 observations in TidyTuesday departures extract.",
+    "dek": "Thousands of CEO departures, one question: how long did they actually last?",
     "heroImage": "/images/content/articles/ceos/hero.png",
     "tags": [
       "civics",
@@ -961,6 +981,7 @@
     "slug": "cetaceans",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "2,172 of 2,194 cetacean transfer records are US-labeled; bottlenose dolphins account for 1,668 entries in a 1946–2017 captivity ledger.",
+    "dek": "A 70-year ledger of captive whales and dolphins is almost entirely an American story.",
     "heroImage": "/images/content/articles/cetaceans/banner.png",
     "tags": [
       "science",
@@ -1004,6 +1025,7 @@
     "slug": "coffee",
     "pubDate": "2026-04-14T00:00:00.000Z",
     "description": "Ethiopia's median CQI cup score is 85.3 — the highest of 16 countries with 20+ samples — yet Starbucks operates zero stores in the top three scoring nations.",
+    "dek": "Ethiopia, Kenya, Uganda: the best-scoring coffees on earth, and not a Starbucks in sight.",
     "heroImage": "/images/content/articles/coffee/banner.png",
     "tags": [
       "culture",
@@ -1054,6 +1076,7 @@
     "slug": "comics",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Spider-Man logged 4,043 appearances across 1935–2013; the top five characters account for 45% of cumulative appearances among 23,272 records.",
+    "dek": "Five characters take up 45% of every comic appearance on record. Guess who.",
     "heroImage": "/images/content/articles/comics/hero.png",
     "tags": [
       "arts",
@@ -1103,6 +1126,7 @@
     "slug": "cowboys",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "Dallas holds $10B+ in franchise value but hasn't won an NFC championship in 29 years—a widening gap between attention and playoff output.",
+    "dek": "The most valuable team in American sports has not reached a conference title game in 29 years.",
     "heroImage": "/images/content/articles/cowboys/hero.png",
     "tags": [
       "sports",
@@ -1152,6 +1176,7 @@
     "slug": "diplomacy",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "In a 100,000-row UN voting extract, Brazil appears 747 times and 79,663 votes (80%) are affirmative — before ideological coalition modeling begins.",
+    "dek": "In a 100,000-vote UN sample, four out of five votes were yes. Who says no?",
     "heroImage": "/images/content/articles/diplomacy/hero.png",
     "tags": [
       "civics",
@@ -1195,6 +1220,7 @@
     "slug": "dodgers",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "Twelve straight playoff trips, eight championships, and 32 years between rings reveal how payroll and depth buy access—but not closure.",
+    "dek": "The Dodgers won 111 games in 2022. It was not enough.",
     "heroImage": "/images/content/articles/dodgers/hero.png",
     "tags": [
       "sports",
@@ -1244,6 +1270,7 @@
     "slug": "dynasties",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "The Yankees hold 27 titles but convert 40% of Finals trips; the Patriots won 6 of 11 Super Bowls at 55% conversion across MLB, NBA, NFL, NHL since 1950.",
+    "dek": "27 titles sounds like the end of the argument, until you count how often each team wins once it reaches the Finals.",
     "heroImage": "/images/content/articles/dynasties/hero.png",
     "tags": [
       "sports",
@@ -1292,6 +1319,7 @@
     "slug": "emmys",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Saturday Night Live appears 859 times across 29,678 Emmy records from 1957–2021—three times the next-closest show.",
+    "dek": "Which show appears in Emmy history three times more often than any other?",
     "heroImage": "/images/content/articles/emmys/hero.png",
     "tags": [
       "arts",
@@ -1335,6 +1363,7 @@
     "slug": "emperors",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Constantine ruled 31 years; the median emperor lasted 6.5—dynasty membership did not close that gap.",
+    "dek": "The median Roman emperor lasted 6.5 years. One lasted 31.",
     "heroImage": "/images/content/articles/emperors/hero.png",
     "tags": [
       "humanities",
@@ -1384,6 +1413,7 @@
     "slug": "exercise",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Colorado leads at 32.0; median across 52 U.S. jurisdictions is 23.0, with Western and New England states dominating the top tier.",
+    "dek": "One state beats the typical state for exercise by nine points. Can you guess which?",
     "heroImage": "/images/content/articles/exercise/hero.png",
     "tags": [
       "culture",
@@ -1432,6 +1462,7 @@
     "slug": "exporters",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "The U.S., China, and Germany dominate trade through different architectures — platform control, manufacturing scale, and industrial precision.",
+    "dek": "Three countries, three ways to dominate world trade. None of them look alike.",
     "heroImage": "/images/content/articles/exporters/hero.png",
     "tags": [
       "civics",
@@ -1451,7 +1482,7 @@
       "7 — Identity axes measured — services, IP, manufacturing, vehicles, platforms, supply chains, complexity",
       "6 — Dependency risks scored — semiconductors, energy, consumer demand, labor, allies, shipping lanes",
       "8 — Countries positioned by replaceability — Mexico, Vietnam, India, South Korea, Japan, France, Netherlands, Taiwan",
-      "[object Object]"
+      "1 — Core question: which parts of global trade are hardest to replace if one system falters?"
     ],
     "faq": [
       {
@@ -1473,6 +1504,7 @@
     "slug": "factbook",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "China's 1.36 billion against a 5.2 million median — the top five countries hold 72% of aggregate population in the CIA World Factbook extract.",
+    "dek": "Half the places in the CIA World Factbook have under 5.2 million people. Five hold 72% of everyone.",
     "heroImage": "/images/content/articles/factbook/hero.png",
     "tags": [
       "civics",
@@ -1521,6 +1553,7 @@
     "slug": "fame",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "Artists with 15+ release groups and 3+ genre tags sustain fame 40% longer than single-era acts, per MusicBrainz metadata analysis.",
+    "dek": "Does a deep catalog make a pop career last longer?",
     "heroImage": "/images/content/articles/fame/hero.png",
     "tags": [
       "arts",
@@ -1570,6 +1603,7 @@
     "slug": "fandom",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "Ten major markets split into six identity archetypes shaped by title density, league mix, and championship drought.",
+    "dek": "Why does a Boston fan love sports so differently from a Los Angeles fan? Six patterns, ten cities.",
     "heroImage": "/images/content/articles/fandom/hero.png",
     "tags": [
       "sports",
@@ -1619,6 +1653,7 @@
     "slug": "franchise-data-fix",
     "pubDate": "2026-10-12T00:00:00.000Z",
     "description": "We audited the franchise dataset behind our FRANCHISE report, rebuilt it from Wikipedia's October 2026 list and recomputed every published number. Merchandise still dominates (55.8%), but the Japan–US ranking flipped and Hello Kitty's $80B was a source error.",
+    "dek": "We audited our franchise numbers, rebuilt the dataset, and one ranking flipped.",
     "heroImage": "/images/content/articles/franchise/hero.png",
     "tags": [
       "arts",
@@ -1651,6 +1686,7 @@
     "slug": "franchise",
     "pubDate": "2026-04-08T00:00:00.000Z",
     "description": "As of 10 November 2026, Wikipedia's franchise list (revision 7 November) sums 140 properties to $1,460.1 billion. Merchandise is 55.6%. Pokémon, at $130.7 billion, is larger than Star Wars and the MCU combined. Nine of 2025's ten biggest films were franchise installments.",
+    "dek": "Merchandise, not box office, pays for the world's biggest franchises.",
     "heroImage": "/images/content/articles/franchise/banner.png",
     "tags": [
       "arts",
@@ -1700,7 +1736,7 @@
       }
     ],
     "audioSrc": "/audios/franchise-kore-v4.mp3",
-    "body": "<div id=\"quarto-content\">\n<main class=\"art-article-main\">\n\n<div class=\"art-callout\" id=\"findings\">\n<p class=\"art-p\"><strong>Read this before the big numbers get comfortable.</strong> The figures below are nominal estimates of what audiences spent, compiled by Wikipedia's editors from press and trade sources over many years. They are not profit, not a company valuation, and not cash paid to the rights holder. A very large number can still be answering a different question than the one you meant to ask. Data vintage: Wikipedia revision 1384334611, timestamp 7 November 2026, read 10 November 2026. Box office is Box Office Mojo the same day, with The Numbers beside it. Disney's segments are the fiscal year ended 27 September 2025. [S017; S005; S019; S093]</p>\n</div>\n\n<p class=\"art-p\">Five findings, each with a date on it:</p>\n<ol>\n<li>Merchandise, licensing and retail are 55.6% of the list (range 43.2–65.8). [S017]</li>\n<li>Pokémon's row, $130.7 billion, is larger than Star Wars and the Marvel Cinematic Universe added together, $84.2 billion. [S017]</li>\n<li>Five first-listed parents account for 58.3% of the list (range 52.3–72.7). Disney alone is 29.5%. [S017]</li>\n<li>US-origin rows now sum to more than Japan-origin rows ($825.5 billion vs $394.5 billion). Japan's merchandise share is the higher one, 71.4% to 51.5%. [S017]</li>\n<li>Nine of the ten biggest 2025 films worldwide were franchise installments. In 2026, so far, six of ten are. The denominator is ten films, and 2026 is not finished. [S005]</li>\n</ol>\n\n<div class=\"art-callout\" id=\"narration-placeholder\">\n<p class=\"art-p\"><strong>Narration placeholder.</strong> The player on this page is the existing Kore recording, 27 minutes 3 seconds, file <code>/audios/franchise-kore-v4.mp3</code>. It reads the October article. This November text has not been re-rendered. Please do not treat the audio as a reading of the paragraphs below.</p>\n</div>\n\n<h2 id=\"pokemon\" class=\"anchored\">How does Pokémon end up this large?</h2>\n<p class=\"art-p\">Pokémon is listed at $130.7 billion. Star Wars is $46.7 billion and the Marvel Cinematic Universe is $37.5 billion. Add those two film-world rows and you get $84.2 billion. You can bring a space station and a team of superheroes. On this list, the merchandise still needs counting. [S017]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/candidates/c02_pokemon_vs_two.plotly.json\" data-fallback=\"/data/articles/franchise/charts/candidates/c02_pokemon_vs_two.png\" data-source=\"Wikipedia rev 1384334611, read 10 Nov 2026 (S017)\" role=\"img\" aria-label=\"Pokémon at 130.7 billion beside Star Wars plus the MCU at 84.2 billion.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Adding two rows is not the same thing as merging two companies. It is still a startling piece of arithmetic.</figcaption>\n</figure>\n<p class=\"art-p\">Across 140 properties the stated lifetime total is $1,460.1 billion. That is $12.0 billion more than the 12 October revision, and the whole of the increase is two rows, which we will come to. Mickey Mouse &amp; Friends follows Pokémon at $61.2 billion, then Winnie-the-Pooh at $50.2 billion, Star Wars, and Disney Princess at $45.4 billion. The small bear did not wait for a cinematic universe to get organised. [S017]</p>\n<p class=\"art-p\">Pokémon began in 1996 with Game Freak and Nintendo. Games, animation, cards and other products give people more than one way to stay with the same characters. That is a fair description of the system. It is not proof that every viewer becomes a card buyer. Jenkins's <em>Convergence Culture</em> describes stories moving across formats. Steinberg's <em>Anime's Media Mix</em> describes how Japanese animation and character goods grew up together. Japan's production committees can put publishers, broadcasters and toy makers into the same rights arrangement. [Jenkins, 2006; Steinberg, 2012; Hernández Hernández, 2018]</p>\n<p class=\"art-p\">Disney takes another route, through parks, resorts, cruises and shops. Different arrangements, more than one place to spend money. Neither story requires us to assume that anyone is being fooled. People can love the story and also want the toy.</p>\n\n<h2 id=\"shopping\" class=\"anchored\">The film ends. The shopping does not.</h2>\n<p class=\"art-p\">The list puts merchandise, licensing and retail at $812.4 billion, video games at $268.2 billion and box office at $265.3 billion. Another $27.2 billion, about 1.9%, is in the totals without an itemised breakdown. [S017]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart6_revenue_streams_2026.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart6_revenue_streams_2026.png\" data-source=\"Wikipedia rev 1384334611 (S017)\" role=\"img\" aria-label=\"Merchandise 812.4 billion, video games 268.2 billion, box office 265.3 billion, with bootstrap ranges.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Merchandise 55.6% (43.2–65.8). Games 18.3% (11.4–27.0). Box office 18.1% (12.7–25.5). The last two ranges overlap, so do not crown a runner-up.</figcaption>\n</figure>\n<p class=\"art-p\">Since October the point estimates have swapped: games now sit a hair above box office. The ranges still swallow that gap. Resampling the franchises 5,000 times tells you the result depends on which rows are in the list. It does not certify Wikipedia's underlying estimates, and it does not make merchandise, games and ticket sales economically independent of one another. A toy can be the thing the film was for. [S017]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart1_top20_revenue_2026.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart1_top20_revenue_2026.png\" data-source=\"Wikipedia rev 1384334611 (S017)\" role=\"img\" aria-label=\"Top 15 franchise totals, Pokémon in red at 130.7 billion.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Fifteen names, so the labels have room. Pokémon is the red bar. The chart id is still chart 1; it is a top 15 so the phone can read it.</figcaption>\n</figure>\n\n<h2 id=\"hello-kitty\" class=\"anchored\">Did Hello Kitty really lose billions?</h2>\n<p class=\"art-p\">Not in the sense that sentence suggests. The 2019 file listed Hello Kitty at $80.0 billion. The November list says $33.5 billion. Mario went from $35.0 billion to $9.74 billion, and Gundam from $25.5 billion to $5.0 billion. Those rows did not move between 12 October and 7 November. The change is the long edit between the 2019 file and the current list, which this article has treated as revised sourcing rather than a reported collapse at Sanrio or Nintendo. [S001; S017]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/candidates/c03_revisions.plotly.json\" data-fallback=\"/data/articles/franchise/charts/candidates/c03_revisions.png\" data-source=\"S001 paired to S017\" role=\"img\" aria-label=\"2026 stated totals for Hello Kitty, Mario and Gundam after the source revision.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Before announcing a mascot recession, check whether the spreadsheet changed.</figcaption>\n</figure>\n<p class=\"art-p\">The 2019 baseline is TidyTuesday's 2 July file: 103 franchises, audited against Wikipedia revision 904026364, which really is 29 June 2019. A hand-mapped crosswalk has 103 rows, and 82 of them have a usable total in both vintages. These are not two identical baskets watched for seven years. [S001; S007]</p>\n<p class=\"art-p\">Among paired rows, Pokémon rises from $90.9 billion to $130.7 billion, a difference of $39.8 billion. Naruto rises by about $13.9 billion. Call of Duty rises from $17.0 billion to $40.0 billion, a difference of $23.0 billion, and most of the new part of that story is below. Call these revenue growth only where the crosswalk says the scope matches. [S001; S017]</p>\n<p class=\"art-p\">The audit drew 40 franchises from the old file with seed 20261012. Thirty-nine matched the June 2019 page. Of those, 28 were within 10% of the Wikipedia headline, and 5 were within 1% of the itemised breakdown. The old spreadsheet was not an immaculate starting point either. We re-ran that check. The 28 of 39 is still the result. [S001; S007]</p>\n<p class=\"art-p\">Box office's share of the list moves from 8.9% in the 2019 file to 18.1% now, and a lot of that is fuller itemisation plus a different basket, not a sudden change in what people buy. [S001; S017] The companion piece keeps the revision log: <a href=\"/franchise-data-fix\">What changed when we fixed the data</a>.</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart10_wiki_2019_vs_2026.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart10_wiki_2019_vs_2026.png\" data-source=\"S001 and S017\" role=\"img\" aria-label=\"Percent change from the 2019 file to the November 2026 list for six franchises.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Downward bars are edits. Call of Duty's upward bar includes the move from $31 billion on 12 October to $40 billion on 7 November.</figcaption>\n</figure>\n\n<h2 id=\"what-moved\" class=\"anchored\">What moved since October?</h2>\n<p class=\"art-p\">We re-parsed the list. Same 140 names. Two stated totals changed. Call of Duty went from $31 billion to $40 billion. Paw Patrol went from $15.4 billion to $18.4 billion. Everything else in the comparison, including Pokémon, held still. [S017]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/candidates/c04_what_moved.plotly.json\" data-fallback=\"/data/articles/franchise/charts/candidates/c04_what_moved.png\" data-source=\"S017, S094, S095\" role=\"img\" aria-label=\"Call of Duty up 9 billion and Paw Patrol up 3 billion since the October revision.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">The whole list grew by $12.0 billion. These two rows are that $12.0 billion.</figcaption>\n</figure>\n<p class=\"art-p\">Call of Duty's new row is a single video-game line of $40 billion. IGN reported on 26 October 2026 that the franchise had surpassed $40 billion in lifetime revenue, quoting a public note from Xbox. \"Surpassed\" is a threshold, and the list rounds it to $40 billion. It is not an itemised audit. [S094; S017]</p>\n<p class=\"art-p\">Paw Patrol's retail line is on firmer ground than the row's total. Deadline, 28 October 2026, says the franchise has $18 billion in lifetime retail, in a story about a fourth film. The Wikipedia row then adds a box-office line of $373.7 million and a home-media line of $39 million, both cited to The Numbers pages with access dates in 2024 and 2023, and prints $18.4 billion. The same Deadline story says one of the films grossed more than half a billion dollars worldwide, which does not sit neatly under that older box-office line. We keep the list's stated $18.4 billion in the sum, and we do not pretend the extra $0.4 billion was freshly checked. [S095; S017]</p>\n\n<h2 id=\"region-origin\" class=\"anchored\">Is Japan the franchise giant, or is the United States?</h2>\n<p class=\"art-p\">On this list, US-origin franchises have the larger total. Japan-origin franchises have the higher merchandise share. That is narrower than declaring a winner between two national industries, which this dataset cannot do. [S017]</p>\n<ul class=\"stat-cards\" aria-label=\"Franchises by origin: count, listed lifetime revenue, merchandise share\">\n<li class=\"stat-card stat-card--blue\"><span class=\"stat-card__name\">United States</span><strong class=\"stat-card__value\">$825.5B</strong><span class=\"stat-card__meta\">88 franchises · 51.5% merchandise share</span></li>\n<li class=\"stat-card stat-card--pink\"><span class=\"stat-card__name\">Japan</span><strong class=\"stat-card__value\">$394.5B</strong><span class=\"stat-card__meta\">30 franchises · 71.4% merchandise share</span></li>\n<li class=\"stat-card stat-card--cream\"><span class=\"stat-card__name\">United Kingdom</span><strong class=\"stat-card__value\">$136.1B</strong><span class=\"stat-card__meta\">9 franchises · 53.9% merchandise share</span></li>\n</ul>\n<p class=\"art-p\">Korea is $27.0 billion, Sweden $26.3 billion and Canada $23.1 billion. Canada's sum was $20.1 billion in October. The difference is Paw Patrol, which is coded to Canada, and it carries the caveat in the previous section. [S017]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart15_region_2026.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart15_region_2026.png\" data-source=\"S017\" role=\"img\" aria-label=\"Lifetime revenue by region of origin, United States largest, Japan second.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">The label carries the merchandise share, so the chart does not need a second axis.</figcaption>\n</figure>\n<p class=\"art-p\">The 2019 file had the totals the other way around: Japan $681.5 billion, the United States $622.6 billion, and the merchandise shares the other way too, 49.1% for Japan and 64.6% for the United States. Countries did not swap business models while a CSV was downloading. The basket changed. [S001]</p>\n<p class=\"art-p\">An earlier draft of this article said 43 additional US-origin properties. The crosswalk does not support 43. It marks 45 US-origin rows on the November list that have no 2019 row, including Fortnite, Avatar, Madden NFL, Scooby-Doo and The Sims, and also separate rows for Thor, Iron Man, Captain America and Black Panther. Japanese additions are fewer, five rows, and several large Japanese estimates were revised down. English-language Wikipedia is not a census of world culture. [S001; S017]</p>\n<p class=\"art-p\">Region here means the creator's home market at launch, not where the money was spent. The rebuilt MCU row can be mostly theatrical while Pokémon, Anpanman and Hello Kitty pull Japan's merchandise share up. Some of those character rows sit beside the MCU row, so adding every hero's row to the MCU total would count the same affection twice. [S017]</p>\n\n<h2 id=\"original-medium\" class=\"anchored\">Does it matter whether a franchise starts as a game, a comic or a film?</h2>\n<p class=\"art-p\">Yes, a little. The debut format is not a complete business plan. The charts in this section use the <strong>2019 file</strong>, and they say so, because we did not rebuild every historical cut on the November list. [S001]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart5_original_media_revenue.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart5_original_media_revenue.png\" data-source=\"S001, 2019 baseline\" role=\"img\" aria-label=\"2019 lifetime revenue by original medium.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">2019 baseline. Game-origin rows sum to $334.9 billion and manga-origin rows to $253.8 billion.</figcaption>\n</figure>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart11_mix_by_original_medium.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart11_mix_by_original_medium.png\" data-source=\"S001, 2019 baseline\" role=\"img\" aria-label=\"The same 2019 totals, labeled again so the vintage cannot be missed.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Same vintage, drawn once more so a skimming reader still sees the date.</figcaption>\n</figure>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart14_box_office_share_top20.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart14_box_office_share_top20.png\" data-source=\"S001, 2019 baseline\" role=\"img\" aria-label=\"Box office as a share of the 2019 row for twelve franchises.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">2019 file, twelve names. The MCU row in that file is 67.7% box office. Several famous rows are close to none. Do not paste these shares onto the 2026 totals above.</figcaption>\n</figure>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart2_revenue_per_year.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart2_revenue_per_year.png\" data-source=\"S001, 2019 baseline\" role=\"img\" aria-label=\"2019 lifetime revenue divided by years since creation.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">An average across a life, not a year of revenue and not a growth rate. The old $80 billion Hello Kitty total is not drawn here as if it were still current.</figcaption>\n</figure>\n<p class=\"art-p\">Wizarding World started with books and then became films and merchandise. Its existence does not mean any successful novel can support endless films. The later Fantastic Beasts films are a reason to ask about execution, not a reason to blame the original medium.</p>\n\n<h2 id=\"disney\" class=\"anchored\">How much of the table sits with Disney?</h2>\n<p class=\"art-p\">First decide what \"Disney\" includes. On the <strong>2019 file</strong>, the owner string \"The Walt Disney Company\" sums to $259.0 billion. Roll in the subsidiaries the way our rule does and the same file sums to $426.2 billion. The standalone Nintendo label, which does not include the Pokémon Company string, is $49.0 billion. Leaving the rooms uncounted is a good way to lose the house. Combining them still needs a rule, especially when rights are shared. [S001]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart3a_disney_non_consolidated.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart3a_disney_non_consolidated.png\" data-source=\"S001, 2019 baseline\" role=\"img\" aria-label=\"2019 owner totals with subsidiaries left separate.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">2019 owner field, subsidiaries left as written.</figcaption>\n</figure>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart3b_disney_consolidated.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart3b_disney_consolidated.png\" data-source=\"S001, 2019 baseline\" role=\"img\" aria-label=\"2019 owner totals with Disney subsidiaries rolled together.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Same file, one roll-up rule. Not a legal audit.</figcaption>\n</figure>\n<p class=\"art-p\">On the <strong>November 2026 list</strong>, the same style of first-listed parent puts Disney at $430.7 billion, 29.5%, with a range of 18.0–42.9. The top five are 58.3%, range 52.3–72.7. [S017]</p>\n<ul class=\"stat-cards stat-cards--five\" aria-label=\"Assigned parent and listed lifetime revenue\">\n<li class=\"stat-card stat-card--blue\"><span class=\"stat-card__name\">Disney</span><strong class=\"stat-card__value\">$430.7B</strong><span class=\"stat-card__meta\">listed lifetime revenue</span></li>\n<li class=\"stat-card stat-card--pink\"><span class=\"stat-card__name\">Warner Bros. Discovery</span><strong class=\"stat-card__value\">$133.0B</strong><span class=\"stat-card__meta\">listed lifetime revenue</span></li>\n<li class=\"stat-card stat-card--cream\"><span class=\"stat-card__name\">The Pokémon Company</span><strong class=\"stat-card__value\">$130.7B</strong><span class=\"stat-card__meta\">listed lifetime revenue</span></li>\n<li class=\"stat-card stat-card--blue\"><span class=\"stat-card__name\">Microsoft</span><strong class=\"stat-card__value\">$84.2B</strong><span class=\"stat-card__meta\">listed lifetime revenue</span></li>\n<li class=\"stat-card stat-card--pink\"><span class=\"stat-card__name\">Paramount Skydance</span><strong class=\"stat-card__value\">$72.8B</strong><span class=\"stat-card__meta\">listed lifetime revenue</span></li>\n</ul>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart12_owner_concentration_2026.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart12_owner_concentration_2026.png\" data-source=\"S017\" role=\"img\" aria-label=\"Top parent companies on the November 2026 list.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Microsoft's bar includes Call of Duty, which is why it is larger than it was in October.</figcaption>\n</figure>\n<p class=\"art-p\">The 2019 file, with today's parent labels, put the top five at 62.8% in one of our checks and 46.4% before that roll-up. Consolidation changes the answer. None of this means a company earned every dollar historically spent on a character it now controls. Spider-Man's merchandise and film rights connect Disney/Marvel and Sony in different ways. Pokémon's row sits with The Pokémon Company; Nintendo, Game Freak and Creatures share the copyright. Adding $130.7 billion to Nintendo's old $49.0 billion label would mix dates and pretend the rights were simpler than they are. [S001; S017]</p>\n<p class=\"art-p\">For Warner, the November list's DC rows are Batman $29.9 billion, Superman $8.2 billion and the DC Extended Universe $8.0 billion. The sum is $46.1 billion. That sum is three rows on the 2026 list (S017), not a total from the 2019 file. An earlier version of this paragraph pointed the 2026 figure at <code>franchise.csv</code>, which is the 2019 file. That citation was wrong, and it is withdrawn. The 2019 DC sum, same three names, is $44.4 billion (S001). Wizarding World, $35.1 billion, is a separate Warner row. These groupings are not a clean, non-overlapping corporate account. [S017; S001]</p>\n\n<h2 id=\"deals\" class=\"anchored\">What did those billions buy?</h2>\n<p class=\"art-p\">The filed prices we checked are Pixar in 2006 for $7.4 billion, Marvel in 2009 for about $4.0 billion, Lucasfilm in 2012 for $4.05 billion, and 21st Century Fox in a June 2018 exhibit for $71.3 billion in cash and stock. The exhibit's own headline uses those words. This article does not re-label that figure as enterprise value. [S009–S012]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart8_disney_acquisitions.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart8_disney_acquisitions.png\" data-source=\"S009–S012 and S001\" role=\"img\" aria-label=\"Disney acquisition prices, with the anchor franchise row named in the label.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">The price is the bar. The anchor row is only in the label, so the two numbers cannot collide.</figcaption>\n</figure>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart13_deal_price_vs_revenue.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart13_deal_price_vs_revenue.png\" data-source=\"S001\" role=\"img\" aria-label=\"2019 anchor-row totals for the same four deals.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Fox was not a $71.3 billion purchase of one yellow family. Cable, a Hulu stake and a library were in the deal too. The Simpsons row is $13.5 billion in the 2019 file.</figcaption>\n</figure>\n<p class=\"art-p\">A purchase price is not lifetime consumer spending. Putting them near each other does not produce a return, and it does not tell us whether a deal was cheap. It starts a question about what the buyer thought it was buying.</p>\n<p class=\"art-p\">Disney's own reporting answers a different question, an annual one. For the year ended 27 September 2025, the Form 10-K segment table shows Entertainment revenue of $42.466 billion, Sports $17.672 billion and Experiences $36.156 billion. The same table's prior-year column is $41.186 billion, $17.619 billion and $34.151 billion, which is the FY2024 set this article used to cite. The earnings exhibit filed the same day repeats the FY2025 table. FY2026's 10-K was not on file as of 10 November 2026. The latest quarterly report then on file covered the quarter ended 27 June 2026, and we do not annualise it. [S093; S081]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart9_disney_segments_fy2025.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart9_disney_segments_fy2025.png\" data-source=\"Disney Form 10-K FY2025 (S093)\" role=\"img\" aria-label=\"Disney FY2025 segment revenue: Entertainment, Sports, Experiences.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Experiences includes parks, resorts, cruises and merchandise. Sports includes ESPN. Mickey Mouse does not get to take credit for ESPN because the numbers share a document.</figcaption>\n</figure>\n<p class=\"art-p\">These are annual segment revenues, not Wikipedia lifetime totals. The FY2024 chart remains available under its old filename, labeled as FY2024, so the old address does not silently change year. [S093; S004]</p>\n\n<h2 id=\"theatrical\" class=\"anchored\">Why do the biggest films look familiar?</h2>\n<p class=\"art-p\">The domestic coding, which counts titles rather than ticket dollars, runs from 60% franchise entries in the 2010 top ten to 80% in 2019 and 90% in 2024. We did not recode 2025's domestic chart in this pass, so the line stops at 2024 on purpose. [S005]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart7_top10_franchise_share.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart7_top10_franchise_share.png\" data-source=\"Box Office Mojo yearly charts, manual coding through 2024 (S005)\" role=\"img\" aria-label=\"Franchise share of the domestic top ten by year, through 2024.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Share of titles, not of money. The series ends in 2024.</figcaption>\n</figure>\n<p class=\"art-p\">Worldwide, we stopped using the Wikipedia film tables as the dollar source. The 10 November 2026 revision of \"2026 in film\" prints The Super Mario Galaxy Movie as <code>$1,013,2447,550</code>, which is not a readable amount. Box Office Mojo, read the same day, has the film at $1.013 billion. The Numbers has $1.013 billion as well. The Wikipedia cell is flagged and unused. [S005; S019]</p>\n<p class=\"art-p\">For 2025, the trackers do not agree on Ne Zha 2. Wikipedia's 4 November revision still says $2.318 billion. Box Office Mojo says $2.271 billion. The Numbers says $2.004 billion. We do not average them. The count is sturdier than the dollars: on both Box Office Mojo and The Numbers, nine of the ten biggest 2025 films fit this article's coding, and F1 is the one that does not. The share of that top ten is 94.3% on Box Office Mojo and 94.2% on The Numbers. The October article's 94.4% used the Wikipedia table. It is retired. [S005; S019; S091]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/candidates/c05_nezha_trackers.plotly.json\" data-fallback=\"/data/articles/franchise/charts/candidates/c05_nezha_trackers.png\" data-source=\"Wikipedia, Box Office Mojo, The Numbers\" role=\"img\" aria-label=\"Three published worldwide grosses for Ne Zha 2.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Same film, three public tallies. The interesting fact is the gap.</figcaption>\n</figure>\n<p class=\"art-p\">For 2026, read 10 November, both trackers have the same ten films in the same order and the same six-of-ten franchise count. The share of top-ten gross is 61.9% on each. That is not 61.9% of all worldwide box office. The denominator is ten films, and several of them are still in theatres. \"Original\" here means not coded as a sequel, prequel, spin-off, remake or shared-universe installment. The Odyssey, Michael, Project Hail Mary and Obsession are the four originals under that rule. It does not mean the screenplay had no earlier source. [S005; S019]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart16_worldwide_top10_2025_2026.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart16_worldwide_top10_2025_2026.png\" data-source=\"Box Office Mojo worldwide, read 10 Nov 2026 (S005)\" role=\"img\" aria-label=\"2026 worldwide top ten, franchise films in red and originals in blue.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Red is a franchise installment. Blue is an original under the coding above. Spider-Man: Brand New Day leads, at $2.52 billion on both trackers.</figcaption>\n</figure>\n<p class=\"art-p\">Recognition may help explain why studios return to familiar titles. These rankings do not measure marketing savings, and they do not prove why a film succeeded.</p>\n\n<h2 id=\"failure-modes\" class=\"anchored\">Can a familiar name still miss?</h2>\n<p class=\"art-p\">Owning a recognisable character does not make the next release work. The case list points at Universal shelving the Dark Universe after <em>The Mummy</em> (2017), the Fantastic Beasts films falling short of Harry Potter's peaks, DC's changes before the 2023 DC Studios reset, the reception of <em>Ghostbusters</em> (2016), and the changing fortunes of Angry Birds. Links are in <code>franchise_failures.csv</code>. [S013; S015]</p>\n<p class=\"art-p\">Those cases are invitations to look, not a single cause called franchise fatigue, and not a moral about discipline. A lifetime total does not say whether the latest release made money. The spreadsheet remembers past success. Audiences are under no obligation to renew it.</p>\n\n<h2 id=\"own-or-market-an-ip\" class=\"anchored\">What this means if you own or market an IP</h2>\n<p class=\"art-p\">This section is for brand, licensing and marketing teams. It turns the figures above into questions to ask and cautions to keep. It uses only numbers already in this report, and it is not advice on any single deal. [S017]</p>\n\n<h3 id=\"ip-consolidation\" class=\"anchored\">Ownership is concentrated, so check who sits behind a property</h3>\n<p class=\"art-p\">On the November list, Disney is the first-listed parent for $430.7 billion, 29.5% of the list (range 18.0–42.9). The top five parents are 58.3% (range 52.3–72.7). [S017]</p>\n<p class=\"art-p\">Part of that concentration was bought. The filed prices we checked are $7.4 billion for Pixar in 2006, about $4.0 billion for Marvel in 2009, $4.05 billion for Lucasfilm in 2012, and $71.3 billion in cash and stock for 21st Century Fox in a 2018 exhibit. [S009–S012] On the 2019 file, the owner name \"The Walt Disney Company\" alone summed to $259.0 billion. With the subsidiaries rolled in, the same file sums to $426.2 billion. [S001] A name on a character can understate who controls it.</p>\n<ul>\n<li><strong>Check the rights holder for the specific property, not the studio name.</strong> Rights are sometimes shared. Spider-Man's film and merchandise rights connect Disney/Marvel and Sony in different ways, and Pokémon's copyright is shared by Nintendo, Game Freak and Creatures. [S017]</li>\n<li><strong>Ask how the holder's other properties overlap your category.</strong> Five parents sit behind 58.3% of the list, so a licensor with a large portfolio is a normal case, not an exception. [S017]</li>\n<li><strong>Treat an acquisition as a change in who you deal with.</strong> It is not evidence that the property will sell the way it did before. A purchase price is not lifetime consumer spending, and buying a company does not retroactively earn the money audiences once spent on its characters. [S009–S012]</li>\n<li><strong>Quote the counting rule with the share.</strong> On the 2019 file with today's parent labels, the top five were 62.8% in one of our checks and 46.4% before the roll-up. Consolidation changes the answer. [S001]</li>\n</ul>\n\n<h3 id=\"ip-merchandise\" class=\"anchored\">Merchandise is the main engine, but it works differently in different places</h3>\n<p class=\"art-p\">Merchandise, licensing and retail are $812.4 billion, 55.6% of the list (range 43.2–65.8). Video games are 18.3% and box office 18.1%, and those two ranges overlap. [S017] Pokémon's $130.7 billion row is larger than Star Wars and the Marvel Cinematic Universe added together, $84.2 billion. [S017]</p>\n<p class=\"art-p\">By origin, the 30 Japan-origin franchises total $394.5 billion with a merchandise share of 71.4%. The 88 US-origin franchises total $825.5 billion with 51.5%. The nine UK-origin franchises are $136.1 billion at 53.9%. [S017] We read the gap as two merchandising styles, not two national industries. Pokémon, Anpanman and Hello Kitty pull Japan's share up, while the MCU row can be mostly theatrical. [S017] Steinberg describes Japanese animation and character goods growing up together, and Japan's production committees can put publishers, broadcasters and toy makers into one rights arrangement. [Steinberg, 2012; Hernández Hernández, 2018] Disney's own filing shows a different route: for the year ended 27 September 2025, Experiences, which includes parks, resorts, cruises and merchandise, was $36.2 billion beside Entertainment at $42.5 billion. [S093]</p>\n<ul>\n<li><strong>Decide which style your property is closer to before you benchmark.</strong> A character-led property, where the goods are much of the product, should not be measured against a story-led property using one 55.6% figure. [S017]</li>\n<li><strong>Do not credit merchandise to a single campaign or film.</strong> The list counts toys, games and tickets separately, but they are not independent of each other. A toy can be the thing the film was for. [S017]</li>\n<li><strong>Do not turn 71.4% and 51.5% into national traits.</strong> Region means the creator's home market at launch. The basket also changed: the crosswalk marks 45 US-origin rows on the November list that have no 2019 row. [S017; S001]</li>\n</ul>\n\n<h3 id=\"ip-caveats\" class=\"anchored\">What the data cannot tell you</h3>\n<ul>\n<li><strong>It is not profit.</strong> The figures are nominal estimates of consumer spending, compiled by Wikipedia's editors. They are not profit, not a company valuation, and not cash paid to a rights holder. [S017]</li>\n<li><strong>The ranges are wide.</strong> Disney's share runs 18.0–42.9 and the top five's 52.3–72.7. The ranges show how much a share depends on which rows are on the list. They are not sampling error, and they do not certify the underlying estimates. [S017]</li>\n<li><strong>The estimates move.</strong> Between 12 October and 7 November, Call of Duty went from $31 billion to $40 billion and Paw Patrol from $15.4 billion to $18.4 billion, which is all of the list's $12.0 billion rise. [S017] Hello Kitty's row went from $80.0 billion in the 2019 file to $33.5 billion, a revised row, not a reported collapse at Sanrio. [S001; S017]</li>\n<li><strong>Small groups swing.</strong> Canada's two franchises sum to $23.1 billion with a 77.9% merchandise share, and Sweden's three sum to $26.3 billion with 12.8%. One row changes either figure. [S017]</li>\n<li><strong>A lifetime total says nothing about the next release.</strong> The list has no royalty rates, licence terms, margins or campaign results, and a famous name can still miss. [S013; S015]</li>\n</ul>\n<p class=\"art-p\">Before you quote a number from this report, give its vintage (the Wikipedia revision and the date we read it), give the range, say that it is an estimate of consumer spending, and check the <a href=\"/franchise/changelog\">changelog</a> for a later revision. [S017]</p>\n\n<h2 id=\"takeaway\" class=\"anchored\">What to keep</h2>\n<p class=\"art-p\">Counting only movies leaves out most of this list. Merchandise, licensing and retail are 55.6% of the recorded lifetime spending, inside a range wide enough to respect. Pokémon's $130.7 billion is larger than Star Wars and the MCU combined. Five assigned parents sit behind 58.3% of the table, on a rule that is not a title search. [S017]</p>\n<p class=\"art-p\">Every useful comparison needs a date, a denominator and a description of what the number measures. Consumer spending is not profit. A changed estimate is not a collapsing business. A national label is not a national industry. Buying a company does not retroactively earn the money audiences once spent on its characters.</p>\n<p class=\"art-p\">The characters may travel between games, films, shelves and parks. The accounting labels should travel with them.</p>\n\n<h2 id=\"gallery\" class=\"anchored\">More charts</h2>\n<p class=\"art-p\">Twenty-four candidates were drawn in the same theme and scored for a single point, a surprise, whether a phone can read them, and whether the data can hold the claim. The five above led. Eight more are below: swipe or use the buttons. Nothing moves on its own. Scores and the contact sheet: <a href=\"/data/articles/franchise/charts/candidates/scores.csv\">scores.csv</a>, <a href=\"/data/articles/franchise/charts/candidates/contact_sheet.png\">contact sheet</a>.</p>\n<div class=\"carousel\" data-carousel role=\"group\" aria-roledescription=\"carousel\" aria-label=\"More charts\">\n<div class=\"carousel__track\" tabindex=\"0\">\n<figure class=\"carousel-card\">\n<h3 class=\"chart-frame__title\">Who the list's first name belongs to</h3>\n<img src=\"/data/articles/franchise/charts/candidates/c06_parents.png\" alt=\"Parent totals on the November list.\" loading=\"lazy\" width=\"1200\" height=\"900\" />\n<figcaption><p class=\"chart-frame__desc\">Disney, at $430.7 billion, is far ahead of Warner Bros. Discovery ($133.0 billion) and The Pokémon Company ($130.7 billion). It shows how much of the list sits under a handful of first-listed parents, on a counting rule that is not a legal ownership audit.</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Source</span> Wikipedia list, revision 1384334611 (S017)</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Data</span> <a href=\"/data/articles/franchise/charts/candidates/c06_parents.plotly.json\" target=\"_blank\" rel=\"noopener\">Chart data (JSON)</a> · <a href=\"/data/articles/franchise/charts/candidates/c06_parents.png\" target=\"_blank\" rel=\"noopener\">Image (PNG)</a></p></figcaption>\n</figure>\n<figure class=\"carousel-card\">\n<h3 class=\"chart-frame__title\">Scale and share are different prizes</h3>\n<img src=\"/data/articles/franchise/charts/candidates/c07_us_japan.png\" alt=\"United States and Japan lifetime totals.\" loading=\"lazy\" width=\"1200\" height=\"900\" />\n<figcaption><p class=\"chart-frame__desc\">The United States sums to $825.5 billion and Japan to $394.5 billion. Japan's merchandise share is 71.4% against 51.5% for the United States, so the larger total and the larger share sit in different places.</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Source</span> Wikipedia list, revision 1384334611 (S017)</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Data</span> <a href=\"/data/articles/franchise/charts/candidates/c07_us_japan.plotly.json\" target=\"_blank\" rel=\"noopener\">Chart data (JSON)</a> · <a href=\"/data/articles/franchise/charts/candidates/c07_us_japan.png\" target=\"_blank\" rel=\"noopener\">Image (PNG)</a></p></figcaption>\n</figure>\n<figure class=\"carousel-card\">\n<h3 class=\"chart-frame__title\">FY2025, three Disney segments</h3>\n<img src=\"/data/articles/franchise/charts/candidates/c08_segments.png\" alt=\"Disney FY2025 segment revenue.\" loading=\"lazy\" width=\"1200\" height=\"900\" />\n<figcaption><p class=\"chart-frame__desc\">Entertainment is $42.5 billion, Experiences $36.2 billion and Sports $17.7 billion for the year ended 27 September 2025. These are annual company segments, not lifetime franchise totals, and Experiences includes parks and merchandise.</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Source</span> Disney Form 10-K, fiscal year 2025 (S093)</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Data</span> <a href=\"/data/articles/franchise/charts/candidates/c08_segments.plotly.json\" target=\"_blank\" rel=\"noopener\">Chart data (JSON)</a> · <a href=\"/data/articles/franchise/charts/candidates/c08_segments.png\" target=\"_blank\" rel=\"noopener\">Image (PNG)</a></p></figcaption>\n</figure>\n<figure class=\"carousel-card\">\n<h3 class=\"chart-frame__title\">DC is three rows. Harry Potter is a fourth.</h3>\n<img src=\"/data/articles/franchise/charts/candidates/c16_dc.png\" alt=\"DC rows beside Wizarding World.\" loading=\"lazy\" width=\"1200\" height=\"900\" />\n<figcaption><p class=\"chart-frame__desc\">Batman is $29.9 billion, Superman $8.2 billion and the DC Extended Universe $8.0 billion, which sums to $46.1 billion. Wizarding World, at $35.1 billion, is a separate Warner row, so the sum is not a clean corporate total.</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Source</span> Wikipedia list, revision 1384334611 (S017)</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Data</span> <a href=\"/data/articles/franchise/charts/candidates/c16_dc.plotly.json\" target=\"_blank\" rel=\"noopener\">Chart data (JSON)</a> · <a href=\"/data/articles/franchise/charts/candidates/c16_dc.png\" target=\"_blank\" rel=\"noopener\">Image (PNG)</a></p></figcaption>\n</figure>\n<figure class=\"carousel-card\">\n<h3 class=\"chart-frame__title\">2025's top ten, as a count</h3>\n<img src=\"/data/articles/franchise/charts/candidates/c18_2025_count.png\" alt=\"2025 top ten franchise count.\" loading=\"lazy\" width=\"1200\" height=\"900\" />\n<figcaption><p class=\"chart-frame__desc\">Nine of the ten highest-grossing films of 2025 are franchise installments on both Box Office Mojo and The Numbers. F1 is the one original under this coding, and the count holds up better than the dollar totals.</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Source</span> Box Office Mojo and The Numbers, read 10 November 2026 (S005; S019)</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Data</span> <a href=\"/data/articles/franchise/charts/candidates/c18_2025_count.plotly.json\" target=\"_blank\" rel=\"noopener\">Chart data (JSON)</a> · <a href=\"/data/articles/franchise/charts/candidates/c18_2025_count.png\" target=\"_blank\" rel=\"noopener\">Image (PNG)</a></p></figcaption>\n</figure>\n<figure class=\"carousel-card\">\n<h3 class=\"chart-frame__title\">2026's top ten so far, as a count</h3>\n<img src=\"/data/articles/franchise/charts/candidates/c19_2026_count.png\" alt=\"2026 top ten franchise count.\" loading=\"lazy\" width=\"1200\" height=\"900\" />\n<figcaption><p class=\"chart-frame__desc\">Six of the ten highest-grossing films of 2026 so far are franchise installments. The Odyssey, Michael, Project Hail Mary and Obsession are the originals, and 2026 is not a finished year.</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Source</span> Box Office Mojo and The Numbers, read 10 November 2026 (S005; S019)</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Data</span> <a href=\"/data/articles/franchise/charts/candidates/c19_2026_count.plotly.json\" target=\"_blank\" rel=\"noopener\">Chart data (JSON)</a> · <a href=\"/data/articles/franchise/charts/candidates/c19_2026_count.png\" target=\"_blank\" rel=\"noopener\">Image (PNG)</a></p></figcaption>\n</figure>\n<figure class=\"carousel-card\">\n<h3 class=\"chart-frame__title\">Eighty became 33.5</h3>\n<img src=\"/data/articles/franchise/charts/candidates/c22_hello_levels.png\" alt=\"Hello Kitty 2019 file versus 2026 list.\" loading=\"lazy\" width=\"1200\" height=\"900\" />\n<figcaption><p class=\"chart-frame__desc\">Hello Kitty is $80.0 billion in the 2019 file and $33.5 billion on the November list. That is a source revision, and Sanrio did not publish a collapse to match the edit.</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Source</span> TidyTuesday 2019 file and Wikipedia list (S001; S017)</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Data</span> <a href=\"/data/articles/franchise/charts/candidates/c22_hello_levels.plotly.json\" target=\"_blank\" rel=\"noopener\">Chart data (JSON)</a> · <a href=\"/data/articles/franchise/charts/candidates/c22_hello_levels.png\" target=\"_blank\" rel=\"noopener\">Image (PNG)</a></p></figcaption>\n</figure>\n<figure class=\"carousel-card\">\n<h3 class=\"chart-frame__title\">The whole list, one month later</h3>\n<img src=\"/data/articles/franchise/charts/candidates/c24_ledger_total.png\" alt=\"October list total versus November list total.\" loading=\"lazy\" width=\"1200\" height=\"900\" />\n<figcaption><p class=\"chart-frame__desc\">The list total went from $1,448.1 billion on the 12 October revision to $1,460.1 billion on 7 November. All of the $12.0 billion rise is Call of Duty and Paw Patrol.</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Source</span> Wikipedia list, revisions 1379832186 and 1384334611 (S017)</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Data</span> <a href=\"/data/articles/franchise/charts/candidates/c24_ledger_total.plotly.json\" target=\"_blank\" rel=\"noopener\">Chart data (JSON)</a> · <a href=\"/data/articles/franchise/charts/candidates/c24_ledger_total.png\" target=\"_blank\" rel=\"noopener\">Image (PNG)</a></p></figcaption>\n</figure>\n</div>\n<div class=\"carousel__controls\"><button type=\"button\" data-carousel-prev aria-label=\"Previous chart\">Previous</button><button type=\"button\" data-carousel-next aria-label=\"Next chart\">Next</button><p class=\"carousel__status\" aria-live=\"polite\">1 of 8</p></div>\n</div>\n<p class=\"art-p\">The other candidates, the restyled body charts, and the ledger CSVs are in <a href=\"/data/articles/franchise/\">/data/articles/franchise/</a>. The candidate folder is <a href=\"/data/articles/franchise/charts/candidates/\">charts/candidates/</a>.</p>\n\n<h2 id=\"editors-note\" class=\"anchored\">Editor's note</h2>\n<div class=\"art-editorial-note\"><p class=\"art-p\"><em>12 November 2026. Added the section for people who own or market an IP, a Sources &amp; method section, and source links on every figure. No figures changed. 10 November 2026. The ledger was re-read at Wikipedia revision 1384334611 (7 November) [S017]. Two rows moved: Call of Duty to $40 billion and Paw Patrol to the list's stated $18.4 billion, with the retail line confirmed at Deadline and the box-office add-on flagged. Worldwide grosses now come from Box Office Mojo, with The Numbers alongside, because the Wikipedia 2026 Mario cell is malformed and the Ne Zha 2 tallies disagree. Disney's segments are the FY2025 10-K. The DC paragraph now cites the 2026 list. The \"43 additional US-origin properties\" line did not match the crosswalk and is now 45. The voice is a factual reading: curious, warm, and unwilling to invent a joke the numbers did not earn. The 27:03 Kore file remains the October reading. See <a href=\"/franchise-data-fix\">What changed when we fixed the data</a>. Human editorial direction; AI-assisted analysis and chart code per Artometrics workflow.</em></p><p class=\"art-p\">— Artometrics Editorial Desk</p></div>\n\n<p class=\"art-github-wrap\">\n<a class=\"art-github-btn\" href=\"https://github.com/Artometrics/artometrics/tree/main/articles/franchise\" target=\"_blank\" rel=\"noopener noreferrer\">Article folder</a>\n</p>\n</main>\n</div>",
+    "body": "<div id=\"quarto-content\">\n<main class=\"art-article-main\">\n\n<div class=\"art-callout\" id=\"findings\">\n<p class=\"art-p\"><strong>Read this before the big numbers get comfortable.</strong> The figures below are nominal estimates of what audiences spent, compiled by Wikipedia's editors from press and trade sources over many years. They are not profit, not a company valuation, and not cash paid to the rights holder. A very large number can still be answering a different question than the one you meant to ask. Data vintage: Wikipedia revision 1384334611, timestamp 7 November 2026, read 10 November 2026. Box office is Box Office Mojo the same day, with The Numbers beside it. Disney's segments are the fiscal year ended 27 September 2025. [S017; S005; S019; S093]</p>\n</div>\n\n<p class=\"art-p\">Five findings, each with a date on it:</p>\n<ol>\n<li>Merchandise, licensing and retail are 55.6% of the list (range 43.2–65.8). [S017]</li>\n<li>Pokémon's row, $130.7 billion, is larger than Star Wars and the Marvel Cinematic Universe added together, $84.2 billion. [S017]</li>\n<li>Five first-listed parents account for 58.3% of the list (range 52.3–72.7). Disney alone is 29.5%. [S017]</li>\n<li>US-origin rows now sum to more than Japan-origin rows ($825.5 billion vs $394.5 billion). Japan's merchandise share is the higher one, 71.4% to 51.5%. [S017]</li>\n<li>Nine of the ten biggest 2025 films worldwide were franchise installments. In 2026, so far, six of ten are. The denominator is ten films, and 2026 is not finished. [S005]</li>\n</ol>\n\n<div class=\"art-callout\" id=\"narration-placeholder\">\n<p class=\"art-p\"><strong>Narration placeholder.</strong> The player on this page is the existing Kore recording, 27 minutes 3 seconds, file <code>/audios/franchise-kore-v4.mp3</code>. It reads the October article. This November text has not been re-rendered. Please do not treat the audio as a reading of the paragraphs below.</p>\n</div>\n\n<h2 id=\"pokemon\" class=\"anchored\">How does Pokémon end up this large?</h2>\n<p class=\"art-p\">Pokémon is listed at $130.7 billion. Star Wars is $46.7 billion and the Marvel Cinematic Universe is $37.5 billion. Add those two film-world rows and you get $84.2 billion. You can bring a space station and a team of superheroes. On this list, the merchandise still needs counting. [S017]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/candidates/c02_pokemon_vs_two.plotly.json\" data-fallback=\"/data/articles/franchise/charts/candidates/c02_pokemon_vs_two.png\" data-source=\"Wikipedia rev 1384334611, read 10 Nov 2026 (S017)\" role=\"img\" aria-label=\"Pokémon at 130.7 billion beside Star Wars plus the MCU at 84.2 billion.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Adding two rows is not the same thing as merging two companies. It is still a startling piece of arithmetic.</figcaption>\n</figure>\n<p class=\"art-p\">Across 140 properties the stated lifetime total is $1,460.1 billion. That is $12.0 billion more than the 12 October revision, and the whole of the increase is two rows, which we will come to. Mickey Mouse &amp; Friends follows Pokémon at $61.2 billion, then Winnie-the-Pooh at $50.2 billion, Star Wars, and Disney Princess at $45.4 billion. The small bear did not wait for a cinematic universe to get organised. [S017]</p>\n<p class=\"art-p\">Pokémon began in 1996 with Game Freak and Nintendo. Games, animation, cards and other products give people more than one way to stay with the same characters. That is a fair description of the system. It is not proof that every viewer becomes a card buyer. Jenkins's <em>Convergence Culture</em> describes stories moving across formats. Steinberg's <em>Anime's Media Mix</em> describes how Japanese animation and character goods grew up together. Japan's production committees can put publishers, broadcasters and toy makers into the same rights arrangement. [Jenkins, 2006; Steinberg, 2012; Hernández Hernández, 2018]</p>\n<p class=\"art-p\">Disney takes another route, through parks, resorts, cruises and shops. Different arrangements, more than one place to spend money. Neither story requires us to assume that anyone is being fooled. People can love the story and also want the toy.</p>\n\n<h2 id=\"shopping\" class=\"anchored\">The film ends. The shopping does not.</h2>\n<p class=\"art-p\">The list puts merchandise, licensing and retail at $812.4 billion, video games at $268.2 billion and box office at $265.3 billion. Another $27.2 billion, about 1.9%, is in the totals without an itemised breakdown. [S017]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart6_revenue_streams_2026.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart6_revenue_streams_2026.png\" data-source=\"Wikipedia rev 1384334611 (S017)\" role=\"img\" aria-label=\"Merchandise 812.4 billion, video games 268.2 billion, box office 265.3 billion, with bootstrap ranges.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Merchandise 55.6% (43.2–65.8). Games 18.3% (11.4–27.0). Box office 18.1% (12.7–25.5). The last two ranges overlap, so do not crown a runner-up.</figcaption>\n</figure>\n<p class=\"art-p\">Since October the point estimates have swapped: games now sit a hair above box office. The ranges still swallow that gap. Resampling the franchises 5,000 times tells you the result depends on which rows are in the list. It does not certify Wikipedia's underlying estimates, and it does not make merchandise, games and ticket sales economically independent of one another. A toy can be the thing the film was for. [S017]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart1_top20_revenue_2026.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart1_top20_revenue_2026.png\" data-source=\"Wikipedia rev 1384334611 (S017)\" role=\"img\" aria-label=\"Top 15 franchise totals, Pokémon in red at 130.7 billion.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Fifteen names, so the labels have room. Pokémon is the red bar. The chart id is still chart 1; it is a top 15 so the phone can read it.</figcaption>\n</figure>\n\n<h2 id=\"hello-kitty\" class=\"anchored\">Did Hello Kitty really lose billions?</h2>\n<p class=\"art-p\">Not in the sense that sentence suggests. The 2019 file listed Hello Kitty at $80.0 billion. The November list says $33.5 billion. Mario went from $35.0 billion to $9.74 billion, and Gundam from $25.5 billion to $5.0 billion. Those rows did not move between 12 October and 7 November. The change is the long edit between the 2019 file and the current list, which this article has treated as revised sourcing rather than a reported collapse at Sanrio or Nintendo. [S001; S017]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/candidates/c03_revisions.plotly.json\" data-fallback=\"/data/articles/franchise/charts/candidates/c03_revisions.png\" data-source=\"S001 paired to S017\" role=\"img\" aria-label=\"2026 stated totals for Hello Kitty, Mario and Gundam after the source revision.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Before announcing a mascot recession, check whether the spreadsheet changed.</figcaption>\n</figure>\n<p class=\"art-p\">The 2019 baseline is TidyTuesday's 2 July file: 103 franchises, audited against Wikipedia revision 904026364, which really is 29 June 2019. A hand-mapped crosswalk has 103 rows, and 82 of them have a usable total in both vintages. These are not two identical baskets watched for seven years. [S001; S007]</p>\n<p class=\"art-p\">Among paired rows, Pokémon rises from $90.9 billion to $130.7 billion, a difference of $39.8 billion. Naruto rises by about $13.9 billion. Call of Duty rises from $17.0 billion to $40.0 billion, a difference of $23.0 billion, and most of the new part of that story is below. Call these revenue growth only where the crosswalk says the scope matches. [S001; S017]</p>\n<p class=\"art-p\">The audit drew 40 franchises from the old file with seed 20261012. Thirty-nine matched the June 2019 page. Of those, 28 were within 10% of the Wikipedia headline, and 5 were within 1% of the itemised breakdown. The old spreadsheet was not an immaculate starting point either. We re-ran that check. The 28 of 39 is still the result. [S001; S007]</p>\n<p class=\"art-p\">Box office's share of the list moves from 8.9% in the 2019 file to 18.1% now, and a lot of that is fuller itemisation plus a different basket, not a sudden change in what people buy. [S001; S017] The companion piece keeps the revision log: <a href=\"/franchise-data-fix\">What changed when we fixed the data</a>.</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart10_wiki_2019_vs_2026.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart10_wiki_2019_vs_2026.png\" data-source=\"S001 and S017\" role=\"img\" aria-label=\"Percent change from the 2019 file to the November 2026 list for six franchises.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Downward bars are edits. Call of Duty's upward bar includes the move from $31 billion on 12 October to $40 billion on 7 November.</figcaption>\n</figure>\n\n<h2 id=\"what-moved\" class=\"anchored\">What moved since October?</h2>\n<p class=\"art-p\">We re-parsed the list. Same 140 names. Two stated totals changed. Call of Duty went from $31 billion to $40 billion. Paw Patrol went from $15.4 billion to $18.4 billion. Everything else in the comparison, including Pokémon, held still. [S017]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/candidates/c04_what_moved.plotly.json\" data-fallback=\"/data/articles/franchise/charts/candidates/c04_what_moved.png\" data-source=\"S017, S094, S095\" role=\"img\" aria-label=\"Call of Duty up 9 billion and Paw Patrol up 3 billion since the October revision.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">The whole list grew by $12.0 billion. These two rows are that $12.0 billion.</figcaption>\n</figure>\n<p class=\"art-p\">Call of Duty's new row is a single video-game line of $40 billion. IGN reported on 26 October 2026 that the franchise had surpassed $40 billion in lifetime revenue, quoting a public note from Xbox. \"Surpassed\" is a threshold, and the list rounds it to $40 billion. It is not an itemised audit. [S094; S017]</p>\n<p class=\"art-p\">Paw Patrol's retail line is on firmer ground than the row's total. Deadline, 28 October 2026, says the franchise has $18 billion in lifetime retail, in a story about a fourth film. The Wikipedia row then adds a box-office line of $373.7 million and a home-media line of $39 million, both cited to The Numbers pages with access dates in 2024 and 2023, and prints $18.4 billion. The same Deadline story says one of the films grossed more than half a billion dollars worldwide, which does not sit neatly under that older box-office line. We keep the list's stated $18.4 billion in the sum, and we do not pretend the extra $0.4 billion was freshly checked. [S095; S017]</p>\n\n<h2 id=\"region-origin\" class=\"anchored\">Is Japan the franchise giant, or is the United States?</h2>\n<p class=\"art-p\">On this list, US-origin franchises have the larger total. Japan-origin franchises have the higher merchandise share. That is narrower than declaring a winner between two national industries, which this dataset cannot do. [S017]</p>\n<ul class=\"stat-cards\" aria-label=\"Franchises by origin: count, listed lifetime revenue, merchandise share\">\n<li class=\"stat-card stat-card--blue\"><span class=\"stat-card__name\">United States</span><strong class=\"stat-card__value\">$825.5B</strong><span class=\"stat-card__meta\">88 franchises · 51.5% merchandise share</span></li>\n<li class=\"stat-card stat-card--pink\"><span class=\"stat-card__name\">Japan</span><strong class=\"stat-card__value\">$394.5B</strong><span class=\"stat-card__meta\">30 franchises · 71.4% merchandise share</span></li>\n<li class=\"stat-card stat-card--cream\"><span class=\"stat-card__name\">United Kingdom</span><strong class=\"stat-card__value\">$136.1B</strong><span class=\"stat-card__meta\">9 franchises · 53.9% merchandise share</span></li>\n</ul>\n<p class=\"art-p\">Korea is $27.0 billion, Sweden $26.3 billion and Canada $23.1 billion. Canada's sum was $20.1 billion in October. The difference is Paw Patrol, which is coded to Canada, and it carries the caveat in the previous section. [S017]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart15_region_2026.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart15_region_2026.png\" data-source=\"S017\" role=\"img\" aria-label=\"Lifetime revenue by region of origin, United States largest, Japan second.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">The label carries the merchandise share, so the chart does not need a second axis.</figcaption>\n</figure>\n<p class=\"art-p\">The 2019 file had the totals the other way around: Japan $681.5 billion, the United States $622.6 billion, and the merchandise shares the other way too, 49.1% for Japan and 64.6% for the United States. Countries did not swap business models while a CSV was downloading. The basket changed. [S001]</p>\n<p class=\"art-p\">An earlier draft of this article said 43 additional US-origin properties. The crosswalk does not support 43. It marks 45 US-origin rows on the November list that have no 2019 row, including Fortnite, Avatar, Madden NFL, Scooby-Doo and The Sims, and also separate rows for Thor, Iron Man, Captain America and Black Panther. Japanese additions are fewer, five rows, and several large Japanese estimates were revised down. English-language Wikipedia is not a census of world culture. [S001; S017]</p>\n<p class=\"art-p\">Region here means the creator's home market at launch, not where the money was spent. The rebuilt MCU row can be mostly theatrical while Pokémon, Anpanman and Hello Kitty pull Japan's merchandise share up. Some of those character rows sit beside the MCU row, so adding every hero's row to the MCU total would count the same affection twice. [S017]</p>\n\n<h2 id=\"original-medium\" class=\"anchored\">Does it matter whether a franchise starts as a game, a comic or a film?</h2>\n<p class=\"art-p\">Yes, a little. The debut format is not a complete business plan. The charts in this section use the <strong>2019 file</strong>, and they say so, because we did not rebuild every historical cut on the November list. [S001]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart5_original_media_revenue.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart5_original_media_revenue.png\" data-source=\"S001, 2019 baseline\" role=\"img\" aria-label=\"2019 lifetime revenue by original medium.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">2019 baseline. Game-origin rows sum to $334.9 billion and manga-origin rows to $253.8 billion.</figcaption>\n</figure>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart11_mix_by_original_medium.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart11_mix_by_original_medium.png\" data-source=\"S001, 2019 baseline\" role=\"img\" aria-label=\"The same 2019 totals, labeled again so the vintage cannot be missed.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Same vintage, drawn once more so a skimming reader still sees the date.</figcaption>\n</figure>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart14_box_office_share_top20.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart14_box_office_share_top20.png\" data-source=\"S001, 2019 baseline\" role=\"img\" aria-label=\"Box office as a share of the 2019 row for twelve franchises.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">2019 file, twelve names. The MCU row in that file is 67.7% box office. Several famous rows are close to none. Do not paste these shares onto the 2026 totals above.</figcaption>\n</figure>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart2_revenue_per_year.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart2_revenue_per_year.png\" data-source=\"S001, 2019 baseline\" role=\"img\" aria-label=\"2019 lifetime revenue divided by years since creation.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">An average across a life, not a year of revenue and not a growth rate. The old $80 billion Hello Kitty total is not drawn here as if it were still current.</figcaption>\n</figure>\n<p class=\"art-p\">Wizarding World started with books and then became films and merchandise. Its existence does not mean any successful novel can support endless films. The later Fantastic Beasts films are a reason to ask about execution, not a reason to blame the original medium.</p>\n\n<h2 id=\"disney\" class=\"anchored\">How much of the table sits with Disney?</h2>\n<p class=\"art-p\">First decide what \"Disney\" includes. On the <strong>2019 file</strong>, the owner string \"The Walt Disney Company\" sums to $259.0 billion. Roll in the subsidiaries the way our rule does and the same file sums to $426.2 billion. The standalone Nintendo label, which does not include the Pokémon Company string, is $49.0 billion. Leaving the rooms uncounted is a good way to lose the house. Combining them still needs a rule, especially when rights are shared. [S001]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart3a_disney_non_consolidated.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart3a_disney_non_consolidated.png\" data-source=\"S001, 2019 baseline\" role=\"img\" aria-label=\"2019 owner totals with subsidiaries left separate.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">2019 owner field, subsidiaries left as written.</figcaption>\n</figure>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart3b_disney_consolidated.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart3b_disney_consolidated.png\" data-source=\"S001, 2019 baseline\" role=\"img\" aria-label=\"2019 owner totals with Disney subsidiaries rolled together.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Same file, one roll-up rule. Not a legal audit.</figcaption>\n</figure>\n<p class=\"art-p\">On the <strong>November 2026 list</strong>, the same style of first-listed parent puts Disney at $430.7 billion, 29.5%, with a range of 18.0–42.9. The top five are 58.3%, range 52.3–72.7. [S017]</p>\n<ul class=\"stat-cards stat-cards--five\" aria-label=\"Assigned parent and listed lifetime revenue\">\n<li class=\"stat-card stat-card--blue\"><span class=\"stat-card__name\">Disney</span><strong class=\"stat-card__value\">$430.7B</strong><span class=\"stat-card__meta\">listed lifetime revenue</span></li>\n<li class=\"stat-card stat-card--pink\"><span class=\"stat-card__name\">Warner Bros. Discovery</span><strong class=\"stat-card__value\">$133.0B</strong><span class=\"stat-card__meta\">listed lifetime revenue</span></li>\n<li class=\"stat-card stat-card--cream\"><span class=\"stat-card__name\">The Pokémon Company</span><strong class=\"stat-card__value\">$130.7B</strong><span class=\"stat-card__meta\">listed lifetime revenue</span></li>\n<li class=\"stat-card stat-card--blue\"><span class=\"stat-card__name\">Microsoft</span><strong class=\"stat-card__value\">$84.2B</strong><span class=\"stat-card__meta\">listed lifetime revenue</span></li>\n<li class=\"stat-card stat-card--pink\"><span class=\"stat-card__name\">Paramount Skydance</span><strong class=\"stat-card__value\">$72.8B</strong><span class=\"stat-card__meta\">listed lifetime revenue</span></li>\n</ul>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart12_owner_concentration_2026.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart12_owner_concentration_2026.png\" data-source=\"S017\" role=\"img\" aria-label=\"Top parent companies on the November 2026 list.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Microsoft's bar includes Call of Duty, which is why it is larger than it was in October.</figcaption>\n</figure>\n<p class=\"art-p\">The 2019 file, with today's parent labels, put the top five at 62.8% in one of our checks and 46.4% before that roll-up. Consolidation changes the answer. None of this means a company earned every dollar historically spent on a character it now controls. Spider-Man's merchandise and film rights connect Disney/Marvel and Sony in different ways. Pokémon's row sits with The Pokémon Company; Nintendo, Game Freak and Creatures share the copyright. Adding $130.7 billion to Nintendo's old $49.0 billion label would mix dates and pretend the rights were simpler than they are. [S001; S017]</p>\n<p class=\"art-p\">For Warner, the November list's DC rows are Batman $29.9 billion, Superman $8.2 billion and the DC Extended Universe $8.0 billion. The sum is $46.1 billion. That sum is three rows on the 2026 list (S017), not a total from the 2019 file. An earlier version of this paragraph pointed the 2026 figure at <code>franchise.csv</code>, which is the 2019 file. That citation was wrong, and it is withdrawn. The 2019 DC sum, same three names, is $44.4 billion (S001). Wizarding World, $35.1 billion, is a separate Warner row. These groupings are not a clean, non-overlapping corporate account. [S017; S001]</p>\n\n<h2 id=\"deals\" class=\"anchored\">What did those billions buy?</h2>\n<p class=\"art-p\">The filed prices we checked are Pixar in 2006 for $7.4 billion, Marvel in 2009 for about $4.0 billion, Lucasfilm in 2012 for $4.05 billion, and 21st Century Fox in a June 2018 exhibit for $71.3 billion in cash and stock. The exhibit's own headline uses those words. This article does not re-label that figure as enterprise value. [S009–S012]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart8_disney_acquisitions.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart8_disney_acquisitions.png\" data-source=\"S009–S012 and S001\" role=\"img\" aria-label=\"Disney acquisition prices, with the anchor franchise row named in the label.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">The price is the bar. The anchor row is only in the label, so the two numbers cannot collide.</figcaption>\n</figure>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart13_deal_price_vs_revenue.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart13_deal_price_vs_revenue.png\" data-source=\"S001\" role=\"img\" aria-label=\"2019 anchor-row totals for the same four deals.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Fox was not a $71.3 billion purchase of one yellow family. Cable, a Hulu stake and a library were in the deal too. The Simpsons row is $13.5 billion in the 2019 file.</figcaption>\n</figure>\n<p class=\"art-p\">A purchase price is not lifetime consumer spending. Putting them near each other does not produce a return, and it does not tell us whether a deal was cheap. It starts a question about what the buyer thought it was buying.</p>\n<p class=\"art-p\">Disney's own reporting answers a different question, an annual one. For the year ended 27 September 2025, the Form 10-K segment table shows Entertainment revenue of $42.466 billion, Sports $17.672 billion and Experiences $36.156 billion. The same table's prior-year column is $41.186 billion, $17.619 billion and $34.151 billion, which is the FY2024 set this article used to cite. The earnings exhibit filed the same day repeats the FY2025 table. FY2026's 10-K was not on file as of 10 November 2026. The latest quarterly report then on file covered the quarter ended 27 June 2026, and we do not annualise it. [S093; S081]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart9_disney_segments_fy2025.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart9_disney_segments_fy2025.png\" data-source=\"Disney Form 10-K FY2025 (S093)\" role=\"img\" aria-label=\"Disney FY2025 segment revenue: Entertainment, Sports, Experiences.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Experiences includes parks, resorts, cruises and merchandise. Sports includes ESPN. Mickey Mouse does not get to take credit for ESPN because the numbers share a document.</figcaption>\n</figure>\n<p class=\"art-p\">These are annual segment revenues, not Wikipedia lifetime totals. The FY2024 chart remains available under its old filename, labeled as FY2024, so the old address does not silently change year. [S093; S004]</p>\n\n<h2 id=\"theatrical\" class=\"anchored\">Why do the biggest films look familiar?</h2>\n<p class=\"art-p\">The domestic coding, which counts titles rather than ticket dollars, runs from 60% franchise entries in the 2010 top ten to 80% in 2019 and 90% in 2024. We did not recode 2025's domestic chart in this pass, so the line stops at 2024 on purpose. [S005]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart7_top10_franchise_share.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart7_top10_franchise_share.png\" data-source=\"Box Office Mojo yearly charts, manual coding through 2024 (S005)\" role=\"img\" aria-label=\"Franchise share of the domestic top ten by year, through 2024.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Share of titles, not of money. The series ends in 2024.</figcaption>\n</figure>\n<p class=\"art-p\">Worldwide, we stopped using the Wikipedia film tables as the dollar source. The 10 November 2026 revision of \"2026 in film\" prints The Super Mario Galaxy Movie as <code>$1,013,2447,550</code>, which is not a readable amount. Box Office Mojo, read the same day, has the film at $1.013 billion. The Numbers has $1.013 billion as well. The Wikipedia cell is flagged and unused. [S005; S019]</p>\n<p class=\"art-p\">For 2025, the trackers do not agree on Ne Zha 2. Wikipedia's 4 November revision still says $2.318 billion. Box Office Mojo says $2.271 billion. The Numbers says $2.004 billion. We do not average them. The count is sturdier than the dollars: on both Box Office Mojo and The Numbers, nine of the ten biggest 2025 films fit this article's coding, and F1 is the one that does not. The share of that top ten is 94.3% on Box Office Mojo and 94.2% on The Numbers. The October article's 94.4% used the Wikipedia table. It is retired. [S005; S019; S091]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/candidates/c05_nezha_trackers.plotly.json\" data-fallback=\"/data/articles/franchise/charts/candidates/c05_nezha_trackers.png\" data-source=\"Wikipedia, Box Office Mojo, The Numbers\" role=\"img\" aria-label=\"Three published worldwide grosses for Ne Zha 2.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Same film, three public tallies. The interesting fact is the gap.</figcaption>\n</figure>\n<p class=\"art-p\">For 2026, read 10 November, both trackers have the same ten films in the same order and the same six-of-ten franchise count. The share of top-ten gross is 61.9% on each. That is not 61.9% of all worldwide box office. The denominator is ten films, and several of them are still in theatres. \"Original\" here means not coded as a sequel, prequel, spin-off, remake or shared-universe installment. The Odyssey, Michael, Project Hail Mary and Obsession are the four originals under that rule. It does not mean the screenplay had no earlier source. [S005; S019]</p>\n<figure class=\"art-chart\">\n<div class=\"art-chart-live art-chart-live--roomy\" data-chart=\"/data/articles/franchise/charts/chart16_worldwide_top10_2025_2026.plotly.json\" data-fallback=\"/images/content/articles/franchise/charts/chart16_worldwide_top10_2025_2026.png\" data-source=\"Box Office Mojo worldwide, read 10 Nov 2026 (S005)\" role=\"img\" aria-label=\"2026 worldwide top ten, franchise films in red and originals in blue.\"></div>\n<figcaption class=\"art-chart-caption art-chart-caption--visible\">Red is a franchise installment. Blue is an original under the coding above. Spider-Man: Brand New Day leads, at $2.52 billion on both trackers.</figcaption>\n</figure>\n<p class=\"art-p\">Recognition may help explain why studios return to familiar titles. These rankings do not measure marketing savings, and they do not prove why a film succeeded.</p>\n\n<h2 id=\"failure-modes\" class=\"anchored\">Can a familiar name still miss?</h2>\n<p class=\"art-p\">Owning a recognisable character does not make the next release work. The case list points at Universal shelving the Dark Universe after <em>The Mummy</em> (2017), the Fantastic Beasts films falling short of Harry Potter's peaks, DC's changes before the 2023 DC Studios reset, the reception of <em>Ghostbusters</em> (2016), and the changing fortunes of Angry Birds. Links are in <code>franchise_failures.csv</code>. [S013; S015]</p>\n<p class=\"art-p\">Those cases are invitations to look, not a single cause called franchise fatigue, and not a moral about discipline. A lifetime total does not say whether the latest release made money. The spreadsheet remembers past success. Audiences are under no obligation to renew it.</p>\n\n<h2 id=\"own-or-market-an-ip\" class=\"anchored\">What this means if you own or market an IP</h2>\n<p class=\"art-p\">This section is for brand, licensing and marketing teams. It turns the figures above into questions to ask and cautions to keep. It uses only numbers already in this report, and it is not advice on any single deal. [S017]</p>\n\n<h3 id=\"ip-consolidation\" class=\"anchored\">Ownership is concentrated, so check who sits behind a property</h3>\n<p class=\"art-p\">On the November list, Disney is the first-listed parent for $430.7 billion, 29.5% of the list (range 18.0–42.9). The top five parents are 58.3% (range 52.3–72.7). [S017]</p>\n<p class=\"art-p\">Part of that concentration was bought. The filed prices we checked are $7.4 billion for Pixar in 2006, about $4.0 billion for Marvel in 2009, $4.05 billion for Lucasfilm in 2012, and $71.3 billion in cash and stock for 21st Century Fox in a 2018 exhibit. [S009–S012] On the 2019 file, the owner name \"The Walt Disney Company\" alone summed to $259.0 billion. With the subsidiaries rolled in, the same file sums to $426.2 billion. [S001] A name on a character can understate who controls it.</p>\n<ul>\n<li><strong>Check the rights holder for the specific property, not the studio name.</strong> Rights are sometimes shared. Spider-Man's film and merchandise rights connect Disney/Marvel and Sony in different ways, and Pokémon's copyright is shared by Nintendo, Game Freak and Creatures. [S017]</li>\n<li><strong>Ask how the holder's other properties overlap your category.</strong> Five parents sit behind 58.3% of the list, so a licensor with a large portfolio is a normal case, not an exception. [S017]</li>\n<li><strong>Treat an acquisition as a change in who you deal with.</strong> It is not evidence that the property will sell the way it did before. A purchase price is not lifetime consumer spending, and buying a company does not retroactively earn the money audiences once spent on its characters. [S009–S012]</li>\n<li><strong>Quote the counting rule with the share.</strong> On the 2019 file with today's parent labels, the top five were 62.8% in one of our checks and 46.4% before the roll-up. Consolidation changes the answer. [S001]</li>\n</ul>\n\n<h3 id=\"ip-merchandise\" class=\"anchored\">Merchandise is the main engine, but it works differently in different places</h3>\n<p class=\"art-p\">Merchandise, licensing and retail are $812.4 billion, 55.6% of the list (range 43.2–65.8). Video games are 18.3% and box office 18.1%, and those two ranges overlap. [S017] Pokémon's $130.7 billion row is larger than Star Wars and the Marvel Cinematic Universe added together, $84.2 billion. [S017]</p>\n<p class=\"art-p\">By origin, the 30 Japan-origin franchises total $394.5 billion with a merchandise share of 71.4%. The 88 US-origin franchises total $825.5 billion with 51.5%. The nine UK-origin franchises are $136.1 billion at 53.9%. [S017] We read the gap as two merchandising styles, not two national industries. Pokémon, Anpanman and Hello Kitty pull Japan's share up, while the MCU row can be mostly theatrical. [S017] Steinberg describes Japanese animation and character goods growing up together, and Japan's production committees can put publishers, broadcasters and toy makers into one rights arrangement. [Steinberg, 2012; Hernández Hernández, 2018] Disney's own filing shows a different route: for the year ended 27 September 2025, Experiences, which includes parks, resorts, cruises and merchandise, was $36.2 billion beside Entertainment at $42.5 billion. [S093]</p>\n<ul>\n<li><strong>Decide which style your property is closer to before you benchmark.</strong> A character-led property, where the goods are much of the product, should not be measured against a story-led property using one 55.6% figure. [S017]</li>\n<li><strong>Do not credit merchandise to a single campaign or film.</strong> The list counts toys, games and tickets separately, but they are not independent of each other. A toy can be the thing the film was for. [S017]</li>\n<li><strong>Do not turn 71.4% and 51.5% into national traits.</strong> Region means the creator's home market at launch. The basket also changed: the crosswalk marks 45 US-origin rows on the November list that have no 2019 row. [S017; S001]</li>\n</ul>\n\n<h3 id=\"ip-caveats\" class=\"anchored\">What the data cannot tell you</h3>\n<ul>\n<li><strong>It is not profit.</strong> The figures are nominal estimates of consumer spending, compiled by Wikipedia's editors. They are not profit, not a company valuation, and not cash paid to a rights holder. [S017]</li>\n<li><strong>The ranges are wide.</strong> Disney's share runs 18.0–42.9 and the top five's 52.3–72.7. The ranges show how much a share depends on which rows are on the list. They are not sampling error, and they do not certify the underlying estimates. [S017]</li>\n<li><strong>The estimates move.</strong> Between 12 October and 7 November, Call of Duty went from $31 billion to $40 billion and Paw Patrol from $15.4 billion to $18.4 billion, which is all of the list's $12.0 billion rise. [S017] Hello Kitty's row went from $80.0 billion in the 2019 file to $33.5 billion, a revised row, not a reported collapse at Sanrio. [S001; S017]</li>\n<li><strong>Small groups swing.</strong> Canada's two franchises sum to $23.1 billion with a 77.9% merchandise share, and Sweden's three sum to $26.3 billion with 12.8%. One row changes either figure. [S017]</li>\n<li><strong>A lifetime total says nothing about the next release.</strong> The list has no royalty rates, licence terms, margins or campaign results, and a famous name can still miss. [S013; S015]</li>\n</ul>\n<p class=\"art-p\">Before you quote a number from this report, give its vintage (the Wikipedia revision and the date we read it), give the range, say that it is an estimate of consumer spending, and check the <a href=\"/franchise/changelog\">changelog</a> for a later revision. [S017]</p>\n\n<h2 id=\"takeaway\" class=\"anchored\">What to keep</h2>\n<p class=\"art-p\">Counting only movies leaves out most of this list. Merchandise, licensing and retail are 55.6% of the recorded lifetime spending, inside a range wide enough to respect. Pokémon's $130.7 billion is larger than Star Wars and the MCU combined. Five assigned parents sit behind 58.3% of the table, on a rule that is not a title search. [S017]</p>\n<p class=\"art-p\">Every useful comparison needs a date, a denominator and a description of what the number measures. Consumer spending is not profit. A changed estimate is not a collapsing business. A national label is not a national industry. Buying a company does not retroactively earn the money audiences once spent on its characters.</p>\n<p class=\"art-p\">The characters may travel between games, films, shelves and parks. The accounting labels should travel with them.</p>\n\n<h2 id=\"gallery\" class=\"anchored\">More charts</h2>\n<p class=\"art-p\">Twenty-four candidates were drawn in the same theme and scored for a single point, a surprise, whether a phone can read them, and whether the data can hold the claim. The five above led. Eight more are below: swipe or use the buttons. Nothing moves on its own. Scores and the contact sheet: <a href=\"/data/articles/franchise/charts/candidates/scores.csv\">scores.csv</a>, <a href=\"/data/articles/franchise/charts/candidates/contact_sheet.png\">contact sheet</a>.</p>\n<div class=\"carousel\" data-carousel role=\"group\" aria-roledescription=\"carousel\" aria-label=\"More charts\">\n<div class=\"carousel__track\" tabindex=\"0\">\n<figure class=\"carousel-card\">\n<h3 class=\"chart-frame__title\">Who the list's first name belongs to</h3>\n<img src=\"/data/articles/franchise/charts/candidates/c06_parents.png\" alt=\"Parent totals on the November list.\" loading=\"lazy\" width=\"1200\" height=\"900\" />\n<figcaption><p class=\"chart-frame__desc\">Disney, at $430.7 billion, is far ahead of Warner Bros. Discovery ($133.0 billion) and The Pokémon Company ($130.7 billion). It shows how much of the list sits under a handful of first-listed parents, on a counting rule that is not a legal ownership audit.</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Source</span> Wikipedia list, revision 1384334611 (S017)</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Data</span> <a href=\"/data/articles/franchise/charts/candidates/c06_parents.plotly.json\" target=\"_blank\" rel=\"noopener\">Chart data (JSON)</a> · <a href=\"/data/articles/franchise/charts/candidates/c06_parents.png\" target=\"_blank\" rel=\"noopener\">Image (PNG)</a></p></figcaption>\n</figure>\n<figure class=\"carousel-card\">\n<h3 class=\"chart-frame__title\">Scale and share are different prizes</h3>\n<img src=\"/data/articles/franchise/charts/candidates/c07_us_japan.png\" alt=\"United States and Japan lifetime totals.\" loading=\"lazy\" width=\"1200\" height=\"900\" />\n<figcaption><p class=\"chart-frame__desc\">The United States sums to $825.5 billion and Japan to $394.5 billion. Japan's merchandise share is 71.4% against 51.5% for the United States, so the larger total and the larger share sit in different places.</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Source</span> Wikipedia list, revision 1384334611 (S017)</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Data</span> <a href=\"/data/articles/franchise/charts/candidates/c07_us_japan.plotly.json\" target=\"_blank\" rel=\"noopener\">Chart data (JSON)</a> · <a href=\"/data/articles/franchise/charts/candidates/c07_us_japan.png\" target=\"_blank\" rel=\"noopener\">Image (PNG)</a></p></figcaption>\n</figure>\n<figure class=\"carousel-card\">\n<h3 class=\"chart-frame__title\">FY2025, three Disney segments</h3>\n<img src=\"/data/articles/franchise/charts/candidates/c08_segments.png\" alt=\"Disney FY2025 segment revenue.\" loading=\"lazy\" width=\"1200\" height=\"900\" />\n<figcaption><p class=\"chart-frame__desc\">Entertainment is $42.5 billion, Experiences $36.2 billion and Sports $17.7 billion for the year ended 27 September 2025. These are annual company segments, not lifetime franchise totals, and Experiences includes parks and merchandise.</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Source</span> Disney Form 10-K, fiscal year 2025 (S093)</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Data</span> <a href=\"/data/articles/franchise/charts/candidates/c08_segments.plotly.json\" target=\"_blank\" rel=\"noopener\">Chart data (JSON)</a> · <a href=\"/data/articles/franchise/charts/candidates/c08_segments.png\" target=\"_blank\" rel=\"noopener\">Image (PNG)</a></p></figcaption>\n</figure>\n<figure class=\"carousel-card\">\n<h3 class=\"chart-frame__title\">DC is three rows. Harry Potter is a fourth.</h3>\n<img src=\"/data/articles/franchise/charts/candidates/c16_dc.png\" alt=\"DC rows beside Wizarding World.\" loading=\"lazy\" width=\"1200\" height=\"900\" />\n<figcaption><p class=\"chart-frame__desc\">Batman is $29.9 billion, Superman $8.2 billion and the DC Extended Universe $8.0 billion, which sums to $46.1 billion. Wizarding World, at $35.1 billion, is a separate Warner row, so the sum is not a clean corporate total.</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Source</span> Wikipedia list, revision 1384334611 (S017)</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Data</span> <a href=\"/data/articles/franchise/charts/candidates/c16_dc.plotly.json\" target=\"_blank\" rel=\"noopener\">Chart data (JSON)</a> · <a href=\"/data/articles/franchise/charts/candidates/c16_dc.png\" target=\"_blank\" rel=\"noopener\">Image (PNG)</a></p></figcaption>\n</figure>\n<figure class=\"carousel-card\">\n<h3 class=\"chart-frame__title\">2025's top ten, as a count</h3>\n<img src=\"/data/articles/franchise/charts/candidates/c18_2025_count.png\" alt=\"2025 top ten franchise count.\" loading=\"lazy\" width=\"1200\" height=\"900\" />\n<figcaption><p class=\"chart-frame__desc\">Nine of the ten highest-grossing films of 2025 are franchise installments on both Box Office Mojo and The Numbers. F1 is the one original under this coding, and the count holds up better than the dollar totals.</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Source</span> Box Office Mojo and The Numbers, read 10 November 2026 (S005; S019)</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Data</span> <a href=\"/data/articles/franchise/charts/candidates/c18_2025_count.plotly.json\" target=\"_blank\" rel=\"noopener\">Chart data (JSON)</a> · <a href=\"/data/articles/franchise/charts/candidates/c18_2025_count.png\" target=\"_blank\" rel=\"noopener\">Image (PNG)</a></p></figcaption>\n</figure>\n<figure class=\"carousel-card\">\n<h3 class=\"chart-frame__title\">2026's top ten so far, as a count</h3>\n<img src=\"/data/articles/franchise/charts/candidates/c19_2026_count.png\" alt=\"2026 top ten franchise count.\" loading=\"lazy\" width=\"1200\" height=\"900\" />\n<figcaption><p class=\"chart-frame__desc\">Six of the ten highest-grossing films of 2026 so far are franchise installments. The Odyssey, Michael, Project Hail Mary and Obsession are the originals, and 2026 is not a finished year.</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Source</span> Box Office Mojo and The Numbers, read 10 November 2026 (S005; S019)</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Data</span> <a href=\"/data/articles/franchise/charts/candidates/c19_2026_count.plotly.json\" target=\"_blank\" rel=\"noopener\">Chart data (JSON)</a> · <a href=\"/data/articles/franchise/charts/candidates/c19_2026_count.png\" target=\"_blank\" rel=\"noopener\">Image (PNG)</a></p></figcaption>\n</figure>\n<figure class=\"carousel-card\">\n<h3 class=\"chart-frame__title\">Eighty became 33.5</h3>\n<img src=\"/data/articles/franchise/charts/candidates/c22_hello_levels.png\" alt=\"Hello Kitty 2019 file versus 2026 list.\" loading=\"lazy\" width=\"1200\" height=\"900\" />\n<figcaption><p class=\"chart-frame__desc\">Hello Kitty is $80.0 billion in the 2019 file and $33.5 billion on the November list. That is a source revision, and Sanrio did not publish a collapse to match the edit.</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Source</span> TidyTuesday 2019 file and Wikipedia list (S001; S017)</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Data</span> <a href=\"/data/articles/franchise/charts/candidates/c22_hello_levels.plotly.json\" target=\"_blank\" rel=\"noopener\">Chart data (JSON)</a> · <a href=\"/data/articles/franchise/charts/candidates/c22_hello_levels.png\" target=\"_blank\" rel=\"noopener\">Image (PNG)</a></p></figcaption>\n</figure>\n<figure class=\"carousel-card\">\n<h3 class=\"chart-frame__title\">The whole list, one month later</h3>\n<img src=\"/data/articles/franchise/charts/candidates/c24_ledger_total.png\" alt=\"October list total versus November list total.\" loading=\"lazy\" width=\"1200\" height=\"900\" />\n<figcaption><p class=\"chart-frame__desc\">The list total went from $1,448.1 billion on the 12 October revision to $1,460.1 billion on 7 November. All of the $12.0 billion rise is Call of Duty and Paw Patrol.</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Source</span> Wikipedia list, revisions 1379832186 and 1384334611 (S017)</p><p class=\"chart-frame__meta\"><span class=\"chart-frame__label\">Data</span> <a href=\"/data/articles/franchise/charts/candidates/c24_ledger_total.plotly.json\" target=\"_blank\" rel=\"noopener\">Chart data (JSON)</a> · <a href=\"/data/articles/franchise/charts/candidates/c24_ledger_total.png\" target=\"_blank\" rel=\"noopener\">Image (PNG)</a></p></figcaption>\n</figure>\n</div>\n<div class=\"carousel__controls\"><button type=\"button\" data-carousel-prev aria-label=\"Previous chart\">Previous</button><button type=\"button\" data-carousel-next aria-label=\"Next chart\">Next</button><p class=\"carousel__status\" aria-live=\"polite\">1 of 8</p></div>\n</div>\n<p class=\"art-p\">The other candidates, the restyled body charts, and the ledger CSVs are on the <a href=\"/sources/franchise/\">franchise data page</a>. The candidate scores are in <a href=\"/data/articles/franchise/charts/candidates/scores.csv\">scores.csv</a>.</p>\n\n<h2 id=\"editors-note\" class=\"anchored\">Editor's note</h2>\n<div class=\"art-editorial-note\"><p class=\"art-p\"><em>12 November 2026. Added the section for people who own or market an IP, a Sources &amp; method section, and source links on every figure. No figures changed. 10 November 2026. The ledger was re-read at Wikipedia revision 1384334611 (7 November) [S017]. Two rows moved: Call of Duty to $40 billion and Paw Patrol to the list's stated $18.4 billion, with the retail line confirmed at Deadline and the box-office add-on flagged. Worldwide grosses now come from Box Office Mojo, with The Numbers alongside, because the Wikipedia 2026 Mario cell is malformed and the Ne Zha 2 tallies disagree. Disney's segments are the FY2025 10-K. The DC paragraph now cites the 2026 list. The \"43 additional US-origin properties\" line did not match the crosswalk and is now 45. The voice is a factual reading: curious, warm, and unwilling to invent a joke the numbers did not earn. The 27:03 Kore file remains the October reading. See <a href=\"/franchise-data-fix\">What changed when we fixed the data</a>. Human editorial direction; AI-assisted analysis and chart code per Artometrics workflow.</em></p><p class=\"art-p\">— Artometrics Editorial Desk</p></div>\n\n<p class=\"art-github-wrap\">\n<a class=\"art-github-btn\" href=\"https://github.com/Artometrics/artometrics/tree/main/articles/franchise\" target=\"_blank\" rel=\"noopener noreferrer\">Article folder</a>\n</p>\n</main>\n</div>",
     "bodyFormat": "html"
   },
   {
@@ -1709,6 +1745,7 @@
     "slug": "games",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Ratings and popularity across thousands of titles find games that win both mass attention and esteem.",
+    "dek": "Some games win the crowd. Some win the critics. Which win both?",
     "heroImage": "/images/content/articles/games/hero.png",
     "tags": [
       "sports",
@@ -1759,6 +1796,7 @@
     "slug": "geopolitics",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "Film scores 91 on exportability, music 88. South Korea's cultural wave index climbed from 22 in 1990 to 92 in 2025 across eight mediums and 45 cities.",
+    "dek": "Which art form travels furthest, and why did South Korea's score climb 70 points after 1990?",
     "heroImage": "/images/content/articles/geopolitics/hero.png",
     "tags": [
       "civics",
@@ -1808,6 +1846,7 @@
     "slug": "giants",
     "pubDate": "2026-04-18T00:00:00.000Z",
     "description": "San Francisco's 2010–2014 dynasty won three titles with a draft-built rotation at mid-tier payroll—then couldn't replicate the model.",
+    "dek": "The Giants won three titles in five years with the ninth-biggest payroll. They could not do it twice.",
     "heroImage": "/images/content/articles/giants/hero.png",
     "tags": [
       "sports",
@@ -1858,6 +1897,7 @@
     "slug": "gutenberg",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "English titles hold 72% of indexed Gutenberg availability; 19th-century fiction peaks at 2.8× other eras; adventure and gothic subjects adapt 3× faster.",
+    "dek": "Which languages get left on Project Gutenberg's shelf?",
     "heroImage": "/images/content/articles/gutenberg/hero.png",
     "tags": [
       "arts",
@@ -1907,6 +1947,7 @@
     "slug": "heritage",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Sweden led Scandinavia with 15 UNESCO sites by 2022; Denmark's count grew 150% from 2004. Median rose from 5 to 10 sites.",
+    "dek": "Sweden leads Scandinavia in UNESCO sites. Denmark is catching up fast.",
     "heroImage": "/images/content/articles/heritage/hero.png",
     "tags": [
       "culture",
@@ -1956,6 +1997,7 @@
     "slug": "horror",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "32,540 horror films from 1950–2022 show median vote average climbed from 5.65 to 6.00 — modest quality gain amid explosive catalog growth.",
+    "dek": "Horror films multiplied 50-fold since 1950. Did they get any better?",
     "heroImage": "/images/content/articles/horror/hero.png",
     "tags": [
       "arts",
@@ -2005,6 +2047,7 @@
     "slug": "hurricanes",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Texas, Florida, and Puerto Rico absorbed 100% of measured 2017 hurricane impact in 153-record TidyTuesday extract; median reading 703, ceiling 5,072.",
+    "dek": "Which three places took the whole 2017 hurricane season in this dataset?",
     "heroImage": "/images/content/articles/hurricanes/hero.png",
     "tags": [
       "culture",
@@ -2053,6 +2096,7 @@
     "slug": "imperial",
     "pubDate": "2026-04-14T00:00:00.000Z",
     "description": "A historical-economics lens asks who captured wealth when rulers claimed order.",
+    "dek": "Empires wrote the histories. What did the chronicles leave out?",
     "heroImage": "/images/content/articles/imperial/hero.png",
     "tags": [
       "humanities",
@@ -2103,6 +2147,7 @@
     "slug": "institutions",
     "pubDate": "2026-09-22T00:00:00.000Z",
     "description": "Yankees, Patriots, Celtics, Cowboys: a synthesis of Artometrics' sports-dynasty reports asks what transfers when winning is a system, not a roster.",
+    "dek": "When a team keeps winning, is it the players or the machine behind them?",
     "heroImage": "/images/content/articles/institutions/hero.png",
     "tags": [
       "sports",
@@ -2153,6 +2198,7 @@
     "slug": "jackson",
     "pubDate": "2026-09-22T00:00:00.000Z",
     "description": "A Psychonomics profile of Michael Jackson — Thriller's 34× RIAA certification, the 2016 Sony/ATV deal, and the disputed allegations on the same ledger.",
+    "dek": "What happens to a person when they are the product? Michael Jackson's ledger has the numbers.",
     "heroImage": "/images/content/articles/jackson/hero.png",
     "tags": [
       "humanities",
@@ -2203,6 +2249,7 @@
     "slug": "lakers",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "17 championships, 32 Finals appearances — Los Angeles converts market gravity into recurring title windows through six distinct star eras.",
+    "dek": "Seventeen championships, six eras, and every one built around a star.",
     "heroImage": "/images/content/articles/lakers/hero.png",
     "tags": [
       "sports",
@@ -2253,6 +2300,7 @@
     "slug": "languages",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "2,363 of 8,612 language records sit in Africa's macroarea bucket — a signal of documentation density, not speaker counts.",
+    "dek": "Glottolog's map shows where linguists have looked, not where people talk.",
     "heroImage": "/images/content/articles/languages/hero.png",
     "tags": [
       "arts",
@@ -2292,6 +2340,7 @@
     "slug": "lcsh",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "LCSH accounts for 69% of subject headings; PS (American literature) appears 4,684 times — concentration defines the reusable public-domain canon.",
+    "dek": "Most subject headings in Project Gutenberg appear exactly once. A few appear thousands of times.",
     "heroImage": "/images/content/articles/lcsh/hero.png",
     "tags": [
       "arts",
@@ -2331,6 +2380,7 @@
     "slug": "leagues",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "NFL teams average $6.5B because 17-game scarcity compresses variance; MLB's 162 games let payroll spread; NBA star leverage hits 92.",
+    "dek": "Why is the average NFL team worth $6.5 billion? Blame the schedule.",
     "heroImage": "/images/content/articles/leagues/hero.png",
     "tags": [
       "sports",
@@ -2374,6 +2424,7 @@
     "slug": "legos",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Median part counts dropped from 142 to 59.5 as World Map and display sets pushed the complexity ceiling past 11,000 pieces.",
+    "dek": "LEGO's biggest set has 11,695 pieces. The typical set has 34.",
     "heroImage": "/images/content/articles/legos/hero.png",
     "tags": [
       "culture",
@@ -2417,6 +2468,7 @@
     "slug": "longevity",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Global median life expectancy rose from 33.9 to 73 years between 1543 and 2015, yet top countries still outlive the lowest by more than two-to-one.",
+    "dek": "Life expectancy nearly tripled in five centuries. So why is the gap between countries still more than two to one?",
     "heroImage": "/images/content/articles/longevity/hero.png",
     "tags": [
       "science",
@@ -2466,6 +2518,7 @@
     "slug": "lyrics",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "A lyric-level comparison of two era-defining catalogs—theme, language, and structure.",
+    "dek": "What happens when you read Beyoncé and Taylor Swift line by line?",
     "heroImage": "/images/content/articles/lyrics/hero.png",
     "tags": [
       "arts",
@@ -2504,6 +2557,7 @@
     "slug": "mac",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Global burger prices illustrate how currency and wages shape the real cost of everyday goods.",
+    "dek": "The same burger costs nearly three times the median price in one country. Which one?",
     "heroImage": "/images/content/articles/mac/hero.png",
     "tags": [
       "civics",
@@ -2553,6 +2607,7 @@
     "slug": "majors",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Psychology leads 173 majors with 48,207 low-wage jobs; engineering's median is 372—a hundredfold gap in labor-market absorption.",
+    "dek": "Some college majors end up in low-wage jobs far more often than others. Psychology tops the list.",
     "heroImage": "/images/content/articles/majors/hero.png",
     "tags": [
       "civics",
@@ -2602,6 +2657,7 @@
     "slug": "margins",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "3,401 films tagged horror show median domestic gross of $25.5M, but Star Wars topped the list—revealing how loose genre tags obscure profit patterns.",
+    "dek": "When genre tags are sloppy, even Star Wars can land in your horror data.",
     "heroImage": "/images/content/articles/margins/hero.png",
     "tags": [
       "arts",
@@ -2643,11 +2699,66 @@
     "bodyFormat": "html"
   },
   {
+    "id": "markers",
+    "title": "MARKERS: Texas Holds One in Four of America's Historical Markers",
+    "slug": "markers",
+    "pubDate": "2026-11-06T00:00:00.000Z",
+    "description": "Texas holds 10,741 of the 42,724 markers in a Historical Marker Database extract, and 1936 alone produced 887 of them.",
+    "dek": "Why does one state own a quarter of America's roadside history?",
+    "heroImage": "/images/content/articles/markers/hero.png",
+    "tags": [
+      "humanities",
+      "history"
+    ],
+    "subject": "Markers",
+    "section": "humanities",
+    "subdomain": "history",
+    "channels": [
+      "humanities"
+    ],
+    "author": "kyle-mcauliffe",
+    "draft": false,
+    "tldr": "A TidyTuesday extract of the Historical Marker Database lists 42,724 markers across 50 states, the District of Columbia and Puerto Rico. Texas holds 10,741 of them, 25.1%, more than three times second-place Georgia. Marker-building spikes in 1890 and 1936, peaks at 6,163 in the 2000s, and is led by one word, church, which appears in 3,519 titles. About 2.8% of markers are flagged missing.",
+    "keyPoints": [
+      "25.1% — Texas's share of all markers — 10,741 of 42,724, more than three times second-place Georgia",
+      "887 — Markers dated 1936, the busiest single year in the extract — 774 of them in Texas",
+      "6,163 — Markers erected in the 2000s, the busiest decade in the extract",
+      "3,519 — Markers with “church” in the title — the most common word once filler words are removed",
+      "1,181 — Markers flagged missing, 648 confirmed and 533 reported — 2.8% of the extract"
+    ],
+    "faq": [
+      {
+        "question": "How many historical markers are in this dataset?",
+        "answer": "42,724 markers across 50 states, the District of Columbia and Puerto Rico, from a TidyTuesday extract of the Historical Marker Database."
+      },
+      {
+        "question": "Which state has the most markers?",
+        "answer": "Texas, with 10,741 markers, or 25.1% of the extract. Georgia is second with 3,294."
+      },
+      {
+        "question": "Which year saw the most markers erected?",
+        "answer": "1936, with 887 markers, 774 of them in Texas. The year was the Texas Centennial."
+      },
+      {
+        "question": "What is the most common word in a marker title?",
+        "answer": "Church, in 3,519 titles, once filler words such as the, of and county are removed."
+      },
+      {
+        "question": "How many markers are flagged missing?",
+        "answer": "1,181, or 2.8%: 648 are confirmed missing and 533 are reported missing."
+      }
+    ],
+    "audioSrc": null,
+    "body": "<div id=\"quarto-content\">\n<main class=\"art-article-main\">\n<p class=\"art-p\">Texas holds 10,741 of the 42,724 historical markers in a TidyTuesday extract of the Historical Marker Database, a share of 25.1%. Georgia, in second place, has 3,294. The country's roadside history is not spread evenly, and the dates on the markers show why: it was built in bursts.</p>\n<p class=\"art-p\">The extract covers 50 states, the District of Columbia and Puerto Rico. The typical state has about 230 markers; Texas has more than 46 times that. This report asks where the markers are, when they went up, what they say, and how many are already gone.</p>\n<h2 id=\"one-state-a-quarter-of-the-map\" class=\"anchored\">One state, a quarter of the map</h2>\n<h3 id=\"one-state-a-quarter-of-the-map-look\" class=\"anchored\">One state holds a quarter of the markers</h3>\n<figure class=\"art-chart\">\n  <div class=\"art-chart-live\" data-chart=\"/data/articles/markers/charts/chart1_states.plotly.json\" data-source=\"Data: Historical Marker Database via TidyTuesday - ARTOMETRICS\" data-fallback=\"/images/content/articles/markers/charts/chart1_states.png\" role=\"img\" aria-label=\"One state holds a quarter of the markers\"></div>\n</figure>\n<p class=\"art-p\">The five biggest states, Texas, Georgia, Virginia, Tennessee and California, hold <strong>52.7%</strong> of all markers. Texas alone has <strong>10,741</strong>, more than three times Georgia's <strong>3,294</strong>. </p>\n<p class=\"art-p\">The erector field points to state programs. The Texas Historical Commission is named on <strong>7,084</strong> entries, Virginia's Department of Historic Resources on <strong>1,554</strong>, the Tennessee Historical Commission on <strong>1,432</strong> and the Georgia Historical Commission on <strong>1,410</strong>. A state that funds markers for decades builds a dense record.</p>\n<h2 id=\"two-years-that-built-the-record\" class=\"anchored\">Two years that built the record</h2>\n<h3 id=\"two-years-that-built-the-record-look\" class=\"anchored\">Marker-building spikes in 1890 and 1936</h3>\n<figure class=\"art-chart\">\n  <div class=\"art-chart-live\" data-chart=\"/data/articles/markers/charts/chart2_years.plotly.json\" data-source=\"Data: Historical Marker Database via TidyTuesday - ARTOMETRICS\" data-fallback=\"/images/content/articles/markers/charts/chart2_years.png\" role=\"img\" aria-label=\"Marker-building spikes in 1890 and 1936\"></div>\n</figure>\n<p class=\"art-p\">The year erected is known for <strong>34,686</strong> of the 42,724 markers. Two years tower over their neighbors. <strong>1936</strong> has <strong>887</strong> markers, and <strong>774</strong> of them are in Texas. That was the Texas Centennial: the state marked 100 years of independence with monuments, buildings and, according to the Texas State Historical Association, a marker in every county.</p>\n<p class=\"art-p\">The other spike is <strong>1890</strong>, with <strong>686</strong> markers. In the extract, <strong>625</strong> of them name the Chickamauga and Chattanooga National Military Park Commission or the later battlefield commission as the erector, and <strong>503</strong> are in Georgia and <strong>177</strong> in Tennessee. A third peak, <strong>785</strong> markers in 2003, is more spread out: Ohio accounts for 334 of them.</p>\n<h2 id=\"the-2000s-were-the-busiest-decade\" class=\"anchored\">The 2000s were the busiest decade</h2>\n<h3 id=\"the-2000s-were-the-busiest-decade-look\" class=\"anchored\">The 2000s built the most markers</h3>\n<figure class=\"art-chart\">\n  <div class=\"art-chart-live\" data-chart=\"/data/articles/markers/charts/chart3_decades.plotly.json\" data-source=\"Data: Historical Marker Database via TidyTuesday - ARTOMETRICS\" data-fallback=\"/images/content/articles/markers/charts/chart3_decades.png\" role=\"img\" aria-label=\"The 2000s built the most markers\"></div>\n</figure>\n<p class=\"art-p\">Outside the spikes, marker-building has trended up since the 1950s. The 1950s produced <strong>2,228</strong> markers, the 1960s <strong>3,936</strong>, the 1990s <strong>4,269</strong> and the 2000s <strong>6,163</strong>, the most of any decade. The 2010s followed with <strong>5,691</strong>.</p>\n<p class=\"art-p\">The 2020s show <strong>891</strong>, but that decade runs only through 2023 in this extract. Yearly counts drop from 591 in 2019 to <strong>321</strong> in 2020, <strong>230</strong> in 2022 and just <strong>23</strong> in 2023. Recent markers are probably the least complete part of the record, so the drop should not be read as a slowdown.</p>\n<h2 id=\"what-the-titles-say\" class=\"anchored\">What the titles say</h2>\n<h3 id=\"what-the-titles-say-look\" class=\"anchored\">Church is the most common word on a marker</h3>\n<figure class=\"art-chart\">\n  <div class=\"art-chart-live\" data-chart=\"/data/articles/markers/charts/chart4_words.plotly.json\" data-source=\"Data: Historical Marker Database via TidyTuesday - ARTOMETRICS\" data-fallback=\"/images/content/articles/markers/charts/chart4_words.png\" role=\"img\" aria-label=\"Church is the most common word on a marker\"></div>\n</figure>\n<p class=\"art-p\">Count the words in marker titles, drop filler such as <em>the</em>, <em>of</em> and <em>county</em>, and one word leads: <strong>church</strong>, in <strong>3,519</strong> titles, or 8.2% of the extract. <strong>House</strong> follows with <strong>2,437</strong>, then <strong>cemetery</strong> with <strong>1,655</strong> and <strong>school</strong> with <strong>1,236</strong>.</p>\n<p class=\"art-p\">Denominations show up as words in their own right: <strong>Baptist</strong> in 853 titles and <strong>Methodist</strong> in 789. <strong>Infantry</strong> appears in 755. The list is a quick index of what communities chose to mark: places of worship, homes, burial grounds and schools.</p>\n<h2 id=\"markers-that-are-no-longer-there\" class=\"anchored\">Markers that are no longer there</h2>\n<h3 id=\"markers-that-are-no-longer-there-look\" class=\"anchored\">In Washington, D.C., about one marker in seven is missing</h3>\n<figure class=\"art-chart\">\n  <div class=\"art-chart-live\" data-chart=\"/data/articles/markers/charts/chart5_missing.plotly.json\" data-source=\"Data: Historical Marker Database via TidyTuesday - ARTOMETRICS\" data-fallback=\"/images/content/articles/markers/charts/chart5_missing.png\" role=\"img\" aria-label=\"In Washington, D.C., about one marker in seven is missing\"></div>\n</figure>\n<p class=\"art-p\">The database lets volunteers flag a marker as reported missing or confirmed missing. In the extract, <strong>1,181</strong> markers carry a flag: <strong>648</strong> confirmed and <strong>533</strong> reported, together <strong>2.8%</strong> of the total.</p>\n<p class=\"art-p\">The rate varies. In the District of Columbia, <strong>65</strong> of <strong>440</strong> markers are flagged, <strong>14.8%</strong>. Indiana is next among places with at least 300 markers at <strong>5.8%</strong>, then Virginia at <strong>5.7%</strong>. Virginia has the most flagged markers in absolute terms, <strong>186</strong>.</p>\n<h2 id=\"what-this-file-cannot-tell-you\" class=\"anchored\">What this file cannot tell you</h2>\n<p class=\"art-p\">The extract describes what volunteers have catalogued, not every marker that stands. A state with an active group of contributors looks richer than one with the same number of markers and fewer volunteers. The year erected is missing for 8,038 markers. Titles are matched as whole words, so spelling variants are counted separately. The companion file of counties with no entry lists 103 places, 50 of them in Puerto Rico, 14 in Alaska and 13 in North Dakota; it marks gaps in the database, not proof that nothing is there.</p>\n<p class=\"art-p\">The reasons given for the 1890 and 1936 spikes come from the erector names in the data and from the Texas State Historical Association. The dataset itself does not record why a marker was put up.</p>\n<h2 id=\"what-to-take-away\" class=\"anchored\">What to take away</h2>\n<p class=\"art-p\">Roadside history in this extract is concentrated and bursty. One state holds 25.1% of the markers, one year, 1936, accounts for 887 of them, and the busiest decade is the 2000s. Church is the commonest word in a title, and about one marker in 36 is flagged missing.</p>\n<p class=\"art-p\">The pattern follows programs more than places. Where a state, a commission or an anniversary put money behind markers, the record is dense. Where nobody did, the map is thin.</p>\n<section class=\"art-back-matter\">\n<h2 id=\"data-methods-and-sources\" class=\"anchored\">Data, methods &amp; sources</h2>\n<h3 id=\"data-and-method\" class=\"anchored art-back-matter__subhead\">Data and method</h3>\n<p class=\"art-p\"><a href=\"https://github.com/rfordatascience/tidytuesday/tree/main/data/2023/2023-07-04\">TidyTuesday, 2023-07-04: Historical Markers. The R for Data Science community's release of the Historical Marker Database USA index, 42,724 markers, plus a companion file of 103 counties with no entry.</a></p>\n<p class=\"art-p\">The working file is the TidyTuesday release of 2023-07-04: 42,724 rows, one per marker, with state, year erected, erector, coordinates, title and a missing flag. Counts are exact counts of rows. Years use only rows with a year erected. Title words are matched case-insensitively on whole words and counted once per marker.</p>\n<p class=\"art-p\">Charts are drawn in R with the Artometrics editorial theme from <code>scripts/r/artometrics_editorial.R</code>. The analysis script is <code>articles/markers/analysis.R</code>, and the tables behind every chart are in the downloads. The cover art plots every marker at its coordinates.</p>\n<h3 id=\"sources\" class=\"anchored art-back-matter__subhead\">Sources</h3>\n<ul class=\"art-sources\">\n<li><a href=\"https://github.com/rfordatascience/tidytuesday/tree/main/data/2023/2023-07-04\">TidyTuesday, 2023-07-04: Historical Markers. The R for Data Science community's release of the Historical Marker Database USA index, 42,724 markers, plus a companion file of 103 counties with no entry.</a></li>\n<li><a href=\"https://www.hmdb.org/\">Historical Marker Database (HMdb.org). The volunteer-built catalog that the extract comes from.</a></li>\n<li><a href=\"https://www.hmdb.org/stats.asp\">HMdb.org, Database Counts and Statistics. The database's own running totals, for comparison with the extract.</a></li>\n<li><a href=\"https://www.tshaonline.org/handbook/entries/texas-centennial\">Texas State Historical Association, Handbook of Texas Online: Texas Centennial. On the 1936 centennial program that put a marker in every Texas county.</a></li>\n</ul>\n</section>\n</main>\n</div>",
+    "bodyFormat": "html"
+  },
+  {
     "id": "medium",
     "title": "MEDIUM: Do Four-Minute Medium Posts Earn More Claps?",
     "slug": "medium",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "78,388 Medium articles from 2017–2018 show median reading time of 4 minutes; scatter plots reveal no clean law linking length to applause.",
+    "dek": "Does a longer Medium post earn more claps? 78,388 articles say it is not that simple.",
     "heroImage": "/images/content/articles/medium/hero.png",
     "tags": [
       "science",
@@ -2698,6 +2809,7 @@
     "slug": "metrics",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Median P50 fell from 7.00 to 4.80 across 238 HTTP Archive records, though desktop and mobile showed different speed profiles.",
+    "dek": "The median web page loads 31% faster than in 2016. Desktop and mobile tell different stories.",
     "heroImage": "/images/content/articles/metrics/hero.png",
     "tags": [
       "science",
@@ -2748,6 +2860,7 @@
     "slug": "metros",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "New York legitimizes and commands global systems; San Francisco prototypes them. Both export intangible power, not goods.",
+    "dek": "New York gives the orders. San Francisco builds the thing. Both sell what you cannot hold.",
     "heroImage": "/images/content/articles/metros/hero.png",
     "tags": [
       "civics",
@@ -2793,6 +2906,7 @@
     "slug": "museums",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "4,191 UK museums mapped to area deprivation: median 5.00, maximum 10.0, with South West England showing 3-point admin-area gaps.",
+    "dek": "Britain's museums are not spread evenly across rich and poor neighborhoods.",
     "heroImage": "/images/content/articles/museums/hero.png",
     "tags": [
       "arts",
@@ -2842,6 +2956,7 @@
     "slug": "narratives",
     "pubDate": "2026-09-22T00:00:00.000Z",
     "description": "A working framework for treating economic narratives as contagious, falsifiable objects — built from Shiller and Kuran, not a proprietary dataset.",
+    "dek": "Stories move markets the way viruses move through a crowd. Can you test them?",
     "heroImage": "/images/content/articles/narratives/hero.png",
     "tags": [
       "civics",
@@ -2890,6 +3005,7 @@
     "slug": "netflix",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Squid Game Season 2 logged 730 million hours viewed on Netflix — 292 times the 2.5 million-hour catalog median across 27,803 titles.",
+    "dek": "One Netflix title was watched 292 times more than the typical one. Guess which.",
     "heroImage": "/images/content/articles/netflix/hero.png",
     "tags": [
       "arts",
@@ -2939,6 +3055,7 @@
     "slug": "novels",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "A Gutenberg holiday corpus shows a median author birthdate of 1859 and Dickens as the most common name.",
+    "dek": "Christmas fiction on Project Gutenberg is a Victorian club, with Dickens at the door.",
     "heroImage": "/images/content/articles/novels/hero.png",
     "tags": [
       "arts",
@@ -2988,6 +3105,7 @@
     "slug": "nuclear",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Public seismic catalogs reveal a median magnitude of 0.00—mostly missing data—while maximum recorded yields reached 7.40.",
+    "dek": "Most of the 2,051 nuclear tests in this public seismic dataset have no magnitude recorded.",
     "heroImage": "/images/content/articles/nuclear/hero.png",
     "tags": [
       "science",
@@ -3038,6 +3156,7 @@
     "slug": "oscars",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "How Oscars, Grammys, and Nobels manufacture legitimacy differently. Oscar prestige ties to market; Nobel prestige ties to institutional memory.",
+    "dek": "The Oscars, the Grammys, and the Nobels are three different ways to manufacture prestige.",
     "heroImage": "/images/content/articles/oscars/hero.png",
     "tags": [
       "humanities",
@@ -3087,6 +3206,7 @@
     "slug": "padres-data-fix",
     "pubDate": "2026-10-13T00:00:00.000Z",
     "description": "We audited the Padres dataset behind our record-sale report, rebuilt it from Lahman 1969–2025 plus a verified 2026 season, and reconciled every number the July 2026 live page had published—including a corrupted HTML sync, stale sale copy, and an FAQ that claimed eight runs in two deciding games.",
+    "dek": "We rebuilt the Padres dataset from scratch and checked everything we had published. Some of it was wrong.",
     "heroImage": "/images/content/articles/padres/hero.png",
     "tags": [
       "sports",
@@ -3119,6 +3239,7 @@
     "slug": "padres",
     "pubDate": "2026-10-11T00:00:00.000Z",
     "description": "San Diego solved demand and the tax bill. It has not solved October. Franchise values follow the market and the ballpark anyway.",
+    "dek": "Ten postseasons in 58 seasons, no World Series, and a record sale. What did the buyers just buy?",
     "heroImage": "/images/content/articles/padres/hero.png",
     "tags": [
       "sports",
@@ -3168,6 +3289,7 @@
     "slug": "pantheon",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "85,000+ biographies in MIT's Pantheon dataset reveal which occupations and cities compound fame across languages—and which achievements remain local.",
+    "dek": "Who does the whole world remember? MIT mapped 85,000 biographies to find out.",
     "heroImage": "/images/content/articles/pantheon/hero.png",
     "tags": [
       "humanities",
@@ -3217,6 +3339,7 @@
     "slug": "parks",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Golden Gate National Recreation Area recorded 14.6 million visits in the dataset's peak year — 94 times the system median of 155,219 across 21,560 park-year records from 1904–2016.",
+    "dek": "A national recreation area beside a big city outdraws the median park visit 94 to 1.",
     "heroImage": "/images/content/articles/parks/hero.png",
     "tags": [
       "culture",
@@ -3267,6 +3390,7 @@
     "slug": "patriots",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "Six championships in 19 seasons compressed a century of legacy into one Brady–Belichick era that rewrote franchise identity.",
+    "dek": "Nineteen seasons, six Super Bowls. The Brady-Belichick years rewrote what the Patriots are.",
     "heroImage": "/images/content/articles/patriots/hero.png",
     "tags": [
       "sports",
@@ -3313,6 +3437,7 @@
     "slug": "phds",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Five fields produced 63% of U.S. PhDs; social sciences led at 4,944 degrees while the median field awarded just 85.",
+    "dek": "Five fields produced 63% of U.S. PhDs. Which five?",
     "heroImage": "/images/content/articles/phds/hero.png",
     "tags": [
       "civics",
@@ -3363,6 +3488,7 @@
     "slug": "pixar",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Pixar's median Rotten Tomatoes score is 96%, but Cars 2 hit 40% and Lightyear stalled the streak—data from 24 rated theatrical features.",
+    "dek": "Pixar almost never misses with critics. Two films did.",
     "heroImage": "/images/content/articles/pixar/hero.png",
     "tags": [
       "arts",
@@ -3413,6 +3539,7 @@
     "slug": "pizza",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "10,000 pizza menu records show a median price floor of 0.00 and a premium tier reaching 50.0, encoding two separate markets in one dataset.",
+    "dek": "A slice at the bottom, a splurge at the top: ten thousand pizza menus, two separate markets.",
     "heroImage": "/images/content/articles/pizza/hero.png",
     "tags": [
       "culture",
@@ -3461,6 +3588,7 @@
     "slug": "plastic",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "22,204 country-year records show high income funds collection but does not guarantee low leakage; coastal economies face mismanagement risk at any income level.",
+    "dek": "Richer countries collect more plastic. They do not necessarily leak less.",
     "heroImage": "/images/content/articles/plastic/hero.png",
     "tags": [
       "culture",
@@ -3506,6 +3634,7 @@
     "slug": "playboy",
     "pubDate": "2026-09-22T00:00:00.000Z",
     "description": "Hefner died in 2017. In 2024 his son's $100M+ bid to buy back Playboy's legacy was rejected. What survives a founder who was the product?",
+    "dek": "A founder who was the product, a brand that outlived him, and a buyback bid that was turned down.",
     "heroImage": "/images/content/articles/playboy/hero.png",
     "tags": [
       "civics",
@@ -3555,6 +3684,7 @@
     "slug": "poison",
     "pubDate": "2026-09-22T00:00:00.000Z",
     "description": "Merch built Pokémon's $91B; one actor's six films show the bill.",
+    "dek": "Merchandise built Pokémon into a $91 billion property. What happens when a star becomes the risk?",
     "heroImage": "/images/content/articles/poison/hero.png",
     "tags": [
       "arts",
@@ -3605,6 +3735,7 @@
     "slug": "pokemon",
     "pubDate": "2026-05-06T00:00:00.000Z",
     "description": "Game Freak's type system encodes stat tradeoffs, power creep clusters at the tail, and Cosmoem weighs 999.9 kg at 0.1 meters.",
+    "dek": "Dragons earn their attack. Bugs never catch up. Pokémon's type system, tested against the stats.",
     "heroImage": "/images/content/articles/pokemon/hero.png",
     "tags": [
       "sports",
@@ -3650,11 +3781,66 @@
     "bodyFormat": "html"
   },
   {
+    "id": "polling",
+    "title": "POLLING: About One in Seven Polling Places Vanished from 23 States, 2012–2020",
+    "slug": "polling",
+    "pubDate": "2026-11-13T00:00:00.000Z",
+    "description": "In the 23 states with polling-place data for every general election from 2012 to 2020, distinct polling-place addresses fell from 45,512 to 38,850, and four states account for 69% of the loss.",
+    "dek": "About one in seven polling places in 23 states disappeared in eight years. Four states did most of it.",
+    "heroImage": "/images/content/articles/polling/hero.png",
+    "tags": [
+      "civics",
+      "politics"
+    ],
+    "subject": "Polling",
+    "section": "civics",
+    "subdomain": "politics",
+    "channels": [
+      "civics"
+    ],
+    "author": "kyle-mcauliffe",
+    "draft": false,
+    "tldr": "The Center for Public Integrity's polling-place collection covers 39 states, but only 23 have data for every general election from 2012 to 2020. In those 23, distinct polling-place addresses fell 14.6%, from 45,512 to 38,850. Ohio, Maryland, Indiana and Illinois account for 4,584 of the 6,662 lost, 69%. Maryland went from 1,566 addresses in 2018 to 320 in 2020 when it moved to Election Day vote centers.",
+    "keyPoints": [
+      "−14.6% — Change in polling-place addresses, 2012 to 2020 — 45,512 down to 38,850 across 23 states",
+      "69% — Share of the net loss from four states: Ohio, Maryland, Indiana and Illinois",
+      "−79.6% — Maryland's drop — 1,570 addresses in 2012 to 320 in 2020",
+      "−57.4% — North Dakota's drop — 263 addresses in 2012 to 112 in 2020",
+      "3 of 23 — States that added polling places: Vermont, Alaska and Virginia"
+    ],
+    "faq": [
+      {
+        "question": "How many polling places did these states lose between 2012 and 2020?",
+        "answer": "In the 23 states with data for every general election from 2012 to 2020, distinct polling-place addresses fell by 6,662, or 14.6%, from 45,512 to 38,850."
+      },
+      {
+        "question": "Which states lost the most polling places?",
+        "answer": "Ohio lost 1,264 addresses and Maryland 1,250, followed by Indiana at 1,037 and Illinois at 1,033. Together they account for 69% of the net loss."
+      },
+      {
+        "question": "Why did Maryland's count fall so far?",
+        "answer": "Maryland used 321 Election Day vote centers in 2020 instead of neighborhood polling places, according to the State Board of Elections. The data shows 320 distinct addresses."
+      },
+      {
+        "question": "Can this dataset give a national polling-place count?",
+        "answer": "No. Only 23 states have data for all five general elections, and the number of states with any data ranges from 30 to 35 by year, so national totals are not comparable across years."
+      },
+      {
+        "question": "Which states added polling places?",
+        "answer": "Three of the 23: Vermont (+122), Alaska (+26) and Virginia (+25)."
+      }
+    ],
+    "audioSrc": null,
+    "body": "<div id=\"quarto-content\">\n<main class=\"art-article-main\">\n<p class=\"art-p\">In the 23 states with polling-place data for every general election from 2012 to 2020, the number of distinct polling-place addresses fell from <strong>45,512</strong> to <strong>38,850</strong>, a loss of <strong>6,662</strong>, or <strong>14.6%</strong>. Four states account for 69% of it.</p>\n<p class=\"art-p\">The data comes from the Center for Public Integrity's collection of state and local polling-place lists, released through TidyTuesday. It has 461,445 rows across seven election dates and 39 states. Coverage changes from year to year, so this report compares only states that appear in all five general elections: 2012, 2014, 2016, 2018 and 2020.</p>\n<h2 id=\"four-states-did-most-of-it\" class=\"anchored\">Four states did most of it</h2>\n<h3 id=\"four-states-did-most-of-it-look\" class=\"anchored\">Four states account for 69% of the net loss</h3>\n<figure class=\"art-chart\">\n  <div class=\"art-chart-live\" data-chart=\"/data/articles/polling/charts/chart1_net_change.plotly.json\" data-source=\"Data: Center for Public Integrity via TidyTuesday - ARTOMETRICS\" data-fallback=\"/images/content/articles/polling/charts/chart1_net_change.png\" role=\"img\" aria-label=\"Four states account for 69% of the net loss\"></div>\n</figure>\n<p class=\"art-p\">Ohio lost <strong>1,264</strong> addresses between 2012 and 2020 and Maryland <strong>1,250</strong>. Indiana lost <strong>1,037</strong> and Illinois <strong>1,033</strong>. Those four add up to <strong>4,584</strong> of the net <strong>6,662</strong>, or <strong>69%</strong>. Pennsylvania, the largest state in the set with 7,454 addresses in 2012, lost <strong>695</strong>.</p>\n<p class=\"art-p\">Without Maryland, the other 22 states lost <strong>12.3%</strong> instead of 14.6%. The decline is broad, but a handful of states set the total.</p>\n<h2 id=\"a-slow-slide-then-a-cliff\" class=\"anchored\">A slow slide, then a cliff</h2>\n<h3 id=\"a-slow-slide-then-a-cliff-look\" class=\"anchored\">A slow slide, then a 9% drop in 2020</h3>\n<figure class=\"art-chart\">\n  <div class=\"art-chart-live\" data-chart=\"/data/articles/polling/charts/chart2_index.plotly.json\" data-source=\"Data: Center for Public Integrity via TidyTuesday - ARTOMETRICS\" data-fallback=\"/images/content/articles/polling/charts/chart2_index.png\" role=\"img\" aria-label=\"A slow slide, then a 9% drop in 2020\"></div>\n</figure>\n<p class=\"art-p\">Indexed to 2012, the total reached <strong>96.7</strong> in 2014, <strong>95.9</strong> in 2016 and <strong>93.8</strong> in 2018. It then fell to <strong>85.4</strong> in 2020. The 2018 to 2020 step, from 42,695 to 38,850 addresses, is a <strong>9.0%</strong> drop in one cycle, and it is larger than the whole 2012 to 2018 decline of 6.2%.</p>\n<p class=\"art-p\">Two things overlap in 2020: long-running consolidation and the pandemic. The data records where polling places were, not why they closed.</p>\n<h2 id=\"the-deepest-cuts-in-percent\" class=\"anchored\">The deepest cuts in percent</h2>\n<h3 id=\"the-deepest-cuts-in-percent-look\" class=\"anchored\">Maryland and North Dakota cut deepest</h3>\n<figure class=\"art-chart\">\n  <div class=\"art-chart-live\" data-chart=\"/data/articles/polling/charts/chart3_pct_change.plotly.json\" data-source=\"Data: Center for Public Integrity via TidyTuesday - ARTOMETRICS\" data-fallback=\"/images/content/articles/polling/charts/chart3_pct_change.png\" role=\"img\" aria-label=\"Maryland and North Dakota cut deepest\"></div>\n</figure>\n<p class=\"art-p\">By percentage, <strong>Maryland</strong> fell <strong>79.6%</strong> and <strong>North Dakota</strong> <strong>57.4%</strong>, from 263 addresses to 112. Indiana fell <strong>35.6%</strong> and Ohio <strong>26.7%</strong>. Indiana's drop came early: it listed 2,912 addresses in 2012 and 1,979 in 2014.</p>\n<p class=\"art-p\">Only <strong>3</strong> of the 23 states added polling places. Vermont grew from 139 to 261 (+122), Alaska from 390 to 416 (+26) and Virginia from 2,383 to 2,408 (+25). Connecticut was nearly flat, at 643 and 638.</p>\n<h2 id=\"maryland-from-1566-to-320\" class=\"anchored\">Maryland: from 1,566 to 320</h2>\n<h3 id=\"maryland-from-1566-to-320-look\" class=\"anchored\">Maryland went from 1,566 places to 320 in one cycle</h3>\n<figure class=\"art-chart\">\n  <div class=\"art-chart-live\" data-chart=\"/data/articles/polling/charts/chart4_maryland.plotly.json\" data-source=\"Data: Center for Public Integrity via TidyTuesday - ARTOMETRICS\" data-fallback=\"/images/content/articles/polling/charts/chart4_maryland.png\" role=\"img\" aria-label=\"Maryland went from 1,566 places to 320 in one cycle\"></div>\n</figure>\n<p class=\"art-p\">Maryland's count sat between <strong>1,566</strong> and <strong>1,581</strong> addresses for four straight general elections, then fell to <strong>320</strong> in 2020. The reason is documented. The Maryland State Board of Elections reports that voters on Election Day 2020 used <strong>321</strong> vote centers instead of neighborhood polling places, the first time the state used vote centers on Election Day. The board gave two reasons: election judges were resigning during the public-health emergency, and many neighborhood sites could not meet social-distancing guidelines.</p>\n<p class=\"art-p\">The dataset's 320 distinct addresses is within one of the board's figure of 321. Maryland is the clearest case in the data of a state that did not close polling places one by one but replaced a system.</p>\n<h2 id=\"the-map-keeps-changing\" class=\"anchored\">The map keeps changing</h2>\n<h3 id=\"the-map-keeps-changing-look\" class=\"anchored\">The map keeps changing: 30 states in 2012, 35 in 2020</h3>\n<figure class=\"art-chart\">\n  <div class=\"art-chart-live\" data-chart=\"/data/articles/polling/charts/chart5_coverage.plotly.json\" data-source=\"Data: Center for Public Integrity via TidyTuesday - ARTOMETRICS\" data-fallback=\"/images/content/articles/polling/charts/chart5_coverage.png\" role=\"img\" aria-label=\"The map keeps changing: 30 states in 2012, 35 in 2020\"></div>\n</figure>\n<p class=\"art-p\">The raw row count rises from <strong>87,176</strong> in 2012 to <strong>103,290</strong> in 2020. That rise tracks coverage as much as anything: the number of states with data went from <strong>30</strong> to <strong>35</strong> over the same period. Georgia, for example, has no data before 2016 and Alabama, California, Missouri, Nevada, Texas and Utah appear only in 2020. A national total taken from this file would mix real change with changes in which states are listed.</p>\n<p class=\"art-p\">That is why the comparison in this report uses only the <strong>23</strong> states present in all five general elections. The source notes also say that Colorado, Hawaii, Oregon, Washington and Utah vote mostly by mail and have little or no data.</p>\n<h2 id=\"what-this-file-cannot-tell-you\" class=\"anchored\">What this file cannot tell you</h2>\n<p class=\"art-p\">A polling place here is a distinct address, after trimming whitespace and ignoring case. Two lists that format the same address differently count as two places, and two precincts sharing one building count as one. Counts describe what the source lists contained; they are not official tallies. Early-voting sites and Election Day sites are mixed in some states and separate in others, and the file does not carry a consistent flag for every row.</p>\n<p class=\"art-p\">The data cannot say whether a closure made voting harder. Distance to a polling place, wait times and turnout are not in the file. A drop in addresses can reflect consolidation into larger vote centers, as in Maryland, rather than less capacity.</p>\n<h2 id=\"what-to-take-away\" class=\"anchored\">What to take away</h2>\n<p class=\"art-p\">Across 23 states with a complete record, polling-place addresses fell 14.6% between 2012 and 2020, and 69% of that came from Ohio, Maryland, Indiana and Illinois. The step between 2018 and 2020 was the largest, and Maryland's move to vote centers is the biggest single piece.</p>\n<p class=\"art-p\">Any claim about polling places nationwide needs the same discipline as this one: pick the states that are present in every year, and compare them to themselves.</p>\n<section class=\"art-back-matter\">\n<h2 id=\"data-methods-and-sources\" class=\"anchored\">Data, methods &amp; sources</h2>\n<h3 id=\"data-and-method\" class=\"anchored art-back-matter__subhead\">Data and method</h3>\n<p class=\"art-p\"><a href=\"https://github.com/rfordatascience/tidytuesday/tree/main/data/2024/2024-01-16\">TidyTuesday, 2024-01-16: US Polling Places 2012-2020. The R for Data Science community's release of the polling_places table, 461,445 rows.</a></p>\n<p class=\"art-p\">The working file is the TidyTuesday release of 2024-01-16, which has one row per polling place per election. The analysis keeps the five general elections (2012-11-06, 2014-11-04, 2016-11-08, 2018-11-06, 2020-11-03), normalizes each address to upper case without extra whitespace, and counts distinct addresses per state and election. Rows for the other election dates are left out of the comparison.</p>\n<p class=\"art-p\">Charts are drawn in R with the Artometrics editorial theme from <code>scripts/r/artometrics_editorial.R</code>. The analysis script is <code>articles/polling/analysis.R</code>, and the tables behind every chart are in the downloads. The cover art shows one dot per 100 addresses in 2012, with the dots that were gone by 2020 in pink, placed at random.</p>\n<h3 id=\"sources\" class=\"anchored art-back-matter__subhead\">Sources</h3>\n<ul class=\"art-sources\">\n<li><a href=\"https://github.com/rfordatascience/tidytuesday/tree/main/data/2024/2024-01-16\">TidyTuesday, 2024-01-16: US Polling Places 2012-2020. The R for Data Science community's release of the polling_places table, 461,445 rows.</a></li>\n<li><a href=\"https://github.com/PublicI/us-polling-places\">The Center for Public Integrity, us-polling-places. The original collection of state and local polling-place lists, 2012-2020.</a></li>\n<li><a href=\"https://publicintegrity.org/politics/elections/ballotboxbarriers/data-release-sheds-light-on-past-polling-place-changes/\">The Center for Public Integrity, \"National data release sheds light on past polling place changes\" (September 2020). How the data was collected.</a></li>\n<li><a href=\"https://elections.maryland.gov/press_room/2020_stats/Nov%203%20Election%20Report_Final.pdf\">Maryland State Board of Elections, Report on November 3, 2020 Election. States that 321 Election Day vote centers replaced neighborhood polling places.</a></li>\n</ul>\n</section>\n</main>\n</div>",
+    "bodyFormat": "html"
+  },
+  {
     "id": "prisons",
     "title": "PRISONS: U.S. Jail Populations, County by County, 1970–2016",
     "slug": "prisons",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "County-level population data show regional regimes that diverge for decades, not one national curve.",
+    "dek": "County jail populations did not follow one national story. They followed hundreds of local ones.",
     "heroImage": "/images/content/articles/prisons/hero.png",
     "tags": [
       "civics",
@@ -3704,6 +3890,7 @@
     "slug": "protection",
     "pubDate": "2026-09-22T00:00:00.000Z",
     "description": "BBC's Leto exposé asks why not sooner. Six film ROIs and four institutional cases test what forward value has to do with it.",
+    "dek": "Does it take a string of flops before Hollywood stops protecting a star? Six films, four institutions.",
     "heroImage": "/images/content/articles/protection/hero.jpg",
     "tags": [
       "arts",
@@ -3754,6 +3941,7 @@
     "slug": "radio",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "17,186 station records show Country owns format share while News/Talk owns the upper AM band — frequency and culture answer different questions.",
+    "dek": "Why does News/Talk live on the AM dial while Country owns FM?",
     "heroImage": "/images/content/articles/radio/hero.png",
     "tags": [
       "arts",
@@ -3799,6 +3987,7 @@
     "slug": "ramen",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "3,180 instant-ramen reviews show a 5.00-star ceiling and country gaps of 0.25–0.50 stars around the 3.75 median.",
+    "dek": "Plenty of instant ramen earns five stars. Only one country rates higher across the board.",
     "heroImage": "/images/content/articles/ramen/hero.png",
     "tags": [
       "culture",
@@ -3848,6 +4037,7 @@
     "slug": "rankings",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Large-scale Hot 100 data show how rankings compress at the summit.",
+    "dek": "The Hot 100 gets more crowded the closer you get to number one.",
     "heroImage": "/images/content/articles/rankings/hero.png",
     "tags": [
       "arts",
@@ -3896,6 +4086,7 @@
     "slug": "readmitted",
     "pubDate": "2026-04-21T00:00:00.000Z",
     "description": "In CMS's latest Hospital Readmissions Reduction Program extract, 48.15% of hospital–condition pairs still exceed the expected readmission ratio after a decade of penalties capped at 3% of Medicare payments. This R2 report maps HRRP history, who pays, safety-net effects, observation and mortality debates, international comparators, and eight charts for hospital executives.",
+    "dek": "Hospitals have paid penalties for a decade. Nearly half of the hospital-condition pairs still readmit more than expected.",
     "heroImage": "/images/content/articles/readmitted/hero.png",
     "tags": [
       "science",
@@ -3946,6 +4137,7 @@
     "slug": "restaurants",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "NYC restaurant inspection scores cluster at 15; highest violation count reaches 156 in 100,000-record TidyTuesday extract.",
+    "dek": "The worst New York City inspection score in this file is 156. The median is 15.",
     "heroImage": "/images/content/articles/restaurants/hero.png",
     "tags": [
       "culture",
@@ -3994,6 +4186,7 @@
     "slug": "rivalry",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "California scores 96 on GDP, 94 on tech; Texas scores 96 on energy, 91 on migration attention. Seven dimensions explain why the comparison persists.",
+    "dek": "California and Texas are both economic nations. Seven scorecards say where they differ.",
     "heroImage": "/images/content/articles/rivalry/hero.png",
     "tags": [
       "civics",
@@ -4012,8 +4205,8 @@
       "96 — California's GDP scale score vs. 86 for Texas—both large enough to function as competing national models",
       "94 — California's tech role score; Texas scores 96 on energy—divergent export systems, not substitutable strengths",
       "91 — Texas migration attention score vs. California's 88 tax-burden debate score—cost, climate, wages, and culture drive relocation, not taxes alone",
-      "[object Object]",
-      "[object Object]"
+      "7 — Rivalry dimensions scored: GDP, population, tech, energy, cultural output, migration, tax burden",
+      "6 — Comparison questions that matter more than tax rates: irreplaceable exports, talent compounding, climate handling, who benefits from growth"
     ],
     "faq": [
       {
@@ -4043,6 +4236,7 @@
     "slug": "schools",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Butteville Union Elementary scores 85.3 on the Multi index while the national median sits at 2.38 across 27,944 local education agencies.",
+    "dek": "Across 27,944 school agencies, one is off the chart on diversity. Which?",
     "heroImage": "/images/content/articles/schools/hero.png",
     "tags": [
       "civics",
@@ -4088,6 +4282,7 @@
     "slug": "sf",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "A small city exports global software wealth while underbuilding the physical infrastructure to metabolize it.",
+    "dek": "Can San Francisco build enough to hold what it invents?",
     "heroImage": "/images/content/articles/sf/hero.png",
     "tags": [
       "civics",
@@ -4137,6 +4332,7 @@
     "slug": "sherlock",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Tokenized Holmes corpus from TidyTuesday shows median 12.0 words, mean 10.9, with top five titles holding 34% of aggregate count.",
+    "dek": "We broke the Sherlock Holmes stories into 65,958 pieces. No single book runs away with it.",
     "heroImage": "/images/content/articles/sherlock/hero.png",
     "tags": [
       "arts",
@@ -4184,6 +4380,7 @@
     "slug": "simpsons",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Marcia Wallace logged 175 guest appearances across 30 Simpsons seasons—2.7× more than the second-place performer in the TidyTuesday dataset.",
+    "dek": "Who has made more Simpsons guest appearances than anyone? The runner-up is not close.",
     "heroImage": "/images/content/articles/simpsons/hero.png",
     "tags": [
       "arts",
@@ -4223,6 +4420,7 @@
     "slug": "slices",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Median concurrent players climbed from 212 to 309 across the decade, but Dota 2's 475,924 average dwarfs the top-twelve median of 64,656.",
+    "dek": "A dozen Steam games grabbed half the audience. Which ones?",
     "heroImage": "/images/content/articles/slices/hero.png",
     "tags": [
       "sports",
@@ -4273,6 +4471,7 @@
     "slug": "steam",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "26,688 Steam titles show critic scores rising from 70 to 73 between 2004–2018 while million-owner games beat the median by 10 points.",
+    "dek": "Games with a million owners beat the median critic score by ten points. Is hours per dollar the reason?",
     "heroImage": "/images/content/articles/steam/hero.png",
     "tags": [
       "sports",
@@ -4322,6 +4521,7 @@
     "slug": "streaming",
     "pubDate": "2026-07-21T00:00:00.000Z",
     "description": "Netflix's January–June 2026 engagement report lists 17,370 titles with at least 50,000 views worldwide (8,193 shows and 9,177 movies). The top 10% drew 67.9% of named hours; the top 20% drew 82.6%.",
+    "dek": "A fifth of Netflix's titles drew more than 82% of the viewing. What happens to the rest?",
     "heroImage": "/images/content/articles/streaming/hero.png",
     "tags": [
       "arts",
@@ -4352,6 +4552,7 @@
     "slug": "superbowl",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "NFL leads at 403,641 views; median dropped from 111,814 to 33,766 as the 2006–2021 archive filled with ordinary uploads.",
+    "dek": "Five brands drew 87% of the views on Super Bowl ads in this archive. Which five?",
     "heroImage": "/images/content/articles/superbowl/hero.png",
     "tags": [
       "civics",
@@ -4402,6 +4603,7 @@
     "slug": "television",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Median season ratings climbed from 7.86 to 8.15 across 2,266 records—a raised floor, not a sudden elite leap.",
+    "dek": "Is prestige TV actually getting better? The ratings crept up, but slowly.",
     "heroImage": "/images/content/articles/television/hero.png",
     "tags": [
       "arts",
@@ -4451,6 +4653,7 @@
     "slug": "trademarks",
     "pubDate": "2026-07-28T00:00:00.000Z",
     "description": "Louis Vuitton won ¥10.3 million against Molly Tea in Suzhou court on 29 June 2026 for four-petal logo infringement. Chinese social media reframed the first-to-file trademark case as foreign enclosure of Tang-era motifs.",
+    "dek": "A flower logo cost a tea chain ¥10.3 million. Chinese social media turned it into something bigger.",
     "heroImage": "/images/content/articles/trademarks/hero.png",
     "tags": [
       "arts",
@@ -4501,6 +4704,7 @@
     "slug": "tuition",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Median state tuition climbed from $5,876 to $9,141 across 2004–2015; Vermont led at $13,486 while five states held 38% of aggregate value.",
+    "dek": "Public tuition rose 56% in a decade. Which state charged the most?",
     "heroImage": "/images/content/articles/tuition/hero.png",
     "tags": [
       "civics",
@@ -4550,6 +4754,7 @@
     "slug": "voters",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "National turnout reached 132.6 million in 2014 while the median state recorded 1.17 million votes across 936 elections from 1980–2014.",
+    "dek": "How many people actually vote in a typical state? Far fewer than the national total makes it sound.",
     "heroImage": "/images/content/articles/voters/hero.png",
     "tags": [
       "civics",
@@ -4599,6 +4804,7 @@
     "slug": "warriors",
     "pubDate": "2026-04-18T00:00:00.000Z",
     "description": "Golden State won 73 games in 2015–16, launched 15 more threes per game than the league, and changed how every franchise builds offense.",
+    "dek": "They won 73 games and launched 15 more threes a night than the league. The NBA never looked the same.",
     "heroImage": "/images/content/articles/warriors/hero.png",
     "tags": [
       "sports",
@@ -4649,6 +4855,7 @@
     "slug": "wastewater",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Facility-level data show median discharge at 1,079 m³/day; Singapore's plants average 223,683.",
+    "dek": "One island country's wastewater plants discharge more than 200 times the global median.",
     "heroImage": "/images/content/articles/wastewater/hero.png",
     "tags": [
       "science",
@@ -4694,6 +4901,7 @@
     "slug": "wealth",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Middle income groups claimed 16% more share; top earners held 6.7 points less than the 10.9% median between 1967 and 2019.",
+    "dek": "Where did U.S. income share go between 1967 and 2019? The middle brackets might surprise you.",
     "heroImage": "/images/content/articles/wealth/hero.png",
     "tags": [
       "civics",
@@ -4744,6 +4952,7 @@
     "slug": "wine",
     "pubDate": "2026-06-15T00:00:00.000Z",
     "description": "Austria leads Chile by 2.00 points; the median sits at 88.0 in a dataset where the top dozen titles all score 100.",
+    "dek": "On wine's 100-point scale, most bottles bunch near 88. What do two points buy?",
     "heroImage": "/images/content/articles/wine/banner.png",
     "tags": [
       "culture",
@@ -4793,6 +5002,7 @@
     "slug": "yankees",
     "pubDate": "2026-07-01T00:00:00.000Z",
     "description": "27 titles create expectations no payroll can meet: the Yankees spend like champions but haven't converted October access into rings since 2009.",
+    "dek": "Twenty-seven titles, and the last one came in 2009. What does the drought say?",
     "heroImage": "/images/content/articles/yankees/hero.png",
     "tags": [
       "sports",
@@ -4842,6 +5052,7 @@
     "slug": "youtube",
     "pubDate": "2026-04-14T00:00:00.000Z",
     "description": "Alphabet reported $36.1B in YouTube ad revenue in FY2024 while Nielsen puts YouTube at 15.8% of U.S. TV-screen usage (Nielsen Gauge, August 2026, before Nielsen's September 2026 method change). Against that scale, H3 Podcast's Frenemies era tripled monthly views—and set a ceiling the show has not touched since.",
+    "dek": "Alphabet reports $36.1 billion in YouTube ad revenue. What does one podcast's peak look like next to that?",
     "heroImage": "/images/content/articles/youtube/hero.png",
     "tags": [
       "civics",

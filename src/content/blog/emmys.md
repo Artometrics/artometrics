@@ -5,6 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: >-
   Saturday Night Live appears 859 times across 29,678 Emmy records from 1957–2021—three times the next-closest show.
+dek: "Which show appears in Emmy history three times more often than any other?"
 heroImage: /images/content/articles/emmys/hero.png
 draft: false
 tags:

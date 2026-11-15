@@ -1,0 +1,30 @@
+---
+import StoryTile from "./StoryTile.astro";
+import { storySquare } from "@/lib/article-assets.mjs";
+import { getBlogPost } from "@/lib/content";
+
+import { DESKS } from "../lib/desks";
+
+const columns = DESKS.map((desk) => ({
+  ...desk,
+  stories: desk.slugs.flatMap((slug) => {
+    const post = getBlogPost(slug);
+    if (!post) return [];
+    const art = storySquare(slug, post.heroImage);
+    return art.src ? [{ post, art }] : [];
+  }),
+}));
+---
+
+<div class="category-grid" data-category-grid>
+  {columns.map((desk) => (
+    <section class="desk-section" aria-labelledby={`desk-${desk.label}`}>
+      <h2 id={`desk-${desk.label}`}><a href={desk.href}>{desk.label}</a></h2>
+      <div class="story-grid">
+        {desk.stories.map(({ post, art }) => (
+          <StoryTile post={post} art={art} />
+        ))}
+      </div>
+    </section>
+  ))}
+</div>

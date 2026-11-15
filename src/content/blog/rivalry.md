@@ -4,6 +4,7 @@ slug: rivalry
 author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: 'California scores 96 on GDP, 94 on tech; Texas scores 96 on energy, 91 on migration attention. Seven dimensions explain why the comparison persists.'
+dek: "California and Texas are both economic nations. Seven scorecards say where they differ."
 heroImage: /images/content/articles/rivalry/hero.png
 draft: false
 tags:
@@ -15,8 +16,8 @@ keyPoints:
   - 96 — California's GDP scale score vs. 86 for Texas—both large enough to function as competing national models
   - '94 — California''s tech role score; Texas scores 96 on energy—divergent export systems, not substitutable strengths'
   - '91 — Texas migration attention score vs. California''s 88 tax-burden debate score—cost, climate, wages, and culture drive relocation, not taxes alone'
-  - 7 — Rivalry dimensions scored: 'GDP, population, tech, energy, cultural output, migration, tax burden'
-  - 6 — Comparison questions that matter more than tax rates: 'irreplaceable exports, talent compounding, climate handling, who benefits from growth'
+  - '7 — Rivalry dimensions scored: GDP, population, tech, energy, cultural output, migration, tax burden'
+  - '6 — Comparison questions that matter more than tax rates: irreplaceable exports, talent compounding, climate handling, who benefits from growth'
 faq:
   - question: Why are California and Texas always compared?
     answer: 'Both are large enough to represent competing national models—one compounds knowledge and IP, the other compounds energy and growth capacity.'

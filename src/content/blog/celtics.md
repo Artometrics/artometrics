@@ -4,6 +4,7 @@ slug: celtics
 author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: '18 NBA championships—11 in the Russell era alone—mean every Boston season is compared to Bill Russell and Larry Bird, not to Miami or Milwaukee.'
+dek: "When you have won 18 titles, every season gets graded against Bill Russell."
 heroImage: /images/content/articles/celtics/hero.png
 draft: false
 tags:

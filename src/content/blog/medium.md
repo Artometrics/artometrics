@@ -4,6 +4,7 @@ slug: medium
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: '78,388 Medium articles from 2017–2018 show median reading time of 4 minutes; scatter plots reveal no clean law linking length to applause.'
+dek: "Does a longer Medium post earn more claps? 78,388 articles say it is not that simple."
 heroImage: /images/content/articles/medium/hero.png
 draft: false
 tags:

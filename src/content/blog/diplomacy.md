@@ -4,6 +4,7 @@ slug: diplomacy
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'In a 100,000-row UN voting extract, Brazil appears 747 times and 79,663 votes (80%) are affirmative — before ideological coalition modeling begins.'
+dek: "In a 100,000-vote UN sample, four out of five votes were yes. Who says no?"
 heroImage: /images/content/articles/diplomacy/hero.png
 draft: false
 tags:

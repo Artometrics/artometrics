@@ -14,8 +14,7 @@ const tools = [
     <p class="kicker">Your workspace</p>
     <h1>Studio</h1>
     <p class="lede">
-      Studio tools share one member profile. This static site publishes the routes and the public magazine.
-      Live drafts, recordings, and saved palettes stay in the signed-in app, which needs Supabase and is not part of this host.
+      Four small tools for making things. They run in your browser, need no account, and keep your work on this device until you export it.
     </p>
     <div class="stack">
       {tools.map(([href, title, body]) => (
@@ -25,6 +24,5 @@ const tools = [
         </a>
       ))}
     </div>
-    <p><a class="btn" href="/login?next=%2Fstudio">Sign in</a></p>
   </div>
 </Base>

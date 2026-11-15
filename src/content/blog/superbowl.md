@@ -4,6 +4,7 @@ slug: superbowl
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: NFL leads at 403,641 views; median dropped from 111,814 to 33,766 as the 2006–2021 archive filled with ordinary uploads.
+dek: "Five brands drew 87% of the views on Super Bowl ads in this archive. Which five?"
 heroImage: /images/content/articles/superbowl/hero.png
 draft: false
 tags:

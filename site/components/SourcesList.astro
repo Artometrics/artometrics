@@ -1,51 +1,66 @@
 ---
 import catalog from "@/src/generated/sources.json";
+import { SOURCE_ENTRIES } from "../lib/sources-pages";
+import { articleDataFiles } from "../lib/article-links";
 
 const topics = catalog.topics;
-const reportCount = topics.reduce((sum, topic) => sum + topic.issues.length, 0);
+const rows = SOURCE_ENTRIES.map((entry) => ({
+  ...entry,
+  fileCount: articleDataFiles(entry.slug).length,
+  citationCount: entry.issue.citations.length,
+}));
 ---
 
-<div class="wrap page">
-  <p class="kicker">Citations</p>
-  <h1>Sources</h1>
-  <p class="lede">{reportCount} reports, grouped by desk. Each citation keeps the wording from the issue file.</p>
-  <nav class="filters" aria-label="Topics">
-    {topics.map((topic) => <a href={`#${topic.id}`}>{topic.title}</a>)}
-  </nav>
-  {topics.map((topic) => (
-    <section class="source-block" id={topic.id}>
-      <h2><a href={topic.href}>{topic.title}</a></h2>
-      <p class="lede">{topic.description}</p>
-      {topic.issues.map((issue) => (
-        <article>
-          <h3><a href={issue.href}>{issue.title}</a></h3>
-          <p class="meta">{issue.kicker} · {issue.updatedThrough}</p>
-          {issue.datasets?.length ? (
-            <p>
-              Dataset{" "}
-              {issue.datasets.map((dataset, index) => (
-                <>
-                  {index ? ", " : null}
-                  <a href={dataset.href}>{dataset.title}</a>
-                </>
-              ))}
-            </p>
-          ) : null}
-          <ul>
-            {issue.citations.map((citation) => (
-              <li>
-                {citation.href ? (
-                  <a href={citation.href}>{citation.text || citation.href}</a>
-                ) : (
-                  <>
-                    {citation.text || "Untitled citation"} <span class="kicker">no link yet</span>
-                  </>
-                )}
-              </li>
-            ))}
-          </ul>
-        </article>
-      ))}
-    </section>
-  ))}
+<div class="wrap page src-index">
+  <p class="kicker">Sources</p>
+  <h1>Where our numbers come from</h1>
+  <p class="lede">
+    {rows.length} reports, each with its own page: the datasets you can download, the resources behind it, and every
+    citation with its link. Pick a report, or search.
+  </p>
+
+  <div class="src-tools">
+    <label class="src-search">
+      <span class="kicker">Search sources</span>
+      <input type="search" id="src-q" placeholder="Report, desk, dataset, or citation" autocomplete="off" />
+    </label>
+    <div class="src-chips" role="group" aria-label="Filter by desk" id="src-chips">
+      <button type="button" data-desk="" aria-pressed="true">All</button>
+      {topics.map((topic) => <button type="button" data-desk={topic.id} aria-pressed="false">{topic.title}</button>)}
+    </div>
+    <div class="src-view" role="group" aria-label="Layout">
+      <button type="button" data-view="cards" aria-pressed="true">Cards</button>
+      <button type="button" data-view="table" aria-pressed="false">Table</button>
+    </div>
+  </div>
+
+  <p class="src-catalog">
+    Download the catalog: <a href="/sources/catalog.csv" download>CSV</a> · <a href="/sources/catalog.json" download>JSON</a>
+  </p>
+  <p class="src-count" id="src-count" role="status" aria-live="polite">{rows.length} reports</p>
+
+  <div class="src-head" aria-hidden="true">
+    <span>Report</span><span>Desk</span><span>Data files</span><span>Citations</span><span>Coverage</span>
+  </div>
+  <ul class="src-list" id="src-list">
+    {rows.map((row) => (
+      <li
+        class="src-item"
+        data-desk={row.topic.id}
+        data-q={`${row.title} ${row.kicker} ${row.topic.title} ${row.issue.citations.map((c) => c.text).join(" ")} ${(row.issue.datasets || []).map((d) => d.title).join(" ")}`.toLowerCase()}
+      >
+        <a class="src-item__link" href={`/sources/${row.slug}`}>
+          <span class="src-item__kicker">{row.kicker}</span>
+          <strong class="src-item__title">{row.title}</strong>
+        </a>
+        <span class="src-item__desk" data-label="Desk">{row.topic.title}</span>
+        <span class="src-item__n" data-label="Data files">{row.fileCount}<span class="src-item__u"> data file{row.fileCount === 1 ? "" : "s"}</span></span>
+        <span class="src-item__n" data-label="Citations">{row.citationCount}<span class="src-item__u"> citation{row.citationCount === 1 ? "" : "s"}</span></span>
+        <span class="src-item__when" data-label="Coverage">{row.updatedThrough.replace(/^Updated through\s+/i, "")}</span>
+      </li>
+    ))}
+  </ul>
+  <p class="lede" id="src-empty" hidden>No sources match that search.</p>
 </div>
+
+<script is:inline src="/js/sources-filter.js"></script>

@@ -1,0 +1,139 @@
+---
+import Base from "../../layouts/Base.astro";
+import { SOURCE_ENTRIES, sourcePageFor } from "../../lib/sources-pages";
+import { formatBytes } from "../../lib/article-links";
+
+export function getStaticPaths() {
+  return SOURCE_ENTRIES.map((entry) => ({ params: { slug: entry.slug } }));
+}
+
+const { slug } = Astro.params;
+const page = sourcePageFor(slug!);
+const { entry } = page;
+const citations = entry.issue.citations;
+const hasData = page.files.length > 0 || page.fixFiles.some((fix) => fix.files.length);
+const title = `Sources: ${entry.title}`;
+const description = `Datasets, downloads, and citations behind the Artometrics report “${entry.title}”. ${entry.updatedThrough}.`;
+---
+
+<Base
+  title={title}
+  description={description}
+  path={`/sources/${entry.slug}`}
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    url: `https://artometrics.com/sources/${entry.slug}`,
+    about: { "@type": "Article", name: entry.title, url: `https://artometrics.com${entry.href}` },
+  }}
+>
+  <link slot="head" rel="stylesheet" href="/css/sources.css" />
+  <div class="wrap page src-page">
+    <p class="crumbs"><a href="/sources">Sources</a> · <a href={`/sources#${entry.topic.id}`}>{entry.topic.title}</a></p>
+    <p class="kicker">{entry.kicker} · {entry.updatedThrough}</p>
+    <h1>{entry.title}</h1>
+    <p class="lede">
+      Everything behind this report in one place: the data files you can download, the resources we built from them,
+      and each citation with its link.
+    </p>
+    <p class="src-actions">
+      <a class="btn" href={entry.href}>Read the report</a>
+      {page.files[0] && page.files[0].kind !== "TXT" ? <a class="btn btn--ghost" href={page.files[0].href} download>Download primary data</a> : null}
+    </p>
+
+    <nav class="src-jump" aria-label="On this page">
+      <a href="#datasets">Datasets</a>
+      <a href="#resources">Resources</a>
+      <a href="#citations">Citations ({citations.length})</a>
+      <a href="#notes">Notes</a>
+    </nav>
+
+    <section id="datasets" class="src-section">
+      <h2>Datasets</h2>
+      {hasData ? (
+        <ul class="src-files">
+          {page.files.map((file) => (
+            <li>
+              <a href={file.href} download>{file.name}</a>
+              <span class="src-files__meta">{file.kind} · {formatBytes(file.bytes)}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="lede">No public data file is attached to this report yet. The figures are cited below.</p>
+      )}
+      {page.fixFiles.filter((fix) => fix.files.length).map((fix) => (
+        <>
+          <h3><a href={fix.href}>{fix.title}</a></h3>
+          <ul class="src-files">
+            {fix.files.map((file) => (
+              <li>
+                <a href={file.href} download>{file.name}</a>
+                <span class="src-files__meta">{file.kind} · {formatBytes(file.bytes)}</span>
+              </li>
+            ))}
+          </ul>
+        </>
+      ))}
+      {page.datasetPacks.length ? (
+        <p>Dataset pack: {page.datasetPacks.map((pack, i) => <>{i ? ", " : null}<a href={pack.href}>{pack.title}</a></>)}</p>
+      ) : null}
+      {page.charts.length ? (
+        <details class="src-charts">
+          <summary>{page.charts.length} chart specification{page.charts.length === 1 ? "" : "s"} (Plotly JSON)</summary>
+          <ul class="src-files">
+            {page.charts.map((file) => (
+              <li>
+                <a href={file.href} download>{file.name}</a>
+                <span class="src-files__meta">{formatBytes(file.bytes)}</span>
+              </li>
+            ))}
+          </ul>
+        </details>
+      ) : null}
+    </section>
+
+    <section id="resources" class="src-section">
+      <h2>Resources</h2>
+      <ul class="src-files">
+        {page.resources.map((resource) => (
+          <li>
+            <a href={resource.href} rel={resource.external ? "noopener noreferrer" : undefined} target={resource.external ? "_blank" : undefined}>{resource.label}</a>
+            {resource.note ? <span class="src-files__meta">{resource.note}</span> : null}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section id="citations" class="src-section">
+      <h2>Citations</h2>
+      {citations.length ? (
+        <ol class="src-cites">
+          {citations.map((citation, index) => (
+            <li id={`s${index + 1}`}>
+              <span class="src-cites__id">S{index + 1}</span>
+              <span>
+                {citation.href ? (
+                  <a href={citation.href} rel="noopener noreferrer">{citation.text || citation.href}</a>
+                ) : (
+                  <>{citation.text || "Untitled citation"} <span class="kicker">no link yet</span></>
+                )}
+              </span>
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <p class="lede">No citations are recorded for this report yet.</p>
+      )}
+    </section>
+
+    <section id="notes" class="src-section">
+      <h2>Notes</h2>
+      <ul class="src-notes">
+        {page.notes.map((note) => <li>{note}</li>)}
+        <li>Citations keep the wording from the report's issue file. Links were not rewritten.</li>
+      </ul>
+    </section>
+  </div>
+</Base>

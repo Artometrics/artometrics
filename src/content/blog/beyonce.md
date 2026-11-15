@@ -7,6 +7,7 @@ description: >-
   A Psychonomics profile of Beyoncé — Hermann Leadership Trait Analysis,
   Parkwood as institutionalized self, Lemonade’s canon economics, and an
   8,000-line lyric machine.
+dek: "Beyoncé controls her catalog, her label, and her surprises. What does that control look like in the data?"
 heroImage: /images/content/articles/beyonce/hero.png
 draft: false
 tags:

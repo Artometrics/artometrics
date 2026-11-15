@@ -4,6 +4,7 @@ slug: languages
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: '2,363 of 8,612 language records sit in Africa''s macroarea bucket — a signal of documentation density, not speaker counts.'
+dek: "Glottolog's map shows where linguists have looked, not where people talk."
 heroImage: /images/content/articles/languages/hero.png
 draft: false
 tags:

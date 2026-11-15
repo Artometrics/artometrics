@@ -5,6 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-07-28T00:00:00.000Z
 description: >-
   Louis Vuitton won ¥10.3 million against Molly Tea in Suzhou court on 29 June 2026 for four-petal logo infringement. Chinese social media reframed the first-to-file trademark case as foreign enclosure of Tang-era motifs.
+dek: "A flower logo cost a tea chain ¥10.3 million. Chinese social media turned it into something bigger."
 heroImage: /images/content/articles/trademarks/hero.png
 draft: false
 tags:

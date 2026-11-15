@@ -4,6 +4,7 @@ slug: albums
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'The 2003 Rolling Stone list puts median rank at 250; "Touch" sits at 500, studio albums dominate, and 1955–2019 releases populate the canon.'
+dek: "Rolling Stone ranked 500 albums in 2003. We checked who made the list, when, and what sits at the very bottom."
 heroImage: /images/content/articles/albums/hero.png
 draft: false
 tags:

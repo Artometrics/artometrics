@@ -5,6 +5,7 @@ author: kyle-mcauliffe
 pubDate: 2026-07-01T00:00:00.000Z
 description: >-
   NFL teams average $6.5B because 17-game scarcity compresses variance; MLB's 162 games let payroll spread; NBA star leverage hits 92.
+dek: "Why is the average NFL team worth $6.5 billion? Blame the schedule."
 heroImage: /images/content/articles/leagues/hero.png
 draft: false
 tags:

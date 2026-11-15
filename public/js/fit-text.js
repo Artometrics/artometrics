@@ -24,9 +24,12 @@
   }
 
   function fit(el) {
+    if (el.hasAttribute("data-count-lock")) return;
     var width = box(el);
     if (!width || width < 20) return;
     var cap = parseFloat(el.getAttribute("data-fit-max") || "0.6") * width;
+    var capPx = parseFloat(el.getAttribute("data-fit-max-px") || "0");
+    if (capPx > 0) cap = Math.min(cap, capPx);
     var floor = parseFloat(el.getAttribute("data-fit-min") || "10");
     el.style.letterSpacing = "0";
     el.style.marginRight = "0";
@@ -50,6 +53,12 @@
       size = size * (Math.max(1, width - 1) / used);
       el.style.fontSize = size + "px";
       used = inkWidth(el);
+      /* Glyph advances can round per size, so the ratio is not exact: step down until it fits. */
+      for (var guard = 0; guard < 12 && used > width - 0.5 && size > 6; guard++) {
+        size -= 0.5;
+        el.style.fontSize = size + "px";
+        used = inkWidth(el);
+      }
     }
     if (capped && used <= width + 0.5 && el.getAttribute("data-fit-track") !== "0") {
       var chars = Math.max(1, (el.textContent || "").trim().length);
@@ -90,6 +99,7 @@
 
   window.__fitText = { fitAll: fitAll };
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
+  if (document.fonts && document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", function () { fitAll(); });
   window.addEventListener("resize", function () { fitAll(); });
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", observe);
   else observe();

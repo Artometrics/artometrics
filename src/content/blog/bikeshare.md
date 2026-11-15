@@ -6,6 +6,7 @@ pubDate: 2026-06-15T00:00:00.000Z
 description: >-
   Trip-level bike-share data measures typical distance and duration across
   Biketown journeys.
+dek: "Half of Portland's Biketown rides are over in 14.5 minutes. One lasted 1,392."
 heroImage: /images/content/articles/bikeshare/hero.png
 draft: false
 tags:

@@ -7,6 +7,7 @@ description: >-
   A working framework for treating economic narratives as contagious,
   falsifiable objects — built from Shiller and Kuran, not a proprietary
   dataset.
+dek: "Stories move markets the way viruses move through a crowd. Can you test them?"
 heroImage: /images/content/articles/narratives/hero.png
 draft: false
 tags:

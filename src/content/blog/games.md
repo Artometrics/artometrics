@@ -6,6 +6,7 @@ pubDate: 2026-06-15T00:00:00.000Z
 description: >-
   Ratings and popularity across thousands of titles find games that win both
   mass attention and esteem.
+dek: "Some games win the crowd. Some win the critics. Which win both?"
 heroImage: /images/content/articles/games/hero.png
 draft: false
 tags:

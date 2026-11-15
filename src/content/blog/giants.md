@@ -4,6 +4,7 @@ slug: giants
 author: kyle-mcauliffe
 pubDate: 2026-04-18T00:00:00.000Z
 description: San Francisco's 2010–2014 dynasty won three titles with a draft-built rotation at mid-tier payroll—then couldn't replicate the model.
+dek: "The Giants won three titles in five years with the ninth-biggest payroll. They could not do it twice."
 heroImage: >-
   /images/content/articles/giants/hero.png
 draft: false

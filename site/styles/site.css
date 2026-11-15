@@ -471,6 +471,35 @@ html[data-logo-form="single"] .wordmark img {
   text-decoration: none;
 }
 .site-footer__base a:hover { color: var(--cream); }
+@media (max-width: 440px) {
+  .site-footer__base { font-size: 10px; letter-spacing: 0.02em; }
+}
+.site-footer__links a + a::before {
+  content: "·";
+  margin-right: 18px;
+  color: var(--muted);
+}
+.site-footer__social ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.site-footer__social a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--blue-text);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.site-footer__social a:hover { color: var(--cream); }
 
 .bleed-hero {
   position: relative;

@@ -4,6 +4,7 @@ slug: coffee
 author: kyle-mcauliffe
 pubDate: 2026-04-14T00:00:00.000Z
 description: Ethiopia's median CQI cup score is 85.3 — the highest of 16 countries with 20+ samples — yet Starbucks operates zero stores in the top three scoring nations.
+dek: "Ethiopia, Kenya, Uganda: the best-scoring coffees on earth, and not a Starbucks in sight."
 heroImage: /images/content/articles/coffee/banner.png
 draft: false
 tags:

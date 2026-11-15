@@ -75,7 +75,7 @@ html[data-theme="dark"] .report-page--eg h1,
 html[data-theme="dark"] .report-page--eg h2,
 html[data-theme="dark"] .report-page--eg h3,
 html[data-theme="dark"] .report-page--eg p,
-html[data-theme="dark"] .report-page--eg li:not(.stat-card),
+html[data-theme="dark"] .report-page--eg li:not(.stat-card):not(.keyfig),
 html[data-theme="dark"] .report-page--eg figcaption,
 html[data-theme="dark"] .report-page--eg code,
 html[data-theme="dark"] .report-page--eg .eg-headline,
@@ -87,6 +87,9 @@ html[data-theme="dark"] .report-page--eg a:not(.stat-card a),
 html[data-theme="dark"] .report-page--eg .eg-kicker {
   color: var(--eg-blue) !important;
 }
+
+html[data-theme="dark"] .report-page--eg .keyfig a,
+html[data-theme="dark"] .report-page--eg .keyfig .cite-link { color: inherit !important; }
 
 html[data-theme="dark"] .report-page--eg .eg-swiss__item:nth-child(4n + 1) .eg-swiss__value { color: var(--eg-pink) !important; }
 html[data-theme="dark"] .report-page--eg .eg-swiss__item:nth-child(4n + 2) .eg-swiss__value { color: var(--eg-blue) !important; }
@@ -621,11 +624,6 @@ html[data-theme="dark"] .report-page--eg .report-body.artometrics-article-body {
   color: var(--eg-blue);
 }
 
-/* Keyfigs fallback (if still rendered) — Swiss, no red */
-.report-page--eg .keyfigs {
-  display: none;
-}
-
 /* Carousel / downloads keep cream paper */
 .report-page--eg .chartcar,
 .report-page--eg [data-downloads] {
@@ -635,9 +633,4 @@ html[data-theme="dark"] .report-page--eg .report-body.artometrics-article-body {
 .report-page--eg .chartcar__head h2 {
   font-family: var(--eg-serif);
   color: var(--eg-ink);
-}
-
-/* No auto-motion beyond user-driven carousel */
-.report-page--eg * {
-  animation: none !important;
 }

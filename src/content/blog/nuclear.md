@@ -4,6 +4,7 @@ slug: nuclear
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: Public seismic catalogs reveal a median magnitude of 0.00—mostly missing data—while maximum recorded yields reached 7.40.
+dek: "Most of the 2,051 nuclear tests in this public seismic dataset have no magnitude recorded."
 heroImage: /images/content/articles/nuclear/hero.png
 draft: false
 tags:

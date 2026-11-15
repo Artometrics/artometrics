@@ -4,6 +4,7 @@ slug: pokemon
 author: kyle-mcauliffe
 pubDate: 2026-05-06T00:00:00.000Z
 description: 'Game Freak''s type system encodes stat tradeoffs, power creep clusters at the tail, and Cosmoem weighs 999.9 kg at 0.1 meters.'
+dek: "Dragons earn their attack. Bugs never catch up. Pokémon's type system, tested against the stats."
 heroImage: /images/content/articles/pokemon/hero.png
 draft: false
 tags:

@@ -4,6 +4,7 @@ slug: wine
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: Austria leads Chile by 2.00 points; the median sits at 88.0 in a dataset where the top dozen titles all score 100.
+dek: "On wine's 100-point scale, most bottles bunch near 88. What do two points buy?"
 heroImage: /images/content/articles/wine/banner.png
 draft: false
 tags:

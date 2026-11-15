@@ -234,7 +234,14 @@ const blog = listFiles(join(CONTENT, "blog")).map((file) => {
       ? data.subject.trim()
       : BLOG_SUBJECT_BY_SLUG[slug] ?? null;
   const keyPoints = Array.isArray(data.keyPoints)
-    ? data.keyPoints.map(String).filter(Boolean)
+    ? data.keyPoints
+        .map((point) =>
+          // An unquoted "label: text" key point parses as a one-key map; put the colon back.
+          point && typeof point === "object"
+            ? Object.entries(point).map(([key, value]) => `${key}: ${value}`).join(" ")
+            : String(point),
+        )
+        .filter(Boolean)
     : [];
   const faq = Array.isArray(data.faq)
     ? data.faq
@@ -250,6 +257,7 @@ const blog = listFiles(join(CONTENT, "blog")).map((file) => {
     slug,
     pubDate: data.pubDate ? new Date(data.pubDate).toISOString() : null,
     description: data.description ?? "",
+    dek: typeof data.dek === "string" ? data.dek.trim() : "",
     heroImage: rewriteAssetUrl(data.heroImage ?? ""),
     tags,
     subject: subjectRaw,

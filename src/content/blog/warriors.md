@@ -4,6 +4,7 @@ slug: warriors
 author: kyle-mcauliffe
 pubDate: 2026-04-18T00:00:00.000Z
 description: 'Golden State won 73 games in 2015–16, launched 15 more threes per game than the league, and changed how every franchise builds offense.'
+dek: "They won 73 games and launched 15 more threes a night than the league. The NBA never looked the same."
 heroImage: /images/content/articles/warriors/hero.png
 draft: false
 tags:

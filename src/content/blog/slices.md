@@ -4,6 +4,7 @@ slug: slices
 author: kyle-mcauliffe
 pubDate: 2026-06-15T00:00:00.000Z
 description: 'Median concurrent players climbed from 212 to 309 across the decade, but Dota 2''s 475,924 average dwarfs the top-twelve median of 64,656.'
+dek: "A dozen Steam games grabbed half the audience. Which ones?"
 heroImage: /images/content/articles/slices/hero.png
 draft: false
 tags:

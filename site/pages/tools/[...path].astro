@@ -1,6 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import { TOOL_PAGES } from "../../lib/tool-pages";
+import { TAROT_DECK } from "@/lib/aftercare/tarot-deck";
 
 export function getStaticPaths() {
   return Object.keys(TOOL_PAGES).map((path) => ({ params: { path } }));
@@ -8,14 +9,69 @@ export function getStaticPaths() {
 
 const key = Astro.params.path || "";
 const page = TOOL_PAGES[key];
+const parent = page.parent ? TOOL_PAGES[page.parent] : null;
+
+const hubLinks: Record<string, [string, string][]> = {
+  aftercare: [
+    ["aftercare/journal", "Notes for the night after, saved on this device."],
+    ["aftercare/tarot", "One card or three, drawn from a full deck."],
+    ["aftercare/tools", "Breathing pacer and grounding checklist."],
+    ["aftercare/track", "Mood, energy, and sleep over time."],
+  ],
+};
+
+const scripts: Record<string, string> = {
+  journal: "journal",
+  tarot: "tarot",
+  calm: "calm",
+  track: "track",
+  palette: "palette",
+  samples: "samples",
+  drafts: "drafts",
+  reference: "reference",
+};
+const needsFiles = page.kind === "palette" || page.kind === "samples";
+const deck = page.kind === "tarot"
+  ? TAROT_DECK.map(({ id, name, arcana, suit, upright, reversed }) => ({ id, name, arcana, suit, upright, reversed }))
+  : null;
 ---
 
 <Base title={page.title} description={page.body} path={`/tools/${key}`}>
-  <div class="wrap wrap--narrow page">
-    <p class="crumbs"><a href="/studio">Studio</a> · <a href="/tools">Tools</a></p>
+  <link slot="head" rel="stylesheet" href="/css/tools.css" />
+  <div class="wrap page tool-page">
+    <p class="crumbs">
+      <a href="/studio">Studio</a>
+      {parent ? <> · <a href={`/tools/${page.parent}`}>{parent.title}</a></> : null}
+    </p>
     <h1>{page.title}</h1>
     <p class="lede">{page.body}</p>
-    {key === "twilda/reference" ? <p><a href="/library/reference">Public reference catalog</a></p> : null}
-    <p><a class="btn" href={`/login?next=${encodeURIComponent(`/tools/${key}`)}`}>Sign in</a></p>
+    <p class="tool-note">Free to use, no account. Your work stays in this browser{needsFiles ? " and is never uploaded" : ""}.</p>
+
+    {page.kind === "hub" ? (
+      <div class="stack">
+        {hubLinks[key].map(([path, text]) => (
+          <a class="card" href={`/tools/${path}`}>
+            <h2>{TOOL_PAGES[path].title}</h2>
+            <span class="lede">{text}</span>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <>
+        <div
+          class="tool-root"
+          data-tool={page.kind}
+          data-store={page.store || ""}
+          data-mode={key.endsWith("/record") ? "record" : ""}
+          data-mount
+        >
+          <noscript><p>This tool needs JavaScript. Nothing is sent to a server, so it has to run in your browser.</p></noscript>
+        </div>
+        {page.kind === "reference" ? <p><a href="/library/reference">Browse the public reference catalog</a></p> : null}
+        {deck ? <script type="application/json" id="tarot-deck" set:html={JSON.stringify(deck)} /> : null}
+        <script is:inline src="/js/tools/common.js"></script>
+        <script is:inline src={`/js/tools/${scripts[page.kind]}.js`}></script>
+      </>
+    )}
   </div>
 </Base>
