@@ -21,6 +21,9 @@ for (let i = pool.length - 1; i >= 0 && wideIdx.size < wideCount; i -= 1) wideId
 const squares = pool.filter((_, i) => !wideIdx.has(i));
 const wides = pool.filter((_, i) => wideIdx.has(i));
 /** A short figure is scaled to fill its box. A phrase wraps at a readable size instead. */
+const longestWord = (value: string) => Math.max(...value.split(/[\s/–—-]+/).map((w) => w.length));
+const breakable = (value: string) =>
+  value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\//g, "/<wbr>");
 const isFigure = (value: string) => value.length <= 12 && !/\s{2,}/.test(value);
 ---
 
@@ -31,7 +34,7 @@ const isFigure = (value: string) => value.length <= 12 && !/\s{2,}/.test(value);
         {isFigure(fact.value) ? (
           <strong class="keyfig__value" data-count data-fit data-fit-max="0.22" data-fit-min="16" data-fit-track="0">{fact.value}</strong>
         ) : (
-          <strong class="keyfig__value keyfig__value--text">{fact.value}</strong>
+          <strong class="keyfig__value keyfig__value--text" style={`--w:${Math.max(6, longestWord(fact.value))}`} set:html={breakable(fact.value)} />
         )}
         <span class="keyfig__label" set:html={fact.label} />
       </li>
