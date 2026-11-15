@@ -127,30 +127,33 @@ html[data-theme] .report-page .cover__kicker {
 }
 
 /* Title painted into the art: show the whole frame, no overlay type. */
-.cover--baked {
+.report-page .cover--baked {
   display: block;
   min-height: 0;
+  height: auto;
   background: #0b090d;
 }
-.cover--baked .cover__media {
+.report-page .cover--baked .cover__media {
   position: static;
   z-index: auto;
 }
-.cover--baked .cover__art {
+.report-page .cover--baked .cover__art {
   height: auto;
   aspect-ratio: 16 / 9;
   object-fit: contain;
 }
-.cover--baked::after {
+.report-page .cover--baked::after {
   content: none;
 }
-.cover--baked .cover__copy {
+.report-page .cover--baked .cover__copy {
+  position: static;
+  inset: auto;
   padding: 8px 16px 10px;
 }
-.cover--baked .cover__crumb {
+.report-page .cover--baked .cover__crumb {
   margin: 0;
 }
-.cover--baked .cover__title {
+.report-page .cover--baked .cover__title {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -175,10 +178,11 @@ html[data-theme] .report-page .cover__kicker {
     font-size: clamp(2.6rem, 4.4vw, 4rem);
     max-width: 22ch;
   }
-  .cover--baked {
+  .report-page .cover--baked {
     background: transparent;
+    min-height: 0;
   }
-  .cover--baked .cover__copy {
+  .report-page .cover--baked .cover__copy {
     padding: 12px 4px 0;
     color: var(--sys-muted);
   }
@@ -506,3 +510,10 @@ html[data-theme] .report-page .cover__kicker {
     gap: 12px;
   }
 }
+
+.report-page .share-row .share-btn { color: var(--sys-ink) !important; }
+.report-page .share-row .share-btn--get { color: #fff !important; }
+.report-page .share-row .share-btn:hover,
+.report-page .share-row .share-btn:focus-visible { color: #14110e !important; }
+.report-page .share-row .share-btn--get:hover,
+.report-page .share-row .share-btn--get:focus-visible { color: var(--sys-panel) !important; }
