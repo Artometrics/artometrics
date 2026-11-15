@@ -1,0 +1,61 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "name": "Deal / earnings value ($ millions)",
+      "x": ["2016 — Sony/ATV buyout of estate's 50% stake", "2016 — Forbes-reported estate earnings"],
+      "y": [750, 825],
+      "text": ["$750M", "$825M"],
+      "textposition": "outside",
+      "marker": { "color": "rgba(192,57,43,0.9)" },
+      "yaxis": "y",
+      "hovertemplate": "<b>%{x}</b><br>$%{y}M<extra></extra>"
+    },
+    {
+      "type": "bar",
+      "name": "RIAA certification (× Platinum)",
+      "x": ["1982 — Thriller released"],
+      "y": [34],
+      "text": ["34× Platinum (RIAA)"],
+      "textposition": "outside",
+      "marker": { "color": "rgba(28,28,30,0.85)" },
+      "yaxis": "y2",
+      "hovertemplate": "<b>%{x}</b><br>%{y}× Platinum (RIAA)<extra></extra>"
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Thriller's certification and the 2016 Sony/ATV deal sit on different scales — the catalog never stopped paying",
+      "font": { "family": "Helvetica", "size": 16, "color": "#1C1C1E" }
+    },
+    "plot_bgcolor": "#F2F0EB",
+    "paper_bgcolor": "#F2F0EB",
+    "font": { "family": "DM Sans, Helvetica, sans-serif", "size": 13, "color": "#1C1C1E" },
+    "barmode": "group",
+    "showlegend": true,
+    "legend": { "orientation": "h", "y": -0.25 },
+    "margin": { "t": 70, "r": 60, "b": 90, "l": 70 },
+    "xaxis": {
+      "title": { "text": "Milestone" },
+      "tickangle": -10,
+      "gridcolor": "rgba(213,213,213,1)"
+    },
+    "yaxis": {
+      "title": { "text": "$ millions" },
+      "gridcolor": "rgba(213,213,213,1)",
+      "rangemode": "tozero"
+    },
+    "yaxis2": {
+      "title": { "text": "RIAA certification (× Platinum)" },
+      "overlaying": "y",
+      "side": "right",
+      "rangemode": "tozero",
+      "showgrid": false
+    }
+  },
+  "config": {
+    "displayModeBar": false,
+    "scrollZoom": false,
+    "doubleClick": false
+  }
+}

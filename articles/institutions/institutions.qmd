@@ -1,0 +1,22 @@
+---
+title: "INSTITUTIONS: When Dynasties Are Systems"
+description: "Yankees, Patriots, Celtics, Cowboys: a synthesis of Artometrics' sports-dynasty reports asks what transfers when winning is a system, not a roster."
+format:
+  html:
+    css: styles/report.css
+execute:
+  echo: false
+  warning: false
+---
+
+Yankees, Patriots, Celtics, Cowboys: a synthesis of Artometrics' sports-dynasty reports asks what transfers when winning is a system, not a roster.
+
+## FAST FACTS
+
+## DATASET CONTEXT
+
+## CHART 1
+
+## LIMITATIONS
+
+## EDITOR'S NOTE

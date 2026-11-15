@@ -1,0 +1,22 @@
+---
+title: "NARRATIVES: The Field Guide Culture Workers Needed"
+description: "A working framework for treating economic narratives as contagious, falsifiable objects — built from Shiller and Kuran, not a proprietary dataset."
+format:
+  html:
+    css: styles/report.css
+execute:
+  echo: false
+  warning: false
+---
+
+A working framework for treating economic narratives as contagious, falsifiable objects — built from Shiller and Kuran, not a proprietary dataset.
+
+## FAST FACTS
+
+## DATASET CONTEXT
+
+## CHART 1
+
+## LIMITATIONS
+
+## EDITOR'S NOTE

@@ -1,0 +1,31 @@
+# Copy into each report folder as `_quarto.yml` and set `render:` to the main .qmd.
+# Run articles/tools/link_report_assets.sh once so assets/ and styles/ symlinks exist.
+project:
+  type: default
+  output-dir: .
+  render:
+    - protection.qmd
+
+execute:
+  echo: false
+  warning: false
+  message: false
+  fig-format: png
+
+knitr:
+  opts_chunk:
+    dev: png
+    fig.path: figures/
+
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    toc-title: "In this report"
+    toc-location: left
+    anchor-sections: true
+    smooth-scroll: true
+    fig-align: center
+    lang: en
+    css: styles/report.css
+    theme: cosmo

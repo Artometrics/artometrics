@@ -1,0 +1,44 @@
+{
+  "data": [
+    {
+      "type": "scatter",
+      "mode": "markers+text",
+      "x": ["1953-01-01", "2017-01-01", "2021-01-01", "2024-01-01"],
+      "y": [1, 1, 1, 1],
+      "text": [
+        "1953<br>Founded",
+        "2017<br>Hefner dies",
+        "2021<br>PLBY SPAC listing",
+        "2024<br>Cooper bid rejected"
+      ],
+      "textposition": "top center",
+      "marker": {
+        "size": 16,
+        "color": ["#000000", "#525252", "#525252", "#C0392B"],
+        "line": { "width": 1, "color": "#000000" }
+      },
+      "hovertemplate": "%{text}<extra></extra>",
+      "name": "Institutional milestone"
+    }
+  ],
+  "layout": {
+    "title": { "text": "Four institutional dates, one licensing shell" },
+    "showlegend": false,
+    "xaxis": {
+      "type": "date",
+      "title": { "text": "Year" },
+      "range": ["1950-01-01", "2027-01-01"]
+    },
+    "yaxis": {
+      "visible": false,
+      "showgrid": false,
+      "zeroline": false,
+      "range": [0.5, 1.5]
+    },
+    "margin": { "t": 60, "b": 60, "l": 40, "r": 40 },
+    "height": 320,
+    "plot_bgcolor": "#FFFFFF",
+    "paper_bgcolor": "#FFFFFF",
+    "font": { "family": "DM Sans, sans-serif", "color": "#1A1A1A" }
+  }
+}

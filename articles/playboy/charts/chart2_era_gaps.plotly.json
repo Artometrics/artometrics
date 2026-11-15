@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "orientation": "h",
+      "x": [64, 4, 3],
+      "y": [
+        "Founding to Hefner's death (1953-2017)",
+        "Death to PLBY going public (2017-2021)",
+        "Going public to Cooper bid rejected (2021-2024)"
+      ],
+      "marker": { "color": ["#000000", "#525252", "#C0392B"] },
+      "text": ["64 years", "4 years", "3 years"],
+      "textposition": "outside",
+      "hovertemplate": "%{y}: %{x} years<extra></extra>"
+    }
+  ],
+  "layout": {
+    "title": { "text": "The gaps between Playboy's institutional turning points" },
+    "showlegend": false,
+    "xaxis": { "title": { "text": "Years elapsed" } },
+    "yaxis": { "automargin": true },
+    "margin": { "t": 60, "b": 50, "l": 20, "r": 80 },
+    "height": 340,
+    "plot_bgcolor": "#FFFFFF",
+    "paper_bgcolor": "#FFFFFF",
+    "font": { "family": "DM Sans, sans-serif", "color": "#1A1A1A" }
+  }
+}

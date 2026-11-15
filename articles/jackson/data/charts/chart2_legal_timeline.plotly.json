@@ -1,0 +1,57 @@
+{
+  "data": [
+    {
+      "type": "scatter",
+      "mode": "lines",
+      "x": ["1992-01-01", "2020-01-01"],
+      "y": [0, 0],
+      "line": { "color": "rgba(107,107,107,0.6)", "width": 2 },
+      "hoverinfo": "skip",
+      "showlegend": false
+    },
+    {
+      "type": "scatter",
+      "mode": "markers+text",
+      "name": "Dated legal / biographical events",
+      "x": ["1993-08-01", "2005-06-13", "2009-06-25", "2019-01-25"],
+      "y": [0, 0, 0, 0],
+      "text": [
+        "1993 — Civil abuse allegation; settled out of court 1994, undisclosed sum, no admission of liability",
+        "2005 — Acquitted on all 14 counts, People v. Jackson (Santa Barbara County)",
+        "2009 — Died, age 50",
+        "2019 — Leaving Neverland renews allegations; estate denies claims, disputes film legally"
+      ],
+      "textposition": "top center",
+      "textfont": { "size": 11, "color": "#1C1C1E" },
+      "marker": { "size": 14, "color": "rgba(192,57,43,0.9)", "line": { "width": 2, "color": "#F2F0EB" } },
+      "hovertemplate": "<b>%{text}</b><extra></extra>"
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "A dated-events timeline, not a severity score — outcomes and denials, plotted only by year",
+      "font": { "family": "Helvetica", "size": 16, "color": "#1C1C1E" }
+    },
+    "plot_bgcolor": "#F2F0EB",
+    "paper_bgcolor": "#F2F0EB",
+    "font": { "family": "DM Sans, Helvetica, sans-serif", "size": 13, "color": "#1C1C1E" },
+    "showlegend": false,
+    "margin": { "t": 70, "r": 40, "b": 60, "l": 40 },
+    "xaxis": {
+      "title": { "text": "Year" },
+      "type": "date",
+      "range": ["1991-01-01", "2021-01-01"],
+      "gridcolor": "rgba(213,213,213,1)"
+    },
+    "yaxis": {
+      "visible": false,
+      "range": [-1, 1.6],
+      "fixedrange": true
+    }
+  },
+  "config": {
+    "displayModeBar": false,
+    "scrollZoom": false,
+    "doubleClick": false
+  }
+}
