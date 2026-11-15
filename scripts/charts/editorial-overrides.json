@@ -1,0 +1,63 @@
+{
+  "pixar/chart1_runtime_timeline": {
+    "headline": "Pixar's two longest films came in 2021 and 2023",
+    "subtitle": "Runtime of each theatrical release, in minutes. Toy Story is the shortest at 81; the longest runs 155.",
+    "source": "Source: Pixar films and public response, TidyTuesday 2025-03-11"
+  },
+  "pixar/chart2_rt_ranking": {
+    "headline": "Two Toy Story films hold a perfect 100%",
+    "subtitle": "Rotten Tomatoes score by film, %. The 14 highest-rated films.",
+    "source": "Source: Pixar films and public response, TidyTuesday 2025-03-11"
+  },
+  "pixar/chart3_critic_audience_gap": {
+    "headline": "Audience grades cluster while critic scores spread",
+    "subtitle": "Rotten Tomatoes score (%) against CinemaScore grade, one dot per film.",
+    "source": "Source: Pixar films and public response, TidyTuesday 2025-03-11",
+    "label_only": [
+      "Cars 2",
+      "Onward"
+    ]
+  },
+  "pixar/chart4_rating_mix": {
+    "headline": "Thirteen G, ten PG, zero PG-13",
+    "subtitle": "Pixar theatrical releases by MPAA rating.",
+    "source": "Source: Pixar films, TidyTuesday 2025-03-11"
+  },
+  "pixar/chart5_runtime_vs_rt": {
+    "headline": "A longer film is not a worse one",
+    "subtitle": "Runtime in minutes against Rotten Tomatoes score, %. Cars 2 is the outlier at 40%.",
+    "source": "Source: Pixar films and public response, TidyTuesday 2025-03-11",
+    "label_only": [
+      "Cars 2",
+      "Up",
+      "WALL-E",
+      "Inside Out",
+      "Cars 3"
+    ]
+  },
+  "ramen/chart1_breakdown": {
+    "headline": "A dozen brands tie at 5.00 stars",
+    "subtitle": "Median stars by brand for the twelve brands at the ceiling.",
+    "source": "Source: TidyTuesday 2019-06-04, R for Data Science community"
+  },
+  "ramen/chart2_leaders": {
+    "headline": "TTL tops a list of twelve ties",
+    "subtitle": "Median stars for the brands at the top of the ranking. Every bar reads 5.00.",
+    "source": "Source: TidyTuesday 2019-06-04, R for Data Science community"
+  },
+  "ramen/chart3_distribution": {
+    "headline": "Five big producers, one narrow band of medians",
+    "subtitle": "Distribution of stars for the five countries with the most reviews. Medians sit between 3.75 and 4.00.",
+    "source": "Source: TidyTuesday 2019-06-04, R for Data Science community"
+  },
+  "ramen/chart4_gap": {
+    "headline": "Malaysia sits half a star above the median",
+    "subtitle": "Country median stars minus the global median of 3.75. Thailand trails by 0.25.",
+    "source": "Source: TidyTuesday 2019-06-04, R for Data Science community"
+  },
+  "ramen/chart5_scatter": {
+    "headline": "Stars against review number",
+    "subtitle": "Each point is one product. Review number may behave as an identifier more than a popularity count.",
+    "source": "Source: TidyTuesday 2019-06-04, R for Data Science community"
+  }
+}

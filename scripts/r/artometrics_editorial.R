@@ -50,7 +50,13 @@ ART_ED_BODY <- "Art Sans"
 ART_ED_MONO <- "Art Mono"
 
 # Sentence-case an ALL CAPS label and strip Plotly markup.
-art_ed_clean_title <- function(x) {
+art_ed_short_words_unused <- c("a", "an", "and", "are", "as", "at", "be", "but", "by", "for", "from", "has", "had", "her", "his", "how", "if", "in",
+  "is", "it", "its", "not", "of", "on", "or", "our", "out", "so", "the", "to", "up", "was", "we", "who", "why", "you", "vs", "per", "all",
+  "can", "did", "get", "got", "may", "now", "off", "one", "two", "yet", "than", "that", "then", "this", "with", "over", "into", "when")
+
+# Sentence-case an ALL CAPS label and strip Plotly markup. `proper` lists words that should keep a capital
+# (taken from the article text), so "OCTOBER" becomes "October" and "FIRST" becomes "first".
+art_ed_clean_title <- function(x, proper = character(), acronyms = character()) {
   x <- gsub("<br\\s*/?>", " \u2014 ", x, ignore.case = TRUE)
   x <- gsub("<[^>]+>", "", x)
   x <- gsub("&amp;", "&", x, fixed = TRUE)
@@ -58,9 +64,12 @@ art_ed_clean_title <- function(x) {
   letters_only <- gsub("[^A-Za-z]", "", x)
   if (nchar(letters_only) > 6 && sum(grepl("[A-Z]", strsplit(letters_only, "")[[1]])) / nchar(letters_only) > 0.8) {
     words <- strsplit(x, " ")[[1]]
-    keep <- grepl("[0-9]", words) | (nchar(gsub("[^A-Za-z]", "", words)) <= 3 & nchar(gsub("[^A-Za-z]", "", words)) > 0)
+    core <- gsub("[^A-Za-z]", "", words)
     low <- tolower(words)
+    keep <- grepl("[0-9]", words) | (core %in% acronyms) | (nchar(core) <= 3 & nchar(core) > 0 & (core %in% c("US", "UK", "EU", "UN", "TV", "AI")))
     low[keep] <- words[keep]
+    hit <- tolower(core) %in% tolower(proper) & !keep
+    low[hit] <- paste0(toupper(substr(words[hit], 1, 1)), tolower(substr(words[hit], 2, nchar(words[hit]))))
     x <- paste(low, collapse = " ")
     x <- paste0(toupper(substr(x, 1, 1)), substr(x, 2, nchar(x)))
   }
@@ -116,14 +125,17 @@ art_ed_hbar <- function(labels, values, highlight = integer(), fmt = scales::lab
     art_ed_fonts(root)
     p <- art_ed_palette(mode, root)
     shown <- values
+    mixed <- any(values < 0) && any(values > 0)
     if (all(values <= 0)) values <- abs(values)
     df <- data.frame(label = factor(labels, levels = rev(labels)), value = values, shown = shown)
     df$fill <- rev(art_ed_fill(nrow(df), if (length(highlight)) nrow(df) + 1 - highlight else integer(), mode, root))
     base <- 14
     ggplot(df, aes(value, label)) +
       geom_col(aes(fill = I(fill)), width = 0.66) +
-      geom_text(aes(label = fmt(shown)), hjust = -0.12, size = base * 0.3, family = ART_ED_HEAD, color = p$ink) +
-      scale_x_continuous(expand = expansion(mult = c(0, expand))) +
+      geom_text(aes(label = fmt(shown), hjust = if (mixed) ifelse(value >= 0, -0.12, 1.12) else -0.12),
+                size = base * 0.3, family = ART_ED_HEAD, color = p$ink) +
+      { if (mixed) geom_vline(xintercept = 0, color = p$ink, linewidth = 0.5) } +
+      scale_x_continuous(expand = expansion(mult = if (mixed) c(0.18, expand) else c(0, expand))) +
       theme_art_ed(mode, base, root) +
       theme(
         panel.grid.major.y = element_blank(),
@@ -175,7 +187,7 @@ art_ed_line <- function(x, y, group = NULL, highlight = NULL, fmt = scales::labe
       geom_line(linewidth = 1.5, lineend = "round") +
       scale_color_manual(values = cols) +
       scale_y_continuous(labels = fmt, expand = expansion(mult = c(0.04, 0.16))) +
-      scale_x_continuous(breaks = if (is.null(xbreaks)) scales::breaks_pretty(5) else xbreaks, expand = expansion(mult = c(0.02, 0.1))) +
+      scale_x_continuous(breaks = if (is.null(xbreaks)) scales::breaks_pretty(5) else xbreaks, labels = if (all(df$x >= 1800 & df$x <= 2100)) function(v) format(v, big.mark = "", trim = TRUE) else waiver(), expand = expansion(mult = c(0.02, if (length(groups) > 1) 0.24 else 0.1))) +
       theme_art_ed(mode, base, root)
     if (points) g <- g + geom_point(size = 2.6)
     if (!is.null(notes)) {
@@ -187,7 +199,7 @@ art_ed_line <- function(x, y, group = NULL, highlight = NULL, fmt = scales::labe
       last <- do.call(rbind, lapply(split(df, df$g), function(d) d[which.max(d$x), ]))
       if (length(groups) > 1) {
         g <- g + ggrepel::geom_text_repel(
-          data = last, aes(label = g), direction = "y", hjust = 0, nudge_x = diff(range(df$x)) * 0.02,
+          data = transform(last, g = ifelse(nchar(g) > 13, paste0(substr(g, 1, 12), "\u2026"), g)), aes(label = g), direction = "y", hjust = 0, nudge_x = diff(range(df$x)) * 0.02, point.size = NA,
           size = base * 0.27, family = ART_ED_BODY, segment.color = NA, show.legend = FALSE, xlim = c(NA, Inf)
         )
       } else {
@@ -266,7 +278,11 @@ art_ed_box <- function(values, groups, highlight = character(), fmt = scales::la
 art_ed_wrap <- function(x, max_chars = 30) {
   n <- ceiling(nchar(x) / max_chars)
   if (n <= 1) return(x)
-  paste(strwrap(x, width = ceiling(nchar(x) / n) + 4), collapse = "\n")
+  for (w in seq(ceiling(nchar(x) / n), nchar(x))) {
+    lines <- strwrap(x, width = w)
+    if (length(lines) <= n) return(paste(lines, collapse = "\n"))
+  }
+  x
 }
 
 # Adds the headline, subtitle and source to a chart and saves light + dark PNGs with the pink flag.
