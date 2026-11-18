@@ -1,6 +1,7 @@
 ---
 import { TAGLINE } from "@/lib/tagline.mjs";
 import { CONFIGURED_SOCIAL, UNCONFIGURED_SOCIAL } from "@/lib/social-links";
+import { SITE_UNIVERSE_NAV } from "@/lib/site-nav";
 
 interface Props {
   variant?: "home" | "article" | "site";
@@ -39,6 +40,10 @@ const quiet = [
     <p class="site-footer__tagline">{TAGLINE}</p>
     <nav class="site-footer__links" aria-label="Footer">
       {primary.map(([href, label]) => <a href={href}>{label}</a>)}
+    </nav>
+    <nav class="site-footer__links site-footer__universe" aria-label="Artometrics universe">
+      <span class="site-footer__universe-label">Universe</span>
+      {SITE_UNIVERSE_NAV.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>
     <nav class="site-footer__social" aria-label="Social">
       <ul>
