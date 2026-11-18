@@ -1885,3 +1885,13 @@ html[data-theme="light"] .plan .btn,
 html[data-theme="light"] .plan .btn * {
   color: #fff;
 }
+
+/* Universe: sibling Artometrics sites (Academy, Glossary, Gotha) */
+.nav-universe { flex: 0 0 auto; padding: 8px 0 4px; }
+.site-footer__universe-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pink-text);
+}
