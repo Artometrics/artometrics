@@ -342,6 +342,7 @@ html[data-logo-form="single"] .wordmark img {
 }
 .nav-list span { display: none; }
 .nav-overlay .fact { display: none; }
+.nav-universe { flex: 0 0 auto; padding: 10px 0 0; }
 .nav-catalogue { flex: 0 0 auto; padding: 8px 0 12px; }
 .nav-catalogue__label {
   margin: 0 0 6px;
@@ -1884,4 +1885,15 @@ html[data-theme="light"] .edition .kicker {
 html[data-theme="light"] .plan .btn,
 html[data-theme="light"] .plan .btn * {
   color: #fff;
+}
+
+/* Universe links (Go-Live plan, stream E) */
+.site-footer__universe { margin-top: 6px; }
+.site-footer__universe-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pink-text);
+  margin-right: 10px;
 }

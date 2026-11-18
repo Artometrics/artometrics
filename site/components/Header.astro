@@ -1,5 +1,6 @@
 ---
 import { SITE_PRIMARY_NAV } from "@/lib/site-nav";
+import { UNIVERSE_LINKS } from "@/lib/universe";
 import { formatHeaderDate } from "@/lib/headerDateline";
 import facts from "@/lib/nav-fun-facts.json";
 import { LOGO_REVIEW, type LogoReviewMark, WORDMARKS } from "@/lib/wordmarks";
@@ -210,6 +211,19 @@ const singles = [WORDMARKS.find((mark) => mark.id === "halftone")!, ...WORDMARKS
       <li><a href="/sources">Sources</a></li>
       <li><a href="/rss.xml">RSS</a></li>
     </ul>
+    <nav class="nav-universe" aria-label="Artometrics universe">
+      <p class="nav-catalogue__label">Universe</p>
+      <ul class="nav-list">
+        {UNIVERSE_LINKS.map((item) => (
+          <li>
+            <a href={item.href}>
+              {item.label}
+              <span>{item.descriptor}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
     <div class="nav-catalogue" aria-label="Catalogue">
       <p class="nav-catalogue__label">Catalogue</p>
       <div class="nav-catalogue__row" id="nav-catalogue-row" tabindex="0">
